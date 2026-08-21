@@ -1,0 +1,134 @@
+job_index: 10
+name: Etched/oasis-500m
+tp: 1
+CUDA_VISIBLE_DEVICES: 3
+ray.get_gpu_ids(): ['3']
+parent_visible_gpus: 0,1,2,3,4,5,6,7
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.capture default --max-requests 1000000 --output /code/users/goliaro/h200-capture/10_Etched__oasis-500m_tp1_float16/report.json
+
+Importing fastkernels engine ...
+Discovering operators in fastkernels.tasks.baseline ...
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+  Instrumented 455 operator class(es).
+
+########## Scenario: Etched/oasis-500m (WorldModel, dtype=float16) ##########
+Building fastkernels WorldModel model (synthetic-input capture) ...
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 1361.90it/s]
+
+=== Capturing workload: short-bs4-16f-4ddim ===
+  Verification 1 (hook cross-check) [INFO]: 17/19 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.oasis_rotary:OasisRotaryEmbedding: no hook observations (forward may be called directly, bypassing __call__)
+    ! fastkernels.tasks.baseline.L3.oasis_rollout:OasisRollout: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 21 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/10_Etched__oasis-500m_tp1_float16/report_Etched__oasis-500m_tp1_float16_short-bs4-16f-4ddim_req1000000_seqsauto_eager.json
+
+=== Capturing workload: medium-bs8-24f-4ddim ===
+  Verification 1 (hook cross-check) [INFO]: 17/19 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.oasis_rotary:OasisRotaryEmbedding: no hook observations (forward may be called directly, bypassing __call__)
+    ! fastkernels.tasks.baseline.L3.oasis_rollout:OasisRollout: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 21 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/10_Etched__oasis-500m_tp1_float16/report_Etched__oasis-500m_tp1_float16_medium-bs8-24f-4ddim_req1000000_seqsauto_eager.json
+
+=== Capturing workload: long-bs8-32f-4ddim ===
+  Verification 1 (hook cross-check) [INFO]: 17/19 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.oasis_rotary:OasisRotaryEmbedding: no hook observations (forward may be called directly, bypassing __call__)
+    ! fastkernels.tasks.baseline.L3.oasis_rollout:OasisRollout: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 21 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/10_Etched__oasis-500m_tp1_float16/report_Etched__oasis-500m_tp1_float16_long-bs8-32f-4ddim_req1000000_seqsauto_eager.json
+
+=== Capturing workload: denoise-bs4-16f-8ddim ===
+  Verification 1 (hook cross-check) [INFO]: 17/19 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.oasis_rotary:OasisRotaryEmbedding: no hook observations (forward may be called directly, bypassing __call__)
+    ! fastkernels.tasks.baseline.L3.oasis_rollout:OasisRollout: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 21 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/10_Etched__oasis-500m_tp1_float16/report_Etched__oasis-500m_tp1_float16_denoise-bs4-16f-8ddim_req1000000_seqsauto_eager.json
+
+=== Capturing workload: latency-bs1-8f-4ddim ===
+  Verification 1 (hook cross-check) [INFO]: 17/19 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.oasis_rotary:OasisRotaryEmbedding: no hook observations (forward may be called directly, bypassing __call__)
+    ! fastkernels.tasks.baseline.L3.oasis_rollout:OasisRollout: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 21 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/10_Etched__oasis-500m_tp1_float16/report_Etched__oasis-500m_tp1_float16_latency-bs1-8f-4ddim_req1000000_seqsauto_eager.json

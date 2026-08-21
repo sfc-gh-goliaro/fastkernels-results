@@ -1,0 +1,169 @@
+job_index: 3
+name: openai/gpt-oss-120b
+tp: 2
+CUDA_VISIBLE_DEVICES: 5,6
+ray.get_gpu_ids(): ['5', '6']
+parent_visible_gpus: 0,1,2,3,4,5,6,7
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.capture default --max-requests 1000000 --output /code/users/goliaro/h200-capture/03_openai__gpt-oss-120b_tp2_mxfp4/report.json
+
+Importing fastkernels engine ...
+Discovering operators in fastkernels.tasks.baseline ...
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+  Instrumented 455 operator class(es).
+
+########## Scenario: openai/gpt-oss-120b (dtype=mxfp4, tp=2, enforce_eager=False) ##########
+Loading openai/gpt-oss-120b into fastkernels LlamaEngine ...
+  (forcing enforce_eager=True for capture; the scenario's enforce_eager=False applies to benchmarking only)
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+  [1/6] Loading model weights...
+Fetching 31 files:   0%|          | 0/31 [00:00<?, ?it/s]Fetching 31 files:   0%|          | 0/31 [00:00<?, ?it/s]Fetching 31 files: 100%|██████████| 31/31 [00:00<00:00, 1923.22it/s]
+Fetching 31 files: 100%|██████████| 31/31 [00:00<00:00, 1492.05it/s]
+  Allocating GPT-OSS model (128 experts, top-4)...
+  Loading GPT-OSS weights from 15 safetensors file(s)...
+  Loaded 687 weight shards.
+Fetching 31 files:   0%|          | 0/31 [00:00<?, ?it/s]Fetching 31 files: 100%|██████████| 31/31 [00:00<00:00, 1880.94it/s]
+  [1/6] Model loaded in 9.3s
+  [2/6] Warmup forward pass...
+2026-08-21 09:11:07,092 - INFO - autotuner.py:651 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+  Allocating GPT-OSS model (128 experts, top-4)...
+  Loading GPT-OSS weights from 15 safetensors file(s)...
+  Loaded 687 weight shards.
+Fetching 31 files:   0%|          | 0/31 [00:00<?, ?it/s]Fetching 31 files: 100%|██████████| 31/31 [00:00<00:00, 1780.31it/s]
+2026-08-21 09:11:11,414 - INFO - autotuner.py:651 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+2026-08-21 09:11:12,916 - INFO - autotuner.py:674 - flashinfer.jit: [Autotuner]: Autotuning process ends
+2026-08-21 09:11:12,916 - INFO - autotuner.py:674 - flashinfer.jit: [Autotuner]: Autotuning process ends
+  [2/6] Warmup done in 5.8s
+  [3/6] DeepGEMM warmup...
+  [3/6] DeepGEMM done in 0.0s
+  [4/6] Allocating KV cache...
+  KV cache: 161029 blocks x 16 = 2576464 token slots
+  Attention backend: flash_attn (block_size=16, kv_layout=NHD)
+  [4/6] KV cache done in 0.0s
+  [6/6] Init greedy buffers...
+  Post-capture memory: peak_alloc=120.8G cur_alloc=120.8G reserved=122.3G free=14.9G of 140G
+  Scheduling: max_num_seqs=1024, max_num_batched_tokens=16384
+
+=== Capturing workload: mixed ===
+Loading 'mixed' workload prompts (1000) ...
+Running 1000 prompt(s) at max_batch_size=1024, max_new_tokens=[1..1024] (modality=text, chat_template=True) ...
+Processed prompts:   0%|          | 0/1000 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts:   0%|          | 1/1000 [00:00<16:00,  1.04it/s, est. speed input: 194.55 toks/s, output: 1.04 toks/s]Processed prompts:   0%|          | 2/1000 [00:01<13:16,  1.25it/s, est. speed input: 173.26 toks/s, output: 3.65 toks/s]Processed prompts:   0%|          | 5/1000 [00:02<05:44,  2.89it/s, est. speed input: 335.93 toks/s, output: 8.85 toks/s]Processed prompts:   1%|          | 6/1000 [00:02<05:14,  3.16it/s, est. speed input: 808.52 toks/s, output: 10.95 toks/s]Processed prompts:   1%|          | 7/1000 [00:02<04:51,  3.41it/s, est. speed input: 779.65 toks/s, output: 13.44 toks/s]Processed prompts:   1%|          | 8/1000 [00:02<04:35,  3.60it/s, est. speed input: 762.90 toks/s, output: 14.08 toks/s]Processed prompts:   1%|          | 9/1000 [00:03<04:23,  3.77it/s, est. speed input: 731.58 toks/s, output: 13.33 toks/s]Processed prompts:   1%|          | 10/1000 [00:04<07:35,  2.17it/s, est. speed input: 578.49 toks/s, output: 13.44 toks/s]Processed prompts:   1%|          | 11/1000 [00:04<08:17,  1.99it/s, est. speed input: 670.25 toks/s, output: 13.62 toks/s]Processed prompts:   1%|▏         | 13/1000 [00:04<05:22,  3.06it/s, est. speed input: 1027.94 toks/s, output: 17.91 toks/s]Processed prompts:   2%|▏         | 15/1000 [00:05<04:46,  3.43it/s, est. speed input: 969.44 toks/s, output: 18.77 toks/s] Processed prompts:   2%|▏         | 17/1000 [00:05<03:46,  4.35it/s, est. speed input: 965.19 toks/s, output: 19.57 toks/s]Processed prompts:   2%|▏         | 18/1000 [00:05<03:47,  4.32it/s, est. speed input: 941.27 toks/s, output: 19.11 toks/s]Processed prompts:   2%|▏         | 22/1000 [00:05<02:07,  7.67it/s, est. speed input: 986.32 toks/s, output: 26.58 toks/s]Processed prompts:   2%|▏         | 22/1000 [00:18<02:07,  7.67it/s, est. speed input: 986.32 toks/s, output: 26.58 toks/s]Processed prompts: 100%|██████████| 1000/1000 [02:12<00:00,  7.71it/s, est. speed input: 2693.94 toks/s, output: 2899.71 toks/s]Processed prompts: 100%|██████████| 1000/1000 [02:12<00:00,  7.53it/s, est. speed input: 2693.94 toks/s, output: 2899.71 toks/s]
+  Generation: 0/1000 reached EOS before their per-request budget; lengths=[229, 206, 569, 362, 662, 1024, 278, 39, 715, 265, 58, 563, 566, 143, 87, 97, 442, 331, 158, 185, 217, 196, 286, 85, 630, 334, 510, 961, 1024, 277, 412, 9, 337, 160, 166, 1011, 431, 573, 102, 814, 197, 285, 677, 564, 445, 1024, 5, 675, 81, 396, 539, 237, 581, 23, 1024, 1024, 486, 277, 735, 636, 517, 259, 529, 659, 203, 63, 468, 469, 247, 359, 905, 71, 1024, 365, 77, 479, 130, 332, 1, 90, 196, 437, 126, 7, 691, 118, 301, 774, 180, 456, 425, 708, 310, 223, 557, 290, 36, 1024, 263, 411, 1024, 780, 909, 129, 571, 121, 1024, 286, 233, 289, 47, 312, 38, 410, 251, 250, 620, 486, 5, 993, 13, 16, 394, 267, 107, 601, 262, 819, 71, 696, 541, 655, 264, 703, 1024, 136, 5, 55, 380, 454, 41, 363, 146, 583, 839, 320, 624, 394, 811, 899, 526, 190, 37, 411, 1024, 1024, 326, 774, 925, 129, 155, 448, 662, 71, 1024, 213, 630, 99, 439, 634, 815, 207, 504, 313, 1024, 307, 556, 598, 947, 107, 95, 357, 251, 38, 194, 518, 484, 1024, 143, 310, 707, 153, 106, 123, 472, 758, 541, 41, 204, 1024, 538, 382, 198, 75, 898, 61, 56, 3, 508, 408, 908, 720, 39, 161, 296, 517, 70, 298, 139, 166, 418, 819, 815, 641, 849, 366, 118, 266, 549, 345, 913, 789, 259, 410, 479, 329, 549, 33, 51, 53, 141, 880, 710, 244, 480, 118, 1024, 832, 503, 212, 474, 470, 84, 540, 285, 335, 306, 102, 187, 436, 456, 355, 95, 383, 1024, 210, 1024, 289, 475, 794, 258, 769, 668, 141, 233, 125, 562, 339, 5, 937, 584, 44, 1024, 503, 415, 938, 218, 314, 1024, 611, 668, 50, 441, 338, 345, 486, 81, 785, 21, 179, 123, 112, 160, 214, 387, 238, 450, 661, 204, 399, 369, 73, 505, 595, 359, 41, 34, 746, 17, 538, 594, 107, 394, 160, 297, 321, 433, 972, 59, 303, 291, 575, 321, 285, 686, 337, 1024, 140, 628, 75, 266, 751, 693, 283, 729, 212, 435, 607, 376, 644, 1024, 1024, 180, 77, 190, 535, 329, 274, 355, 956, 445, 497, 416, 303, 762, 425, 638, 231, 372, 185, 451, 421, 201, 289, 101, 35, 45, 108, 359, 49, 1024, 55, 179, 415, 338, 300, 669, 457, 108, 417, 298, 468, 9, 438, 507, 16, 96, 520, 93, 207, 24, 185, 564, 872, 527, 357, 460, 784, 90, 287, 585, 459, 224, 95, 1000, 590, 253, 56, 39, 51, 692, 373, 105, 110, 761, 76, 1024, 264, 303, 490, 593, 1015, 504, 933, 252, 104, 1000, 284, 367, 281, 332, 870, 277, 736, 147, 429, 148, 32, 595, 137, 724, 785, 1024, 1024, 438, 197, 8, 22, 58, 660, 724, 41, 363, 85, 238, 902, 606, 250, 1, 32, 193, 125, 333, 529, 316, 408, 84, 73, 191, 506, 566, 93, 550, 97, 136, 143, 456, 500, 584, 685, 130, 403, 413, 157, 43, 303, 325, 555, 586, 287, 120, 454, 152, 379, 170, 75, 1024, 189, 206, 444, 75, 1024, 280, 137, 743, 76, 231, 185, 219, 9, 210, 109, 699, 433, 209, 348, 101, 177, 116, 83, 292, 922, 54, 92, 290, 555, 767, 508, 277, 1024, 288, 88, 368, 1024, 394, 545, 104, 744, 359, 484, 768, 464, 118, 21, 364, 274, 1024, 270, 159, 431, 248, 592, 59, 130, 118, 271, 1019, 144, 48, 8, 764, 68, 371, 301, 964, 419, 40, 269, 208, 824, 415, 286, 737, 865, 296, 78, 52, 665, 10, 499, 361, 537, 273, 422, 494, 705, 180, 398, 430, 1024, 382, 1009, 419, 410, 575, 1024, 192, 329, 24, 229, 9, 459, 244, 327, 51, 395, 440, 284, 324, 356, 119, 661, 1024, 37, 425, 675, 221, 128, 869, 444, 628, 666, 344, 14, 599, 158, 182, 290, 87, 306, 306, 174, 352, 944, 72, 775, 233, 24, 729, 105, 412, 278, 1024, 385, 378, 50, 458, 525, 1024, 102, 707, 1024, 719, 359, 248, 75, 653, 105, 362, 297, 722, 676, 455, 34, 378, 52, 574, 219, 116, 147, 306, 102, 191, 310, 593, 429, 461, 4, 252, 51, 561, 1024, 683, 135, 10, 724, 1024, 46, 551, 174, 453, 298, 169, 132, 243, 47, 97, 463, 733, 142, 647, 165, 110, 562, 371, 31, 229, 71, 641, 1011, 8, 332, 283, 110, 35, 84, 6, 456, 137, 57, 135, 520, 221, 11, 279, 148, 337, 441, 102, 245, 61, 679, 123, 527, 297, 352, 49, 227, 29, 499, 1024, 100, 107, 675, 1024, 17, 628, 255, 183, 698, 435, 240, 53, 541, 36, 545, 739, 401, 279, 294, 289, 549, 707, 387, 145, 176, 717, 77, 870, 32, 42, 562, 505, 839, 275, 168, 314, 244, 903, 958, 508, 103, 1024, 138, 248, 821, 439, 787, 1024, 6, 91, 255, 280, 19, 620, 374, 82, 1024, 802, 1024, 1002, 666, 17, 831, 334, 252, 160, 344, 323, 32, 34, 399, 7, 684, 811, 182, 1024, 39, 98, 399, 201, 308, 468, 203, 18, 133, 1024, 646, 465, 142, 377, 15, 278, 39, 82, 197, 93, 89, 205, 477, 203, 191, 669, 292, 1024, 236, 389, 287, 15, 144, 635, 534, 1024, 357, 304, 386, 49, 102, 404, 527, 39, 178, 260, 852, 1024, 454, 268, 39, 110, 194, 1008, 23, 155, 101, 404, 582, 2, 349, 277, 81, 286, 479, 13, 62, 331, 1, 585, 419, 286, 277, 505, 237, 31, 283, 443, 272, 162, 130, 283, 812, 236, 834, 646, 9, 369, 259, 746, 115, 213, 390, 323, 408, 152, 125, 198, 453, 149, 191, 309, 120, 116, 438, 377, 366, 85, 795, 509, 691, 555, 498, 602, 1024, 225, 207, 465, 722, 21, 245, 1024, 103, 21, 312, 6, 380, 468, 162, 195, 301, 19, 269, 360, 9, 1024, 157, 279, 218, 24, 243, 120, 90, 752, 831, 202, 672, 228, 64, 448, 253, 310, 1024, 147, 694, 470, 284, 224, 220, 913, 641, 146, 708, 296, 432, 271, 430, 32, 1015, 466, 665, 275, 319]
+  Verification 1 (hook cross-check) [PASS]: 19/19 operator forwards match the independent hook capture.
+  Verification 2 (mock batching replay) [PASS]: 10/10 checks passed (1046 simulated steps, 23 with prefill).
+  Captured 20 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/03_openai__gpt-oss-120b_tp2_mxfp4/report_openai__gpt-oss-120b_tp2_mxfp4_mixed_req1000000_seqsauto_eager.json
+
+=== Capturing workload: long-context ===
+Loading 'long-context' workload prompts (64) ...
+  (dropped 4/64 prompt(s) whose prompt+decode exceeds max_model_len=131104)
+Running 60 prompt(s) at max_batch_size=1024, max_new_tokens=[256..256] (modality=text, chat_template=True) ...
+Processed prompts:   0%|          | 0/60 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 60/60 [00:51<00:00,  1.17it/s, est. speed input: 20360.78 toks/s, output: 298.68 toks/s]Processed prompts: 100%|██████████| 60/60 [00:51<00:00,  1.17it/s, est. speed input: 20360.78 toks/s, output: 298.68 toks/s]
+  Generation: 0/60 reached EOS before their per-request budget; lengths=[256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256]
+  Verification 1 (hook cross-check) [PASS]: 19/19 operator forwards match the independent hook capture.
+  Verification 2 (mock batching replay) [PASS]: 10/10 checks passed (320 simulated steps, 65 with prefill).
+  Captured 20 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/03_openai__gpt-oss-120b_tp2_mxfp4/report_openai__gpt-oss-120b_tp2_mxfp4_long-context_req1000000_seqsauto_eager.json
+
+=== Capturing workload: single-request ===
+Loading 'single-request' workload prompts (1) ...
+Running 1 prompt(s) at max_batch_size=1024, max_new_tokens=[128..128] (modality=text, chat_template=True) ...
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.37s/it, est. speed input: 6.83 toks/s, output: 8.33 toks/s]Processed prompts: 100%|██████████| 1/1 [00:15<00:00, 15.37s/it, est. speed input: 6.83 toks/s, output: 8.33 toks/s]
+  Generation: 0/1 reached EOS before their per-request budget; lengths=[128]
+  Verification 1 (hook cross-check) [PASS]: 19/19 operator forwards match the independent hook capture.
+  Verification 2 (mock batching replay) [PASS]: 10/10 checks passed (128 simulated steps, 1 with prefill).
+  Captured 20 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/03_openai__gpt-oss-120b_tp2_mxfp4/report_openai__gpt-oss-120b_tp2_mxfp4_single-request_req1000000_seqsauto_eager.json
+
+=== Capturing workload: fixed-batch-32 ===
+Loading 'fixed-batch-32' workload prompts (32) ...
+Running 32 prompt(s) at max_batch_size=1024, max_new_tokens=[9..128] (modality=text, chat_template=True) ...
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [00:15<00:00,  2.05it/s, est. speed input: 674.88 toks/s, output: 237.40 toks/s]Processed prompts: 100%|██████████| 32/32 [00:15<00:00,  2.05it/s, est. speed input: 674.88 toks/s, output: 237.40 toks/s]
+  Generation: 0/32 reached EOS before their per-request budget; lengths=[128, 128, 128, 128, 128, 128, 128, 39, 128, 128, 58, 128, 128, 128, 87, 97, 128, 128, 128, 128, 128, 128, 128, 85, 128, 128, 128, 128, 128, 128, 128, 9]
+  Verification 1 (hook cross-check) [PASS]: 19/19 operator forwards match the independent hook capture.
+  Verification 2 (mock batching replay) [PASS]: 10/10 checks passed (128 simulated steps, 1 with prefill).
+  Captured 20 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/03_openai__gpt-oss-120b_tp2_mxfp4/report_openai__gpt-oss-120b_tp2_mxfp4_fixed-batch-32_req1000000_seqsauto_eager.json

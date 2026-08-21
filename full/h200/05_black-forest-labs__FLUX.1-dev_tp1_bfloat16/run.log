@@ -1,0 +1,123 @@
+job_index: 5
+name: black-forest-labs/FLUX.1-dev
+tp: 1
+CUDA_VISIBLE_DEVICES: 0
+ray.get_gpu_ids(): ['0']
+parent_visible_gpus: 0,1,2,3,4,5,6,7
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.capture default --max-requests 1000000 --output /code/users/goliaro/h200-capture/05_black-forest-labs__FLUX.1-dev_tp1_bfloat16/report.json
+
+Importing fastkernels engine ...
+Discovering operators in fastkernels.tasks.baseline ...
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+  Instrumented 455 operator class(es).
+
+########## Scenario: black-forest-labs/FLUX.1-dev (Diffusion, dtype=bfloat16) ##########
+Building fastkernels Diffusion model (synthetic-input capture) ...
+Fetching 25 files:   0%|          | 0/25 [00:00<?, ?it/s]Fetching 25 files: 100%|██████████| 25/25 [00:00<00:00, 1734.96it/s]
+
+=== Capturing workload: 1024x1024 ===
+  Verification 1 (hook cross-check) [INFO]: 38/39 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L4.flux:FluxPipeline: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 39 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/05_black-forest-labs__FLUX.1-dev_tp1_bfloat16/report_black-forest-labs__FLUX.1-dev_tp1_bfloat16_1024x1024_req1000000_seqsauto_eager.json
+
+=== Capturing workload: 512x512 ===
+  Verification 1 (hook cross-check) [INFO]: 38/39 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L4.flux:FluxPipeline: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 39 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/05_black-forest-labs__FLUX.1-dev_tp1_bfloat16/report_black-forest-labs__FLUX.1-dev_tp1_bfloat16_512x512_req1000000_seqsauto_eager.json
+
+=== Capturing workload: single-1024x1024 ===
+  Verification 1 (hook cross-check) [INFO]: 38/39 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L4.flux:FluxPipeline: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 39 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/05_black-forest-labs__FLUX.1-dev_tp1_bfloat16/report_black-forest-labs__FLUX.1-dev_tp1_bfloat16_single-1024x1024_req1000000_seqsauto_eager.json
+
+=== Capturing workload: single-512x512 ===
+  Verification 1 (hook cross-check) [INFO]: 38/39 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L4.flux:FluxPipeline: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 39 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/05_black-forest-labs__FLUX.1-dev_tp1_bfloat16/report_black-forest-labs__FLUX.1-dev_tp1_bfloat16_single-512x512_req1000000_seqsauto_eager.json

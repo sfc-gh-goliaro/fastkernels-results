@@ -1,0 +1,1323 @@
+{
+  "model": "fla-hub/gla-2.7B-100B",
+  "workload": "single-request",
+  "dtype": "torch.bfloat16",
+  "engine": "fastkernels.infra.engine.LlamaEngine",
+  "captured_at": "2026-08-21T08:26:01",
+  "max_batch_size": 256,
+  "generation": {
+    "num_prompts": 1,
+    "max_batch_size": 256,
+    "engine": "fla",
+    "modality": "text",
+    "used_chat_template": true,
+    "max_new_tokens_source": "dataset_response_length",
+    "max_new_tokens_range": [128, 128],
+    "num_finished_by_eos": 0,
+    "num_hit_max_tokens": 1,
+    "responses": [
+      {
+        "prompt": "<s> I want to find a part-time online PHD/Doctor program in Biostatistics or Statistics. Please help me find some good ones. In US, Germany, or other western countries.",
+        "prompt_tokens": 42,
+        "response": "\nI am a PhD student in Biostatistics. I am looking for a good online program in statistics. I am not sure if I should go for a PhD or a masters. I am also not sure if I should go for a masters or a PhD. I am looking for a good online program in statistics. I am not sure if I should go for a PhD or a masters. I am also not sure if I should go for a masters or a PhD.\nI am a PhD student in Biostatistics. I am looking for a good online program in statistics. I am not sure if I should go for",
+        "max_new_tokens": 128,
+        "tokens": 128,
+        "stop_reason": "max_tokens"
+      }
+    ],
+    "recurrent_state": true
+  },
+  "verification": {
+    "forward_pre_hook_crosscheck": {
+      "method": "independent torch forward_pre_hook cross-check",
+      "classes_checked": 11,
+      "classes_matched": 11,
+      "passed": true,
+      "issues": []
+    },
+    "mock_batching_replay": {
+      "method": "mock continuous-batching / chunked-prefill replay",
+      "applicable": false,
+      "passed": true,
+      "reason": "skipped for fla: recurrent-state / hybrid slot pools are not modeled by the paged-KV continuous-batching replay; the forward-pre-hook cross-check is the pass criterion."
+    },
+    "passed": true
+  },
+  "num_operator_classes_instrumented": 446,
+  "num_operator_classes_executed": 12,
+  "operators": {
+    "fastkernels.tasks.baseline.L1.chunk_gla:ChunkGLA": {},
+    "fastkernels.tasks.baseline.L1.embedding:Embedding": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"num_embeddings": 32000, "embedding_dim": 2560, "padding_idx": null}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 128,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"input_ids": {"shape": [1, 42], "dtype": "int64"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 127,
+            "args": {"input_ids": {"shape": [1, 1], "dtype": "int64"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.fused_recurrent_gla:FusedRecurrentGLA": {
+      "forward": {
+        "calls": 4096,
+        "variants": [
+          {
+            "count": 32,
+            "args": {
+              "q": {"shape": [1, 42, 5, 256], "dtype": "bfloat16"},
+              "k": {"shape": [1, 42, 5, 256], "dtype": "bfloat16"},
+              "v": {"shape": [1, 42, 5, 512], "dtype": "bfloat16"},
+              "gk": {"shape": [1, 42, 5, 256], "dtype": "bfloat16"},
+              "scale": null,
+              "initial_state": null,
+              "output_final_state": true,
+              "cu_seqlens": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 4064,
+            "args": {
+              "q": {"shape": [1, 1, 5, 256], "dtype": "bfloat16"},
+              "k": {"shape": [1, 1, 5, 256], "dtype": "bfloat16"},
+              "v": {"shape": [1, 1, 5, 512], "dtype": "bfloat16"},
+              "gk": {"shape": [1, 1, 5, 256], "dtype": "bfloat16"},
+              "scale": null,
+              "initial_state": {"shape": [1, 5, 256, 512], "dtype": "float32"},
+              "output_final_state": true,
+              "cu_seqlens": null
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.linear:Linear": {
+      "init": {
+        "calls": 321,
+        "variants": [
+          {
+            "count": 64,
+            "args": {"in_features": 2560, "out_features": 1280, "bias": false}
+          },
+          {
+            "count": 96,
+            "args": {"in_features": 2560, "out_features": 2560, "bias": false}
+          },
+          {"count": 32, "args": {"in_features": 2560, "out_features": 16, "bias": false}},
+          {"count": 32, "args": {"in_features": 16, "out_features": 1280, "bias": true}},
+          {
+            "count": 64,
+            "args": {"in_features": 2560, "out_features": 6912, "bias": false}
+          },
+          {
+            "count": 32,
+            "args": {"in_features": 6912, "out_features": 2560, "bias": false}
+          },
+          {
+            "count": 1,
+            "args": {"in_features": 2560, "out_features": 32000, "bias": false}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 41088,
+        "variants": [
+          {
+            "count": 256,
+            "args": {"input": {"shape": [1, 42, 2560], "dtype": "bfloat16"}},
+            "init_variant_ids": [0, 1, 2, 4]
+          },
+          {
+            "count": 32,
+            "args": {"input": {"shape": [1, 42, 16], "dtype": "bfloat16"}},
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 32,
+            "args": {"input": {"shape": [1, 42, 6912], "dtype": "bfloat16"}},
+            "init_variant_ids": [5]
+          },
+          {
+            "count": 32640,
+            "args": {"input": {"shape": [1, 1, 2560], "dtype": "bfloat16"}},
+            "init_variant_ids": [0, 1, 2, 4, 6]
+          },
+          {
+            "count": 4064,
+            "args": {"input": {"shape": [1, 1, 16], "dtype": "bfloat16"}},
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 4064,
+            "args": {"input": {"shape": [1, 1, 6912], "dtype": "bfloat16"}},
+            "init_variant_ids": [5]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.linear:Matmul": {
+      "forward": {
+        "calls": 41088,
+        "variants": [
+          {
+            "count": 64,
+            "args": {
+              "input": {"shape": [1, 42, 2560], "dtype": "bfloat16"},
+              "weight": {"shape": [1280, 2560], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 96,
+            "args": {
+              "input": {"shape": [1, 42, 2560], "dtype": "bfloat16"},
+              "weight": {"shape": [2560, 2560], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 32,
+            "args": {
+              "input": {"shape": [1, 42, 2560], "dtype": "bfloat16"},
+              "weight": {"shape": [16, 2560], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 32,
+            "args": {
+              "input": {"shape": [1, 42, 16], "dtype": "bfloat16"},
+              "weight": {"shape": [1280, 16], "dtype": "bfloat16"},
+              "bias": {"shape": [1280], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 64,
+            "args": {
+              "input": {"shape": [1, 42, 2560], "dtype": "bfloat16"},
+              "weight": {"shape": [6912, 2560], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 32,
+            "args": {
+              "input": {"shape": [1, 42, 6912], "dtype": "bfloat16"},
+              "weight": {"shape": [2560, 6912], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 128,
+            "args": {
+              "input": {"shape": [1, 1, 2560], "dtype": "bfloat16"},
+              "weight": {"shape": [32000, 2560], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 8128,
+            "args": {
+              "input": {"shape": [1, 1, 2560], "dtype": "bfloat16"},
+              "weight": {"shape": [1280, 2560], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 12192,
+            "args": {
+              "input": {"shape": [1, 1, 2560], "dtype": "bfloat16"},
+              "weight": {"shape": [2560, 2560], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 4064,
+            "args": {
+              "input": {"shape": [1, 1, 2560], "dtype": "bfloat16"},
+              "weight": {"shape": [16, 2560], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 4064,
+            "args": {
+              "input": {"shape": [1, 1, 16], "dtype": "bfloat16"},
+              "weight": {"shape": [1280, 16], "dtype": "bfloat16"},
+              "bias": {"shape": [1280], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 8128,
+            "args": {
+              "input": {"shape": [1, 1, 2560], "dtype": "bfloat16"},
+              "weight": {"shape": [6912, 2560], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 4064,
+            "args": {
+              "input": {"shape": [1, 1, 6912], "dtype": "bfloat16"},
+              "weight": {"shape": [2560, 6912], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.log_sigmoid:LogSigmoid": {
+      "forward": {
+        "calls": 4096,
+        "variants": [
+          {
+            "count": 32,
+            "args": {"x": {"shape": [1, 42, 1280], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 4064,
+            "args": {"x": {"shape": [1, 1, 1280], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.rms_norm:RMSNorm": {
+      "init": {
+        "calls": 97,
+        "variants": [
+          {
+            "count": 65,
+            "args": {"hidden_size": 2560, "eps": 1e-06, "elementwise_affine": true}
+          },
+          {
+            "count": 32,
+            "args": {"hidden_size": 512, "eps": 1e-06, "elementwise_affine": true}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 12416,
+        "variants": [
+          {
+            "count": 65,
+            "args": {"x": {"shape": [42, 2560], "dtype": "bfloat16"}, "residual": null},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 32,
+            "args": {"x": {"shape": [210, 512], "dtype": "bfloat16"}, "residual": null},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 8255,
+            "args": {"x": {"shape": [1, 2560], "dtype": "bfloat16"}, "residual": null},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 4064,
+            "args": {"x": {"shape": [5, 512], "dtype": "bfloat16"}, "residual": null},
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.silu:SiLU": {
+      "forward": {
+        "calls": 8192,
+        "variants": [
+          {
+            "count": 32,
+            "args": {"x": {"shape": [1, 42, 2560], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 32,
+            "args": {"x": {"shape": [1, 42, 6912], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 4064,
+            "args": {"x": {"shape": [1, 1, 2560], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 4064,
+            "args": {"x": {"shape": [1, 1, 6912], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.gla_attention:GatedLinearAttention": {
+      "init": {
+        "calls": 32,
+        "variants": [
+          {
+            "count": 32,
+            "args": {
+              "hidden_size": 2560,
+              "num_heads": 5,
+              "expand_k": 0.5,
+              "expand_v": 1,
+              "decay_mode": "learned_low_rank",
+              "gate_low_rank_dim": 16,
+              "gate_logit_normalizer": 16,
+              "use_rotary": false,
+              "rotary_base": 10000.0,
+              "rotary_max_position": 8192,
+              "norm_eps": 1e-06,
+              "use_fast_kernels": true
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 4096,
+        "variants": [
+          {
+            "count": 32,
+            "args": {
+              "hidden_states": {"shape": [1, 42, 2560], "dtype": "bfloat16"},
+              "attention_mask": null,
+              "past_key_values": {"object": "RecurrentCache"},
+              "use_cache": true,
+              "kwargs": {}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 4064,
+            "args": {
+              "hidden_states": {"shape": [1, 1, 2560], "dtype": "bfloat16"},
+              "attention_mask": null,
+              "past_key_values": {"object": "RecurrentCache"},
+              "use_cache": true,
+              "kwargs": {}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.gla_mlp:GLAMLP": {
+      "init": {
+        "calls": 32,
+        "variants": [{"count": 32, "args": {"hidden_size": 2560, "intermediate_size": 6912}}]
+      },
+      "forward": {
+        "calls": 4096,
+        "variants": [
+          {
+            "count": 32,
+            "args": {"x": {"shape": [1, 42, 2560], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 4064,
+            "args": {"x": {"shape": [1, 1, 2560], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.gla_decoder:GLADecoderLayer": {
+      "init": {
+        "calls": 32,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 0
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 1
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 2
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 3
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 4
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 5
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 6
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 7
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 8
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 9
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 10
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 11
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 12
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 13
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 14
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 15
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 16
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 17
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 18
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 19
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 20
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 21
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 22
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 23
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 24
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 25
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 26
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 27
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 28
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 29
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 30
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              },
+              "layer_idx": 31
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 4096,
+        "variants": [
+          {
+            "count": 32,
+            "args": {
+              "hidden_states": {"shape": [1, 42, 2560], "dtype": "bfloat16"},
+              "attention_mask": null,
+              "past_key_values": {"object": "RecurrentCache"},
+              "use_cache": true,
+              "kwargs": {}
+            },
+            "init_variant_ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31
+            ]
+          },
+          {
+            "count": 4064,
+            "args": {
+              "hidden_states": {"shape": [1, 1, 2560], "dtype": "bfloat16"},
+              "attention_mask": null,
+              "past_key_values": {"object": "RecurrentCache"},
+              "use_cache": true,
+              "kwargs": {}
+            },
+            "init_variant_ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31
+            ]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L4.gla:GLAForCausalLM": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.gla:GLAConfig",
+                "fields": {
+                  "hidden_size": 2560,
+                  "num_heads": 5,
+                  "num_hidden_layers": 32,
+                  "vocab_size": 32000,
+                  "expand_k": 0.5,
+                  "expand_v": 1,
+                  "hidden_ratio": 4,
+                  "intermediate_size": 6912,
+                  "norm_eps": 1e-06,
+                  "tie_word_embeddings": false,
+                  "dtype": {"$dtype": "bfloat16"}
+                }
+              }
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 128,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "input_ids": null,
+              "attention_mask": null,
+              "inputs_embeds": {"shape": [1, 42, 2560], "dtype": "bfloat16"},
+              "past_key_values": {"object": "RecurrentCache"},
+              "labels": null,
+              "use_cache": true,
+              "num_logits_to_keep": 1,
+              "logits_indices": null,
+              "kwargs": {}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 127,
+            "args": {
+              "input_ids": {"shape": [1, 1], "dtype": "int64"},
+              "attention_mask": null,
+              "inputs_embeds": null,
+              "past_key_values": {"object": "RecurrentCache"},
+              "labels": null,
+              "use_cache": true,
+              "num_logits_to_keep": 1,
+              "logits_indices": null,
+              "kwargs": {}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    }
+  }
+}

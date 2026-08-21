@@ -1,0 +1,523 @@
+{
+  "model": "BAAI/bge-m3",
+  "workload": "single-request",
+  "dtype": "torch.float16",
+  "engine": "fastkernels.infra.engine.LlamaEngine",
+  "captured_at": "2026-08-21T08:25:26",
+  "max_batch_size": 1,
+  "generation": {
+    "num_prompts": 1,
+    "max_batch_size": 1,
+    "engine": "embedding",
+    "modality": "Embedding",
+    "inputs": "synthetic (random tensors sized from workload spec)"
+  },
+  "verification": {
+    "forward_pre_hook_crosscheck": {
+      "method": "independent torch forward_pre_hook cross-check",
+      "classes_checked": 9,
+      "classes_matched": 9,
+      "passed": true,
+      "issues": []
+    },
+    "mock_batching_replay": {
+      "method": "mock continuous-batching / chunked-prefill replay",
+      "applicable": false,
+      "passed": true,
+      "reason": "skipped for Embedding: no paged-KV token schedule; the forward-pre-hook cross-check is the pass criterion."
+    },
+    "passed": true
+  },
+  "num_operator_classes_instrumented": 446,
+  "num_operator_classes_executed": 16,
+  "operators": {
+    "fastkernels.tasks.baseline.L1.dense_attention:DenseAttention": {
+      "init": {"calls": 24, "variants": [{"count": 24, "args": {"backend": "sdpa"}}]}
+    },
+    "fastkernels.tasks.baseline.L1.embedding:Embedding": {
+      "init": {
+        "calls": 3,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"num_embeddings": 250002, "embedding_dim": 1024, "padding_idx": 1}
+          },
+          {
+            "count": 1,
+            "args": {"num_embeddings": 8194, "embedding_dim": 1024, "padding_idx": 1}
+          },
+          {
+            "count": 1,
+            "args": {"num_embeddings": 1, "embedding_dim": 1024, "padding_idx": null}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 3,
+        "variants": [
+          {
+            "count": 3,
+            "args": {"input_ids": {"shape": [64], "dtype": "int64"}},
+            "init_variant_ids": [0, 1, 2]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.flash_attn_varlen:FlashAttnVarlen": {
+      "forward": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 24,
+            "args": {
+              "q": {"shape": [64, 16, 64], "dtype": "float16", "stride": [3072, 64, 1]},
+              "k": {"shape": [64, 16, 64], "dtype": "float16", "stride": [3072, 64, 1]},
+              "v": {"shape": [64, 16, 64], "dtype": "float16", "stride": [3072, 64, 1]},
+              "cu_seqlens_q": {"shape": [2], "dtype": "int32"},
+              "cu_seqlens_k": {"shape": [2], "dtype": "int32"},
+              "max_seqlen_q": 64,
+              "max_seqlen_k": 64,
+              "softmax_scale": 0.125,
+              "causal": false,
+              "return_softmax_lse": false
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.gelu:GELU": {
+      "init": {"calls": 24, "variants": [{"count": 24, "args": {"approximate": "none"}}]},
+      "forward": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 24,
+            "args": {"x": {"shape": [64, 4096], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.l2_norm:L2Norm": {
+      "init": {"calls": 1, "variants": [{"count": 1, "args": {"dim": -1, "eps": 1e-12}}]},
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [64, 1024], "dtype": "float32"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.layer_norm:LayerNorm": {
+      "init": {
+        "calls": 49,
+        "variants": [
+          {
+            "count": 49,
+            "args": {
+              "normalized_shape": 1024,
+              "eps": 1e-05,
+              "elementwise_affine": true,
+              "create_scale": true,
+              "create_offset": true,
+              "promote_fp32": false
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 49,
+        "variants": [
+          {
+            "count": 49,
+            "args": {"x": {"shape": [64, 1024], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.linear:Linear": {
+      "init": {
+        "calls": 98,
+        "variants": [
+          {"count": 24, "args": {"in_features": 1024, "out_features": 3072, "bias": true}},
+          {"count": 25, "args": {"in_features": 1024, "out_features": 1024, "bias": true}},
+          {"count": 24, "args": {"in_features": 1024, "out_features": 4096, "bias": true}},
+          {"count": 24, "args": {"in_features": 4096, "out_features": 1024, "bias": true}},
+          {"count": 1, "args": {"in_features": 1024, "out_features": 1, "bias": true}}
+        ]
+      },
+      "forward": {
+        "calls": 97,
+        "variants": [
+          {
+            "count": 72,
+            "args": {"input": {"shape": [64, 1024], "dtype": "float16"}},
+            "init_variant_ids": [0, 1, 2]
+          },
+          {
+            "count": 24,
+            "args": {"input": {"shape": [64, 4096], "dtype": "float16"}},
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 1,
+            "args": {"input": {"shape": [64, 1024], "dtype": "float32"}},
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.linear:Matmul": {
+      "forward": {
+        "calls": 97,
+        "variants": [
+          {
+            "count": 24,
+            "args": {
+              "input": {"shape": [64, 1024], "dtype": "float16"},
+              "weight": {"shape": [3072, 1024], "dtype": "float16"},
+              "bias": {"shape": [3072], "dtype": "float16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 24,
+            "args": {
+              "input": {"shape": [64, 1024], "dtype": "float16"},
+              "weight": {"shape": [1024, 1024], "dtype": "float16"},
+              "bias": {"shape": [1024], "dtype": "float16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 24,
+            "args": {
+              "input": {"shape": [64, 1024], "dtype": "float16"},
+              "weight": {"shape": [4096, 1024], "dtype": "float16"},
+              "bias": {"shape": [4096], "dtype": "float16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 24,
+            "args": {
+              "input": {"shape": [64, 4096], "dtype": "float16"},
+              "weight": {"shape": [1024, 4096], "dtype": "float16"},
+              "bias": {"shape": [1024], "dtype": "float16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {
+              "input": {"shape": [64, 1024], "dtype": "float32"},
+              "weight": {"shape": [1024, 1024], "dtype": "float32"},
+              "bias": {"shape": [1024], "dtype": "float32"}
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.encoder_attention:EncoderAttention": {
+      "init": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 24,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.bge_m3:BGEM3Config",
+                "fields": {
+                  "model_type": "xlm-roberta",
+                  "vocab_size": 250002,
+                  "hidden_size": 1024,
+                  "num_hidden_layers": 24,
+                  "num_attention_heads": 16,
+                  "intermediate_size": 4096,
+                  "max_position_embeddings": 8194,
+                  "type_vocab_size": 1,
+                  "layer_norm_eps": 1e-05,
+                  "hidden_act": "gelu",
+                  "hidden_dropout_prob": 0.1,
+                  "attention_probs_dropout_prob": 0.1,
+                  "pad_token_id": 1,
+                  "bos_token_id": 0,
+                  "eos_token_id": 2,
+                  "position_embedding_type": "absolute",
+                  "dtype": {"$dtype": "float16"}
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.encoder_embeddings:XLMRobertaEmbeddings": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.bge_m3:BGEM3Config",
+                "fields": {
+                  "model_type": "xlm-roberta",
+                  "vocab_size": 250002,
+                  "hidden_size": 1024,
+                  "num_hidden_layers": 24,
+                  "num_attention_heads": 16,
+                  "intermediate_size": 4096,
+                  "max_position_embeddings": 8194,
+                  "type_vocab_size": 1,
+                  "layer_norm_eps": 1e-05,
+                  "hidden_act": "gelu",
+                  "hidden_dropout_prob": 0.1,
+                  "attention_probs_dropout_prob": 0.1,
+                  "pad_token_id": 1,
+                  "bos_token_id": 0,
+                  "eos_token_id": 2,
+                  "position_embedding_type": "absolute",
+                  "dtype": {"$dtype": "float16"}
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.encoder_mlp:EncoderIntermediate": {
+      "init": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 24,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.bge_m3:BGEM3Config",
+                "fields": {
+                  "model_type": "xlm-roberta",
+                  "vocab_size": 250002,
+                  "hidden_size": 1024,
+                  "num_hidden_layers": 24,
+                  "num_attention_heads": 16,
+                  "intermediate_size": 4096,
+                  "max_position_embeddings": 8194,
+                  "type_vocab_size": 1,
+                  "layer_norm_eps": 1e-05,
+                  "hidden_act": "gelu",
+                  "hidden_dropout_prob": 0.1,
+                  "attention_probs_dropout_prob": 0.1,
+                  "pad_token_id": 1,
+                  "bos_token_id": 0,
+                  "eos_token_id": 2,
+                  "position_embedding_type": "absolute",
+                  "dtype": {"$dtype": "float16"}
+                }
+              }
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 24,
+            "args": {"hidden_states": {"shape": [64, 1024], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.encoder_mlp:EncoderOutput": {
+      "init": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 24,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.bge_m3:BGEM3Config",
+                "fields": {
+                  "model_type": "xlm-roberta",
+                  "vocab_size": 250002,
+                  "hidden_size": 1024,
+                  "num_hidden_layers": 24,
+                  "num_attention_heads": 16,
+                  "intermediate_size": 4096,
+                  "max_position_embeddings": 8194,
+                  "type_vocab_size": 1,
+                  "layer_norm_eps": 1e-05,
+                  "hidden_act": "gelu",
+                  "hidden_dropout_prob": 0.1,
+                  "attention_probs_dropout_prob": 0.1,
+                  "pad_token_id": 1,
+                  "bos_token_id": 0,
+                  "eos_token_id": 2,
+                  "position_embedding_type": "absolute",
+                  "dtype": {"$dtype": "float16"}
+                }
+              }
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 24,
+            "args": {
+              "hidden_states": {"shape": [64, 4096], "dtype": "float16"},
+              "input_tensor": {"shape": [64, 1024], "dtype": "float16"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.xlm_roberta_encoder:XLMRobertaEncoder": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.bge_m3:BGEM3Config",
+                "fields": {
+                  "model_type": "xlm-roberta",
+                  "vocab_size": 250002,
+                  "hidden_size": 1024,
+                  "num_hidden_layers": 24,
+                  "num_attention_heads": 16,
+                  "intermediate_size": 4096,
+                  "max_position_embeddings": 8194,
+                  "type_vocab_size": 1,
+                  "layer_norm_eps": 1e-05,
+                  "hidden_act": "gelu",
+                  "hidden_dropout_prob": 0.1,
+                  "attention_probs_dropout_prob": 0.1,
+                  "pad_token_id": 1,
+                  "bos_token_id": 0,
+                  "eos_token_id": 2,
+                  "position_embedding_type": "absolute",
+                  "dtype": {"$dtype": "float16"}
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.xlm_roberta_layer:XLMRobertaLayer": {
+      "init": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 24,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.bge_m3:BGEM3Config",
+                "fields": {
+                  "model_type": "xlm-roberta",
+                  "vocab_size": 250002,
+                  "hidden_size": 1024,
+                  "num_hidden_layers": 24,
+                  "num_attention_heads": 16,
+                  "intermediate_size": 4096,
+                  "max_position_embeddings": 8194,
+                  "type_vocab_size": 1,
+                  "layer_norm_eps": 1e-05,
+                  "hidden_act": "gelu",
+                  "hidden_dropout_prob": 0.1,
+                  "attention_probs_dropout_prob": 0.1,
+                  "pad_token_id": 1,
+                  "bos_token_id": 0,
+                  "eos_token_id": 2,
+                  "position_embedding_type": "absolute",
+                  "dtype": {"$dtype": "float16"}
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.xlm_roberta_model:XLMRobertaModel": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.bge_m3:BGEM3Config",
+                "fields": {
+                  "model_type": "xlm-roberta",
+                  "vocab_size": 250002,
+                  "hidden_size": 1024,
+                  "num_hidden_layers": 24,
+                  "num_attention_heads": 16,
+                  "intermediate_size": 4096,
+                  "max_position_embeddings": 8194,
+                  "type_vocab_size": 1,
+                  "layer_norm_eps": 1e-05,
+                  "hidden_act": "gelu",
+                  "hidden_dropout_prob": 0.1,
+                  "attention_probs_dropout_prob": 0.1,
+                  "pad_token_id": 1,
+                  "bos_token_id": 0,
+                  "eos_token_id": 2,
+                  "position_embedding_type": "absolute",
+                  "dtype": {"$dtype": "float16"}
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L4.bge_m3:BgeM3EmbeddingModel": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.bge_m3:BGEM3Config",
+                "fields": {
+                  "model_type": "xlm-roberta",
+                  "vocab_size": 250002,
+                  "hidden_size": 1024,
+                  "num_hidden_layers": 24,
+                  "num_attention_heads": 16,
+                  "intermediate_size": 4096,
+                  "max_position_embeddings": 8194,
+                  "type_vocab_size": 1,
+                  "layer_norm_eps": 1e-05,
+                  "hidden_act": "gelu",
+                  "hidden_dropout_prob": 0.1,
+                  "attention_probs_dropout_prob": 0.1,
+                  "pad_token_id": 1,
+                  "bos_token_id": 0,
+                  "eos_token_id": 2,
+                  "position_embedding_type": "absolute",
+                  "dtype": {"$dtype": "float16"}
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

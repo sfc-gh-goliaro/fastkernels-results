@@ -1,0 +1,2694 @@
+{
+  "model": "OpenFold/OpenFold3",
+  "workload": "short",
+  "dtype": "torch.bfloat16",
+  "engine": "fastkernels.infra.engine.LlamaEngine",
+  "captured_at": "2026-08-21T08:24:44",
+  "max_batch_size": 1,
+  "generation": {
+    "num_prompts": 1,
+    "max_batch_size": 1,
+    "engine": "structureprediction",
+    "modality": "StructurePrediction",
+    "inputs": "synthetic (random tensors sized from workload spec)"
+  },
+  "verification": {
+    "forward_pre_hook_crosscheck": {
+      "method": "independent torch forward_pre_hook cross-check",
+      "classes_checked": 31,
+      "classes_matched": 30,
+      "passed": false,
+      "issues": [
+        "fastkernels.tasks.baseline.L1.tensor_ops:Pad: no hook observations (forward may be called directly, bypassing __call__)"
+      ]
+    },
+    "mock_batching_replay": {
+      "method": "mock continuous-batching / chunked-prefill replay",
+      "applicable": false,
+      "passed": true,
+      "reason": "skipped for StructurePrediction: no paged-KV token schedule; the forward-pre-hook cross-check is the pass criterion."
+    },
+    "passed": false
+  },
+  "num_operator_classes_instrumented": 446,
+  "num_operator_classes_executed": 35,
+  "operators": {
+    "fastkernels.tasks.baseline.L1.layer_norm:LayerNorm": {
+      "init": {
+        "calls": 772,
+        "variants": [
+          {
+            "count": 3,
+            "args": {
+              "normalized_shape": 16,
+              "eps": 1e-05,
+              "elementwise_affine": true,
+              "create_scale": true,
+              "create_offset": false,
+              "promote_fp32": true
+            }
+          },
+          {
+            "count": 27,
+            "args": {
+              "normalized_shape": 128,
+              "eps": 1e-05,
+              "elementwise_affine": true,
+              "create_scale": false,
+              "create_offset": false,
+              "promote_fp32": true
+            }
+          },
+          {
+            "count": 53,
+            "args": {
+              "normalized_shape": 128,
+              "eps": 1e-05,
+              "elementwise_affine": true,
+              "create_scale": true,
+              "create_offset": false,
+              "promote_fp32": true
+            }
+          },
+          {
+            "count": 453,
+            "args": {
+              "normalized_shape": 128,
+              "eps": 1e-05,
+              "elementwise_affine": true,
+              "create_scale": true,
+              "create_offset": true,
+              "promote_fp32": true
+            }
+          },
+          {
+            "count": 25,
+            "args": {
+              "normalized_shape": 64,
+              "eps": 1e-05,
+              "elementwise_affine": true,
+              "create_scale": true,
+              "create_offset": true,
+              "promote_fp32": true
+            }
+          },
+          {
+            "count": 109,
+            "args": {
+              "normalized_shape": 384,
+              "eps": 1e-05,
+              "elementwise_affine": true,
+              "create_scale": true,
+              "create_offset": true,
+              "promote_fp32": true
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "normalized_shape": 267,
+              "eps": 1e-05,
+              "elementwise_affine": true,
+              "create_scale": true,
+              "create_offset": false,
+              "promote_fp32": true
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "normalized_shape": 833,
+              "eps": 1e-05,
+              "elementwise_affine": true,
+              "create_scale": true,
+              "create_offset": false,
+              "promote_fp32": true
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "normalized_shape": 256,
+              "eps": 1e-05,
+              "elementwise_affine": true,
+              "create_scale": true,
+              "create_offset": false,
+              "promote_fp32": true
+            }
+          },
+          {
+            "count": 50,
+            "args": {
+              "normalized_shape": 384,
+              "eps": 1e-05,
+              "elementwise_affine": true,
+              "create_scale": true,
+              "create_offset": false,
+              "promote_fp32": true
+            }
+          },
+          {
+            "count": 48,
+            "args": {
+              "normalized_shape": 768,
+              "eps": 1e-05,
+              "elementwise_affine": true,
+              "create_scale": false,
+              "create_offset": false,
+              "promote_fp32": true
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "normalized_shape": 768,
+              "eps": 1e-05,
+              "elementwise_affine": true,
+              "create_scale": true,
+              "create_offset": false,
+              "promote_fp32": true
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 2767,
+        "variants": [
+          {
+            "count": 21,
+            "args": {"x": {"shape": [1, 12, 32, 128, 16], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 66,
+            "args": {"x": {"shape": [1, 12, 32, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [1, 2]
+          },
+          {
+            "count": 66,
+            "args": {"x": {"shape": [1, 12, 128, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [1, 2]
+          },
+          {
+            "count": 66,
+            "args": {"x": {"shape": [1, 368, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [1, 2]
+          },
+          {
+            "count": 20,
+            "args": {"x": {"shape": [1, 8, 16, 64], "dtype": "bfloat16"}},
+            "init_variant_ids": [4]
+          },
+          {
+            "count": 791,
+            "args": {"x": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [2, 3]
+          },
+          {
+            "count": 208,
+            "args": {
+              "x": {"shape": [1, 16, 16, 128], "dtype": "bfloat16", "stride": [32768, 16, 1, 256]}
+            },
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 104,
+            "args": {
+              "x": {
+                "shape": [1, 16, 16, 128],
+                "dtype": "bfloat16",
+                "stride": [32768, 128, 2048, 1]
+              }
+            },
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 715,
+            "args": {"x": {"shape": [1, 16, 384], "dtype": "bfloat16"}},
+            "init_variant_ids": [5, 9]
+          },
+          {
+            "count": 10,
+            "args": {"x": {"shape": [1, 16, 16, 267], "dtype": "bfloat16"}},
+            "init_variant_ids": [6]
+          },
+          {
+            "count": 10,
+            "args": {"x": {"shape": [1, 16, 833], "dtype": "bfloat16"}},
+            "init_variant_ids": [7]
+          },
+          {
+            "count": 10,
+            "args": {"x": {"shape": [256], "dtype": "bfloat16"}},
+            "init_variant_ids": [8]
+          },
+          {
+            "count": 60,
+            "args": {"x": {"shape": [1, 1, 12, 32, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 60,
+            "args": {"x": {"shape": [1, 1, 12, 128, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 70,
+            "args": {"x": {"shape": [1, 1, 368, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [1, 2]
+          },
+          {
+            "count": 490,
+            "args": {"x": {"shape": [1, 1, 16, 768], "dtype": "bfloat16"}},
+            "init_variant_ids": [10, 11]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.linear:Linear": {
+      "init": {
+        "calls": 2656,
+        "variants": [
+          {"count": 3, "args": {"in_features": 3, "out_features": 128, "bias": false}},
+          {"count": 5, "args": {"in_features": 1, "out_features": 128, "bias": false}},
+          {"count": 2, "args": {"in_features": 119, "out_features": 128, "bias": false}},
+          {"count": 13, "args": {"in_features": 256, "out_features": 128, "bias": false}},
+          {"count": 2, "args": {"in_features": 3, "out_features": 16, "bias": false}},
+          {"count": 4, "args": {"in_features": 1, "out_features": 16, "bias": false}},
+          {"count": 81, "args": {"in_features": 128, "out_features": 16, "bias": false}},
+          {"count": 6, "args": {"in_features": 16, "out_features": 16, "bias": false}},
+          {"count": 54, "args": {"in_features": 128, "out_features": 128, "bias": true}},
+          {
+            "count": 1296,
+            "args": {"in_features": 128, "out_features": 128, "bias": false}
+          },
+          {"count": 9, "args": {"in_features": 16, "out_features": 4, "bias": false}},
+          {"count": 22, "args": {"in_features": 128, "out_features": 256, "bias": false}},
+          {"count": 1, "args": {"in_features": 128, "out_features": 384, "bias": false}},
+          {"count": 1, "args": {"in_features": 449, "out_features": 384, "bias": false}},
+          {"count": 4, "args": {"in_features": 449, "out_features": 128, "bias": false}},
+          {"count": 1, "args": {"in_features": 139, "out_features": 128, "bias": false}},
+          {"count": 1, "args": {"in_features": 39, "out_features": 64, "bias": false}},
+          {"count": 2, "args": {"in_features": 32, "out_features": 64, "bias": false}},
+          {"count": 5, "args": {"in_features": 1, "out_features": 64, "bias": false}},
+          {"count": 6, "args": {"in_features": 128, "out_features": 64, "bias": false}},
+          {"count": 53, "args": {"in_features": 64, "out_features": 64, "bias": false}},
+          {"count": 4, "args": {"in_features": 64, "out_features": 4, "bias": false}},
+          {"count": 5, "args": {"in_features": 64, "out_features": 128, "bias": false}},
+          {"count": 1, "args": {"in_features": 34, "out_features": 64, "bias": false}},
+          {"count": 1, "args": {"in_features": 449, "out_features": 64, "bias": false}},
+          {"count": 3, "args": {"in_features": 128, "out_features": 8, "bias": false}},
+          {"count": 6, "args": {"in_features": 64, "out_features": 256, "bias": false}},
+          {"count": 3, "args": {"in_features": 256, "out_features": 64, "bias": false}},
+          {"count": 8, "args": {"in_features": 64, "out_features": 32, "bias": false}},
+          {"count": 4, "args": {"in_features": 1024, "out_features": 128, "bias": true}},
+          {"count": 112, "args": {"in_features": 128, "out_features": 4, "bias": false}},
+          {"count": 112, "args": {"in_features": 128, "out_features": 512, "bias": false}},
+          {"count": 56, "args": {"in_features": 512, "out_features": 128, "bias": false}},
+          {"count": 209, "args": {"in_features": 384, "out_features": 384, "bias": false}},
+          {"count": 52, "args": {"in_features": 384, "out_features": 384, "bias": true}},
+          {
+            "count": 104,
+            "args": {"in_features": 384, "out_features": 1536, "bias": false}
+          },
+          {"count": 52, "args": {"in_features": 1536, "out_features": 384, "bias": false}},
+          {"count": 1, "args": {"in_features": 267, "out_features": 128, "bias": false}},
+          {"count": 1, "args": {"in_features": 833, "out_features": 384, "bias": false}},
+          {"count": 1, "args": {"in_features": 256, "out_features": 384, "bias": false}},
+          {"count": 53, "args": {"in_features": 384, "out_features": 768, "bias": false}},
+          {"count": 2, "args": {"in_features": 768, "out_features": 384, "bias": false}},
+          {"count": 1, "args": {"in_features": 384, "out_features": 128, "bias": false}},
+          {"count": 1, "args": {"in_features": 128, "out_features": 768, "bias": false}},
+          {"count": 96, "args": {"in_features": 384, "out_features": 768, "bias": true}},
+          {"count": 24, "args": {"in_features": 768, "out_features": 768, "bias": true}},
+          {"count": 96, "args": {"in_features": 768, "out_features": 768, "bias": false}},
+          {"count": 48, "args": {"in_features": 768, "out_features": 1536, "bias": false}},
+          {"count": 24, "args": {"in_features": 1536, "out_features": 768, "bias": false}},
+          {"count": 1, "args": {"in_features": 768, "out_features": 128, "bias": false}},
+          {"count": 1, "args": {"in_features": 128, "out_features": 3, "bias": false}},
+          {"count": 1, "args": {"in_features": 39, "out_features": 128, "bias": false}},
+          {"count": 1, "args": {"in_features": 384, "out_features": 1150, "bias": false}},
+          {"count": 1, "args": {"in_features": 384, "out_features": 46, "bias": false}}
+        ]
+      },
+      "forward": {
+        "calls": 8788,
+        "variants": [
+          {
+            "count": 11,
+            "args": {"input": {"shape": [1, 368, 3], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 22,
+            "args": {"input": {"shape": [1, 368, 1], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 11,
+            "args": {"input": {"shape": [1, 368, 119], "dtype": "bfloat16"}},
+            "init_variant_ids": [2]
+          },
+          {
+            "count": 14,
+            "args": {"input": {"shape": [1, 368, 256], "dtype": "bfloat16"}},
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 11,
+            "args": {"input": {"shape": [1, 12, 32, 128, 3], "dtype": "bfloat16"}},
+            "init_variant_ids": [4]
+          },
+          {
+            "count": 22,
+            "args": {"input": {"shape": [1, 12, 32, 128, 1], "dtype": "bfloat16"}},
+            "init_variant_ids": [5]
+          },
+          {
+            "count": 11,
+            "args": {"input": {"shape": [1, 12, 32, 1, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [6]
+          },
+          {
+            "count": 11,
+            "args": {"input": {"shape": [1, 12, 1, 128, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [6]
+          },
+          {
+            "count": 96,
+            "args": {"input": {"shape": [1, 12, 32, 128, 16], "dtype": "bfloat16"}},
+            "init_variant_ids": [7, 10]
+          },
+          {
+            "count": 135,
+            "args": {"input": {"shape": [1, 12, 32, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [8, 9]
+          },
+          {
+            "count": 132,
+            "args": {"input": {"shape": [1, 12, 128, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [8, 9]
+          },
+          {
+            "count": 259,
+            "args": {"input": {"shape": [1, 368, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [8, 9, 11, 12]
+          },
+          {
+            "count": 5,
+            "args": {"input": {"shape": [1, 16, 449], "dtype": "bfloat16"}},
+            "init_variant_ids": [13, 14, 24]
+          },
+          {
+            "count": 1,
+            "args": {"input": {"shape": [1, 16, 16, 139], "dtype": "bfloat16"}},
+            "init_variant_ids": [15]
+          },
+          {
+            "count": 2,
+            "args": {"input": {"shape": [1, 8, 16, 34], "dtype": "bfloat16"}},
+            "init_variant_ids": [23]
+          },
+          {
+            "count": 46,
+            "args": {"input": {"shape": [1, 8, 16, 64], "dtype": "bfloat16"}},
+            "init_variant_ids": [20, 26, 28]
+          },
+          {
+            "count": 8,
+            "args": {"input": {"shape": [1, 16, 16, 1024], "dtype": "bfloat16"}},
+            "init_variant_ids": [29]
+          },
+          {
+            "count": 3100,
+            "args": {"input": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [6, 9, 11, 19, 25, 30, 31]
+          },
+          {
+            "count": 6,
+            "args": {"input": {"shape": [1, 8, 16, 256], "dtype": "bfloat16"}},
+            "init_variant_ids": [27]
+          },
+          {
+            "count": 104,
+            "args": {"input": {"shape": [1, 16, 16, 512], "dtype": "bfloat16"}},
+            "init_variant_ids": [32]
+          },
+          {
+            "count": 2175,
+            "args": {"input": {"shape": [1, 16, 384], "dtype": "bfloat16"}},
+            "init_variant_ids": [33, 34, 35, 40, 42, 44, 52, 53]
+          },
+          {
+            "count": 96,
+            "args": {"input": {"shape": [1, 16, 1536], "dtype": "bfloat16"}},
+            "init_variant_ids": [36]
+          },
+          {
+            "count": 10,
+            "args": {"input": {"shape": [1, 16, 16, 267], "dtype": "bfloat16"}},
+            "init_variant_ids": [37]
+          },
+          {
+            "count": 10,
+            "args": {"input": {"shape": [1, 16, 833], "dtype": "bfloat16"}},
+            "init_variant_ids": [38]
+          },
+          {
+            "count": 10,
+            "args": {"input": {"shape": [256], "dtype": "bfloat16"}},
+            "init_variant_ids": [39]
+          },
+          {
+            "count": 20,
+            "args": {"input": {"shape": [1, 16, 16, 256], "dtype": "bfloat16"}},
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 20,
+            "args": {"input": {"shape": [1, 16, 768], "dtype": "bfloat16"}},
+            "init_variant_ids": [41]
+          },
+          {
+            "count": 10,
+            "args": {"input": {"shape": [1, 1, 368, 3], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 180,
+            "args": {"input": {"shape": [1, 1, 12, 32, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [8, 9]
+          },
+          {
+            "count": 120,
+            "args": {"input": {"shape": [1, 1, 12, 128, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [9]
+          },
+          {
+            "count": 140,
+            "args": {"input": {"shape": [1, 1, 368, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [11, 43, 50]
+          },
+          {
+            "count": 60,
+            "args": {"input": {"shape": [1, 1, 368, 256], "dtype": "bfloat16"}},
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 1690,
+            "args": {"input": {"shape": [1, 1, 16, 768], "dtype": "bfloat16"}},
+            "init_variant_ids": [45, 46, 47, 49]
+          },
+          {
+            "count": 240,
+            "args": {"input": {"shape": [1, 1, 16, 1536], "dtype": "bfloat16"}},
+            "init_variant_ids": [48]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.linear:Matmul": {
+      "forward": {
+        "calls": 8788,
+        "variants": [
+          {
+            "count": 11,
+            "args": {
+              "input": {"shape": [1, 368, 3], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 3], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 22,
+            "args": {
+              "input": {"shape": [1, 368, 1], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 1], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 11,
+            "args": {
+              "input": {"shape": [1, 368, 119], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 119], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 14,
+            "args": {
+              "input": {"shape": [1, 368, 256], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 256], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 11,
+            "args": {
+              "input": {"shape": [1, 12, 32, 128, 3], "dtype": "bfloat16"},
+              "weight": {"shape": [16, 3], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 22,
+            "args": {
+              "input": {"shape": [1, 12, 32, 128, 1], "dtype": "bfloat16"},
+              "weight": {"shape": [16, 1], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 11,
+            "args": {
+              "input": {"shape": [1, 12, 32, 1, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [16, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 11,
+            "args": {
+              "input": {"shape": [1, 12, 1, 128, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [16, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 33,
+            "args": {
+              "input": {"shape": [1, 12, 32, 128, 16], "dtype": "bfloat16"},
+              "weight": {"shape": [16, 16], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 63,
+            "args": {
+              "input": {"shape": [1, 12, 32, 128, 16], "dtype": "bfloat16"},
+              "weight": {"shape": [4, 16], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 66,
+            "args": {
+              "input": {"shape": [1, 12, 32, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 128], "dtype": "bfloat16"},
+              "bias": {"shape": [128], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 69,
+            "args": {
+              "input": {"shape": [1, 12, 32, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 63,
+            "args": {
+              "input": {"shape": [1, 12, 128, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 128], "dtype": "bfloat16"},
+              "bias": {"shape": [128], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 69,
+            "args": {
+              "input": {"shape": [1, 12, 128, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 189,
+            "args": {
+              "input": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 128], "dtype": "bfloat16"},
+              "bias": {"shape": [128], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 63,
+            "args": {
+              "input": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 6,
+            "args": {
+              "input": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [256, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {
+              "input": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [384, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {
+              "input": {"shape": [1, 16, 449], "dtype": "bfloat16"},
+              "weight": {"shape": [384, 449], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 2,
+            "args": {
+              "input": {"shape": [1, 16, 449], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 449], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {
+              "input": {"shape": [1, 16, 16, 139], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 139], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 2,
+            "args": {
+              "input": {"shape": [1, 8, 16, 34], "dtype": "bfloat16"},
+              "weight": {"shape": [64, 34], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 2,
+            "args": {
+              "input": {"shape": [1, 16, 449], "dtype": "bfloat16"},
+              "weight": {"shape": [64, 449], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 16,
+            "args": {
+              "input": {"shape": [1, 8, 16, 64], "dtype": "bfloat16"},
+              "weight": {"shape": [32, 64], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 8,
+            "args": {
+              "input": {"shape": [1, 16, 16, 1024], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 1024], "dtype": "bfloat16"},
+              "bias": {"shape": [128], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 6,
+            "args": {
+              "input": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [8, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 18,
+            "args": {
+              "input": {"shape": [1, 8, 16, 64], "dtype": "bfloat16"},
+              "weight": {"shape": [64, 64], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 12,
+            "args": {
+              "input": {"shape": [1, 8, 16, 64], "dtype": "bfloat16"},
+              "weight": {"shape": [256, 64], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 6,
+            "args": {
+              "input": {"shape": [1, 8, 16, 256], "dtype": "bfloat16"},
+              "weight": {"shape": [64, 256], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 2289,
+            "args": {
+              "input": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 208,
+            "args": {
+              "input": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [4, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 208,
+            "args": {
+              "input": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [512, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 104,
+            "args": {
+              "input": {"shape": [1, 16, 16, 512], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 512], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 346,
+            "args": {
+              "input": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [16, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 96,
+            "args": {
+              "input": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "weight": {"shape": [384, 384], "dtype": "bfloat16"},
+              "bias": {"shape": [384], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 385,
+            "args": {
+              "input": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "weight": {"shape": [384, 384], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 192,
+            "args": {
+              "input": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "weight": {"shape": [1536, 384], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 96,
+            "args": {
+              "input": {"shape": [1, 16, 1536], "dtype": "bfloat16"},
+              "weight": {"shape": [384, 1536], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 3,
+            "args": {
+              "input": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [64, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {
+              "input": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "weight": {"shape": [1150, 384], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {
+              "input": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "weight": {"shape": [46, 384], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 10,
+            "args": {
+              "input": {"shape": [1, 16, 16, 267], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 267], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 10,
+            "args": {
+              "input": {"shape": [1, 16, 833], "dtype": "bfloat16"},
+              "weight": {"shape": [384, 833], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 10,
+            "args": {
+              "input": {"shape": [256], "dtype": "bfloat16"},
+              "weight": {"shape": [384, 256], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 40,
+            "args": {
+              "input": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [256, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 20,
+            "args": {
+              "input": {"shape": [1, 16, 16, 256], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 256], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 530,
+            "args": {
+              "input": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "weight": {"shape": [768, 384], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 20,
+            "args": {
+              "input": {"shape": [1, 16, 768], "dtype": "bfloat16"},
+              "weight": {"shape": [384, 768], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 10,
+            "args": {
+              "input": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 384], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 10,
+            "args": {
+              "input": {"shape": [1, 1, 368, 3], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 3], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 60,
+            "args": {
+              "input": {"shape": [1, 1, 12, 32, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 128], "dtype": "bfloat16"},
+              "bias": {"shape": [128], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 120,
+            "args": {
+              "input": {"shape": [1, 1, 12, 128, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 120,
+            "args": {
+              "input": {"shape": [1, 1, 12, 32, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 120,
+            "args": {
+              "input": {"shape": [1, 1, 368, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [256, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 60,
+            "args": {
+              "input": {"shape": [1, 1, 368, 256], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 256], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 10,
+            "args": {
+              "input": {"shape": [1, 1, 368, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [768, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 960,
+            "args": {
+              "input": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "weight": {"shape": [768, 384], "dtype": "bfloat16"},
+              "bias": {"shape": [768], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 240,
+            "args": {
+              "input": {"shape": [1, 1, 16, 768], "dtype": "bfloat16"},
+              "weight": {"shape": [768, 768], "dtype": "bfloat16"},
+              "bias": {"shape": [768], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 960,
+            "args": {
+              "input": {"shape": [1, 1, 16, 768], "dtype": "bfloat16"},
+              "weight": {"shape": [768, 768], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 480,
+            "args": {
+              "input": {"shape": [1, 1, 16, 768], "dtype": "bfloat16"},
+              "weight": {"shape": [1536, 768], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 240,
+            "args": {
+              "input": {"shape": [1, 1, 16, 1536], "dtype": "bfloat16"},
+              "weight": {"shape": [768, 1536], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 10,
+            "args": {
+              "input": {"shape": [1, 1, 16, 768], "dtype": "bfloat16"},
+              "weight": {"shape": [128, 768], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 10,
+            "args": {
+              "input": {"shape": [1, 1, 368, 128], "dtype": "bfloat16"},
+              "weight": {"shape": [3, 128], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.relu:ReLU": {
+      "forward": {
+        "calls": 66,
+        "variants": [
+          {
+            "count": 11,
+            "args": {"x": {"shape": [1, 12, 32, 1, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 11,
+            "args": {"x": {"shape": [1, 12, 1, 128, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 33,
+            "args": {"x": {"shape": [1, 12, 32, 128, 16], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [1, 368, 384], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 10,
+            "args": {"x": {"shape": [1, 1, 368, 768], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.sigmoid:Sigmoid": {
+      "forward": {
+        "calls": 1281,
+        "variants": [
+          {
+            "count": 63,
+            "args": {"x": {"shape": [1, 12, 32, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 63,
+            "args": {"x": {"shape": [1, 12, 128, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 189,
+            "args": {"x": {"shape": [1, 368, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 6,
+            "args": {"x": {"shape": [1, 8, 16, 64], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 960,
+            "args": {"x": {"shape": [1, 16, 768], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.silu:SiLU": {
+      "forward": {
+        "calls": 549,
+        "variants": [
+          {
+            "count": 3,
+            "args": {"x": {"shape": [1, 368, 256], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 6,
+            "args": {"x": {"shape": [1, 8, 16, 256], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 104,
+            "args": {"x": {"shape": [1, 16, 16, 512], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 96,
+            "args": {"x": {"shape": [1, 16, 1536], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 20,
+            "args": {"x": {"shape": [1, 16, 16, 256], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 20,
+            "args": {"x": {"shape": [1, 16, 768], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 60,
+            "args": {"x": {"shape": [1, 1, 368, 256], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 240,
+            "args": {"x": {"shape": [1, 1, 16, 1536], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.softmax:Softmax": {
+      "init": {"calls": 3, "variants": [{"count": 3, "args": {"dim": -1}}]},
+      "forward": {
+        "calls": 6,
+        "variants": [
+          {
+            "count": 6,
+            "args": {
+              "x": {
+                "shape": [1, 1, 8, 16, 16],
+                "dtype": "bfloat16",
+                "stride": [2048, 8, 1, 128, 8]
+              }
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.tensor_ops:Pad": {
+      "forward": {
+        "calls": 338,
+        "variants": [
+          {
+            "count": 11,
+            "args": {
+              "x": {"shape": [1, 368, 3], "dtype": "bfloat16"},
+              "pad": [0, 0, 0, 16],
+              "value": 0.0
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 169,
+            "args": {"x": {"shape": [1, 368], "dtype": "bfloat16"}, "pad": [0, 16], "value": 0.0},
+            "init_variant_ids": []
+          },
+          {
+            "count": 11,
+            "args": {
+              "x": {"shape": [1, 368, 1], "dtype": "int64"},
+              "pad": [0, 0, 0, 16],
+              "value": 0.0
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 77,
+            "args": {
+              "x": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "pad": [0, 0, 0, 16],
+              "value": 0.0
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 10,
+            "args": {"x": {"shape": [368], "dtype": "int64"}, "pad": [0, 16], "value": 0.0},
+            "init_variant_ids": []
+          },
+          {
+            "count": 60,
+            "args": {
+              "x": {"shape": [1, 1, 368, 128], "dtype": "bfloat16"},
+              "pad": [0, 0, 0, 16],
+              "value": 0.0
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_atom_attention:AtomAttentionDecoder": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "c_atom": 128,
+              "c_atom_pair": 16,
+              "c_token": 768,
+              "c_hidden": 32,
+              "no_heads": 4,
+              "no_blocks": 3,
+              "n_transition": 2,
+              "n_query": 32,
+              "n_key": 128,
+              "use_ada_layer_norm": true,
+              "transformer_cls": null
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 10,
+        "variants": [
+          {
+            "count": 10,
+            "args": {
+              "batch": {
+                "token_features": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+                "residue_index": {"shape": [1, 16], "dtype": "bfloat16"},
+                "token_mask": {"shape": [1, 16], "dtype": "bfloat16"},
+                "atom_mask": {"shape": [1, 368], "dtype": "bfloat16"},
+                "msa": {"shape": [1, 8, 16, 32], "dtype": "bfloat16"},
+                "has_deletion": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "deletion_value": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "msa_mask": {"shape": [1, 8, 16], "dtype": "bfloat16"}
+              },
+              "ai": {"shape": [1, 1, 16, 768], "dtype": "bfloat16"},
+              "ql": {"shape": [1, 1, 368, 128], "dtype": "bfloat16"},
+              "cl": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "plm": {"shape": [1, 12, 32, 128, 16], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_atom_attention:AtomAttentionEncoder": {
+      "init": {
+        "calls": 2,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "c_atom": 128,
+              "c_atom_pair": 16,
+              "c_token": 384,
+              "c_atom_ref_element": 119,
+              "c_atom_ref_name_chars": 256,
+              "add_noisy_pos": false,
+              "c_s": null,
+              "c_z": null,
+              "c_hidden": 32,
+              "no_heads": 4,
+              "no_blocks": 3,
+              "n_transition": 2,
+              "n_query": 32,
+              "n_key": 128,
+              "use_ada_layer_norm": true,
+              "transformer_cls": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "c_atom": 128,
+              "c_atom_pair": 16,
+              "c_token": 768,
+              "c_atom_ref_element": 119,
+              "c_atom_ref_name_chars": 256,
+              "add_noisy_pos": true,
+              "c_s": 384,
+              "c_z": 128,
+              "c_hidden": 32,
+              "no_heads": 4,
+              "no_blocks": 3,
+              "n_transition": 2,
+              "n_query": 32,
+              "n_key": 128,
+              "use_ada_layer_norm": true,
+              "transformer_cls": null
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 11,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "batch": {
+                "token_features": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+                "residue_index": {"shape": [1, 16], "dtype": "bfloat16"},
+                "token_mask": {"shape": [1, 16], "dtype": "bfloat16"},
+                "atom_mask": {"shape": [1, 368], "dtype": "bfloat16"},
+                "msa": {"shape": [1, 8, 16, 32], "dtype": "bfloat16"},
+                "has_deletion": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "deletion_value": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "msa_mask": {"shape": [1, 8, 16], "dtype": "bfloat16"}
+              },
+              "rl": null,
+              "si_trunk": null,
+              "zij_trunk": null
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 10,
+            "args": {
+              "batch": {
+                "token_features": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+                "residue_index": {"shape": [1, 16], "dtype": "bfloat16"},
+                "token_mask": {"shape": [1, 16], "dtype": "bfloat16"},
+                "atom_mask": {"shape": [1, 368], "dtype": "bfloat16"},
+                "msa": {"shape": [1, 8, 16, 32], "dtype": "bfloat16"},
+                "has_deletion": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "deletion_value": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "msa_mask": {"shape": [1, 8, 16], "dtype": "bfloat16"}
+              },
+              "rl": {"shape": [1, 1, 368, 3], "dtype": "bfloat16"},
+              "si_trunk": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "zij_trunk": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_attention_pair_bias:AttentionPairBias": {
+      "init": {
+        "calls": 76,
+        "variants": [
+          {
+            "count": 52,
+            "args": {
+              "c_q": 384,
+              "c_k": 384,
+              "c_v": 384,
+              "c_s": 384,
+              "c_z": 128,
+              "c_hidden": 24,
+              "no_heads": 16,
+              "use_ada_layer_norm": false,
+              "gating": true,
+              "inf": 1000000000.0
+            }
+          },
+          {
+            "count": 24,
+            "args": {
+              "c_q": 768,
+              "c_k": 768,
+              "c_v": 768,
+              "c_s": 384,
+              "c_z": 128,
+              "c_hidden": 48,
+              "no_heads": 16,
+              "use_ada_layer_norm": true,
+              "gating": true,
+              "inf": 1000000000.0
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 336,
+        "variants": [
+          {
+            "count": 96,
+            "args": {
+              "a": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "z": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "s": null,
+              "mask": {"shape": [1, 16], "dtype": "bfloat16"},
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "use_high_precision_attention": false
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 240,
+            "args": {
+              "a": {"shape": [1, 1, 16, 768], "dtype": "bfloat16"},
+              "z": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "s": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "mask": {"shape": [1, 16], "dtype": "bfloat16"},
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "use_high_precision_attention": false
+            },
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_attention_pair_bias:CrossAttentionPairBias": {
+      "init": {
+        "calls": 9,
+        "variants": [
+          {
+            "count": 9,
+            "args": {
+              "c_q": 128,
+              "c_k": 128,
+              "c_v": 128,
+              "c_s": 128,
+              "c_z": 16,
+              "c_hidden": 32,
+              "no_heads": 4,
+              "use_ada_layer_norm": true,
+              "n_query": 32,
+              "n_key": 128,
+              "gating": true,
+              "inf": 1000000000.0
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 63,
+        "variants": [
+          {
+            "count": 3,
+            "args": {
+              "a": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "z": {"shape": [1, 12, 32, 128, 16], "dtype": "bfloat16"},
+              "s": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "mask": {"shape": [1, 368], "dtype": "bfloat16"},
+              "kwargs": {}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 60,
+            "args": {
+              "a": {"shape": [1, 1, 368, 128], "dtype": "bfloat16"},
+              "z": {"shape": [1, 12, 32, 128, 16], "dtype": "bfloat16"},
+              "s": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "mask": {"shape": [1, 368], "dtype": "bfloat16"},
+              "kwargs": {}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_diffusion_conditioning:DiffusionConditioning": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "c_s": 384,
+              "c_z": 128,
+              "c_s_input": 449,
+              "sigma_data": 16.0,
+              "relpos_k": 32,
+              "max_relative_chain": 2,
+              "c_fourier_emb": 256,
+              "seed_fourier_emb": 42
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 10,
+        "variants": [
+          {
+            "count": 10,
+            "args": {
+              "batch": {
+                "token_features": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+                "residue_index": {"shape": [1, 16], "dtype": "bfloat16"},
+                "token_mask": {"shape": [1, 16], "dtype": "bfloat16"},
+                "atom_mask": {"shape": [1, 368], "dtype": "bfloat16"},
+                "msa": {"shape": [1, 8, 16, 32], "dtype": "bfloat16"},
+                "has_deletion": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "deletion_value": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "msa_mask": {"shape": [1, 8, 16], "dtype": "bfloat16"}
+              },
+              "t": {"shape": [], "dtype": "bfloat16"},
+              "si_input": {"shape": [1, 16, 449], "dtype": "bfloat16"},
+              "si_trunk": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "zij_trunk": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "use_conditioning": true,
+              "chunk_size": null
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_input_embedder:InputEmbedder": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "c_s_input": 449,
+              "c_s": 384,
+              "c_z": 128,
+              "relpos_k": 32,
+              "max_relative_chain": 2,
+              "c_atom": 128,
+              "c_atom_pair": 16,
+              "c_token": 384
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "token_features": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "residue_index": {"shape": [1, 16], "dtype": "bfloat16"},
+              "batch": {
+                "token_features": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+                "residue_index": {"shape": [1, 16], "dtype": "bfloat16"},
+                "token_mask": {"shape": [1, 16], "dtype": "bfloat16"},
+                "atom_mask": {"shape": [1, 368], "dtype": "bfloat16"},
+                "msa": {"shape": [1, 8, 16, 32], "dtype": "bfloat16"},
+                "has_deletion": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "deletion_value": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "msa_mask": {"shape": [1, 8, 16], "dtype": "bfloat16"}
+              }
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_msa_attention:MSARowAttentionWithPairBias": {
+      "init": {
+        "calls": 3,
+        "variants": [
+          {
+            "count": 3,
+            "args": {"c_m": 64, "c_z": 128, "c_hidden": 8, "no_heads": 8, "inf": 1000000000.0}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 6,
+        "variants": [
+          {
+            "count": 6,
+            "args": {
+              "m": {"shape": [1, 8, 16, 64], "dtype": "bfloat16"},
+              "z": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "mask": {"shape": [1, 16, 16], "dtype": "bfloat16"},
+              "chunk_size": null,
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "inplace_safe": false
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_msa_module_embedder:MSAModuleEmbedder": {
+      "init": {
+        "calls": 1,
+        "variants": [{"count": 1, "args": {"c_m_feats": 34, "c_m": 64, "c_s_input": 449}}]
+      },
+      "forward": {
+        "calls": 2,
+        "variants": [
+          {
+            "count": 2,
+            "args": {
+              "batch": {
+                "token_features": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+                "residue_index": {"shape": [1, 16], "dtype": "bfloat16"},
+                "token_mask": {"shape": [1, 16], "dtype": "bfloat16"},
+                "atom_mask": {"shape": [1, 368], "dtype": "bfloat16"},
+                "msa": {"shape": [1, 8, 16, 32], "dtype": "bfloat16"},
+                "has_deletion": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "deletion_value": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "msa_mask": {"shape": [1, 8, 16], "dtype": "bfloat16"}
+              },
+              "s_input": {"shape": [1, 16, 449], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_of3_attention:OF3Attention": {
+      "init": {
+        "calls": 201,
+        "variants": [
+          {
+            "count": 9,
+            "args": {
+              "c_q": 128,
+              "c_k": 128,
+              "c_v": 128,
+              "c_hidden": 32,
+              "no_heads": 4,
+              "gating": true,
+              "q_bias": true
+            }
+          },
+          {
+            "count": 4,
+            "args": {
+              "c_q": 64,
+              "c_k": 64,
+              "c_v": 64,
+              "c_hidden": 16,
+              "no_heads": 4,
+              "gating": true,
+              "q_bias": false
+            }
+          },
+          {
+            "count": 112,
+            "args": {
+              "c_q": 128,
+              "c_k": 128,
+              "c_v": 128,
+              "c_hidden": 32,
+              "no_heads": 4,
+              "gating": true,
+              "q_bias": false
+            }
+          },
+          {
+            "count": 52,
+            "args": {
+              "c_q": 384,
+              "c_k": 384,
+              "c_v": 384,
+              "c_hidden": 24,
+              "no_heads": 16,
+              "gating": true,
+              "q_bias": true
+            }
+          },
+          {
+            "count": 24,
+            "args": {
+              "c_q": 768,
+              "c_k": 768,
+              "c_v": 768,
+              "c_hidden": 48,
+              "no_heads": 16,
+              "gating": true,
+              "q_bias": true
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 607,
+        "variants": [
+          {
+            "count": 3,
+            "args": {
+              "q_x": {"shape": [1, 12, 32, 128], "dtype": "bfloat16"},
+              "kv_x": {"shape": [1, 12, 128, 128], "dtype": "bfloat16"},
+              "biases": [
+                {"shape": [1, 12, 1, 32, 128], "dtype": "bfloat16"},
+                {
+                  "shape": [1, 12, 4, 32, 128],
+                  "dtype": "bfloat16",
+                  "stride": [196608, 16384, 1, 512, 4]
+                }
+              ],
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "lma_q_chunk_size": 1024,
+              "lma_kv_chunk_size": 4096,
+              "use_high_precision": false
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 104,
+            "args": {
+              "q_x": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "kv_x": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "biases": [
+                {"shape": [1, 16, 1, 1, 16], "dtype": "bfloat16"},
+                {"shape": [1, 1, 4, 16, 16], "dtype": "bfloat16", "stride": [1024, 4, 1, 64, 4]}
+              ],
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "lma_q_chunk_size": 1024,
+              "lma_kv_chunk_size": 4096,
+              "use_high_precision": false
+            },
+            "init_variant_ids": [2]
+          },
+          {
+            "count": 104,
+            "args": {
+              "q_x": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "kv_x": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "biases": [
+                {
+                  "shape": [1, 16, 1, 1, 16],
+                  "dtype": "bfloat16",
+                  "stride": [256, 1, 256, 256, 16]
+                },
+                {"shape": [1, 1, 4, 16, 16], "dtype": "bfloat16", "stride": [1024, 4, 1, 64, 4]}
+              ],
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "lma_q_chunk_size": 1024,
+              "lma_kv_chunk_size": 4096,
+              "use_high_precision": false
+            },
+            "init_variant_ids": [2]
+          },
+          {
+            "count": 96,
+            "args": {
+              "q_x": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "kv_x": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "biases": [
+                {"shape": [1, 1, 1, 16], "dtype": "bfloat16"},
+                {"shape": [1, 16, 16, 16], "dtype": "bfloat16", "stride": [4096, 1, 256, 16]}
+              ],
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "lma_q_chunk_size": 1024,
+              "lma_kv_chunk_size": 4096,
+              "use_high_precision": false
+            },
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 60,
+            "args": {
+              "q_x": {"shape": [1, 1, 12, 32, 128], "dtype": "bfloat16"},
+              "kv_x": {"shape": [1, 1, 12, 128, 128], "dtype": "bfloat16"},
+              "biases": [
+                {"shape": [1, 1, 12, 1, 32, 128], "dtype": "bfloat16"},
+                {
+                  "shape": [1, 12, 4, 32, 128],
+                  "dtype": "bfloat16",
+                  "stride": [196608, 16384, 1, 512, 4]
+                }
+              ],
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "lma_q_chunk_size": 1024,
+              "lma_kv_chunk_size": 4096,
+              "use_high_precision": false
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 240,
+            "args": {
+              "q_x": {"shape": [1, 1, 16, 768], "dtype": "bfloat16"},
+              "kv_x": {"shape": [1, 1, 16, 768], "dtype": "bfloat16"},
+              "biases": [
+                {"shape": [1, 1, 1, 1, 16], "dtype": "bfloat16"},
+                {"shape": [1, 16, 16, 16], "dtype": "bfloat16", "stride": [4096, 1, 256, 16]}
+              ],
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "lma_q_chunk_size": 1024,
+              "lma_kv_chunk_size": 4096,
+              "use_high_precision": false
+            },
+            "init_variant_ids": [4]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_outer_product_mean:OuterProductMean": {
+      "init": {
+        "calls": 4,
+        "variants": [{"count": 4, "args": {"c_m": 64, "c_z": 128, "c_hidden": 32, "eps": 0.001}}]
+      },
+      "forward": {
+        "calls": 8,
+        "variants": [
+          {
+            "count": 8,
+            "args": {
+              "m": {"shape": [1, 8, 16, 64], "dtype": "bfloat16"},
+              "mask": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+              "chunk_size": null,
+              "inplace_safe": false
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_pair_block:PairBlock": {
+      "init": {
+        "calls": 56,
+        "variants": [
+          {
+            "count": 56,
+            "args": {
+              "c_z": 128,
+              "c_hidden_mul": 128,
+              "c_hidden_pair_att": 32,
+              "no_heads_pair": 4,
+              "transition_n": 4,
+              "pair_dropout": 0.0,
+              "fuse_projection_weights": false,
+              "inf": 1000000000.0
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 104,
+        "variants": [
+          {
+            "count": 104,
+            "args": {
+              "z": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "pair_mask": {"shape": [1, 16, 16], "dtype": "bfloat16"},
+              "chunk_size": null,
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "inplace_safe": false,
+              "_mask_trans": true,
+              "_attn_chunk_size": null
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_swiglu:AdaLN": {
+      "init": {
+        "calls": 75,
+        "variants": [
+          {"count": 27, "args": {"c_a": 128, "c_s": 128}},
+          {"count": 48, "args": {"c_a": 768, "c_s": 384}}
+        ]
+      },
+      "forward": {
+        "calls": 669,
+        "variants": [
+          {
+            "count": 3,
+            "args": {
+              "a": {"shape": [1, 12, 32, 128], "dtype": "bfloat16"},
+              "s": {"shape": [1, 12, 32, 128], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 3,
+            "args": {
+              "a": {"shape": [1, 12, 128, 128], "dtype": "bfloat16"},
+              "s": {"shape": [1, 12, 128, 128], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 3,
+            "args": {
+              "a": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "s": {"shape": [1, 368, 128], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 60,
+            "args": {
+              "a": {"shape": [1, 1, 12, 32, 128], "dtype": "bfloat16"},
+              "s": {"shape": [1, 12, 32, 128], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 60,
+            "args": {
+              "a": {"shape": [1, 1, 12, 128, 128], "dtype": "bfloat16"},
+              "s": {"shape": [1, 12, 128, 128], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 60,
+            "args": {
+              "a": {"shape": [1, 1, 368, 128], "dtype": "bfloat16"},
+              "s": {"shape": [1, 368, 128], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 480,
+            "args": {
+              "a": {"shape": [1, 1, 16, 768], "dtype": "bfloat16"},
+              "s": {"shape": [1, 16, 384], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_swiglu:SwiGLU": {
+      "init": {
+        "calls": 150,
+        "variants": [
+          {"count": 11, "args": {"c_in": 128, "c_out": 256}},
+          {"count": 2, "args": {"c_in": 64, "c_out": 128}},
+          {"count": 3, "args": {"c_in": 64, "c_out": 256}},
+          {"count": 56, "args": {"c_in": 128, "c_out": 512}},
+          {"count": 52, "args": {"c_in": 384, "c_out": 1536}},
+          {"count": 2, "args": {"c_in": 384, "c_out": 768}},
+          {"count": 24, "args": {"c_in": 768, "c_out": 1536}}
+        ]
+      },
+      "forward": {
+        "calls": 549,
+        "variants": [
+          {
+            "count": 3,
+            "args": {"x": {"shape": [1, 368, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 6,
+            "args": {"x": {"shape": [1, 8, 16, 64], "dtype": "bfloat16"}},
+            "init_variant_ids": [2]
+          },
+          {
+            "count": 124,
+            "args": {"x": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [0, 3]
+          },
+          {
+            "count": 116,
+            "args": {"x": {"shape": [1, 16, 384], "dtype": "bfloat16"}},
+            "init_variant_ids": [4, 5]
+          },
+          {
+            "count": 60,
+            "args": {"x": {"shape": [1, 1, 368, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 240,
+            "args": {"x": {"shape": [1, 1, 16, 768], "dtype": "bfloat16"}},
+            "init_variant_ids": [6]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_swiglu_transition:ConditionedTransitionBlock": {
+      "init": {
+        "calls": 33,
+        "variants": [
+          {"count": 9, "args": {"c_a": 128, "c_s": 128, "n": 2}},
+          {"count": 24, "args": {"c_a": 768, "c_s": 384, "n": 2}}
+        ]
+      },
+      "forward": {
+        "calls": 303,
+        "variants": [
+          {
+            "count": 3,
+            "args": {
+              "a": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "s": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "mask": {"shape": [1, 368], "dtype": "bfloat16"},
+              "chunk_size": null
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 60,
+            "args": {
+              "a": {"shape": [1, 1, 368, 128], "dtype": "bfloat16"},
+              "s": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "mask": {"shape": [1, 368], "dtype": "bfloat16"},
+              "chunk_size": null
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 240,
+            "args": {
+              "a": {"shape": [1, 1, 16, 768], "dtype": "bfloat16"},
+              "s": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "mask": {"shape": [1, 16], "dtype": "bfloat16"},
+              "chunk_size": null
+            },
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_swiglu_transition:SwiGLUTransition": {
+      "init": {
+        "calls": 117,
+        "variants": [
+          {"count": 2, "args": {"c_in": 64, "n": 2}},
+          {"count": 3, "args": {"c_in": 64, "n": 4}},
+          {"count": 56, "args": {"c_in": 128, "n": 4}},
+          {"count": 52, "args": {"c_in": 384, "n": 4}},
+          {"count": 2, "args": {"c_in": 128, "n": 2}},
+          {"count": 2, "args": {"c_in": 384, "n": 2}}
+        ]
+      },
+      "forward": {
+        "calls": 246,
+        "variants": [
+          {
+            "count": 6,
+            "args": {
+              "x": {"shape": [1, 8, 16, 64], "dtype": "bfloat16"},
+              "mask": null,
+              "chunk_size": null,
+              "ckpt_chunk_size": null
+            },
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 124,
+            "args": {
+              "x": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "mask": {"shape": [1, 16, 16], "dtype": "bfloat16"},
+              "chunk_size": null,
+              "ckpt_chunk_size": null
+            },
+            "init_variant_ids": [2, 4]
+          },
+          {
+            "count": 116,
+            "args": {
+              "x": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "mask": {"shape": [1, 16], "dtype": "bfloat16"},
+              "chunk_size": null,
+              "ckpt_chunk_size": null
+            },
+            "init_variant_ids": [3, 5]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_template_embedder:TemplateEmbedder": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "c_t": 64,
+              "c_z": 128,
+              "c_dgram": 39,
+              "c_aatype": 32,
+              "c_hidden_tri_att": 16,
+              "c_hidden_tri_mul": 64,
+              "no_blocks": 2,
+              "no_heads": 4,
+              "transition_n": 2,
+              "dropout_rate": 0.25,
+              "tri_mul_first": true,
+              "inf": 1000000000.0
+            }
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_template_embedder:TemplatePairStackBlock": {
+      "init": {
+        "calls": 2,
+        "variants": [
+          {
+            "count": 2,
+            "args": {
+              "c_z": 64,
+              "c_hidden_mul": 64,
+              "c_hidden_pair_att": 16,
+              "no_heads_pair": 4,
+              "transition_n": 2,
+              "pair_dropout": 0.25,
+              "fuse_projection_weights": false,
+              "inf": 1000000000.0
+            }
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_triangle_attention:TriangleAttention": {
+      "init": {
+        "calls": 116,
+        "variants": [
+          {
+            "count": 2,
+            "args": {
+              "c_in": 64,
+              "c_hidden": 16,
+              "no_heads": 4,
+              "starting": true,
+              "inf": 1000000000.0
+            }
+          },
+          {
+            "count": 2,
+            "args": {
+              "c_in": 64,
+              "c_hidden": 16,
+              "no_heads": 4,
+              "starting": false,
+              "inf": 1000000000.0
+            }
+          },
+          {
+            "count": 56,
+            "args": {
+              "c_in": 128,
+              "c_hidden": 32,
+              "no_heads": 4,
+              "starting": true,
+              "inf": 1000000000.0
+            }
+          },
+          {
+            "count": 56,
+            "args": {
+              "c_in": 128,
+              "c_hidden": 32,
+              "no_heads": 4,
+              "starting": false,
+              "inf": 1000000000.0
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 208,
+        "variants": [
+          {
+            "count": 208,
+            "args": {
+              "x": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "mask": {"shape": [1, 16, 16], "dtype": "bfloat16"},
+              "chunk_size": null,
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "inplace_safe": false
+            },
+            "init_variant_ids": [2, 3]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_triangle_multiplication:TriangleMultiplicationIncoming": {
+      "init": {
+        "calls": 58,
+        "variants": [
+          {"count": 2, "args": {"c_z": 64, "c_hidden": 64}},
+          {"count": 56, "args": {"c_z": 128, "c_hidden": 128}}
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.alphafold3_triangle_multiplication:TriangleMultiplicationOutgoing": {
+      "init": {
+        "calls": 58,
+        "variants": [
+          {"count": 2, "args": {"c_z": 64, "c_hidden": 64}},
+          {"count": 56, "args": {"c_z": 128, "c_hidden": 128}}
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.alphafold3_diffusion_module:DiffusionModule": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "c_s": 384,
+              "c_z": 128,
+              "c_token": 768,
+              "c_s_input": 449,
+              "sigma_data": 16.0,
+              "no_diff_blocks": 24,
+              "no_diff_heads": 16,
+              "c_diff_hidden": 48,
+              "n_diff_transition": 2,
+              "relpos_k": 32,
+              "max_relative_chain": 2,
+              "c_atom": 128,
+              "c_atom_pair": 16,
+              "atom_attn_n_query": 32,
+              "atom_attn_n_key": 128
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 10,
+        "variants": [
+          {
+            "count": 10,
+            "args": {
+              "batch": {
+                "token_features": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+                "residue_index": {"shape": [1, 16], "dtype": "bfloat16"},
+                "token_mask": {"shape": [1, 16], "dtype": "bfloat16"},
+                "atom_mask": {"shape": [1, 368], "dtype": "bfloat16"},
+                "msa": {"shape": [1, 8, 16, 32], "dtype": "bfloat16"},
+                "has_deletion": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "deletion_value": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "msa_mask": {"shape": [1, 8, 16], "dtype": "bfloat16"}
+              },
+              "xl_noisy": {"shape": [1, 1, 368, 3], "dtype": "bfloat16"},
+              "token_mask": {"shape": [1, 16], "dtype": "bfloat16"},
+              "atom_mask": {"shape": [1, 368], "dtype": "bfloat16"},
+              "t": {"shape": [], "dtype": "bfloat16"},
+              "si_input": {"shape": [1, 16, 449], "dtype": "bfloat16"},
+              "si_trunk": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "zij_trunk": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "use_conditioning": true,
+              "chunk_size": null,
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "use_high_precision_attention": false,
+              "_mask_trans": true
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.alphafold3_diffusion_module:SampleDiffusion": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "gamma_0": 0.8,
+              "gamma_min": 1.0,
+              "noise_scale": 1.003,
+              "step_scale": 1.5,
+              "diffusion_module": {
+                "$op_ref": {
+                  "op": "fastkernels.tasks.baseline.L3.alphafold3_diffusion_module:DiffusionModule",
+                  "init_variant_id": 0
+                }
+              }
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "batch": {
+                "token_features": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+                "residue_index": {"shape": [1, 16], "dtype": "bfloat16"},
+                "token_mask": {"shape": [1, 16], "dtype": "bfloat16"},
+                "atom_mask": {"shape": [1, 368], "dtype": "bfloat16"},
+                "msa": {"shape": [1, 8, 16, 32], "dtype": "bfloat16"},
+                "has_deletion": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "deletion_value": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "msa_mask": {"shape": [1, 8, 16], "dtype": "bfloat16"}
+              },
+              "si_input": {"shape": [1, 16, 449], "dtype": "bfloat16"},
+              "si_trunk": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "zij_trunk": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "noise_schedule": {"shape": [11], "dtype": "bfloat16"},
+              "no_rollout_samples": 1,
+              "use_conditioning": true,
+              "kwargs": {}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.alphafold3_diffusion_transformer:DiffusionTransformer": {
+      "init": {
+        "calls": 4,
+        "variants": [
+          {
+            "count": 3,
+            "args": {
+              "c_a": 128,
+              "c_s": 128,
+              "c_z": 16,
+              "c_hidden": 32,
+              "no_heads": 4,
+              "no_blocks": 3,
+              "n_transition": 2,
+              "use_ada_layer_norm": true,
+              "n_query": 32,
+              "n_key": 128,
+              "inf": 1000000000.0,
+              "blocks_per_ckpt": null,
+              "__varkw__": {}
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "c_a": 768,
+              "c_s": 384,
+              "c_z": 128,
+              "c_hidden": 48,
+              "no_heads": 16,
+              "no_blocks": 24,
+              "n_transition": 2,
+              "use_ada_layer_norm": true,
+              "n_query": null,
+              "n_key": null,
+              "inf": 1000000000.0,
+              "blocks_per_ckpt": null,
+              "__varkw__": {}
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 31,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "a": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "s": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "z": {"shape": [1, 12, 32, 128, 16], "dtype": "bfloat16"},
+              "mask": {"shape": [1, 368], "dtype": "bfloat16"},
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "use_high_precision_attention": false,
+              "_mask_trans": true
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 20,
+            "args": {
+              "a": {"shape": [1, 1, 368, 128], "dtype": "bfloat16"},
+              "s": {"shape": [1, 368, 128], "dtype": "bfloat16"},
+              "z": {"shape": [1, 12, 32, 128, 16], "dtype": "bfloat16"},
+              "mask": {"shape": [1, 368], "dtype": "bfloat16"},
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "use_high_precision_attention": false,
+              "_mask_trans": true
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 10,
+            "args": {
+              "a": {"shape": [1, 1, 16, 768], "dtype": "bfloat16"},
+              "s": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "z": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "mask": {"shape": [1, 16], "dtype": "bfloat16"},
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "use_high_precision_attention": false,
+              "_mask_trans": true
+            },
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.alphafold3_heads:AuxiliaryHeads": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"c_s": 384, "c_z": 128, "c_s_input": 449, "max_atoms_per_token": 23}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "s": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "z": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.alphafold3_msa_module:MSAModuleStack": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "c_m": 64,
+              "c_z": 128,
+              "c_hidden_msa_att": 8,
+              "c_hidden_opm": 32,
+              "c_hidden_mul": 128,
+              "c_hidden_pair_att": 32,
+              "no_heads_msa": 8,
+              "no_heads_pair": 4,
+              "no_blocks": 4,
+              "transition_n": 4,
+              "msa_dropout": 0.0,
+              "pair_dropout": 0.0,
+              "opm_first": true,
+              "fuse_projection_weights": false,
+              "blocks_per_ckpt": null,
+              "inf": 1000000000.0,
+              "eps": 0.001,
+              "__varkw__": {}
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 2,
+        "variants": [
+          {
+            "count": 2,
+            "args": {
+              "m": {"shape": [1, 8, 16, 64], "dtype": "bfloat16"},
+              "z": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "msa_mask": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+              "pair_mask": {"shape": [1, 16, 16], "dtype": "bfloat16"},
+              "kwargs": {}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.alphafold3_pairformer:PairFormerStack": {
+      "init": {
+        "calls": 2,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "c_s": 384,
+              "c_z": 128,
+              "c_hidden_pair_bias": 24,
+              "no_heads_pair_bias": 16,
+              "c_hidden_mul": 128,
+              "c_hidden_pair_att": 32,
+              "no_heads_pair": 4,
+              "no_blocks": 48,
+              "transition_n": 4,
+              "pair_dropout": 0.0,
+              "fuse_projection_weights": false,
+              "blocks_per_ckpt": null,
+              "inf": 1000000000.0,
+              "__varkw__": {}
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "c_s": 384,
+              "c_z": 128,
+              "c_hidden_pair_bias": 24,
+              "no_heads_pair_bias": 16,
+              "c_hidden_mul": 128,
+              "c_hidden_pair_att": 32,
+              "no_heads_pair": 4,
+              "no_blocks": 4,
+              "transition_n": 4,
+              "pair_dropout": 0.0,
+              "fuse_projection_weights": false,
+              "blocks_per_ckpt": null,
+              "inf": 1000000000.0,
+              "__varkw__": {}
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 2,
+        "variants": [
+          {
+            "count": 2,
+            "args": {
+              "s": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+              "z": {"shape": [1, 16, 16, 128], "dtype": "bfloat16"},
+              "single_mask": {"shape": [1, 16], "dtype": "bfloat16"},
+              "pair_mask": {"shape": [1, 16, 16], "dtype": "bfloat16"},
+              "chunk_size": null,
+              "use_deepspeed_evo_attention": false,
+              "use_cueq_triangle_kernels": false,
+              "use_lma": false,
+              "inplace_safe": false,
+              "_mask_trans": true
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L4.openfold3:OpenFold3Model": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.openfold3:OpenFold3Config",
+                "fields": {
+                  "c_s": 384,
+                  "c_z": 128,
+                  "c_m": 64,
+                  "c_atom": 128,
+                  "c_atom_pair": 16,
+                  "c_token_embedder": 384,
+                  "c_token_diffusion": 768,
+                  "c_s_input": 449,
+                  "c_t": 64,
+                  "max_atoms_per_token": 23,
+                  "pairformer_no_blocks": 48,
+                  "pairformer_c_hidden_mul": 128,
+                  "pairformer_c_hidden_pair_att": 32,
+                  "pairformer_no_heads_pair": 4,
+                  "pairformer_c_hidden_pair_bias": 24,
+                  "pairformer_no_heads_pair_bias": 16,
+                  "pairformer_transition_n": 4,
+                  "pairformer_pair_dropout": 0.0,
+                  "msa_no_blocks": 4,
+                  "msa_c_hidden_msa_att": 8,
+                  "msa_c_hidden_opm": 32,
+                  "msa_c_hidden_mul": 128,
+                  "msa_c_hidden_pair_att": 32,
+                  "msa_no_heads_msa": 8,
+                  "msa_no_heads_pair": 4,
+                  "msa_transition_n": 4,
+                  "msa_opm_first": true,
+                  "msa_dropout": 0.0,
+                  "msa_pair_dropout": 0.0,
+                  "diff_no_blocks": 24,
+                  "diff_no_heads": 16,
+                  "diff_c_hidden": 48,
+                  "diff_n_transition": 2,
+                  "sigma_data": 16.0,
+                  "no_rollout_steps": 10,
+                  "s_max": 160.0,
+                  "s_min": 0.0004,
+                  "noise_schedule_p": 7,
+                  "gamma_0": 0.8,
+                  "gamma_min": 1.0,
+                  "noise_scale": 1.003,
+                  "step_scale": 1.5,
+                  "num_recycles": 1,
+                  "relpos_k": 32,
+                  "max_relative_chain": 2,
+                  "atom_attn_n_query": 32,
+                  "atom_attn_n_key": 128
+                }
+              }
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "batch": {
+                "token_features": {"shape": [1, 16, 384], "dtype": "bfloat16"},
+                "residue_index": {"shape": [1, 16], "dtype": "bfloat16"},
+                "token_mask": {"shape": [1, 16], "dtype": "bfloat16"},
+                "atom_mask": {"shape": [1, 368], "dtype": "bfloat16"},
+                "msa": {"shape": [1, 8, 16, 32], "dtype": "bfloat16"},
+                "has_deletion": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "deletion_value": {"shape": [1, 8, 16], "dtype": "bfloat16"},
+                "msa_mask": {"shape": [1, 8, 16], "dtype": "bfloat16"}
+              }
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    }
+  }
+}

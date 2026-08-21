@@ -1,0 +1,32 @@
+Importing fastkernels engine ...
+Discovering operators in fastkernels.tasks.baseline ...
+  (skipped 7 baseline module(s) that failed to import)
+    - fastkernels.tasks.baseline.L1.bitnet_rms_norm: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L2.bitnet_attention: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L2.bitnet_mlp: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L2.pointtransformerv3_layers: ModuleNotFoundError: No module named 'spconv'
+    - fastkernels.tasks.baseline.L3.bitnet_decoder: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L4.bitnet: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L4.pointtransformerv3: ModuleNotFoundError: No module named 'spconv'
+  Instrumented 446 operator class(es).
+
+########## Scenario: BAAI/bge-m3 (Embedding, dtype=float16) ##########
+Building fastkernels Embedding model (synthetic-input capture) ...
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Fetching 15 files:  13%|█▎        | 2/15 [00:00<00:00, 15.06it/s]Fetching 15 files:  73%|███████▎  | 11/15 [00:00<00:00, 41.04it/s]Fetching 15 files: 100%|██████████| 15/15 [00:02<00:00,  5.19it/s]Fetching 15 files: 100%|██████████| 15/15 [00:02<00:00,  6.55it/s]
+
+=== Capturing workload: bge-m3-mldr-docs ===
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_None_0125_T'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+  Verification 1 (hook cross-check) [PASS]: 9/9 operator forwards match the independent hook capture.
+  Captured 16 executed operator class(es) (of 446 instrumented).
+  Report written to /home/yak/.fastkernels/captures/capture_20260821-081742/09_BAAI__bge-m3_tp1_float16/report_BAAI__bge-m3_tp1_float16_bge-m3-mldr-docs_req1000000_seqsauto_eager.json
+
+=== Capturing workload: single-request ===
+  Verification 1 (hook cross-check) [PASS]: 9/9 operator forwards match the independent hook capture.
+  Captured 16 executed operator class(es) (of 446 instrumented).
+  Report written to /home/yak/.fastkernels/captures/capture_20260821-081742/09_BAAI__bge-m3_tp1_float16/report_BAAI__bge-m3_tp1_float16_single-request_req1000000_seqsauto_eager.json
+
+=== Capturing workload: fixed-batch-32 ===
+  Verification 1 (hook cross-check) [PASS]: 9/9 operator forwards match the independent hook capture.
+  Captured 16 executed operator class(es) (of 446 instrumented).
+  Report written to /home/yak/.fastkernels/captures/capture_20260821-081742/09_BAAI__bge-m3_tp1_float16/report_BAAI__bge-m3_tp1_float16_fixed-batch-32_req1000000_seqsauto_eager.json

@@ -1,0 +1,1757 @@
+{
+  "model": "jameslahm/yolov10n",
+  "workload": "batch-4",
+  "dtype": "torch.float16",
+  "engine": "fastkernels.infra.engine.LlamaEngine",
+  "captured_at": "2026-08-21T08:24:20",
+  "max_batch_size": 4,
+  "generation": {
+    "num_prompts": 4,
+    "max_batch_size": 4,
+    "engine": "detection",
+    "modality": "Detection",
+    "inputs": "synthetic (random tensors sized from workload spec)"
+  },
+  "verification": {
+    "forward_pre_hook_crosscheck": {
+      "method": "independent torch forward_pre_hook cross-check",
+      "classes_checked": 22,
+      "classes_matched": 21,
+      "passed": false,
+      "issues": [
+        "fastkernels.tasks.baseline.L4.yolov10:YOLOv10ForObjectDetection: no hook observations (forward may be called directly, bypassing __call__)"
+      ]
+    },
+    "mock_batching_replay": {
+      "method": "mock continuous-batching / chunked-prefill replay",
+      "applicable": false,
+      "passed": true,
+      "reason": "skipped for Detection: no paged-KV token schedule; the forward-pre-hook cross-check is the pass criterion."
+    },
+    "passed": false
+  },
+  "num_operator_classes_instrumented": 446,
+  "num_operator_classes_executed": 24,
+  "operators": {
+    "fastkernels.tasks.baseline.L1.batch_norm2d:BatchNorm2d": {
+      "init": {
+        "calls": 79,
+        "variants": [
+          {
+            "count": 3,
+            "args": {
+              "num_features": 16,
+              "eps": 0.001,
+              "momentum": 0.03,
+              "affine": true,
+              "track_running_stats": true
+            }
+          },
+          {
+            "count": 9,
+            "args": {
+              "num_features": 32,
+              "eps": 0.001,
+              "momentum": 0.03,
+              "affine": true,
+              "track_running_stats": true
+            }
+          },
+          {
+            "count": 21,
+            "args": {
+              "num_features": 64,
+              "eps": 0.001,
+              "momentum": 0.03,
+              "affine": true,
+              "track_running_stats": true
+            }
+          },
+          {
+            "count": 22,
+            "args": {
+              "num_features": 128,
+              "eps": 0.001,
+              "momentum": 0.03,
+              "affine": true,
+              "track_running_stats": true
+            }
+          },
+          {
+            "count": 15,
+            "args": {
+              "num_features": 256,
+              "eps": 0.001,
+              "momentum": 0.03,
+              "affine": true,
+              "track_running_stats": true
+            }
+          },
+          {
+            "count": 9,
+            "args": {
+              "num_features": 80,
+              "eps": 0.001,
+              "momentum": 0.03,
+              "affine": true,
+              "track_running_stats": true
+            }
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.conv2d:Conv2d": {
+      "init": {
+        "calls": 86,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 3,
+              "out_channels": 16,
+              "kernel_size": 3,
+              "stride": 2,
+              "padding": 1,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 16,
+              "out_channels": 32,
+              "kernel_size": 3,
+              "stride": 2,
+              "padding": 1,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 32,
+              "out_channels": 32,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 48,
+              "out_channels": 32,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 2,
+            "args": {
+              "in_channels": 16,
+              "out_channels": 16,
+              "kernel_size": 3,
+              "stride": 1,
+              "padding": 1,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 32,
+              "out_channels": 64,
+              "kernel_size": 3,
+              "stride": 2,
+              "padding": 1,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 64,
+              "out_channels": 64,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 128,
+              "out_channels": 64,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 6,
+            "args": {
+              "in_channels": 32,
+              "out_channels": 32,
+              "kernel_size": 3,
+              "stride": 1,
+              "padding": 1,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 64,
+              "out_channels": 128,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 2,
+            "args": {
+              "in_channels": 128,
+              "out_channels": 128,
+              "kernel_size": 3,
+              "stride": 2,
+              "padding": 1,
+              "groups": 128,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 3,
+            "args": {
+              "in_channels": 128,
+              "out_channels": 128,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 4,
+            "args": {
+              "in_channels": 256,
+              "out_channels": 128,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 12,
+            "args": {
+              "in_channels": 64,
+              "out_channels": 64,
+              "kernel_size": 3,
+              "stride": 1,
+              "padding": 1,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 4,
+            "args": {
+              "in_channels": 128,
+              "out_channels": 256,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 256,
+              "out_channels": 256,
+              "kernel_size": 3,
+              "stride": 2,
+              "padding": 1,
+              "groups": 256,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 3,
+            "args": {
+              "in_channels": 256,
+              "out_channels": 256,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 3,
+            "args": {
+              "in_channels": 384,
+              "out_channels": 256,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 4,
+            "args": {
+              "in_channels": 128,
+              "out_channels": 128,
+              "kernel_size": 3,
+              "stride": 1,
+              "padding": 1,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 512,
+              "out_channels": 256,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 4,
+            "args": {
+              "in_channels": 128,
+              "out_channels": 128,
+              "kernel_size": 3,
+              "stride": 1,
+              "padding": 1,
+              "groups": 128,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 384,
+              "out_channels": 128,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 3,
+            "args": {
+              "in_channels": 192,
+              "out_channels": 128,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 192,
+              "out_channels": 64,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 96,
+              "out_channels": 64,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 64,
+              "out_channels": 64,
+              "kernel_size": 3,
+              "stride": 2,
+              "padding": 1,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 256,
+              "out_channels": 256,
+              "kernel_size": 7,
+              "stride": 1,
+              "padding": 3,
+              "groups": 256,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 2,
+            "args": {
+              "in_channels": 256,
+              "out_channels": 256,
+              "kernel_size": 3,
+              "stride": 1,
+              "padding": 1,
+              "groups": 256,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 3,
+            "args": {
+              "in_channels": 64,
+              "out_channels": 64,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": true
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 128,
+              "out_channels": 64,
+              "kernel_size": 3,
+              "stride": 1,
+              "padding": 1,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 256,
+              "out_channels": 64,
+              "kernel_size": 3,
+              "stride": 1,
+              "padding": 1,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 64,
+              "out_channels": 64,
+              "kernel_size": 3,
+              "stride": 1,
+              "padding": 1,
+              "groups": 64,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 64,
+              "out_channels": 80,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 3,
+            "args": {
+              "in_channels": 80,
+              "out_channels": 80,
+              "kernel_size": 3,
+              "stride": 1,
+              "padding": 1,
+              "groups": 80,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 3,
+            "args": {
+              "in_channels": 80,
+              "out_channels": 80,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 3,
+            "args": {
+              "in_channels": 80,
+              "out_channels": 80,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": true
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 128,
+              "out_channels": 80,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 256,
+              "out_channels": 80,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "in_channels": 16,
+              "out_channels": 1,
+              "kernel_size": 1,
+              "stride": 1,
+              "padding": 0,
+              "groups": 1,
+              "dilation": 1,
+              "bias": false
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 83,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 3, 640, 640], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 16, 320, 320], "dtype": "float16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 2,
+            "args": {"x": {"shape": [4, 32, 160, 160], "dtype": "float16"}},
+            "init_variant_ids": [2, 5]
+          },
+          {
+            "count": 1,
+            "args": {
+              "x": {
+                "shape": [4, 16, 160, 160],
+                "dtype": "float16",
+                "stride": [819200, 25600, 160, 1]
+              }
+            },
+            "init_variant_ids": [4]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 16, 160, 160], "dtype": "float16"}},
+            "init_variant_ids": [4]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 48, 160, 160], "dtype": "float16"}},
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 8,
+            "args": {"x": {"shape": [4, 64, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [6, 9, 13, 25, 28, 31, 32]
+          },
+          {
+            "count": 2,
+            "args": {
+              "x": {"shape": [4, 32, 80, 80], "dtype": "float16", "stride": [409600, 6400, 80, 1]}
+            },
+            "init_variant_ids": [8]
+          },
+          {
+            "count": 4,
+            "args": {"x": {"shape": [4, 32, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [8]
+          },
+          {
+            "count": 2,
+            "args": {"x": {"shape": [4, 128, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [7, 10]
+          },
+          {
+            "count": 7,
+            "args": {"x": {"shape": [4, 128, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [10, 11, 14, 20, 29, 36]
+          },
+          {
+            "count": 3,
+            "args": {
+              "x": {"shape": [4, 64, 40, 40], "dtype": "float16", "stride": [204800, 1600, 40, 1]}
+            },
+            "init_variant_ids": [13]
+          },
+          {
+            "count": 7,
+            "args": {"x": {"shape": [4, 64, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [13, 28]
+          },
+          {
+            "count": 2,
+            "args": {"x": {"shape": [4, 256, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [12, 15]
+          },
+          {
+            "count": 10,
+            "args": {"x": {"shape": [4, 256, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [12, 16, 26, 27, 30, 37]
+          },
+          {
+            "count": 3,
+            "args": {
+              "x": {"shape": [4, 128, 20, 20], "dtype": "float16", "stride": [102400, 400, 20, 1]}
+            },
+            "init_variant_ids": [14, 18, 20]
+          },
+          {
+            "count": 6,
+            "args": {"x": {"shape": [4, 128, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [11, 14, 18, 20]
+          },
+          {
+            "count": 3,
+            "args": {"x": {"shape": [4, 384, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [17]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 512, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [19]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 384, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [21]
+          },
+          {
+            "count": 3,
+            "args": {"x": {"shape": [4, 192, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [22]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 192, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [23]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 96, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [24]
+          },
+          {
+            "count": 3,
+            "args": {"x": {"shape": [4, 80, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [33, 34, 35]
+          },
+          {
+            "count": 3,
+            "args": {"x": {"shape": [4, 80, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [33, 34, 35]
+          },
+          {
+            "count": 2,
+            "args": {"x": {"shape": [4, 64, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [13, 28]
+          },
+          {
+            "count": 3,
+            "args": {"x": {"shape": [4, 80, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [33, 34, 35]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 16, 4, 8400], "dtype": "float16"}},
+            "init_variant_ids": [38]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.interpolate:Interpolate": {
+      "forward": {
+        "calls": 2,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "x": {"shape": [4, 256, 20, 20], "dtype": "float16"},
+              "size": null,
+              "scale_factor": 2.0,
+              "mode": "nearest",
+              "align_corners": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {
+              "x": {"shape": [4, 128, 40, 40], "dtype": "float16"},
+              "size": null,
+              "scale_factor": 2.0,
+              "mode": "nearest",
+              "align_corners": null
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.max_pool2d:MaxPool2d": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"kernel_size": 5, "stride": 1, "padding": 2, "ceil_mode": false}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 3,
+        "variants": [
+          {
+            "count": 3,
+            "args": {"x": {"shape": [4, 128, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.sigmoid:Sigmoid": {
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "x": {"shape": [4, 80, 8400], "dtype": "float16", "stride": [1209600, 8400, 1]}
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.silu:SiLU": {
+      "forward": {
+        "calls": 69,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 16, 320, 320], "dtype": "float16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 3,
+            "args": {"x": {"shape": [4, 32, 160, 160], "dtype": "float16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 2,
+            "args": {"x": {"shape": [4, 16, 160, 160], "dtype": "float16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 8,
+            "args": {"x": {"shape": [4, 64, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 6,
+            "args": {"x": {"shape": [4, 32, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 128, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 8,
+            "args": {"x": {"shape": [4, 128, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 11,
+            "args": {"x": {"shape": [4, 64, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 256, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 11,
+            "args": {"x": {"shape": [4, 256, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 6,
+            "args": {"x": {"shape": [4, 128, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 3,
+            "args": {"x": {"shape": [4, 80, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 3,
+            "args": {"x": {"shape": [4, 80, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 2,
+            "args": {"x": {"shape": [4, 64, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 3,
+            "args": {"x": {"shape": [4, 80, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.softmax:Softmax": {
+      "init": {
+        "calls": 2,
+        "variants": [{"count": 1, "args": {"dim": -1}}, {"count": 1, "args": {"dim": 1}}]
+      },
+      "forward": {
+        "calls": 2,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 2, 400, 400], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 1,
+            "args": {
+              "x": {
+                "shape": [4, 16, 4, 8400],
+                "dtype": "float16",
+                "stride": [1209600, 8400, 134400, 1]
+              }
+            },
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.tensor_ops:Pad": {},
+    "fastkernels.tasks.baseline.L2.yolov10_attention:YOLOAttention": {
+      "init": {
+        "calls": 1,
+        "variants": [{"count": 1, "args": {"dim": 128, "num_heads": 2, "attn_ratio": 0.5}}]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "x": {"shape": [4, 128, 20, 20], "dtype": "float16", "stride": [102400, 400, 20, 1]}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.yolov10_bottleneck:YOLOBottleneck": {
+      "init": {
+        "calls": 10,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "c1": 16,
+              "c2": 16,
+              "shortcut": true,
+              "g": 1,
+              "k": {"$tuple": [3, 3]},
+              "e": 1.0
+            }
+          },
+          {
+            "count": 2,
+            "args": {
+              "c1": 32,
+              "c2": 32,
+              "shortcut": true,
+              "g": 1,
+              "k": {"$tuple": [3, 3]},
+              "e": 1.0
+            }
+          },
+          {
+            "count": 2,
+            "args": {
+              "c1": 64,
+              "c2": 64,
+              "shortcut": true,
+              "g": 1,
+              "k": {"$tuple": [3, 3]},
+              "e": 1.0
+            }
+          },
+          {
+            "count": 2,
+            "args": {
+              "c1": 128,
+              "c2": 128,
+              "shortcut": true,
+              "g": 1,
+              "k": {"$tuple": [3, 3]},
+              "e": 1.0
+            }
+          },
+          {
+            "count": 2,
+            "args": {
+              "c1": 64,
+              "c2": 64,
+              "shortcut": false,
+              "g": 1,
+              "k": {"$tuple": [3, 3]},
+              "e": 1.0
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "c1": 32,
+              "c2": 32,
+              "shortcut": false,
+              "g": 1,
+              "k": {"$tuple": [3, 3]},
+              "e": 1.0
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 9,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "x": {
+                "shape": [4, 16, 160, 160],
+                "dtype": "float16",
+                "stride": [819200, 25600, 160, 1]
+              }
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 2,
+            "args": {
+              "x": {"shape": [4, 32, 80, 80], "dtype": "float16", "stride": [409600, 6400, 80, 1]}
+            },
+            "init_variant_ids": [1, 5]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 32, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 3,
+            "args": {
+              "x": {"shape": [4, 64, 40, 40], "dtype": "float16", "stride": [204800, 1600, 40, 1]}
+            },
+            "init_variant_ids": [2, 4]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 64, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [2]
+          },
+          {
+            "count": 1,
+            "args": {
+              "x": {"shape": [4, 128, 20, 20], "dtype": "float16", "stride": [102400, 400, 20, 1]}
+            },
+            "init_variant_ids": [3]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.yolov10_c2f:YOLOC2f": {
+      "init": {
+        "calls": 7,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"c1": 32, "c2": 32, "n": 1, "shortcut": true, "g": 1, "e": 0.5}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 64, "c2": 64, "n": 2, "shortcut": true, "g": 1, "e": 0.5}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 128, "c2": 128, "n": 2, "shortcut": true, "g": 1, "e": 0.5}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 256, "c2": 256, "n": 1, "shortcut": true, "g": 1, "e": 0.5}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 384, "c2": 128, "n": 1, "shortcut": false, "g": 1, "e": 0.5}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 192, "c2": 64, "n": 1, "shortcut": false, "g": 1, "e": 0.5}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 192, "c2": 128, "n": 1, "shortcut": false, "g": 1, "e": 0.5}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 7,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 32, 160, 160], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 64, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 128, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [2]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 256, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 384, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [4]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 192, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [5]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 192, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [6]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.yolov10_c2f:YOLOC2fCIB": {
+      "init": {
+        "calls": 2,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"c1": 384, "c2": 256, "n": 1, "shortcut": true, "lk": true, "g": 1, "e": 0.5}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 384, "c2": 256, "n": 1, "shortcut": true, "g": 1, "e": 0.5}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 384, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.yolov10_cib:YOLOCIB": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"c1": 128, "c2": 128, "shortcut": true, "e": 1.0, "lk": true}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "x": {"shape": [4, 128, 20, 20], "dtype": "float16", "stride": [102400, 400, 20, 1]}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.yolov10_concat:YOLOConcat": {
+      "init": {"calls": 4, "variants": [{"count": 4, "args": {"dimension": 1}}]},
+      "forward": {
+        "calls": 4,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "xs": [
+                {"shape": [4, 256, 40, 40], "dtype": "float16"},
+                {"shape": [4, 128, 40, 40], "dtype": "float16"}
+              ]
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 1,
+            "args": {
+              "xs": [
+                {"shape": [4, 128, 80, 80], "dtype": "float16"},
+                {"shape": [4, 64, 80, 80], "dtype": "float16"}
+              ]
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 1,
+            "args": {
+              "xs": [
+                {"shape": [4, 64, 40, 40], "dtype": "float16"},
+                {"shape": [4, 128, 40, 40], "dtype": "float16"}
+              ]
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 1,
+            "args": {
+              "xs": [
+                {"shape": [4, 128, 20, 20], "dtype": "float16"},
+                {"shape": [4, 256, 20, 20], "dtype": "float16"}
+              ]
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.yolov10_conv:YOLOConv": {
+      "init": {
+        "calls": 79,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"c1": 3, "c2": 16, "k": 3, "s": 2, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 16, "c2": 32, "k": 3, "s": 2, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 32, "c2": 32, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 48, "c2": 32, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 2,
+            "args": {"c1": 16, "c2": 16, "k": 3, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 32, "c2": 64, "k": 3, "s": 2, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 64, "c2": 64, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 128, "c2": 64, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 6,
+            "args": {"c1": 32, "c2": 32, "k": 3, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 64, "c2": 128, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 2,
+            "args": {
+              "c1": 128,
+              "c2": 128,
+              "k": 3,
+              "s": 2,
+              "p": null,
+              "g": 128,
+              "d": 1,
+              "act": false
+            }
+          },
+          {
+            "count": 2,
+            "args": {"c1": 128, "c2": 128, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 3,
+            "args": {"c1": 256, "c2": 128, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 12,
+            "args": {"c1": 64, "c2": 64, "k": 3, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 3,
+            "args": {"c1": 128, "c2": 256, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {
+              "c1": 256,
+              "c2": 256,
+              "k": 3,
+              "s": 2,
+              "p": null,
+              "g": 256,
+              "d": 1,
+              "act": false
+            }
+          },
+          {
+            "count": 3,
+            "args": {"c1": 256, "c2": 256, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 3,
+            "args": {"c1": 384, "c2": 256, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 4,
+            "args": {"c1": 128, "c2": 128, "k": 3, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 512, "c2": 256, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 128, "c2": 256, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": false}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 128, "c2": 128, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": false}
+          },
+          {
+            "count": 1,
+            "args": {
+              "c1": 128,
+              "c2": 128,
+              "k": 3,
+              "s": 1,
+              "p": null,
+              "g": 128,
+              "d": 1,
+              "act": false
+            }
+          },
+          {
+            "count": 1,
+            "args": {"c1": 256, "c2": 128, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": false}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 384, "c2": 128, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 3,
+            "args": {"c1": 192, "c2": 128, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 192, "c2": 64, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 96, "c2": 64, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 64, "c2": 64, "k": 3, "s": 2, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 3,
+            "args": {"c1": 128, "c2": 128, "k": 3, "s": 1, "p": null, "g": 128, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 256, "c2": 256, "k": 7, "s": 1, "p": 3, "g": 256, "d": 1, "act": false}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 256, "c2": 256, "k": 3, "s": 1, "p": 1, "g": 256, "d": 1, "act": false}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 128, "c2": 64, "k": 3, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 256, "c2": 64, "k": 3, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 64, "c2": 64, "k": 3, "s": 1, "p": null, "g": 64, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 64, "c2": 80, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 3,
+            "args": {"c1": 80, "c2": 80, "k": 3, "s": 1, "p": null, "g": 80, "d": 1, "act": true}
+          },
+          {
+            "count": 3,
+            "args": {"c1": 80, "c2": 80, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 128, "c2": 80, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 256, "c2": 256, "k": 3, "s": 1, "p": null, "g": 256, "d": 1, "act": true}
+          },
+          {
+            "count": 1,
+            "args": {"c1": 256, "c2": 80, "k": 1, "s": 1, "p": null, "g": 1, "d": 1, "act": true}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 76,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 3, 640, 640], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 16, 320, 320], "dtype": "float16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 2,
+            "args": {"x": {"shape": [4, 32, 160, 160], "dtype": "float16"}},
+            "init_variant_ids": [2, 5]
+          },
+          {
+            "count": 1,
+            "args": {
+              "x": {
+                "shape": [4, 16, 160, 160],
+                "dtype": "float16",
+                "stride": [819200, 25600, 160, 1]
+              }
+            },
+            "init_variant_ids": [4]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 16, 160, 160], "dtype": "float16"}},
+            "init_variant_ids": [4]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 48, 160, 160], "dtype": "float16"}},
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 7,
+            "args": {"x": {"shape": [4, 64, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [6, 9, 13, 28, 34, 35]
+          },
+          {
+            "count": 2,
+            "args": {
+              "x": {"shape": [4, 32, 80, 80], "dtype": "float16", "stride": [409600, 6400, 80, 1]}
+            },
+            "init_variant_ids": [8]
+          },
+          {
+            "count": 4,
+            "args": {"x": {"shape": [4, 32, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [8]
+          },
+          {
+            "count": 2,
+            "args": {"x": {"shape": [4, 128, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [7, 10]
+          },
+          {
+            "count": 7,
+            "args": {"x": {"shape": [4, 128, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [10, 11, 14, 29, 32, 38]
+          },
+          {
+            "count": 3,
+            "args": {
+              "x": {"shape": [4, 64, 40, 40], "dtype": "float16", "stride": [204800, 1600, 40, 1]}
+            },
+            "init_variant_ids": [13]
+          },
+          {
+            "count": 6,
+            "args": {"x": {"shape": [4, 64, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [13]
+          },
+          {
+            "count": 2,
+            "args": {"x": {"shape": [4, 256, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [12, 15]
+          },
+          {
+            "count": 10,
+            "args": {"x": {"shape": [4, 256, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [12, 16, 23, 30, 33, 39, 40]
+          },
+          {
+            "count": 3,
+            "args": {
+              "x": {"shape": [4, 128, 20, 20], "dtype": "float16", "stride": [102400, 400, 20, 1]}
+            },
+            "init_variant_ids": [18, 20, 29]
+          },
+          {
+            "count": 6,
+            "args": {"x": {"shape": [4, 128, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [14, 18, 21, 22, 29]
+          },
+          {
+            "count": 3,
+            "args": {"x": {"shape": [4, 384, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [17]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 512, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [19]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 384, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [24]
+          },
+          {
+            "count": 3,
+            "args": {"x": {"shape": [4, 192, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [25]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 192, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [26]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 96, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [27]
+          },
+          {
+            "count": 2,
+            "args": {"x": {"shape": [4, 80, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [36, 37]
+          },
+          {
+            "count": 2,
+            "args": {"x": {"shape": [4, 80, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [36, 37]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 64, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [13]
+          },
+          {
+            "count": 2,
+            "args": {"x": {"shape": [4, 80, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [36, 37]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.yolov10_dfl:YOLODFL": {
+      "init": {"calls": 1, "variants": [{"count": 1, "args": {"c1": 16}}]},
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "x": {"shape": [4, 64, 8400], "dtype": "float16", "stride": [1209600, 8400, 1]}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.yolov10_psa:YOLOPSA": {
+      "init": {
+        "calls": 1,
+        "variants": [{"count": 1, "args": {"c1": 256, "c2": 256, "e": 0.5}}]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 256, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.yolov10_repvggdw:YOLORepVGGDW": {
+      "init": {"calls": 1, "variants": [{"count": 1, "args": {"ed": 256}}]},
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 256, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.yolov10_scdown:YOLOSCDown": {
+      "init": {
+        "calls": 3,
+        "variants": [
+          {"count": 1, "args": {"c1": 64, "c2": 128, "k": 3, "s": 2}},
+          {"count": 1, "args": {"c1": 128, "c2": 256, "k": 3, "s": 2}},
+          {"count": 1, "args": {"c1": 128, "c2": 128, "k": 3, "s": 2}}
+        ]
+      },
+      "forward": {
+        "calls": 3,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 64, 80, 80], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 2,
+            "args": {"x": {"shape": [4, 128, 40, 40], "dtype": "float16"}},
+            "init_variant_ids": [1, 2]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.yolov10_sppf:YOLOSPPF": {
+      "init": {"calls": 1, "variants": [{"count": 1, "args": {"c1": 256, "c2": 256, "k": 5}}]},
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 256, 20, 20], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.yolov10_backbone:YOLOv10Backbone": {
+      "init": {"calls": 1, "variants": [{"count": 1, "args": {}}]},
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [4, 3, 640, 640], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.yolov10_head:YOLOv10DetectHead": {
+      "init": {
+        "calls": 1,
+        "variants": [{"count": 1, "args": {"nc": 80, "ch": {"$tuple": [64, 128, 256]}}}]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "x": [
+                {"shape": [4, 64, 80, 80], "dtype": "float16"},
+                {"shape": [4, 128, 40, 40], "dtype": "float16"},
+                {"shape": [4, 256, 20, 20], "dtype": "float16"}
+              ]
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.yolov10_neck:YOLOv10Neck": {
+      "init": {"calls": 1, "variants": [{"count": 1, "args": {}}]},
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "feats": {
+                "p3_backbone": {"shape": [4, 64, 80, 80], "dtype": "float16"},
+                "p4_backbone": {"shape": [4, 128, 40, 40], "dtype": "float16"},
+                "p5_backbone": {"shape": [4, 256, 20, 20], "dtype": "float16"}
+              }
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L4.yolov10:YOLOv10ForObjectDetection": {
+      "init": {"calls": 1, "variants": [{"count": 1, "args": {"conf_threshold": 0.25}}]},
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"pixel_values": {"shape": [4, 3, 640, 640], "dtype": "float16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    }
+  }
+}

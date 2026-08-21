@@ -1,0 +1,50 @@
+Importing fastkernels engine ...
+Discovering operators in fastkernels.tasks.baseline ...
+  (skipped 7 baseline module(s) that failed to import)
+    - fastkernels.tasks.baseline.L1.bitnet_rms_norm: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L2.bitnet_attention: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L2.bitnet_mlp: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L2.pointtransformerv3_layers: ModuleNotFoundError: No module named 'spconv'
+    - fastkernels.tasks.baseline.L3.bitnet_decoder: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L4.bitnet: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L4.pointtransformerv3: ModuleNotFoundError: No module named 'spconv'
+  Instrumented 446 operator class(es).
+
+########## Scenario: Etched/oasis-500m (WorldModel, dtype=float16) ##########
+Building fastkernels WorldModel model (synthetic-input capture) ...
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [00:00<00:00,  4.63it/s]Fetching 4 files:  75%|███████▌  | 3/4 [00:02<00:00,  1.02it/s]Fetching 4 files: 100%|██████████| 4/4 [00:06<00:00,  1.84s/it]Fetching 4 files: 100%|██████████| 4/4 [00:06<00:00,  1.54s/it]
+
+=== Capturing workload: short-bs4-16f-4ddim ===
+  Verification 1 (hook cross-check) [INFO]: 17/19 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.oasis_rotary:OasisRotaryEmbedding: no hook observations (forward may be called directly, bypassing __call__)
+    ! fastkernels.tasks.baseline.L3.oasis_rollout:OasisRollout: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 21 executed operator class(es) (of 446 instrumented).
+  Report written to /home/yak/.fastkernels/captures/capture_20260821-081742/10_Etched__oasis-500m_tp1_float16/report_Etched__oasis-500m_tp1_float16_short-bs4-16f-4ddim_req1000000_seqsauto_eager.json
+
+=== Capturing workload: medium-bs8-24f-4ddim ===
+  Verification 1 (hook cross-check) [INFO]: 17/19 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.oasis_rotary:OasisRotaryEmbedding: no hook observations (forward may be called directly, bypassing __call__)
+    ! fastkernels.tasks.baseline.L3.oasis_rollout:OasisRollout: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 21 executed operator class(es) (of 446 instrumented).
+  Report written to /home/yak/.fastkernels/captures/capture_20260821-081742/10_Etched__oasis-500m_tp1_float16/report_Etched__oasis-500m_tp1_float16_medium-bs8-24f-4ddim_req1000000_seqsauto_eager.json
+
+=== Capturing workload: long-bs8-32f-4ddim ===
+  Verification 1 (hook cross-check) [INFO]: 17/19 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.oasis_rotary:OasisRotaryEmbedding: no hook observations (forward may be called directly, bypassing __call__)
+    ! fastkernels.tasks.baseline.L3.oasis_rollout:OasisRollout: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 21 executed operator class(es) (of 446 instrumented).
+  Report written to /home/yak/.fastkernels/captures/capture_20260821-081742/10_Etched__oasis-500m_tp1_float16/report_Etched__oasis-500m_tp1_float16_long-bs8-32f-4ddim_req1000000_seqsauto_eager.json
+
+=== Capturing workload: denoise-bs4-16f-8ddim ===
+  Verification 1 (hook cross-check) [INFO]: 17/19 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.oasis_rotary:OasisRotaryEmbedding: no hook observations (forward may be called directly, bypassing __call__)
+    ! fastkernels.tasks.baseline.L3.oasis_rollout:OasisRollout: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 21 executed operator class(es) (of 446 instrumented).
+  Report written to /home/yak/.fastkernels/captures/capture_20260821-081742/10_Etched__oasis-500m_tp1_float16/report_Etched__oasis-500m_tp1_float16_denoise-bs4-16f-8ddim_req1000000_seqsauto_eager.json
+
+=== Capturing workload: latency-bs1-8f-4ddim ===
+  Verification 1 (hook cross-check) [INFO]: 17/19 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.oasis_rotary:OasisRotaryEmbedding: no hook observations (forward may be called directly, bypassing __call__)
+    ! fastkernels.tasks.baseline.L3.oasis_rollout:OasisRollout: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 21 executed operator class(es) (of 446 instrumented).
+  Report written to /home/yak/.fastkernels/captures/capture_20260821-081742/10_Etched__oasis-500m_tp1_float16/report_Etched__oasis-500m_tp1_float16_latency-bs1-8f-4ddim_req1000000_seqsauto_eager.json

@@ -1,0 +1,114 @@
+job_index: 9
+name: BAAI/bge-m3
+tp: 1
+CUDA_VISIBLE_DEVICES: 4
+ray.get_gpu_ids(): ['4']
+parent_visible_gpus: 0,1,2,3,4,5,6,7
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.capture default --max-requests 1000000 --output /code/users/goliaro/h200-capture/09_BAAI__bge-m3_tp1_float16/report.json
+
+Importing fastkernels engine ...
+Discovering operators in fastkernels.tasks.baseline ...
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+  Instrumented 455 operator class(es).
+
+########## Scenario: BAAI/bge-m3 (Embedding, dtype=float16) ##########
+Building fastkernels Embedding model (synthetic-input capture) ...
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Fetching 15 files: 100%|██████████| 15/15 [00:00<00:00, 1442.90it/s]
+
+=== Capturing workload: bge-m3-mldr-docs ===
+  Verification 1 (hook cross-check) [PASS]: 9/9 operator forwards match the independent hook capture.
+  Captured 16 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/09_BAAI__bge-m3_tp1_float16/report_BAAI__bge-m3_tp1_float16_bge-m3-mldr-docs_req1000000_seqsauto_eager.json
+
+=== Capturing workload: single-request ===
+  Verification 1 (hook cross-check) [PASS]: 9/9 operator forwards match the independent hook capture.
+  Captured 16 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/09_BAAI__bge-m3_tp1_float16/report_BAAI__bge-m3_tp1_float16_single-request_req1000000_seqsauto_eager.json
+
+=== Capturing workload: fixed-batch-32 ===
+  Verification 1 (hook cross-check) [PASS]: 9/9 operator forwards match the independent hook capture.
+  Captured 16 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/09_BAAI__bge-m3_tp1_float16/report_BAAI__bge-m3_tp1_float16_fixed-batch-32_req1000000_seqsauto_eager.json

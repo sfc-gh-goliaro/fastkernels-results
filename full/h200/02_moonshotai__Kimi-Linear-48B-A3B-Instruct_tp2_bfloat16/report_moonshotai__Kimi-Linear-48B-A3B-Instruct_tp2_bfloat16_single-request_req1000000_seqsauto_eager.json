@@ -1,0 +1,3713 @@
+{
+  "model": "moonshotai/Kimi-Linear-48B-A3B-Instruct",
+  "workload": "single-request",
+  "dtype": "torch.bfloat16",
+  "engine": "fastkernels.infra.engine.LlamaEngine",
+  "captured_at": "2026-08-21T09:14:35",
+  "max_batch_size": 1024,
+  "generation": {
+    "num_prompts": 1,
+    "max_batch_size": 1024,
+    "batch_refilled": false,
+    "used_chat_template": true,
+    "modality": "text",
+    "dataset": "sfc-gh-goliaro/wildchat-mixed-1k",
+    "prompt_tokens_known": true,
+    "max_new_tokens_source": "dataset_response_length",
+    "max_new_tokens_range": [128, 128],
+    "num_finished_by_eos": 0,
+    "num_hit_max_tokens": 1,
+    "responses": [
+      {
+        "prompt": "<|im_user|>user<|im_middle|>I want to find a part-time online PHD/Doctor program in Biostatistics or Statistics. Please help me find some good ones. In US, Germany, or other western countries.<|im_end|><|im_assistant|>assistant<|im_middle|>",
+        "prompt_tokens": 45,
+        "response": "Finding a **part-time, online PhD program** in **Biostatistics or Statistics** in the **US, Germany, or other Western countries** is challenging, but not impossible. Most PhD programs are **hybrid** or **part-time**, but **fully online** PhD programs in these fields are rare due to the **research-intensive** and **residency** requirements.\n\nHere are **some viable options** that are either **part-time**, **hybrid**, or **online-friendly** in the US, Germany, and other Western countries:\n\n---\n\n### 🇺🇸 **United States**\n\n#### 1. **University of",
+        "max_new_tokens": 128,
+        "tokens": 128,
+        "stop_reason": "max_tokens"
+      }
+    ]
+  },
+  "verification": {
+    "forward_pre_hook_crosscheck": {
+      "method": "independent torch forward_pre_hook cross-check",
+      "classes_checked": 28,
+      "classes_matched": 28,
+      "passed": true,
+      "issues": []
+    },
+    "mock_batching_replay": {
+      "method": "mock continuous-batching / chunked-prefill replay",
+      "max_num_seqs": 1024,
+      "max_num_batched_tokens": 16384,
+      "num_layers": 27,
+      "kv_cache_modeled": false,
+      "num_kv_blocks": null,
+      "kv_block_size": null,
+      "num_requests": 1,
+      "simulated_steps": 128,
+      "simulated_prefill_steps": 1,
+      "simulated_prefill_tokens": 45,
+      "simulated_decode_tokens": 127,
+      "max_step_tokens": 45,
+      "max_decode_batch": 1,
+      "predicted_step_token_counts": {"1": 127, "45": 1},
+      "predicted_prefill_token_counts": {"45": 1},
+      "predicted_prefill_seq_counts": {"1": 1},
+      "checks": [
+        {
+          "name": "total prefill tokens == sum(prompt lengths)",
+          "passed": true,
+          "detail": "simulated 45 vs sum(prompt_lens) 45"
+        },
+        {
+          "name": "total decode tokens == sum(generated - 1)",
+          "passed": true,
+          "detail": "simulated 127 vs 127"
+        },
+        {
+          "name": "every step within max_num_batched_tokens",
+          "passed": true,
+          "detail": "max step tokens 45 <= 16384"
+        },
+        {
+          "name": "concurrent sequences within max_num_seqs",
+          "passed": true,
+          "detail": "max concurrent 1 <= 1024"
+        },
+        {
+          "name": "per-step token counts match capture",
+          "passed": true,
+          "detail": "exact match"
+        }
+      ],
+      "passed": true
+    },
+    "passed": true
+  },
+  "num_operator_classes_instrumented": 455,
+  "num_operator_classes_executed": 31,
+  "operators": {
+    "fastkernels.tasks.baseline.L1.allreduce:AllReduce": {
+      "forward": {
+        "calls": 7040,
+        "variants": [
+          {
+            "count": 55,
+            "args": {"tensor": {"shape": [45, 2304], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          },
+          {
+            "count": 6985,
+            "args": {"tensor": {"shape": [1, 2304], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.bmm:BatchMatMul": {
+      "forward": {
+        "calls": 1778,
+        "variants": [
+          {
+            "count": 889,
+            "args": {
+              "a": {"shape": [16, 1, 128], "dtype": "bfloat16", "stride": [192, 3072, 1]},
+              "b": {"shape": [16, 128, 512], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 889,
+            "args": {
+              "a": {"shape": [16, 1, 512], "dtype": "bfloat16"},
+              "b": {"shape": [16, 512, 128], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.embedding:Embedding": {
+      "init": {
+        "calls": 2,
+        "variants": [
+          {
+            "count": 2,
+            "args": {"num_embeddings": 81920, "embedding_dim": 2304, "padding_idx": null}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 128,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"input_ids": {"shape": [45], "dtype": "int64"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 127,
+            "args": {"input_ids": {"shape": [1], "dtype": "int64"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.flash_attn_varlen:FlashAttnVarlen": {
+      "forward": {
+        "calls": 7,
+        "variants": [
+          {
+            "count": 7,
+            "args": {
+              "q": {"shape": [45, 16, 192], "dtype": "bfloat16"},
+              "k": {"shape": [45, 16, 192], "dtype": "bfloat16"},
+              "v": {"shape": [45, 16, 128], "dtype": "bfloat16", "stride": [4096, 256, 1]},
+              "cu_seqlens_q": {"shape": [2], "dtype": "int32"},
+              "cu_seqlens_k": {"shape": [2], "dtype": "int32"},
+              "max_seqlen_q": 45,
+              "max_seqlen_k": 45,
+              "softmax_scale": 0.07216878364870322,
+              "causal": true,
+              "return_softmax_lse": false
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.flash_mla_decode:FlashMLADecode": {
+      "forward": {
+        "calls": 889,
+        "variants": [
+          {
+            "count": 581,
+            "args": {
+              "q": {"shape": [1, 1, 16, 576], "dtype": "bfloat16"},
+              "kv_cache": {"shape": [117507, 64, 1, 576], "dtype": "bfloat16"},
+              "block_table": {"shape": [1, 2], "dtype": "int32"},
+              "cache_seqlens": {"shape": [1], "dtype": "int32"},
+              "head_dim_v": 512,
+              "tile_scheduler_metadata": {"object": "FlashMLASchedMeta"},
+              "softmax_scale": 0.07216878364870322,
+              "causal": true,
+              "is_fp8_kvcache": false,
+              "indices": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 308,
+            "args": {
+              "q": {"shape": [1, 1, 16, 576], "dtype": "bfloat16"},
+              "kv_cache": {"shape": [117507, 64, 1, 576], "dtype": "bfloat16"},
+              "block_table": {"shape": [1, 4], "dtype": "int32"},
+              "cache_seqlens": {"shape": [1], "dtype": "int32"},
+              "head_dim_v": 512,
+              "tile_scheduler_metadata": {"object": "FlashMLASchedMeta"},
+              "softmax_scale": 0.07216878364870322,
+              "causal": true,
+              "is_fp8_kvcache": false,
+              "indices": null
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.gate_linear:GateLinear": {
+      "forward": {
+        "calls": 3328,
+        "variants": [
+          {
+            "count": 26,
+            "args": {
+              "x": {"shape": [45, 2304], "dtype": "bfloat16"},
+              "weight": {"shape": [256, 2304], "dtype": "bfloat16"},
+              "out_dtype": {"dtype": "float32"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 3302,
+            "args": {
+              "x": {"shape": [1, 2304], "dtype": "bfloat16"},
+              "weight": {"shape": [256, 2304], "dtype": "bfloat16"},
+              "out_dtype": {"dtype": "float32"}
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.grouped_topk:GroupedTopK": {
+      "init": {
+        "calls": 26,
+        "variants": [
+          {
+            "count": 26,
+            "args": {
+              "scoring_func": "sigmoid",
+              "renormalize": true,
+              "routed_scaling_factor": 1.0,
+              "force_sorted": true
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 3328,
+        "variants": [
+          {
+            "count": 26,
+            "args": {
+              "gating_output": {"shape": [45, 256], "dtype": "float32"},
+              "e_score_correction_bias": {"shape": [256], "dtype": "bfloat16"},
+              "num_expert_group": 1,
+              "topk_group": 1,
+              "topk": 8
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 3302,
+            "args": {
+              "gating_output": {"shape": [1, 256], "dtype": "float32"},
+              "e_score_correction_bias": {"shape": [256], "dtype": "bfloat16"},
+              "num_expert_group": 1,
+              "topk_group": 1,
+              "topk": 8
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.linear:Matmul": {
+      "forward": {
+        "calls": 128,
+        "variants": [
+          {
+            "count": 128,
+            "args": {
+              "input": {"shape": [1, 2304], "dtype": "bfloat16"},
+              "weight": {"shape": [81920, 2304], "dtype": "bfloat16"},
+              "bias": null
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.merge_attn_states:MergeAttnStates": {},
+    "fastkernels.tasks.baseline.L1.moe_align:MoeAlign": {
+      "init": {"calls": 26, "variants": [{"count": 26, "args": {}}]},
+      "forward": {
+        "calls": 3328,
+        "variants": [
+          {
+            "count": 26,
+            "args": {
+              "topk_ids": {"shape": [45, 8], "dtype": "int32"},
+              "block_size": 32,
+              "num_experts": 256,
+              "naive": false
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 3302,
+            "args": {
+              "topk_ids": {"shape": [1, 8], "dtype": "int32"},
+              "block_size": 16,
+              "num_experts": 256,
+              "naive": true
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.moe_grouped_gemm:MoeGroupedGemm": {
+      "forward": {
+        "calls": 6656,
+        "variants": [
+          {
+            "count": 26,
+            "args": {
+              "A": {"shape": [45, 2304], "dtype": "bfloat16"},
+              "B": {"shape": [256, 1024, 2304], "dtype": "bfloat16"},
+              "C": {"shape": [360, 1024], "dtype": "bfloat16"},
+              "topk_weights": {"shape": [45, 8], "dtype": "float32"},
+              "sorted_token_ids": {"shape": [8296], "dtype": "int32"},
+              "expert_ids": {"shape": [260], "dtype": "int32"},
+              "num_tokens_post_padded": {"shape": [1], "dtype": "int32"},
+              "mul_routed_weight": false,
+              "top_k": 8,
+              "config": {
+                "BLOCK_SIZE_M": 32,
+                "BLOCK_SIZE_N": 128,
+                "BLOCK_SIZE_K": 128,
+                "GROUP_SIZE_M": 64,
+                "num_warps": 4,
+                "num_stages": 3
+              },
+              "a_scale": null,
+              "b_scale": null,
+              "use_fp8_w8a8": false,
+              "block_shape": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 26,
+            "args": {
+              "A": {"shape": [360, 512], "dtype": "bfloat16"},
+              "B": {"shape": [256, 2304, 512], "dtype": "bfloat16"},
+              "C": {"shape": [360, 2304], "dtype": "bfloat16"},
+              "topk_weights": {"shape": [45, 8], "dtype": "float32"},
+              "sorted_token_ids": {"shape": [8296], "dtype": "int32"},
+              "expert_ids": {"shape": [260], "dtype": "int32"},
+              "num_tokens_post_padded": {"shape": [1], "dtype": "int32"},
+              "mul_routed_weight": true,
+              "top_k": 1,
+              "config": {
+                "BLOCK_SIZE_M": 32,
+                "BLOCK_SIZE_N": 128,
+                "BLOCK_SIZE_K": 128,
+                "GROUP_SIZE_M": 64,
+                "num_warps": 4,
+                "num_stages": 3
+              },
+              "a_scale": null,
+              "b_scale": null,
+              "use_fp8_w8a8": false,
+              "block_shape": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 3302,
+            "args": {
+              "A": {"shape": [1, 2304], "dtype": "bfloat16"},
+              "B": {"shape": [256, 1024, 2304], "dtype": "bfloat16"},
+              "C": {"shape": [8, 1024], "dtype": "bfloat16"},
+              "topk_weights": {"shape": [1, 8], "dtype": "float32"},
+              "sorted_token_ids": null,
+              "expert_ids": {"shape": [8], "dtype": "int32"},
+              "num_tokens_post_padded": {"shape": [1], "dtype": "int32"},
+              "mul_routed_weight": false,
+              "top_k": 8,
+              "config": {
+                "BLOCK_SIZE_M": 16,
+                "BLOCK_SIZE_N": 128,
+                "BLOCK_SIZE_K": 128,
+                "GROUP_SIZE_M": 16,
+                "num_warps": 4,
+                "num_stages": 5
+              },
+              "a_scale": null,
+              "b_scale": null,
+              "use_fp8_w8a8": false,
+              "block_shape": null
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 3302,
+            "args": {
+              "A": {"shape": [8, 512], "dtype": "bfloat16"},
+              "B": {"shape": [256, 2304, 512], "dtype": "bfloat16"},
+              "C": {"shape": [8, 2304], "dtype": "bfloat16"},
+              "topk_weights": {"shape": [1, 8], "dtype": "float32"},
+              "sorted_token_ids": null,
+              "expert_ids": {"shape": [8], "dtype": "int32"},
+              "num_tokens_post_padded": {"shape": [1], "dtype": "int32"},
+              "mul_routed_weight": true,
+              "top_k": 1,
+              "config": {
+                "BLOCK_SIZE_M": 16,
+                "BLOCK_SIZE_N": 128,
+                "BLOCK_SIZE_K": 128,
+                "GROUP_SIZE_M": 16,
+                "num_warps": 4,
+                "num_stages": 5
+              },
+              "a_scale": null,
+              "b_scale": null,
+              "use_fp8_w8a8": false,
+              "block_shape": null
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.moe_sum:MoeSum": {
+      "init": {"calls": 26, "variants": [{"count": 26, "args": {}}]},
+      "forward": {
+        "calls": 3328,
+        "variants": [
+          {
+            "count": 26,
+            "args": {"input": {"shape": [360, 2304], "dtype": "bfloat16"}, "topk": 8},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 3302,
+            "args": {"input": {"shape": [8, 2304], "dtype": "bfloat16"}, "topk": 8},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.rms_norm:RMSNorm": {
+      "init": {
+        "calls": 62,
+        "variants": [
+          {
+            "count": 55,
+            "args": {"hidden_size": 2304, "eps": 1e-05, "elementwise_affine": true}
+          },
+          {
+            "count": 7,
+            "args": {"hidden_size": 512, "eps": 1e-05, "elementwise_affine": true}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 7936,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [45, 2304], "dtype": "bfloat16"}, "residual": null},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 54,
+            "args": {
+              "x": {"shape": [45, 2304], "dtype": "bfloat16"},
+              "residual": {"shape": [45, 2304], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 7,
+            "args": {
+              "x": {"shape": [45, 512], "dtype": "bfloat16", "stride": [576, 1]},
+              "residual": null
+            },
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 127,
+            "args": {"x": {"shape": [1, 2304], "dtype": "bfloat16"}, "residual": null},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 6858,
+            "args": {
+              "x": {"shape": [1, 2304], "dtype": "bfloat16"},
+              "residual": {"shape": [1, 2304], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 889,
+            "args": {"x": {"shape": [1, 512], "dtype": "bfloat16"}, "residual": null},
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.rms_norm_gated:FusedRMSNormGated": {
+      "init": {
+        "calls": 20,
+        "variants": [
+          {
+            "count": 20,
+            "args": {
+              "hidden_size": 128,
+              "elementwise_affine": true,
+              "eps": 1e-05,
+              "activation": "sigmoid",
+              "device": null,
+              "dtype": null
+            }
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.silu_and_mul:SiluAndMul": {
+      "init": {"calls": 53, "variants": [{"count": 53, "args": {}}]},
+      "forward": {
+        "calls": 6784,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [45, 9216], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 26,
+            "args": {"x": {"shape": [45, 1024], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 26,
+            "args": {"x": {"shape": [360, 1024], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 127,
+            "args": {"x": {"shape": [1, 9216], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 3302,
+            "args": {"x": {"shape": [1, 1024], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 3302,
+            "args": {"x": {"shape": [8, 1024], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.store_kvcache_fp8_mla:GatherAndDequantKVCacheMLA": {
+      "init": {"calls": 7, "variants": [{"count": 7, "args": {"kv_cache_dtype": "auto"}}]}
+    },
+    "fastkernels.tasks.baseline.L1.store_kvcache_fp8_mla:StoreKVCacheFP8MLA": {
+      "init": {"calls": 7, "variants": [{"count": 7, "args": {"kv_cache_dtype": "auto"}}]},
+      "forward": {
+        "calls": 896,
+        "variants": [
+          {
+            "count": 7,
+            "args": {
+              "kv_c_normed": {"shape": [45, 512], "dtype": "bfloat16"},
+              "k_pe": {"shape": [45, 1, 64], "dtype": "bfloat16", "stride": [576, 64, 1]},
+              "kv_cache": {"shape": [117507, 64, 576], "dtype": "bfloat16"},
+              "slot_mapping": {"shape": [45], "dtype": "int64"}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 889,
+            "args": {
+              "kv_c_normed": {"shape": [1, 512], "dtype": "bfloat16"},
+              "k_pe": {"shape": [1, 1, 64], "dtype": "bfloat16"},
+              "kv_cache": {"shape": [117507, 64, 576], "dtype": "bfloat16"},
+              "slot_mapping": {"shape": [1], "dtype": "int64"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.fused_experts:FusedExperts": {
+      "init": {
+        "calls": 26,
+        "variants": [{"count": 26, "args": {"activation": "silu", "config_style": "legacy"}}]
+      },
+      "forward": {
+        "calls": 3328,
+        "variants": [
+          {
+            "count": 26,
+            "args": {
+              "hidden_states": {"shape": [45, 2304], "dtype": "bfloat16"},
+              "w13": {"shape": [256, 1024, 2304], "dtype": "bfloat16"},
+              "w2": {"shape": [256, 2304, 512], "dtype": "bfloat16"},
+              "topk_weights": {"shape": [45, 8], "dtype": "float32"},
+              "topk_ids": {"shape": [45, 8], "dtype": "int32"},
+              "num_experts": 256,
+              "w13_scale": null,
+              "w2_scale": null,
+              "w13_scale_dg": null,
+              "w2_scale_dg": null,
+              "use_fp8_w8a8": false,
+              "block_shape": null
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 3302,
+            "args": {
+              "hidden_states": {"shape": [1, 2304], "dtype": "bfloat16"},
+              "w13": {"shape": [256, 1024, 2304], "dtype": "bfloat16"},
+              "w2": {"shape": [256, 2304, 512], "dtype": "bfloat16"},
+              "topk_weights": {"shape": [1, 8], "dtype": "float32"},
+              "topk_ids": {"shape": [1, 8], "dtype": "int32"},
+              "num_experts": 256,
+              "w13_scale": null,
+              "w2_scale": null,
+              "w13_scale_dg": null,
+              "w2_scale_dg": null,
+              "use_fp8_w8a8": false,
+              "block_shape": null
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.kimi_delta_attention:KimiDeltaAttention": {
+      "init": {
+        "calls": 20,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 0,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 1,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 2,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 4,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 5,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 6,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 8,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 9,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 10,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 12,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 13,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 14,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 16,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 17,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 18,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 20,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 21,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 22,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 24,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 25,
+              "quant_config": null
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 2560,
+        "variants": [
+          {
+            "count": 20,
+            "args": {
+              "hidden_states": {"shape": [45, 2304], "dtype": "bfloat16"},
+              "state_manager": {"object": "KimiLinearStateManager"}
+            },
+            "init_variant_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+          },
+          {
+            "count": 2540,
+            "args": {
+              "hidden_states": {"shape": [1, 2304], "dtype": "bfloat16"},
+              "state_manager": {"object": "KimiLinearStateManager"}
+            },
+            "init_variant_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.kimi_mla_attention:KimiMLAAttention": {
+      "init": {
+        "calls": 7,
+        "variants": [
+          {
+            "count": 7,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "quant_config": null
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 896,
+        "variants": [
+          {
+            "count": 7,
+            "args": {
+              "hidden_states": {"shape": [45, 2304], "dtype": "bfloat16"},
+              "positions": null,
+              "state_manager": {"object": "KimiLinearStateManager"}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 889,
+            "args": {
+              "hidden_states": {"shape": [1, 2304], "dtype": "bfloat16"},
+              "positions": null,
+              "state_manager": {"object": "KimiLinearStateManager"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.kimi_moe:KimiMoE": {
+      "init": {
+        "calls": 26,
+        "variants": [
+          {
+            "count": 26,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "quant_config": null
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 3328,
+        "variants": [
+          {
+            "count": 26,
+            "args": {"hidden_states": {"shape": [45, 2304], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 3302,
+            "args": {"hidden_states": {"shape": [1, 2304], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.llama_mlp:LlamaMLP": {
+      "init": {
+        "calls": 27,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "quant_config": null,
+              "hidden_size": null,
+              "intermediate_size": null,
+              "reduce_results": true
+            }
+          },
+          {
+            "count": 26,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "quant_config": null,
+              "hidden_size": null,
+              "intermediate_size": 1024,
+              "reduce_results": false
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 3456,
+        "variants": [
+          {
+            "count": 27,
+            "args": {"x": {"shape": [45, 2304], "dtype": "bfloat16"}},
+            "init_variant_ids": [0, 1]
+          },
+          {
+            "count": 3429,
+            "args": {"x": {"shape": [1, 2304], "dtype": "bfloat16"}},
+            "init_variant_ids": [0, 1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.mla_attention_impl:MLAAttention": {
+      "init": {
+        "calls": 7,
+        "variants": [
+          {
+            "count": 7,
+            "args": {
+              "num_heads": 16,
+              "scale": 0.07216878364870322,
+              "qk_nope_head_dim": 128,
+              "qk_rope_head_dim": 64,
+              "v_head_dim": 128,
+              "kv_lora_rank": 512,
+              "is_sparse": false,
+              "kv_cache_dtype": null,
+              "topk_tokens": null
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 896,
+        "variants": [
+          {
+            "count": 7,
+            "args": {
+              "q": {"shape": [45, 16, 192], "dtype": "bfloat16"},
+              "kv_c_normed": {"shape": [45, 512], "dtype": "bfloat16"},
+              "k_pe": {"shape": [45, 1, 64], "dtype": "bfloat16", "stride": [576, 64, 1]},
+              "kv_b_proj": null,
+              "topk_indices": null,
+              "output_shape": [45, 2048],
+              "_ctx": {"prefill": true, "pf_seqs": 0}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 889,
+            "args": {
+              "q": {"shape": [1, 16, 192], "dtype": "bfloat16"},
+              "kv_c_normed": {"shape": [1, 512], "dtype": "bfloat16"},
+              "k_pe": {"shape": [1, 1, 64], "dtype": "bfloat16"},
+              "kv_b_proj": null,
+              "topk_indices": null,
+              "output_shape": [1, 2048],
+              "_ctx": {"prefill": false, "pf_seqs": 0}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.parallel_embedding:ParallelLMHead": {
+      "init": {
+        "calls": 2,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "num_embeddings": 163840,
+              "embedding_dim": 2304,
+              "bias": false,
+              "params_dtype": null,
+              "org_num_embeddings": null,
+              "padding_size": 64
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "num_embeddings": 163840,
+              "embedding_dim": 2304,
+              "params_dtype": null,
+              "org_num_embeddings": null,
+              "padding_size": 64
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 128,
+        "variants": [
+          {
+            "count": 128,
+            "args": {"x": {"shape": [1, 2304], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.parallel_embedding:VocabParallelEmbedding": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "num_embeddings": 163840,
+              "embedding_dim": 2304,
+              "params_dtype": null,
+              "org_num_embeddings": null,
+              "padding_size": 64
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 128,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"x": {"shape": [45], "dtype": "int64"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 127,
+            "args": {"x": {"shape": [1], "dtype": "int64"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.parallel_linear:ColumnParallelLinear": {
+      "init": {
+        "calls": 74,
+        "variants": [
+          {
+            "count": 20,
+            "args": {"input_size": 2304, "output_size": 12320, "bias": false, "quant_config": null}
+          },
+          {
+            "count": 40,
+            "args": {"input_size": 128, "output_size": 4096, "bias": false, "quant_config": null}
+          },
+          {
+            "count": 7,
+            "args": {"input_size": 2304, "output_size": 6144, "bias": false, "quant_config": null}
+          },
+          {
+            "count": 7,
+            "args": {"input_size": 512, "output_size": 8192, "bias": false, "quant_config": null}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 8583,
+        "variants": [
+          {
+            "count": 27,
+            "args": {"x": {"shape": [45, 2304], "dtype": "bfloat16"}},
+            "init_variant_ids": [0, 2]
+          },
+          {
+            "count": 40,
+            "args": {"x": {"shape": [45, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 7,
+            "args": {"x": {"shape": [45, 512], "dtype": "bfloat16"}},
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 3429,
+            "args": {"x": {"shape": [1, 2304], "dtype": "bfloat16"}},
+            "init_variant_ids": [0, 2]
+          },
+          {
+            "count": 5080,
+            "args": {"x": {"shape": [1, 128], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.parallel_linear:MergedColumnParallelLinear": {
+      "init": {
+        "calls": 27,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "input_size": 2304,
+              "output_sizes": [9216, 9216],
+              "bias": false,
+              "quant_config": null,
+              "disable_tp": false
+            }
+          },
+          {
+            "count": 26,
+            "args": {
+              "input_size": 2304,
+              "output_sizes": [1024, 1024],
+              "bias": false,
+              "quant_config": null,
+              "disable_tp": false
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 3456,
+        "variants": [
+          {
+            "count": 27,
+            "args": {"x": {"shape": [45, 2304], "dtype": "bfloat16"}},
+            "init_variant_ids": [0, 1]
+          },
+          {
+            "count": 3429,
+            "args": {"x": {"shape": [1, 2304], "dtype": "bfloat16"}},
+            "init_variant_ids": [0, 1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.parallel_linear:ReplicatedLinear": {
+      "init": {
+        "calls": 73,
+        "variants": [
+          {
+            "count": 40,
+            "args": {"input_size": 2304, "output_size": 128, "bias": false, "quant_config": null}
+          },
+          {
+            "count": 26,
+            "args": {"input_size": 2304, "output_size": 256, "bias": false, "quant_config": null}
+          },
+          {
+            "count": 7,
+            "args": {"input_size": 2304, "output_size": 576, "bias": false, "quant_config": null}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 6016,
+        "variants": [
+          {
+            "count": 47,
+            "args": {"x": {"shape": [45, 2304], "dtype": "bfloat16"}},
+            "init_variant_ids": [0, 2]
+          },
+          {
+            "count": 5969,
+            "args": {"x": {"shape": [1, 2304], "dtype": "bfloat16"}},
+            "init_variant_ids": [0, 2]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.parallel_linear:RowParallelLinear": {
+      "init": {
+        "calls": 54,
+        "variants": [
+          {
+            "count": 27,
+            "args": {
+              "input_size": 4096,
+              "output_size": 2304,
+              "bias": false,
+              "quant_config": null,
+              "reduce_results": true
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "input_size": 9216,
+              "output_size": 2304,
+              "bias": false,
+              "quant_config": null,
+              "reduce_results": true
+            }
+          },
+          {
+            "count": 26,
+            "args": {
+              "input_size": 1024,
+              "output_size": 2304,
+              "bias": false,
+              "quant_config": null,
+              "reduce_results": false
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 6912,
+        "variants": [
+          {
+            "count": 27,
+            "args": {"x": {"shape": [45, 2048], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 1,
+            "args": {"x": {"shape": [45, 4608], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 26,
+            "args": {"x": {"shape": [45, 512], "dtype": "bfloat16"}},
+            "init_variant_ids": [2]
+          },
+          {
+            "count": 3429,
+            "args": {"x": {"shape": [1, 2048], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 127,
+            "args": {"x": {"shape": [1, 4608], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 3302,
+            "args": {"x": {"shape": [1, 512], "dtype": "bfloat16"}},
+            "init_variant_ids": [2]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.kimi_linear_decoder:KimiLinearDecoderLayer": {
+      "init": {
+        "calls": 27,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 0,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 1,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 2,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 3,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 4,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 5,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 6,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 7,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 8,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 9,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 10,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 11,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 12,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 13,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 14,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 15,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 16,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 17,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 18,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 19,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 20,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 21,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 22,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 23,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 24,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 25,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "layer_idx": 26,
+              "quant_config": null
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 3456,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "hidden_states": {"shape": [45, 2304], "dtype": "bfloat16"},
+              "residual": null,
+              "state_manager": {"object": "KimiLinearStateManager"}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 26,
+            "args": {
+              "hidden_states": {"shape": [45, 2304], "dtype": "bfloat16"},
+              "residual": {"shape": [45, 2304], "dtype": "bfloat16"},
+              "state_manager": {"object": "KimiLinearStateManager"}
+            },
+            "init_variant_ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26
+            ]
+          },
+          {
+            "count": 127,
+            "args": {
+              "hidden_states": {"shape": [1, 2304], "dtype": "bfloat16"},
+              "residual": null,
+              "state_manager": {"object": "KimiLinearStateManager"}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 3302,
+            "args": {
+              "hidden_states": {"shape": [1, 2304], "dtype": "bfloat16"},
+              "residual": {"shape": [1, 2304], "dtype": "bfloat16"},
+              "state_manager": {"object": "KimiLinearStateManager"}
+            },
+            "init_variant_ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26
+            ]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearForCausalLM": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.kimi_linear:KimiLinearConfig",
+                "fields": {
+                  "hidden_size": 2304,
+                  "num_hidden_layers": 27,
+                  "num_attention_heads": 32,
+                  "num_key_value_heads": 32,
+                  "head_dim": 72,
+                  "intermediate_size": 9216,
+                  "vocab_size": 163840,
+                  "rms_norm_eps": 1e-05,
+                  "rope_theta": 10000.0,
+                  "tie_word_embeddings": false,
+                  "kv_lora_rank": 512,
+                  "q_lora_rank": null,
+                  "qk_nope_head_dim": 128,
+                  "qk_rope_head_dim": 64,
+                  "v_head_dim": 128,
+                  "num_experts": 256,
+                  "num_experts_per_token": 8,
+                  "num_shared_experts": 1,
+                  "moe_intermediate_size": 1024,
+                  "moe_layer_freq": 1,
+                  "moe_renormalize": true,
+                  "moe_router_activation_func": "sigmoid",
+                  "routed_scaling_factor": 2.446,
+                  "use_grouped_topk": true,
+                  "num_expert_group": 1,
+                  "topk_group": 1,
+                  "first_k_dense_replace": 1,
+                  "kda_layers": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26],
+                  "full_attn_layers": [4, 8, 12, 16, 20, 24, 27],
+                  "kda_num_heads": 32,
+                  "kda_head_dim": 128,
+                  "short_conv_kernel_size": 4,
+                  "model_type": "kimi_linear",
+                  "dtype": {"$dtype": "bfloat16"},
+                  "hidden_act": "silu",
+                  "mla_use_nope": true
+                }
+              },
+              "quant_config": null
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 128,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "input_ids": {"shape": [45], "dtype": "int64"},
+              "positions": {"shape": [45], "dtype": "int64"},
+              "state_manager": {"object": "KimiLinearStateManager"}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 127,
+            "args": {
+              "input_ids": {"shape": [1], "dtype": "int64"},
+              "positions": {"shape": [1], "dtype": "int64"},
+              "state_manager": {"object": "KimiLinearStateManager"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    }
+  }
+}

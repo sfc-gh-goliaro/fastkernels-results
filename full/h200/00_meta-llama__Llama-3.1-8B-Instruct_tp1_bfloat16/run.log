@@ -1,0 +1,162 @@
+job_index: 0
+name: meta-llama/Llama-3.1-8B-Instruct
+tp: 1
+CUDA_VISIBLE_DEVICES: 0
+ray.get_gpu_ids(): ['0']
+parent_visible_gpus: 0,1,2,3,4,5,6,7
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.capture default --max-requests 1000000 --output /code/users/goliaro/h200-capture/00_meta-llama__Llama-3.1-8B-Instruct_tp1_bfloat16/report.json
+
+Importing fastkernels engine ...
+Discovering operators in fastkernels.tasks.baseline ...
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+  Instrumented 455 operator class(es).
+
+########## Scenario: meta-llama/Llama-3.1-8B-Instruct (dtype=bfloat16, tp=1, enforce_eager=False) ##########
+Loading meta-llama/Llama-3.1-8B-Instruct into fastkernels LlamaEngine ...
+  (forcing enforce_eager=True for capture; the scenario's enforce_eager=False applies to benchmarking only)
+  [1/6] Loading model weights...
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1514.84it/s]
+  Allocating Llama model...
+  Loading weights from 4 safetensors file(s) [fastsafetensors GPU-direct]...
+    0 shards loaded (6.0s)
+  Loaded 291 weight shards (7.0s).
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1638.34it/s]
+  [1/6] Model loaded in 8.6s
+  [2/6] Warmup forward pass...
+2026-08-21 09:10:55,578 - INFO - autotuner.py:651 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+2026-08-21 09:10:56,184 - INFO - autotuner.py:674 - flashinfer.jit: [Autotuner]: Autotuning process ends
+  [2/6] Warmup done in 0.6s
+  [3/6] DeepGEMM warmup...
+  [3/6] DeepGEMM done in 0.0s
+  [4/6] Allocating KV cache...
+  KV cache: 53178 blocks x 16 = 850848 token slots
+  Attention backend: flash_attn (block_size=16, kv_layout=NHD)
+  [4/6] KV cache done in 0.1s
+  [6/6] Init greedy buffers...
+  Post-capture memory: peak_alloc=118.9G cur_alloc=118.9G reserved=123.5G free=15.6G of 140G
+  Scheduling: max_num_seqs=1024, max_num_batched_tokens=16384
+
+=== Capturing workload: mixed ===
+Loading 'mixed' workload prompts (1000) ...
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Running 1000 prompt(s) at max_batch_size=1024, max_new_tokens=[1..1024] (modality=text, chat_template=True) ...
+Processed prompts:   0%|          | 0/1000 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts:   0%|          | 1/1000 [00:01<19:00,  1.14s/it, est. speed input: 135.76 toks/s, output: 0.88 toks/s]Processed prompts:   0%|          | 2/1000 [00:02<19:30,  1.17s/it, est. speed input: 95.85 toks/s, output: 2.57 toks/s] Processed prompts:   0%|          | 4/1000 [00:02<09:20,  1.78it/s, est. speed input: 117.27 toks/s, output: 5.11 toks/s]Processed prompts:   1%|          | 6/1000 [00:03<06:29,  2.55it/s, est. speed input: 556.95 toks/s, output: 7.97 toks/s]Processed prompts:   1%|          | 7/1000 [00:03<08:13,  2.01it/s, est. speed input: 463.06 toks/s, output: 8.61 toks/s]Processed prompts:   1%|          | 9/1000 [00:04<06:17,  2.62it/s, est. speed input: 451.36 toks/s, output: 9.11 toks/s]Processed prompts:   1%|          | 10/1000 [00:06<11:07,  1.48it/s, est. speed input: 334.87 toks/s, output: 8.77 toks/s]Processed prompts:   1%|          | 11/1000 [00:06<11:44,  1.40it/s, est. speed input: 404.86 toks/s, output: 9.02 toks/s]Processed prompts:   1%|▏         | 14/1000 [00:07<07:58,  2.06it/s, est. speed input: 613.02 toks/s, output: 11.84 toks/s]Processed prompts:   2%|▏         | 15/1000 [00:08<07:46,  2.11it/s, est. speed input: 588.84 toks/s, output: 12.33 toks/s]Processed prompts:   2%|▏         | 18/1000 [00:08<05:12,  3.14it/s, est. speed input: 585.46 toks/s, output: 13.04 toks/s]Processed prompts:   2%|▏         | 19/1000 [00:08<04:58,  3.28it/s, est. speed input: 581.29 toks/s, output: 13.36 toks/s]Processed prompts: 100%|██████████| 1000/1000 [00:56<00:00, 20.17it/s, est. speed input: 5800.34 toks/s, output: 6911.17 toks/s]Processed prompts: 100%|██████████| 1000/1000 [00:56<00:00, 17.73it/s, est. speed input: 5800.34 toks/s, output: 6911.17 toks/s]
+  Generation: 0/1000 reached EOS before their per-request budget; lengths=[221, 208, 577, 363, 662, 1024, 279, 41, 718, 276, 57, 565, 577, 147, 88, 95, 443, 342, 158, 185, 221, 199, 291, 85, 643, 338, 511, 982, 1024, 280, 425, 9, 346, 167, 168, 1012, 432, 578, 102, 824, 199, 288, 682, 575, 458, 1024, 5, 677, 82, 406, 551, 237, 583, 23, 1024, 1024, 498, 273, 785, 639, 519, 256, 531, 651, 205, 65, 472, 478, 243, 358, 914, 74, 1024, 367, 77, 483, 130, 334, 1, 91, 243, 443, 131, 6, 688, 122, 302, 779, 180, 456, 436, 712, 325, 227, 558, 290, 35, 1024, 261, 422, 1024, 757, 918, 131, 571, 122, 1024, 294, 230, 303, 48, 309, 38, 414, 255, 251, 619, 497, 5, 1001, 13, 16, 404, 268, 116, 603, 262, 834, 75, 695, 542, 662, 266, 698, 1024, 147, 5, 55, 384, 461, 44, 368, 152, 594, 851, 328, 641, 399, 956, 909, 521, 193, 37, 412, 1024, 1024, 329, 764, 935, 129, 155, 451, 660, 71, 1024, 205, 641, 104, 442, 634, 825, 208, 511, 318, 1024, 308, 559, 620, 962, 107, 95, 362, 254, 39, 196, 532, 486, 1024, 138, 313, 709, 155, 108, 123, 484, 793, 535, 43, 204, 1024, 552, 383, 197, 76, 902, 61, 58, 3, 504, 413, 907, 749, 41, 161, 296, 529, 73, 301, 142, 166, 421, 826, 820, 642, 854, 365, 118, 277, 545, 366, 896, 810, 266, 407, 486, 332, 557, 34, 51, 54, 143, 885, 735, 246, 483, 122, 1024, 847, 505, 226, 471, 474, 86, 555, 290, 337, 307, 103, 188, 453, 462, 369, 96, 380, 1024, 213, 1024, 292, 476, 790, 258, 772, 682, 138, 232, 126, 560, 349, 5, 931, 598, 47, 1024, 515, 414, 942, 219, 323, 1024, 618, 690, 53, 447, 329, 339, 510, 80, 768, 23, 181, 124, 114, 164, 218, 392, 236, 474, 672, 205, 399, 371, 81, 515, 605, 359, 43, 34, 762, 20, 556, 602, 114, 393, 160, 296, 320, 432, 963, 59, 305, 289, 578, 330, 291, 690, 340, 1024, 140, 647, 75, 268, 759, 699, 288, 751, 212, 435, 631, 380, 648, 1024, 1017, 179, 80, 189, 534, 327, 279, 353, 973, 455, 498, 432, 303, 774, 427, 631, 226, 381, 186, 455, 470, 244, 293, 101, 35, 48, 108, 369, 49, 1024, 55, 179, 418, 349, 300, 679, 456, 109, 427, 364, 472, 9, 467, 520, 15, 96, 540, 95, 210, 24, 185, 569, 896, 531, 364, 475, 806, 90, 290, 591, 469, 232, 97, 1009, 596, 255, 55, 39, 50, 700, 375, 105, 111, 762, 87, 1024, 269, 305, 502, 602, 1022, 508, 940, 256, 104, 1013, 284, 369, 281, 329, 876, 298, 735, 148, 440, 149, 33, 593, 137, 734, 788, 1024, 1020, 446, 197, 9, 22, 58, 666, 746, 43, 364, 108, 238, 938, 614, 256, 1, 34, 196, 127, 346, 535, 323, 410, 90, 74, 199, 511, 594, 93, 555, 97, 145, 145, 457, 502, 587, 687, 132, 408, 416, 163, 45, 304, 325, 582, 597, 287, 120, 456, 155, 379, 172, 77, 1024, 191, 207, 445, 76, 1024, 290, 137, 737, 75, 232, 192, 220, 9, 208, 108, 656, 437, 209, 357, 101, 182, 118, 85, 293, 923, 54, 92, 290, 583, 787, 517, 279, 1024, 335, 89, 374, 1024, 404, 552, 104, 743, 366, 502, 771, 474, 118, 21, 378, 273, 1024, 269, 160, 428, 249, 615, 59, 131, 118, 271, 1024, 148, 48, 8, 771, 68, 377, 305, 1019, 424, 39, 270, 212, 853, 422, 285, 751, 864, 294, 75, 52, 676, 10, 500, 364, 552, 275, 438, 504, 713, 197, 401, 432, 1024, 396, 1020, 422, 406, 582, 1024, 191, 334, 24, 229, 9, 478, 252, 331, 54, 409, 443, 285, 335, 366, 122, 676, 1024, 40, 426, 696, 220, 127, 877, 449, 633, 664, 353, 14, 596, 159, 182, 307, 87, 307, 321, 186, 355, 965, 74, 796, 222, 24, 754, 105, 425, 279, 1024, 399, 381, 52, 464, 543, 1024, 107, 723, 1024, 720, 355, 251, 76, 659, 105, 366, 299, 754, 662, 467, 35, 381, 52, 575, 220, 116, 147, 311, 104, 209, 313, 596, 433, 476, 4, 252, 54, 560, 1024, 686, 135, 10, 745, 1024, 46, 573, 192, 459, 303, 169, 131, 256, 46, 119, 472, 760, 143, 652, 167, 110, 565, 371, 32, 231, 76, 685, 1015, 8, 325, 283, 112, 35, 84, 6, 454, 138, 56, 135, 528, 223, 11, 280, 151, 334, 441, 104, 249, 61, 680, 122, 544, 298, 356, 49, 230, 30, 496, 1024, 100, 107, 627, 1024, 17, 638, 257, 185, 691, 444, 236, 55, 546, 37, 550, 742, 403, 288, 312, 289, 555, 714, 409, 145, 176, 720, 78, 881, 32, 42, 569, 501, 853, 278, 175, 314, 238, 922, 978, 514, 103, 1024, 140, 310, 819, 457, 799, 1024, 8, 91, 260, 280, 19, 622, 370, 83, 1024, 806, 1024, 1024, 684, 18, 852, 339, 260, 161, 392, 326, 32, 34, 412, 7, 652, 817, 182, 1024, 40, 99, 402, 201, 304, 480, 206, 18, 135, 1024, 659, 471, 145, 441, 15, 278, 39, 82, 200, 93, 111, 207, 470, 208, 190, 678, 296, 1024, 235, 397, 288, 15, 149, 647, 556, 1024, 356, 305, 389, 49, 103, 398, 530, 39, 178, 260, 878, 1024, 454, 278, 40, 117, 202, 1011, 24, 157, 102, 405, 594, 2, 353, 327, 83, 295, 484, 13, 64, 342, 1, 588, 432, 298, 279, 510, 237, 32, 283, 459, 276, 159, 132, 290, 812, 239, 863, 655, 9, 369, 260, 755, 118, 221, 412, 322, 411, 158, 125, 205, 432, 147, 194, 309, 121, 116, 448, 375, 359, 87, 802, 510, 694, 556, 509, 610, 1024, 229, 214, 463, 741, 21, 250, 1024, 103, 21, 311, 6, 390, 469, 165, 197, 304, 21, 271, 352, 9, 1024, 157, 276, 238, 25, 243, 122, 90, 766, 855, 202, 680, 230, 64, 451, 257, 310, 1024, 140, 685, 474, 293, 221, 223, 919, 650, 149, 707, 299, 431, 273, 432, 32, 1024, 469, 682, 279, 335]
+  Verification 1 (hook cross-check) [PASS]: 18/18 operator forwards match the independent hook capture.
+  Verification 2 (mock batching replay) [PASS]: 10/10 checks passed (1044 simulated steps, 21 with prefill).
+  Captured 19 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/00_meta-llama__Llama-3.1-8B-Instruct_tp1_bfloat16/report_meta-llama__Llama-3.1-8B-Instruct_tp1_bfloat16_mixed_req1000000_seqsauto_eager.json
+
+=== Capturing workload: long-context ===
+Loading 'long-context' workload prompts (64) ...
+  (dropped 4/64 prompt(s) whose prompt+decode exceeds max_model_len=131104)
+Running 60 prompt(s) at max_batch_size=1024, max_new_tokens=[256..256] (modality=text, chat_template=True) ...
+Processed prompts:   0%|          | 0/60 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts:   2%|▏         | 1/60 [00:40<39:55, 40.60s/it, est. speed input: 404.14 toks/s, output: 6.31 toks/s]Processed prompts:   3%|▎         | 2/60 [00:40<16:18, 16.86s/it, est. speed input: 803.47 toks/s, output: 12.53 toks/s]Processed prompts:   5%|▌         | 3/60 [00:41<08:46,  9.25s/it, est. speed input: 2397.90 toks/s, output: 18.72 toks/s]Processed prompts:   8%|▊         | 5/60 [00:41<03:48,  4.16s/it, est. speed input: 2960.42 toks/s, output: 30.81 toks/s]Processed prompts:  10%|█         | 6/60 [00:42<02:51,  3.18s/it, est. speed input: 3101.58 toks/s, output: 36.30 toks/s]Processed prompts:  13%|█▎        | 8/60 [00:43<01:42,  1.97s/it, est. speed input: 3598.55 toks/s, output: 47.29 toks/s]Processed prompts:  15%|█▌        | 9/60 [00:44<01:31,  1.79s/it, est. speed input: 3683.39 toks/s, output: 51.73 toks/s]Processed prompts:  18%|█▊        | 11/60 [00:45<01:03,  1.29s/it, est. speed input: 4490.70 toks/s, output: 61.67 toks/s]Processed prompts:  20%|██        | 12/60 [00:46<00:54,  1.14s/it, est. speed input: 4782.72 toks/s, output: 66.34 toks/s]Processed prompts:  22%|██▏       | 13/60 [00:46<00:46,  1.01it/s, est. speed input: 4904.63 toks/s, output: 71.06 toks/s]Processed prompts:  23%|██▎       | 14/60 [00:47<00:42,  1.08it/s, est. speed input: 5171.50 toks/s, output: 75.31 toks/s]Processed prompts:  25%|██▌       | 15/60 [00:48<00:36,  1.22it/s, est. speed input: 5455.01 toks/s, output: 79.80 toks/s]Processed prompts:  28%|██▊       | 17/60 [00:48<00:24,  1.76it/s, est. speed input: 5908.00 toks/s, output: 89.55 toks/s]Processed prompts:  30%|███       | 18/60 [00:49<00:24,  1.71it/s, est. speed input: 5997.92 toks/s, output: 93.58 toks/s]Processed prompts:  32%|███▏      | 19/60 [00:49<00:22,  1.81it/s, est. speed input: 6272.39 toks/s, output: 97.87 toks/s]Processed prompts: 100%|██████████| 60/60 [01:01<00:00,  3.39it/s, est. speed input: 17135.46 toks/s, output: 251.42 toks/s]Processed prompts: 100%|██████████| 60/60 [01:01<00:00,  1.02s/it, est. speed input: 17135.46 toks/s, output: 251.42 toks/s]
+  Generation: 0/60 reached EOS before their per-request budget; lengths=[256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256]
+  Verification 1 (hook cross-check) [PASS]: 18/18 operator forwards match the independent hook capture.
+  Verification 2 (mock batching replay) [PASS]: 10/10 checks passed (530 simulated steps, 65 with prefill).
+  Captured 19 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/00_meta-llama__Llama-3.1-8B-Instruct_tp1_bfloat16/report_meta-llama__Llama-3.1-8B-Instruct_tp1_bfloat16_long-context_req1000000_seqsauto_eager.json
+
+=== Capturing workload: single-request ===
+Loading 'single-request' workload prompts (1) ...
+Running 1 prompt(s) at max_batch_size=1024, max_new_tokens=[128..128] (modality=text, chat_template=True) ...
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.55s/it, est. speed input: 13.15 toks/s, output: 23.06 toks/s]Processed prompts: 100%|██████████| 1/1 [00:05<00:00,  5.55s/it, est. speed input: 13.15 toks/s, output: 23.06 toks/s]
+  Generation: 0/1 reached EOS before their per-request budget; lengths=[128]
+  Verification 1 (hook cross-check) [PASS]: 18/18 operator forwards match the independent hook capture.
+  Verification 2 (mock batching replay) [PASS]: 10/10 checks passed (128 simulated steps, 1 with prefill).
+  Captured 19 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/00_meta-llama__Llama-3.1-8B-Instruct_tp1_bfloat16/report_meta-llama__Llama-3.1-8B-Instruct_tp1_bfloat16_single-request_req1000000_seqsauto_eager.json
+
+=== Capturing workload: fixed-batch-32 ===
+Loading 'fixed-batch-32' workload prompts (32) ...
+Running 32 prompt(s) at max_batch_size=1024, max_new_tokens=[9..128] (modality=text, chat_template=True) ...
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [00:05<00:00,  5.51it/s, est. speed input: 1639.01 toks/s, output: 637.66 toks/s]Processed prompts: 100%|██████████| 32/32 [00:05<00:00,  5.51it/s, est. speed input: 1639.01 toks/s, output: 637.66 toks/s]
+  Generation: 0/32 reached EOS before their per-request budget; lengths=[128, 128, 128, 128, 128, 128, 128, 41, 128, 128, 57, 128, 128, 128, 88, 95, 128, 128, 128, 128, 128, 128, 128, 85, 128, 128, 128, 128, 128, 128, 128, 9]
+  Verification 1 (hook cross-check) [PASS]: 18/18 operator forwards match the independent hook capture.
+  Verification 2 (mock batching replay) [PASS]: 10/10 checks passed (128 simulated steps, 1 with prefill).
+  Captured 19 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/00_meta-llama__Llama-3.1-8B-Instruct_tp1_bfloat16/report_meta-llama__Llama-3.1-8B-Instruct_tp1_bfloat16_fixed-batch-32_req1000000_seqsauto_eager.json

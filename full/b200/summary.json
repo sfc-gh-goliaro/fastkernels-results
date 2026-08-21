@@ -1,0 +1,93 @@
+{
+  "root": "/home/yak/.fastkernels/captures/capture_20260821-081742",
+  "scenarios": [
+    {
+      "index": 0,
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "index": 1,
+      "model": "Qwen/Qwen3-Next-80B-A3B-Instruct",
+      "tp": 2,
+      "dtype": "bfloat16",
+      "status": "verify-failed",
+      "detail": "/home/yak/.fastkernels/captures/capture_20260821-081742/01_Qwen__Qwen3-Next-80B-A3B-Instruct_tp2_bfloat16/run.log"
+    },
+    {
+      "index": 2,
+      "model": "moonshotai/Kimi-Linear-48B-A3B-Instruct",
+      "tp": 2,
+      "dtype": "bfloat16",
+      "status": "verify-failed",
+      "detail": "/home/yak/.fastkernels/captures/capture_20260821-081742/02_moonshotai__Kimi-Linear-48B-A3B-Instruct_tp2_bfloat16/run.log"
+    },
+    {
+      "index": 3,
+      "model": "openai/gpt-oss-120b",
+      "tp": 2,
+      "dtype": "mxfp4",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "index": 4,
+      "model": "fla-hub/gla-2.7B-100B",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "index": 5,
+      "model": "black-forest-labs/FLUX.1-dev",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "index": 6,
+      "model": "Qwen/Qwen3-VL-235B-A22B-Instruct-FP8",
+      "tp": 4,
+      "dtype": "fp8",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "index": 7,
+      "model": "jameslahm/yolov10n",
+      "tp": 1,
+      "dtype": "float16",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "index": 8,
+      "model": "OpenFold/OpenFold3",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "index": 9,
+      "model": "BAAI/bge-m3",
+      "tp": 1,
+      "dtype": "float16",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "index": 10,
+      "model": "Etched/oasis-500m",
+      "tp": 1,
+      "dtype": "float16",
+      "status": "ok",
+      "detail": ""
+    }
+  ]
+}

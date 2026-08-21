@@ -1,0 +1,1197 @@
+Importing fastkernels engine ...
+Discovering operators in fastkernels.tasks.baseline ...
+  (skipped 7 baseline module(s) that failed to import)
+    - fastkernels.tasks.baseline.L1.bitnet_rms_norm: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L2.bitnet_attention: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L2.bitnet_mlp: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L2.pointtransformerv3_layers: ModuleNotFoundError: No module named 'spconv'
+    - fastkernels.tasks.baseline.L3.bitnet_decoder: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L4.bitnet: ModuleNotFoundError: No module named 'xformers'
+    - fastkernels.tasks.baseline.L4.pointtransformerv3: ModuleNotFoundError: No module named 'spconv'
+  Instrumented 446 operator class(es).
+
+########## Scenario: moonshotai/Kimi-Linear-48B-A3B-Instruct (dtype=bfloat16, tp=2, enforce_eager=False) ##########
+Loading moonshotai/Kimi-Linear-48B-A3B-Instruct into fastkernels LlamaEngine ...
+  (forcing enforce_eager=True for capture; the scenario's enforce_eager=False applies to benchmarking only)
+[fastkernels] Building CUDA op 'allreduce' (1 source(s)) for arch '10.0a' -- one-time JIT compile; streaming ninja progress ...
+[fastkernels] Building CUDA op 'allreduce' (1 source(s)) for arch '10.0a' -- one-time JIT compile; streaming ninja progress ...
+  [1/6] Loading model weights...
+Fetching 25 files:   0%|          | 0/25 [00:00<?, ?it/s]Fetching 25 files:   0%|          | 0/25 [00:00<?, ?it/s]Fetching 25 files:   4%|▍         | 1/25 [00:00<00:02,  8.89it/s]Fetching 25 files:   4%|▍         | 1/25 [00:00<00:04,  5.93it/s]Fetching 25 files:   8%|▊         | 2/25 [00:00<00:03,  7.15it/s]Fetching 25 files:  12%|█▏        | 3/25 [00:26<03:32,  9.66s/it]Fetching 25 files:  12%|█▏        | 3/25 [00:26<04:21, 11.90s/it]Fetching 25 files:  16%|█▌        | 4/25 [00:29<02:37,  7.51s/it]Fetching 25 files:  16%|█▌        | 4/25 [00:29<02:59,  8.55s/it]Fetching 25 files:  20%|██        | 5/25 [00:30<01:47,  5.35s/it]Fetching 25 files:  20%|██        | 5/25 [00:30<01:56,  5.84s/it]Fetching 25 files:  24%|██▍       | 6/25 [00:34<01:36,  5.08s/it]Fetching 25 files:  24%|██▍       | 6/25 [00:34<01:31,  4.82s/it]Fetching 25 files:  28%|██▊       | 7/25 [00:44<01:58,  6.60s/it]Fetching 25 files:  28%|██▊       | 7/25 [00:44<02:03,  6.86s/it]Fetching 25 files:  32%|███▏      | 8/25 [00:52<01:59,  7.03s/it]Fetching 25 files:  32%|███▏      | 8/25 [00:52<02:02,  7.23s/it]Fetching 25 files:  36%|███▌      | 9/25 [00:52<01:19,  4.94s/it]Fetching 25 files:  36%|███▌      | 9/25 [00:52<01:20,  5.04s/it]Fetching 25 files:  40%|████      | 10/25 [00:54<01:00,  4.03s/it]Fetching 25 files:  40%|████      | 10/25 [00:54<01:01,  4.07s/it]Fetching 25 files:  48%|████▊     | 12/25 [01:02<00:52,  4.02s/it]Fetching 25 files:  48%|████▊     | 12/25 [01:02<00:52,  4.05s/it]Fetching 25 files:  52%|█████▏    | 13/25 [01:08<00:52,  4.38s/it]Fetching 25 files:  52%|█████▏    | 13/25 [01:08<00:52,  4.41s/it]Fetching 25 files:  56%|█████▌    | 14/25 [01:17<01:02,  5.70s/it]Fetching 25 files:  56%|█████▌    | 14/25 [01:17<01:02,  5.70s/it]Fetching 25 files:  60%|██████    | 15/25 [01:25<01:03,  6.35s/it]Fetching 25 files:  60%|██████    | 15/25 [01:25<01:03,  6.37s/it]Fetching 25 files:  64%|██████▍   | 16/25 [01:26<00:41,  4.62s/it]Fetching 25 files:  68%|██████▊   | 17/25 [01:26<00:26,  3.33s/it]Fetching 25 files:  72%|███████▏  | 18/25 [01:26<00:16,  2.40s/it]Fetching 25 files:  64%|██████▍   | 16/25 [01:26<00:42,  4.73s/it]Fetching 25 files:  76%|███████▌  | 19/25 [01:28<00:13,  2.26s/it]Fetching 25 files:  76%|███████▌  | 19/25 [01:28<00:14,  2.47s/it]Fetching 25 files:  80%|████████  | 20/25 [01:32<00:14,  2.83s/it]Fetching 25 files:  80%|████████  | 20/25 [01:32<00:14,  2.83s/it]Fetching 25 files:  84%|████████▍ | 21/25 [01:32<00:09,  2.27s/it]Fetching 25 files:  84%|████████▍ | 21/25 [01:32<00:08,  2.12s/it]Fetching 25 files:  88%|████████▊ | 22/25 [01:36<00:07,  2.65s/it]Fetching 25 files:  88%|████████▊ | 22/25 [01:36<00:07,  2.62s/it]Fetching 25 files:  92%|█████████▏| 23/25 [01:55<00:13,  6.88s/it]Fetching 25 files:  92%|█████████▏| 23/25 [01:55<00:14,  7.49s/it]Fetching 25 files: 100%|██████████| 25/25 [01:57<00:00,  4.44s/it]Fetching 25 files: 100%|██████████| 25/25 [01:57<00:00,  4.71s/it]
+Fetching 25 files: 100%|██████████| 25/25 [01:57<00:00,  4.57s/it]Fetching 25 files: 100%|██████████| 25/25 [01:57<00:00,  4.71s/it]
+[transformers] A new version of the following files was downloaded from https://huggingface.co/moonshotai/Kimi-Linear-48B-A3B-Instruct:
+- configuration_kimi.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+[transformers] A new version of the following files was downloaded from https://huggingface.co/moonshotai/Kimi-Linear-48B-A3B-Instruct:
+- configuration_kimi.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+  Allocating Kimi-Linear model (256 experts, 20 KDA + 7 MLA layers)...
+INFO 08-21 08:21:09 [scheduler.py:252] Chunked prefill is enabled with max_num_batched_tokens=2048.
+INFO 08-21 08:21:09 [vllm.py:1109] Asynchronous scheduling is enabled.
+INFO 08-21 08:21:09 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+  Loading weights from 20 safetensors file(s) [fastsafetensors GPU-direct]...
+  Allocating Kimi-Linear model (256 experts, 20 KDA + 7 MLA layers)...
+INFO 08-21 08:21:13 [scheduler.py:252] Chunked prefill is enabled with max_num_batched_tokens=2048.
+INFO 08-21 08:21:13 [vllm.py:1109] Asynchronous scheduling is enabled.
+INFO 08-21 08:21:13 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+  Loading weights from 20 safetensors file(s) [fastsafetensors GPU-direct]...
+    1933 shards loaded (5.4s)
+    6174 shards loaded (5.3s)
+    10417 shards loaded (10.9s)
+    16774 shards loaded (10.3s)
+  Loaded 20493 weight shards (16.2s).
+  Computed absorbed MLA weights for 7 attention layers.
+Fetching 25 files:   0%|          | 0/25 [00:00<?, ?it/s]Fetching 25 files: 100%|██████████| 25/25 [00:00<00:00, 1775.62it/s]
+  Loaded 20493 weight shards (13.0s).
+  Computed absorbed MLA weights for 7 attention layers.
+Fetching 25 files:   0%|          | 0/25 [00:00<?, ?it/s]Fetching 25 files: 100%|██████████| 25/25 [00:00<00:00, 1586.61it/s]
+  [1/6] Model loaded in 137.4s
+  [2/6] Sharing activation buffers...
+  [3/6] Allocating MLA KV cache...
+  MLA KV cache: 182699 blocks x 64 = 11692736 token slots (7 layers, 1152 bytes/token, dtype=auto)
+  MLA attention backend: FlashMLA (block_size=64, BF16 KV cache)
+  [4/6] Allocating Kimi-Linear state cache...
+  Kimi-Linear state cache: 1024 sequence slots, 182699 MLA blocks (x 64 = 11692736 KV token slots, 7 MLA layers)
+  Engine ready in 137.4s total
+  Scheduling: max_num_seqs=1024, max_num_batched_tokens=16384
+[transformers] A new version of the following files was downloaded from https://huggingface.co/moonshotai/Kimi-Linear-48B-A3B-Instruct:
+- tokenization_kimi.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+
+=== Capturing workload: mixed ===
+Loading 'mixed' workload prompts (1000) ...
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Running 1000 prompt(s) at max_batch_size=1024, max_new_tokens=[1..1024] (modality=text, chat_template=True) ...
+Processed prompts:   0%|          | 0/1000 [00:00<?, ?it/s][fastkernels] Building CUDA op 'gate_linear' (1 source(s)) for arch '10.0a' -- one-time JIT compile; streaming ninja progress ...
+[fastkernels] Building CUDA op 'gate_linear' (1 source(s)) for arch '10.0a' -- one-time JIT compile; streaming ninja progress ...
+[1/2] /usr/local/cuda/bin/nvcc -MD -MF gate_linear.cuda.o.d -DTORCH_EXTENSION_NAME=gate_linear -DTORCH_API_INCLUDE_EXTENSION_H -I/home/yak/fastkernels/fastkernels/tasks/baseline/L1 -isystem /home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/include -isystem /home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /home/yak/miniconda3/envs/dev/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_100a,code=sm_100a --compiler-options '-fPIC' -O3 -DENABLE_FP8 -DFLASHINFER_ENABLE_BF16 -DFLASHINFER_ENABLE_F16 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ --expt-extended-lambda --expt-relaxed-constexpr -DENABLE_NVFP4_SM100=1 -std=c++17 -c /home/yak/fastkernels/fastkernels/tasks/baseline/L1/gate_linear.cu -o gate_linear.cuda.o 
+[2/2] c++ gate_linear.cuda.o -shared -lcublas -lcuda -L/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o gate_linear.so
+[2026-08-21 08:32:30.319] [info] TRT-LLM fused MoE cooperative launch SM allocation: 140 SMs used for MoE, 8 SMs reserved for overlapping kernels (total SMs: 148)
+2026-08-21 08:32:30,320 - INFO - cubin_loader.py:231 - flashinfer.jit: Fetching 481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60//Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x64x128u2_s5_et128x64_m256x64x16_c2x1x1_rM_BN_transOut_schPd2x1x2x3_bN_tma_tmaSf_rgTma_clmp_swiGlu_dynB_sm100f.cubin from https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x64x128u2_s5_et128x64_m256x64x16_c2x1x1_rM_BN_transOut_schPd2x1x2x3_bN_tma_tmaSf_rgTma_clmp_swiGlu_dynB_sm100f.cubin
+[2026-08-21 08:32:30.371] [info] TRT-LLM fused MoE cooperative launch SM allocation: 140 SMs used for MoE, 8 SMs reserved for overlapping kernels (total SMs: 148)
+2026-08-21 08:32:30,373 - INFO - cubin_loader.py:231 - flashinfer.jit: Fetching 481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60//Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x64x128u2_s5_et128x64_m256x64x16_c2x1x1_rM_BN_transOut_schPd2x1x2x3_bN_tma_tmaSf_rgTma_clmp_swiGlu_dynB_sm100f.cubin from https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x64x128u2_s5_et128x64_m256x64x16_c2x1x1_rM_BN_transOut_schPd2x1x2x3_bN_tma_tmaSf_rgTma_clmp_swiGlu_dynB_sm100f.cubin
+2026-08-21 08:32:30,471 - INFO - cubin_loader.py:84 - flashinfer.jit: Acquired lock for /home/yak/.cache/flashinfer/cubins/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x64x128u2_s5_et128x64_m256x64x16_c2x1x1_rM_BN_transOut_schPd2x1x2x3_bN_tma_tmaSf_rgTma_clmp_swiGlu_dynB_sm100f.cubin
+2026-08-21 08:32:30,683 - INFO - cubin_loader.py:114 - flashinfer.jit: File downloaded successfully: https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x64x128u2_s5_et128x64_m256x64x16_c2x1x1_rM_BN_transOut_schPd2x1x2x3_bN_tma_tmaSf_rgTma_clmp_swiGlu_dynB_sm100f.cubin -> /home/yak/.cache/flashinfer/cubins/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x64x128u2_s5_et128x64_m256x64x16_c2x1x1_rM_BN_transOut_schPd2x1x2x3_bN_tma_tmaSf_rgTma_clmp_swiGlu_dynB_sm100f.cubin
+2026-08-21 08:32:30,690 - WARNING - core.py:2978 - flashinfer.jit: the single torch.Tensor return type is deprecated and will be replaced with List[torch.Tensor] in the v0.8.0.
+2026-08-21 08:32:30,876 - INFO - cubin_loader.py:84 - flashinfer.jit: Acquired lock for /home/yak/.cache/flashinfer/cubins/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x64x128u2_s5_et128x64_m256x64x16_c2x1x1_rM_BN_transOut_schPd2x1x2x3_bN_tma_tmaSf_rgTma_clmp_swiGlu_dynB_sm100f.cubin
+2026-08-21 08:32:31,089 - INFO - cubin_loader.py:114 - flashinfer.jit: File downloaded successfully: https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x64x128u2_s5_et128x64_m256x64x16_c2x1x1_rM_BN_transOut_schPd2x1x2x3_bN_tma_tmaSf_rgTma_clmp_swiGlu_dynB_sm100f.cubin -> /home/yak/.cache/flashinfer/cubins/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x64x128u2_s5_et128x64_m256x64x16_c2x1x1_rM_BN_transOut_schPd2x1x2x3_bN_tma_tmaSf_rgTma_clmp_swiGlu_dynB_sm100f.cubin
+2026-08-21 08:32:31,099 - WARNING - core.py:2978 - flashinfer.jit: the single torch.Tensor return type is deprecated and will be replaced with List[torch.Tensor] in the v0.8.0.
+[fastkernels] Building CUDA op 'store_kvcache_fp8_mla' (1 source(s)) for arch '10.0a' -- one-time JIT compile; streaming ninja progress ...
+[fastkernels] Building CUDA op 'store_kvcache_fp8_mla' (1 source(s)) for arch '10.0a' -- one-time JIT compile; streaming ninja progress ...
+[1/2] /usr/local/cuda/bin/nvcc -MD -MF store_kvcache_fp8_mla.cuda.o.d -DTORCH_EXTENSION_NAME=store_kvcache_fp8_mla -DTORCH_API_INCLUDE_EXTENSION_H -I/home/yak/fastkernels/fastkernels/tasks/baseline/L1 -isystem /home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/include -isystem /home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /home/yak/miniconda3/envs/dev/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_100a,code=sm_100a --compiler-options '-fPIC' -O3 -DENABLE_FP8 -DFLASHINFER_ENABLE_BF16 -DFLASHINFER_ENABLE_F16 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ --expt-extended-lambda --expt-relaxed-constexpr -DENABLE_NVFP4_SM100=1 -std=c++17 -c /home/yak/fastkernels/fastkernels/tasks/baseline/L1/store_kvcache_fp8_mla.cu -o store_kvcache_fp8_mla.cuda.o 
+[2/2] c++ store_kvcache_fp8_mla.cuda.o -shared -lcublas -lcuda -L/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o store_kvcache_fp8_mla.so
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_None_007216'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_None_007216'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmem_'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmem_'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+[fastkernels] Building CUDA op 'merge_attn_states' (1 source(s)) for arch '10.0a' -- one-time JIT compile; streaming ninja progress ...
+[fastkernels] Building CUDA op 'merge_attn_states' (1 source(s)) for arch '10.0a' -- one-time JIT compile; streaming ninja progress ...
+[1/2] /usr/local/cuda/bin/nvcc -MD -MF merge_attn_states.cuda.o.d -DTORCH_EXTENSION_NAME=merge_attn_states -DTORCH_API_INCLUDE_EXTENSION_H -I/home/yak/fastkernels/fastkernels/tasks/baseline/L1 -isystem /home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/include -isystem /home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /home/yak/miniconda3/envs/dev/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_100a,code=sm_100a --compiler-options '-fPIC' -O3 -DENABLE_FP8 -DFLASHINFER_ENABLE_BF16 -DFLASHINFER_ENABLE_F16 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ --expt-extended-lambda --expt-relaxed-constexpr -DENABLE_NVFP4_SM100=1 -std=c++17 -c /home/yak/fastkernels/fastkernels/tasks/baseline/L1/merge_attn_states.cu -o merge_attn_states.cuda.o 
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/merge_attn_states.cu(2356): warning #177-D: function "is_fp8_ocp" was declared but never referenced
+  static bool is_fp8_ocp() {
+              ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+[2/2] c++ merge_attn_states.cuda.o -shared -lcublas -lcuda -L/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o merge_attn_states.so
+Processed prompts:   0%|          | 1/1000 [12:23<206:25:37, 743.88s/it]Processed prompts:   0%|          | 2/1000 [12:25<85:08:52, 307.15s/it] Processed prompts:   0%|          | 3/1000 [12:26<46:22:16, 167.44s/it]2026-08-21 08:34:09,519 - INFO - cubin_loader.py:231 - flashinfer.jit: Fetching 158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen//fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64MultiCtasKvVarSeqQ16Kv128StaticSwapsAbForGen.cubin from https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64MultiCtasKvVarSeqQ16Kv128StaticSwapsAbForGen.cubin
+2026-08-21 08:34:09,520 - INFO - cubin_loader.py:84 - flashinfer.jit: Acquired lock for /home/yak/.cache/flashinfer/cubins/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64MultiCtasKvVarSeqQ16Kv128StaticSwapsAbForGen.cubin
+2026-08-21 08:34:09,569 - INFO - cubin_loader.py:231 - flashinfer.jit: Fetching 158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen//fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64MultiCtasKvVarSeqQ16Kv128StaticSwapsAbForGen.cubin from https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64MultiCtasKvVarSeqQ16Kv128StaticSwapsAbForGen.cubin
+2026-08-21 08:34:09,763 - INFO - cubin_loader.py:114 - flashinfer.jit: File downloaded successfully: https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64MultiCtasKvVarSeqQ16Kv128StaticSwapsAbForGen.cubin -> /home/yak/.cache/flashinfer/cubins/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64MultiCtasKvVarSeqQ16Kv128StaticSwapsAbForGen.cubin
+2026-08-21 08:34:09,765 - INFO - cubin_loader.py:231 - flashinfer.jit: Fetching 158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen//fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin from https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin
+2026-08-21 08:34:09,765 - INFO - cubin_loader.py:84 - flashinfer.jit: Acquired lock for /home/yak/.cache/flashinfer/cubins/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin
+2026-08-21 08:34:09,770 - INFO - cubin_loader.py:84 - flashinfer.jit: Acquired lock for /home/yak/.cache/flashinfer/cubins/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64MultiCtasKvVarSeqQ16Kv128StaticSwapsAbForGen.cubin
+2026-08-21 08:34:09,956 - INFO - cubin_loader.py:114 - flashinfer.jit: File downloaded successfully: https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64MultiCtasKvVarSeqQ16Kv128StaticSwapsAbForGen.cubin -> /home/yak/.cache/flashinfer/cubins/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64MultiCtasKvVarSeqQ16Kv128StaticSwapsAbForGen.cubin
+2026-08-21 08:34:09,958 - INFO - cubin_loader.py:231 - flashinfer.jit: Fetching 158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen//fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin from https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin
+2026-08-21 08:34:09,982 - INFO - cubin_loader.py:114 - flashinfer.jit: File downloaded successfully: https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin -> /home/yak/.cache/flashinfer/cubins/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin
+2026-08-21 08:34:10,009 - INFO - cubin_loader.py:84 - flashinfer.jit: Acquired lock for /home/yak/.cache/flashinfer/cubins/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin
+2026-08-21 08:34:10,209 - INFO - cubin_loader.py:114 - flashinfer.jit: File downloaded successfully: https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin -> /home/yak/.cache/flashinfer/cubins/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin
+Processed prompts:   0%|          | 4/1000 [12:37<29:13:41, 105.64s/it]Processed prompts:   0%|          | 5/1000 [12:37<18:40:58, 67.60s/it] Processed prompts:   1%|          | 6/1000 [12:37<12:19:51, 44.66s/it]Processed prompts:   1%|          | 7/1000 [12:37<8:18:11, 30.10s/it] Processed prompts:   1%|          | 12/1000 [12:37<2:28:56,  9.05s/it]Processed prompts:   2%|▏         | 15/1000 [12:38<1:33:04,  5.67s/it]Processed prompts:   2%|▏         | 17/1000 [12:38<1:08:43,  4.19s/it]Processed prompts:   2%|▏         | 19/1000 [12:38<50:08,  3.07s/it]  Processed prompts:   2%|▏         | 24/1000 [12:38<25:27,  1.57s/it]Processed prompts:   3%|▎         | 27/1000 [12:38<18:02,  1.11s/it]Processed prompts:   3%|▎         | 30/1000 [12:38<13:02,  1.24it/s]Processed prompts:   3%|▎         | 32/1000 [12:39<10:36,  1.52it/s]Processed prompts:   3%|▎         | 34/1000 [12:39<08:18,  1.94it/s]Processed prompts:   4%|▎         | 36/1000 [12:39<06:26,  2.49it/s]Processed prompts:   4%|▍         | 38/1000 [12:39<04:59,  3.21it/s]Processed prompts:   4%|▍         | 40/1000 [12:39<03:53,  4.11it/s]Processed prompts:   4%|▍         | 42/1000 [12:40<04:15,  3.74it/s]Processed prompts:   5%|▍         | 46/1000 [12:40<02:35,  6.15it/s]Processed prompts:   5%|▍         | 48/1000 [12:40<02:27,  6.44it/s]Processed prompts:   5%|▌         | 51/1000 [12:40<01:51,  8.49it/s]Processed prompts:   5%|▌         | 53/1000 [12:41<02:56,  5.38it/s]Processed prompts:   6%|▌         | 55/1000 [12:41<02:26,  6.46it/s]Processed prompts:   6%|▌         | 60/1000 [12:41<01:27, 10.75it/s]Processed prompts:   6%|▋         | 63/1000 [12:42<01:13, 12.71it/s]Processed prompts:   7%|▋         | 66/1000 [12:42<01:16, 12.24it/s]Processed prompts:   7%|▋         | 68/1000 [12:42<01:12, 12.77it/s]Processed prompts:   7%|▋         | 70/1000 [12:42<01:10, 13.28it/s]Processed prompts:   7%|▋         | 72/1000 [12:42<01:07, 13.71it/s]Processed prompts:   8%|▊         | 78/1000 [12:42<00:42, 21.49it/s]Processed prompts:   8%|▊         | 81/1000 [12:42<00:42, 21.81it/s]Processed prompts:   8%|▊         | 84/1000 [12:43<00:41, 21.94it/s]Processed prompts:   9%|▊         | 87/1000 [12:43<00:52, 17.38it/s]Processed prompts:   9%|▉         | 89/1000 [12:43<01:06, 13.68it/s]Processed prompts:   9%|▉         | 91/1000 [12:43<01:18, 11.51it/s]Processed prompts:   9%|▉         | 93/1000 [12:44<01:14, 12.24it/s]Processed prompts:  10%|▉         | 96/1000 [12:44<01:01, 14.59it/s]Processed prompts:  10%|▉         | 99/1000 [12:44<00:54, 16.61it/s]Processed prompts:  10%|█         | 101/1000 [12:44<00:55, 16.28it/s]Processed prompts:  10%|█         | 103/1000 [12:44<00:55, 16.03it/s]Processed prompts:  10%|█         | 105/1000 [12:44<01:23, 10.68it/s]Processed prompts:  11%|█         | 107/1000 [12:45<01:17, 11.48it/s]Processed prompts:  11%|█         | 109/1000 [12:45<01:12, 12.32it/s]Processed prompts:  11%|█         | 111/1000 [12:45<01:07, 13.08it/s]Processed prompts:  11%|█▏        | 113/1000 [12:45<01:21, 10.91it/s]Processed prompts:  12%|█▏        | 115/1000 [12:45<01:30,  9.75it/s]Processed prompts:  12%|█▏        | 117/1000 [12:45<01:20, 10.96it/s]Processed prompts:  12%|█▏        | 119/1000 [12:46<01:30,  9.77it/s]Processed prompts:  12%|█▏        | 121/1000 [12:46<02:10,  6.76it/s]Processed prompts:  12%|█▏        | 122/1000 [12:47<02:46,  5.29it/s]Processed prompts:  13%|█▎        | 126/1000 [12:47<01:50,  7.92it/s]Processed prompts:  13%|█▎        | 127/1000 [12:47<01:50,  7.90it/s]Processed prompts:  13%|█▎        | 128/1000 [12:47<01:50,  7.88it/s]Processed prompts:  13%|█▎        | 132/1000 [12:48<01:38,  8.80it/s]Processed prompts:  14%|█▎        | 135/1000 [12:48<01:16, 11.27it/s]Processed prompts:  14%|█▍        | 138/1000 [12:48<01:04, 13.32it/s]Processed prompts:  14%|█▍        | 140/1000 [12:48<01:28,  9.74it/s]Processed prompts:  14%|█▍        | 142/1000 [12:48<01:19, 10.80it/s]Processed prompts:  14%|█▍        | 145/1000 [12:49<01:16, 11.16it/s]Processed prompts:  15%|█▍        | 149/1000 [12:49<00:56, 15.07it/s]Processed prompts:  15%|█▌        | 151/1000 [12:49<01:07, 12.52it/s]Processed prompts:  15%|█▌        | 153/1000 [12:49<01:04, 13.12it/s]Processed prompts:  16%|█▌        | 155/1000 [12:49<01:15, 11.24it/s]Processed prompts:  16%|█▌        | 157/1000 [12:49<01:09, 12.20it/s]Processed prompts:  16%|█▌        | 159/1000 [12:50<01:04, 13.02it/s]Processed prompts:  16%|█▌        | 161/1000 [12:50<01:01, 13.71it/s]Processed prompts:  16%|█▋        | 163/1000 [12:50<01:13, 11.37it/s]Processed prompts:  16%|█▋        | 165/1000 [12:50<01:22, 10.08it/s]Processed prompts:  17%|█▋        | 169/1000 [12:50<01:08, 12.12it/s]Processed prompts:  17%|█▋        | 171/1000 [12:51<01:17, 10.64it/s]Processed prompts:  18%|█▊        | 176/1000 [12:51<00:50, 16.18it/s]Processed prompts:  18%|█▊        | 178/1000 [12:51<00:50, 16.13it/s]Processed prompts:  18%|█▊        | 181/1000 [12:51<00:45, 17.95it/s]Processed prompts:  18%|█▊        | 184/1000 [12:51<00:41, 19.45it/s]Processed prompts:  19%|█▊        | 187/1000 [12:51<00:50, 16.23it/s]Processed prompts:  19%|█▉        | 189/1000 [12:52<00:50, 16.14it/s]Processed prompts:  19%|█▉        | 191/1000 [12:52<00:50, 16.07it/s]Processed prompts:  19%|█▉        | 193/1000 [12:52<00:50, 16.04it/s]Processed prompts:  20%|█▉        | 195/1000 [12:52<01:03, 12.65it/s]Processed prompts:  20%|█▉        | 198/1000 [12:52<00:52, 15.29it/s]Processed prompts:  20%|██        | 200/1000 [12:53<01:17, 10.34it/s]Processed prompts:  20%|██        | 202/1000 [12:53<01:10, 11.34it/s]Processed prompts:  20%|██        | 204/1000 [12:53<01:18, 10.09it/s]Processed prompts:  21%|██        | 206/1000 [12:53<01:10, 11.28it/s]Processed prompts:  21%|██        | 208/1000 [12:53<01:04, 12.32it/s]Processed prompts:  21%|██        | 210/1000 [12:53<01:00, 13.08it/s]Processed prompts:  21%|██        | 212/1000 [12:53<00:57, 13.79it/s]Processed prompts:  21%|██▏       | 214/1000 [12:54<00:54, 14.35it/s]Processed prompts:  22%|██▏       | 216/1000 [12:54<00:52, 14.80it/s]Processed prompts:  22%|██▏       | 220/1000 [12:54<00:50, 15.34it/s]Processed prompts:  22%|██▏       | 222/1000 [12:54<00:50, 15.49it/s]Processed prompts:  22%|██▏       | 224/1000 [12:54<00:49, 15.63it/s]Processed prompts:  23%|██▎       | 226/1000 [12:54<00:49, 15.73it/s]Processed prompts:  23%|██▎       | 229/1000 [12:54<00:42, 18.05it/s]Processed prompts:  23%|██▎       | 231/1000 [12:55<01:21,  9.49it/s]Processed prompts:  23%|██▎       | 233/1000 [12:55<01:24,  9.07it/s]Processed prompts:  24%|██▎       | 236/1000 [12:55<01:06, 11.50it/s]Processed prompts:  24%|██▍       | 238/1000 [12:55<01:01, 12.42it/s]Processed prompts:  24%|██▍       | 240/1000 [12:56<01:09, 10.87it/s]Processed prompts:  24%|██▍       | 243/1000 [12:56<00:55, 13.62it/s]Processed prompts:  24%|██▍       | 245/1000 [12:56<00:53, 14.21it/s]Processed prompts:  25%|██▍       | 247/1000 [12:56<00:51, 14.69it/s]Processed prompts:  25%|██▌       | 250/1000 [12:56<00:43, 17.19it/s]Processed prompts:  25%|██▌       | 253/1000 [12:56<00:39, 19.13it/s]Processed prompts:  26%|██▌       | 256/1000 [12:57<00:46, 16.12it/s]Processed prompts:  26%|██▌       | 258/1000 [12:57<01:23,  8.89it/s]Processed prompts:  26%|██▌       | 260/1000 [12:58<01:36,  7.66it/s]Processed prompts:  26%|██▌       | 262/1000 [12:58<01:34,  7.78it/s]Processed prompts:  26%|██▋       | 265/1000 [12:58<01:10, 10.35it/s]Processed prompts:  27%|██▋       | 267/1000 [12:58<01:15,  9.67it/s]Processed prompts:  27%|██▋       | 269/1000 [12:58<01:07, 10.87it/s]Processed prompts:  27%|██▋       | 271/1000 [12:58<01:00, 11.98it/s]Processed prompts:  27%|██▋       | 273/1000 [12:59<01:08, 10.60it/s]Processed prompts:  28%|██▊       | 276/1000 [12:59<00:53, 13.51it/s]Processed prompts:  28%|██▊       | 278/1000 [12:59<01:43,  6.99it/s]Processed prompts:  28%|██▊       | 280/1000 [13:00<02:03,  5.83it/s]Processed prompts:  28%|██▊       | 282/1000 [13:00<01:53,  6.32it/s]Processed prompts:  28%|██▊       | 283/1000 [13:00<01:49,  6.57it/s]Processed prompts:  28%|██▊       | 285/1000 [13:01<01:41,  7.02it/s]Processed prompts:  29%|██▊       | 286/1000 [13:01<02:27,  4.84it/s]Processed prompts:  29%|██▉       | 288/1000 [13:01<01:50,  6.42it/s]Processed prompts:  29%|██▉       | 289/1000 [13:01<01:45,  6.71it/s]Processed prompts:  29%|██▉       | 291/1000 [13:01<01:22,  8.55it/s]Processed prompts:  29%|██▉       | 293/1000 [13:02<01:38,  7.19it/s]Processed prompts:  30%|██▉       | 295/1000 [13:02<01:19,  8.83it/s]Processed prompts:  30%|██▉       | 297/1000 [13:02<01:07, 10.36it/s]Processed prompts:  30%|██▉       | 299/1000 [13:02<01:13,  9.50it/s]Processed prompts:  30%|███       | 301/1000 [13:02<01:03, 10.94it/s]Processed prompts:  30%|███       | 303/1000 [13:03<01:09,  9.99it/s]Processed prompts:  30%|███       | 305/1000 [13:03<01:01, 11.32it/s]Processed prompts:  31%|███       | 307/1000 [13:03<01:07, 10.23it/s]Processed prompts:  31%|███       | 309/1000 [13:03<01:12,  9.56it/s]Processed prompts:  31%|███       | 311/1000 [13:03<01:02, 10.95it/s]Processed prompts:  32%|███▏      | 316/1000 [13:04<00:55, 12.31it/s]Processed prompts:  32%|███▏      | 318/1000 [13:04<01:01, 11.12it/s]Processed prompts:  32%|███▏      | 321/1000 [13:04<00:58, 11.53it/s]Processed prompts:  32%|███▏      | 323/1000 [13:04<00:54, 12.44it/s]Processed prompts:  32%|███▎      | 325/1000 [13:04<00:50, 13.30it/s]Processed prompts:  33%|███▎      | 327/1000 [13:04<00:47, 14.07it/s]Processed prompts:  33%|███▎      | 329/1000 [13:05<00:45, 14.70it/s]Processed prompts:  33%|███▎      | 331/1000 [13:05<00:55, 11.95it/s]Processed prompts:  33%|███▎      | 333/1000 [13:05<01:02, 10.63it/s]Processed prompts:  34%|███▎      | 336/1000 [13:05<00:48, 13.63it/s]Processed prompts:  34%|███▍      | 338/1000 [13:06<01:06,  9.89it/s]Processed prompts:  34%|███▍      | 340/1000 [13:06<01:20,  8.17it/s]Processed prompts:  34%|███▍      | 342/1000 [13:06<01:08,  9.55it/s]Processed prompts:  34%|███▍      | 345/1000 [13:06<01:02, 10.52it/s]Processed prompts:  35%|███▍      | 348/1000 [13:07<00:58, 11.21it/s]Processed prompts:  35%|███▌      | 350/1000 [13:07<00:53, 12.23it/s]Processed prompts:  35%|███▌      | 352/1000 [13:07<00:49, 13.20it/s]Processed prompts:  36%|███▌      | 355/1000 [13:07<00:40, 15.80it/s]Processed prompts:  36%|███▌      | 357/1000 [13:07<00:59, 10.87it/s]Processed prompts:  36%|███▌      | 359/1000 [13:07<01:03, 10.10it/s]Processed prompts:  36%|███▌      | 362/1000 [13:08<00:50, 12.70it/s]Processed prompts:  36%|███▋      | 364/1000 [13:08<00:46, 13.55it/s]Processed prompts:  37%|███▋      | 366/1000 [13:08<01:04,  9.90it/s]Processed prompts:  37%|███▋      | 368/1000 [13:08<00:56, 11.19it/s]Processed prompts:  37%|███▋      | 370/1000 [13:08<01:01, 10.28it/s]Processed prompts:  37%|███▋      | 372/1000 [13:09<01:41,  6.18it/s]Processed prompts:  37%|███▋      | 374/1000 [13:09<01:22,  7.60it/s]Processed prompts:  38%|███▊      | 376/1000 [13:09<01:19,  7.86it/s]Processed prompts:  38%|███▊      | 378/1000 [13:10<01:28,  7.06it/s]Processed prompts:  38%|███▊      | 381/1000 [13:10<01:02,  9.83it/s]Processed prompts:  38%|███▊      | 383/1000 [13:10<00:55, 11.10it/s]Processed prompts:  38%|███▊      | 385/1000 [13:10<00:49, 12.31it/s]Processed prompts:  39%|███▊      | 387/1000 [13:10<00:45, 13.39it/s]Processed prompts:  39%|███▉      | 389/1000 [13:10<00:42, 14.28it/s]Processed prompts:  39%|███▉      | 391/1000 [13:10<00:40, 14.99it/s]Processed prompts:  39%|███▉      | 393/1000 [13:11<00:59, 10.17it/s]Processed prompts:  40%|███▉      | 395/1000 [13:11<00:52, 11.47it/s]Processed prompts:  40%|███▉      | 397/1000 [13:11<00:47, 12.73it/s]Processed prompts:  40%|███▉      | 399/1000 [13:11<00:43, 13.79it/s]Processed prompts:  40%|████      | 401/1000 [13:12<01:01,  9.69it/s]Processed prompts:  40%|████      | 403/1000 [13:12<00:53, 11.14it/s]Processed prompts:  40%|████      | 405/1000 [13:12<00:58, 10.25it/s]Processed prompts:  41%|████      | 407/1000 [13:12<01:11,  8.32it/s]Processed prompts:  41%|████      | 409/1000 [13:12<01:00,  9.77it/s]Processed prompts:  41%|████      | 411/1000 [13:12<00:52, 11.19it/s]Processed prompts:  41%|████▏     | 414/1000 [13:13<00:40, 14.40it/s]Processed prompts:  42%|████▏     | 416/1000 [13:13<00:56, 10.28it/s]Processed prompts:  42%|████▏     | 418/1000 [13:13<00:50, 11.61it/s]Processed prompts:  42%|████▏     | 422/1000 [13:13<00:35, 16.47it/s]Processed prompts:  42%|████▎     | 425/1000 [13:13<00:38, 14.90it/s]Processed prompts:  43%|████▎     | 427/1000 [13:14<00:37, 15.15it/s]Processed prompts:  43%|████▎     | 429/1000 [13:14<00:36, 15.67it/s]Processed prompts:  43%|████▎     | 431/1000 [13:14<00:35, 16.10it/s]Processed prompts:  43%|████▎     | 433/1000 [13:14<00:34, 16.43it/s]Processed prompts:  44%|████▎     | 435/1000 [13:14<00:33, 16.65it/s]Processed prompts:  44%|████▍     | 439/1000 [13:14<00:25, 21.74it/s]Processed prompts:  44%|████▍     | 442/1000 [13:14<00:24, 22.97it/s]Processed prompts:  44%|████▍     | 445/1000 [13:14<00:23, 23.79it/s]Processed prompts:  45%|████▍     | 448/1000 [13:15<00:29, 19.03it/s]Processed prompts:  45%|████▌     | 451/1000 [13:15<00:26, 20.81it/s]Processed prompts:  45%|████▌     | 454/1000 [13:15<00:30, 17.68it/s]Processed prompts:  46%|████▌     | 456/1000 [13:15<00:30, 17.66it/s]Processed prompts:  46%|████▌     | 458/1000 [13:15<00:31, 17.34it/s]Processed prompts:  46%|████▌     | 460/1000 [13:15<00:31, 17.38it/s]Processed prompts:  46%|████▌     | 462/1000 [13:15<00:30, 17.44it/s]Processed prompts:  46%|████▋     | 464/1000 [13:15<00:30, 17.51it/s]Processed prompts:  47%|████▋     | 466/1000 [13:16<00:39, 13.52it/s]Processed prompts:  47%|████▋     | 469/1000 [13:16<00:32, 16.52it/s]Processed prompts:  47%|████▋     | 471/1000 [13:16<00:39, 13.38it/s]Processed prompts:  47%|████▋     | 473/1000 [13:16<00:37, 14.09it/s]Processed prompts:  48%|████▊     | 475/1000 [13:16<00:35, 14.88it/s]Processed prompts:  48%|████▊     | 478/1000 [13:17<00:36, 14.25it/s]Processed prompts:  48%|████▊     | 480/1000 [13:17<00:42, 12.29it/s]Processed prompts:  48%|████▊     | 482/1000 [13:17<00:38, 13.40it/s]Processed prompts:  48%|████▊     | 485/1000 [13:17<00:31, 16.42it/s]Processed prompts:  49%|████▉     | 489/1000 [13:17<00:24, 20.50it/s]Processed prompts:  49%|████▉     | 492/1000 [13:18<00:40, 12.55it/s]Processed prompts:  50%|████▉     | 495/1000 [13:18<00:33, 14.97it/s]Processed prompts:  50%|████▉     | 498/1000 [13:18<01:02,  8.00it/s]Processed prompts:  50%|█████     | 500/1000 [13:19<00:54,  9.14it/s]Processed prompts:  50%|█████     | 502/1000 [13:19<00:47, 10.38it/s]Processed prompts:  50%|█████     | 504/1000 [13:19<00:56,  8.75it/s]Processed prompts:  51%|█████     | 509/1000 [13:19<00:34, 14.18it/s]Processed prompts:  51%|█████     | 512/1000 [13:19<00:29, 16.46it/s]Processed prompts:  52%|█████▏    | 515/1000 [13:20<00:36, 13.29it/s]Processed prompts:  52%|█████▏    | 517/1000 [13:20<00:40, 11.97it/s]Processed prompts:  52%|█████▏    | 519/1000 [13:20<00:36, 13.00it/s]Processed prompts:  52%|█████▏    | 521/1000 [13:20<00:40, 11.71it/s]Processed prompts:  52%|█████▏    | 523/1000 [13:20<00:44, 10.82it/s]Processed prompts:  52%|█████▎    | 525/1000 [13:21<00:53,  8.87it/s]Processed prompts:  53%|█████▎    | 527/1000 [13:21<01:22,  5.76it/s]Processed prompts:  53%|█████▎    | 528/1000 [13:22<01:34,  5.00it/s]Processed prompts:  53%|█████▎    | 529/1000 [13:22<01:35,  4.91it/s]Processed prompts:  53%|█████▎    | 531/1000 [13:22<01:10,  6.63it/s]Processed prompts:  53%|█████▎    | 532/1000 [13:22<01:06,  7.01it/s]Processed prompts:  53%|█████▎    | 534/1000 [13:22<01:00,  7.65it/s]Processed prompts:  54%|█████▎    | 536/1000 [13:22<00:48,  9.55it/s]Processed prompts:  54%|█████▍    | 538/1000 [13:23<00:40, 11.30it/s]Processed prompts:  54%|█████▍    | 540/1000 [13:23<00:36, 12.77it/s]Processed prompts:  54%|█████▍    | 542/1000 [13:23<00:32, 14.05it/s]Processed prompts:  54%|█████▍    | 544/1000 [13:23<00:30, 15.08it/s]Processed prompts:  55%|█████▍    | 546/1000 [13:23<00:28, 15.90it/s]Processed prompts:  55%|█████▍    | 548/1000 [13:23<00:49,  9.16it/s]Processed prompts:  55%|█████▌    | 550/1000 [13:23<00:41, 10.77it/s]Processed prompts:  55%|█████▌    | 552/1000 [13:24<00:51,  8.70it/s]Processed prompts:  55%|█████▌    | 554/1000 [13:24<00:43, 10.26it/s]Processed prompts:  56%|█████▌    | 556/1000 [13:24<00:45,  9.86it/s]Processed prompts:  56%|█████▌    | 558/1000 [13:24<00:52,  8.34it/s]Processed prompts:  56%|█████▌    | 560/1000 [13:25<00:51,  8.58it/s]Processed prompts:  56%|█████▌    | 562/1000 [13:25<00:43, 10.18it/s]Processed prompts:  56%|█████▋    | 564/1000 [13:25<00:37, 11.75it/s]Processed prompts:  57%|█████▋    | 566/1000 [13:25<00:40, 10.83it/s]Processed prompts:  57%|█████▋    | 568/1000 [13:25<00:34, 12.35it/s]Processed prompts:  57%|█████▋    | 570/1000 [13:25<00:39, 11.02it/s]Processed prompts:  57%|█████▋    | 572/1000 [13:26<00:34, 12.50it/s]Processed prompts:  57%|█████▋    | 574/1000 [13:26<00:44,  9.56it/s]Processed prompts:  58%|█████▊    | 576/1000 [13:26<00:51,  8.20it/s]Processed prompts:  58%|█████▊    | 578/1000 [13:27<00:56,  7.46it/s]Processed prompts:  58%|█████▊    | 579/1000 [13:27<00:54,  7.72it/s]Processed prompts:  58%|█████▊    | 580/1000 [13:27<00:52,  7.97it/s]Processed prompts:  58%|█████▊    | 581/1000 [13:27<00:50,  8.22it/s]Processed prompts:  58%|█████▊    | 582/1000 [13:27<00:49,  8.44it/s]Processed prompts:  58%|█████▊    | 583/1000 [13:27<00:48,  8.62it/s]Processed prompts:  58%|█████▊    | 584/1000 [13:27<00:47,  8.78it/s]Processed prompts:  58%|█████▊    | 585/1000 [13:27<00:47,  8.80it/s]Processed prompts:  59%|█████▉    | 590/1000 [13:27<00:21, 18.88it/s]Processed prompts:  59%|█████▉    | 593/1000 [13:28<00:29, 13.79it/s]Processed prompts:  60%|█████▉    | 595/1000 [13:28<00:38, 10.54it/s]Processed prompts:  60%|█████▉    | 597/1000 [13:28<00:33, 11.93it/s]Processed prompts:  60%|█████▉    | 599/1000 [13:28<00:36, 11.07it/s]Processed prompts:  60%|██████    | 601/1000 [13:29<00:38, 10.49it/s]Processed prompts:  60%|██████    | 603/1000 [13:29<00:45,  8.76it/s]Processed prompts:  60%|██████    | 605/1000 [13:29<00:38, 10.36it/s]Processed prompts:  61%|██████    | 607/1000 [13:29<00:32, 11.91it/s]Processed prompts:  61%|██████    | 609/1000 [13:29<00:29, 13.34it/s]Processed prompts:  61%|██████    | 611/1000 [13:29<00:26, 14.49it/s]Processed prompts:  61%|██████▏   | 613/1000 [13:29<00:24, 15.55it/s]Processed prompts:  62%|██████▏   | 615/1000 [13:30<00:35, 10.78it/s]Processed prompts:  62%|██████▏   | 617/1000 [13:30<00:43,  8.80it/s]Processed prompts:  62%|██████▏   | 619/1000 [13:30<00:42,  8.98it/s]Processed prompts:  62%|██████▏   | 621/1000 [13:31<00:47,  7.96it/s]Processed prompts:  62%|██████▏   | 624/1000 [13:31<00:33, 11.07it/s]Processed prompts:  63%|██████▎   | 626/1000 [13:31<00:30, 12.45it/s]Processed prompts:  63%|██████▎   | 628/1000 [13:31<00:27, 13.75it/s]Processed prompts:  63%|██████▎   | 630/1000 [13:31<00:35, 10.30it/s]Processed prompts:  63%|██████▎   | 632/1000 [13:32<00:42,  8.71it/s]Processed prompts:  63%|██████▎   | 634/1000 [13:32<00:41,  8.80it/s]Processed prompts:  64%|██████▎   | 636/1000 [13:32<00:34, 10.44it/s]Processed prompts:  64%|██████▍   | 638/1000 [13:32<00:35, 10.09it/s]Processed prompts:  64%|██████▍   | 640/1000 [13:32<00:42,  8.56it/s]Processed prompts:  64%|██████▍   | 642/1000 [13:33<00:35, 10.20it/s]Processed prompts:  64%|██████▍   | 644/1000 [13:33<00:41,  8.61it/s]Processed prompts:  65%|██████▍   | 647/1000 [13:33<00:29, 11.81it/s]Processed prompts:  65%|██████▌   | 652/1000 [13:33<00:18, 18.33it/s]Processed prompts:  66%|██████▌   | 655/1000 [13:33<00:20, 16.88it/s]Processed prompts:  66%|██████▌   | 658/1000 [13:34<00:24, 13.73it/s]Processed prompts:  66%|██████▌   | 661/1000 [13:34<00:20, 16.22it/s]Processed prompts:  66%|██████▋   | 664/1000 [13:34<00:18, 18.60it/s]Processed prompts:  67%|██████▋   | 667/1000 [13:34<00:23, 14.35it/s]Processed prompts:  67%|██████▋   | 669/1000 [13:34<00:25, 12.95it/s]Processed prompts:  67%|██████▋   | 671/1000 [13:34<00:23, 14.03it/s]Processed prompts:  67%|██████▋   | 673/1000 [13:35<00:30, 10.77it/s]Processed prompts:  68%|██████▊   | 675/1000 [13:35<00:26, 12.19it/s]Processed prompts:  68%|██████▊   | 677/1000 [13:35<00:33,  9.77it/s]Processed prompts:  68%|██████▊   | 679/1000 [13:35<00:33,  9.70it/s]Processed prompts:  68%|██████▊   | 681/1000 [13:36<00:29, 10.96it/s]Processed prompts:  68%|██████▊   | 684/1000 [13:36<00:46,  6.75it/s]Processed prompts:  69%|██████▊   | 686/1000 [13:36<00:42,  7.33it/s]Processed prompts:  69%|██████▉   | 688/1000 [13:37<00:35,  8.83it/s]Processed prompts:  69%|██████▉   | 690/1000 [13:37<00:34,  9.04it/s]Processed prompts:  69%|██████▉   | 692/1000 [13:37<00:28, 10.67it/s]Processed prompts:  69%|██████▉   | 694/1000 [13:37<00:29, 10.35it/s]Processed prompts:  70%|██████▉   | 696/1000 [13:37<00:34,  8.81it/s]Processed prompts:  70%|██████▉   | 698/1000 [13:38<00:33,  9.06it/s]Processed prompts:  70%|███████   | 700/1000 [13:38<00:41,  7.22it/s]Processed prompts:  70%|███████   | 701/1000 [13:38<00:39,  7.55it/s]Processed prompts:  70%|███████   | 703/1000 [13:38<00:31,  9.47it/s]Processed prompts:  70%|███████   | 705/1000 [13:38<00:25, 11.35it/s]Processed prompts:  71%|███████   | 707/1000 [13:38<00:22, 13.06it/s]Processed prompts:  71%|███████   | 709/1000 [13:39<00:29, 10.02it/s]Processed prompts:  71%|███████   | 711/1000 [13:40<00:54,  5.32it/s]Processed prompts:  71%|███████   | 712/1000 [13:40<00:49,  5.79it/s]Processed prompts:  72%|███████▏  | 715/1000 [13:40<00:32,  8.77it/s]Processed prompts:  72%|███████▏  | 717/1000 [13:40<00:27, 10.45it/s]Processed prompts:  72%|███████▏  | 719/1000 [13:41<00:56,  4.97it/s]Processed prompts:  72%|███████▏  | 721/1000 [13:41<00:51,  5.38it/s]Processed prompts:  72%|███████▏  | 723/1000 [13:41<00:44,  6.22it/s]Processed prompts:  72%|███████▎  | 725/1000 [13:42<00:47,  5.81it/s]Processed prompts:  73%|███████▎  | 727/1000 [13:42<00:53,  5.12it/s]Processed prompts:  73%|███████▎  | 729/1000 [13:42<00:45,  5.97it/s]Processed prompts:  73%|███████▎  | 730/1000 [13:42<00:42,  6.39it/s]Processed prompts:  73%|███████▎  | 731/1000 [13:43<00:44,  6.05it/s]Processed prompts:  73%|███████▎  | 732/1000 [13:43<00:58,  4.60it/s]Processed prompts:  74%|███████▎  | 735/1000 [13:43<00:33,  7.83it/s]Processed prompts:  74%|███████▎  | 737/1000 [13:43<00:31,  8.34it/s]Processed prompts:  74%|███████▍  | 739/1000 [13:44<00:42,  6.21it/s]Processed prompts:  74%|███████▍  | 741/1000 [13:44<00:32,  7.88it/s]Processed prompts:  74%|███████▍  | 743/1000 [13:44<00:34,  7.49it/s]Processed prompts:  74%|███████▍  | 745/1000 [13:44<00:27,  9.23it/s]Processed prompts:  75%|███████▍  | 747/1000 [13:45<00:27,  9.31it/s]Processed prompts:  75%|███████▍  | 749/1000 [13:45<00:22, 11.10it/s]Processed prompts:  75%|███████▌  | 751/1000 [13:45<00:26,  9.23it/s]Processed prompts:  75%|███████▌  | 753/1000 [13:45<00:22, 10.98it/s]Processed prompts:  76%|███████▌  | 755/1000 [13:45<00:19, 12.66it/s]Processed prompts:  76%|███████▌  | 757/1000 [13:46<00:44,  5.51it/s]Processed prompts:  76%|███████▌  | 759/1000 [13:46<00:41,  5.81it/s]Processed prompts:  76%|███████▌  | 761/1000 [13:47<00:43,  5.55it/s]Processed prompts:  76%|███████▌  | 762/1000 [13:47<00:43,  5.42it/s]Processed prompts:  76%|███████▋  | 763/1000 [13:47<00:44,  5.33it/s]Processed prompts:  76%|███████▋  | 764/1000 [13:47<00:39,  5.94it/s]Processed prompts:  76%|███████▋  | 765/1000 [13:47<00:35,  6.57it/s]Processed prompts:  77%|███████▋  | 766/1000 [13:47<00:32,  7.20it/s]Processed prompts:  77%|███████▋  | 768/1000 [13:48<00:23,  9.83it/s]Processed prompts:  77%|███████▋  | 770/1000 [13:48<00:27,  8.33it/s]Processed prompts:  78%|███████▊  | 775/1000 [13:48<00:21, 10.37it/s]Processed prompts:  78%|███████▊  | 777/1000 [13:49<00:24,  9.06it/s]Processed prompts:  78%|███████▊  | 778/1000 [13:49<00:27,  8.10it/s]Processed prompts:  78%|███████▊  | 780/1000 [13:49<00:22,  9.85it/s]Processed prompts:  78%|███████▊  | 782/1000 [13:49<00:25,  8.64it/s]Processed prompts:  78%|███████▊  | 784/1000 [13:50<00:42,  5.03it/s]Processed prompts:  78%|███████▊  | 785/1000 [13:50<00:42,  5.03it/s]Processed prompts:  79%|███████▊  | 786/1000 [13:50<00:38,  5.58it/s]Processed prompts:  79%|███████▊  | 787/1000 [13:51<00:48,  4.41it/s]Processed prompts:  79%|███████▉  | 788/1000 [13:51<00:51,  4.10it/s]Processed prompts:  79%|███████▉  | 789/1000 [13:51<00:48,  4.31it/s]Processed prompts:  79%|███████▉  | 790/1000 [13:51<00:52,  4.01it/s]Processed prompts:  79%|███████▉  | 791/1000 [13:52<01:00,  3.45it/s]Processed prompts:  79%|███████▉  | 793/1000 [13:53<01:09,  2.99it/s]Processed prompts:  79%|███████▉  | 794/1000 [13:53<00:57,  3.59it/s]Processed prompts:  80%|███████▉  | 796/1000 [13:53<00:41,  4.86it/s]Processed prompts:  80%|███████▉  | 799/1000 [13:53<00:28,  7.11it/s]Processed prompts:  80%|████████  | 800/1000 [13:53<00:39,  5.13it/s]Processed prompts:  80%|████████  | 802/1000 [13:54<00:35,  5.60it/s]Processed prompts:  80%|████████  | 804/1000 [13:54<00:29,  6.55it/s]Processed prompts:  80%|████████  | 805/1000 [13:54<00:38,  5.07it/s]Processed prompts:  81%|████████  | 807/1000 [13:55<00:44,  4.35it/s]Processed prompts:  81%|████████  | 808/1000 [13:55<00:39,  4.90it/s]Processed prompts:  81%|████████  | 809/1000 [13:55<00:34,  5.50it/s]Processed prompts:  81%|████████  | 810/1000 [13:55<00:39,  4.78it/s]Processed prompts:  81%|████████  | 811/1000 [13:56<00:34,  5.52it/s]Processed prompts:  81%|████████▏ | 813/1000 [13:56<00:35,  5.34it/s]Processed prompts:  82%|████████▏ | 815/1000 [13:56<00:31,  5.82it/s]Processed prompts:  82%|████████▏ | 817/1000 [13:56<00:26,  6.86it/s]Processed prompts:  82%|████████▏ | 819/1000 [13:57<00:23,  7.69it/s]Processed prompts:  82%|████████▏ | 822/1000 [13:57<00:18,  9.71it/s]Processed prompts:  82%|████████▏ | 824/1000 [13:57<00:27,  6.42it/s]Processed prompts:  82%|████████▎ | 825/1000 [13:58<00:28,  6.16it/s]Processed prompts:  83%|████████▎ | 827/1000 [13:58<00:27,  6.37it/s]Processed prompts:  83%|████████▎ | 830/1000 [13:58<00:20,  8.38it/s]Processed prompts:  83%|████████▎ | 834/1000 [13:58<00:14, 11.26it/s]Processed prompts:  84%|████████▎ | 836/1000 [13:59<00:16,  9.80it/s]Processed prompts:  84%|████████▍ | 838/1000 [13:59<00:22,  7.31it/s]Processed prompts:  84%|████████▍ | 840/1000 [13:59<00:22,  7.19it/s]Processed prompts:  84%|████████▍ | 841/1000 [14:00<00:25,  6.12it/s]Processed prompts:  84%|████████▍ | 842/1000 [14:00<00:29,  5.37it/s]Processed prompts:  84%|████████▍ | 843/1000 [14:00<00:29,  5.33it/s]Processed prompts:  84%|████████▍ | 845/1000 [14:00<00:29,  5.30it/s]Processed prompts:  85%|████████▍ | 847/1000 [14:01<00:29,  5.27it/s]Processed prompts:  85%|████████▌ | 850/1000 [14:01<00:28,  5.27it/s]Processed prompts:  85%|████████▌ | 852/1000 [14:02<00:26,  5.67it/s]Processed prompts:  85%|████████▌ | 853/1000 [14:02<00:28,  5.13it/s]Processed prompts:  86%|████████▌ | 856/1000 [14:02<00:20,  7.15it/s]Processed prompts:  86%|████████▌ | 857/1000 [14:03<00:28,  5.07it/s]Processed prompts:  86%|████████▌ | 861/1000 [14:03<00:17,  8.06it/s]Processed prompts:  86%|████████▋ | 864/1000 [14:03<00:19,  6.82it/s]Processed prompts:  86%|████████▋ | 865/1000 [14:04<00:22,  6.02it/s]Processed prompts:  87%|████████▋ | 868/1000 [14:04<00:18,  7.18it/s]Processed prompts:  87%|████████▋ | 869/1000 [14:04<00:22,  5.70it/s]Processed prompts:  87%|████████▋ | 870/1000 [14:05<00:31,  4.09it/s]Processed prompts:  87%|████████▋ | 873/1000 [14:05<00:21,  5.96it/s]Processed prompts:  87%|████████▋ | 874/1000 [14:05<00:23,  5.35it/s]Processed prompts:  88%|████████▊ | 875/1000 [14:06<00:23,  5.33it/s]Processed prompts:  88%|████████▊ | 877/1000 [14:06<00:18,  6.48it/s]Processed prompts:  88%|████████▊ | 879/1000 [14:06<00:23,  5.08it/s]Processed prompts:  88%|████████▊ | 881/1000 [14:07<00:19,  6.12it/s]Processed prompts:  88%|████████▊ | 883/1000 [14:07<00:28,  4.05it/s]Processed prompts:  88%|████████▊ | 884/1000 [14:08<00:31,  3.69it/s]Processed prompts:  88%|████████▊ | 885/1000 [14:08<00:29,  3.94it/s]Processed prompts:  89%|████████▊ | 886/1000 [14:09<00:36,  3.08it/s]Processed prompts:  89%|████████▊ | 887/1000 [14:09<00:45,  2.47it/s]Processed prompts:  89%|████████▉ | 889/1000 [14:09<00:30,  3.62it/s]Processed prompts:  89%|████████▉ | 890/1000 [14:10<00:42,  2.61it/s]Processed prompts:  89%|████████▉ | 891/1000 [14:11<00:41,  2.63it/s]Processed prompts:  89%|████████▉ | 894/1000 [14:11<00:28,  3.77it/s]Processed prompts:  90%|████████▉ | 896/1000 [14:11<00:23,  4.45it/s]Processed prompts:  90%|████████▉ | 897/1000 [14:12<00:27,  3.70it/s]Processed prompts:  90%|████████▉ | 898/1000 [14:12<00:27,  3.68it/s]Processed prompts:  90%|████████▉ | 899/1000 [14:12<00:31,  3.16it/s]Processed prompts:  90%|█████████ | 900/1000 [14:13<00:28,  3.52it/s]Processed prompts:  90%|█████████ | 901/1000 [14:13<00:25,  3.87it/s]Processed prompts:  90%|█████████ | 902/1000 [14:13<00:23,  4.18it/s]Processed prompts:  90%|█████████ | 904/1000 [14:14<00:36,  2.65it/s]Processed prompts:  90%|█████████ | 905/1000 [14:14<00:31,  2.99it/s]Processed prompts:  91%|█████████ | 908/1000 [14:16<00:35,  2.61it/s]Processed prompts:  91%|█████████ | 910/1000 [14:16<00:25,  3.46it/s]Processed prompts:  91%|█████████ | 912/1000 [14:16<00:23,  3.70it/s]Processed prompts:  91%|█████████▏| 913/1000 [14:18<00:44,  1.97it/s]Processed prompts:  91%|█████████▏| 914/1000 [14:18<00:42,  2.01it/s]Processed prompts:  92%|█████████▏| 916/1000 [14:18<00:29,  2.89it/s]Processed prompts:  92%|█████████▏| 918/1000 [14:19<00:22,  3.65it/s]Processed prompts:  92%|█████████▏| 920/1000 [14:19<00:24,  3.29it/s]Processed prompts:  92%|█████████▏| 921/1000 [14:20<00:28,  2.81it/s]Processed prompts:  92%|█████████▏| 922/1000 [14:20<00:24,  3.13it/s]Processed prompts:  92%|█████████▏| 923/1000 [14:21<00:35,  2.18it/s]Processed prompts:  92%|█████████▏| 924/1000 [14:21<00:31,  2.43it/s]Processed prompts:  92%|█████████▎| 925/1000 [14:22<00:26,  2.84it/s]Processed prompts:  93%|█████████▎| 926/1000 [14:22<00:35,  2.08it/s]Processed prompts:  93%|█████████▎| 927/1000 [14:23<00:29,  2.51it/s]Processed prompts:  93%|█████████▎| 928/1000 [14:23<00:29,  2.42it/s]Processed prompts:  93%|█████████▎| 929/1000 [14:24<00:30,  2.34it/s]Processed prompts:  93%|█████████▎| 930/1000 [14:24<00:34,  2.05it/s]Processed prompts:  93%|█████████▎| 931/1000 [14:25<00:34,  1.98it/s]Processed prompts:  93%|█████████▎| 932/1000 [14:25<00:35,  1.93it/s]Processed prompts:  93%|█████████▎| 933/1000 [14:26<00:42,  1.58it/s]Processed prompts:  93%|█████████▎| 934/1000 [14:27<00:45,  1.45it/s]Processed prompts:  94%|█████████▎| 935/1000 [14:28<00:47,  1.36it/s]Processed prompts:  94%|█████████▎| 936/1000 [14:28<00:39,  1.60it/s]Processed prompts:  94%|█████████▎| 937/1000 [14:29<00:39,  1.59it/s]Processed prompts:  94%|█████████▍| 939/1000 [14:29<00:24,  2.48it/s]Processed prompts:  94%|█████████▍| 941/1000 [14:30<00:20,  2.85it/s]Processed prompts: 100%|██████████| 1000/1000 [14:30<00:00,  1.15it/s]
+  Generation: 0/1000 reached EOS before their per-request budget; lengths=[232, 212, 584, 363, 693, 1024, 277, 39, 725, 270, 56, 566, 562, 145, 87, 71, 443, 331, 150, 186, 217, 208, 289, 85, 648, 331, 514, 976, 1024, 279, 416, 9, 344, 160, 167, 1007, 435, 587, 97, 839, 197, 288, 681, 567, 447, 1024, 5, 681, 81, 403, 556, 237, 601, 23, 1024, 1024, 503, 272, 746, 642, 527, 260, 547, 665, 206, 63, 472, 476, 255, 357, 912, 74, 1024, 329, 77, 492, 127, 332, 1, 92, 277, 446, 129, 7, 705, 120, 311, 775, 225, 455, 430, 716, 324, 227, 560, 290, 36, 1024, 264, 421, 1024, 774, 915, 130, 572, 121, 1024, 294, 232, 296, 48, 309, 38, 411, 254, 250, 619, 488, 5, 1001, 13, 16, 400, 267, 91, 604, 261, 842, 71, 698, 541, 663, 265, 700, 1024, 146, 5, 55, 384, 454, 41, 381, 146, 585, 883, 232, 624, 402, 555, 910, 527, 192, 37, 414, 1024, 1024, 326, 772, 940, 129, 155, 451, 657, 71, 1024, 213, 644, 101, 439, 639, 814, 207, 515, 316, 1024, 307, 562, 612, 963, 108, 97, 363, 252, 38, 196, 499, 491, 1024, 141, 311, 720, 150, 110, 123, 487, 769, 538, 41, 204, 1024, 565, 382, 200, 75, 912, 61, 56, 3, 510, 418, 905, 754, 39, 162, 298, 524, 64, 297, 142, 171, 409, 827, 826, 643, 849, 366, 116, 316, 550, 356, 923, 793, 261, 412, 491, 329, 553, 33, 51, 53, 141, 884, 721, 242, 479, 125, 1024, 834, 503, 224, 473, 479, 84, 547, 288, 336, 310, 102, 189, 453, 462, 361, 96, 389, 1024, 212, 1024, 289, 473, 812, 258, 785, 690, 144, 243, 125, 566, 342, 5, 937, 586, 44, 1024, 513, 417, 942, 224, 316, 1024, 614, 688, 50, 444, 339, 341, 488, 81, 784, 13, 180, 122, 113, 163, 220, 392, 244, 463, 676, 204, 399, 371, 92, 505, 592, 359, 41, 34, 776, 19, 540, 597, 112, 394, 160, 301, 323, 441, 953, 59, 304, 292, 580, 328, 285, 673, 337, 1024, 139, 641, 75, 266, 755, 694, 291, 731, 212, 433, 627, 383, 652, 1024, 1024, 180, 78, 189, 504, 336, 277, 355, 970, 451, 505, 417, 311, 776, 430, 640, 231, 379, 188, 455, 592, 305, 294, 101, 35, 46, 112, 371, 49, 1024, 57, 178, 421, 361, 300, 669, 457, 109, 419, 461, 468, 10, 287, 515, 16, 97, 517, 95, 210, 24, 185, 568, 888, 533, 365, 475, 812, 90, 296, 587, 460, 233, 97, 1003, 591, 249, 55, 39, 50, 706, 376, 106, 112, 743, 107, 1024, 270, 303, 491, 603, 1015, 513, 951, 259, 104, 1017, 285, 367, 282, 341, 867, 281, 737, 154, 434, 148, 32, 595, 138, 755, 805, 1024, 1024, 371, 197, 8, 22, 58, 670, 733, 41, 364, 130, 238, 925, 611, 251, 1, 32, 195, 127, 334, 524, 317, 424, 84, 73, 197, 512, 592, 93, 555, 99, 125, 144, 460, 506, 588, 695, 130, 403, 412, 158, 43, 305, 329, 576, 591, 290, 119, 456, 152, 379, 172, 76, 1024, 189, 208, 445, 75, 1024, 284, 137, 738, 76, 226, 187, 219, 9, 207, 108, 696, 435, 211, 395, 101, 179, 121, 84, 293, 927, 54, 92, 290, 458, 782, 504, 277, 1024, 420, 88, 370, 1024, 407, 548, 104, 744, 360, 489, 767, 468, 119, 21, 367, 275, 1024, 269, 159, 436, 251, 598, 60, 128, 118, 271, 1024, 145, 48, 9, 768, 68, 373, 303, 982, 428, 40, 273, 210, 847, 418, 285, 745, 865, 295, 77, 52, 674, 10, 499, 373, 547, 264, 425, 507, 697, 191, 398, 434, 1024, 386, 1023, 421, 409, 576, 1024, 194, 329, 24, 230, 9, 493, 253, 330, 42, 397, 456, 284, 325, 365, 122, 385, 1024, 37, 425, 678, 225, 128, 882, 449, 631, 682, 349, 14, 600, 158, 184, 296, 87, 307, 309, 181, 357, 958, 75, 783, 234, 25, 757, 107, 422, 226, 1024, 391, 383, 50, 464, 538, 1024, 77, 714, 1024, 724, 359, 252, 76, 664, 105, 364, 301, 736, 676, 463, 34, 378, 52, 573, 220, 117, 147, 310, 102, 197, 313, 600, 433, 478, 4, 253, 51, 560, 1024, 695, 135, 10, 744, 1024, 46, 549, 184, 461, 300, 169, 137, 249, 47, 159, 466, 746, 141, 648, 165, 110, 561, 376, 31, 234, 71, 705, 1018, 5, 331, 283, 110, 35, 84, 6, 461, 137, 56, 137, 533, 222, 11, 280, 153, 332, 442, 103, 248, 61, 696, 124, 529, 298, 355, 49, 230, 29, 497, 1024, 101, 107, 751, 1024, 17, 631, 255, 186, 716, 450, 246, 53, 556, 36, 563, 743, 402, 286, 222, 280, 559, 708, 466, 145, 174, 725, 82, 881, 32, 42, 567, 513, 853, 284, 172, 314, 244, 910, 992, 494, 104, 1024, 138, 402, 822, 455, 831, 1024, 6, 91, 260, 286, 19, 622, 379, 82, 1024, 797, 1024, 1014, 679, 18, 854, 334, 255, 162, 403, 326, 32, 34, 406, 7, 685, 832, 183, 1024, 39, 101, 402, 202, 312, 486, 202, 18, 132, 1024, 653, 462, 142, 497, 15, 279, 39, 82, 197, 93, 139, 205, 479, 206, 191, 668, 292, 1024, 240, 396, 288, 15, 144, 651, 543, 1024, 353, 305, 386, 49, 101, 401, 529, 39, 178, 263, 868, 1024, 454, 272, 40, 124, 163, 1024, 24, 155, 103, 410, 582, 2, 350, 362, 81, 285, 478, 13, 62, 339, 1, 590, 433, 300, 281, 510, 239, 31, 283, 455, 276, 162, 131, 287, 826, 238, 868, 657, 9, 369, 259, 761, 115, 216, 402, 325, 420, 156, 125, 202, 454, 144, 192, 311, 120, 117, 445, 380, 364, 86, 799, 507, 693, 580, 510, 615, 1024, 226, 213, 465, 737, 21, 249, 1024, 103, 21, 320, 6, 386, 470, 169, 197, 299, 19, 271, 361, 9, 1024, 157, 278, 220, 21, 243, 125, 90, 768, 851, 202, 680, 234, 64, 455, 253, 310, 1024, 143, 690, 477, 294, 222, 220, 916, 643, 155, 711, 304, 431, 272, 438, 32, 1024, 469, 730, 277, 329]
+  Verification 1 (hook cross-check) [PASS]: 26/26 operator forwards match the independent hook capture.
+  Verification 2 (mock batching replay) [FAIL]: 4/5 checks passed (1042 simulated steps, 19 with prefill).
+    ! per-step token counts match capture: 5: predicted 1 vs captured 0; 7: predicted 1 vs captured 0; 10: predicted 1 vs captured 0; 16: predicted 1 vs captured 0; 18: predicted 1 vs captured 0; 20: predicted 1 vs captured 0; 24: predicted 1 vs captured 0; 28: predicted 1 vs captured 0; 30: predicted 1 vs captured 0; 32: predicted 1 vs captured 0; 36: predicted 1 vs captured 0; 37: predicted 1 vs captured 0; 40: predicted 1 vs captured 0; 42: predicted 1 vs captured 0; 46: predicted 1 vs captured 0; 48: predicted 1 vs captured 0; 53: predicted 1 vs captured 0; 58: predicted 1 vs captured 0; 59: predicted 0 vs captured 1; 60: predicted 0 vs captured 5; 61: predicted 0 vs captured 1; 62: predicted 0 vs captured 2; 64: predicted 13 vs captured 7; 65: predicted 3 vs captured 4; 66: predicted 0 vs captured 2; 67: predicted 5 vs captured 9; 68: predicted 9 vs captured 10; 69: predicted 17 vs captured 6; 70: predicted 0 vs captured 6; 71: predicted 6 vs captured 7; 72: predicted 4 vs captured 5; 73: predicted 7 vs captured 5; 74: predicted 0 vs captured 2; 75: predicted 13 vs captured 9; 76: predicted 4 vs captured 2; 77: predicted 1 vs captured 3; 78: predicted 4 vs captured 10; 79: predicted 3 vs captured 2; 80: predicted 0 vs captured 2; 81: predicted 8 vs captured 7; 83: predicted 9 vs captured 3; 84: predicted 1 vs captured 0; 85: predicted 3 vs captured 2; 87: predicted 4 vs captured 5; 88: predicted 12 vs captured 17; 89: predicted 1 vs captured 4; 91: predicted 6 vs captured 1; 92: predicted 3 vs captured 1; 93: predicted 0 vs captured 13; 95: predicted 9 vs captured 1; 96: predicted 1 vs captured 2; 97: predicted 6 vs captured 11; 98: predicted 0 vs captured 1; 99: predicted 1 vs captured 2; 100: predicted 10 vs captured 2; 101: predicted 6 vs captured 2; 103: predicted 1 vs captured 3; 104: predicted 3 vs captured 5; 105: predicted 0 vs captured 2; 106: predicted 4 vs captured 1; 107: predicted 1 vs captured 4; 109: predicted 7 vs captured 0; 110: predicted 1 vs captured 4; 111: predicted 10 vs captured 8; 113: predicted 1 vs captured 0; 114: predicted 0 vs captured 7; 115: predicted 3 vs captured 6; 116: predicted 1 vs captured 2; 117: predicted 16 vs captured 4; 118: predicted 1 vs captured 8; 119: predicted 3 vs captured 1; 120: predicted 3 vs captured 1; 121: predicted 0 vs captured 1; 122: predicted 3 vs captured 6; 123: predicted 4 vs captured 0; 125: predicted 2 vs captured 1; 126: predicted 1 vs captured 2; 127: predicted 0 vs captured 3; 128: predicted 2 vs captured 1; 129: predicted 1 vs captured 0; 131: predicted 2 vs captured 6; 132: predicted 3 vs captured 4; 133: predicted 3 vs captured 2; 134: predicted 3 vs captured 0; 135: predicted 2 vs captured 1; 136: predicted 1 vs captured 3; 137: predicted 2 vs captured 5; 141: predicted 1 vs captured 0; 142: predicted 0 vs captured 1; 143: predicted 4 vs captured 0; 144: predicted 2 vs captured 5; 146: predicted 1 vs captured 0; 148: predicted 1 vs captured 3; 149: predicted 3 vs captured 2; 150: predicted 2 vs captured 1; 151: predicted 3 vs captured 5; 153: predicted 6 vs captured 1; 154: predicted 2 vs captured 3; 155: predicted 2 vs captured 1; 156: predicted 2 vs captured 4; 159: predicted 0 vs captured 3; 160: predicted 4 vs captured 3; 162: predicted 3 vs captured 1; 163: predicted 3 vs captured 0; 164: predicted 1 vs captured 5; 165: predicted 1 vs captured 2; 167: predicted 0 vs captured 1; 168: predicted 2 vs captured 0; 169: predicted 0 vs captured 1; 170: predicted 2 vs captured 0; 171: predicted 2 vs captured 1; 172: predicted 2 vs captured 1; 174: predicted 0 vs captured 3; 175: predicted 2 vs captured 0; 176: predicted 4 vs captured 2; 177: predicted 0 vs captured 3; 178: predicted 0 vs captured 3; 181: predicted 3 vs captured 1; 183: predicted 4 vs captured 1; 184: predicted 1 vs captured 2; 185: predicted 3 vs captured 0; 186: predicted 0 vs captured 2; 187: predicted 0 vs captured 1; 188: predicted 2 vs captured 3; 189: predicted 0 vs captured 1; 190: predicted 2 vs captured 1; 191: predicted 1 vs captured 3; 192: predicted 2 vs captured 1; 193: predicted 5 vs captured 1; 194: predicted 2 vs captured 6; 195: predicted 2 vs captured 0; 196: predicted 0 vs captured 4; 197: predicted 3 vs captured 1; 199: predicted 2 vs captured 3; 200: predicted 1 vs captured 0; 201: predicted 10 vs captured 4; 203: predicted 1 vs captured 0; 204: predicted 0 vs captured 1; 205: predicted 0 vs captured 1; 206: predicted 0 vs captured 1; 207: predicted 3 vs captured 1; 208: predicted 1 vs captured 8; 209: predicted 1 vs captured 0; 211: predicted 4 vs captured 3; 212: predicted 0 vs captured 2; 213: predicted 7 vs captured 3; 214: predicted 6 vs captured 4; 215: predicted 0 vs captured 1; 216: predicted 1 vs captured 2; 217: predicted 5 vs captured 1; 218: predicted 1 vs captured 7; 220: predicted 1 vs captured 2; 221: predicted 2 vs captured 1; 222: predicted 2 vs captured 0; 224: predicted 2 vs captured 1; 225: predicted 1 vs captured 2; 226: predicted 1 vs captured 3; 228: predicted 1 vs captured 0; 232: predicted 0 vs captured 2; 235: predicted 3 vs captured 1; 236: predicted 4 vs captured 1; 237: predicted 2 vs captured 1; 238: predicted 1 vs captured 2; 239: predicted 0 vs captured 2; 240: predicted 1 vs captured 0; 241: predicted 0 vs captured 4; 242: predicted 1 vs captured 0; 243: predicted 1 vs captured 3; 244: predicted 2 vs captured 1; 246: predicted 3 vs captured 1; 249: predicted 1 vs captured 0; 250: predicted 0 vs captured 1; 253: predicted 2 vs captured 0; 256: predicted 2 vs captured 0; 257: predicted 0 vs captured 1; 258: predicted 1 vs captured 3; 259: predicted 1 vs captured 0; 261: predicted 2 vs captured 0; 262: predicted 0 vs captured 2; 263: predicted 1 vs captured 3; 265: predicted 0 vs captured 1; 267: predicted 3 vs captured 0; 268: predicted 2 vs captured 0; 269: predicted 1 vs captured 4; 270: predicted 3 vs captured 2; 271: predicted 0 vs captured 1; 274: predicted 2 vs captured 5; 276: predicted 2 vs captured 4; 277: predicted 1 vs captured 0; 278: predicted 7 vs captured 2; 279: predicted 4 vs captured 0; 280: predicted 1 vs captured 3; 282: predicted 1 vs captured 7; 283: predicted 0 vs captured 2; 285: predicted 2 vs captured 1; 287: predicted 2 vs captured 0; 288: predicted 1 vs captured 0; 289: predicted 0 vs captured 1; 290: predicted 3 vs captured 2; 291: predicted 1 vs captured 0; 293: predicted 2 vs captured 3; 294: predicted 1 vs captured 0; 295: predicted 0 vs captured 1; 298: predicted 2 vs captured 1; 302: predicted 0 vs captured 4; 303: predicted 1 vs captured 0; 305: predicted 2 vs captured 0; 306: predicted 2 vs captured 3; 310: predicted 1 vs captured 0; 311: predicted 4 vs captured 0; 312: predicted 0 vs captured 2; 313: predicted 0 vs captured 1; 317: predicted 0 vs captured 7; 318: predicted 2 vs captured 0; 319: predicted 1 vs captured 0; 321: predicted 1 vs captured 0; 323: predicted 4 vs captured 1; 324: predicted 0 vs captured 1; 325: predicted 0 vs captured 2; 326: predicted 1 vs captured 0; 328: predicted 1 vs captured 2; 331: predicted 1 vs captured 0; 332: predicted 0 vs captured 2; 333: predicted 1 vs captured 0; 334: predicted 0 vs captured 1; 335: predicted 0 vs captured 1; 338: predicted 0 vs captured 1; 339: predicted 2 vs captured 0; 344: predicted 1 vs captured 0; 345: predicted 1 vs captured 2; 347: predicted 0 vs captured 1; 349: predicted 0 vs captured 1; 350: predicted 1 vs captured 0; 351: predicted 1 vs captured 0; 352: predicted 1 vs captured 0; 355: predicted 1 vs captured 0; 356: predicted 2 vs captured 0; 357: predicted 0 vs captured 1; 358: predicted 4 vs captured 2; 361: predicted 0 vs captured 1; 362: predicted 0 vs captured 2; 363: predicted 0 vs captured 1; 364: predicted 2 vs captured 1; 365: predicted 1 vs captured 0; 366: predicted 3 vs captured 1; 368: predicted 0 vs captured 1; 369: predicted 2 vs captured 1; 370: predicted 0 vs captured 2; 371: predicted 0 vs captured 1; 372: predicted 0 vs captured 2; 374: predicted 1 vs captured 0; 375: predicted 0 vs captured 1; 376: predicted 2 vs captured 0; 378: predicted 1 vs captured 0; 379: predicted 2 vs captured 0; 380: predicted 0 vs captured 2; 382: predicted 1 vs captured 0; 383: predicted 1 vs captured 2; 384: predicted 0 vs captured 3; 385: predicted 1 vs captured 0; 387: predicted 1 vs captured 2; 388: predicted 0 vs captured 1; 389: predicted 2 vs captured 0; 390: predicted 1 vs captured 0; 392: predicted 1 vs captured 0; 395: predicted 3 vs captured 0; 397: predicted 1 vs captured 0; 398: predicted 0 vs captured 1; 399: predicted 0 vs captured 2; 400: predicted 0 vs captured 2; 403: predicted 2 vs captured 1; 404: predicted 0 vs captured 1; 405: predicted 1 vs captured 0; 406: predicted 0 vs captured 2; 407: predicted 0 vs captured 1; 408: predicted 0 vs captured 3; 409: predicted 1 vs captured 0; 411: predicted 0 vs captured 1; 412: predicted 4 vs captured 0; 416: predicted 3 vs captured 1; 417: predicted 0 vs captured 1; 418: predicted 4 vs captured 1; 420: predicted 0 vs captured 1; 421: predicted 0 vs captured 1; 423: predicted 0 vs captured 1; 424: predicted 1 vs captured 2; 426: predicted 1 vs captured 2; 427: predicted 2 vs captured 3; 428: predicted 1 vs captured 0; 430: predicted 0 vs captured 1; 431: predicted 2 vs captured 1; 433: predicted 1 vs captured 0; 434: predicted 2 vs captured 1; 438: predicted 2 vs captured 0; 441: predicted 0 vs captured 2; 442: predicted 1 vs captured 0; 443: predicted 0 vs captured 3; 445: predicted 1 vs captured 2; 446: predicted 1 vs captured 0; 447: predicted 2 vs captured 0; 448: predicted 0 vs captured 1; 450: predicted 0 vs captured 2; 451: predicted 1 vs captured 0; 452: predicted 0 vs captured 1; 456: predicted 1 vs captured 0; 457: predicted 2 vs captured 0; 461: predicted 2 vs captured 1; 464: predicted 0 vs captured 1; 466: predicted 1 vs captured 0; 467: predicted 1 vs captured 2; 468: predicted 1 vs captured 0; 471: predicted 2 vs captured 0; 472: predicted 0 vs captured 2; 473: predicted 2 vs captured 3; 474: predicted 2 vs captured 1; 475: predicted 1 vs captured 5; 476: predicted 7 vs captured 2; 477: predicted 0 vs captured 1; 478: predicted 2 vs captured 0; 479: predicted 1 vs captured 2; 481: predicted 0 vs captured 2; 483: predicted 1 vs captured 0; 484: predicted 0 vs captured 2; 485: predicted 1 vs captured 0; 486: predicted 0 vs captured 2; 490: predicted 1 vs captured 0; 491: predicted 0 vs captured 1; 493: predicted 2 vs captured 0; 495: predicted 1 vs captured 0; 496: predicted 3 vs captured 0; 498: predicted 0 vs captured 2; 499: predicted 2 vs captured 0; 500: predicted 0 vs captured 1; 501: predicted 1 vs captured 0; 503: predicted 0 vs captured 1; 504: predicted 0 vs captured 3; 505: predicted 1 vs captured 3; 506: predicted 0 vs captured 1; 507: predicted 1 vs captured 0; 508: predicted 1 vs captured 0; 509: predicted 0 vs captured 2; 511: predicted 2 vs captured 1; 513: predicted 1 vs captured 0; 515: predicted 1 vs captured 0; 518: predicted 1 vs captured 0; 521: predicted 0 vs captured 2; 522: predicted 3 vs captured 0; 523: predicted 0 vs captured 2; 526: predicted 0 vs captured 1; 528: predicted 2 vs captured 1; 530: predicted 0 vs captured 2; 533: predicted 1 vs captured 0; 539: predicted 0 vs captured 1; 540: predicted 1 vs captured 0; 541: predicted 2 vs captured 0; 542: predicted 0 vs captured 1; 545: predicted 1 vs captured 0; 547: predicted 0 vs captured 1; 549: predicted 0 vs captured 1; 557: predicted 1 vs captured 0; 558: predicted 0 vs captured 1; 562: predicted 0 vs captured 1; 563: predicted 1 vs captured 0; 566: predicted 0 vs captured 1; 567: predicted 1 vs captured 0; 571: predicted 0 vs captured 1; 572: predicted 0 vs captured 1; 573: predicted 1 vs captured 0; 579: predicted 0 vs captured 1; 582: predicted 1 vs captured 0; 583: predicted 1 vs captured 0; 585: predicted 2 vs captured 1; 586: predicted 1 vs captured 2; 588: predicted 2 vs captured 0; 591: predicted 1 vs captured 0; 592: predicted 0 vs captured 1; 593: predicted 1 vs captured 0; 595: predicted 1 vs captured 2; 596: predicted 0 vs captured 1; 597: predicted 3 vs captured 1; 598: predicted 0 vs captured 1; 599: predicted 1 vs captured 0; 601: predicted 0 vs captured 2; 603: predicted 2 vs captured 1; 604: predicted 1 vs captured 0; 605: predicted 0 vs captured 1; 608: predicted 1 vs captured 3; 613: predicted 1 vs captured 0; 615: predicted 0 vs captured 1; 620: predicted 0 vs captured 1; 621: predicted 1 vs captured 0; 622: predicted 2 vs captured 0; 624: predicted 0 vs captured 2; 625: predicted 1 vs captured 2; 627: predicted 0 vs captured 1; 629: predicted 3 vs captured 1; 630: predicted 1 vs captured 2; 631: predicted 2 vs captured 1; 633: predicted 1 vs captured 0; 634: predicted 0 vs captured 1; 635: predicted 1 vs captured 3; 637: predicted 2 vs captured 0; 638: predicted 0 vs captured 1; 639: predicted 2 vs captured 1; 640: predicted 2 vs captured 0; 642: predicted 2 vs captured 1; 643: predicted 0 vs captured 1; 645: predicted 1 vs captured 3; 646: predicted 0 vs captured 1; 650: predicted 1 vs captured 0; 653: predicted 1 vs captured 2; 655: predicted 1 vs captured 0; 656: predicted 1 vs captured 2; 657: predicted 3 vs captured 0; 660: predicted 0 vs captured 1; 664: predicted 1 vs captured 0; 665: predicted 0 vs captured 1; 667: predicted 1 vs captured 0; 668: predicted 0 vs captured 1; 669: predicted 2 vs captured 1; 670: predicted 1 vs captured 0; 671: predicted 0 vs captured 2; 673: predicted 0 vs captured 1; 678: predicted 0 vs captured 1; 679: predicted 2 vs captured 0; 680: predicted 1 vs captured 2; 681: predicted 2 vs captured 0; 683: predicted 1 vs captured 0; 684: predicted 0 vs captured 2; 685: predicted 1 vs captured 3; 686: predicted 1 vs captured 0; 688: predicted 1 vs captured 0; 691: predicted 0 vs captured 1; 692: predicted 2 vs captured 1; 694: predicted 1 vs captured 2; 695: predicted 1 vs captured 0; 696: predicted 2 vs captured 1; 697: predicted 1 vs captured 0; 698: predicted 0 vs captured 2; 700: predicted 1 vs captured 0; 702: predicted 0 vs captured 1; 706: predicted 0 vs captured 1; 707: predicted 1 vs captured 0; 708: predicted 0 vs captured 1; 709: predicted 1 vs captured 2; 710: predicted 3 vs captured 1; 712: predicted 2 vs captured 1; 713: predicted 0 vs captured 1; 714: predicted 1 vs captured 0; 715: predicted 0 vs captured 4; 716: predicted 1 vs captured 2; 718: predicted 2 vs captured 1; 720: predicted 1 vs captured 0; 721: predicted 1 vs captured 2; 722: predicted 0 vs captured 2; 724: predicted 2 vs captured 0; 727: predicted 1 vs captured 0; 728: predicted 0 vs captured 2; 729: predicted 1 vs captured 0; 730: predicted 2 vs captured 1; 732: predicted 2 vs captured 1; 733: predicted 1 vs captured 0; 734: predicted 0 vs captured 1; 735: predicted 0 vs captured 1; 737: predicted 1 vs captured 0; 738: predicted 3 vs captured 0; 739: predicted 0 vs captured 1; 741: predicted 0 vs captured 1; 742: predicted 1 vs captured 2; 744: predicted 0 vs captured 2; 745: predicted 0 vs captured 1; 746: predicted 2 vs captured 1; 747: predicted 1 vs captured 0; 750: predicted 1 vs captured 0; 751: predicted 0 vs captured 1; 752: predicted 2 vs captured 0; 755: predicted 2 vs captured 1; 756: predicted 0 vs captured 1; 759: predicted 1 vs captured 0; 760: predicted 1 vs captured 0; 761: predicted 0 vs captured 2; 763: predicted 0 vs captured 1; 764: predicted 1 vs captured 0; 767: predicted 1 vs captured 0; 769: predicted 0 vs captured 2; 770: predicted 0 vs captured 3; 774: predicted 2 vs captured 0; 776: predicted 1 vs captured 0; 777: predicted 0 vs captured 1; 782: predicted 1 vs captured 0; 783: predicted 1 vs captured 0; 785: predicted 2 vs captured 0; 788: predicted 0 vs captured 1; 791: predicted 0 vs captured 1; 792: predicted 1 vs captured 0; 793: predicted 0 vs captured 1; 799: predicted 2 vs captured 0; 800: predicted 0 vs captured 1; 801: predicted 2 vs captured 1; 802: predicted 1 vs captured 2; 803: predicted 0 vs captured 1; 805: predicted 1 vs captured 0; 806: predicted 0 vs captured 2; 807: predicted 1 vs captured 0; 809: predicted 0 vs captured 1; 810: predicted 0 vs captured 1; 811: predicted 1 vs captured 0; 812: predicted 0 vs captured 1; 813: predicted 1 vs captured 0; 815: predicted 0 vs captured 1; 816: predicted 0 vs captured 1; 819: predicted 1 vs captured 0; 820: predicted 0 vs captured 1; 824: predicted 1 vs captured 0; 826: predicted 1 vs captured 0; 828: predicted 2 vs captured 0; 829: predicted 1 vs captured 0; 831: predicted 0 vs captured 2; 834: predicted 2 vs captured 0; 836: predicted 0 vs captured 1; 838: predicted 1 vs captured 2; 840: predicted 0 vs captured 1; 841: predicted 2 vs captured 0; 844: predicted 1 vs captured 0; 845: predicted 0 vs captured 1; 847: predicted 0 vs captured 2; 850: predicted 0 vs captured 1; 851: predicted 0 vs captured 1; 852: predicted 0 vs captured 1; 853: predicted 3 vs captured 0; 854: predicted 1 vs captured 0; 856: predicted 1 vs captured 2; 857: predicted 3 vs captured 0; 861: predicted 1 vs captured 0; 862: predicted 0 vs captured 3; 864: predicted 1 vs captured 0; 866: predicted 0 vs captured 1; 868: predicted 1 vs captured 0; 869: predicted 0 vs captured 1; 870: predicted 2 vs captured 0; 872: predicted 1 vs captured 0; 873: predicted 0 vs captured 1; 874: predicted 2 vs captured 1; 875: predicted 0 vs captured 2; 876: predicted 1 vs captured 0; 878: predicted 3 vs captured 0; 879: predicted 1 vs captured 3; 880: predicted 1 vs captured 4; 882: predicted 2 vs captured 1; 883: predicted 0 vs captured 1; 885: predicted 2 vs captured 0; 887: predicted 0 vs captured 1; 888: predicted 2 vs captured 1; 889: predicted 0 vs captured 1; 890: predicted 0 vs captured 1; 891: predicted 1 vs captured 0; 893: predicted 0 vs captured 1; 896: predicted 0 vs captured 1; 898: predicted 0 vs captured 1; 899: predicted 1 vs captured 0; 901: predicted 1 vs captured 0; 904: predicted 1 vs captured 0; 908: predicted 0 vs captured 1; 909: predicted 1 vs captured 0; 910: predicted 0 vs captured 1; 911: predicted 0 vs captured 1; 912: predicted 1 vs captured 0; 913: predicted 0 vs captured 2; 914: predicted 0 vs captured 1; 918: predicted 1 vs captured 0; 919: predicted 1 vs captured 0; 927: predicted 1 vs captured 0; 931: predicted 0 vs captured 1; 934: predicted 1 vs captured 0; 936: predicted 1 vs captured 0; 937: predicted 0 vs captured 1; 938: predicted 1 vs captured 0; 941: predicted 0 vs captured 1; 943: predicted 1 vs captured 0; 944: predicted 1 vs captured 0; 946: predicted 0 vs captured 1; 948: predicted 0 vs captured 2; 949: predicted 0 vs captured 4; 950: predicted 0 vs captured 1; 951: predicted 2 vs captured 0; 953: predicted 0 vs captured 1; 954: predicted 0 vs captured 1; 956: predicted 2 vs captured 0; 957: predicted 1 vs captured 0; 959: predicted 1 vs captured 2; 961: predicted 1 vs captured 0; 962: predicted 0 vs captured 1; 964: predicted 0 vs captured 1; 966: predicted 3 vs captured 0; 973: predicted 1 vs captured 2; 974: predicted 0 vs captured 1; 975: predicted 1 vs captured 0; 976: predicted 1 vs captured 0; 977: predicted 0 vs captured 1; 979: predicted 1 vs captured 0; 981: predicted 1 vs captured 0; 983: predicted 0 vs captured 1; 984: predicted 0 vs captured 1; 986: predicted 0 vs captured 1; 989: predicted 0 vs captured 1; 994: predicted 0 vs captured 1; 995: predicted 0 vs captured 1; 996: predicted 0 vs captured 1; 997: predicted 0 vs captured 1; 7359: predicted 0 vs captured 1; 16092: predicted 1 vs captured 0
+  Captured 31 executed operator class(es) (of 446 instrumented).
+  Report written to /home/yak/.fastkernels/captures/capture_20260821-081742/02_moonshotai__Kimi-Linear-48B-A3B-Instruct_tp2_bfloat16/report_moonshotai__Kimi-Linear-48B-A3B-Instruct_tp2_bfloat16_mixed_req1000000_seqsauto_eager.json
+
+=== Capturing workload: long-context ===
+Loading 'long-context' workload prompts (64) ...
+Running 64 prompt(s) at max_batch_size=1024, max_new_tokens=[256..256] (modality=text, chat_template=True) ...
+Processed prompts:   0%|          | 0/64 [00:00<?, ?it/s]Processed prompts:   2%|▏         | 1/64 [00:39<41:26, 39.46s/it]Processed prompts: 100%|██████████| 64/64 [00:39<00:00,  1.62it/s]
+  Generation: 0/64 reached EOS before their per-request budget; lengths=[256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256]
+  Verification 1 (hook cross-check) [PASS]: 26/26 operator forwards match the independent hook capture.
+  Verification 2 (mock batching replay) [FAIL]: 4/5 checks passed (351 simulated steps, 96 with prefill).
+    ! per-step token counts match capture: 1: predicted 2 vs captured 0; 2: predicted 8 vs captured 0; 3: predicted 1 vs captured 0; 4: predicted 1 vs captured 0; 5: predicted 2 vs captured 0; 7: predicted 2 vs captured 0; 8: predicted 1 vs captured 0; 9: predicted 4 vs captured 0; 11: predicted 1 vs captured 0; 13: predicted 4 vs captured 0; 14: predicted 1 vs captured 0; 15: predicted 1 vs captured 0; 16: predicted 8 vs captured 0; 18: predicted 1 vs captured 0; 19: predicted 2 vs captured 0; 21: predicted 1 vs captured 0; 23: predicted 1 vs captured 0; 25: predicted 2 vs captured 0; 26: predicted 1 vs captured 0; 27: predicted 1 vs captured 0; 29: predicted 1 vs captured 0; 30: predicted 1 vs captured 0; 31: predicted 7 vs captured 0; 32: predicted 2 vs captured 0; 33: predicted 1 vs captured 0; 35: predicted 1 vs captured 0; 36: predicted 4 vs captured 0; 38: predicted 1 vs captured 0; 39: predicted 1 vs captured 0; 40: predicted 8 vs captured 0; 41: predicted 1 vs captured 0; 43: predicted 1 vs captured 0; 44: predicted 2 vs captured 0; 45: predicted 1 vs captured 0; 46: predicted 1 vs captured 0; 48: predicted 1 vs captured 0; 49: predicted 1 vs captured 0; 50: predicted 1 vs captured 0; 51: predicted 1 vs captured 0; 53: predicted 1 vs captured 0; 54: predicted 1 vs captured 0; 55: predicted 2 vs captured 0; 57: predicted 1 vs captured 0; 58: predicted 1 vs captured 0; 60: predicted 1 vs captured 0; 61: predicted 1 vs captured 0; 62: predicted 4 vs captured 0; 63: predicted 1 vs captured 0; 64: predicted 160 vs captured 255; 1134: predicted 1 vs captured 0; 14128: predicted 0 vs captured 1; 16384: predicted 95 vs captured 94
+  Captured 31 executed operator class(es) (of 446 instrumented).
+  Report written to /home/yak/.fastkernels/captures/capture_20260821-081742/02_moonshotai__Kimi-Linear-48B-A3B-Instruct_tp2_bfloat16/report_moonshotai__Kimi-Linear-48B-A3B-Instruct_tp2_bfloat16_long-context_req1000000_seqsauto_eager.json
+
+=== Capturing workload: single-request ===
+Loading 'single-request' workload prompts (1) ...
+Calling super().encode with {'add_special_tokens': False}
+Running 1 prompt(s) at max_batch_size=1024, max_new_tokens=[128..128] (modality=text, chat_template=True) ...
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_None_007216'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_None_007216'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+2026-08-21 08:36:52,466 - INFO - cubin_loader.py:231 - flashinfer.jit: Fetching 481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60//Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x8x128u2_s6_et128x8_m128x8x16_c1x1x1_rM_BN_transOut_schedS_bN_rgTma_clmp_dynB_sm100f.cubin from https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x8x128u2_s6_et128x8_m128x8x16_c1x1x1_rM_BN_transOut_schedS_bN_rgTma_clmp_dynB_sm100f.cubin
+2026-08-21 08:36:52,467 - INFO - cubin_loader.py:84 - flashinfer.jit: Acquired lock for /home/yak/.cache/flashinfer/cubins/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x8x128u2_s6_et128x8_m128x8x16_c1x1x1_rM_BN_transOut_schedS_bN_rgTma_clmp_dynB_sm100f.cubin
+2026-08-21 08:36:52,468 - INFO - cubin_loader.py:231 - flashinfer.jit: Fetching 481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60//Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x8x128u2_s6_et128x8_m128x8x16_c1x1x1_rM_BN_transOut_schedS_bN_rgTma_clmp_dynB_sm100f.cubin from https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x8x128u2_s6_et128x8_m128x8x16_c1x1x1_rM_BN_transOut_schedS_bN_rgTma_clmp_dynB_sm100f.cubin
+2026-08-21 08:36:52,790 - INFO - cubin_loader.py:114 - flashinfer.jit: File downloaded successfully: https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x8x128u2_s6_et128x8_m128x8x16_c1x1x1_rM_BN_transOut_schedS_bN_rgTma_clmp_dynB_sm100f.cubin -> /home/yak/.cache/flashinfer/cubins/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x8x128u2_s6_et128x8_m128x8x16_c1x1x1_rM_BN_transOut_schedS_bN_rgTma_clmp_dynB_sm100f.cubin
+2026-08-21 08:36:52,820 - INFO - cubin_loader.py:84 - flashinfer.jit: Acquired lock for /home/yak/.cache/flashinfer/cubins/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x8x128u2_s6_et128x8_m128x8x16_c1x1x1_rM_BN_transOut_schedS_bN_rgTma_clmp_dynB_sm100f.cubin
+2026-08-21 08:36:52,988 - INFO - cubin_loader.py:114 - flashinfer.jit: File downloaded successfully: https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x8x128u2_s6_et128x8_m128x8x16_c1x1x1_rM_BN_transOut_schedS_bN_rgTma_clmp_dynB_sm100f.cubin -> /home/yak/.cache/flashinfer/cubins/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/Bmm_Bfloat16_Bfloat16Bfloat16_Fp32_t128x8x128u2_s6_et128x8_m128x8x16_c1x1x1_rM_BN_transOut_schedS_bN_rgTma_clmp_dynB_sm100f.cubin
+2026-08-21 08:36:52,994 - INFO - cubin_loader.py:231 - flashinfer.jit: Fetching 158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen//fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512HVPerCta128PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin from https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512HVPerCta128PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin
+2026-08-21 08:36:52,995 - INFO - cubin_loader.py:84 - flashinfer.jit: Acquired lock for /home/yak/.cache/flashinfer/cubins/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512HVPerCta128PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin
+2026-08-21 08:36:52,997 - INFO - cubin_loader.py:231 - flashinfer.jit: Fetching 158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen//fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512HVPerCta128PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin from https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512HVPerCta128PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin
+2026-08-21 08:36:53,264 - INFO - cubin_loader.py:114 - flashinfer.jit: File downloaded successfully: https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512HVPerCta128PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin -> /home/yak/.cache/flashinfer/cubins/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512HVPerCta128PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin
+2026-08-21 08:36:53,299 - INFO - cubin_loader.py:84 - flashinfer.jit: Acquired lock for /home/yak/.cache/flashinfer/cubins/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512HVPerCta128PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin
+2026-08-21 08:36:53,531 - INFO - cubin_loader.py:114 - flashinfer.jit: File downloaded successfully: https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512HVPerCta128PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin -> /home/yak/.cache/flashinfer/cubins/158f6fa11ef139a098cfddcdddce73ca99d164ad/fmha/trtllm-gen/fmhaSm100fKernel_QkvBfloat16OBfloat16HQk576HV512HVPerCta128PagedKvDenseP64VarSeqQ16Kv128PersistentSwapsAbForGen.cubin
+Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.05s/it]Processed prompts: 100%|██████████| 1/1 [00:17<00:00, 17.05s/it]
+  Generation: 0/1 reached EOS before their per-request budget; lengths=[128]
+  Verification 1 (hook cross-check) [PASS]: 24/24 operator forwards match the independent hook capture.
+  Verification 2 (mock batching replay) [PASS]: 5/5 checks passed (128 simulated steps, 1 with prefill).
+  Captured 31 executed operator class(es) (of 446 instrumented).
+  Report written to /home/yak/.fastkernels/captures/capture_20260821-081742/02_moonshotai__Kimi-Linear-48B-A3B-Instruct_tp2_bfloat16/report_moonshotai__Kimi-Linear-48B-A3B-Instruct_tp2_bfloat16_single-request_req1000000_seqsauto_eager.json
+
+=== Capturing workload: fixed-batch-32 ===
+Loading 'fixed-batch-32' workload prompts (32) ...
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Running 32 prompt(s) at max_batch_size=1024, max_new_tokens=[9..128] (modality=text, chat_template=True) ...
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s]Processed prompts:   3%|▎         | 1/32 [00:01<00:31,  1.03s/it]Processed prompts:   6%|▋         | 2/32 [00:04<01:11,  2.40s/it]Processed prompts:   9%|▉         | 3/32 [00:06<00:59,  2.06s/it]Processed prompts:  12%|█▎        | 4/32 [00:08<01:01,  2.21s/it]Processed prompts:  16%|█▌        | 5/32 [00:09<00:51,  1.92s/it]Processed prompts:  19%|█▉        | 6/32 [00:10<00:34,  1.34s/it]Processed prompts:  22%|██▏       | 7/32 [00:14<00:56,  2.25s/it]Processed prompts: 100%|██████████| 32/32 [00:14<00:00,  2.25it/s]
+  Generation: 0/32 reached EOS before their per-request budget; lengths=[128, 128, 128, 128, 128, 128, 128, 39, 128, 128, 56, 128, 128, 128, 87, 71, 128, 128, 128, 128, 128, 128, 128, 85, 128, 128, 128, 128, 128, 128, 128, 9]
+  Verification 1 (hook cross-check) [PASS]: 24/24 operator forwards match the independent hook capture.
+  Verification 2 (mock batching replay) [PASS]: 5/5 checks passed (128 simulated steps, 1 with prefill).
+  Captured 31 executed operator class(es) (of 446 instrumented).
+  Report written to /home/yak/.fastkernels/captures/capture_20260821-081742/02_moonshotai__Kimi-Linear-48B-A3B-Instruct_tp2_bfloat16/report_moonshotai__Kimi-Linear-48B-A3B-Instruct_tp2_bfloat16_fixed-batch-32_req1000000_seqsauto_eager.json

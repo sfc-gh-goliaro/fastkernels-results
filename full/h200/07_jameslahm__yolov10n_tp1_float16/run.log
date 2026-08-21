@@ -1,0 +1,117 @@
+job_index: 7
+name: jameslahm/yolov10n
+tp: 1
+CUDA_VISIBLE_DEVICES: 0
+ray.get_gpu_ids(): ['0']
+parent_visible_gpus: 0,1,2,3,4,5,6,7
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.capture default --max-requests 1000000 --output /code/users/goliaro/h200-capture/07_jameslahm__yolov10n_tp1_float16/report.json
+
+Importing fastkernels engine ...
+Discovering operators in fastkernels.tasks.baseline ...
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+  Instrumented 455 operator class(es).
+
+########## Scenario: jameslahm/yolov10n (Detection, dtype=float16) ##########
+Building fastkernels Detection model (synthetic-input capture) ...
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files: 100%|██████████| 2/2 [00:00<00:00, 1442.08it/s]
+
+=== Capturing workload: coco-val ===
+  Verification 1 (hook cross-check) [INFO]: 21/22 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L4.yolov10:YOLOv10ForObjectDetection: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 24 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/07_jameslahm__yolov10n_tp1_float16/report_jameslahm__yolov10n_tp1_float16_coco-val_req1000000_seqsauto_eager.json
+
+=== Capturing workload: single-image ===
+  Verification 1 (hook cross-check) [INFO]: 21/22 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L4.yolov10:YOLOv10ForObjectDetection: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 24 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/07_jameslahm__yolov10n_tp1_float16/report_jameslahm__yolov10n_tp1_float16_single-image_req1000000_seqsauto_eager.json
+
+=== Capturing workload: batch-4 ===
+  Verification 1 (hook cross-check) [INFO]: 0/1 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L4.yolov10:YOLOv10ForObjectDetection: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 24 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/07_jameslahm__yolov10n_tp1_float16/report_jameslahm__yolov10n_tp1_float16_batch-4_req1000000_seqsauto_eager.json

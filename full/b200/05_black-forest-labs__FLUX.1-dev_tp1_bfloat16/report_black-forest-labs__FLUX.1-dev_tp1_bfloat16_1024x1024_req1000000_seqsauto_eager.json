@@ -1,0 +1,1788 @@
+{
+  "model": "black-forest-labs/FLUX.1-dev",
+  "workload": "1024x1024",
+  "dtype": "torch.bfloat16",
+  "engine": "fastkernels.infra.engine.LlamaEngine",
+  "captured_at": "2026-08-21T08:23:57",
+  "max_batch_size": 1,
+  "generation": {
+    "num_prompts": 1,
+    "max_batch_size": 1,
+    "engine": "diffusion",
+    "modality": "Diffusion",
+    "inputs": "synthetic (random tensors sized from workload spec)"
+  },
+  "verification": {
+    "forward_pre_hook_crosscheck": {
+      "method": "independent torch forward_pre_hook cross-check",
+      "classes_checked": 39,
+      "classes_matched": 38,
+      "passed": false,
+      "issues": [
+        "fastkernels.tasks.baseline.L4.flux:FluxPipeline: no hook observations (forward may be called directly, bypassing __call__)"
+      ]
+    },
+    "mock_batching_replay": {
+      "method": "mock continuous-batching / chunked-prefill replay",
+      "applicable": false,
+      "passed": true,
+      "reason": "skipped for Diffusion: no paged-KV token schedule; the forward-pre-hook cross-check is the pass criterion."
+    },
+    "passed": false
+  },
+  "num_operator_classes_instrumented": 446,
+  "num_operator_classes_executed": 39,
+  "operators": {
+    "fastkernels.tasks.baseline.L1.dense_attention:DenseAttention": {
+      "init": {"calls": 57, "variants": [{"count": 57, "args": {"backend": "auto"}}]},
+      "forward": {
+        "calls": 57,
+        "variants": [
+          {
+            "count": 19,
+            "args": {
+              "query": {"shape": [1, 4608, 24, 128], "dtype": "bfloat16"},
+              "key": {"shape": [1, 4608, 24, 128], "dtype": "bfloat16"},
+              "value": {"shape": [1, 4608, 24, 128], "dtype": "bfloat16"},
+              "softmax_scale": 0.08838834764831843,
+              "causal": false,
+              "attn_mask": null
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 38,
+            "args": {
+              "query": {"shape": [1, 4608, 24, 128], "dtype": "bfloat16"},
+              "key": {"shape": [1, 4608, 24, 128], "dtype": "bfloat16"},
+              "value": {
+                "shape": [1, 4608, 24, 128],
+                "dtype": "bfloat16",
+                "stride": [42467328, 9216, 128, 1]
+              },
+              "softmax_scale": 0.08838834764831843,
+              "causal": false,
+              "attn_mask": null
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.diffusion_rope:DiffusionRoPE": {
+      "init": {"calls": 57, "variants": [{"count": 57, "args": {"is_neox_style": false}}]},
+      "forward": {
+        "calls": 114,
+        "variants": [
+          {
+            "count": 114,
+            "args": {
+              "x": {"shape": [1, 4608, 24, 128], "dtype": "bfloat16"},
+              "cos": {"shape": [4608, 64], "dtype": "bfloat16"},
+              "sin": {"shape": [4608, 64], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.embedding:Embedding": {
+      "init": {
+        "calls": 3,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"num_embeddings": 49408, "embedding_dim": 768, "padding_idx": null}
+          },
+          {
+            "count": 1,
+            "args": {"num_embeddings": 77, "embedding_dim": 768, "padding_idx": null}
+          },
+          {
+            "count": 1,
+            "args": {"num_embeddings": 32, "embedding_dim": 64, "padding_idx": null}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 3,
+        "variants": [
+          {
+            "count": 2,
+            "args": {"input_ids": {"shape": [1, 77], "dtype": "int64"}},
+            "init_variant_ids": [0, 1]
+          },
+          {
+            "count": 1,
+            "args": {"input_ids": {"shape": [512, 512], "dtype": "int64"}},
+            "init_variant_ids": [2]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.flux_pos_embed:FluxPosEmbed": {
+      "init": {
+        "calls": 1,
+        "variants": [{"count": 1, "args": {"theta": 10000, "axes_dim": {"$tuple": [16, 56, 56]}}}]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"ids": {"shape": [4608, 3], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.gelu:GELU": {
+      "init": {
+        "calls": 100,
+        "variants": [
+          {"count": 24, "args": {"approximate": "none"}},
+          {"count": 76, "args": {"approximate": "tanh"}}
+        ]
+      },
+      "forward": {
+        "calls": 76,
+        "variants": [
+          {
+            "count": 19,
+            "args": {"x": {"shape": [1, 4096, 12288], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 19,
+            "args": {"x": {"shape": [1, 512, 12288], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 38,
+            "args": {"x": {"shape": [1, 4608, 12288], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.layer_norm:LayerNorm": {
+      "init": {
+        "calls": 140,
+        "variants": [
+          {
+            "count": 25,
+            "args": {
+              "normalized_shape": 768,
+              "eps": 1e-05,
+              "elementwise_affine": true,
+              "create_scale": true,
+              "create_offset": true,
+              "promote_fp32": true
+            }
+          },
+          {
+            "count": 115,
+            "args": {
+              "normalized_shape": 3072,
+              "eps": 1e-06,
+              "elementwise_affine": false,
+              "create_scale": true,
+              "create_offset": true,
+              "promote_fp32": false
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 140,
+        "variants": [
+          {
+            "count": 25,
+            "args": {"x": {"shape": [1, 77, 768], "dtype": "float32"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 39,
+            "args": {"x": {"shape": [1, 4096, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 38,
+            "args": {"x": {"shape": [1, 512, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 38,
+            "args": {"x": {"shape": [1, 4608, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.linear:BMM": {
+      "forward": {
+        "calls": 72,
+        "variants": [
+          {
+            "count": 12,
+            "args": {
+              "a": {"shape": [1, 12, 77, 64], "dtype": "float32", "stride": [59136, 64, 768, 1]},
+              "b": {"shape": [1, 12, 64, 77], "dtype": "float32", "stride": [59136, 64, 1, 768]}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 12,
+            "args": {
+              "a": {"shape": [1, 12, 77, 77], "dtype": "float32"},
+              "b": {"shape": [1, 12, 77, 64], "dtype": "float32", "stride": [59136, 64, 768, 1]}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 24,
+            "args": {
+              "a": {
+                "shape": [1, 64, 512, 64],
+                "dtype": "bfloat16",
+                "stride": [6291456, 64, 12288, 1]
+              },
+              "b": {
+                "shape": [1, 64, 64, 512],
+                "dtype": "bfloat16",
+                "stride": [6291456, 64, 1, 12288]
+              }
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 24,
+            "args": {
+              "a": {"shape": [1, 64, 512, 512], "dtype": "bfloat16"},
+              "b": {
+                "shape": [1, 64, 512, 64],
+                "dtype": "bfloat16",
+                "stride": [6291456, 64, 12288, 1]
+              }
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.linear:Linear": {
+      "init": {
+        "calls": 158,
+        "variants": [
+          {"count": 48, "args": {"in_features": 768, "out_features": 768, "bias": true}},
+          {"count": 13, "args": {"in_features": 768, "out_features": 3072, "bias": true}},
+          {"count": 12, "args": {"in_features": 3072, "out_features": 768, "bias": true}},
+          {"count": 2, "args": {"in_features": 256, "out_features": 3072, "bias": true}},
+          {"count": 3, "args": {"in_features": 3072, "out_features": 3072, "bias": true}},
+          {"count": 1, "args": {"in_features": 4096, "out_features": 3072, "bias": true}},
+          {"count": 1, "args": {"in_features": 64, "out_features": 3072, "bias": true}},
+          {
+            "count": 38,
+            "args": {"in_features": 3072, "out_features": 18432, "bias": true}
+          },
+          {"count": 38, "args": {"in_features": 3072, "out_features": 9216, "bias": true}},
+          {"count": 1, "args": {"in_features": 3072, "out_features": 6144, "bias": true}},
+          {"count": 1, "args": {"in_features": 3072, "out_features": 64, "bias": true}}
+        ]
+      },
+      "forward": {
+        "calls": 158,
+        "variants": [
+          {
+            "count": 60,
+            "args": {"input": {"shape": [1, 77, 768], "dtype": "float32"}},
+            "init_variant_ids": [0, 1]
+          },
+          {
+            "count": 12,
+            "args": {"input": {"shape": [1, 77, 3072], "dtype": "float32"}},
+            "init_variant_ids": [2]
+          },
+          {
+            "count": 1,
+            "args": {"input": {"shape": [1, 4096, 64], "dtype": "bfloat16"}},
+            "init_variant_ids": [6]
+          },
+          {
+            "count": 2,
+            "args": {"input": {"shape": [1, 256], "dtype": "bfloat16"}},
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 80,
+            "args": {"input": {"shape": [1, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [4, 7, 8, 9]
+          },
+          {
+            "count": 1,
+            "args": {"input": {"shape": [1, 768], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 1,
+            "args": {"input": {"shape": [1, 512, 4096], "dtype": "bfloat16"}},
+            "init_variant_ids": [5]
+          },
+          {
+            "count": 1,
+            "args": {"input": {"shape": [1, 4096, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [10]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.linear:Matmul": {
+      "forward": {
+        "calls": 158,
+        "variants": [
+          {
+            "count": 48,
+            "args": {
+              "input": {"shape": [1, 77, 768], "dtype": "float32"},
+              "weight": {"shape": [768, 768], "dtype": "float32"},
+              "bias": {"shape": [768], "dtype": "float32"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 12,
+            "args": {
+              "input": {"shape": [1, 77, 768], "dtype": "float32"},
+              "weight": {"shape": [3072, 768], "dtype": "float32"},
+              "bias": {"shape": [3072], "dtype": "float32"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 12,
+            "args": {
+              "input": {"shape": [1, 77, 3072], "dtype": "float32"},
+              "weight": {"shape": [768, 3072], "dtype": "float32"},
+              "bias": {"shape": [768], "dtype": "float32"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {
+              "input": {"shape": [1, 4096, 64], "dtype": "bfloat16"},
+              "weight": {"shape": [3072, 64], "dtype": "bfloat16"},
+              "bias": {"shape": [3072], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 2,
+            "args": {
+              "input": {"shape": [1, 256], "dtype": "bfloat16"},
+              "weight": {"shape": [3072, 256], "dtype": "bfloat16"},
+              "bias": {"shape": [3072], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 3,
+            "args": {
+              "input": {"shape": [1, 3072], "dtype": "bfloat16"},
+              "weight": {"shape": [3072, 3072], "dtype": "bfloat16"},
+              "bias": {"shape": [3072], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {
+              "input": {"shape": [1, 768], "dtype": "bfloat16"},
+              "weight": {"shape": [3072, 768], "dtype": "bfloat16"},
+              "bias": {"shape": [3072], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {
+              "input": {"shape": [1, 512, 4096], "dtype": "bfloat16"},
+              "weight": {"shape": [3072, 4096], "dtype": "bfloat16"},
+              "bias": {"shape": [3072], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 38,
+            "args": {
+              "input": {"shape": [1, 3072], "dtype": "bfloat16"},
+              "weight": {"shape": [18432, 3072], "dtype": "bfloat16"},
+              "bias": {"shape": [18432], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 38,
+            "args": {
+              "input": {"shape": [1, 3072], "dtype": "bfloat16"},
+              "weight": {"shape": [9216, 3072], "dtype": "bfloat16"},
+              "bias": {"shape": [9216], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {
+              "input": {"shape": [1, 3072], "dtype": "bfloat16"},
+              "weight": {"shape": [6144, 3072], "dtype": "bfloat16"},
+              "bias": {"shape": [6144], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          },
+          {
+            "count": 1,
+            "args": {
+              "input": {"shape": [1, 4096, 3072], "dtype": "bfloat16"},
+              "weight": {"shape": [64, 3072], "dtype": "bfloat16"},
+              "bias": {"shape": [64], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.quickgelu:QuickGELU": {
+      "forward": {
+        "calls": 12,
+        "variants": [
+          {
+            "count": 12,
+            "args": {"x": {"shape": [1, 77, 3072], "dtype": "float32"}},
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.rms_norm:RMSNorm": {
+      "init": {
+        "calls": 152,
+        "variants": [
+          {
+            "count": 152,
+            "args": {"hidden_size": 128, "eps": 1e-06, "elementwise_affine": true}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 152,
+        "variants": [
+          {
+            "count": 38,
+            "args": {
+              "x": {
+                "shape": [1, 4096, 24, 128],
+                "dtype": "bfloat16",
+                "stride": [37748736, 9216, 128, 1]
+              },
+              "residual": null
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 38,
+            "args": {
+              "x": {
+                "shape": [1, 512, 24, 128],
+                "dtype": "bfloat16",
+                "stride": [4718592, 9216, 128, 1]
+              },
+              "residual": null
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 76,
+            "args": {
+              "x": {
+                "shape": [1, 4608, 24, 128],
+                "dtype": "bfloat16",
+                "stride": [42467328, 9216, 128, 1]
+              },
+              "residual": null
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.silu:SiLU": {
+      "forward": {
+        "calls": 80,
+        "variants": [
+          {
+            "count": 80,
+            "args": {"x": {"shape": [1, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": []
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.softmax:Softmax": {
+      "init": {"calls": 36, "variants": [{"count": 36, "args": {"dim": -1}}]},
+      "forward": {
+        "calls": 36,
+        "variants": [
+          {
+            "count": 12,
+            "args": {"x": {"shape": [1, 12, 77, 77], "dtype": "float32"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 24,
+            "args": {"x": {"shape": [1, 64, 512, 512], "dtype": "float32"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L1.t5_layer_norm:T5LayerNorm": {
+      "init": {
+        "calls": 49,
+        "variants": [{"count": 49, "args": {"hidden_size": 4096, "eps": 1e-06}}]
+      },
+      "forward": {
+        "calls": 49,
+        "variants": [
+          {
+            "count": 49,
+            "args": {"hidden_states": {"shape": [1, 512, 4096], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.ada_layer_norm:AdaLayerNormZero": {
+      "init": {
+        "calls": 38,
+        "variants": [
+          {
+            "count": 38,
+            "args": {
+              "embedding_dim": 3072,
+              "num_embeddings": null,
+              "norm_type": "layer_norm",
+              "bias": true,
+              "promote_fp32": false
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 38,
+        "variants": [
+          {
+            "count": 19,
+            "args": {
+              "x": {"shape": [1, 4096, 3072], "dtype": "bfloat16"},
+              "timestep": null,
+              "class_labels": null,
+              "hidden_dtype": null,
+              "emb": {"shape": [1, 3072], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 19,
+            "args": {
+              "x": {"shape": [1, 512, 3072], "dtype": "bfloat16"},
+              "timestep": null,
+              "class_labels": null,
+              "hidden_dtype": null,
+              "emb": {"shape": [1, 3072], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.ada_layer_norm:AdaLayerNormZeroSingle": {
+      "init": {
+        "calls": 38,
+        "variants": [
+          {
+            "count": 38,
+            "args": {
+              "embedding_dim": 3072,
+              "norm_type": "layer_norm",
+              "bias": true,
+              "promote_fp32": false
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 38,
+        "variants": [
+          {
+            "count": 38,
+            "args": {
+              "x": {"shape": [1, 4608, 3072], "dtype": "bfloat16"},
+              "emb": {"shape": [1, 3072], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.ada_layer_norm_continuous:AdaLayerNormContinuous": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "embedding_dim": 3072,
+              "conditioning_embedding_dim": 3072,
+              "elementwise_affine": false,
+              "eps": 1e-06,
+              "bias": true,
+              "norm_type": "layer_norm",
+              "promote_fp32": false
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "x": {"shape": [1, 4096, 3072], "dtype": "bfloat16"},
+              "conditioning_embedding": {"shape": [1, 3072], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.clip_attention:CLIPAttention": {
+      "init": {
+        "calls": 12,
+        "variants": [
+          {
+            "count": 12,
+            "args": {
+              "config": {
+                "$dataclass": "transformers.models.clip.configuration_clip:CLIPTextConfig",
+                "fields": {
+                  "transformers_version": "4.43.3",
+                  "architectures": ["CLIPTextModel"],
+                  "output_hidden_states": false,
+                  "return_dict": true,
+                  "dtype": {"$dtype": "bfloat16"},
+                  "chunk_size_feed_forward": 0,
+                  "is_encoder_decoder": false,
+                  "id2label": {"$dict": {"0": "LABEL_0", "1": "LABEL_1"}},
+                  "label2id": {"$dict": {"LABEL_0": 0, "LABEL_1": 1}},
+                  "problem_type": null,
+                  "vocab_size": 49408,
+                  "hidden_size": 768,
+                  "intermediate_size": 3072,
+                  "projection_dim": 768,
+                  "num_hidden_layers": 12,
+                  "num_attention_heads": 12,
+                  "max_position_embeddings": 77,
+                  "hidden_act": "quick_gelu",
+                  "layer_norm_eps": 1e-05,
+                  "attention_dropout": 0.0,
+                  "initializer_range": 0.02,
+                  "initializer_factor": 1.0,
+                  "pad_token_id": 1,
+                  "bos_token_id": 0,
+                  "eos_token_id": 2
+                }
+              }
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 12,
+        "variants": [
+          {
+            "count": 12,
+            "args": {
+              "hidden_states": {"shape": [1, 77, 768], "dtype": "float32"},
+              "attention_mask": {"shape": [1, 1, 77, 77], "dtype": "float32"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.clip_mlp:CLIPMLP": {
+      "init": {
+        "calls": 12,
+        "variants": [
+          {
+            "count": 12,
+            "args": {
+              "config": {
+                "$dataclass": "transformers.models.clip.configuration_clip:CLIPTextConfig",
+                "fields": {
+                  "transformers_version": "4.43.3",
+                  "architectures": ["CLIPTextModel"],
+                  "output_hidden_states": false,
+                  "return_dict": true,
+                  "dtype": {"$dtype": "bfloat16"},
+                  "chunk_size_feed_forward": 0,
+                  "is_encoder_decoder": false,
+                  "id2label": {"$dict": {"0": "LABEL_0", "1": "LABEL_1"}},
+                  "label2id": {"$dict": {"LABEL_0": 0, "LABEL_1": 1}},
+                  "problem_type": null,
+                  "vocab_size": 49408,
+                  "hidden_size": 768,
+                  "intermediate_size": 3072,
+                  "projection_dim": 768,
+                  "num_hidden_layers": 12,
+                  "num_attention_heads": 12,
+                  "max_position_embeddings": 77,
+                  "hidden_act": "quick_gelu",
+                  "layer_norm_eps": 1e-05,
+                  "attention_dropout": 0.0,
+                  "initializer_range": 0.02,
+                  "initializer_factor": 1.0,
+                  "pad_token_id": 1,
+                  "bos_token_id": 0,
+                  "eos_token_id": 2
+                }
+              }
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 12,
+        "variants": [
+          {
+            "count": 12,
+            "args": {"hidden_states": {"shape": [1, 77, 768], "dtype": "float32"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.clip_mlp:CLIPTextEmbeddings": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "transformers.models.clip.configuration_clip:CLIPTextConfig",
+                "fields": {
+                  "transformers_version": "4.43.3",
+                  "architectures": ["CLIPTextModel"],
+                  "output_hidden_states": false,
+                  "return_dict": true,
+                  "dtype": {"$dtype": "bfloat16"},
+                  "chunk_size_feed_forward": 0,
+                  "is_encoder_decoder": false,
+                  "id2label": {"$dict": {"0": "LABEL_0", "1": "LABEL_1"}},
+                  "label2id": {"$dict": {"LABEL_0": 0, "LABEL_1": 1}},
+                  "problem_type": null,
+                  "vocab_size": 49408,
+                  "hidden_size": 768,
+                  "intermediate_size": 3072,
+                  "projection_dim": 768,
+                  "num_hidden_layers": 12,
+                  "num_attention_heads": 12,
+                  "max_position_embeddings": 77,
+                  "hidden_act": "quick_gelu",
+                  "layer_norm_eps": 1e-05,
+                  "attention_dropout": 0.0,
+                  "initializer_range": 0.02,
+                  "initializer_factor": 1.0,
+                  "pad_token_id": 1,
+                  "bos_token_id": 0,
+                  "eos_token_id": 2
+                }
+              }
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {"input_ids": {"shape": [1, 77], "dtype": "int64"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.flux_attention:FluxAttention": {
+      "init": {
+        "calls": 57,
+        "variants": [
+          {
+            "count": 19,
+            "args": {
+              "query_dim": 3072,
+              "heads": 24,
+              "dim_head": 128,
+              "dropout": 0.0,
+              "bias": true,
+              "added_kv_proj_dim": 3072,
+              "added_proj_bias": true,
+              "out_bias": true,
+              "eps": 1e-06,
+              "out_dim": 3072,
+              "context_pre_only": false,
+              "pre_only": false,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 38,
+            "args": {
+              "query_dim": 3072,
+              "heads": 24,
+              "dim_head": 128,
+              "dropout": 0.0,
+              "bias": true,
+              "added_kv_proj_dim": null,
+              "added_proj_bias": true,
+              "out_bias": true,
+              "eps": 1e-06,
+              "out_dim": 3072,
+              "context_pre_only": null,
+              "pre_only": true,
+              "quant_config": null
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 57,
+        "variants": [
+          {
+            "count": 19,
+            "args": {
+              "hidden_states": {"shape": [1, 4096, 3072], "dtype": "bfloat16"},
+              "encoder_hidden_states": {"shape": [1, 512, 3072], "dtype": "bfloat16"},
+              "image_rotary_emb": [
+                {"shape": [4608, 64], "dtype": "float64"},
+                {"shape": [4608, 64], "dtype": "float64"}
+              ],
+              "kwargs": {}
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 38,
+            "args": {
+              "hidden_states": {"shape": [1, 4608, 3072], "dtype": "bfloat16"},
+              "encoder_hidden_states": null,
+              "image_rotary_emb": [
+                {"shape": [4608, 64], "dtype": "float64"},
+                {"shape": [4608, 64], "dtype": "float64"}
+              ],
+              "kwargs": {}
+            },
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.flux_feedforward:FeedForward": {
+      "init": {
+        "calls": 38,
+        "variants": [
+          {
+            "count": 38,
+            "args": {
+              "dim": 3072,
+              "dim_out": 3072,
+              "mult": 4,
+              "inner_dim": null,
+              "bias": true,
+              "quant_config": null
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 38,
+        "variants": [
+          {
+            "count": 19,
+            "args": {"hidden_states": {"shape": [1, 4096, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 19,
+            "args": {"hidden_states": {"shape": [1, 512, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.parallel_linear:ColumnParallelLinear": {
+      "init": {
+        "calls": 38,
+        "variants": [
+          {
+            "count": 38,
+            "args": {"input_size": 3072, "output_size": 12288, "bias": true, "quant_config": null}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 38,
+        "variants": [
+          {
+            "count": 19,
+            "args": {"x": {"shape": [1, 4096, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 19,
+            "args": {"x": {"shape": [1, 512, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.parallel_linear:MergedColumnParallelLinear": {
+      "init": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 24,
+            "args": {
+              "input_size": 4096,
+              "output_sizes": [10240, 10240],
+              "bias": false,
+              "quant_config": null,
+              "disable_tp": false
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 24,
+            "args": {"x": {"shape": [1, 512, 4096], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.parallel_linear:QKVParallelLinear": {
+      "init": {
+        "calls": 100,
+        "variants": [
+          {
+            "count": 24,
+            "args": {
+              "hidden_size": 4096,
+              "head_size": 64,
+              "total_num_heads": 64,
+              "total_num_kv_heads": 64,
+              "bias": false,
+              "quant_config": null
+            }
+          },
+          {
+            "count": 76,
+            "args": {
+              "hidden_size": 3072,
+              "head_size": 128,
+              "total_num_heads": 24,
+              "total_num_kv_heads": 24,
+              "bias": true,
+              "quant_config": null
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 100,
+        "variants": [
+          {
+            "count": 24,
+            "args": {"x": {"shape": [1, 512, 4096], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 19,
+            "args": {"x": {"shape": [1, 4096, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 19,
+            "args": {"x": {"shape": [1, 512, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 38,
+            "args": {"x": {"shape": [1, 4608, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.parallel_linear:ReplicatedLinear": {
+      "init": {
+        "calls": 76,
+        "variants": [
+          {
+            "count": 38,
+            "args": {"input_size": 3072, "output_size": 12288, "bias": true, "quant_config": null}
+          },
+          {
+            "count": 38,
+            "args": {"input_size": 15360, "output_size": 3072, "bias": true, "quant_config": null}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 76,
+        "variants": [
+          {
+            "count": 38,
+            "args": {"x": {"shape": [1, 4608, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 38,
+            "args": {"x": {"shape": [1, 4608, 15360], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.parallel_linear:RowParallelLinear": {
+      "init": {
+        "calls": 124,
+        "variants": [
+          {
+            "count": 24,
+            "args": {
+              "input_size": 4096,
+              "output_size": 4096,
+              "bias": false,
+              "quant_config": null,
+              "reduce_results": true
+            }
+          },
+          {
+            "count": 24,
+            "args": {
+              "input_size": 10240,
+              "output_size": 4096,
+              "bias": false,
+              "quant_config": null,
+              "reduce_results": true
+            }
+          },
+          {
+            "count": 38,
+            "args": {
+              "input_size": 3072,
+              "output_size": 3072,
+              "bias": true,
+              "quant_config": null,
+              "reduce_results": true
+            }
+          },
+          {
+            "count": 38,
+            "args": {
+              "input_size": 12288,
+              "output_size": 3072,
+              "bias": true,
+              "quant_config": null,
+              "reduce_results": true
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 124,
+        "variants": [
+          {
+            "count": 24,
+            "args": {"x": {"shape": [1, 512, 4096], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 24,
+            "args": {"x": {"shape": [1, 512, 10240], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          },
+          {
+            "count": 19,
+            "args": {"x": {"shape": [1, 4096, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [2]
+          },
+          {
+            "count": 19,
+            "args": {"x": {"shape": [1, 512, 3072], "dtype": "bfloat16"}},
+            "init_variant_ids": [2]
+          },
+          {
+            "count": 19,
+            "args": {"x": {"shape": [1, 4096, 12288], "dtype": "bfloat16"}},
+            "init_variant_ids": [3]
+          },
+          {
+            "count": 19,
+            "args": {"x": {"shape": [1, 512, 12288], "dtype": "bfloat16"}},
+            "init_variant_ids": [3]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.t5_attention:T5SelfAttention": {
+      "init": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "transformers.models.t5.configuration_t5:T5Config",
+                "fields": {
+                  "transformers_version": "4.43.3",
+                  "architectures": ["T5EncoderModel"],
+                  "output_hidden_states": false,
+                  "return_dict": true,
+                  "dtype": {"$dtype": "bfloat16"},
+                  "chunk_size_feed_forward": 0,
+                  "is_encoder_decoder": true,
+                  "id2label": {"$dict": {"0": "LABEL_0", "1": "LABEL_1"}},
+                  "label2id": {"$dict": {"LABEL_0": 0, "LABEL_1": 1}},
+                  "problem_type": null,
+                  "vocab_size": 32128,
+                  "d_model": 4096,
+                  "d_kv": 64,
+                  "d_ff": 10240,
+                  "num_layers": 24,
+                  "num_decoder_layers": 24,
+                  "num_heads": 64,
+                  "relative_attention_num_buckets": 32,
+                  "relative_attention_max_distance": 128,
+                  "dropout_rate": 0.1,
+                  "layer_norm_epsilon": 1e-06,
+                  "initializer_factor": 1.0,
+                  "feed_forward_proj": "gated-gelu",
+                  "use_cache": true,
+                  "pad_token_id": 0,
+                  "eos_token_id": 1,
+                  "classifier_dropout": 0.0,
+                  "is_decoder": false
+                }
+              },
+              "has_relative_attention_bias": true
+            }
+          },
+          {
+            "count": 23,
+            "args": {
+              "config": {
+                "$dataclass": "transformers.models.t5.configuration_t5:T5Config",
+                "fields": {
+                  "transformers_version": "4.43.3",
+                  "architectures": ["T5EncoderModel"],
+                  "output_hidden_states": false,
+                  "return_dict": true,
+                  "dtype": {"$dtype": "bfloat16"},
+                  "chunk_size_feed_forward": 0,
+                  "is_encoder_decoder": true,
+                  "id2label": {"$dict": {"0": "LABEL_0", "1": "LABEL_1"}},
+                  "label2id": {"$dict": {"LABEL_0": 0, "LABEL_1": 1}},
+                  "problem_type": null,
+                  "vocab_size": 32128,
+                  "d_model": 4096,
+                  "d_kv": 64,
+                  "d_ff": 10240,
+                  "num_layers": 24,
+                  "num_decoder_layers": 24,
+                  "num_heads": 64,
+                  "relative_attention_num_buckets": 32,
+                  "relative_attention_max_distance": 128,
+                  "dropout_rate": 0.1,
+                  "layer_norm_epsilon": 1e-06,
+                  "initializer_factor": 1.0,
+                  "feed_forward_proj": "gated-gelu",
+                  "use_cache": true,
+                  "pad_token_id": 0,
+                  "eos_token_id": 1,
+                  "classifier_dropout": 0.0,
+                  "is_decoder": false
+                }
+              },
+              "has_relative_attention_bias": false
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "hidden_states": {"shape": [1, 512, 4096], "dtype": "bfloat16"},
+              "mask": null,
+              "position_bias": null
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 23,
+            "args": {
+              "hidden_states": {"shape": [1, 512, 4096], "dtype": "bfloat16"},
+              "mask": null,
+              "position_bias": {"shape": [1, 64, 512, 512], "dtype": "bfloat16", "stride": [64, 1, 32768, 64]}
+            },
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.t5_dense:T5DenseGatedActDense": {
+      "init": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 24,
+            "args": {
+              "config": {
+                "$dataclass": "transformers.models.t5.configuration_t5:T5Config",
+                "fields": {
+                  "transformers_version": "4.43.3",
+                  "architectures": ["T5EncoderModel"],
+                  "output_hidden_states": false,
+                  "return_dict": true,
+                  "dtype": {"$dtype": "bfloat16"},
+                  "chunk_size_feed_forward": 0,
+                  "is_encoder_decoder": true,
+                  "id2label": {"$dict": {"0": "LABEL_0", "1": "LABEL_1"}},
+                  "label2id": {"$dict": {"LABEL_0": 0, "LABEL_1": 1}},
+                  "problem_type": null,
+                  "vocab_size": 32128,
+                  "d_model": 4096,
+                  "d_kv": 64,
+                  "d_ff": 10240,
+                  "num_layers": 24,
+                  "num_decoder_layers": 24,
+                  "num_heads": 64,
+                  "relative_attention_num_buckets": 32,
+                  "relative_attention_max_distance": 128,
+                  "dropout_rate": 0.1,
+                  "layer_norm_epsilon": 1e-06,
+                  "initializer_factor": 1.0,
+                  "feed_forward_proj": "gated-gelu",
+                  "use_cache": true,
+                  "pad_token_id": 0,
+                  "eos_token_id": 1,
+                  "classifier_dropout": 0.0,
+                  "is_decoder": false
+                }
+              }
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 24,
+            "args": {"hidden_states": {"shape": [1, 512, 4096], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.timestep_embedding:CombinedTimestepGuidanceTextProjEmbeddings": {
+      "init": {
+        "calls": 1,
+        "variants": [{"count": 1, "args": {"embedding_dim": 3072, "pooled_projection_dim": 768}}]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "timestep": {"shape": [1], "dtype": "bfloat16"},
+              "guidance": {"shape": [1], "dtype": "bfloat16"},
+              "pooled_projection": {"shape": [1, 768], "dtype": "bfloat16"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.timestep_embedding:TimestepEmbedding": {
+      "init": {
+        "calls": 3,
+        "variants": [
+          {
+            "count": 2,
+            "args": {"in_channels": 256, "time_embed_dim": 3072, "act_fn": "silu"}
+          },
+          {
+            "count": 1,
+            "args": {"in_channels": 768, "time_embed_dim": 3072, "act_fn": "silu"}
+          }
+        ]
+      },
+      "forward": {
+        "calls": 3,
+        "variants": [
+          {
+            "count": 2,
+            "args": {"sample": {"shape": [1, 256], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 1,
+            "args": {"sample": {"shape": [1, 768], "dtype": "bfloat16"}},
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L2.timestep_embedding:Timesteps": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "num_channels": 256,
+              "flip_sin_to_cos": true,
+              "downscale_freq_shift": 0,
+              "scale": 1
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 2,
+        "variants": [
+          {
+            "count": 2,
+            "args": {"timesteps": {"shape": [1], "dtype": "bfloat16"}},
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.clip_encoder_layer:CLIPEncoderLayer": {
+      "init": {
+        "calls": 12,
+        "variants": [
+          {
+            "count": 12,
+            "args": {
+              "config": {
+                "$dataclass": "transformers.models.clip.configuration_clip:CLIPTextConfig",
+                "fields": {
+                  "transformers_version": "4.43.3",
+                  "architectures": ["CLIPTextModel"],
+                  "output_hidden_states": false,
+                  "return_dict": true,
+                  "dtype": {"$dtype": "bfloat16"},
+                  "chunk_size_feed_forward": 0,
+                  "is_encoder_decoder": false,
+                  "id2label": {"$dict": {"0": "LABEL_0", "1": "LABEL_1"}},
+                  "label2id": {"$dict": {"LABEL_0": 0, "LABEL_1": 1}},
+                  "problem_type": null,
+                  "vocab_size": 49408,
+                  "hidden_size": 768,
+                  "intermediate_size": 3072,
+                  "projection_dim": 768,
+                  "num_hidden_layers": 12,
+                  "num_attention_heads": 12,
+                  "max_position_embeddings": 77,
+                  "hidden_act": "quick_gelu",
+                  "layer_norm_eps": 1e-05,
+                  "attention_dropout": 0.0,
+                  "initializer_range": 0.02,
+                  "initializer_factor": 1.0,
+                  "pad_token_id": 1,
+                  "bos_token_id": 0,
+                  "eos_token_id": 2
+                }
+              }
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 12,
+        "variants": [
+          {
+            "count": 12,
+            "args": {
+              "hidden_states": {"shape": [1, 77, 768], "dtype": "float32"},
+              "attention_mask": {"shape": [1, 1, 77, 77], "dtype": "float32"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.flux_transformer_block:FluxSingleTransformerBlock": {
+      "init": {
+        "calls": 38,
+        "variants": [
+          {
+            "count": 38,
+            "args": {
+              "dim": 3072,
+              "num_attention_heads": 24,
+              "attention_head_dim": 128,
+              "mlp_ratio": 4.0,
+              "quant_config": null
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 38,
+        "variants": [
+          {
+            "count": 38,
+            "args": {
+              "hidden_states": {"shape": [1, 4096, 3072], "dtype": "bfloat16"},
+              "encoder_hidden_states": {"shape": [1, 512, 3072], "dtype": "bfloat16"},
+              "temb": {"shape": [1, 3072], "dtype": "bfloat16"},
+              "image_rotary_emb": [
+                {"shape": [4608, 64], "dtype": "float64"},
+                {"shape": [4608, 64], "dtype": "float64"}
+              ],
+              "joint_attention_kwargs": {}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.flux_transformer_block:FluxTransformerBlock": {
+      "init": {
+        "calls": 19,
+        "variants": [
+          {
+            "count": 19,
+            "args": {
+              "dim": 3072,
+              "num_attention_heads": 24,
+              "attention_head_dim": 128,
+              "qk_norm": "rms_norm",
+              "eps": 1e-06,
+              "quant_config": null
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 19,
+        "variants": [
+          {
+            "count": 19,
+            "args": {
+              "hidden_states": {"shape": [1, 4096, 3072], "dtype": "bfloat16"},
+              "encoder_hidden_states": {"shape": [1, 512, 3072], "dtype": "bfloat16"},
+              "temb": {"shape": [1, 3072], "dtype": "bfloat16"},
+              "image_rotary_emb": [
+                {"shape": [4608, 64], "dtype": "float64"},
+                {"shape": [4608, 64], "dtype": "float64"}
+              ],
+              "joint_attention_kwargs": {}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L3.t5_block:T5Block": {
+      "init": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "transformers.models.t5.configuration_t5:T5Config",
+                "fields": {
+                  "transformers_version": "4.43.3",
+                  "architectures": ["T5EncoderModel"],
+                  "output_hidden_states": false,
+                  "return_dict": true,
+                  "dtype": {"$dtype": "bfloat16"},
+                  "chunk_size_feed_forward": 0,
+                  "is_encoder_decoder": true,
+                  "id2label": {"$dict": {"0": "LABEL_0", "1": "LABEL_1"}},
+                  "label2id": {"$dict": {"LABEL_0": 0, "LABEL_1": 1}},
+                  "problem_type": null,
+                  "vocab_size": 32128,
+                  "d_model": 4096,
+                  "d_kv": 64,
+                  "d_ff": 10240,
+                  "num_layers": 24,
+                  "num_decoder_layers": 24,
+                  "num_heads": 64,
+                  "relative_attention_num_buckets": 32,
+                  "relative_attention_max_distance": 128,
+                  "dropout_rate": 0.1,
+                  "layer_norm_epsilon": 1e-06,
+                  "initializer_factor": 1.0,
+                  "feed_forward_proj": "gated-gelu",
+                  "use_cache": true,
+                  "pad_token_id": 0,
+                  "eos_token_id": 1,
+                  "classifier_dropout": 0.0,
+                  "is_decoder": false
+                }
+              },
+              "has_relative_attention_bias": true
+            }
+          },
+          {
+            "count": 23,
+            "args": {
+              "config": {
+                "$dataclass": "transformers.models.t5.configuration_t5:T5Config",
+                "fields": {
+                  "transformers_version": "4.43.3",
+                  "architectures": ["T5EncoderModel"],
+                  "output_hidden_states": false,
+                  "return_dict": true,
+                  "dtype": {"$dtype": "bfloat16"},
+                  "chunk_size_feed_forward": 0,
+                  "is_encoder_decoder": true,
+                  "id2label": {"$dict": {"0": "LABEL_0", "1": "LABEL_1"}},
+                  "label2id": {"$dict": {"LABEL_0": 0, "LABEL_1": 1}},
+                  "problem_type": null,
+                  "vocab_size": 32128,
+                  "d_model": 4096,
+                  "d_kv": 64,
+                  "d_ff": 10240,
+                  "num_layers": 24,
+                  "num_decoder_layers": 24,
+                  "num_heads": 64,
+                  "relative_attention_num_buckets": 32,
+                  "relative_attention_max_distance": 128,
+                  "dropout_rate": 0.1,
+                  "layer_norm_epsilon": 1e-06,
+                  "initializer_factor": 1.0,
+                  "feed_forward_proj": "gated-gelu",
+                  "use_cache": true,
+                  "pad_token_id": 0,
+                  "eos_token_id": 1,
+                  "classifier_dropout": 0.0,
+                  "is_decoder": false
+                }
+              },
+              "has_relative_attention_bias": false
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 24,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "hidden_states": {"shape": [1, 512, 4096], "dtype": "bfloat16"},
+              "mask": null,
+              "position_bias": null
+            },
+            "init_variant_ids": [0]
+          },
+          {
+            "count": 23,
+            "args": {
+              "hidden_states": {"shape": [1, 512, 4096], "dtype": "bfloat16"},
+              "mask": null,
+              "position_bias": {"shape": [1, 64, 512, 512], "dtype": "bfloat16", "stride": [64, 1, 32768, 64]}
+            },
+            "init_variant_ids": [1]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L4.clip_text_model:CLIPTextModel": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "transformers.models.clip.configuration_clip:CLIPTextConfig",
+                "fields": {
+                  "transformers_version": "4.43.3",
+                  "architectures": ["CLIPTextModel"],
+                  "output_hidden_states": false,
+                  "return_dict": true,
+                  "dtype": {"$dtype": "bfloat16"},
+                  "chunk_size_feed_forward": 0,
+                  "is_encoder_decoder": false,
+                  "id2label": {"$dict": {"0": "LABEL_0", "1": "LABEL_1"}},
+                  "label2id": {"$dict": {"LABEL_0": 0, "LABEL_1": 1}},
+                  "problem_type": null,
+                  "vocab_size": 49408,
+                  "hidden_size": 768,
+                  "intermediate_size": 3072,
+                  "projection_dim": 768,
+                  "num_hidden_layers": 12,
+                  "num_attention_heads": 12,
+                  "max_position_embeddings": 77,
+                  "hidden_act": "quick_gelu",
+                  "layer_norm_eps": 1e-05,
+                  "attention_dropout": 0.0,
+                  "initializer_range": 0.02,
+                  "initializer_factor": 1.0,
+                  "pad_token_id": 1,
+                  "bos_token_id": 0,
+                  "eos_token_id": 2
+                }
+              }
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "input_ids": {"shape": [1, 77], "dtype": "int64"},
+              "kwargs": {"output_hidden_states": false}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L4.flux:FluxPipeline": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "fastkernels.tasks.baseline.L4.flux:FluxConfig",
+                "fields": {
+                  "num_layers": 19,
+                  "num_single_layers": 38,
+                  "attention_head_dim": 128,
+                  "num_attention_heads": 24,
+                  "in_channels": 64,
+                  "out_channels": null,
+                  "joint_attention_dim": 4096,
+                  "pooled_projection_dim": 768,
+                  "guidance_embeds": true,
+                  "axes_dims_rope": {"$tuple": [16, 56, 56]},
+                  "patch_size": 1
+                }
+              },
+              "model_name": "/data-fast/huggingface/hub/models--black-forest-labs--FLUX.1-dev/snapshots/3de623fc3c33e44ffbe2bad470d0f45bccf2eb21",
+              "quant_config": null
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "prompts": "a photograph of a cat",
+              "params": {"object": "DiffusionSamplingParams"},
+              "generator": {"object": "Generator"}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    },
+    "fastkernels.tasks.baseline.L4.t5_encoder:T5EncoderModel": {
+      "init": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "config": {
+                "$dataclass": "transformers.models.t5.configuration_t5:T5Config",
+                "fields": {
+                  "transformers_version": "4.43.3",
+                  "architectures": ["T5EncoderModel"],
+                  "output_hidden_states": false,
+                  "return_dict": true,
+                  "dtype": {"$dtype": "bfloat16"},
+                  "chunk_size_feed_forward": 0,
+                  "is_encoder_decoder": true,
+                  "id2label": {"$dict": {"0": "LABEL_0", "1": "LABEL_1"}},
+                  "label2id": {"$dict": {"LABEL_0": 0, "LABEL_1": 1}},
+                  "problem_type": null,
+                  "vocab_size": 32128,
+                  "d_model": 4096,
+                  "d_kv": 64,
+                  "d_ff": 10240,
+                  "num_layers": 24,
+                  "num_decoder_layers": 24,
+                  "num_heads": 64,
+                  "relative_attention_num_buckets": 32,
+                  "relative_attention_max_distance": 128,
+                  "dropout_rate": 0.1,
+                  "layer_norm_epsilon": 1e-06,
+                  "initializer_factor": 1.0,
+                  "feed_forward_proj": "gated-gelu",
+                  "use_cache": true,
+                  "pad_token_id": 0,
+                  "eos_token_id": 1,
+                  "classifier_dropout": 0.0,
+                  "is_decoder": false
+                }
+              }
+            }
+          }
+        ]
+      },
+      "forward": {
+        "calls": 1,
+        "variants": [
+          {
+            "count": 1,
+            "args": {
+              "input_ids": {"shape": [1, 512], "dtype": "int64"},
+              "attention_mask": null,
+              "kwargs": {"output_hidden_states": false}
+            },
+            "init_variant_ids": [0]
+          }
+        ]
+      }
+    }
+  }
+}

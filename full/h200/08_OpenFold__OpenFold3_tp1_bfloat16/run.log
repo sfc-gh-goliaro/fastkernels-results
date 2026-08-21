@@ -1,0 +1,146 @@
+job_index: 8
+name: OpenFold/OpenFold3
+tp: 1
+CUDA_VISIBLE_DEVICES: 0
+ray.get_gpu_ids(): ['0']
+parent_visible_gpus: 0,1,2,3,4,5,6,7
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.capture default --max-requests 1000000 --output /code/users/goliaro/h200-capture/08_OpenFold__OpenFold3_tp1_bfloat16/report.json
+
+Importing fastkernels engine ...
+Discovering operators in fastkernels.tasks.baseline ...
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+  Instrumented 455 operator class(es).
+
+########## Scenario: OpenFold/OpenFold3 (StructurePrediction, dtype=bfloat16) ##########
+Building fastkernels StructurePrediction model (synthetic-input capture) ...
+
+=== Capturing workload: short ===
+  Verification 1 (hook cross-check) [INFO]: 30/31 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.tensor_ops:Pad: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 35 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/08_OpenFold__OpenFold3_tp1_bfloat16/report_OpenFold__OpenFold3_tp1_bfloat16_short_req1000000_seqsauto_eager.json
+
+=== Capturing workload: medium ===
+  Verification 1 (hook cross-check) [INFO]: 30/31 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.tensor_ops:Pad: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 35 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/08_OpenFold__OpenFold3_tp1_bfloat16/report_OpenFold__OpenFold3_tp1_bfloat16_medium_req1000000_seqsauto_eager.json
+
+=== Capturing workload: long ===
+  Verification 1 (hook cross-check) [INFO]: 30/31 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.tensor_ops:Pad: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 35 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/08_OpenFold__OpenFold3_tp1_bfloat16/report_OpenFold__OpenFold3_tp1_bfloat16_long_req1000000_seqsauto_eager.json
+
+=== Capturing workload: extra-long ===
+  Verification 1 (hook cross-check) [INFO]: 30/31 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.tensor_ops:Pad: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 35 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/08_OpenFold__OpenFold3_tp1_bfloat16/report_OpenFold__OpenFold3_tp1_bfloat16_extra-long_req1000000_seqsauto_eager.json
+
+=== Capturing workload: single-short ===
+  Verification 1 (hook cross-check) [INFO]: 30/31 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.tensor_ops:Pad: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 35 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/08_OpenFold__OpenFold3_tp1_bfloat16/report_OpenFold__OpenFold3_tp1_bfloat16_single-short_req1000000_seqsauto_eager.json
+
+=== Capturing workload: single-medium ===
+  Verification 1 (hook cross-check) [INFO]: 30/31 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.tensor_ops:Pad: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 35 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/08_OpenFold__OpenFold3_tp1_bfloat16/report_OpenFold__OpenFold3_tp1_bfloat16_single-medium_req1000000_seqsauto_eager.json
+
+=== Capturing workload: single-long ===
+  Verification 1 (hook cross-check) [INFO]: 30/31 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.tensor_ops:Pad: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 35 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/08_OpenFold__OpenFold3_tp1_bfloat16/report_OpenFold__OpenFold3_tp1_bfloat16_single-long_req1000000_seqsauto_eager.json
+
+=== Capturing workload: single-extra-long ===
+  Verification 1 (hook cross-check) [INFO]: 30/31 operator forwards match the independent hook capture.
+    ! fastkernels.tasks.baseline.L1.tensor_ops:Pad: no hook observations (forward may be called directly, bypassing __call__)
+  Captured 35 executed operator class(es) (of 455 instrumented).
+  Report written to /code/users/goliaro/h200-capture/08_OpenFold__OpenFold3_tp1_bfloat16/report_OpenFold__OpenFold3_tp1_bfloat16_single-extra-long_req1000000_seqsauto_eager.json
