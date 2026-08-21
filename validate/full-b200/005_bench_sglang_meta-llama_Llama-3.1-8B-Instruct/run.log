@@ -1,0 +1,163 @@
+job_index: 5
+name: meta-llama/Llama-3.1-8B-Instruct
+draft_model: jamesliu1/sglang-EAGLE3-Llama-3.1-Instruct-8B
+harness: bench_sglang
+tp: 1
+workloads: mixed, long-context, single-request, fixed-batch-32
+CUDA_VISIBLE_DEVICES: 6
+physical_gpus: 6
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_sglang --model meta-llama/Llama-3.1-8B-Instruct --draft-model jamesliu1/sglang-EAGLE3-Llama-3.1-Instruct-8B --output-dir /code/users/goliaro/validate-b200-check/005_bench_sglang_meta-llama_Llama-3.1-8B-Instruct
+
+======================================================================
+  EAGLE-3 Speculative Decoding Benchmark: fastkernels vs sglang
+======================================================================
+  Target model           : meta-llama/Llama-3.1-8B-Instruct
+  Draft  model           : jamesliu1/sglang-EAGLE3-Llama-3.1-Instruct-8B
+  GPU                    : B200
+  workload               : fixed
+  num_seqs / scenario    : 16
+  output_len             : 256
+  spec_steps             : 3
+  spec_topk (sglang)     : 4
+  spec_num_draft_tokens  : 16
+  max_model_len          : 2048
+  max_running_requests   : 8
+  temperature            : 0.0
+  seed                   : 42
+  output_dir             : /code/users/goliaro/validate-b200-check/005_bench_sglang_meta-llama_Llama-3.1-8B-Instruct
+======================================================================
+
+──────────────────────────────────────────────────────────────────────
+  sglang [EAGLE-3] Llama-3.1-8B-Instruct
+  python: /home/yak/miniconda3/envs/sglang-bench/bin/python
+──────────────────────────────────────────────────────────────────────
+
+Multi-thread loading shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+Multi-thread loading shards:  25% Completed | 1/4 [00:00<00:02,  1.36it/s]
+Multi-thread loading shards:  50% Completed | 2/4 [00:01<00:01,  1.35it/s]
+Multi-thread loading shards:  75% Completed | 3/4 [00:02<00:00,  1.44it/s]
+Multi-thread loading shards: 100% Completed | 4/4 [00:02<00:00,  2.08it/s]
+Multi-thread loading shards: 100% Completed | 4/4 [00:02<00:00,  1.76it/s]
+
+Multi-thread loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Multi-thread loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.07s/it]
+Multi-thread loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.07s/it]
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+Capturing num tokens (num_tokens=8 avail_mem=53.57 GB):   0%|          | 0/2 [00:00<?, ?it/s]
+Capturing num tokens (num_tokens=8 avail_mem=53.57 GB):  50%|█████     | 1/2 [02:04<02:04, 124.44s/it]
+Capturing num tokens (num_tokens=4 avail_mem=53.45 GB):  50%|█████     | 1/2 [02:04<02:04, 124.44s/it]
+Capturing num tokens (num_tokens=4 avail_mem=53.45 GB): 100%|██████████| 2/2 [02:04<00:00, 51.42s/it] 
+Capturing num tokens (num_tokens=4 avail_mem=53.45 GB): 100%|██████████| 2/2 [02:04<00:00, 62.37s/it]
+
+  0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=8 avail_mem=53.48 GB):   0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=8 avail_mem=53.48 GB):  12%|█▎        | 1/8 [00:08<01:00,  8.67s/it]
+Capturing batches (bs=7 avail_mem=53.40 GB):  12%|█▎        | 1/8 [00:08<01:00,  8.67s/it]
+Capturing batches (bs=6 avail_mem=53.38 GB):  12%|█▎        | 1/8 [00:08<01:00,  8.67s/it]
+Capturing batches (bs=6 avail_mem=53.38 GB):  38%|███▊      | 3/8 [00:08<00:11,  2.31s/it]
+Capturing batches (bs=5 avail_mem=53.38 GB):  38%|███▊      | 3/8 [00:08<00:11,  2.31s/it]
+Capturing batches (bs=4 avail_mem=53.36 GB):  38%|███▊      | 3/8 [00:08<00:11,  2.31s/it]
+Capturing batches (bs=4 avail_mem=53.36 GB):  62%|██████▎   | 5/8 [00:09<00:03,  1.25s/it]
+Capturing batches (bs=3 avail_mem=53.36 GB):  62%|██████▎   | 5/8 [00:09<00:03,  1.25s/it]
+Capturing batches (bs=2 avail_mem=53.33 GB):  62%|██████▎   | 5/8 [00:09<00:03,  1.25s/it]
+Capturing batches (bs=2 avail_mem=53.33 GB):  88%|████████▊ | 7/8 [00:09<00:00,  1.34it/s]
+Capturing batches (bs=1 avail_mem=53.33 GB):  88%|████████▊ | 7/8 [00:09<00:00,  1.34it/s]
+Capturing batches (bs=1 avail_mem=53.33 GB): 100%|██████████| 8/8 [00:09<00:00,  1.19s/it]
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+Capturing num tokens (num_tokens=8 avail_mem=53.31 GB):   0%|          | 0/2 [00:00<?, ?it/s]
+Capturing num tokens (num_tokens=4 avail_mem=53.28 GB):   0%|          | 0/2 [00:00<?, ?it/s]
+Capturing num tokens (num_tokens=4 avail_mem=53.28 GB): 100%|██████████| 2/2 [00:00<00:00, 153.96it/s]
+
+  0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=8 avail_mem=53.28 GB):   0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=8 avail_mem=53.28 GB):  12%|█▎        | 1/8 [00:03<00:24,  3.43s/it]
+Capturing batches (bs=7 avail_mem=53.22 GB):  12%|█▎        | 1/8 [00:03<00:24,  3.43s/it]
+Capturing batches (bs=6 avail_mem=53.20 GB):  12%|█▎        | 1/8 [00:03<00:24,  3.43s/it]
+Capturing batches (bs=6 avail_mem=53.20 GB):  38%|███▊      | 3/8 [00:03<00:04,  1.06it/s]
+Capturing batches (bs=5 avail_mem=53.18 GB):  38%|███▊      | 3/8 [00:03<00:04,  1.06it/s]
+Capturing batches (bs=4 avail_mem=53.16 GB):  38%|███▊      | 3/8 [00:03<00:04,  1.06it/s]
+Capturing batches (bs=4 avail_mem=53.16 GB):  62%|██████▎   | 5/8 [00:03<00:01,  1.94it/s]
+Capturing batches (bs=3 avail_mem=53.14 GB):  62%|██████▎   | 5/8 [00:03<00:01,  1.94it/s]
+Capturing batches (bs=2 avail_mem=53.12 GB):  62%|██████▎   | 5/8 [00:03<00:01,  1.94it/s]
+Capturing batches (bs=2 avail_mem=53.12 GB):  88%|████████▊ | 7/8 [00:03<00:00,  3.14it/s]
+Capturing batches (bs=1 avail_mem=53.10 GB):  88%|████████▊ | 7/8 [00:03<00:00,  3.14it/s]
+Capturing batches (bs=1 avail_mem=53.10 GB): 100%|██████████| 8/8 [00:06<00:00,  1.32it/s]
+
+  0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=8 avail_mem=53.06 GB):   0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=7 avail_mem=53.01 GB):   0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=6 avail_mem=52.99 GB):   0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=5 avail_mem=52.99 GB):   0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=4 avail_mem=52.97 GB):   0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=3 avail_mem=52.97 GB):   0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=2 avail_mem=52.95 GB):   0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=1 avail_mem=52.95 GB):   0%|          | 0/8 [00:00<?, ?it/s]
+Capturing batches (bs=1 avail_mem=52.95 GB): 100%|██████████| 8/8 [00:00<00:00, 92.76it/s]
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels [EAGLE-3] Llama-3.1-8B-Instruct
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+[EAGLE-3] Pinning attention backend to flash_attn/NHD (auto-detected trtllm/HND cannot return the softmax LSE the tree-verify cascade merges)
+[EAGLE-3] Loading target model: meta-llama/Llama-3.1-8B-Instruct
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1387.21it/s]
+  Allocating Llama model...
+  Loading weights from 4 safetensors file(s) [fastsafetensors GPU-direct]...
+  Loaded 291 weight shards (4.9s).
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1287.57it/s]
+[EAGLE-3] Loading draft model: jamesliu1/sglang-EAGLE3-Llama-3.1-Instruct-8B
+
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]
+Fetching 2 files: 100%|██████████| 2/2 [00:00<00:00, 1001.74it/s]
+  Allocating EAGLE-3 draft model (hidden=4096, draft_vocab=32000)...
+  Loaded 14 EAGLE-3 weight shards.
+[EAGLE-3] Target KV cache: 1088 blocks x 16 = 17408 slots
+[EAGLE-3] Draft  KV cache: 1088 blocks x 16 = 17408 slots
+[EAGLE-3] Capturing target-verify CUDA graphs for B in 1..8 (N=16)...
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i64i641_Tensorgmemoi64i64i641_Tensorgmemoi64i64i641_Te'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i64i641_Tensorgmemoi64i64i641_Tensorgmemoi64i641_Tenso'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+[EAGLE-3] Captured 40 target-verify graphs.
+[EAGLE-3] Capturing draft-chain CUDA graphs for B in 1..8 (K=4, S-1=2)...
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i64i641_Tensorgmemoi64i64i641_Tensorgmemoi64i641_None_'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i64i641_Tensorgmemoi64i64i641_Tensorgmemoi64i64i641_Te'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+[EAGLE-3] Captured 8 draft-chain graphs.
+[EAGLE-3] Capturing draft-extend CUDA graphs for B in 1..8 (S+1=4)...
+[EAGLE-3] Captured 8 draft-extend graphs.
+[fastkernels] Building CUDA op 'eagle_tree_ops' (1 source(s)) for arch '10.0a' -- one-time JIT compile; streaming ninja progress ...
+[1/2] /usr/local/cuda/bin/nvcc -MD -MF eagle_tree_ops.cuda.o.d -DTORCH_EXTENSION_NAME=eagle_tree_ops -DTORCH_API_INCLUDE_EXTENSION_H -I/home/yak/fastkernels/fastkernels/infra -isystem /home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/include -isystem /home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /home/yak/miniconda3/envs/dev/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_100a,code=sm_100a --compiler-options '-fPIC' -O3 -DENABLE_FP8 -DFLASHINFER_ENABLE_BF16 -DFLASHINFER_ENABLE_F16 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ --expt-extended-lambda --expt-relaxed-constexpr -DENABLE_NVFP4_SM100=1 -std=c++17 -c /home/yak/fastkernels/fastkernels/infra/eagle_tree_ops.cu -o eagle_tree_ops.cuda.o 
+[2/2] c++ eagle_tree_ops.cuda.o -shared -lcublas -lcuda -L/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o eagle_tree_ops.so
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+
+====================================================================================================
+  THROUGHPUT SUMMARY
+====================================================================================================
+  SCENARIO                         FASTKERNELS tok/s   SGLANG tok/s  SPEEDUP    AVG PREFIX TOKS
+  ------------------------------------------------------------------------------------------------
+  eagle3-16seqs-out256                    1,275.1        1,366.8    0.93x          160.6/256
+====================================================================================================
+
+  Alignment vs sglang (greedy): avg matching tokens = 160.6 / request
+  PASS: avg_matching_tokens_per_request = 160.6 >= 100
+
+==============================================================================================================
+  LATENCY SUMMARY
+==============================================================================================================
+  SCENARIO                           BS   OUT  ITERS  FASTKERNELS med    SGLANG med    KB ms/tok   SG ms/tok   SPEEDUP
+  ----------------------------------------------------------------------------------------------------------
+  latency-bs1-out256                  1   256      5        0.8729s       0.9057s         3.41        3.54     1.04x
+==============================================================================================================
+
+  Results saved to: /code/users/goliaro/validate-b200-check/005_bench_sglang_meta-llama_Llama-3.1-8B-Instruct/results.json

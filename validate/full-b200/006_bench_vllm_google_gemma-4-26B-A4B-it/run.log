@@ -1,0 +1,53 @@
+job_index: 6
+name: google/gemma-4-26B-A4B-it
+harness: bench_vllm
+tp: 1
+workloads: mixed, long-context, single-request, fixed-batch-32
+CUDA_VISIBLE_DEVICES: 5
+physical_gpus: 5
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_vllm --model google/gemma-4-26B-A4B-it --tp 1 --output-dir /code/users/goliaro/validate-b200-check/006_bench_vllm_google_gemma-4-26B-A4B-it --resume
+
+======================================================================
+  fastkernels Baseline vs vLLM -- Multi-Scenario Benchmark
+======================================================================
+  Model          : google/gemma-4-26B-A4B-it
+  Model type     : LLM
+  TP             : 1
+  Seqs/scenario  : 1000
+  Temperature    : 0.0
+  Enforce eager  : False
+  Seed           : 42
+  Trust RC       : False
+  Max seq len    : 167799
+  fastkernels port   : 22840
+  vLLM port      : 42976
+  Output dir     : /code/users/goliaro/validate-b200-check/006_bench_vllm_google_gemma-4-26B-A4B-it
+  Scenarios      : mixed, long-context
+  Latency        : single-request, fixed-batch-32 (5 iters)
+======================================================================
+  Resumed vLLM reference from cache: /code/users/goliaro/validate-b200-check/006_bench_vllm_google_gemma-4-26B-A4B-it/vllm_raw.json
+  Resumed fastkernels outputs from cache: /code/users/goliaro/validate-b200-check/006_bench_vllm_google_gemma-4-26B-A4B-it/fastkernels_raw.json
+
+
+==========================================================================================
+  THROUGHPUT SUMMARY
+==========================================================================================
+  SCENARIO          SEQS    IN   OUT FASTKERNELS tok/s   vLLM tok/s  SPEEDUP AVG PREFIX TOKS
+  ------------------------------------------------------------------------------------------
+  mixed             1000   var   401          10,584       10,590    1.00x        67.9/401
+  long-context        64   var   256             100          100    1.00x        72.0/256
+==========================================================================================
+
+==============================================================================================================
+  LATENCY SUMMARY
+==============================================================================================================
+  SCENARIO             BS   OUT  ITERS  FASTKERNELS med     vLLM med  FASTKERNELS ms/tok  vLLM ms/tok  SPEEDUP
+  ----------------------------------------------------------------------------------------------------
+  single-request        1   128      5  0.4895s         0.5167s           3.82         4.04    1.06x
+  fixed-batch-32       32   128      5  1.4417s         1.6180s           0.35         0.40    1.12x
+==============================================================================================================
+
+  Results saved to: /code/users/goliaro/validate-b200-check/006_bench_vllm_google_gemma-4-26B-A4B-it/results.json

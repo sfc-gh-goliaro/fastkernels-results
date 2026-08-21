@@ -1,0 +1,103 @@
+job_index: 14
+name: ttt_e2e
+harness: bench_ttt_e2e
+tp: 1
+workloads: mixed, long-context, single-request, fixed-batch-32
+CUDA_VISIBLE_DEVICES: 4
+physical_gpus: 4
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_ttt_e2e --variant 125m_e2e --cache-dir /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache --results-out /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/results.json
+
+[bench] running: /home/yak/miniconda3/envs/dev/bin/python3 /home/yak/fastkernels/fastkernels/validate/bench_ttt_e2e_jax_worker.py init_and_save --config /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/cfg_init_125m_e2e.json --seed 0 --out /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/weights_125m_e2e.npz
+  [jax] [jax_worker] using ttt-e2e repo at /home/yak/.fastkernels/third_party/ttt_e2e
+  [jax] [jax_worker] building MetaModel: hidden=768, layers=12, suffix_len=3, prime=True
+  [jax] cuBLAS < 13.2 (120804 found) has a known issue where many kernels free TMEM buffers multiple times. Executing a cuBLAS kernel concurrently with another kernel (e.g. on another stream) can lead to silent data corruption.
+  [jax] [jax_worker] built in 7.38s
+  [jax] [jax_worker] flattened 20 arrays, total params ~184.36M
+  [jax] [jax_worker] wrote /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/weights_125m_e2e.npz
+[bench] downloading https://www.gutenberg.org/cache/epub/1661/pg1661.txt -> /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/pg1661.txt ...
+[bench] tokenized corpus: 141451 tokens
+[bench] input slices: (2, 8192)
+
+========== mode=pretrain ==========
+[bench] running: /home/yak/miniconda3/envs/dev/bin/python3 /home/yak/fastkernels/fastkernels/validate/bench_ttt_e2e_jax_worker.py run_forward --config /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/cfg_125m_e2e_pretrain_8192.json --weights /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/weights_125m_e2e.npz --input-ids /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/ids_125m_e2e_seq0_8192.npy --out /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/jax_out_125m_e2e_pretrain_seq0_8192.npz --runs 3
+  [jax] [jax_worker] using ttt-e2e repo at /home/yak/.fastkernels/third_party/ttt_e2e
+  [jax] cuBLAS < 13.2 (120804 found) has a known issue where many kernels free TMEM buffers multiple times. Executing a cuBLAS kernel concurrently with another kernel (e.g. on another stream) can lead to silent data corruption.
+  [jax] [jax_worker] loaded 20/20 param arrays from /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/weights_125m_e2e.npz
+  [jax] [jax_worker] running loss_for_sequence: train_mode=pretrain, seqlen=8192, chunk=1024
+  [jax] /home/yak/fastkernels/fastkernels/validate/bench_ttt_e2e_jax_worker.py:309: DeprecationWarning: `with mesh:` context manager has been deprecated. Please use `with jax.set_mesh(mesh):` instead.
+  [jax]   with mesh:
+  [jax] [jax_worker] first call (compile+run): 22.09s
+  [jax] /home/yak/fastkernels/fastkernels/validate/bench_ttt_e2e_jax_worker.py:319: DeprecationWarning: `with mesh:` context manager has been deprecated. Please use `with jax.set_mesh(mesh):` instead.
+  [jax]   with mesh:
+  [jax] [jax_worker] timed runs (s): ['0.0752', '0.0746', '0.0744']
+  [jax] [jax_worker] wrote /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/jax_out_125m_e2e_pretrain_seq0_8192.npz; loss=11.9014, nll mean=11.9009, shape=(8192,)
+[bench] fastkernels: building engine, dtype=bf16 ...
+[bench] fastkernels: engine built in 2.67s
+[bench] fastkernels: warmup forward (mode=pretrain) ...
+[bench] fastkernels: warmup done in 17.22s
+[bench] fastkernels: timed runs (s): ['6.026', '0.021', '0.020']
+[bench] running: /home/yak/miniconda3/envs/dev/bin/python3 /home/yak/fastkernels/fastkernels/validate/bench_ttt_e2e_jax_worker.py run_forward --config /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/cfg_125m_e2e_pretrain_8192.json --weights /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/weights_125m_e2e.npz --input-ids /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/ids_125m_e2e_seq1_8192.npy --out /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/jax_out_125m_e2e_pretrain_seq1_8192.npz --runs 3
+  [jax] [jax_worker] using ttt-e2e repo at /home/yak/.fastkernels/third_party/ttt_e2e
+  [jax] cuBLAS < 13.2 (120804 found) has a known issue where many kernels free TMEM buffers multiple times. Executing a cuBLAS kernel concurrently with another kernel (e.g. on another stream) can lead to silent data corruption.
+  [jax] [jax_worker] loaded 20/20 param arrays from /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/weights_125m_e2e.npz
+  [jax] [jax_worker] running loss_for_sequence: train_mode=pretrain, seqlen=8192, chunk=1024
+  [jax] /home/yak/fastkernels/fastkernels/validate/bench_ttt_e2e_jax_worker.py:309: DeprecationWarning: `with mesh:` context manager has been deprecated. Please use `with jax.set_mesh(mesh):` instead.
+  [jax]   with mesh:
+  [jax] [jax_worker] first call (compile+run): 21.60s
+  [jax] /home/yak/fastkernels/fastkernels/validate/bench_ttt_e2e_jax_worker.py:319: DeprecationWarning: `with mesh:` context manager has been deprecated. Please use `with jax.set_mesh(mesh):` instead.
+  [jax]   with mesh:
+  [jax] [jax_worker] timed runs (s): ['0.0745', '0.0741', '0.0741']
+  [jax] [jax_worker] wrote /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/jax_out_125m_e2e_pretrain_seq1_8192.npz; loss=11.9020, nll mean=11.9024, shape=(8192,)
+[bench] fastkernels: building engine, dtype=bf16 ...
+[bench] fastkernels: engine built in 1.31s
+[bench] fastkernels: warmup forward (mode=pretrain) ...
+[bench] fastkernels: warmup done in 0.02s
+[bench] fastkernels: timed runs (s): ['0.020', '0.020', '0.020']
+
+========== mode=meta ==========
+[bench] running: /home/yak/miniconda3/envs/dev/bin/python3 /home/yak/fastkernels/fastkernels/validate/bench_ttt_e2e_jax_worker.py run_forward --config /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/cfg_125m_e2e_meta_8192.json --weights /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/weights_125m_e2e.npz --input-ids /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/ids_125m_e2e_seq0_8192.npy --out /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/jax_out_125m_e2e_meta_seq0_8192.npz --runs 3
+  [jax] [jax_worker] using ttt-e2e repo at /home/yak/.fastkernels/third_party/ttt_e2e
+  [jax] cuBLAS < 13.2 (120804 found) has a known issue where many kernels free TMEM buffers multiple times. Executing a cuBLAS kernel concurrently with another kernel (e.g. on another stream) can lead to silent data corruption.
+  [jax] [jax_worker] loaded 20/20 param arrays from /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/weights_125m_e2e.npz
+  [jax] [jax_worker] running loss_for_sequence: train_mode=meta, seqlen=8192, chunk=1024
+  [jax] /home/yak/fastkernels/fastkernels/validate/bench_ttt_e2e_jax_worker.py:309: DeprecationWarning: `with mesh:` context manager has been deprecated. Please use `with jax.set_mesh(mesh):` instead.
+  [jax]   with mesh:
+  [jax] [jax_worker] first call (compile+run): 18.66s
+  [jax] /home/yak/fastkernels/fastkernels/validate/bench_ttt_e2e_jax_worker.py:319: DeprecationWarning: `with mesh:` context manager has been deprecated. Please use `with jax.set_mesh(mesh):` instead.
+  [jax]   with mesh:
+  [jax] [jax_worker] timed runs (s): ['0.0407', '0.0400', '0.0400']
+  [jax] [jax_worker] wrote /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/jax_out_125m_e2e_meta_seq0_8192.npz; loss=11.3343, nll mean=11.3317, shape=(8192,)
+[bench] fastkernels: building engine, dtype=bf16 ...
+[bench] fastkernels: engine built in 15.14s
+[bench] fastkernels: warmup forward (mode=meta) ...
+[bench] fastkernels: warmup done in 0.04s
+[bench] fastkernels: timed runs (s): ['0.038', '0.038', '0.038']
+[bench] running: /home/yak/miniconda3/envs/dev/bin/python3 /home/yak/fastkernels/fastkernels/validate/bench_ttt_e2e_jax_worker.py run_forward --config /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/cfg_125m_e2e_meta_8192.json --weights /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/weights_125m_e2e.npz --input-ids /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/ids_125m_e2e_seq1_8192.npy --out /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/jax_out_125m_e2e_meta_seq1_8192.npz --runs 3
+  [jax] [jax_worker] using ttt-e2e repo at /home/yak/.fastkernels/third_party/ttt_e2e
+  [jax] cuBLAS < 13.2 (120804 found) has a known issue where many kernels free TMEM buffers multiple times. Executing a cuBLAS kernel concurrently with another kernel (e.g. on another stream) can lead to silent data corruption.
+  [jax] [jax_worker] loaded 20/20 param arrays from /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/weights_125m_e2e.npz
+  [jax] [jax_worker] running loss_for_sequence: train_mode=meta, seqlen=8192, chunk=1024
+  [jax] /home/yak/fastkernels/fastkernels/validate/bench_ttt_e2e_jax_worker.py:309: DeprecationWarning: `with mesh:` context manager has been deprecated. Please use `with jax.set_mesh(mesh):` instead.
+  [jax]   with mesh:
+  [jax] [jax_worker] first call (compile+run): 14.81s
+  [jax] /home/yak/fastkernels/fastkernels/validate/bench_ttt_e2e_jax_worker.py:319: DeprecationWarning: `with mesh:` context manager has been deprecated. Please use `with jax.set_mesh(mesh):` instead.
+  [jax]   with mesh:
+  [jax] [jax_worker] timed runs (s): ['0.0408', '0.0399', '0.0399']
+  [jax] [jax_worker] wrote /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/cache/jax_out_125m_e2e_meta_seq1_8192.npz; loss=11.3011, nll mean=11.2972, shape=(8192,)
+[bench] fastkernels: building engine, dtype=bf16 ...
+[bench] fastkernels: engine built in 1.61s
+[bench] fastkernels: warmup forward (mode=meta) ...
+[bench] fastkernels: warmup done in 0.04s
+[bench] fastkernels: timed runs (s): ['0.038', '0.038', '0.038']
+
+========== summary ==========
+mode=pretrain, sequences=2
+  seq0: jax(med=0.075s,nll=11.9009) kb(med=0.021s,nll=11.9014) diff(max=8.3150e-02,mean=2.2748e-02)
+  seq1: jax(med=0.074s,nll=11.9024) kb(med=0.020s,nll=11.9020) diff(max=8.5841e-02,mean=2.2615e-02)
+mode=meta, sequences=2
+  seq0: jax(med=0.040s,nll=11.3317) kb(med=0.038s,nll=11.3341) diff(max=8.7067e-02,mean=2.2107e-02)
+  seq1: jax(med=0.040s,nll=11.2972) kb(med=0.038s,nll=11.3012) diff(max=8.1221e-02,mean=2.1690e-02)
+[bench] wrote /code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/results.json

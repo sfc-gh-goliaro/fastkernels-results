@@ -1,0 +1,84 @@
+job_index: 32
+name: jameslahm/yolov10n
+harness: bench_detection
+tp: 1
+workloads: coco-val, single-image, batch-4
+CUDA_VISIBLE_DEVICES: 6
+physical_gpus: 6
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_detection --model jameslahm/yolov10n --output-dir /code/users/goliaro/validate-b200-check/032_bench_detection_jameslahm_yolov10n
+
+======================================================================
+  Preparing COCO val2017 images
+======================================================================
+  Loading COCO val2017 images from HuggingFace ...
+  Preprocessed 4952 images -> torch.Size([4952, 3, 640, 640])
+  Saved to /home/yak/fastkernels/data/coco_cache/coco_val_30000_640_fp16.pt
+
+======================================================================
+  Detection Benchmark: fastkernels vs Reference
+======================================================================
+  Model          : jameslahm/yolov10n
+  GPU            : B200
+  Image size     : 640
+  Dataset        : COCO val2017 (30000 images)
+  Seed           : 42
+  Throughput     : coco-val
+  Latency        : single-image, batch-4
+======================================================================
+
+──────────────────────────────────────────────────────────────────────
+  Reference [yolov10n]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+  Loading preprocessed images from /home/yak/fastkernels/data/coco_cache/coco_val_30000_640_fp16.pt ...
+  Loaded 4952 images (torch.Size([4952, 3, 640, 640]))
+Creating new Ultralytics Settings v0.0.7 file ✅ 
+View Ultralytics Settings with 'yolo settings' or at '/home/yak/.config/Ultralytics/settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/quickstart/#ultralytics-settings.
+
+[KDownloading https://github.com/ultralytics/assets/releases/download/v8.4.0/yolov10n.pt to '/tmp/fastkernels/ultralytics/yolov10n.pt': 100% ━━━━━━━━━━━━ 5.6MB 90.7MB/s 0.1s
+  [reference] coco-val: 1173.2 img/s (median 25.571s over 3 runs)
+  [reference] latency single-image: median 4.13ms
+  [reference] latency batch-4: median 4.82ms
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels [yolov10n]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+  Loading preprocessed images from /home/yak/fastkernels/data/coco_cache/coco_val_30000_640_fp16.pt ...
+  Loaded 4952 images (torch.Size([4952, 3, 640, 640]))
+
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]
+Fetching 2 files: 100%|██████████| 2/2 [00:00<00:00, 869.47it/s]
+  [ours] coco-val: 1337.2 img/s (median 22.435s over 3 runs)
+  [ours] latency single-image: median 4.37ms
+  [ours] latency batch-4: median 5.06ms
+
+==========================================================================================
+  THROUGHPUT COMPARISON (images/sec)
+==========================================================================================
+  Scenario              Images   BS  fastkernels    reference      Ratio
+  ----------------------------------------------------------------------
+  coco-val               30000   32       1337.2       1173.2      1.14x
+
+==========================================================================================
+  LATENCY COMPARISON (milliseconds)
+==========================================================================================
+  Scenario               BS  Iters fastkernels p50  reference p50      Ratio
+  ---------------------------------------------------------------------------
+  single-image            1     20          4.37ms          4.13ms      0.94x
+  batch-4                 4     20          5.06ms          4.82ms      0.95x
+
+==========================================================================================
+  CORRECTNESS COMPARISON (fastkernels vs reference, all throughput images)
+==========================================================================================
+  Images compared  : 30000
+  Boxes cosine     : 0.997326  (MAE: 0.101248)
+  Scores cosine    : 0.999852  (MAE: 0.000046)
+  Labels match     : 0.9997
+  Overall          : PASS
+
+  Results saved to: /code/users/goliaro/validate-b200-check/032_bench_detection_jameslahm_yolov10n/results.json

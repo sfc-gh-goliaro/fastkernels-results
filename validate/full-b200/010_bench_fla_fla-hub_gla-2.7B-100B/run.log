@@ -1,0 +1,393 @@
+job_index: 10
+name: fla-hub/gla-2.7B-100B
+harness: bench_fla
+tp: 1
+workloads: mixed, long-context, single-request, fixed-batch-32
+CUDA_VISIBLE_DEVICES: 5
+physical_gpus: 5
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_fla --model fla-hub/gla-2.7B-100B --output-dir /code/users/goliaro/validate-b200-check/010_bench_fla_fla-hub_gla-2.7B-100B
+
+[transformers] You are using a model of type `gla` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+======================================================================
+  fastkernels FLAEngine vs FLA reference -- Multi-Scenario Benchmark
+======================================================================
+  Model            : fla-hub/gla-2.7B-100B
+  Seqs/scenario    : 1000
+  max_num_seqs     : 512
+  ref max seqs     : 512
+  chunk size       : 1024
+  prefill tokens   : 196608
+  Max model len    : 2048
+  Temperature      : 0.0
+  GPU              : B200
+  Seed             : 42
+  Output dir       : /code/users/goliaro/validate-b200-check/010_bench_fla_fla-hub_gla-2.7B-100B
+  Throughput       : mixed, long-context
+  Latency          : single-request, fixed-batch-32 (5 iters)
+======================================================================
+
+──────────────────────────────────────────────────────────────────────
+  FLA reference [gla-2.7B-100B] all scenarios
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+  [FLA reference] loading fla-hub/gla-2.7B-100B...
+
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]
+Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 1276.27it/s]
+
+Loading weights:   0%|          | 0/451 [00:00<?, ?it/s]
+Loading weights:  29%|██▊       | 129/451 [00:00<00:00, 1263.32it/s]
+Loading weights:  57%|█████▋    | 256/451 [00:00<00:00, 1241.31it/s]
+Loading weights:  89%|████████▉ | 402/451 [00:00<00:00, 1329.41it/s]
+Loading weights: 100%|██████████| 451/451 [00:00<00:00, 1411.11it/s]
+  [FLA reference] throughput mixed: 1000 requests, avg_out=446.7
+  [FLA reference] 1000/1000 admitted, 488 active, 1512 tok
+  [FLA reference] 859/1000 admitted, 512 active, 178011 tok
+  [FLA reference] 1000/1000 admitted, 159 active, 415868 tok
+  [FLA reference] throughput mixed done: 72.40s, 6,170 tok/s
+  [FLA reference] throughput long-context: 64 requests, avg_out=256.0
+  [FLA reference] throughput long-context done: 7.55s, 2,171 tok/s
+  [FLA reference] latency single-request: bs=1, max_out=128
+  [FLA reference] latency single-request done: median=3.4320s
+  [FLA reference] latency fixed-batch-32: bs=32, max_out=128
+  [FLA reference] latency fixed-batch-32 done: median=3.5783s
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels FLAEngine [gla-2.7B-100B] all scenarios
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]
+Fetching 8 files: 100%|██████████| 8/8 [00:00<00:00, 1602.71it/s]
+  [FLAEngine] Loaded 451 weights from /data-fast/huggingface/hub/models--fla-hub--gla-2.7B-100B/snapshots/75d42cfd68f498e56852246d13c0719eb81f4b7a
+
+FLAEngine prompts:   0%|          | 0/1000 [00:00<?, ?it/s]
+FLAEngine prompts:   0%|          | 1/1000 [00:01<30:14,  1.82s/it]
+FLAEngine prompts:   0%|          | 2/1000 [00:02<14:14,  1.17it/s]
+FLAEngine prompts:   0%|          | 5/1000 [00:02<04:42,  3.52it/s]
+FLAEngine prompts:   1%|          | 8/1000 [00:02<02:47,  5.94it/s]
+FLAEngine prompts:   1%|          | 11/1000 [00:02<01:52,  8.77it/s]
+FLAEngine prompts:   2%|▏         | 15/1000 [00:02<01:20, 12.20it/s]
+FLAEngine prompts:   2%|▏         | 17/1000 [00:02<01:29, 11.00it/s]
+FLAEngine prompts:   2%|▏         | 19/1000 [00:03<01:28, 11.07it/s]
+FLAEngine prompts:   2%|▏         | 21/1000 [00:03<01:18, 12.41it/s]
+FLAEngine prompts:   2%|▏         | 23/1000 [00:03<01:48,  9.00it/s]
+FLAEngine prompts:   2%|▎         | 25/1000 [00:03<01:40,  9.69it/s]
+FLAEngine prompts:   3%|▎         | 27/1000 [00:03<01:26, 11.27it/s]
+FLAEngine prompts:   3%|▎         | 31/1000 [00:03<01:08, 14.13it/s]
+FLAEngine prompts:   3%|▎         | 34/1000 [00:04<01:03, 15.17it/s]
+FLAEngine prompts:   4%|▎         | 36/1000 [00:04<01:04, 15.03it/s]
+FLAEngine prompts:   4%|▍         | 38/1000 [00:04<01:03, 15.09it/s]
+FLAEngine prompts:   4%|▍         | 41/1000 [00:04<01:02, 15.25it/s]
+FLAEngine prompts:   4%|▍         | 43/1000 [00:04<01:00, 15.90it/s]
+FLAEngine prompts:   5%|▍         | 46/1000 [00:04<00:57, 16.58it/s]
+FLAEngine prompts:   5%|▍         | 48/1000 [00:05<00:58, 16.23it/s]
+FLAEngine prompts:   5%|▌         | 50/1000 [00:05<00:56, 16.76it/s]
+FLAEngine prompts:   5%|▌         | 53/1000 [00:05<01:00, 15.56it/s]
+FLAEngine prompts:   6%|▌         | 55/1000 [00:05<01:16, 12.32it/s]
+FLAEngine prompts:   6%|▌         | 57/1000 [00:05<01:31, 10.25it/s]
+FLAEngine prompts:   6%|▌         | 59/1000 [00:06<01:34,  9.96it/s]
+FLAEngine prompts:   6%|▌         | 61/1000 [00:06<01:37,  9.66it/s]
+FLAEngine prompts:   6%|▋         | 65/1000 [00:06<01:08, 13.69it/s]
+FLAEngine prompts:   7%|▋         | 69/1000 [00:06<00:59, 15.54it/s]
+FLAEngine prompts:   7%|▋         | 71/1000 [00:06<01:04, 14.50it/s]
+FLAEngine prompts:   7%|▋         | 73/1000 [00:07<01:09, 13.26it/s]
+FLAEngine prompts:   8%|▊         | 75/1000 [00:07<01:07, 13.72it/s]
+FLAEngine prompts:   8%|▊         | 77/1000 [00:07<01:16, 12.11it/s]
+FLAEngine prompts:   8%|▊         | 80/1000 [00:07<01:00, 15.12it/s]
+FLAEngine prompts:   8%|▊         | 82/1000 [00:07<01:07, 13.55it/s]
+FLAEngine prompts:   8%|▊         | 84/1000 [00:07<01:02, 14.63it/s]
+FLAEngine prompts:   9%|▊         | 87/1000 [00:08<01:07, 13.57it/s]
+FLAEngine prompts:   9%|▉         | 90/1000 [00:08<01:02, 14.50it/s]
+FLAEngine prompts:   9%|▉         | 92/1000 [00:08<00:59, 15.33it/s]
+FLAEngine prompts:   9%|▉         | 94/1000 [00:08<01:04, 14.00it/s]
+FLAEngine prompts:  10%|▉         | 96/1000 [00:08<01:10, 12.84it/s]
+FLAEngine prompts:  10%|█         | 100/1000 [00:08<00:58, 15.42it/s]
+FLAEngine prompts:  10%|█         | 102/1000 [00:09<00:55, 16.08it/s]
+FLAEngine prompts:  11%|█         | 106/1000 [00:09<00:48, 18.55it/s]
+FLAEngine prompts:  11%|█         | 108/1000 [00:09<01:05, 13.53it/s]
+FLAEngine prompts:  11%|█         | 110/1000 [00:09<01:15, 11.74it/s]
+FLAEngine prompts:  11%|█▏        | 113/1000 [00:09<01:09, 12.83it/s]
+FLAEngine prompts:  12%|█▏        | 116/1000 [00:10<01:09, 12.76it/s]
+FLAEngine prompts:  12%|█▏        | 118/1000 [00:10<01:12, 12.13it/s]
+FLAEngine prompts:  12%|█▏        | 120/1000 [00:10<01:08, 12.77it/s]
+FLAEngine prompts:  12%|█▏        | 122/1000 [00:10<01:10, 12.52it/s]
+FLAEngine prompts:  12%|█▎        | 125/1000 [00:10<01:02, 14.07it/s]
+FLAEngine prompts:  13%|█▎        | 128/1000 [00:10<00:57, 15.21it/s]
+FLAEngine prompts:  13%|█▎        | 131/1000 [00:11<00:56, 15.38it/s]
+FLAEngine prompts:  13%|█▎        | 134/1000 [00:11<01:09, 12.50it/s]
+FLAEngine prompts:  14%|█▎        | 136/1000 [00:11<01:03, 13.53it/s]
+FLAEngine prompts:  14%|█▍        | 139/1000 [00:11<00:57, 15.01it/s]
+FLAEngine prompts:  14%|█▍        | 141/1000 [00:11<01:03, 13.60it/s]
+FLAEngine prompts:  14%|█▍        | 143/1000 [00:12<01:14, 11.54it/s]
+FLAEngine prompts:  14%|█▍        | 145/1000 [00:12<01:27,  9.80it/s]
+FLAEngine prompts:  15%|█▍        | 147/1000 [00:12<01:31,  9.36it/s]
+FLAEngine prompts:  15%|█▍        | 149/1000 [00:12<01:21, 10.49it/s]
+FLAEngine prompts:  15%|█▌        | 151/1000 [00:13<01:27,  9.76it/s]
+FLAEngine prompts:  15%|█▌        | 153/1000 [00:13<01:34,  8.99it/s]
+FLAEngine prompts:  16%|█▌        | 156/1000 [00:13<01:28,  9.52it/s]
+FLAEngine prompts:  16%|█▌        | 158/1000 [00:13<01:23, 10.09it/s]
+FLAEngine prompts:  16%|█▌        | 160/1000 [00:13<01:22, 10.21it/s]
+FLAEngine prompts:  16%|█▌        | 162/1000 [00:14<01:21, 10.29it/s]
+FLAEngine prompts:  16%|█▋        | 164/1000 [00:14<01:26,  9.69it/s]
+FLAEngine prompts:  17%|█▋        | 166/1000 [00:14<01:21, 10.29it/s]
+FLAEngine prompts:  17%|█▋        | 168/1000 [00:14<01:17, 10.76it/s]
+FLAEngine prompts:  17%|█▋        | 170/1000 [00:14<01:07, 12.31it/s]
+FLAEngine prompts:  17%|█▋        | 172/1000 [00:15<01:07, 12.22it/s]
+FLAEngine prompts:  18%|█▊        | 177/1000 [00:15<00:46, 17.52it/s]
+FLAEngine prompts:  18%|█▊        | 179/1000 [00:15<00:51, 15.87it/s]
+FLAEngine prompts:  18%|█▊        | 181/1000 [00:15<01:05, 12.56it/s]
+FLAEngine prompts:  18%|█▊        | 183/1000 [00:15<01:10, 11.54it/s]
+FLAEngine prompts:  18%|█▊        | 185/1000 [00:16<01:09, 11.67it/s]
+FLAEngine prompts:  19%|█▊        | 187/1000 [00:16<01:02, 13.02it/s]
+FLAEngine prompts:  19%|█▉        | 189/1000 [00:16<00:59, 13.58it/s]
+FLAEngine prompts:  19%|█▉        | 191/1000 [00:16<01:07, 12.02it/s]
+FLAEngine prompts:  19%|█▉        | 193/1000 [00:16<01:09, 11.56it/s]
+FLAEngine prompts:  20%|█▉        | 196/1000 [00:16<00:59, 13.42it/s]
+FLAEngine prompts:  20%|█▉        | 199/1000 [00:16<00:54, 14.77it/s]
+FLAEngine prompts:  20%|██        | 201/1000 [00:17<00:53, 14.89it/s]
+FLAEngine prompts:  20%|██        | 203/1000 [00:17<00:52, 15.04it/s]
+FLAEngine prompts:  21%|██        | 209/1000 [00:17<00:33, 23.83it/s]
+FLAEngine prompts:  21%|██        | 212/1000 [00:17<00:35, 22.35it/s]
+FLAEngine prompts:  22%|██▏       | 216/1000 [00:17<00:34, 22.77it/s]
+FLAEngine prompts:  22%|██▏       | 219/1000 [00:18<00:47, 16.40it/s]
+FLAEngine prompts:  22%|██▏       | 221/1000 [00:18<00:46, 16.84it/s]
+FLAEngine prompts:  22%|██▏       | 223/1000 [00:18<00:50, 15.44it/s]
+FLAEngine prompts:  22%|██▎       | 225/1000 [00:18<01:00, 12.82it/s]
+FLAEngine prompts:  23%|██▎       | 227/1000 [00:18<00:55, 13.94it/s]
+FLAEngine prompts:  23%|██▎       | 230/1000 [00:18<00:52, 14.53it/s]
+FLAEngine prompts:  23%|██▎       | 232/1000 [00:18<00:49, 15.42it/s]
+FLAEngine prompts:  24%|██▎       | 236/1000 [00:19<00:48, 15.90it/s]
+FLAEngine prompts:  24%|██▍       | 238/1000 [00:19<00:51, 14.82it/s]
+FLAEngine prompts:  24%|██▍       | 240/1000 [00:19<01:00, 12.47it/s]
+FLAEngine prompts:  24%|██▍       | 244/1000 [00:19<00:48, 15.54it/s]
+FLAEngine prompts:  25%|██▍       | 248/1000 [00:19<00:42, 17.90it/s]
+FLAEngine prompts:  25%|██▌       | 252/1000 [00:20<00:38, 19.64it/s]
+FLAEngine prompts:  26%|██▌       | 255/1000 [00:20<00:40, 18.43it/s]
+FLAEngine prompts:  26%|██▌       | 257/1000 [00:20<00:44, 16.64it/s]
+FLAEngine prompts:  26%|██▌       | 259/1000 [00:20<00:48, 15.33it/s]
+FLAEngine prompts:  26%|██▌       | 262/1000 [00:20<00:49, 14.88it/s]
+FLAEngine prompts:  26%|██▋       | 264/1000 [00:20<00:52, 14.08it/s]
+FLAEngine prompts:  27%|██▋       | 267/1000 [00:21<00:48, 15.14it/s]
+FLAEngine prompts:  27%|██▋       | 270/1000 [00:21<00:46, 15.84it/s]
+FLAEngine prompts:  27%|██▋       | 272/1000 [00:21<00:46, 15.68it/s]
+FLAEngine prompts:  28%|██▊       | 275/1000 [00:21<00:44, 16.40it/s]
+FLAEngine prompts:  28%|██▊       | 277/1000 [00:21<00:47, 15.08it/s]
+FLAEngine prompts:  28%|██▊       | 280/1000 [00:21<00:48, 14.70it/s]
+FLAEngine prompts:  28%|██▊       | 283/1000 [00:22<00:45, 15.66it/s]
+FLAEngine prompts:  28%|██▊       | 285/1000 [00:22<00:48, 14.62it/s]
+FLAEngine prompts:  29%|██▊       | 287/1000 [00:22<00:48, 14.78it/s]
+FLAEngine prompts:  29%|██▉       | 291/1000 [00:22<00:40, 17.62it/s]
+FLAEngine prompts:  29%|██▉       | 293/1000 [00:22<00:43, 16.28it/s]
+FLAEngine prompts:  30%|██▉       | 295/1000 [00:22<00:49, 14.32it/s]
+FLAEngine prompts:  30%|██▉       | 298/1000 [00:23<00:45, 15.42it/s]
+FLAEngine prompts:  30%|███       | 300/1000 [00:23<00:45, 15.40it/s]
+FLAEngine prompts:  30%|███       | 304/1000 [00:23<00:38, 18.09it/s]
+FLAEngine prompts:  31%|███       | 306/1000 [00:23<00:39, 17.35it/s]
+FLAEngine prompts:  31%|███       | 308/1000 [00:23<00:46, 14.98it/s]
+FLAEngine prompts:  31%|███       | 310/1000 [00:23<00:51, 13.49it/s]
+FLAEngine prompts:  31%|███       | 312/1000 [00:24<00:52, 13.04it/s]
+FLAEngine prompts:  31%|███▏      | 314/1000 [00:24<00:56, 12.21it/s]
+FLAEngine prompts:  32%|███▏      | 317/1000 [00:24<00:49, 13.89it/s]
+FLAEngine prompts:  32%|███▏      | 319/1000 [00:24<00:50, 13.36it/s]
+FLAEngine prompts:  32%|███▏      | 322/1000 [00:24<00:45, 14.74it/s]
+FLAEngine prompts:  32%|███▏      | 324/1000 [00:24<00:50, 13.39it/s]
+FLAEngine prompts:  33%|███▎      | 328/1000 [00:25<00:40, 16.46it/s]
+FLAEngine prompts:  33%|███▎      | 330/1000 [00:25<00:49, 13.49it/s]
+FLAEngine prompts:  34%|███▎      | 335/1000 [00:25<00:37, 17.94it/s]
+FLAEngine prompts:  34%|███▎      | 337/1000 [00:25<00:40, 16.31it/s]
+FLAEngine prompts:  34%|███▍      | 341/1000 [00:25<00:35, 18.52it/s]
+FLAEngine prompts:  34%|███▍      | 343/1000 [00:25<00:35, 18.56it/s]
+FLAEngine prompts:  34%|███▍      | 345/1000 [00:26<00:39, 16.50it/s]
+FLAEngine prompts:  35%|███▍      | 347/1000 [00:26<00:38, 16.99it/s]
+FLAEngine prompts:  35%|███▍      | 349/1000 [00:26<00:37, 17.43it/s]
+FLAEngine prompts:  35%|███▌      | 353/1000 [00:26<00:34, 18.80it/s]
+FLAEngine prompts:  36%|███▌      | 356/1000 [00:26<00:34, 18.58it/s]
+FLAEngine prompts:  36%|███▌      | 359/1000 [00:26<00:34, 18.44it/s]
+FLAEngine prompts:  36%|███▌      | 361/1000 [00:27<00:38, 16.49it/s]
+FLAEngine prompts:  36%|███▋      | 363/1000 [00:27<00:39, 16.18it/s]
+FLAEngine prompts:  36%|███▋      | 365/1000 [00:27<00:37, 16.77it/s]
+FLAEngine prompts:  37%|███▋      | 370/1000 [00:27<00:29, 21.13it/s]
+FLAEngine prompts:  37%|███▋      | 373/1000 [00:27<00:31, 20.13it/s]
+FLAEngine prompts:  38%|███▊      | 375/1000 [00:27<00:31, 19.81it/s]
+FLAEngine prompts:  38%|███▊      | 377/1000 [00:27<00:31, 19.52it/s]
+FLAEngine prompts:  38%|███▊      | 379/1000 [00:28<00:38, 16.06it/s]
+FLAEngine prompts:  38%|███▊      | 382/1000 [00:28<00:43, 14.08it/s]
+FLAEngine prompts:  38%|███▊      | 385/1000 [00:28<00:36, 16.89it/s]
+FLAEngine prompts:  39%|███▉      | 388/1000 [00:28<00:31, 19.36it/s]
+FLAEngine prompts:  39%|███▉      | 391/1000 [00:28<00:35, 17.27it/s]
+FLAEngine prompts:  39%|███▉      | 393/1000 [00:28<00:42, 14.40it/s]
+FLAEngine prompts:  40%|███▉      | 396/1000 [00:29<00:39, 15.35it/s]
+FLAEngine prompts:  40%|███▉      | 398/1000 [00:29<00:45, 13.31it/s]
+FLAEngine prompts:  40%|████      | 400/1000 [00:29<00:41, 14.37it/s]
+FLAEngine prompts:  40%|████      | 404/1000 [00:29<00:34, 17.30it/s]
+FLAEngine prompts:  41%|████      | 409/1000 [00:29<00:27, 21.12it/s]
+FLAEngine prompts:  41%|████      | 412/1000 [00:30<00:34, 17.22it/s]
+FLAEngine prompts:  41%|████▏     | 414/1000 [00:30<00:36, 15.84it/s]
+FLAEngine prompts:  42%|████▏     | 417/1000 [00:30<00:35, 16.47it/s]
+FLAEngine prompts:  42%|████▏     | 419/1000 [00:30<00:38, 15.18it/s]
+FLAEngine prompts:  42%|████▏     | 424/1000 [00:30<00:30, 18.65it/s]
+FLAEngine prompts:  43%|████▎     | 426/1000 [00:30<00:30, 18.65it/s]
+FLAEngine prompts:  43%|████▎     | 428/1000 [00:31<00:37, 15.26it/s]
+FLAEngine prompts:  43%|████▎     | 431/1000 [00:31<00:31, 17.88it/s]
+FLAEngine prompts:  44%|████▎     | 435/1000 [00:31<00:31, 18.14it/s]
+FLAEngine prompts:  44%|████▍     | 439/1000 [00:31<00:28, 19.87it/s]
+FLAEngine prompts:  44%|████▍     | 443/1000 [00:31<00:26, 21.10it/s]
+FLAEngine prompts:  45%|████▍     | 446/1000 [00:31<00:28, 19.39it/s]
+FLAEngine prompts:  45%|████▍     | 448/1000 [00:32<00:36, 15.33it/s]
+FLAEngine prompts:  45%|████▌     | 451/1000 [00:32<00:34, 16.05it/s]
+FLAEngine prompts:  45%|████▌     | 454/1000 [00:32<00:32, 16.61it/s]
+FLAEngine prompts:  46%|████▌     | 456/1000 [00:32<00:31, 17.04it/s]
+FLAEngine prompts:  46%|████▌     | 458/1000 [00:32<00:36, 14.84it/s]
+FLAEngine prompts:  46%|████▌     | 462/1000 [00:32<00:31, 16.85it/s]
+FLAEngine prompts:  46%|████▋     | 464/1000 [00:33<00:37, 14.29it/s]
+FLAEngine prompts:  47%|████▋     | 466/1000 [00:33<00:45, 11.82it/s]
+FLAEngine prompts:  47%|████▋     | 469/1000 [00:33<00:39, 13.40it/s]
+FLAEngine prompts:  47%|████▋     | 471/1000 [00:33<00:42, 12.57it/s]
+FLAEngine prompts:  48%|████▊     | 476/1000 [00:33<00:30, 17.27it/s]
+FLAEngine prompts:  48%|████▊     | 479/1000 [00:34<00:29, 17.49it/s]
+FLAEngine prompts:  48%|████▊     | 481/1000 [00:34<00:33, 15.31it/s]
+FLAEngine prompts:  48%|████▊     | 485/1000 [00:34<00:32, 15.84it/s]
+FLAEngine prompts:  49%|████▉     | 489/1000 [00:34<00:30, 16.73it/s]
+FLAEngine prompts:  49%|████▉     | 492/1000 [00:34<00:28, 17.94it/s]
+FLAEngine prompts:  50%|████▉     | 495/1000 [00:35<00:27, 18.24it/s]
+FLAEngine prompts:  50%|████▉     | 498/1000 [00:35<00:28, 17.74it/s]
+FLAEngine prompts:  50%|█████     | 500/1000 [00:35<00:29, 17.10it/s]
+FLAEngine prompts:  50%|█████     | 503/1000 [00:35<00:30, 16.33it/s]
+FLAEngine prompts:  50%|█████     | 505/1000 [00:35<00:32, 15.39it/s]
+FLAEngine prompts:  51%|█████     | 508/1000 [00:35<00:28, 17.27it/s]
+FLAEngine prompts:  51%|█████     | 510/1000 [00:35<00:29, 16.77it/s]
+FLAEngine prompts:  51%|█████▏    | 513/1000 [00:36<00:26, 18.50it/s]
+FLAEngine prompts:  52%|█████▏    | 515/1000 [00:36<00:28, 16.82it/s]
+FLAEngine prompts:  52%|█████▏    | 517/1000 [00:36<00:33, 14.39it/s]
+FLAEngine prompts:  52%|█████▏    | 523/1000 [00:36<00:22, 20.78it/s]
+FLAEngine prompts:  53%|█████▎    | 527/1000 [00:36<00:21, 22.47it/s]
+FLAEngine prompts:  53%|█████▎    | 530/1000 [00:36<00:20, 22.83it/s]
+FLAEngine prompts:  53%|█████▎    | 533/1000 [00:37<00:20, 23.13it/s]
+FLAEngine prompts:  54%|█████▍    | 539/1000 [00:37<00:16, 28.46it/s]
+FLAEngine prompts:  54%|█████▍    | 542/1000 [00:37<00:16, 27.37it/s]
+FLAEngine prompts:  55%|█████▍    | 546/1000 [00:37<00:16, 27.45it/s]
+FLAEngine prompts:  55%|█████▍    | 549/1000 [00:37<00:19, 23.26it/s]
+FLAEngine prompts:  55%|█████▌    | 553/1000 [00:37<00:17, 25.59it/s]
+FLAEngine prompts:  56%|█████▌    | 556/1000 [00:37<00:18, 24.20it/s]
+FLAEngine prompts:  56%|█████▌    | 559/1000 [00:38<00:18, 23.36it/s]
+FLAEngine prompts:  56%|█████▌    | 562/1000 [00:38<00:20, 21.82it/s]
+FLAEngine prompts:  56%|█████▋    | 565/1000 [00:38<00:20, 20.85it/s]
+FLAEngine prompts:  57%|█████▋    | 568/1000 [00:38<00:20, 21.10it/s]
+FLAEngine prompts:  57%|█████▋    | 571/1000 [00:38<00:22, 19.04it/s]
+FLAEngine prompts:  57%|█████▋    | 574/1000 [00:38<00:21, 19.85it/s]
+FLAEngine prompts:  58%|█████▊    | 578/1000 [00:38<00:18, 22.52it/s]
+FLAEngine prompts:  58%|█████▊    | 581/1000 [00:39<00:18, 22.46it/s]
+FLAEngine prompts:  58%|█████▊    | 585/1000 [00:39<00:16, 24.60it/s]
+FLAEngine prompts:  59%|█████▉    | 589/1000 [00:39<00:15, 27.31it/s]
+FLAEngine prompts:  59%|█████▉    | 592/1000 [00:39<00:18, 21.97it/s]
+FLAEngine prompts:  60%|█████▉    | 597/1000 [00:39<00:16, 24.32it/s]
+FLAEngine prompts:  60%|██████    | 600/1000 [00:39<00:18, 21.67it/s]
+FLAEngine prompts:  60%|██████    | 603/1000 [00:40<00:20, 19.26it/s]
+FLAEngine prompts:  61%|██████    | 607/1000 [00:40<00:17, 22.08it/s]
+FLAEngine prompts:  61%|██████    | 610/1000 [00:40<00:21, 18.31it/s]
+FLAEngine prompts:  61%|██████▏   | 613/1000 [00:40<00:19, 20.25it/s]
+FLAEngine prompts:  62%|██████▏   | 616/1000 [00:40<00:17, 22.04it/s]
+FLAEngine prompts:  62%|██████▏   | 619/1000 [00:40<00:18, 20.40it/s]
+FLAEngine prompts:  62%|██████▏   | 623/1000 [00:41<00:16, 22.68it/s]
+FLAEngine prompts:  63%|██████▎   | 626/1000 [00:41<00:22, 16.77it/s]
+FLAEngine prompts:  63%|██████▎   | 629/1000 [00:41<00:20, 17.92it/s]
+FLAEngine prompts:  64%|██████▎   | 635/1000 [00:41<00:15, 22.82it/s]
+FLAEngine prompts:  64%|██████▍   | 638/1000 [00:41<00:16, 22.14it/s]
+FLAEngine prompts:  64%|██████▍   | 641/1000 [00:41<00:15, 22.95it/s]
+FLAEngine prompts:  64%|██████▍   | 644/1000 [00:42<00:17, 20.73it/s]
+FLAEngine prompts:  65%|██████▍   | 647/1000 [00:42<00:19, 18.21it/s]
+FLAEngine prompts:  65%|██████▌   | 650/1000 [00:42<00:17, 19.85it/s]
+FLAEngine prompts:  65%|██████▌   | 653/1000 [00:42<00:16, 21.38it/s]
+FLAEngine prompts:  66%|██████▌   | 656/1000 [00:42<00:16, 20.52it/s]
+FLAEngine prompts:  66%|██████▌   | 659/1000 [00:42<00:17, 19.98it/s]
+FLAEngine prompts:  66%|██████▌   | 662/1000 [00:42<00:16, 20.86it/s]
+FLAEngine prompts:  66%|██████▋   | 665/1000 [00:43<00:15, 21.54it/s]
+FLAEngine prompts:  67%|██████▋   | 668/1000 [00:43<00:14, 23.40it/s]
+FLAEngine prompts:  67%|██████▋   | 671/1000 [00:43<00:13, 24.48it/s]
+FLAEngine prompts:  67%|██████▋   | 674/1000 [00:43<00:13, 24.30it/s]
+FLAEngine prompts:  68%|██████▊   | 677/1000 [00:43<00:12, 25.27it/s]
+FLAEngine prompts:  68%|██████▊   | 680/1000 [00:43<00:13, 23.03it/s]
+FLAEngine prompts:  68%|██████▊   | 685/1000 [00:43<00:11, 26.94it/s]
+FLAEngine prompts:  69%|██████▉   | 688/1000 [00:43<00:11, 27.39it/s]
+FLAEngine prompts:  69%|██████▉   | 691/1000 [00:44<00:11, 26.57it/s]
+FLAEngine prompts:  70%|██████▉   | 695/1000 [00:44<00:10, 29.84it/s]
+FLAEngine prompts:  70%|██████▉   | 699/1000 [00:44<00:11, 25.49it/s]
+FLAEngine prompts:  70%|███████   | 702/1000 [00:44<00:12, 23.38it/s]
+FLAEngine prompts:  70%|███████   | 705/1000 [00:44<00:12, 23.50it/s]
+FLAEngine prompts:  71%|███████   | 710/1000 [00:44<00:10, 27.71it/s]
+FLAEngine prompts:  71%|███████▏  | 713/1000 [00:44<00:12, 23.15it/s]
+FLAEngine prompts:  72%|███████▏  | 716/1000 [00:45<00:14, 19.77it/s]
+FLAEngine prompts:  72%|███████▏  | 720/1000 [00:45<00:12, 22.88it/s]
+FLAEngine prompts:  72%|███████▏  | 723/1000 [00:45<00:12, 21.98it/s]
+FLAEngine prompts:  73%|███████▎  | 728/1000 [00:45<00:10, 27.00it/s]
+FLAEngine prompts:  73%|███████▎  | 732/1000 [00:45<00:09, 28.22it/s]
+FLAEngine prompts:  74%|███████▎  | 736/1000 [00:45<00:08, 30.50it/s]
+FLAEngine prompts:  74%|███████▍  | 740/1000 [00:45<00:08, 29.93it/s]
+FLAEngine prompts:  74%|███████▍  | 744/1000 [00:46<00:08, 28.74it/s]
+FLAEngine prompts:  75%|███████▍  | 748/1000 [00:46<00:08, 30.63it/s]
+FLAEngine prompts:  75%|███████▌  | 752/1000 [00:46<00:08, 28.47it/s]
+FLAEngine prompts:  76%|███████▌  | 759/1000 [00:46<00:07, 31.04it/s]
+FLAEngine prompts:  76%|███████▋  | 763/1000 [00:46<00:08, 28.80it/s]
+FLAEngine prompts:  77%|███████▋  | 766/1000 [00:46<00:08, 28.63it/s]
+FLAEngine prompts:  77%|███████▋  | 769/1000 [00:46<00:08, 27.82it/s]
+FLAEngine prompts:  77%|███████▋  | 774/1000 [00:47<00:07, 29.61it/s]
+FLAEngine prompts:  78%|███████▊  | 777/1000 [00:47<00:07, 28.09it/s]
+FLAEngine prompts:  78%|███████▊  | 780/1000 [00:47<00:07, 27.86it/s]
+FLAEngine prompts:  78%|███████▊  | 783/1000 [00:47<00:08, 26.26it/s]
+FLAEngine prompts:  79%|███████▊  | 786/1000 [00:47<00:08, 25.98it/s]
+FLAEngine prompts:  79%|███████▉  | 791/1000 [00:47<00:06, 30.84it/s]
+FLAEngine prompts:  80%|███████▉  | 795/1000 [00:47<00:06, 30.54it/s]
+FLAEngine prompts:  80%|███████▉  | 799/1000 [00:48<00:10, 19.42it/s]
+FLAEngine prompts:  80%|████████  | 802/1000 [00:48<00:09, 20.28it/s]
+FLAEngine prompts:  81%|████████  | 806/1000 [00:48<00:08, 22.20it/s]
+FLAEngine prompts:  81%|████████  | 809/1000 [00:48<00:08, 23.16it/s]
+FLAEngine prompts:  81%|████████▏ | 813/1000 [00:48<00:07, 24.65it/s]
+FLAEngine prompts:  82%|████████▏ | 816/1000 [00:48<00:08, 21.86it/s]
+FLAEngine prompts:  82%|████████▏ | 819/1000 [00:49<00:08, 22.50it/s]
+FLAEngine prompts:  82%|████████▏ | 823/1000 [00:49<00:06, 26.01it/s]
+FLAEngine prompts:  83%|████████▎ | 826/1000 [00:49<00:06, 26.21it/s]
+FLAEngine prompts:  83%|████████▎ | 829/1000 [00:49<00:06, 26.79it/s]
+FLAEngine prompts:  83%|████████▎ | 832/1000 [00:49<00:07, 22.86it/s]
+FLAEngine prompts:  84%|████████▎ | 835/1000 [00:49<00:07, 22.57it/s]
+FLAEngine prompts:  84%|████████▍ | 838/1000 [00:49<00:07, 22.49it/s]
+FLAEngine prompts:  84%|████████▍ | 841/1000 [00:49<00:07, 22.17it/s]
+FLAEngine prompts:  85%|████████▍ | 846/1000 [00:50<00:05, 25.72it/s]
+FLAEngine prompts:  93%|█████████▎| 926/1000 [00:50<00:00, 192.17it/s]
+FLAEngine prompts:  95%|█████████▍| 947/1000 [00:51<00:01, 51.66it/s] 
+FLAEngine prompts:  96%|█████████▌| 962/1000 [00:52<00:01, 37.28it/s]
+FLAEngine prompts:  97%|█████████▋| 973/1000 [00:53<00:01, 24.75it/s]
+FLAEngine prompts:  98%|█████████▊| 981/1000 [00:54<00:00, 21.08it/s]
+FLAEngine prompts:  99%|█████████▊| 987/1000 [00:55<00:00, 15.56it/s]
+FLAEngine prompts:  99%|█████████▉| 992/1000 [00:55<00:00, 14.80it/s]
+FLAEngine prompts: 100%|█████████▉| 996/1000 [00:56<00:00, 11.87it/s]
+FLAEngine prompts: 100%|█████████▉| 999/1000 [00:56<00:00, 12.15it/s]
+FLAEngine prompts: 100%|██████████| 1000/1000 [00:57<00:00, 17.27it/s]
+
+FLAEngine prompts:   0%|          | 0/64 [00:00<?, ?it/s]
+FLAEngine prompts:   2%|▏         | 1/64 [00:04<04:47,  4.56s/it]
+FLAEngine prompts: 100%|██████████| 64/64 [00:04<00:00, 14.05it/s]
+
+
+====================================================================================================
+  THROUGHPUT SUMMARY (fastkernels FLAEngine vs FLA reference)
+====================================================================================================
+  SCENARIO            IN   OUT FASTKERNELS tok/s    FLA tok/s   SPEEDUP    AVG PREFIX TOKS
+  -----------------------------------------------------------------------------------------------
+  mixed              var   447           7,686        6,170     1.25x          332.3/447
+  long-context       var    16           3,590        2,171     1.65x          192.0/256
+====================================================================================================
+
+==============================================================================================================
+  LATENCY SUMMARY
+==============================================================================================================
+  SCENARIO             BS   OUT  ITERS  FASTKERNELS med      FLA med  FASTKERNELS ms/tok   FLA ms/tok  SPEEDUP
+  ---------------------------------------------------------------------------------------------------------
+  single-request        1   128      5  1.8890s         3.4320s          14.76        26.81    1.82x
+  fixed-batch-32       32   128      5  2.1246s         3.5783s           0.52         0.87    1.68x
+==============================================================================================================
+
+  Results saved to: /code/users/goliaro/validate-b200-check/010_bench_fla_fla-hub_gla-2.7B-100B/results.json

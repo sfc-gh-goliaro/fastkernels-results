@@ -1,0 +1,54 @@
+job_index: 12
+name: Qwen/Qwen3-Next-80B-A3B-Instruct
+harness: bench_vllm
+tp: 2
+workloads: mixed, long-context, single-request, fixed-batch-32
+CUDA_VISIBLE_DEVICES: 3,4
+physical_gpus: 3,4
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_vllm --model Qwen/Qwen3-Next-80B-A3B-Instruct --tp 2 --output-dir /code/users/goliaro/validate-b200-check/012_bench_vllm_Qwen_Qwen3-Next-80B-A3B-Instruct --resume
+
+======================================================================
+  fastkernels Baseline vs vLLM -- Multi-Scenario Benchmark
+======================================================================
+  Model          : Qwen/Qwen3-Next-80B-A3B-Instruct
+  Model type     : LLM
+  TP             : 2
+  Seqs/scenario  : 1000
+  Temperature    : 0.0
+  Enforce eager  : False
+  Seed           : 42
+  Trust RC       : True
+  Max seq len    : 131901
+  fastkernels port   : 45399
+  vLLM port      : 24739
+  vLLM FI ns     : bench-vllm-34140-24739
+  Output dir     : /code/users/goliaro/validate-b200-check/012_bench_vllm_Qwen_Qwen3-Next-80B-A3B-Instruct
+  Scenarios      : mixed, long-context
+  Latency        : single-request, fixed-batch-32 (5 iters)
+======================================================================
+  Resumed vLLM reference from cache: /code/users/goliaro/validate-b200-check/012_bench_vllm_Qwen_Qwen3-Next-80B-A3B-Instruct/vllm_raw.json
+  Resumed fastkernels outputs from cache: /code/users/goliaro/validate-b200-check/012_bench_vllm_Qwen_Qwen3-Next-80B-A3B-Instruct/fastkernels_raw.json
+
+
+==========================================================================================
+  THROUGHPUT SUMMARY
+==========================================================================================
+  SCENARIO          SEQS    IN   OUT FASTKERNELS tok/s   vLLM tok/s  SPEEDUP AVG PREFIX TOKS
+  ------------------------------------------------------------------------------------------
+  mixed             1000   var   392          14,618       10,023    1.46x         9.8/392
+  long-context        64   var   256             765          760    1.01x        13.6/256
+==========================================================================================
+
+==============================================================================================================
+  LATENCY SUMMARY
+==============================================================================================================
+  SCENARIO             BS   OUT  ITERS  FASTKERNELS med     vLLM med  FASTKERNELS ms/tok  vLLM ms/tok  SPEEDUP
+  ----------------------------------------------------------------------------------------------------
+  single-request        1   128      5  0.5612s         0.5556s           4.38         4.34    0.99x
+  fixed-batch-32       32   128      5  1.1161s         1.1084s           0.27         0.27    0.99x
+==============================================================================================================
+
+  Results saved to: /code/users/goliaro/validate-b200-check/012_bench_vllm_Qwen_Qwen3-Next-80B-A3B-Instruct/results.json

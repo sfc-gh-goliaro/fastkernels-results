@@ -1,0 +1,957 @@
+job_index: 16
+name: black-forest-labs/FLUX.1-dev
+harness: bench_vllm_omni
+tp: 1
+workloads: 1024x1024, 512x512, single-1024x1024, single-512x512
+CUDA_VISIBLE_DEVICES: 2
+physical_gpus: 2
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_vllm_omni --model black-forest-labs/FLUX.1-dev --output-dir /code/users/goliaro/validate-b200-check/016_bench_vllm_omni_black-forest-labs_FLUX.1-dev
+
+
+Generating train split:   0%|          | 0/1632 [00:00<?, ? examples/s]
+Generating train split: 100%|██████████| 1632/1632 [00:00<00:00, 229378.20 examples/s]
+
+======================================================================
+  fastkernels vs vllm-omni -- FLUX Benchmark
+======================================================================
+  Model          : black-forest-labs/FLUX.1-dev
+  GPU            : B200
+  Seed           : 42
+  Prompts source : parti-prompts (1632 prompts)
+  Output dir     : /code/users/goliaro/validate-b200-check/016_bench_vllm_omni_black-forest-labs_FLUX.1-dev
+======================================================================
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels FLUX benchmark
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+Warming up: 1024x1024 batch_size=4
+
+Fetching 25 files:   0%|          | 0/25 [00:00<?, ?it/s]
+Fetching 25 files: 100%|██████████| 25/25 [00:00<00:00, 1869.25it/s]
+Warming up: 512x512 batch_size=8
+Warming up: 1024x1024 batch_size=1
+Warming up: 512x512 batch_size=1
+
+fastkernels 1024x1024:   0%|          | 0/10 [00:00<?, ?batch/s]
+fastkernels 1024x1024:   0%|          | 0/10 [00:10<?, ?batch/s, imgs=4, ips=0.43]
+fastkernels 1024x1024:  10%|█         | 1/10 [00:10<01:36, 10.71s/batch, imgs=4, ips=0.43]
+fastkernels 1024x1024:  10%|█         | 1/10 [00:20<01:36, 10.71s/batch, imgs=8, ips=0.42]
+fastkernels 1024x1024:  20%|██        | 2/10 [00:20<01:21, 10.20s/batch, imgs=8, ips=0.42]
+fastkernels 1024x1024:  20%|██        | 2/10 [00:30<01:21, 10.20s/batch, imgs=12, ips=0.42]
+fastkernels 1024x1024:  30%|███       | 3/10 [00:30<01:10, 10.06s/batch, imgs=12, ips=0.42]
+fastkernels 1024x1024:  30%|███       | 3/10 [00:40<01:10, 10.06s/batch, imgs=16, ips=0.42]
+fastkernels 1024x1024:  40%|████      | 4/10 [00:40<00:59,  9.99s/batch, imgs=16, ips=0.42]
+fastkernels 1024x1024:  40%|████      | 4/10 [00:50<00:59,  9.99s/batch, imgs=20, ips=0.42]
+fastkernels 1024x1024:  50%|█████     | 5/10 [00:50<00:49,  9.96s/batch, imgs=20, ips=0.42]
+fastkernels 1024x1024:  50%|█████     | 5/10 [01:00<00:49,  9.96s/batch, imgs=24, ips=0.42]
+fastkernels 1024x1024:  60%|██████    | 6/10 [01:00<00:39,  9.95s/batch, imgs=24, ips=0.42]
+fastkernels 1024x1024:  60%|██████    | 6/10 [01:10<00:39,  9.95s/batch, imgs=28, ips=0.42]
+fastkernels 1024x1024:  70%|███████   | 7/10 [01:10<00:29,  9.95s/batch, imgs=28, ips=0.42]
+fastkernels 1024x1024:  70%|███████   | 7/10 [01:20<00:29,  9.95s/batch, imgs=32, ips=0.42]
+fastkernels 1024x1024:  80%|████████  | 8/10 [01:20<00:19,  9.95s/batch, imgs=32, ips=0.42]
+fastkernels 1024x1024:  80%|████████  | 8/10 [01:30<00:19,  9.95s/batch, imgs=36, ips=0.42]
+fastkernels 1024x1024:  90%|█████████ | 9/10 [01:30<00:09,  9.95s/batch, imgs=36, ips=0.42]
+fastkernels 1024x1024:  90%|█████████ | 9/10 [01:39<00:09,  9.95s/batch, imgs=40, ips=0.42]
+fastkernels 1024x1024: 100%|██████████| 10/10 [01:39<00:00,  9.96s/batch, imgs=40, ips=0.42]
+fastkernels 1024x1024: 100%|██████████| 10/10 [01:39<00:00, 10.00s/batch, imgs=40, ips=0.42]
+
+fastkernels 512x512:   0%|          | 0/10 [00:00<?, ?batch/s]
+fastkernels 512x512:   0%|          | 0/10 [00:06<?, ?batch/s, imgs=8, ips=1.37]
+fastkernels 512x512:  10%|█         | 1/10 [00:06<00:54,  6.01s/batch, imgs=8, ips=1.37]
+fastkernels 512x512:  10%|█         | 1/10 [00:12<00:54,  6.01s/batch, imgs=16, ips=1.36]
+fastkernels 512x512:  20%|██        | 2/10 [00:12<00:48,  6.03s/batch, imgs=16, ips=1.36]
+fastkernels 512x512:  20%|██        | 2/10 [00:18<00:48,  6.03s/batch, imgs=24, ips=1.36]
+fastkernels 512x512:  30%|███       | 3/10 [00:18<00:42,  6.03s/batch, imgs=24, ips=1.36]
+fastkernels 512x512:  30%|███       | 3/10 [00:24<00:42,  6.03s/batch, imgs=32, ips=1.36]
+fastkernels 512x512:  40%|████      | 4/10 [00:24<00:36,  6.03s/batch, imgs=32, ips=1.36]
+fastkernels 512x512:  40%|████      | 4/10 [00:30<00:36,  6.03s/batch, imgs=40, ips=1.36]
+fastkernels 512x512:  50%|█████     | 5/10 [00:30<00:30,  6.01s/batch, imgs=40, ips=1.36]
+fastkernels 512x512:  50%|█████     | 5/10 [00:36<00:30,  6.01s/batch, imgs=48, ips=1.36]
+fastkernels 512x512:  60%|██████    | 6/10 [00:36<00:24,  6.02s/batch, imgs=48, ips=1.36]
+fastkernels 512x512:  60%|██████    | 6/10 [00:42<00:24,  6.02s/batch, imgs=56, ips=1.36]
+fastkernels 512x512:  70%|███████   | 7/10 [00:42<00:18,  6.02s/batch, imgs=56, ips=1.36]
+fastkernels 512x512:  70%|███████   | 7/10 [00:48<00:18,  6.02s/batch, imgs=64, ips=1.36]
+fastkernels 512x512:  80%|████████  | 8/10 [00:48<00:12,  6.02s/batch, imgs=64, ips=1.36]
+fastkernels 512x512:  80%|████████  | 8/10 [00:54<00:12,  6.02s/batch, imgs=72, ips=1.36]
+fastkernels 512x512:  90%|█████████ | 9/10 [00:54<00:06,  6.03s/batch, imgs=72, ips=1.36]
+fastkernels 512x512:  90%|█████████ | 9/10 [01:00<00:06,  6.03s/batch, imgs=80, ips=1.36]
+fastkernels 512x512: 100%|██████████| 10/10 [01:00<00:00,  6.03s/batch, imgs=80, ips=1.36]
+fastkernels 512x512: 100%|██████████| 10/10 [01:00<00:00,  6.03s/batch, imgs=80, ips=1.36]
+
+fastkernels latency warmup single-1024x1024:   0%|          | 0/2 [00:00<?, ?it/s]
+fastkernels latency warmup single-1024x1024:  50%|█████     | 1/2 [00:02<00:02,  2.45s/it]
+fastkernels latency warmup single-1024x1024: 100%|██████████| 2/2 [00:04<00:00,  2.45s/it]
+fastkernels latency warmup single-1024x1024: 100%|██████████| 2/2 [00:04<00:00,  2.45s/it]
+
+fastkernels latency single-1024x1024:   0%|          | 0/5 [00:00<?, ?it/s]
+fastkernels latency single-1024x1024:  20%|██        | 1/5 [00:02<00:09,  2.46s/it]
+fastkernels latency single-1024x1024:  40%|████      | 2/5 [00:04<00:07,  2.45s/it]
+fastkernels latency single-1024x1024:  60%|██████    | 3/5 [00:07<00:04,  2.46s/it]
+fastkernels latency single-1024x1024:  80%|████████  | 4/5 [00:09<00:02,  2.46s/it]
+fastkernels latency single-1024x1024: 100%|██████████| 5/5 [00:12<00:00,  2.46s/it]
+fastkernels latency single-1024x1024: 100%|██████████| 5/5 [00:12<00:00,  2.46s/it]
+
+fastkernels latency warmup single-512x512:   0%|          | 0/2 [00:00<?, ?it/s]
+fastkernels latency warmup single-512x512:  50%|█████     | 1/2 [00:01<00:01,  1.00s/it]
+fastkernels latency warmup single-512x512: 100%|██████████| 2/2 [00:02<00:00,  1.00s/it]
+fastkernels latency warmup single-512x512: 100%|██████████| 2/2 [00:02<00:00,  1.00s/it]
+
+fastkernels latency single-512x512:   0%|          | 0/5 [00:00<?, ?it/s]
+fastkernels latency single-512x512:  20%|██        | 1/5 [00:00<00:03,  1.00it/s]
+fastkernels latency single-512x512:  40%|████      | 2/5 [00:01<00:02,  1.00it/s]
+fastkernels latency single-512x512:  60%|██████    | 3/5 [00:02<00:01,  1.00it/s]
+fastkernels latency single-512x512:  80%|████████  | 4/5 [00:03<00:00,  1.00it/s]
+fastkernels latency single-512x512: 100%|██████████| 5/5 [00:04<00:00,  1.00it/s]
+fastkernels latency single-512x512: 100%|██████████| 5/5 [00:04<00:00,  1.00it/s]
+
+──────────────────────────────────────────────────────────────────────
+  vllm-omni FLUX benchmark
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+INFO 08-21 10:17:31 [patch.py:252] NVFP4 W4A4 weight_scale NaN-clamp: installed.
+INFO 08-21 10:17:35 [quack_fp8.py:76] Quack FP8 fused-bias GEMM enabled (CuteDSL).
+INFO 08-21 10:17:35 [quack_fp8.py:155] Patched FlashInfer FP8 ScaledMM to use quack fused-bias GEMM.
+INFO 08-21 10:17:35 [patch.py:481] [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+[vllm-omni] Creating Omni engine...
+INFO 08-21 10:17:38 [weight_utils.py:50] Using model weights format ['*']
+INFO 08-21 10:17:39 [weight_utils.py:82] Time spent downloading weights for black-forest-labs/FLUX.1-dev: 0.800562 seconds
+INFO 08-21 10:17:39 [omni_base.py:172] [Omni] Initializing with model black-forest-labs/FLUX.1-dev
+INFO 08-21 10:17:39 [async_omni_engine.py:175] [AsyncOmniEngine] Initializing with model black-forest-labs/FLUX.1-dev
+INFO 08-21 10:17:39 [async_omni_engine.py:264] [AsyncOmniEngine] Launching Orchestrator thread with 1 stages
+INFO 08-21 10:17:39 [stage_init_utils.py:511] [stage_init] Set VLLM_WORKER_MULTIPROC_METHOD=spawn
+INFO 08-21 10:17:39 [stage_utils.py:167] Stage 0 logical-to-physical device mapping: 0->2
+INFO 08-21 10:17:40 [weight_utils.py:50] Using model weights format ['*']
+INFO 08-21 10:17:40 [multiproc_executor.py:192] Starting server...
+INFO 08-21 10:17:48 [patch.py:252] NVFP4 W4A4 weight_scale NaN-clamp: installed.
+INFO 08-21 10:17:49 [quack_fp8.py:76] Quack FP8 fused-bias GEMM enabled (CuteDSL).
+INFO 08-21 10:17:49 [quack_fp8.py:155] Patched FlashInfer FP8 ScaledMM to use quack fused-bias GEMM.
+INFO 08-21 10:17:49 [patch.py:481] [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+INFO 08-21 10:17:51 [diffusion_worker.py:784] Worker 0 created result MessageQueue
+INFO 08-21 10:17:52 [scheduler.py:252] Chunked prefill is enabled with max_num_batched_tokens=2048.
+INFO 08-21 10:17:52 [vllm.py:1109] Asynchronous scheduling is enabled.
+INFO 08-21 10:17:52 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+INFO 08-21 10:17:52 [diffusion_worker.py:298] Final IR op priority after setting vLLM-Omni overrides: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+INFO 08-21 10:17:52 [diffusion_worker.py:310] Worker 0: Initialized device and distributed environment.
+INFO 08-21 10:17:52 [parallel_state.py:634] Building SP subgroups from explicit sp_group_ranks (sp_size=1, ulysses=1, ring=1, use_ulysses_low=True).
+INFO 08-21 10:17:52 [parallel_state.py:676] SP group details for rank 0: sp_group=[0], ulysses_group=[0], ring_group=[0]
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:205: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+
+Loading weights:   0%|          | 0/196 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 196/196 [00:00<00:00, 5351.79it/s]
+INFO 08-21 10:17:53 [platform.py:220] Defaulting to diffusion attention backend CUDNN_ATTN (Blackwell sm_100, cuDNN 91900)
+INFO 08-21 10:17:53 [selector.py:89] Resolved diffusion attention backend 'CUDNN_ATTN' for role='self' via platform default
+INFO 08-21 10:17:55 [weight_utils.py:574] No transformer/diffusion_pytorch_model.safetensors.index.json found in remote.
+
+Multi-thread loading shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+
+Multi-thread loading shards:  33% Completed | 1/3 [00:00<00:01,  1.53it/s]
+
+Multi-thread loading shards:  67% Completed | 2/3 [00:02<00:01,  1.25s/it]
+
+Multi-thread loading shards: 100% Completed | 3/3 [00:04<00:00,  1.48s/it]
+
+Multi-thread loading shards: 100% Completed | 3/3 [00:04<00:00,  1.36s/it]
+
+INFO 08-21 10:18:00 [weight_utils.py:574] No text_encoder_2/model.safetensors.index.json found in remote.
+
+Multi-thread loading shards:   0% Completed | 0/2 [00:00<?, ?it/s]
+
+Multi-thread loading shards:  50% Completed | 1/2 [00:00<00:00,  1.18it/s]
+
+Multi-thread loading shards: 100% Completed | 2/2 [00:01<00:00,  1.17it/s]
+
+Multi-thread loading shards: 100% Completed | 2/2 [00:01<00:00,  1.17it/s]
+
+INFO 08-21 10:18:01 [diffusers_loader.py:481] Loading weights took 6.16 seconds
+INFO 08-21 10:18:02 [diffusion_model_runner.py:238] Model loading took 31.4327 GiB and 10.344037 seconds
+INFO 08-21 10:18:02 [diffusion_model_runner.py:243] Model runner: Model loaded successfully.
+INFO 08-21 10:18:02 [diffusion_model_runner.py:317] Model runner: Initialization complete.
+INFO 08-21 10:18:02 [diffusion_worker.py:369] Worker 0: Process-scoped GPU memory after model loading: 32.14 GiB.
+INFO 08-21 10:18:02 [manager.py:96] Initializing DiffusionLoRAManager: device=cuda:0, dtype=torch.bfloat16, max_cached_adapters=1, static_lora_path=None
+INFO 08-21 10:18:02 [diffusion_worker.py:253] Worker 0: Initialization complete.
+INFO 08-21 10:18:02 [diffusion_worker.py:1016] Worker 0: Scheduler loop started.
+INFO 08-21 10:18:02 [diffusion_worker.py:908] Worker 0 ready to receive requests via shared memory
+INFO 08-21 10:18:02 [diffusion_engine.py:250] [RequestBatch] engine init max_num_seqs=1 max_wait_ms=0.0
+INFO 08-21 10:18:02 [diffusion_engine.py:824] dummy run to warm up the model
+INFO 08-21 10:18:04 [inline_stage_diffusion_client.py:72] [InlineStageDiffusionClient] stage-0 [rep-0] initialized inline (batch_size=1)
+INFO 08-21 10:18:04 [stage_runtime.py:659] [StageRuntime] Stage 0 replica 0 initialized (diffusion, batch_size=1)
+INFO 08-21 10:18:04 [orchestrator.py:488] [Orchestrator] Starting event loop
+INFO 08-21 10:18:04 [async_omni_engine.py:296] [AsyncOmniEngine] Orchestrator ready with 1 stages
+INFO 08-21 10:18:04 [omni_base.py:190] [Omni] AsyncOmniEngine initialized in 25.07 seconds
+INFO 08-21 10:18:04 [omni_base.py:210] [Omni] Initialized with 1 stages for model black-forest-labs/FLUX.1-dev
+[vllm-omni] Engine ready
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s]
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.48it/s]
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.48it/s]
+
+vllm-omni 1024x1024:   0%|          | 0/10 [00:00<?, ?batch/s]
+
+Processed prompts:   0%|          | 0/4 [00:00<?, ?it/s][A
+
+Processed prompts:  25%|██▌       | 1/4 [00:02<00:07,  2.52s/it][A
+
+Processed prompts:  50%|█████     | 2/4 [00:04<00:04,  2.46s/it][A
+
+Processed prompts:  75%|███████▌  | 3/4 [00:07<00:02,  2.45s/it][A
+
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.44s/it][A
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.45s/it]
+
+vllm-omni 1024x1024:   0%|          | 0/10 [00:09<?, ?batch/s, imgs=4, ips=0.41]
+vllm-omni 1024x1024:  10%|█         | 1/10 [00:09<01:28,  9.88s/batch, imgs=4, ips=0.41]
+
+Processed prompts:   0%|          | 0/4 [00:00<?, ?it/s][A
+
+Processed prompts:  25%|██▌       | 1/4 [00:02<00:07,  2.45s/it][A
+
+Processed prompts:  50%|█████     | 2/4 [00:04<00:04,  2.44s/it][A
+
+Processed prompts:  75%|███████▌  | 3/4 [00:07<00:02,  2.44s/it][A
+
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.44s/it][A
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.44s/it]
+
+vllm-omni 1024x1024:  10%|█         | 1/10 [00:19<01:28,  9.88s/batch, imgs=8, ips=0.41]
+vllm-omni 1024x1024:  20%|██        | 2/10 [00:19<01:18,  9.86s/batch, imgs=8, ips=0.41]
+
+Processed prompts:   0%|          | 0/4 [00:00<?, ?it/s][A
+
+Processed prompts:  25%|██▌       | 1/4 [00:02<00:07,  2.46s/it][A
+
+Processed prompts:  50%|█████     | 2/4 [00:04<00:04,  2.45s/it][A
+
+Processed prompts:  75%|███████▌  | 3/4 [00:07<00:02,  2.44s/it][A
+
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.44s/it][A
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.44s/it]
+
+vllm-omni 1024x1024:  20%|██        | 2/10 [00:29<01:18,  9.86s/batch, imgs=12, ips=0.41]
+vllm-omni 1024x1024:  30%|███       | 3/10 [00:29<01:09,  9.86s/batch, imgs=12, ips=0.41]
+
+Processed prompts:   0%|          | 0/4 [00:00<?, ?it/s][A
+
+Processed prompts:  25%|██▌       | 1/4 [00:02<00:07,  2.47s/it][A
+
+Processed prompts:  50%|█████     | 2/4 [00:04<00:04,  2.46s/it][A
+
+Processed prompts:  75%|███████▌  | 3/4 [00:07<00:02,  2.45s/it][A
+
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.45s/it][A
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.45s/it]
+
+vllm-omni 1024x1024:  30%|███       | 3/10 [00:39<01:09,  9.86s/batch, imgs=16, ips=0.41]
+vllm-omni 1024x1024:  40%|████      | 4/10 [00:39<00:59,  9.87s/batch, imgs=16, ips=0.41]
+
+Processed prompts:   0%|          | 0/4 [00:00<?, ?it/s][A
+
+Processed prompts:  25%|██▌       | 1/4 [00:02<00:07,  2.47s/it][A
+
+Processed prompts:  50%|█████     | 2/4 [00:04<00:04,  2.46s/it][A
+
+Processed prompts:  75%|███████▌  | 3/4 [00:07<00:02,  2.45s/it][A
+
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.45s/it][A
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.46s/it]
+
+vllm-omni 1024x1024:  40%|████      | 4/10 [00:49<00:59,  9.87s/batch, imgs=20, ips=0.41]
+vllm-omni 1024x1024:  50%|█████     | 5/10 [00:49<00:49,  9.89s/batch, imgs=20, ips=0.41]
+
+Processed prompts:   0%|          | 0/4 [00:00<?, ?it/s][A
+
+Processed prompts:  25%|██▌       | 1/4 [00:02<00:07,  2.48s/it][A
+
+Processed prompts:  50%|█████     | 2/4 [00:04<00:04,  2.46s/it][A
+
+Processed prompts:  75%|███████▌  | 3/4 [00:07<00:02,  2.46s/it][A
+
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.46s/it][A
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.46s/it]
+
+vllm-omni 1024x1024:  50%|█████     | 5/10 [00:59<00:49,  9.89s/batch, imgs=24, ips=0.41]
+vllm-omni 1024x1024:  60%|██████    | 6/10 [00:59<00:39,  9.90s/batch, imgs=24, ips=0.41]
+
+Processed prompts:   0%|          | 0/4 [00:00<?, ?it/s][A
+
+Processed prompts:  25%|██▌       | 1/4 [00:02<00:07,  2.48s/it][A
+
+Processed prompts:  50%|█████     | 2/4 [00:04<00:04,  2.46s/it][A
+
+Processed prompts:  75%|███████▌  | 3/4 [00:07<00:02,  2.46s/it][A
+
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.46s/it][A
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.46s/it]
+
+vllm-omni 1024x1024:  60%|██████    | 6/10 [01:09<00:39,  9.90s/batch, imgs=28, ips=0.41]
+vllm-omni 1024x1024:  70%|███████   | 7/10 [01:09<00:29,  9.91s/batch, imgs=28, ips=0.41]
+
+Processed prompts:   0%|          | 0/4 [00:00<?, ?it/s][A
+
+Processed prompts:  25%|██▌       | 1/4 [00:02<00:07,  2.48s/it][A
+
+Processed prompts:  50%|█████     | 2/4 [00:04<00:04,  2.46s/it][A
+
+Processed prompts:  75%|███████▌  | 3/4 [00:07<00:02,  2.46s/it][A
+
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.46s/it][A
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.46s/it]
+
+vllm-omni 1024x1024:  70%|███████   | 7/10 [01:19<00:29,  9.91s/batch, imgs=32, ips=0.41]
+vllm-omni 1024x1024:  80%|████████  | 8/10 [01:19<00:19,  9.92s/batch, imgs=32, ips=0.41]
+
+Processed prompts:   0%|          | 0/4 [00:00<?, ?it/s][A
+
+Processed prompts:  25%|██▌       | 1/4 [00:02<00:07,  2.48s/it][A
+
+Processed prompts:  50%|█████     | 2/4 [00:04<00:04,  2.47s/it][A
+
+Processed prompts:  75%|███████▌  | 3/4 [00:07<00:02,  2.46s/it][A
+
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.46s/it][A
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.46s/it]
+
+vllm-omni 1024x1024:  80%|████████  | 8/10 [01:29<00:19,  9.92s/batch, imgs=36, ips=0.41]
+vllm-omni 1024x1024:  90%|█████████ | 9/10 [01:29<00:09,  9.93s/batch, imgs=36, ips=0.41]
+
+Processed prompts:   0%|          | 0/4 [00:00<?, ?it/s][A
+
+Processed prompts:  25%|██▌       | 1/4 [00:02<00:07,  2.49s/it][A
+
+Processed prompts:  50%|█████     | 2/4 [00:04<00:04,  2.46s/it][A
+
+Processed prompts:  75%|███████▌  | 3/4 [00:07<00:02,  2.46s/it][A
+
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.46s/it][A
+Processed prompts: 100%|██████████| 4/4 [00:09<00:00,  2.46s/it]
+
+vllm-omni 1024x1024:  90%|█████████ | 9/10 [01:39<00:09,  9.93s/batch, imgs=40, ips=0.41]
+vllm-omni 1024x1024: 100%|██████████| 10/10 [01:39<00:00,  9.93s/batch, imgs=40, ips=0.41]
+vllm-omni 1024x1024: 100%|██████████| 10/10 [01:39<00:00,  9.91s/batch, imgs=40, ips=0.41]
+
+vllm-omni 512x512:   0%|          | 0/10 [00:00<?, ?batch/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s][A
+
+Processed prompts:  12%|█▎        | 1/8 [00:01<00:08,  1.22s/it][A
+
+Processed prompts:  25%|██▌       | 2/8 [00:02<00:07,  1.22s/it][A
+
+Processed prompts:  38%|███▊      | 3/8 [00:03<00:06,  1.28s/it][A
+
+Processed prompts:  50%|█████     | 4/8 [00:05<00:05,  1.26s/it][A
+
+Processed prompts:  62%|██████▎   | 5/8 [00:06<00:03,  1.24s/it][A
+
+Processed prompts:  75%|███████▌  | 6/8 [00:07<00:02,  1.23s/it][A
+
+Processed prompts:  88%|████████▊ | 7/8 [00:08<00:01,  1.23s/it][A
+
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.23s/it][A
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.24s/it]
+
+vllm-omni 512x512:   0%|          | 0/10 [00:09<?, ?batch/s, imgs=8, ips=0.81]
+vllm-omni 512x512:  10%|█         | 1/10 [00:09<01:29,  9.92s/batch, imgs=8, ips=0.81]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s][A
+
+Processed prompts:  12%|█▎        | 1/8 [00:01<00:08,  1.24s/it][A
+
+Processed prompts:  25%|██▌       | 2/8 [00:02<00:07,  1.23s/it][A
+
+Processed prompts:  38%|███▊      | 3/8 [00:03<00:06,  1.22s/it][A
+
+Processed prompts:  50%|█████     | 4/8 [00:04<00:04,  1.22s/it][A
+
+Processed prompts:  62%|██████▎   | 5/8 [00:06<00:03,  1.22s/it][A
+
+Processed prompts:  75%|███████▌  | 6/8 [00:07<00:02,  1.22s/it][A
+
+Processed prompts:  88%|████████▊ | 7/8 [00:08<00:01,  1.21s/it][A
+
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.21s/it][A
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.22s/it]
+
+vllm-omni 512x512:  10%|█         | 1/10 [00:19<01:29,  9.92s/batch, imgs=16, ips=0.81]
+vllm-omni 512x512:  20%|██        | 2/10 [00:19<01:18,  9.83s/batch, imgs=16, ips=0.81]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s][A
+
+Processed prompts:  12%|█▎        | 1/8 [00:01<00:08,  1.21s/it][A
+
+Processed prompts:  25%|██▌       | 2/8 [00:02<00:07,  1.21s/it][A
+
+Processed prompts:  38%|███▊      | 3/8 [00:03<00:06,  1.21s/it][A
+
+Processed prompts:  50%|█████     | 4/8 [00:04<00:04,  1.21s/it][A
+
+Processed prompts:  62%|██████▎   | 5/8 [00:06<00:03,  1.21s/it][A
+
+Processed prompts:  75%|███████▌  | 6/8 [00:07<00:02,  1.21s/it][A
+
+Processed prompts:  88%|████████▊ | 7/8 [00:08<00:01,  1.21s/it][A
+
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.21s/it][A
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.21s/it]
+
+vllm-omni 512x512:  20%|██        | 2/10 [00:29<01:18,  9.83s/batch, imgs=24, ips=0.82]
+vllm-omni 512x512:  30%|███       | 3/10 [00:29<01:08,  9.78s/batch, imgs=24, ips=0.82]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s][A
+
+Processed prompts:  12%|█▎        | 1/8 [00:01<00:08,  1.22s/it][A
+
+Processed prompts:  25%|██▌       | 2/8 [00:02<00:07,  1.21s/it][A
+
+Processed prompts:  38%|███▊      | 3/8 [00:03<00:06,  1.21s/it][A
+
+Processed prompts:  50%|█████     | 4/8 [00:04<00:04,  1.21s/it][A
+
+Processed prompts:  62%|██████▎   | 5/8 [00:06<00:03,  1.21s/it][A
+
+Processed prompts:  75%|███████▌  | 6/8 [00:07<00:02,  1.21s/it][A
+
+Processed prompts:  88%|████████▊ | 7/8 [00:08<00:01,  1.21s/it][A
+
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.21s/it][A
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.21s/it]
+
+vllm-omni 512x512:  30%|███       | 3/10 [00:39<01:08,  9.78s/batch, imgs=32, ips=0.82]
+vllm-omni 512x512:  40%|████      | 4/10 [00:39<00:58,  9.76s/batch, imgs=32, ips=0.82]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s][A
+
+Processed prompts:  12%|█▎        | 1/8 [00:01<00:08,  1.22s/it][A
+
+Processed prompts:  25%|██▌       | 2/8 [00:02<00:07,  1.22s/it][A
+
+Processed prompts:  38%|███▊      | 3/8 [00:03<00:06,  1.21s/it][A
+
+Processed prompts:  50%|█████     | 4/8 [00:04<00:04,  1.21s/it][A
+
+Processed prompts:  62%|██████▎   | 5/8 [00:06<00:03,  1.21s/it][A
+
+Processed prompts:  75%|███████▌  | 6/8 [00:07<00:02,  1.21s/it][A
+
+Processed prompts:  88%|████████▊ | 7/8 [00:08<00:01,  1.21s/it][A
+
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.21s/it][A
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.21s/it]
+
+vllm-omni 512x512:  40%|████      | 4/10 [00:48<00:58,  9.76s/batch, imgs=40, ips=0.82]
+vllm-omni 512x512:  50%|█████     | 5/10 [00:48<00:48,  9.74s/batch, imgs=40, ips=0.82]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s][A
+
+Processed prompts:  12%|█▎        | 1/8 [00:01<00:08,  1.21s/it][A
+
+Processed prompts:  25%|██▌       | 2/8 [00:02<00:07,  1.21s/it][A
+
+Processed prompts:  38%|███▊      | 3/8 [00:03<00:06,  1.21s/it][A
+
+Processed prompts:  50%|█████     | 4/8 [00:04<00:04,  1.21s/it][A
+
+Processed prompts:  62%|██████▎   | 5/8 [00:06<00:03,  1.21s/it][A
+
+Processed prompts:  75%|███████▌  | 6/8 [00:07<00:02,  1.21s/it][A
+
+Processed prompts:  88%|████████▊ | 7/8 [00:08<00:01,  1.21s/it][A
+
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.21s/it][A
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.21s/it]
+
+vllm-omni 512x512:  50%|█████     | 5/10 [00:58<00:48,  9.74s/batch, imgs=48, ips=0.82]
+vllm-omni 512x512:  60%|██████    | 6/10 [00:58<00:38,  9.74s/batch, imgs=48, ips=0.82]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s][A
+
+Processed prompts:  12%|█▎        | 1/8 [00:01<00:08,  1.22s/it][A
+
+Processed prompts:  25%|██▌       | 2/8 [00:02<00:07,  1.22s/it][A
+
+Processed prompts:  38%|███▊      | 3/8 [00:03<00:06,  1.21s/it][A
+
+Processed prompts:  50%|█████     | 4/8 [00:04<00:04,  1.21s/it][A
+
+Processed prompts:  62%|██████▎   | 5/8 [00:06<00:03,  1.21s/it][A
+
+Processed prompts:  75%|███████▌  | 6/8 [00:07<00:02,  1.21s/it][A
+
+Processed prompts:  88%|████████▊ | 7/8 [00:08<00:01,  1.22s/it][A
+
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.22s/it][A
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.22s/it]
+
+vllm-omni 512x512:  60%|██████    | 6/10 [01:08<00:38,  9.74s/batch, imgs=56, ips=0.82]
+vllm-omni 512x512:  70%|███████   | 7/10 [01:08<00:29,  9.74s/batch, imgs=56, ips=0.82]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s][A
+
+Processed prompts:  12%|█▎        | 1/8 [00:01<00:08,  1.24s/it][A
+
+Processed prompts:  25%|██▌       | 2/8 [00:02<00:07,  1.23s/it][A
+
+Processed prompts:  38%|███▊      | 3/8 [00:03<00:06,  1.23s/it][A
+
+Processed prompts:  50%|█████     | 4/8 [00:04<00:04,  1.24s/it][A
+
+Processed prompts:  62%|██████▎   | 5/8 [00:06<00:03,  1.23s/it][A
+
+Processed prompts:  75%|███████▌  | 6/8 [00:07<00:02,  1.22s/it][A
+
+Processed prompts:  88%|████████▊ | 7/8 [00:08<00:01,  1.22s/it][A
+
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.22s/it][A
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.23s/it]
+
+vllm-omni 512x512:  70%|███████   | 7/10 [01:18<00:29,  9.74s/batch, imgs=64, ips=0.82]
+vllm-omni 512x512:  80%|████████  | 8/10 [01:18<00:19,  9.78s/batch, imgs=64, ips=0.82]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s][A
+
+Processed prompts:  12%|█▎        | 1/8 [00:01<00:08,  1.23s/it][A
+
+Processed prompts:  25%|██▌       | 2/8 [00:02<00:07,  1.22s/it][A
+
+Processed prompts:  38%|███▊      | 3/8 [00:03<00:06,  1.21s/it][A
+
+Processed prompts:  50%|█████     | 4/8 [00:04<00:04,  1.21s/it][A
+
+Processed prompts:  62%|██████▎   | 5/8 [00:06<00:03,  1.21s/it][A
+
+Processed prompts:  75%|███████▌  | 6/8 [00:07<00:02,  1.21s/it][A
+
+Processed prompts:  88%|████████▊ | 7/8 [00:08<00:01,  1.21s/it][A
+
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.21s/it][A
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.21s/it]
+
+vllm-omni 512x512:  80%|████████  | 8/10 [01:27<00:19,  9.78s/batch, imgs=72, ips=0.82]
+vllm-omni 512x512:  90%|█████████ | 9/10 [01:27<00:09,  9.77s/batch, imgs=72, ips=0.82]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s][A
+
+Processed prompts:  12%|█▎        | 1/8 [00:01<00:08,  1.22s/it][A
+
+Processed prompts:  25%|██▌       | 2/8 [00:02<00:07,  1.22s/it][A
+
+Processed prompts:  38%|███▊      | 3/8 [00:03<00:06,  1.22s/it][A
+
+Processed prompts:  50%|█████     | 4/8 [00:04<00:04,  1.22s/it][A
+
+Processed prompts:  62%|██████▎   | 5/8 [00:06<00:03,  1.21s/it][A
+
+Processed prompts:  75%|███████▌  | 6/8 [00:07<00:02,  1.21s/it][A
+
+Processed prompts:  88%|████████▊ | 7/8 [00:08<00:01,  1.21s/it][A
+
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.21s/it][A
+Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.21s/it]
+
+vllm-omni 512x512:  90%|█████████ | 9/10 [01:37<00:09,  9.77s/batch, imgs=80, ips=0.82]
+vllm-omni 512x512: 100%|██████████| 10/10 [01:37<00:00,  9.76s/batch, imgs=80, ips=0.82]
+vllm-omni 512x512: 100%|██████████| 10/10 [01:37<00:00,  9.77s/batch, imgs=80, ips=0.82]
+
+vllm-omni latency warmup single-1024x1024:   0%|          | 0/2 [00:00<?, ?it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.46s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.46s/it]
+
+vllm-omni latency warmup single-1024x1024:  50%|█████     | 1/2 [00:02<00:02,  2.46s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.46s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.46s/it]
+
+vllm-omni latency warmup single-1024x1024: 100%|██████████| 2/2 [00:04<00:00,  2.46s/it]
+vllm-omni latency warmup single-1024x1024: 100%|██████████| 2/2 [00:04<00:00,  2.46s/it]
+
+vllm-omni latency single-1024x1024:   0%|          | 0/5 [00:00<?, ?it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.46s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.46s/it]
+
+vllm-omni latency single-1024x1024:  20%|██        | 1/5 [00:02<00:09,  2.46s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.46s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.46s/it]
+
+vllm-omni latency single-1024x1024:  40%|████      | 2/5 [00:04<00:07,  2.46s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.46s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.46s/it]
+
+vllm-omni latency single-1024x1024:  60%|██████    | 3/5 [00:07<00:04,  2.46s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.46s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.46s/it]
+
+vllm-omni latency single-1024x1024:  80%|████████  | 4/5 [00:09<00:02,  2.46s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.46s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.46s/it]
+
+vllm-omni latency single-1024x1024: 100%|██████████| 5/5 [00:12<00:00,  2.46s/it]
+vllm-omni latency single-1024x1024: 100%|██████████| 5/5 [00:12<00:00,  2.46s/it]
+
+vllm-omni latency warmup single-512x512:   0%|          | 0/2 [00:00<?, ?it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.20s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.20s/it]
+
+vllm-omni latency warmup single-512x512:  50%|█████     | 1/2 [00:01<00:01,  1.21s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.20s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it]
+
+vllm-omni latency warmup single-512x512: 100%|██████████| 2/2 [00:02<00:00,  1.21s/it]
+vllm-omni latency warmup single-512x512: 100%|██████████| 2/2 [00:02<00:00,  1.21s/it]
+
+vllm-omni latency single-512x512:   0%|          | 0/5 [00:00<?, ?it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.20s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.20s/it]
+
+vllm-omni latency single-512x512:  20%|██        | 1/5 [00:01<00:04,  1.20s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.20s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.20s/it]
+
+vllm-omni latency single-512x512:  40%|████      | 2/5 [00:02<00:03,  1.20s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it]
+
+vllm-omni latency single-512x512:  60%|██████    | 3/5 [00:03<00:02,  1.21s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it]
+
+vllm-omni latency single-512x512:  80%|████████  | 4/5 [00:04<00:01,  1.21s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it]
+
+vllm-omni latency single-512x512: 100%|██████████| 5/5 [00:06<00:00,  1.21s/it]
+vllm-omni latency single-512x512: 100%|██████████| 5/5 [00:06<00:00,  1.21s/it]
+INFO 08-21 10:21:47 [async_omni_engine.py:1802] [AsyncOmniEngine] Shutting down Orchestrator
+INFO 08-21 10:21:47 [orchestrator.py:593] [Orchestrator] Received shutdown signal
+INFO 08-21 10:21:47 [orchestrator.py:2168] [Orchestrator] Shutting down all 1 client(s)
+INFO 08-21 10:21:47 [diffusion_worker.py:948] Worker 0: Received shutdown message
+INFO 08-21 10:21:47 [diffusion_worker.py:969] event loop terminated.
+INFO 08-21 10:21:47 [diffusion_worker.py:1039] Worker 0: Shutdown complete.
+INFO 08-21 10:21:49 [stage_pool.py:1235] [StagePool] Stage 0 replica 0 shut down
+
+==========================================================================================
+  THROUGHPUT COMPARISON (images/sec)
+==========================================================================================
+  Scenario                   Images  fastkernels    vllm-omni    Speedup
+  ----------------------------------------------------------------------
+  1024x1024                      40         0.42         0.41      1.04x
+  512x512                        80         1.36         0.82      1.66x
+
+
+==========================================================================================
+  LATENCY COMPARISON (seconds)
+==========================================================================================
+  Scenario                  fastkernels p50  vllm-omni p50    Speedup
+  --------------------------------------------------------------------------------
+  single-1024x1024                 2.457          2.463      1.00x
+  single-512x512                   0.996          1.207      1.21x
+
+
+==========================================================================================
+  CORRECTNESS COMPARISON (decoded pixel space [0,1], per-batch)
+==========================================================================================
+  Scenario                   Batches  Mean CosSim  Min CosSim     Mean MSE      Max MSE   Result
+  ----------------------------------------------------------------------------------------
+  1024x1024                       10     0.991232    0.949335     3.67e-03     1.25e-02     PASS
+  512x512                         10     0.996489    0.984904     1.75e-03     6.00e-03     PASS
+
+  All scenarios PASS (mean cosine similarity > 0.98)
+
+
+  Results saved to: /code/users/goliaro/validate-b200-check/016_bench_vllm_omni_black-forest-labs_FLUX.1-dev/results.json

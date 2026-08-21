@@ -1,0 +1,186 @@
+job_index: 19
+name: facebook/sam3.1
+harness: bench_sam
+tp: 1
+workloads: full-pipeline, smartglasses-val-video, single-image-1008, batch-4-image-1008, single-video-frame-1008
+CUDA_VISIBLE_DEVICES: 7
+physical_gpus: 7
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_sam --model facebook/sam3.1 --tp 1 --output-dir /code/users/goliaro/validate-b200-check/019_bench_sam_facebook_sam3.1
+
+======================================================================
+  Preparing real dataset inputs (SACo-Gold / SACo-VEval)
+======================================================================
+  Downloading SACo-VEval annotations (smartglasses_val) ...
+  VEval annotations: /home/yak/fastkernels/data/saco_cache/datasets--facebook--SACo-VEval/snapshots/7b0c8e6837a2e596431c6dfcf3f3d03028311591/annotation/saco_veval_smartglasses_val.json
+/home/yak/fastkernels/fastkernels/validate/bench_sam.py:133: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+  tf.extractall(path=media_dir)
+  VEval media root: /home/yak/fastkernels/data/saco_cache/saco_veval_media
+  Loaded 67 SACo-VEval video samples
+  SACo-Gold annotations: /home/yak/fastkernels/data/saco_cache/datasets--facebook--SACo-Gold/snapshots/4c3fefec0bf7549dd04fd83f0ac00f6f26b750f1/gold_metaclip_merged_a_release_test.json
+  Using SACo-VEval SmartGlasses frames as image inputs (set ROBOFLOW_API_KEY to benchmark SACo-Gold images instead)
+  Total samples prepared: 500
+  Manifest saved: /code/users/goliaro/validate-b200-check/019_bench_sam_facebook_sam3.1/feats/input_manifest.json
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/sam3/model_builder.py:8: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+  Checkpoint: /data-fast/huggingface/hub/models--facebook--sam3/snapshots/3c879f39826c281e95690f02c7821c4de09afae7/sam3.pt
+======================================================================
+  fastkernels SAM3 Baseline vs Reference -- Segmentation Benchmark
+======================================================================
+  Model          : facebook/sam3.1
+  GPU            : B200
+  Dataset (img)  : SACo-VEval/smartglasses_val (frames; SACo-Gold images unavailable)
+  Dataset (vid)  : SACo-VEval/smartglasses_val
+  Images         : 500 throughput, 100 correctness
+  Seed           : 42
+  Latency        : single-image-1008, batch-4-image-1008, single-video-frame-1008
+======================================================================
+
+──────────────────────────────────────────────────────────────────────
+  Reference SAM3 [sam3.1]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/sam3/model_builder.py:8: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+  Building reference SAM3 model (pretrained) ...
+  Reference SAM3 model loaded.
+  [REF] Processing 500 images (full pipeline) ...
+    => 15.4 img/s forward (32.50s; 45.02s incl. saving)
+  [REF latency] single-image-1008: bs=1 @ 1008x1008, 20 iters
+    => median 0.0653s
+  [REF latency] batch-4-image-1008: bs=4 @ 1008x1008, 20 iters
+    => median 0.0653s
+  [REF latency] single-video-frame-1008: bs=1 @ 1008x1008, 20 iters
+    => median 0.0653s
+  Reference SAM3 done.
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels SAM3 [sam3.1]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+  Building fastkernels SAM3 model ...
+  Loading pretrained weights from /data-fast/huggingface/hub/models--facebook--sam3/snapshots/3c879f39826c281e95690f02c7821c4de09afae7/sam3.pt ...
+  Loaded: 2 missing, 22 unexpected keys
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/nn/modules/module.py:1370: UserWarning: Casting complex values to real discards the imaginary part (Triggered internally at /pytorch/aten/src/ATen/native/Copy.cpp:308.)
+  return t.to(
+  fastkernels SAM3 model loaded.
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Memory efficient kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:986.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Memory Efficient attention has been runtime disabled. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:552.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Flash attention kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:988.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Flash attention has been runtime disabled. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:540.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: cuDNN attention kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:990.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Expected query, key and value to all be of dtype: {Half, BFloat16}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:91.)
+  out = F.scaled_dot_product_attention(
+  [KB] Processing 500 images (full pipeline) ...
+    => 15.8 img/s forward (31.67s; 43.83s incl. saving)
+  [KB latency] single-image-1008: bs=1 @ 1008x1008, 20 iters
+    => median 0.0615s
+  [KB latency] batch-4-image-1008: bs=4 @ 1008x1008, 20 iters
+    => median 0.0619s
+  [KB latency] single-video-frame-1008: bs=1 @ 1008x1008, 20 iters
+    => median 0.0610s
+  fastkernels SAM3 done.
+
+==========================================================================================
+  THROUGHPUT COMPARISON (images/sec)
+==========================================================================================
+  Scenario                   Images  fastkernels    reference    Speedup
+  ----------------------------------------------------------------------
+  full-pipeline                 500        15.79        15.38      1.03x
+
+
+==========================================================================================
+  LATENCY COMPARISON (seconds)
+==========================================================================================
+  Scenario                    BS   Res fastkernels p50  reference p50    Speedup
+  --------------------------------------------------------------------------------
+  single-image-1008            1  1008        0.061          0.065      1.06x
+  batch-4-image-1008           4  1008        0.062          0.065      1.06x
+  single-video-frame-1008      1  1008        0.061          0.065      1.07x
+
+
+==============================================================================================================
+  CORRECTNESS COMPARISON (cosine similarity, per-element)
+==============================================================================================================
+  Metric                      Items  Mean CosSim  Min CosSim  Mean AbsDiff  Mean Thr  Min Thr   Result
+  ----------------------------------------------------------------------------------------------------
+  Bounding Boxes                100     0.979877    0.959329      0.686442      0.95     0.90     PASS
+  Segmentation Masks            100     0.949268    0.871415    106.067383      0.90     0.85     PASS
+  Classification Logits         100     0.974734    0.923165      3.257753      0.95     0.90     PASS
+
+  Overall: PASS (all metrics within thresholds)
+
+
+======================================================================
+  VIDEO BENCHMARK (multi-frame tracking)
+======================================================================
+  Prepared 50 video clips for benchmarking
+
+──────────────────────────────────────────────────────────────────────
+  Reference SAM3 Video [sam3.1]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/sam3/model_builder.py:8: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+  Building reference SAM3 video model ...
+  Reference SAM3 video model loaded.
+    => 121.9 frames/s forward (3.28s; 6.77s incl. saving)
+  Reference SAM3 video done.
+
+  Reference video: 121.9 frames/sec
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels SAM3 Video [sam3.1]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+  Building fastkernels SAM3 video model ...
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/nn/modules/module.py:1370: UserWarning: Casting complex values to real discards the imaginary part (Triggered internally at /pytorch/aten/src/ATen/native/Copy.cpp:308.)
+  return t.to(
+  fastkernels SAM3 video model loaded.
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Memory efficient kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:986.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Memory Efficient attention has been runtime disabled. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:552.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Flash attention kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:988.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Flash attention has been runtime disabled. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:540.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: cuDNN attention kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:990.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Expected query, key and value to all be of dtype: {Half, BFloat16}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:91.)
+  out = F.scaled_dot_product_attention(
+    => 129.0 frames/s forward (3.10s; 4.73s incl. saving)
+  fastkernels SAM3 video done.
+  fastkernels video: 129.0 frames/sec
+
+==========================================================================================
+  VIDEO THROUGHPUT COMPARISON (frames/sec)
+==========================================================================================
+  Scenario                    Clips  fastkernels    reference    Speedup
+  ----------------------------------------------------------------------
+  smartglasses-val-video         50       128.99       121.86      1.06x
+
+
+==========================================================================================
+  VIDEO CORRECTNESS COMPARISON (cosine similarity)
+==========================================================================================
+  Metric                      Items  Mean CosSim  Min CosSim   Result
+  ----------------------------------------------------------------------
+  Video Boxes                    10     0.979878    0.973113     PASS
+  Video Masks                    10     0.950385    0.928175     PASS
+
+
+  Results saved to: /code/users/goliaro/validate-b200-check/019_bench_sam_facebook_sam3.1/results.json

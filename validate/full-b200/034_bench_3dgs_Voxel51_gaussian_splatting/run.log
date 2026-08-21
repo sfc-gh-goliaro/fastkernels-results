@@ -1,0 +1,111 @@
+job_index: 34
+name: Voxel51/gaussian_splatting
+harness: bench_3dgs
+tp: 1
+workloads: render, single-render
+CUDA_VISIBLE_DEVICES: 0
+physical_gpus: 0
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_3dgs --scene train --output-dir /code/users/goliaro/validate-b200-check/034_bench_3dgs_Voxel51_gaussian_splatting
+
+
+──────────────────────────────────────────────────────────────────────
+  3DGS benchmark
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+gsplat: CUDA extension has been set up successfully in 316.60 seconds.
+{
+  "scene": "train",
+  "num_cameras": 2,
+  "max_points": 100000,
+  "loaded_points": 100000,
+  "total_points": 1074761,
+  "resolution": [
+    1080,
+    1920
+  ],
+  "dtype": "float32",
+  "model_source": "Voxel51/gaussian_splatting",
+  "model_path": "/data-fast/huggingface/hub/datasets--Voxel51--gaussian_splatting/snapshots/6aaba1b1dd0439c0db464842f8a6600a37e0eae9/FO_dataset/train/point_cloud/iteration_30000/point_cloud.ply",
+  "iteration": 30000,
+  "ours": {
+    "baseline_name": "fastkernels",
+    "images_per_second": 538.3079081511021,
+    "elapsed": 10.068586988840252,
+    "iterations": 2710,
+    "images": 5420,
+    "latency": {
+      "iterations": 20,
+      "mean_seconds_per_iter": 0.0037920058239251375,
+      "median_seconds_per_iter": 0.003799669910222292,
+      "mean_seconds_per_image": 0.0018960029119625688,
+      "median_seconds_per_image": 0.001899834955111146
+    }
+  },
+  "reference": {
+    "baseline_name": "gsplat",
+    "images_per_second": 540.750775454246,
+    "elapsed": 10.060087284073234,
+    "iterations": 2720,
+    "images": 5440,
+    "latency": {
+      "iterations": 20,
+      "mean_seconds_per_iter": 0.0037729243747889997,
+      "median_seconds_per_iter": 0.0037755449302494526,
+      "mean_seconds_per_image": 0.0018864621873944999,
+      "median_seconds_per_image": 0.0018877724651247263
+    }
+  },
+  "comparison": {
+    "throughput_ratio": 0.9954824525196625,
+    "rgb_cosine": 1.0000001192092896,
+    "rgb_mae": 0.0,
+    "alpha_cosine": 1.0,
+    "alpha_mae": 0.0,
+    "image_shape": [
+      2,
+      1080,
+      1920,
+      3
+    ]
+  },
+  "scenarios": [
+    {
+      "scenario": "render",
+      "fastkernels_images_per_s": 538.3079081511021,
+      "reference_images_per_s": 540.750775454246,
+      "speedup": 0.9954824525196625,
+      "alignment": {
+        "metric": "rgb_cosine",
+        "value": 1.0000001192092896,
+        "score": 1.0000001192092896,
+        "higher_is_better": true,
+        "threshold": 0.99,
+        "passed": true,
+        "rgb_mae": 0.0,
+        "alpha_cosine": 1.0,
+        "alpha_mae": 0.0
+      },
+      "num_cameras": 2,
+      "resolution": [
+        1080,
+        1920
+      ]
+    }
+  ],
+  "latency_scenarios": [
+    {
+      "scenario": "single-render",
+      "fastkernels_median_s": 0.001899834955111146,
+      "reference_median_s": 0.0018877724651247263,
+      "speedup": 0.9936507695292331,
+      "num_cameras": 2,
+      "iterations": 20
+    }
+  ],
+  "reference_name": "gsplat"
+}
+
+Saved results to /code/users/goliaro/validate-b200-check/034_bench_3dgs_Voxel51_gaussian_splatting/results.json

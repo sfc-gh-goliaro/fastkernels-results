@@ -1,0 +1,55 @@
+job_index: 0
+name: meta-llama/Llama-3.1-8B-Instruct
+harness: bench_vllm
+tp: 1
+workloads: mixed, long-context, single-request, fixed-batch-32
+CUDA_VISIBLE_DEVICES: 0
+physical_gpus: 0
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_vllm --model meta-llama/Llama-3.1-8B-Instruct --tp 1 --output-dir /code/users/goliaro/validate-b200-check/000_bench_vllm_meta-llama_Llama-3.1-8B-Instruct --resume
+
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+  NOTE: trimmed prompt content of 4 request(s) to fit 131072-token model context (chat template preserved)
+======================================================================
+  fastkernels Baseline vs vLLM -- Multi-Scenario Benchmark
+======================================================================
+  Model          : meta-llama/Llama-3.1-8B-Instruct
+  Model type     : LLM
+  TP             : 1
+  Seqs/scenario  : 1000
+  Temperature    : 0.0
+  Enforce eager  : False
+  Seed           : 42
+  Trust RC       : False
+  Max seq len    : 131072
+  fastkernels port   : 32905
+  vLLM port      : 29178
+  Output dir     : /code/users/goliaro/validate-b200-check/000_bench_vllm_meta-llama_Llama-3.1-8B-Instruct
+  Scenarios      : mixed, long-context
+  Latency        : single-request, fixed-batch-32 (5 iters)
+======================================================================
+  Resumed vLLM reference from cache: /code/users/goliaro/validate-b200-check/000_bench_vllm_meta-llama_Llama-3.1-8B-Instruct/vllm_raw.json
+  Resumed fastkernels outputs from cache: /code/users/goliaro/validate-b200-check/000_bench_vllm_meta-llama_Llama-3.1-8B-Instruct/fastkernels_raw.json
+
+
+==========================================================================================
+  THROUGHPUT SUMMARY
+==========================================================================================
+  SCENARIO          SEQS    IN   OUT FASTKERNELS tok/s   vLLM tok/s  SPEEDUP AVG PREFIX TOKS
+  ------------------------------------------------------------------------------------------
+  mixed             1000   var   390          21,702       22,763    0.95x       144.2/390
+  long-context        64   var   256             297          308    0.96x       128.4/256
+==========================================================================================
+
+==============================================================================================================
+  LATENCY SUMMARY
+==============================================================================================================
+  SCENARIO             BS   OUT  ITERS  FASTKERNELS med     vLLM med  FASTKERNELS ms/tok  vLLM ms/tok  SPEEDUP
+  ----------------------------------------------------------------------------------------------------
+  single-request        1   128      5  0.4483s         0.4617s           3.50         3.61    1.03x
+  fixed-batch-32       32   128      5  0.6752s         0.6885s           0.16         0.17    1.02x
+==============================================================================================================
+
+  Results saved to: /code/users/goliaro/validate-b200-check/000_bench_vllm_meta-llama_Llama-3.1-8B-Instruct/results.json

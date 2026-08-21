@@ -1,0 +1,55 @@
+job_index: 4
+name: openai/gpt-oss-120b
+harness: bench_vllm
+tp: 2
+workloads: mixed, long-context, single-request, fixed-batch-32
+CUDA_VISIBLE_DEVICES: 3,4
+physical_gpus: 3,4
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_vllm --model openai/gpt-oss-120b --tp 2 --output-dir /code/users/goliaro/validate-b200-check/004_bench_vllm_openai_gpt-oss-120b --resume
+
+  NOTE: trimmed prompt content of 4 request(s) to fit 131072-token model context (chat template preserved)
+======================================================================
+  fastkernels Baseline vs vLLM -- Multi-Scenario Benchmark
+======================================================================
+  Model          : openai/gpt-oss-120b
+  Model type     : LLM
+  TP             : 2
+  Seqs/scenario  : 1000
+  Temperature    : 0.0
+  Enforce eager  : False
+  Seed           : 42
+  Trust RC       : False
+  Max seq len    : 131072
+  fastkernels port   : 45417
+  vLLM port      : 48116
+  vLLM FI ns     : bench-vllm-32902-48116
+  Output dir     : /code/users/goliaro/validate-b200-check/004_bench_vllm_openai_gpt-oss-120b
+  Scenarios      : mixed, long-context
+  Latency        : single-request, fixed-batch-32 (5 iters)
+======================================================================
+  Resumed vLLM reference from cache: /code/users/goliaro/validate-b200-check/004_bench_vllm_openai_gpt-oss-120b/vllm_raw.json
+  Resumed fastkernels outputs from cache: /code/users/goliaro/validate-b200-check/004_bench_vllm_openai_gpt-oss-120b/fastkernels_raw.json
+
+
+==========================================================================================
+  THROUGHPUT SUMMARY
+==========================================================================================
+  SCENARIO          SEQS    IN   OUT FASTKERNELS tok/s   vLLM tok/s  SPEEDUP AVG PREFIX TOKS
+  ------------------------------------------------------------------------------------------
+  mixed             1000   var   385          23,989       24,657    0.97x        57.3/385
+  long-context        64   var   256             607          650    0.93x        50.3/256
+==========================================================================================
+
+==============================================================================================================
+  LATENCY SUMMARY
+==============================================================================================================
+  SCENARIO             BS   OUT  ITERS  FASTKERNELS med     vLLM med  FASTKERNELS ms/tok  vLLM ms/tok  SPEEDUP
+  ----------------------------------------------------------------------------------------------------
+  single-request        1   128      5  0.3291s         0.3006s           2.57         2.35    0.91x
+  fixed-batch-32       32   128      5  0.7745s         0.7684s           0.19         0.19    0.99x
+==============================================================================================================
+
+  Results saved to: /code/users/goliaro/validate-b200-check/004_bench_vllm_openai_gpt-oss-120b/results.json

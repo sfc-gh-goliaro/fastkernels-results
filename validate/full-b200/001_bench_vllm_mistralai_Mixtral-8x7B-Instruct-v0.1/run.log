@@ -1,0 +1,61 @@
+job_index: 1
+name: mistralai/Mixtral-8x7B-Instruct-v0.1
+harness: bench_vllm
+tp: 2
+workloads: mixed, long-context, single-request, fixed-batch-32
+CUDA_VISIBLE_DEVICES: 1,2
+physical_gpus: 1,2
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_vllm --model mistralai/Mixtral-8x7B-Instruct-v0.1 --tp 2 --output-dir /code/users/goliaro/validate-b200-check/001_bench_vllm_mistralai_Mixtral-8x7B-Instruct-v0.1 --resume
+
+
+Generating train split:   0%|          | 0/1000 [00:00<?, ? examples/s]
+Generating train split: 100%|██████████| 1000/1000 [00:00<00:00, 101314.14 examples/s]
+
+Generating train split:   0%|          | 0/64 [00:00<?, ? examples/s]
+Generating train split: 100%|██████████| 64/64 [00:00<00:00, 3503.78 examples/s]
+  NOTE: trimmed prompt content of 16 request(s) to fit 32768-token model context (chat template preserved)
+======================================================================
+  fastkernels Baseline vs vLLM -- Multi-Scenario Benchmark
+======================================================================
+  Model          : mistralai/Mixtral-8x7B-Instruct-v0.1
+  Model type     : LLM
+  TP             : 2
+  Seqs/scenario  : 1000
+  Temperature    : 0.0
+  Enforce eager  : False
+  Seed           : 42
+  Trust RC       : False
+  Max seq len    : 32768
+  fastkernels port   : 39034
+  vLLM port      : 29911
+  vLLM FI ns     : bench-vllm-32899-29911
+  Output dir     : /code/users/goliaro/validate-b200-check/001_bench_vllm_mistralai_Mixtral-8x7B-Instruct-v0.1
+  Scenarios      : mixed, long-context
+  Latency        : single-request, fixed-batch-32 (5 iters)
+======================================================================
+  Resumed vLLM reference from cache: /code/users/goliaro/validate-b200-check/001_bench_vllm_mistralai_Mixtral-8x7B-Instruct-v0.1/vllm_raw.json
+  Resumed fastkernels outputs from cache: /code/users/goliaro/validate-b200-check/001_bench_vllm_mistralai_Mixtral-8x7B-Instruct-v0.1/fastkernels_raw.json
+
+
+==========================================================================================
+  THROUGHPUT SUMMARY
+==========================================================================================
+  SCENARIO          SEQS    IN   OUT FASTKERNELS tok/s   vLLM tok/s  SPEEDUP AVG PREFIX TOKS
+  ------------------------------------------------------------------------------------------
+  mixed             1000   var   447          17,983       15,485    1.16x        89.3/447
+  long-context        64   var   256             579          596    0.97x        83.4/256
+==========================================================================================
+
+==============================================================================================================
+  LATENCY SUMMARY
+==============================================================================================================
+  SCENARIO             BS   OUT  ITERS  FASTKERNELS med     vLLM med  FASTKERNELS ms/tok  vLLM ms/tok  SPEEDUP
+  ----------------------------------------------------------------------------------------------------
+  single-request        1   128      5  0.4630s         0.4628s           3.62         3.62    1.00x
+  fixed-batch-32       32   128      5  1.3424s         1.3408s           0.33         0.33    1.00x
+==============================================================================================================
+
+  Results saved to: /code/users/goliaro/validate-b200-check/001_bench_vllm_mistralai_Mixtral-8x7B-Instruct-v0.1/results.json

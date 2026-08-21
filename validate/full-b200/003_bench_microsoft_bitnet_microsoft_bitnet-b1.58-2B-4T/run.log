@@ -1,0 +1,293 @@
+job_index: 3
+name: microsoft/bitnet-b1.58-2B-4T
+harness: bench_microsoft_bitnet
+tp: 1
+workloads: mixed, long-context, single-request
+CUDA_VISIBLE_DEVICES: 3
+physical_gpus: 3
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_microsoft_bitnet --model microsoft/bitnet-b1.58-2B-4T --tp 1 --workloads mixed,long-context,single-request --output-dir /code/users/goliaro/validate-b200-check/003_bench_microsoft_bitnet_microsoft_bitnet-b1.58-2B-4T
+
+======================================================================
+  BitNet bench: microsoft/bitnet-b1.58-2B-4T
+  GPU: B200 | num_prompts/scenario: None
+  Prompt source: real
+======================================================================
+[data]          mixed: sfc-gh-goliaro/wildchat-mixed-1k raw_prompt_len(min/p50/max/mean)=8/49/7966/298 normalized=298 out=1024 n=64 of 1000 (timed-request cap)
+[data]   long-context: sfc-gh-goliaro/longbench-longctx raw_prompt_len(min/p50/max/mean)=5297/16353/130999/24512 normalized=3968 (clamped to model ctx 4096-128) out=128 n=64
+[data] single-request: sfc-gh-goliaro/wildchat-mixed-1k raw_prompt_len(min/p50/max/mean)=572/572/572/572 normalized=572 out=128 n=1
+[cfg] raising --max-model-len 2048 -> 4096 to fit the longest workload shape
+
+----------------------------------------------------------------------
+  Microsoft BitNet GPU SOTA [microsoft/bitnet-b1.58-2B-4T, gen_bsz=1]
+----------------------------------------------------------------------
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+[sota] building FastGen for gen_bsz=1, prompt_len=298, gen_len=1024...
+loaded model in 4.50 seconds
+compiled model in 5.42 seconds
+[sota] build took 17.5s
+[sota]          mixed: 13/64 batches,   31.8s elapsed
+[sota]          mixed: 26/64 batches,   63.7s elapsed
+[sota]          mixed: 39/64 batches,   95.5s elapsed
+[sota]          mixed: 52/64 batches,  127.3s elapsed
+[sota]          mixed:  156.67s  in=   19072  out=   65536  throughput=   540.0 tok/s
+[sota] building FastGen for gen_bsz=1, prompt_len=3968, gen_len=128...
+loaded model in 4.21 seconds
+compiled model in 0.96 seconds
+[sota] build took 5.5s
+[sota]   long-context:   24.97s  in=  253952  out=    8192  throughput= 10498.4 tok/s
+[sota-lat] building FastGen for gen_bsz=1, prompt_len=572, gen_len=128...
+loaded model in 4.10 seconds
+compiled model in 0.52 seconds
+[sota-lat] single-request: median=  338.36ms
+
+======================================================================
+  Microsoft BitNet GPU (W1.58A8 official kernel)
+======================================================================
+      scenario  elapsed(s)          in         out       tok/s
+         mixed      156.67       19072       65536       540.0
+  long-context       24.97      253952        8192     10498.4
+
+  Memory: 27.29 GB
+
+----------------------------------------------------------------------
+  fastkernels [microsoft/bitnet-b1.58-2B-4T] throughput
+----------------------------------------------------------------------
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+  [1/6] Loading model weights...
+
+Fetching 6 files:   0%|          | 0/6 [00:00<?, ?it/s]
+Fetching 6 files:  83%|████████▎ | 5/6 [00:00<00:00, 18.90it/s]
+Fetching 6 files: 100%|██████████| 6/6 [00:04<00:00,  1.36it/s]
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+  Allocating BitNet b1.58 model (30L, hidden=2560, W1.58A8)...
+  Loading weights from 1 safetensors file(s)...
+  Loaded 542 weight shards (0.3s).
+  Materialized bf16 fake-quant weights for 120 BitLinear layers.
+  Auto-fetching BF16 master release microsoft/bitnet-b1.58-2B-4T-bf16 for bit-exact alignment with SOTA (prefill + decode)...
+
+Fetching 6 files:   0%|          | 0/6 [00:00<?, ?it/s]
+Fetching 6 files:  17%|█▋        | 1/6 [00:00<00:00,  8.54it/s]
+Fetching 6 files:  83%|████████▎ | 5/6 [00:00<00:00, 22.05it/s]
+Fetching 6 files: 100%|██████████| 6/6 [00:06<00:00,  1.09s/it]
+  Bit-exact int8 + bf16 weights re-materialized from BF16 master: 60 merged + 60 single = 120 BitLinear layers.
+
+Fetching 6 files:   0%|          | 0/6 [00:00<?, ?it/s]
+Fetching 6 files: 100%|██████████| 6/6 [00:00<00:00, 887.25it/s]
+  Tied lm_head to embed_tokens (tie_word_embeddings=True).
+  [1/6] Model loaded in 42.9s
+  [2/6] Warmup forward pass...
+2026-08-21 09:28:21,335 - INFO - autotuner.py:651 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_None_008838'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+2026-08-21 09:28:27,773 - INFO - autotuner.py:674 - flashinfer.jit: [Autotuner]: Autotuning process ends
+  [2/6] Warmup done in 6.7s
+  [3/6] DeepGEMM warmup...
+  [3/6] DeepGEMM done in 0.0s
+  [4/6] Allocating KV cache...
+  KV cache: 133843 blocks x 16 = 2141488 token slots
+  Attention backend: trtllm (block_size=16, kv_layout=HND)
+  [4/6] KV cache done in 0.4s
+  [5/6] Compiling + capturing CUDA graphs...
+    CUDA graph 1/1 (bs=1)
+  [5/6] CUDA graphs done in 24.1s
+  [6/6] Init greedy buffers...
+  Post-capture memory: peak_alloc=159.3G cur_alloc=159.2G reserved=159.5G free=18.1G of 178G
+[transformers] You are using a model of type `bitnet` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+  Scheduling: max_num_seqs=1, max_num_batched_tokens=16384
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[kb]          mixed: 15/64 prompts,   30.7s elapsed
+[kb]          mixed: 30/64 prompts,   61.3s elapsed
+[kb]          mixed: 45/64 prompts,   92.0s elapsed
+[kb]          mixed: 60/64 prompts,  122.6s elapsed
+[kb]          mixed:  130.80s  in=   19072  out=   65536  throughput=   646.9 tok/s
+[kb]   long-context:   24.83s  in=  253952  out=    8192  throughput= 10557.6 tok/s
+[kb-lat] single-request: median=  281.02ms  bs=1  out=128  n_out=128
+
+======================================================================
+  fastkernels (W1.58A8 official ladder decode, cudagraph)
+======================================================================
+      scenario  elapsed(s)          in         out       tok/s
+         mixed      130.80       19072       65536       646.9
+  long-context       24.83      253952        8192     10557.6
+
+  Memory: 171.57 GB
+
+====================================================================================================
+  SUMMARY (fastkernels vs Microsoft BitNet GPU)
+====================================================================================================
+  SCENARIO            IN   OUT FASTKERNELS tok/s   SOTA tok/s  SPEEDUP      AVG PREFIX    POS MATCH      EXACT
+  ------------------------------------------------------------------------------------------------
+  mixed              298  1024             647          540    1.20x      202.8/1024   241.7/1024       6/32
+  long-context      3968   128          10,558       10,498    1.01x        41.4/128     44.7/128       1/32
+====================================================================================================
+
+  Results saved under: /code/users/goliaro/validate-b200-check/003_bench_microsoft_bitnet_microsoft_bitnet-b1.58-2B-4T

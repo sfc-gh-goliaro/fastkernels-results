@@ -1,0 +1,151 @@
+job_index: 36
+name: Pointcept/PointTransformerV3
+harness: bench_pointcloud
+tp: 1
+workloads: scanobjectnn, single-cloud, batch-8
+CUDA_VISIBLE_DEVICES: 7
+physical_gpus: 7
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_pointcloud --model Pointcept/PointTransformerV3 --output-dir /code/users/goliaro/validate-b200-check/036_bench_pointcloud_Pointcept_PointTransformerV3
+
+
+──────────────────────────────────────────────────────────────────────
+  PointTransformerV3 benchmark
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Generating bg_test split:   0%|          | 0/581 [00:00<?, ? examples/s]
+Generating bg_test split: 100%|██████████| 581/581 [00:00<00:00, 11777.71 examples/s]
+
+Generating bg_train split:   0%|          | 0/2309 [00:00<?, ? examples/s]
+Generating bg_train split:  43%|████▎     | 1000/2309 [00:00<00:00, 5742.13 examples/s]
+Generating bg_train split: 100%|██████████| 2309/2309 [00:00<00:00, 11882.36 examples/s]
+
+Generating hardest_test split:   0%|          | 0/2882 [00:00<?, ? examples/s]
+Generating hardest_test split:  35%|███▍      | 1000/2882 [00:00<00:00, 6648.98 examples/s]
+Generating hardest_test split: 100%|██████████| 2882/2882 [00:00<00:00, 12342.55 examples/s]
+
+Generating hardest_train split:   0%|          | 0/11416 [00:00<?, ? examples/s]
+Generating hardest_train split:   9%|▉         | 1000/11416 [00:00<00:01, 6888.70 examples/s]
+Generating hardest_train split:  26%|██▋       | 3000/11416 [00:00<00:00, 10622.44 examples/s]
+Generating hardest_train split:  44%|████▍     | 5000/11416 [00:00<00:00, 11933.66 examples/s]
+Generating hardest_train split:  61%|██████▏   | 7000/11416 [00:00<00:00, 12588.41 examples/s]
+Generating hardest_train split:  79%|███████▉  | 9000/11416 [00:00<00:00, 13056.11 examples/s]
+Generating hardest_train split: 100%|██████████| 11416/11416 [00:00<00:00, 15270.68 examples/s]
+Generating hardest_train split: 100%|██████████| 11416/11416 [00:00<00:00, 13371.60 examples/s]
+
+Generating nobg_test split:   0%|          | 0/581 [00:00<?, ? examples/s]
+Generating nobg_test split: 100%|██████████| 581/581 [00:00<00:00, 14164.10 examples/s]
+
+Generating nobg_train split:   0%|          | 0/2309 [00:00<?, ? examples/s]
+Generating nobg_train split:  43%|████▎     | 1000/2309 [00:00<00:00, 6453.37 examples/s]
+Generating nobg_train split: 100%|██████████| 2309/2309 [00:00<00:00, 13457.93 examples/s]
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+W0821 11:25:52.343000 948396 site-packages/torch/fx/_symbolic_trace.py:53] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+{
+  "model": "Pointcept/PointTransformerV3",
+  "dataset": "scanobjectnn",
+  "dataset_root": "/home/yak/fastkernels/data/scanobjectnn",
+  "split": "nobg_test",
+  "num_batches": 16,
+  "num_samples": 64,
+  "batch_size": 4,
+  "points_per_sample": 2048,
+  "avg_points_after_voxelization": 1985.671875,
+  "enable_flash": false,
+  "weight_source": "checkpoint",
+  "checkpoint_file": "/data-fast/huggingface/hub/models--Pointcept--PointTransformerV3/snapshots/5e25cfaf759289b03db1f90f143b3dc5172929d3/scannet-semseg-pt-v3m1-0-base/model/model_best.pth",
+  "checkpoint_loaded_tensors": 486,
+  "correctness_metric": "final_feature_alignment",
+  "ours": {
+    "baseline_name": "fastkernels",
+    "points_per_second": 187565.5490764703,
+    "batch8_points_per_second": 314489.90822193725,
+    "single_cloud_latency": {
+      "median": 0.03444672003388405,
+      "mean": 0.034487026673741636,
+      "min": 0.033912497106939554,
+      "max": 0.03515342343598604
+    }
+  },
+  "reference": {
+    "baseline_name": "official-detached",
+    "points_per_second": 194017.35816015533,
+    "batch8_points_per_second": 315514.9382977704,
+    "single_cloud_latency": {
+      "median": 0.034119914285838604,
+      "mean": 0.034168273443356156,
+      "min": 0.0335831381380558,
+      "max": 0.0354379266500473
+    }
+  },
+  "comparison": {
+    "feat_cosine": 0.9862297773361206,
+    "feat_mae": 0.1232147067785263,
+    "feat_shape": [
+      7745,
+      64
+    ],
+    "alignment_num_batches": 1,
+    "alignment_num_samples": 4,
+    "alignment_sample_ids": [
+      "nobg_test:0",
+      "nobg_test:1",
+      "nobg_test:2",
+      "nobg_test:3"
+    ],
+    "throughput_ratio": 0.9667462275289861
+  },
+  "scenarios": [
+    {
+      "scenario": "scanobjectnn",
+      "fastkernels_points_per_s": 187565.5490764703,
+      "reference_points_per_s": 194017.35816015533,
+      "speedup": 0.9667462275289861,
+      "alignment": {
+        "metric": "feat_cosine",
+        "value": 0.9862297773361206,
+        "score": 0.9862297773361206,
+        "higher_is_better": true,
+        "threshold": 0.99,
+        "passed": false,
+        "feat_mae": 0.1232147067785263,
+        "alignment_num_samples": 4
+      },
+      "batch_size": 4,
+      "num_samples": 64
+    },
+    {
+      "scenario": "batch-8",
+      "fastkernels_points_per_s": 314489.90822193725,
+      "reference_points_per_s": 315514.9382977704,
+      "speedup": 0.9967512470840104,
+      "alignment": {
+        "metric": "feat_cosine",
+        "value": 0.9862297773361206,
+        "score": 0.9862297773361206,
+        "higher_is_better": true,
+        "threshold": 0.99,
+        "passed": false,
+        "feat_mae": 0.1232147067785263,
+        "alignment_num_samples": 4
+      },
+      "batch_size": 8
+    }
+  ],
+  "latency_scenarios": [
+    {
+      "scenario": "single-cloud",
+      "fastkernels_median_s": 0.03444672003388405,
+      "reference_median_s": 0.034119914285838604,
+      "speedup": 0.9905127179678072,
+      "batch_size": 1
+    }
+  ],
+  "reference_name": "official-detached"
+}
+
+Saved results to /code/users/goliaro/validate-b200-check/036_bench_pointcloud_Pointcept_PointTransformerV3/results.json

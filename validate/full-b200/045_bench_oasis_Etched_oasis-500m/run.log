@@ -1,0 +1,802 @@
+job_index: 45
+name: Etched/oasis-500m
+harness: bench_oasis
+tp: 1
+workloads: short-bs4-16f-4ddim, medium-bs8-24f-4ddim, long-bs8-32f-4ddim, denoise-bs4-16f-8ddim, latency-bs1-8f-4ddim
+CUDA_VISIBLE_DEVICES: 0
+physical_gpus: 0
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_oasis --model Etched/oasis-500m --output-dir /code/users/goliaro/validate-b200-check/045_bench_oasis_Etched_oasis-500m
+
+[bench_oasis] starting benchmark on cuda with dtype=torch.float16
+[bench_oasis] selected scenarios: latency-bs1-8f-4ddim, short-bs4-16f-4ddim, medium-bs8-24f-4ddim, long-bs8-32f-4ddim, denoise-bs4-16f-8ddim
+[bench_oasis] checking/downloading Hugging Face checkpoint: Etched/oasis-500m
+
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]
+Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 1786.52it/s]
+[bench_oasis] checkpoint ready: /data-fast/huggingface/hub/models--Etched--oasis-500m/snapshots/4ca7d2d811f4f0c6fd1d5719bf83f14af3446c0c
+[bench_oasis] cloning open-oasis@f59deef2c019 into /home/yak/.fastkernels/third_party/open-oasis
+warning: templates not found in /Users/goliaro/.git-template
+From github.com:etched-ai/open-oasis
+ * branch            f59deef2c019c212bd0c5a3a5b986a51f3701847 -> FETCH_HEAD
+[bench_oasis] open-oasis clone ready
+[bench_oasis] building dataset cache: TESS-Computer/minecraft-vla-stage1:train, clips=8, frames=32, prompt_frames=1
+
+dataset clips:   0%|          | 0/8 [00:00<?, ?clip/s]
+dataset clips:  12%|█▎        | 1/8 [00:08<00:56,  8.00s/clip]
+dataset clips:  25%|██▌       | 2/8 [00:12<00:36,  6.03s/clip]
+dataset clips:  38%|███▊      | 3/8 [00:22<00:37,  7.56s/clip]
+dataset clips:  50%|█████     | 4/8 [00:30<00:32,  8.03s/clip]
+dataset clips:  62%|██████▎   | 5/8 [00:33<00:18,  6.09s/clip]
+dataset clips:  75%|███████▌  | 6/8 [00:34<00:08,  4.30s/clip]
+dataset clips:  88%|████████▊ | 7/8 [00:36<00:03,  3.59s/clip]
+dataset clips: 100%|██████████| 8/8 [00:38<00:00,  3.13s/clip]
+dataset clips: 100%|██████████| 8/8 [00:38<00:00,  4.82s/clip]
+[bench_oasis] saved dataset cache: /home/yak/fastkernels/data/oasis_cache/TESS-Computer__minecraft-vla-stage1_train_v3_clips8_frames32_prompt1.pt
+[bench_oasis] loading dataset tensors
+[bench_oasis] dataset tensors ready: prompt=(8, 1, 3, 360, 640), actions=(8, 32, 25)
+[bench_oasis] building fastkernels Oasis pipeline
+[bench_oasis] loading fastkernels Oasis weights
+[bench_oasis] fastkernels Oasis pipeline ready
+[bench_oasis] building open-oasis reference models
+[bench_oasis] loading open-oasis DiT weights
+[bench_oasis] loading open-oasis VAE weights
+[bench_oasis] open-oasis reference ready
+
+scenarios:   0%|          | 0/5 [00:00<?, ?scenario/s][bench_oasis] scenario latency-bs1-8f-4ddim: clips=1, frames=8, ddim_steps=4
+[bench_oasis] latency-bs1-8f-4ddim: benchmarking fastkernels
+
+
+fastkernels latency-bs1-8f-4ddim warmup:   0%|          | 0/2 [00:00<?, ?iter/s][A
+
+fastkernels latency-bs1-8f-4ddim warmup:  50%|█████     | 1/2 [00:01<00:01,  1.91s/iter][A
+
+fastkernels latency-bs1-8f-4ddim warmup: 100%|██████████| 2/2 [00:02<00:00,  1.24s/iter][A
+fastkernels latency-bs1-8f-4ddim warmup: 100%|██████████| 2/2 [00:02<00:00,  1.34s/iter]
+
+
+fastkernels latency-bs1-8f-4ddim timed:   0%|          | 0/5 [00:00<?, ?iter/s][A
+
+fastkernels latency-bs1-8f-4ddim timed:  20%|██        | 1/5 [00:00<00:03,  1.29iter/s][A
+
+fastkernels latency-bs1-8f-4ddim timed:  40%|████      | 2/5 [00:01<00:02,  1.30iter/s][A
+
+fastkernels latency-bs1-8f-4ddim timed:  60%|██████    | 3/5 [00:02<00:01,  1.30iter/s][A
+
+fastkernels latency-bs1-8f-4ddim timed:  80%|████████  | 4/5 [00:03<00:00,  1.30iter/s][A
+
+fastkernels latency-bs1-8f-4ddim timed: 100%|██████████| 5/5 [00:03<00:00,  1.30iter/s][A
+fastkernels latency-bs1-8f-4ddim timed: 100%|██████████| 5/5 [00:03<00:00,  1.30iter/s]
+[bench_oasis] latency-bs1-8f-4ddim: benchmarking open-oasis
+
+
+open-oasis latency-bs1-8f-4ddim warmup:   0%|          | 0/2 [00:00<?, ?iter/s][A
+
+open-oasis latency-bs1-8f-4ddim warmup:  50%|█████     | 1/2 [00:01<00:01,  1.08s/iter][A
+
+open-oasis latency-bs1-8f-4ddim warmup: 100%|██████████| 2/2 [00:01<00:00,  1.03iter/s][A
+open-oasis latency-bs1-8f-4ddim warmup: 100%|██████████| 2/2 [00:01<00:00,  1.01iter/s]
+
+
+open-oasis latency-bs1-8f-4ddim timed:   0%|          | 0/5 [00:00<?, ?iter/s][A
+
+open-oasis latency-bs1-8f-4ddim timed:  20%|██        | 1/5 [00:00<00:03,  1.12iter/s][A
+
+open-oasis latency-bs1-8f-4ddim timed:  40%|████      | 2/5 [00:01<00:02,  1.13iter/s][A
+
+open-oasis latency-bs1-8f-4ddim timed:  60%|██████    | 3/5 [00:02<00:01,  1.12iter/s][A
+
+open-oasis latency-bs1-8f-4ddim timed:  80%|████████  | 4/5 [00:03<00:00,  1.12iter/s][A
+
+open-oasis latency-bs1-8f-4ddim timed: 100%|██████████| 5/5 [00:04<00:00,  1.11iter/s][A
+open-oasis latency-bs1-8f-4ddim timed: 100%|██████████| 5/5 [00:04<00:00,  1.12iter/s]
+
+scenarios:  20%|██        | 1/5 [00:12<00:51, 13.00s/scenario][bench_oasis] scenario short-bs4-16f-4ddim: clips=4, frames=16, ddim_steps=4
+[bench_oasis] short-bs4-16f-4ddim: running correctness pass for fastkernels and open-oasis with dtype=torch.float32
+[bench_oasis] short-bs4-16f-4ddim: correctness fastkernels rollout
+[bench_oasis] short-bs4-16f-4ddim: correctness open-oasis rollout
+[bench_oasis] short-bs4-16f-4ddim: correctness overall_pass=True
+[bench_oasis] short-bs4-16f-4ddim: benchmarking fastkernels
+
+
+fastkernels short-bs4-16f-4ddim warmup:   0%|          | 0/2 [00:00<?, ?iter/s][A
+
+fastkernels short-bs4-16f-4ddim warmup:  50%|█████     | 1/2 [00:03<00:03,  3.16s/iter][A
+
+fastkernels short-bs4-16f-4ddim warmup: 100%|██████████| 2/2 [00:05<00:00,  2.48s/iter][A
+fastkernels short-bs4-16f-4ddim warmup: 100%|██████████| 2/2 [00:05<00:00,  2.58s/iter]
+
+
+fastkernels short-bs4-16f-4ddim timed:   0%|          | 0/5 [00:00<?, ?iter/s][A
+
+fastkernels short-bs4-16f-4ddim timed:  20%|██        | 1/5 [00:02<00:08,  2.01s/iter][A
+
+fastkernels short-bs4-16f-4ddim timed:  40%|████      | 2/5 [00:04<00:06,  2.03s/iter][A
+
+fastkernels short-bs4-16f-4ddim timed:  60%|██████    | 3/5 [00:06<00:04,  2.04s/iter][A
+
+fastkernels short-bs4-16f-4ddim timed:  80%|████████  | 4/5 [00:08<00:02,  2.03s/iter][A
+
+fastkernels short-bs4-16f-4ddim timed: 100%|██████████| 5/5 [00:10<00:00,  2.02s/iter][A
+fastkernels short-bs4-16f-4ddim timed: 100%|██████████| 5/5 [00:10<00:00,  2.02s/iter]
+[bench_oasis] short-bs4-16f-4ddim: benchmarking open-oasis
+
+
+open-oasis short-bs4-16f-4ddim warmup:   0%|          | 0/2 [00:00<?, ?iter/s][A
+
+open-oasis short-bs4-16f-4ddim warmup:  50%|█████     | 1/2 [00:02<00:02,  2.26s/iter][A
+
+open-oasis short-bs4-16f-4ddim warmup: 100%|██████████| 2/2 [00:04<00:00,  2.29s/iter][A
+open-oasis short-bs4-16f-4ddim warmup: 100%|██████████| 2/2 [00:04<00:00,  2.29s/iter]
+
+
+open-oasis short-bs4-16f-4ddim timed:   0%|          | 0/5 [00:00<?, ?iter/s][A
+
+open-oasis short-bs4-16f-4ddim timed:  20%|██        | 1/5 [00:02<00:09,  2.30s/iter][A
+
+open-oasis short-bs4-16f-4ddim timed:  40%|████      | 2/5 [00:04<00:06,  2.32s/iter][A
+
+open-oasis short-bs4-16f-4ddim timed:  60%|██████    | 3/5 [00:06<00:04,  2.31s/iter][A
+
+open-oasis short-bs4-16f-4ddim timed:  80%|████████  | 4/5 [00:09<00:02,  2.31s/iter][A
+
+open-oasis short-bs4-16f-4ddim timed: 100%|██████████| 5/5 [00:11<00:00,  2.31s/iter][A
+open-oasis short-bs4-16f-4ddim timed: 100%|██████████| 5/5 [00:11<00:00,  2.31s/iter]
+
+scenarios:  40%|████      | 2/5 [00:50<01:21, 27.14s/scenario][bench_oasis] scenario medium-bs8-24f-4ddim: clips=8, frames=24, ddim_steps=4
+[bench_oasis] medium-bs8-24f-4ddim: running correctness pass for fastkernels and open-oasis with dtype=torch.float32
+[bench_oasis] medium-bs8-24f-4ddim: correctness fastkernels rollout
+[bench_oasis] medium-bs8-24f-4ddim: correctness open-oasis rollout
+[bench_oasis] medium-bs8-24f-4ddim: correctness overall_pass=True
+[bench_oasis] medium-bs8-24f-4ddim: benchmarking fastkernels
+
+
+fastkernels medium-bs8-24f-4ddim warmup:   0%|          | 0/2 [00:00<?, ?iter/s][A
+
+fastkernels medium-bs8-24f-4ddim warmup:  50%|█████     | 1/2 [00:07<00:07,  7.07s/iter][A
+
+fastkernels medium-bs8-24f-4ddim warmup: 100%|██████████| 2/2 [00:13<00:00,  6.42s/iter][A
+fastkernels medium-bs8-24f-4ddim warmup: 100%|██████████| 2/2 [00:13<00:00,  6.52s/iter]
+
+
+fastkernels medium-bs8-24f-4ddim timed:   0%|          | 0/5 [00:00<?, ?iter/s][A
+
+fastkernels medium-bs8-24f-4ddim timed:  20%|██        | 1/5 [00:05<00:23,  5.96s/iter][A
+
+fastkernels medium-bs8-24f-4ddim timed:  40%|████      | 2/5 [00:11<00:17,  5.97s/iter][A
+
+fastkernels medium-bs8-24f-4ddim timed:  60%|██████    | 3/5 [00:17<00:11,  5.97s/iter][A
+
+fastkernels medium-bs8-24f-4ddim timed:  80%|████████  | 4/5 [00:23<00:05,  5.96s/iter][A
+
+fastkernels medium-bs8-24f-4ddim timed: 100%|██████████| 5/5 [00:29<00:00,  5.96s/iter][A
+fastkernels medium-bs8-24f-4ddim timed: 100%|██████████| 5/5 [00:29<00:00,  5.96s/iter]
+[bench_oasis] medium-bs8-24f-4ddim: benchmarking open-oasis
+
+
+open-oasis medium-bs8-24f-4ddim warmup:   0%|          | 0/2 [00:00<?, ?iter/s][A
+
+open-oasis medium-bs8-24f-4ddim warmup:  50%|█████     | 1/2 [00:06<00:06,  6.91s/iter][A
+
+open-oasis medium-bs8-24f-4ddim warmup: 100%|██████████| 2/2 [00:13<00:00,  7.01s/iter][A
+open-oasis medium-bs8-24f-4ddim warmup: 100%|██████████| 2/2 [00:13<00:00,  7.00s/iter]
+
+
+open-oasis medium-bs8-24f-4ddim timed:   0%|          | 0/5 [00:00<?, ?iter/s][A
+
+open-oasis medium-bs8-24f-4ddim timed:  20%|██        | 1/5 [00:07<00:28,  7.07s/iter][A
+
+open-oasis medium-bs8-24f-4ddim timed:  40%|████      | 2/5 [00:14<00:21,  7.07s/iter][A
+
+open-oasis medium-bs8-24f-4ddim timed:  60%|██████    | 3/5 [00:21<00:14,  7.08s/iter][A
+
+open-oasis medium-bs8-24f-4ddim timed:  80%|████████  | 4/5 [00:28<00:07,  7.07s/iter][A
+
+open-oasis medium-bs8-24f-4ddim timed: 100%|██████████| 5/5 [00:35<00:00,  7.07s/iter][A
+open-oasis medium-bs8-24f-4ddim timed: 100%|██████████| 5/5 [00:35<00:00,  7.07s/iter]
+
+scenarios:  60%|██████    | 3/5 [02:36<02:06, 63.45s/scenario][bench_oasis] scenario long-bs8-32f-4ddim: clips=8, frames=32, ddim_steps=4
+[bench_oasis] long-bs8-32f-4ddim: running correctness pass for fastkernels and open-oasis with dtype=torch.float32
+[bench_oasis] long-bs8-32f-4ddim: correctness fastkernels rollout
+[bench_oasis] long-bs8-32f-4ddim: correctness open-oasis rollout
+[bench_oasis] long-bs8-32f-4ddim: correctness overall_pass=True
+[bench_oasis] long-bs8-32f-4ddim: benchmarking fastkernels
+
+
+fastkernels long-bs8-32f-4ddim warmup:   0%|          | 0/2 [00:00<?, ?iter/s][A
+
+fastkernels long-bs8-32f-4ddim warmup:  50%|█████     | 1/2 [00:10<00:10, 10.17s/iter][A
+
+fastkernels long-bs8-32f-4ddim warmup: 100%|██████████| 2/2 [00:20<00:00,  9.98s/iter][A
+fastkernels long-bs8-32f-4ddim warmup: 100%|██████████| 2/2 [00:20<00:00, 10.01s/iter]
+
+
+fastkernels long-bs8-32f-4ddim timed:   0%|          | 0/5 [00:00<?, ?iter/s][A
+
+fastkernels long-bs8-32f-4ddim timed:  20%|██        | 1/5 [00:09<00:39,  9.85s/iter][A
+
+fastkernels long-bs8-32f-4ddim timed:  40%|████      | 2/5 [00:19<00:29,  9.85s/iter][A
+
+fastkernels long-bs8-32f-4ddim timed:  60%|██████    | 3/5 [00:29<00:19,  9.86s/iter][A
+
+fastkernels long-bs8-32f-4ddim timed:  80%|████████  | 4/5 [00:39<00:09,  9.86s/iter][A
+
+fastkernels long-bs8-32f-4ddim timed: 100%|██████████| 5/5 [00:49<00:00,  9.85s/iter][A
+fastkernels long-bs8-32f-4ddim timed: 100%|██████████| 5/5 [00:49<00:00,  9.85s/iter]
+[bench_oasis] long-bs8-32f-4ddim: benchmarking open-oasis
+
+
+open-oasis long-bs8-32f-4ddim warmup:   0%|          | 0/2 [00:00<?, ?iter/s][A
+
+open-oasis long-bs8-32f-4ddim warmup:  50%|█████     | 1/2 [00:11<00:11, 11.48s/iter][A
+
+open-oasis long-bs8-32f-4ddim warmup: 100%|██████████| 2/2 [00:23<00:00, 11.61s/iter][A
+open-oasis long-bs8-32f-4ddim warmup: 100%|██████████| 2/2 [00:23<00:00, 11.59s/iter]
+
+
+open-oasis long-bs8-32f-4ddim timed:   0%|          | 0/5 [00:00<?, ?iter/s][A
+
+open-oasis long-bs8-32f-4ddim timed:  20%|██        | 1/5 [00:11<00:46, 11.72s/iter][A
+
+open-oasis long-bs8-32f-4ddim timed:  40%|████      | 2/5 [00:23<00:35, 11.72s/iter][A
+
+open-oasis long-bs8-32f-4ddim timed:  60%|██████    | 3/5 [00:35<00:23, 11.69s/iter][A
+
+open-oasis long-bs8-32f-4ddim timed:  80%|████████  | 4/5 [00:46<00:11, 11.68s/iter][A
+
+open-oasis long-bs8-32f-4ddim timed: 100%|██████████| 5/5 [00:58<00:00, 11.67s/iter][A
+open-oasis long-bs8-32f-4ddim timed: 100%|██████████| 5/5 [00:58<00:00, 11.68s/iter]
+
+scenarios:  80%|████████  | 4/5 [05:31<01:47, 107.60s/scenario][bench_oasis] scenario denoise-bs4-16f-8ddim: clips=4, frames=16, ddim_steps=8
+[bench_oasis] denoise-bs4-16f-8ddim: running correctness pass for fastkernels and open-oasis with dtype=torch.float32
+[bench_oasis] denoise-bs4-16f-8ddim: correctness fastkernels rollout
+[bench_oasis] denoise-bs4-16f-8ddim: correctness open-oasis rollout
+[bench_oasis] denoise-bs4-16f-8ddim: correctness overall_pass=True
+[bench_oasis] denoise-bs4-16f-8ddim: benchmarking fastkernels
+
+
+fastkernels denoise-bs4-16f-8ddim warmup:   0%|          | 0/2 [00:00<?, ?iter/s][A
+
+fastkernels denoise-bs4-16f-8ddim warmup:  50%|█████     | 1/2 [00:03<00:03,  3.83s/iter][A
+
+fastkernels denoise-bs4-16f-8ddim warmup: 100%|██████████| 2/2 [00:07<00:00,  3.87s/iter][A
+fastkernels denoise-bs4-16f-8ddim warmup: 100%|██████████| 2/2 [00:07<00:00,  3.86s/iter]
+
+
+fastkernels denoise-bs4-16f-8ddim timed:   0%|          | 0/5 [00:00<?, ?iter/s][A
+
+fastkernels denoise-bs4-16f-8ddim timed:  20%|██        | 1/5 [00:03<00:15,  3.89s/iter][A
+
+fastkernels denoise-bs4-16f-8ddim timed:  40%|████      | 2/5 [00:07<00:11,  3.89s/iter][A
+
+fastkernels denoise-bs4-16f-8ddim timed:  60%|██████    | 3/5 [00:11<00:07,  3.89s/iter][A
+
+fastkernels denoise-bs4-16f-8ddim timed:  80%|████████  | 4/5 [00:15<00:03,  3.89s/iter][A
+
+fastkernels denoise-bs4-16f-8ddim timed: 100%|██████████| 5/5 [00:19<00:00,  3.89s/iter][A
+fastkernels denoise-bs4-16f-8ddim timed: 100%|██████████| 5/5 [00:19<00:00,  3.89s/iter]
+[bench_oasis] denoise-bs4-16f-8ddim: benchmarking open-oasis
+
+
+open-oasis denoise-bs4-16f-8ddim warmup:   0%|          | 0/2 [00:00<?, ?iter/s][A
+
+open-oasis denoise-bs4-16f-8ddim warmup:  50%|█████     | 1/2 [00:04<00:04,  4.47s/iter][A
+
+open-oasis denoise-bs4-16f-8ddim warmup: 100%|██████████| 2/2 [00:08<00:00,  4.49s/iter][A
+open-oasis denoise-bs4-16f-8ddim warmup: 100%|██████████| 2/2 [00:08<00:00,  4.49s/iter]
+
+
+open-oasis denoise-bs4-16f-8ddim timed:   0%|          | 0/5 [00:00<?, ?iter/s][A
+
+open-oasis denoise-bs4-16f-8ddim timed:  20%|██        | 1/5 [00:04<00:18,  4.51s/iter][A
+
+open-oasis denoise-bs4-16f-8ddim timed:  40%|████      | 2/5 [00:09<00:13,  4.51s/iter][A
+
+open-oasis denoise-bs4-16f-8ddim timed:  60%|██████    | 3/5 [00:13<00:09,  4.53s/iter][A
+
+open-oasis denoise-bs4-16f-8ddim timed:  80%|████████  | 4/5 [00:18<00:04,  4.58s/iter][A
+
+open-oasis denoise-bs4-16f-8ddim timed: 100%|██████████| 5/5 [00:22<00:00,  4.61s/iter][A
+open-oasis denoise-bs4-16f-8ddim timed: 100%|██████████| 5/5 [00:22<00:00,  4.58s/iter]
+
+scenarios: 100%|██████████| 5/5 [06:39<00:00, 93.06s/scenario] 
+scenarios: 100%|██████████| 5/5 [06:39<00:00, 79.85s/scenario]
+
+
+==============================================================================================================
+  OASIS 500M BENCHMARK SUMMARY
+==============================================================================================================
+  Model      : Etched/oasis-500m
+  Reference  : open-oasis
+  GPU        : NVIDIA B200
+  DType      : torch.float16
+  Correctness: torch.float32
+  Dataset    : TESS-Computer/minecraft-vla-stage1 (train)
+  Scenarios  : latency-bs1-8f-4ddim, short-bs4-16f-4ddim, medium-bs8-24f-4ddim, long-bs8-32f-4ddim, denoise-bs4-16f-8ddim
+==============================================================================================================
+
+==============================================================================================================
+  THROUGHPUT SUMMARY
+==============================================================================================================
+  SCENARIO                 CLIPS FRAMES  DDIM FASTKERNELS vid/s  open-oasis vid/s  SPEEDUP   CORRECT    MIN COS
+  --------------------------------------------------------------------------------------------------------
+  short-bs4-16f-4ddim          4     16     4            1.98              1.73    1.14x      PASS   0.998486
+  medium-bs8-24f-4ddim         8     24     4            1.34              1.13    1.19x      PASS   0.998990
+  long-bs8-32f-4ddim           8     32     4            0.81              0.68    1.19x      PASS   0.997896
+  denoise-bs4-16f-8ddim        4     16     8            1.03              0.87    1.18x      PASS   0.997392
+==============================================================================================================
+
+=========================================================================================================
+  LATENCY SUMMARY
+=========================================================================================================
+  SCENARIO                 CLIPS FRAMES  DDIM FASTKERNELS p50    open-oasis p50  SPEEDUP
+  -------------------------------------------------------------------------------------------
+  latency-bs1-8f-4ddim         1      8     4        768.29ms          889.24ms    1.16x
+=========================================================================================================
+{
+  "model": "Etched/oasis-500m",
+  "reference": "open-oasis",
+  "open_oasis_src": "/home/yak/.fastkernels/third_party/open-oasis",
+  "seed": 0,
+  "device": "cuda",
+  "gpu": "NVIDIA B200",
+  "dtype": "torch.float16",
+  "correctness_dtype": "torch.float32",
+  "input": {
+    "mode": "dataset",
+    "name": "TESS-Computer/minecraft-vla-stage1",
+    "split": "train",
+    "num_clips": 8,
+    "cache_path": "/home/yak/fastkernels/data/oasis_cache/TESS-Computer__minecraft-vla-stage1_train_v3_clips8_frames32_prompt1.pt",
+    "clips": [
+      {
+        "video_id": "bumpy-pumpkin-dunker-5c7c23a408bf-20220104-193828",
+        "start_frame_idx": 115,
+        "end_frame_idx": 146
+      },
+      {
+        "video_id": "bumpy-pumpkin-dunker-ab3151fffd53-20220112-190337",
+        "start_frame_idx": 0,
+        "end_frame_idx": 31
+      },
+      {
+        "video_id": "bumpy-pumpkin-dunker-ab3151fffd53-20220112-191334",
+        "start_frame_idx": 0,
+        "end_frame_idx": 31
+      },
+      {
+        "video_id": "bumpy-pumpkin-dunker-c0a64f064920-20220221-193550",
+        "start_frame_idx": 0,
+        "end_frame_idx": 31
+      },
+      {
+        "video_id": "bumpy-pumpkin-dunker-c0a64f064920-20220221-194451",
+        "start_frame_idx": 0,
+        "end_frame_idx": 31
+      },
+      {
+        "video_id": "bumpy-pumpkin-dunker-c0a64f064920-20220221-195349",
+        "start_frame_idx": 0,
+        "end_frame_idx": 31
+      },
+      {
+        "video_id": "bumpy-pumpkin-dunker-c0a64f064920-20220221-200139",
+        "start_frame_idx": 0,
+        "end_frame_idx": 31
+      },
+      {
+        "video_id": "bumpy-pumpkin-dunker-c0a64f064920-20220221-200902",
+        "start_frame_idx": 26,
+        "end_frame_idx": 57
+      }
+    ]
+  },
+  "workloads": [
+    {
+      "name": "latency-bs1-8f-4ddim",
+      "batch_clips": 1,
+      "num_frames": 8,
+      "ddim_steps": 4,
+      "n_prompt_frames": 1,
+      "kind": "latency",
+      "dataset_name": "TESS-Computer/minecraft-vla-stage1",
+      "dataset_split": "train"
+    },
+    {
+      "name": "short-bs4-16f-4ddim",
+      "batch_clips": 4,
+      "num_frames": 16,
+      "ddim_steps": 4,
+      "n_prompt_frames": 1,
+      "kind": "throughput",
+      "dataset_name": "TESS-Computer/minecraft-vla-stage1",
+      "dataset_split": "train"
+    },
+    {
+      "name": "medium-bs8-24f-4ddim",
+      "batch_clips": 8,
+      "num_frames": 24,
+      "ddim_steps": 4,
+      "n_prompt_frames": 1,
+      "kind": "throughput",
+      "dataset_name": "TESS-Computer/minecraft-vla-stage1",
+      "dataset_split": "train"
+    },
+    {
+      "name": "long-bs8-32f-4ddim",
+      "batch_clips": 8,
+      "num_frames": 32,
+      "ddim_steps": 4,
+      "n_prompt_frames": 1,
+      "kind": "throughput",
+      "dataset_name": "TESS-Computer/minecraft-vla-stage1",
+      "dataset_split": "train"
+    },
+    {
+      "name": "denoise-bs4-16f-8ddim",
+      "batch_clips": 4,
+      "num_frames": 16,
+      "ddim_steps": 8,
+      "n_prompt_frames": 1,
+      "kind": "throughput",
+      "dataset_name": "TESS-Computer/minecraft-vla-stage1",
+      "dataset_split": "train"
+    }
+  ],
+  "performance": [
+    {
+      "scenario": {
+        "name": "latency-bs1-8f-4ddim",
+        "batch_clips": 1,
+        "num_frames": 8,
+        "ddim_steps": 4,
+        "n_prompt_frames": 1,
+        "kind": "latency",
+        "dataset_name": "TESS-Computer/minecraft-vla-stage1",
+        "dataset_split": "train"
+      },
+      "fastkernels": {
+        "videos_per_second": 1.2982064815478052,
+        "latency_ms_avg": 770.2934889122844,
+        "latency_ms_p50": 768.2921369560063,
+        "latency_ms_min": 767.3578322865069,
+        "latency_ms_max": 775.7608913816512
+      },
+      "open_oasis": {
+        "videos_per_second": 1.1169062115730335,
+        "latency_ms_avg": 895.3303237445652,
+        "latency_ms_p50": 889.2440930940211,
+        "latency_ms_min": 885.8376098796725,
+        "latency_ms_max": 918.3414680883288
+      },
+      "speedup": 1.1623236294114894,
+      "latency_ratio_p50": 1.1574296420854047
+    },
+    {
+      "scenario": {
+        "name": "short-bs4-16f-4ddim",
+        "batch_clips": 4,
+        "num_frames": 16,
+        "ddim_steps": 4,
+        "n_prompt_frames": 1,
+        "kind": "throughput",
+        "dataset_name": "TESS-Computer/minecraft-vla-stage1",
+        "dataset_split": "train"
+      },
+      "fastkernels": {
+        "videos_per_second": 1.9780874563759927,
+        "latency_ms_avg": 2022.1552829258144,
+        "latency_ms_p50": 2008.0442461185157,
+        "latency_ms_min": 2005.1920809783041,
+        "latency_ms_max": 2050.2901007421315
+      },
+      "correctness": {
+        "prompt_latents": {
+          "cosine": 1.0,
+          "mean_abs_diff": 0.0,
+          "max_abs_diff": 0.0,
+          "mse": 0.0,
+          "cosine_threshold": 0.999,
+          "pass": true
+        },
+        "latents": {
+          "cosine": 0.9984856843948364,
+          "mean_abs_diff": 0.007167013827711344,
+          "max_abs_diff": 2.4596338272094727,
+          "mse": 0.0020641072187572718,
+          "cosine_threshold": 0.99,
+          "pass": true
+        },
+        "video": {
+          "cosine": 0.999570906162262,
+          "mean_abs_diff": 0.001423823880031705,
+          "max_abs_diff": 0.5364804267883301,
+          "mse": 6.510849198093638e-05,
+          "cosine_threshold": 0.99,
+          "pass": true
+        },
+        "overall_pass": true
+      },
+      "open_oasis": {
+        "videos_per_second": 1.730968132713541,
+        "latency_ms_avg": 2310.845546144992,
+        "latency_ms_p50": 2308.7574508972466,
+        "latency_ms_min": 2294.1054832190275,
+        "latency_ms_max": 2336.604891344905
+      },
+      "speedup": 1.1427636471129348
+    },
+    {
+      "scenario": {
+        "name": "medium-bs8-24f-4ddim",
+        "batch_clips": 8,
+        "num_frames": 24,
+        "ddim_steps": 4,
+        "n_prompt_frames": 1,
+        "kind": "throughput",
+        "dataset_name": "TESS-Computer/minecraft-vla-stage1",
+        "dataset_split": "train"
+      },
+      "fastkernels": {
+        "videos_per_second": 1.3416058048119117,
+        "latency_ms_avg": 5963.00341822207,
+        "latency_ms_p50": 5959.090729244053,
+        "latency_ms_min": 5956.7981590516865,
+        "latency_ms_max": 5970.997994765639
+      },
+      "correctness": {
+        "prompt_latents": {
+          "cosine": 1.000000238418579,
+          "mean_abs_diff": 0.0,
+          "max_abs_diff": 0.0,
+          "mse": 0.0,
+          "cosine_threshold": 0.999,
+          "pass": true
+        },
+        "latents": {
+          "cosine": 0.9989897608757019,
+          "mean_abs_diff": 0.007614449132233858,
+          "max_abs_diff": 2.484809160232544,
+          "mse": 0.0014989243354648352,
+          "cosine_threshold": 0.99,
+          "pass": true
+        },
+        "video": {
+          "cosine": 0.9995316863059998,
+          "mean_abs_diff": 0.0015239279018715024,
+          "max_abs_diff": 0.8387402296066284,
+          "mse": 7.134168845368549e-05,
+          "cosine_threshold": 0.99,
+          "pass": true
+        },
+        "overall_pass": true
+      },
+      "open_oasis": {
+        "videos_per_second": 1.1315640137293121,
+        "latency_ms_avg": 7069.860744010657,
+        "latency_ms_p50": 7070.483736693859,
+        "latency_ms_min": 7057.021440006793,
+        "latency_ms_max": 7082.448715344071
+      },
+      "speedup": 1.1856207766720699
+    },
+    {
+      "scenario": {
+        "name": "long-bs8-32f-4ddim",
+        "batch_clips": 8,
+        "num_frames": 32,
+        "ddim_steps": 4,
+        "n_prompt_frames": 1,
+        "kind": "throughput",
+        "dataset_name": "TESS-Computer/minecraft-vla-stage1",
+        "dataset_split": "train"
+      },
+      "fastkernels": {
+        "videos_per_second": 0.811851920099823,
+        "latency_ms_avg": 9854.013770166785,
+        "latency_ms_p50": 9855.156612582505,
+        "latency_ms_min": 9850.07581114769,
+        "latency_ms_max": 9857.067820150405
+      },
+      "correctness": {
+        "prompt_latents": {
+          "cosine": 1.000000238418579,
+          "mean_abs_diff": 0.0,
+          "max_abs_diff": 0.0,
+          "mse": 0.0,
+          "cosine_threshold": 0.999,
+          "pass": true
+        },
+        "latents": {
+          "cosine": 0.9978963136672974,
+          "mean_abs_diff": 0.011643354780972004,
+          "max_abs_diff": 2.848625659942627,
+          "mse": 0.003092600731179118,
+          "cosine_threshold": 0.99,
+          "pass": true
+        },
+        "video": {
+          "cosine": 0.998975932598114,
+          "mean_abs_diff": 0.0024496112018823624,
+          "max_abs_diff": 1.1044745445251465,
+          "mse": 0.0001567384460940957,
+          "cosine_threshold": 0.99,
+          "pass": true
+        },
+        "overall_pass": true
+      },
+      "open_oasis": {
+        "videos_per_second": 0.684884986791764,
+        "latency_ms_avg": 11680.793351121247,
+        "latency_ms_p50": 11660.797516815364,
+        "latency_ms_min": 11655.265270266682,
+        "latency_ms_max": 11716.71093115583
+      },
+      "speedup": 1.1853843137996287
+    },
+    {
+      "scenario": {
+        "name": "denoise-bs4-16f-8ddim",
+        "batch_clips": 4,
+        "num_frames": 16,
+        "ddim_steps": 8,
+        "n_prompt_frames": 1,
+        "kind": "throughput",
+        "dataset_name": "TESS-Computer/minecraft-vla-stage1",
+        "dataset_split": "train"
+      },
+      "fastkernels": {
+        "videos_per_second": 1.0285436759178799,
+        "latency_ms_avg": 3888.993820734322,
+        "latency_ms_p50": 3887.5498240813613,
+        "latency_ms_min": 3882.9796463251114,
+        "latency_ms_max": 3898.3945748768747
+      },
+      "correctness": {
+        "prompt_latents": {
+          "cosine": 1.0,
+          "mean_abs_diff": 0.0,
+          "max_abs_diff": 0.0,
+          "mse": 0.0,
+          "cosine_threshold": 0.999,
+          "pass": true
+        },
+        "latents": {
+          "cosine": 0.9973917007446289,
+          "mean_abs_diff": 0.017087038606405258,
+          "max_abs_diff": 1.870840311050415,
+          "mse": 0.0038063947577029467,
+          "cosine_threshold": 0.99,
+          "pass": true
+        },
+        "video": {
+          "cosine": 0.9991950988769531,
+          "mean_abs_diff": 0.0028724358417093754,
+          "max_abs_diff": 0.7344517111778259,
+          "mse": 0.00011677231668727472,
+          "cosine_threshold": 0.99,
+          "pass": true
+        },
+        "overall_pass": true
+      },
+      "open_oasis": {
+        "videos_per_second": 0.8735439137791751,
+        "latency_ms_avg": 4579.0485594421625,
+        "latency_ms_p50": 4560.5642180889845,
+        "latency_ms_min": 4505.201146006584,
+        "latency_ms_max": 4665.4879241250455
+      },
+      "speedup": 1.1774378593837784
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": "short-bs4-16f-4ddim",
+      "fastkernels_videos_per_s": 1.9780874563759927,
+      "reference_videos_per_s": 1.730968132713541,
+      "speedup": 1.1427636471129348,
+      "alignment": {
+        "metric": "min_cosine",
+        "value": 0.9984856843948364,
+        "score": 0.9984856843948364,
+        "higher_is_better": true,
+        "threshold": 0.99,
+        "passed": true,
+        "overall_pass": true,
+        "per_tensor": {
+          "prompt_latents": 1.0,
+          "latents": 0.9984856843948364,
+          "video": 0.999570906162262
+        }
+      },
+      "batch_clips": 4,
+      "num_frames": 16,
+      "ddim_steps": 4
+    },
+    {
+      "scenario": "medium-bs8-24f-4ddim",
+      "fastkernels_videos_per_s": 1.3416058048119117,
+      "reference_videos_per_s": 1.1315640137293121,
+      "speedup": 1.1856207766720699,
+      "alignment": {
+        "metric": "min_cosine",
+        "value": 0.9989897608757019,
+        "score": 0.9989897608757019,
+        "higher_is_better": true,
+        "threshold": 0.99,
+        "passed": true,
+        "overall_pass": true,
+        "per_tensor": {
+          "prompt_latents": 1.000000238418579,
+          "latents": 0.9989897608757019,
+          "video": 0.9995316863059998
+        }
+      },
+      "batch_clips": 8,
+      "num_frames": 24,
+      "ddim_steps": 4
+    },
+    {
+      "scenario": "long-bs8-32f-4ddim",
+      "fastkernels_videos_per_s": 0.811851920099823,
+      "reference_videos_per_s": 0.684884986791764,
+      "speedup": 1.1853843137996287,
+      "alignment": {
+        "metric": "min_cosine",
+        "value": 0.9978963136672974,
+        "score": 0.9978963136672974,
+        "higher_is_better": true,
+        "threshold": 0.99,
+        "passed": true,
+        "overall_pass": true,
+        "per_tensor": {
+          "prompt_latents": 1.000000238418579,
+          "latents": 0.9978963136672974,
+          "video": 0.998975932598114
+        }
+      },
+      "batch_clips": 8,
+      "num_frames": 32,
+      "ddim_steps": 4
+    },
+    {
+      "scenario": "denoise-bs4-16f-8ddim",
+      "fastkernels_videos_per_s": 1.0285436759178799,
+      "reference_videos_per_s": 0.8735439137791751,
+      "speedup": 1.1774378593837784,
+      "alignment": {
+        "metric": "min_cosine",
+        "value": 0.9973917007446289,
+        "score": 0.9973917007446289,
+        "higher_is_better": true,
+        "threshold": 0.99,
+        "passed": true,
+        "overall_pass": true,
+        "per_tensor": {
+          "prompt_latents": 1.0,
+          "latents": 0.9973917007446289,
+          "video": 0.9991950988769531
+        }
+      },
+      "batch_clips": 4,
+      "num_frames": 16,
+      "ddim_steps": 8
+    }
+  ],
+  "latency_scenarios": [
+    {
+      "scenario": "latency-bs1-8f-4ddim",
+      "fastkernels_median_s": 0.7682921369560063,
+      "reference_median_s": 0.8892440930940211,
+      "speedup": 1.1574296420854047,
+      "batch_clips": 1,
+      "num_frames": 8,
+      "ddim_steps": 4
+    }
+  ],
+  "reference_name": "open-oasis"
+}
+
+Results saved to: /code/users/goliaro/validate-b200-check/045_bench_oasis_Etched_oasis-500m/results.json

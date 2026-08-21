@@ -1,0 +1,190 @@
+job_index: 46
+name: facebook/vjepa2-vitl-fpc64-256
+harness: bench_vjepa2
+tp: 1
+workloads: predictor, encoder, single-video
+CUDA_VISIBLE_DEVICES: 6
+physical_gpus: 6
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_vjepa2 --model facebook/vjepa2-vitl-fpc64-256 --workloads predictor,encoder,single-video --output-dir /code/users/goliaro/validate-b200-check/046_bench_vjepa2_facebook_vjepa2-vitl-fpc64-256
+
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels V-JEPA 2 alignment [predictor]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]
+Fetching 3 files:  67%|██████▋   | 2/3 [00:00<00:00, 15.78it/s]
+Fetching 3 files: 100%|██████████| 3/3 [00:03<00:00,  1.13s/it]
+Loading 2 videos from nateraw/kinetics-mini (validation)...
+
+Downloading data:   0%|          | 0/50 [00:00<?, ?files/s]
+Downloading data:   2%|▏         | 1/50 [00:00<00:07,  6.27files/s]
+Downloading data:   8%|▊         | 4/50 [00:00<00:08,  5.15files/s]
+Downloading data:  30%|███       | 15/50 [00:01<00:02, 13.30files/s]
+Downloading data:  34%|███▍      | 17/50 [00:01<00:02, 12.16files/s]
+Downloading data:  80%|████████  | 40/50 [00:01<00:00, 40.36files/s]
+Downloading data:  98%|█████████▊| 49/50 [00:01<00:00, 36.54files/s]
+Downloading data: 100%|██████████| 50/50 [00:01<00:00, 25.96files/s]
+
+Downloading data:   0%|          | 0/50 [00:00<?, ?files/s]
+Downloading data:   2%|▏         | 1/50 [00:00<00:31,  1.53files/s]
+Downloading data:   8%|▊         | 4/50 [00:00<00:07,  6.00files/s]
+Downloading data:  38%|███▊      | 19/50 [00:01<00:01, 22.19files/s]
+Downloading data:  44%|████▍     | 22/50 [00:01<00:01, 20.41files/s]
+Downloading data:  66%|██████▌   | 33/50 [00:01<00:00, 29.40files/s]
+Downloading data:  82%|████████▏ | 41/50 [00:02<00:00, 23.47files/s]
+Downloading data: 100%|██████████| 50/50 [00:02<00:00, 24.34files/s]
+
+Generating train split:   0%|          | 0/50 [00:00<?, ? examples/s]
+Generating train split: 100%|██████████| 50/50 [00:00<00:00, 9065.24 examples/s]
+
+Generating validation split:   0%|          | 0/50 [00:00<?, ? examples/s]
+Generating validation split: 100%|██████████| 50/50 [00:00<00:00, 12391.59 examples/s]
+  Using 2 videos
+
+──────────────────────────────────────────────────────────────────────
+  transformers V-JEPA 2 alignment [predictor]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Loading weights:   0%|          | 0/587 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 587/587 [00:00<00:00, 9389.85it/s]
+Loading 2 videos from nateraw/kinetics-mini (validation)...
+  Using 2 videos
+
+alignment
+  last_hidden_state: cosine=1.000000 mae=0.000000e+00
+  masked_hidden_state: cosine=1.000000 mae=0.000000e+00
+  predictor_hidden_state: cosine=1.000000 mae=0.000000e+00
+  target_hidden_state: cosine=1.000000 mae=0.000000e+00
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels V-JEPA 2 throughput [predictor]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]
+Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 988.06it/s]
+Loading 8 videos from nateraw/kinetics-mini (validation)...
+  Using 8 videos
+
+local throughput:   0%|          | 0/4 [00:00<?, ?it/s]
+local throughput:  25%|██▌       | 1/4 [00:00<00:00,  8.25it/s]
+local throughput:  75%|███████▌  | 3/4 [00:00<00:00, 10.37it/s]
+local throughput: 100%|██████████| 4/4 [00:00<00:00, 10.41it/s]
+
+──────────────────────────────────────────────────────────────────────
+  transformers V-JEPA 2 throughput [predictor]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Loading weights:   0%|          | 0/587 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 587/587 [00:00<00:00, 7934.62it/s]
+Loading 8 videos from nateraw/kinetics-mini (validation)...
+  Using 8 videos
+
+reference throughput:   0%|          | 0/4 [00:00<?, ?it/s]
+reference throughput:  25%|██▌       | 1/4 [00:00<00:00,  8.53it/s]
+reference throughput:  75%|███████▌  | 3/4 [00:00<00:00, 10.64it/s]
+reference throughput: 100%|██████████| 4/4 [00:00<00:00, 10.78it/s]
+
+V-JEPA 2 [predictor] throughput
+  videos/sec : 20.856
+  patches/sec: 170853.5
+  ratio      : 0.97x vs transformers
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels V-JEPA 2 alignment [encoder]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]
+Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 921.76it/s]
+Loading 2 videos from nateraw/kinetics-mini (validation)...
+  Using 2 videos
+
+──────────────────────────────────────────────────────────────────────
+  transformers V-JEPA 2 alignment [encoder]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Loading weights:   0%|          | 0/587 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 587/587 [00:00<00:00, 8947.66it/s]
+Loading 2 videos from nateraw/kinetics-mini (validation)...
+  Using 2 videos
+
+alignment
+  last_hidden_state: cosine=1.000000 mae=0.000000e+00
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels V-JEPA 2 throughput [encoder]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]
+Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 1790.91it/s]
+Loading 8 videos from nateraw/kinetics-mini (validation)...
+  Using 8 videos
+
+local throughput:   0%|          | 0/4 [00:00<?, ?it/s]
+local throughput:  50%|█████     | 2/4 [00:00<00:00, 13.00it/s]
+local throughput: 100%|██████████| 4/4 [00:00<00:00, 13.15it/s]
+local throughput: 100%|██████████| 4/4 [00:00<00:00, 13.12it/s]
+
+──────────────────────────────────────────────────────────────────────
+  transformers V-JEPA 2 throughput [encoder]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Loading weights:   0%|          | 0/587 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 587/587 [00:00<00:00, 9123.46it/s]
+Loading 8 videos from nateraw/kinetics-mini (validation)...
+  Using 8 videos
+
+reference throughput:   0%|          | 0/4 [00:00<?, ?it/s]
+reference throughput:  50%|█████     | 2/4 [00:00<00:00, 13.60it/s]
+reference throughput: 100%|██████████| 4/4 [00:00<00:00, 13.39it/s]
+reference throughput: 100%|██████████| 4/4 [00:00<00:00, 13.41it/s]
+
+V-JEPA 2 [encoder] throughput
+  videos/sec : 26.292
+  patches/sec: 215385.7
+  ratio      : 0.98x vs transformers
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels V-JEPA 2 latency [predictor]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]
+Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 1203.42it/s]
+Loading 1 videos from nateraw/kinetics-mini (validation)...
+  Using 1 videos
+
+local latency bs=1:   0%|          | 0/3 [00:00<?, ?it/s]
+local latency bs=1:  67%|██████▋   | 2/3 [00:00<00:00, 17.48it/s]
+local latency bs=1: 100%|██████████| 3/3 [00:00<00:00, 17.48it/s]
+
+──────────────────────────────────────────────────────────────────────
+  transformers V-JEPA 2 latency [predictor]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Loading weights:   0%|          | 0/587 [00:00<?, ?it/s]
+Loading weights:  97%|█████████▋| 571/587 [00:00<00:00, 5707.94it/s]
+Loading weights: 100%|██████████| 587/587 [00:00<00:00, 5707.86it/s]
+Loading 1 videos from nateraw/kinetics-mini (validation)...
+  Using 1 videos
+
+reference latency bs=1:   0%|          | 0/3 [00:00<?, ?it/s]
+reference latency bs=1:  67%|██████▋   | 2/3 [00:00<00:00, 17.05it/s]
+reference latency bs=1: 100%|██████████| 3/3 [00:00<00:00, 17.26it/s]
+
+V-JEPA 2 [predictor] latency
+  bs=1: 0.0564s (0.98x vs transformers)
+
+results written to /code/users/goliaro/validate-b200-check/046_bench_vjepa2_facebook_vjepa2-vitl-fpc64-256/results.json

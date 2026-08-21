@@ -1,0 +1,52 @@
+job_index: 20
+name: openai/whisper-large-v3
+harness: bench_vllm
+tp: 1
+workloads: librispeech, single-utterance, fixed-batch-32
+CUDA_VISIBLE_DEVICES: 5
+physical_gpus: 5
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_vllm --model openai/whisper-large-v3 --tp 1 --output-dir /code/users/goliaro/validate-b200-check/020_bench_vllm_openai_whisper-large-v3 --resume
+
+======================================================================
+  fastkernels Baseline vs vLLM -- Multi-Scenario Benchmark
+======================================================================
+  Model          : openai/whisper-large-v3
+  Model type     : Whisper
+  TP             : 1
+  Seqs/scenario  : full dataset
+  Temperature    : 0.0
+  Enforce eager  : False
+  Seed           : 42
+  Trust RC       : False
+  Max seq len    : 458
+  fastkernels port   : 49215
+  vLLM port      : 20176
+  Output dir     : /code/users/goliaro/validate-b200-check/020_bench_vllm_openai_whisper-large-v3
+  Scenarios      : librispeech
+  Latency        : single-utterance, fixed-batch-32 (5 iters)
+======================================================================
+  Resumed vLLM reference from cache: /code/users/goliaro/validate-b200-check/020_bench_vllm_openai_whisper-large-v3/vllm_raw.json
+  Resumed fastkernels outputs from cache: /code/users/goliaro/validate-b200-check/020_bench_vllm_openai_whisper-large-v3/fastkernels_raw.json
+
+
+==========================================================================================
+  THROUGHPUT SUMMARY
+==========================================================================================
+  SCENARIO          SEQS    AUDIO   OUT FASTKERNELS tok/s   vLLM tok/s  SPEEDUP AVG PREFIX TOKS
+  ------------------------------------------------------------------------------------------
+  librispeech       2620   324.2m   448           8,727        8,161    1.07x       385.9/444
+==========================================================================================
+
+==============================================================================================================
+  LATENCY SUMMARY
+==============================================================================================================
+  SCENARIO             BS   OUT  ITERS  FASTKERNELS med     vLLM med  FASTKERNELS ms/tok  vLLM ms/tok  SPEEDUP
+  ----------------------------------------------------------------------------------------------------
+  single-utterance      1   448      5  0.9366s         0.9628s           2.09         2.15    1.03x
+  fixed-batch-32       32   448      5  2.2847s         2.3744s           0.16         0.17    1.04x
+==============================================================================================================
+
+  Results saved to: /code/users/goliaro/validate-b200-check/020_bench_vllm_openai_whisper-large-v3/results.json

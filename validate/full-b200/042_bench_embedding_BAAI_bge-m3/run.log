@@ -1,0 +1,1337 @@
+job_index: 42
+name: BAAI/bge-m3
+harness: bench_embedding
+tp: 1
+workloads: bge-m3-mldr-docs, single-request, fixed-batch-32
+CUDA_VISIBLE_DEVICES: 0
+physical_gpus: 0
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_embedding --model BAAI/bge-m3 --tp 1 --output-dir /code/users/goliaro/validate-b200-check/042_bench_embedding_BAAI_bge-m3
+
+==============================================================================
+  fastkernels Embedding Baseline vs vLLM -- token_embed Benchmark
+==============================================================================
+  Workloads      : bge-m3-mldr-docs
+  Mode           : token_embed
+  Metric         : end-to-end input tokens/sec
+  Requests       : 1000 per workload
+  TP             : 1
+  DType          : float16
+  Seed           : 42
+  Scheduler      : max_num_batched_tokens=16384, max_num_seqs=1024
+  Output dir     : /code/users/goliaro/validate-b200-check/042_bench_embedding_BAAI_bge-m3
+  Artifact dir   : /tmp/fastkernels_embedding_outputs/042_bench_embedding_BAAI_bge-m3
+  vLLM port      : 52198
+==============================================================================
+
+embedding workloads:   0%|          | 0/1 [00:00<?, ?workload/s]
+----------------------------------------------------------------------
+  Workload bge-m3-mldr-docs: BAAI/bge-m3
+----------------------------------------------------------------------
+  Loading tokenizer
+  Loading workload records for bge-m3-mldr-docs
+  Preparing JSONL workload bge-m3-mldr-docs: downloading/streaming 1000 records -> /home/yak/fastkernels/data/embedding_workloads/bge_m3_mldr_documents.jsonl
+
+
+build bge-m3-mldr-docs:   0%|          | 0/1000 [00:00<?, ?records/s][A
+
+build bge-m3-mldr-docs:   0%|          | 1/1000 [00:09<2:44:05,  9.86s/records][A
+
+build bge-m3-mldr-docs:  32%|███▏      | 315/1000 [00:09<00:15, 44.96records/s][A
+
+build bge-m3-mldr-docs:  66%|██████▌   | 657/1000 [00:10<00:03, 112.47records/s][A
+
+build bge-m3-mldr-docs:  97%|█████████▋| 969/1000 [00:10<00:00, 196.01records/s][A
+build bge-m3-mldr-docs: 100%|█████████▉| 999/1000 [00:10<00:00, 98.27records/s] 
+  Reading /home/yak/fastkernels/data/embedding_workloads/bge_m3_mldr_documents.jsonl
+  Tokenizing workload for bge-m3-mldr-docs (1000 requests, max_length=8192)
+
+
+tokenize workload:   0%|          | 0/16 [00:00<?, ?batch/s][A
+
+tokenize workload:   6%|▋         | 1/16 [00:00<00:08,  1.70batch/s][A
+
+tokenize workload:  12%|█▎        | 2/16 [00:01<00:08,  1.69batch/s][A
+
+tokenize workload:  19%|█▉        | 3/16 [00:01<00:08,  1.60batch/s][A
+
+tokenize workload:  25%|██▌       | 4/16 [00:02<00:08,  1.43batch/s][A
+
+tokenize workload:  31%|███▏      | 5/16 [00:03<00:07,  1.41batch/s][A
+
+tokenize workload:  38%|███▊      | 6/16 [00:03<00:06,  1.49batch/s][A
+
+tokenize workload:  44%|████▍     | 7/16 [00:04<00:05,  1.50batch/s][A
+
+tokenize workload:  50%|█████     | 8/16 [00:05<00:05,  1.47batch/s][A
+
+tokenize workload:  56%|█████▋    | 9/16 [00:06<00:04,  1.47batch/s][A
+
+tokenize workload:  62%|██████▎   | 10/16 [00:06<00:04,  1.50batch/s][A
+
+tokenize workload:  69%|██████▉   | 11/16 [00:07<00:03,  1.46batch/s][A
+
+tokenize workload:  75%|███████▌  | 12/16 [00:08<00:02,  1.46batch/s][A
+
+tokenize workload:  81%|████████▏ | 13/16 [00:08<00:02,  1.48batch/s][A
+
+tokenize workload:  88%|████████▊ | 14/16 [00:09<00:01,  1.47batch/s][A
+
+tokenize workload:  94%|█████████▍| 15/16 [00:10<00:00,  1.39batch/s][A
+
+tokenize workload: 100%|██████████| 16/16 [00:10<00:00,  1.56batch/s][A
+tokenize workload: 100%|██████████| 16/16 [00:10<00:00,  1.49batch/s]
+  Workload ready: 1000 requests, 4,569,071 input tokens, max_num_batched_tokens=16384, max_num_seqs=1024
+  Launching vLLM worker for bge-m3-mldr-docs
+
+──────────────────────────────────────────────────────────────────────
+  vLLM [BAAI/bge-m3] token_embed
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+  Loading vLLM model BAAI/bge-m3
+INFO 08-21 11:30:42 [patch.py:252] NVFP4 W4A4 weight_scale NaN-clamp: installed.
+INFO 08-21 11:30:45 [quack_fp8.py:76] Quack FP8 fused-bias GEMM enabled (CuteDSL).
+INFO 08-21 11:30:45 [quack_fp8.py:155] Patched FlashInfer FP8 ScaledMM to use quack fused-bias GEMM.
+INFO 08-21 11:30:45 [patch.py:481] [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+INFO 08-21 11:30:45 [api_utils.py:273] non-default args: {'runner': 'pooling', 'trust_remote_code': True, 'dtype': 'float16', 'seed': 42, 'max_model_len': 8192, 'max_num_batched_tokens': 16384, 'max_num_seqs': 1024, 'disable_log_stats': True, 'hf_overrides': {'architectures': ['BgeM3EmbeddingModel']}, 'pooler_config': PoolerConfig(task='token_embed', pooling_type=None, seq_pooling_type=None, tok_pooling_type=None, use_activation=None, dimensions=None, enable_chunked_processing=False, max_embed_len=None, logit_mean=None, logit_sigma=None, step_tag_id=None, returned_token_ids=None), 'model': 'BAAI/bge-m3'}
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT_7777_TCP_ADDR
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT_7777_TCP_PROTO
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_SERVICE_HOST
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT_7777_TCP
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT_8888_TCP_PROTO
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_SERVICE_HOST
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT_8888_TCP_ADDR
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_SERVICE_PORT_OPENAI
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_SERVICE_PORT_OPENAI
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT_8888_TCP_PORT
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_SERVICE_PORT
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_SERVICE_PORT
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT_8888_TCP
+WARNING 08-21 11:30:45 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT_7777_TCP_PORT
+WARNING 08-21 11:30:45 [arg_utils.py:1631] The global random seed is set to 42. Since VLLM_ENABLE_V1_MULTIPROCESSING is set to False, this may affect the random state of the Python process that launched vLLM.
+INFO 08-21 11:30:46 [config.py:958] Found sentence-transformers tokenize configuration.
+INFO 08-21 11:30:58 [model.py:623] Resolved architecture: BgeM3EmbeddingModel
+INFO 08-21 11:30:58 [config.py:846] Found sentence-transformers modules configuration.
+INFO 08-21 11:30:58 [config.py:873] Found pooling configuration.
+INFO 08-21 11:30:58 [model.py:2120] Downcasting torch.float32 to torch.float16.
+INFO 08-21 11:30:58 [model.py:1788] Using max model len 8192
+INFO 08-21 11:30:58 [vllm.py:1109] Asynchronous scheduling is disabled.
+INFO 08-21 11:30:58 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+WARNING 08-21 11:30:58 [vllm.py:1344] Pooling models do not support full cudagraphs. Overriding cudagraph_mode to PIECEWISE.
+INFO 08-21 11:31:03 [core.py:116] Initializing a V1 LLM engine (v0.26.0) with config: model='BAAI/bge-m3', speculative_config=None, tokenizer='BAAI/bge-m3', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.float16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=42, served_model_name=BAAI/bge-m3, enable_prefix_caching=False, enable_chunked_prefill=False, pooler_config=PoolerConfig(task='token_embed', pooling_type=None, seq_pooling_type='CLS', tok_pooling_type='ALL', use_activation=True, dimensions=None, enable_chunked_processing=False, max_embed_len=None, logit_mean=None, logit_sigma=None, step_tag_id=None, returned_token_ids=None), compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::qwen_gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::hpc_rope_norm_forward', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [16384], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.PIECEWISE: 1>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_bf16x3_router_gemm=False, moe_backend='auto', linear_backend='auto')
+INFO 08-21 11:31:03 [parallel_state.py:1615] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.4.178.1:52198 backend=nccl
+INFO 08-21 11:31:03 [parallel_state.py:1946] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+INFO 08-21 11:31:04 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+INFO 08-21 11:31:04 [gpu_model_runner.py:5250] Starting to load model BAAI/bge-m3...
+INFO 08-21 11:31:04 [cuda.py:482] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+INFO 08-21 11:31:04 [flash_attn.py:776] Using FlashAttention version 4
+
+Loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+
+Loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.15s/it]
+
+Loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.15s/it]
+
+
+Loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+
+Loading pt checkpoint shards: 100% Completed | 1/1 [00:00<00:00, 1421.32it/s]
+
+
+Loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+
+Loading pt checkpoint shards: 100% Completed | 1/1 [00:00<00:00, 323.06it/s]
+
+INFO 08-21 11:31:06 [default_loader.py:430] Loading weights took 1.58 seconds
+INFO 08-21 11:31:07 [gpu_model_runner.py:5347] Model loading took 1.06 GiB memory and 2.026195 seconds
+INFO 08-21 11:31:07 [kernel_warmup.py:227] Using FlashInfer autotune cache file: /home/yak/.fastkernels/cache/validate-b200-check/vllm/flashinfer_autotune_cache/0.6.14/100a/678ee8abc578a9cc7ba3b5eca37ba8a7fd4752120a3b959dc9ee314875335a8f/autotune_configs.json
+2026-08-21 11:31:07,758 - INFO - autotuner.py:651 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+INFO 08-21 11:31:09 [backends.py:1094] Using cache directory: /home/yak/.fastkernels/cache/validate-b200-check/vllm/torch_compile_cache/3bc1772e44/rank_0_0/backbone for vLLM's torch.compile
+INFO 08-21 11:31:09 [backends.py:1155] Dynamo bytecode transform time: 1.87 s
+INFO 08-21 11:31:10 [backends.py:378] Cache the graph of compile range (1, 16384) for later use
+INFO 08-21 11:31:11 [backends.py:393] Compiling a graph for compile range (1, 16384) takes 1.90 s
+INFO 08-21 11:31:12 [decorators.py:708] saved AOT compiled function to /home/yak/.fastkernels/cache/validate-b200-check/vllm/torch_compile_cache/torch_aot_compile/2ee2f7ad4f7bea99d945b1d1b6443e1fcee192add7b2ccc62991b6c6fcd9391e/rank_0_0/model
+INFO 08-21 11:31:12 [monitor.py:53] torch.compile took 5.11 s in total
+INFO 08-21 11:31:12 [monitor.py:81] Initial profiling/warmup run took 0.12 s
+2026-08-21 11:31:12,996 - INFO - autotuner.py:674 - flashinfer.jit: [Autotuner]: Autotuning process ends
+WARNING 08-21 11:31:12 [kernel_warmup.py:258] No FlashInfer autotune cache entries found.Falling back to default tactics.
+INFO 08-21 11:31:12 [kernel_warmup.py:65] Warming up ll_bf16 router GEMM kernels.
+INFO 08-21 11:31:20 [cutedsl_warmup.py:101] Skipping CuTeDSL warmup because no compile units were requested.
+INFO 08-21 11:31:20 [gpu_model_runner.py:6798] Rank 0: Torch profiler disabled for CUDA graph capture
+
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  10%|▉         | 5/51 [00:00<00:00, 46.87it/s]
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|█▉        | 10/51 [00:00<00:02, 19.58it/s]
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  25%|██▌       | 13/51 [00:00<00:01, 19.64it/s]
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  35%|███▌      | 18/51 [00:00<00:01, 26.64it/s]
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  45%|████▌     | 23/51 [00:00<00:00, 32.07it/s]
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▍    | 28/51 [00:00<00:00, 36.09it/s]
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  65%|██████▍   | 33/51 [00:01<00:00, 39.22it/s]
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  75%|███████▍  | 38/51 [00:01<00:00, 39.98it/s]
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  84%|████████▍ | 43/51 [00:01<00:00, 40.45it/s]
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  94%|█████████▍| 48/51 [00:01<00:00, 42.25it/s]
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:01<00:00, 34.90it/s]
+INFO 08-21 11:31:22 [gpu_model_runner.py:6844] Graph capturing finished in 2 secs, took 0.21 GiB
+INFO 08-21 11:31:23 [jit_monitor.py:79] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+INFO 08-21 11:31:23 [core.py:340] init engine (profile, create kv cache, warmup model) took 15.79 s (compilation: 5.11 s)
+INFO 08-21 11:31:23 [core.py:406] Resolved pooling config: pooling_type=CLS(source=sentence_transformers), tok_pooling_type=ALL(source=model_default), use_activation=True(source=sentence_transformers), supported_tasks=('embed', 'embed&token_classify', 'token_classify', 'token_embed')
+INFO 08-21 11:31:23 [offline.py:49] Supported pooling task: token_embed
+  vLLM warmup: 4 requests
+  vLLM encode: 4 requests
+
+Processed prompts:   0%|          | 0/4 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]WARNING 08-21 11:31:23 [jit_monitor.py:135] CuTeDSL JIT compilation during inference: FlashAttentionForwardSm100. This causes a latency spike; consider extending warmup to cover this shape/config.
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_None_0125_T'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+
+Processed prompts:  25%|██▌       | 1/4 [00:04<00:12,  4.05s/it, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts: 100%|██████████| 4/4 [00:04<00:00,  4.05s/it, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts: 100%|██████████| 4/4 [00:04<00:00,  1.01s/it, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+  vLLM timed throughput encode starting: 1000 requests
+  vLLM encode: 1000 requests
+
+Processed prompts:   0%|          | 0/1000 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   0%|          | 1/1000 [00:00<02:44,  6.09it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   0%|          | 5/1000 [00:00<00:52, 18.92it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   1%|          | 12/1000 [00:00<00:27, 35.61it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   2%|▏         | 16/1000 [00:00<00:26, 36.98it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   2%|▏         | 23/1000 [00:00<00:34, 28.68it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   3%|▎         | 27/1000 [00:01<00:58, 16.54it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   3%|▎         | 30/1000 [00:01<01:14, 13.11it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   3%|▎         | 34/1000 [00:02<01:21, 11.89it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   4%|▍         | 44/1000 [00:02<00:47, 20.23it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   5%|▍         | 47/1000 [00:02<00:45, 20.84it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   5%|▌         | 53/1000 [00:02<00:51, 18.44it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   6%|▌         | 57/1000 [00:03<00:55, 16.85it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   6%|▌         | 60/1000 [00:03<00:57, 16.47it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   6%|▋         | 63/1000 [00:03<00:59, 15.85it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   7%|▋         | 68/1000 [00:03<00:56, 16.61it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   8%|▊         | 78/1000 [00:03<00:33, 27.62it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   8%|▊         | 82/1000 [00:04<00:40, 22.85it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   8%|▊         | 85/1000 [00:04<00:39, 23.33it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  10%|▉         | 96/1000 [00:04<00:30, 29.74it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  10%|█         | 100/1000 [00:04<00:40, 22.44it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  11%|█         | 111/1000 [00:05<00:25, 34.76it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  12%|█▏        | 120/1000 [00:05<00:20, 42.18it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  13%|█▎        | 132/1000 [00:05<00:15, 56.11it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  14%|█▍        | 140/1000 [00:05<00:16, 52.48it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  15%|█▌        | 151/1000 [00:05<00:13, 63.16it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  16%|█▌        | 162/1000 [00:05<00:11, 71.32it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  17%|█▋        | 173/1000 [00:05<00:10, 77.08it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  18%|█▊        | 182/1000 [00:05<00:12, 67.95it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  19%|█▉        | 191/1000 [00:06<00:11, 71.05it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  20%|██        | 202/1000 [00:06<00:10, 78.20it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  21%|██▏       | 214/1000 [00:06<00:09, 83.20it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  22%|██▎       | 225/1000 [00:06<00:12, 60.45it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  23%|██▎       | 234/1000 [00:06<00:12, 63.18it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  25%|██▍       | 246/1000 [00:06<00:10, 72.69it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  26%|██▌       | 258/1000 [00:06<00:09, 78.83it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  27%|██▋       | 267/1000 [00:07<00:09, 77.58it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  28%|██▊       | 276/1000 [00:07<00:20, 36.01it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  29%|██▊       | 287/1000 [00:07<00:16, 44.23it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  30%|██▉       | 297/1000 [00:07<00:13, 52.17it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  30%|███       | 305/1000 [00:08<00:13, 52.87it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  31%|███       | 312/1000 [00:08<00:12, 55.49it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  33%|███▎      | 326/1000 [00:08<00:09, 70.81it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  34%|███▎      | 336/1000 [00:08<00:10, 64.30it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  35%|███▌      | 351/1000 [00:08<00:08, 79.94it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  36%|███▋      | 365/1000 [00:08<00:07, 89.15it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  38%|███▊      | 375/1000 [00:08<00:08, 77.92it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  38%|███▊      | 385/1000 [00:09<00:07, 78.82it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  40%|███▉      | 397/1000 [00:09<00:07, 83.20it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  41%|████      | 409/1000 [00:09<00:06, 86.43it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  42%|████▏     | 423/1000 [00:09<00:06, 91.09it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  44%|████▍     | 438/1000 [00:09<00:05, 98.32it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  45%|████▍     | 449/1000 [00:09<00:06, 85.92it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  46%|████▌     | 458/1000 [00:10<00:08, 60.66it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  47%|████▋     | 472/1000 [00:10<00:07, 71.25it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  48%|████▊     | 484/1000 [00:10<00:06, 78.99it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  50%|█████     | 500/1000 [00:10<00:05, 91.35it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  52%|█████▏    | 515/1000 [00:10<00:04, 101.68it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  53%|█████▎    | 527/1000 [00:10<00:05, 93.95it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s] 
+Processed prompts:  54%|█████▍    | 538/1000 [00:10<00:05, 90.53it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  55%|█████▍    | 549/1000 [00:10<00:05, 89.37it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  56%|█████▌    | 559/1000 [00:11<00:04, 91.05it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  57%|█████▋    | 569/1000 [00:11<00:05, 77.52it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  58%|█████▊    | 578/1000 [00:11<00:05, 79.22it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  59%|█████▉    | 593/1000 [00:11<00:04, 88.65it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  60%|██████    | 603/1000 [00:11<00:04, 91.24it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  61%|██████▏   | 613/1000 [00:11<00:05, 77.16it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  62%|██████▏   | 622/1000 [00:11<00:05, 67.91it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  63%|██████▎   | 630/1000 [00:12<00:06, 60.11it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  64%|██████▎   | 637/1000 [00:12<00:08, 42.38it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  65%|██████▍   | 648/1000 [00:12<00:06, 52.95it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  66%|██████▌   | 661/1000 [00:12<00:05, 65.04it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  67%|██████▋   | 671/1000 [00:12<00:04, 69.32it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  68%|██████▊   | 682/1000 [00:12<00:04, 70.51it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  69%|██████▉   | 690/1000 [00:13<00:04, 66.44it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  70%|██████▉   | 699/1000 [00:13<00:04, 66.08it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  71%|███████   | 706/1000 [00:13<00:04, 63.90it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  71%|███████▏  | 714/1000 [00:13<00:04, 64.70it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  72%|███████▎  | 725/1000 [00:13<00:03, 72.01it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  74%|███████▎  | 737/1000 [00:13<00:03, 80.36it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  75%|███████▍  | 746/1000 [00:13<00:03, 71.38it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  75%|███████▌  | 754/1000 [00:13<00:03, 68.75it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  76%|███████▋  | 763/1000 [00:14<00:03, 69.77it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  77%|███████▋  | 771/1000 [00:14<00:04, 51.80it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  78%|███████▊  | 780/1000 [00:14<00:03, 57.18it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  79%|███████▊  | 787/1000 [00:14<00:04, 46.40it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  80%|███████▉  | 797/1000 [00:14<00:03, 53.74it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  81%|████████  | 810/1000 [00:14<00:02, 65.00it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  82%|████████▏ | 822/1000 [00:15<00:02, 75.43it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  83%|████████▎ | 831/1000 [00:15<00:02, 64.62it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  84%|████████▍ | 842/1000 [00:15<00:02, 72.20it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  85%|████████▌ | 850/1000 [00:15<00:02, 62.71it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  86%|████████▌ | 857/1000 [00:15<00:02, 53.56it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  87%|████████▋ | 867/1000 [00:15<00:02, 61.34it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  88%|████████▊ | 878/1000 [00:15<00:01, 70.10it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  89%|████████▊ | 886/1000 [00:16<00:01, 62.11it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  89%|████████▉ | 893/1000 [00:16<00:01, 53.60it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  90%|█████████ | 902/1000 [00:16<00:01, 59.74it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  91%|█████████ | 912/1000 [00:16<00:01, 66.28it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  92%|█████████▏| 923/1000 [00:16<00:01, 72.89it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  93%|█████████▎| 931/1000 [00:16<00:01, 63.42it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  94%|█████████▍| 943/1000 [00:16<00:00, 72.64it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  95%|█████████▌| 951/1000 [00:17<00:00, 52.32it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  96%|█████████▋| 963/1000 [00:17<00:00, 61.43it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  98%|█████████▊| 976/1000 [00:17<00:00, 75.51it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  98%|█████████▊| 985/1000 [00:17<00:00, 76.33it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:  99%|█████████▉| 994/1000 [00:17<00:00, 68.53it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts: 100%|██████████| 1000/1000 [00:17<00:00, 68.53it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts: 100%|██████████| 1000/1000 [00:17<00:00, 56.02it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+  Materializing 1000 outputs on CPU
+
+materialize outputs:   0%|          | 0/1000 [00:00<?, ?req/s]
+materialize outputs: 100%|██████████| 1000/1000 [00:00<00:00, 3708491.60req/s]
+  Saving output tensor values to /tmp/fastkernels_embedding_outputs/042_bench_embedding_BAAI_bge-m3/bge-m3-mldr-docs/vllm_outputs_values.npy (4,568,071 x 1024, 8.71 GiB, uncompressed)
+
+write output values:   0%|          | 0/1000 [00:00<?, ?req/s]
+write output values:   1%|          | 7/1000 [00:00<00:15, 65.21req/s]
+write output values:   2%|▏         | 16/1000 [00:00<00:13, 75.64req/s]
+write output values:   3%|▎         | 26/1000 [00:00<00:11, 85.40req/s]
+write output values:   4%|▎         | 37/1000 [00:00<00:10, 91.82req/s]
+write output values:   5%|▍         | 47/1000 [00:00<00:10, 88.23req/s]
+write output values:   6%|▌         | 57/1000 [00:00<00:10, 89.15req/s]
+write output values:   7%|▋         | 66/1000 [00:00<00:10, 87.85req/s]
+write output values:   8%|▊         | 76/1000 [00:00<00:10, 88.69req/s]
+write output values:   9%|▊         | 86/1000 [00:00<00:10, 90.97req/s]
+write output values:  10%|▉         | 96/1000 [00:01<00:10, 88.57req/s]
+write output values:  11%|█         | 109/1000 [00:01<00:08, 99.12req/s]
+write output values:  12%|█▏        | 119/1000 [00:01<00:09, 93.08req/s]
+write output values:  13%|█▎        | 130/1000 [00:01<00:09, 94.81req/s]
+write output values:  14%|█▍        | 140/1000 [00:01<00:09, 93.89req/s]
+write output values:  15%|█▌        | 151/1000 [00:01<00:08, 96.64req/s]
+write output values:  16%|█▌        | 161/1000 [00:01<00:09, 90.73req/s]
+write output values:  17%|█▋        | 171/1000 [00:01<00:09, 90.62req/s]
+write output values:  18%|█▊        | 182/1000 [00:01<00:08, 94.02req/s]
+write output values:  19%|█▉        | 192/1000 [00:02<00:08, 91.62req/s]
+write output values:  20%|██        | 202/1000 [00:02<00:08, 89.93req/s]
+write output values:  21%|██▏       | 213/1000 [00:02<00:08, 91.90req/s]
+write output values:  22%|██▏       | 223/1000 [00:02<00:08, 90.98req/s]
+write output values:  23%|██▎       | 233/1000 [00:02<00:09, 82.57req/s]
+write output values:  24%|██▍       | 243/1000 [00:02<00:08, 85.74req/s]
+write output values:  25%|██▌       | 252/1000 [00:02<00:08, 85.76req/s]
+write output values:  26%|██▌       | 262/1000 [00:02<00:08, 87.21req/s]
+write output values:  27%|██▋       | 272/1000 [00:03<00:08, 87.40req/s]
+write output values:  28%|██▊       | 282/1000 [00:03<00:08, 88.97req/s]
+write output values:  29%|██▉       | 291/1000 [00:03<00:08, 88.06req/s]
+write output values:  30%|███       | 303/1000 [00:03<00:07, 96.67req/s]
+write output values:  31%|███▏      | 313/1000 [00:03<00:07, 91.34req/s]
+write output values:  32%|███▎      | 325/1000 [00:03<00:06, 98.53req/s]
+write output values:  34%|███▎      | 336/1000 [00:03<00:06, 101.05req/s]
+write output values:  35%|███▍      | 348/1000 [00:03<00:06, 101.93req/s]
+write output values:  36%|███▌      | 360/1000 [00:03<00:05, 106.71req/s]
+write output values:  37%|███▋      | 371/1000 [00:04<00:05, 105.42req/s]
+write output values:  38%|███▊      | 382/1000 [00:04<00:06, 101.63req/s]
+write output values:  39%|███▉      | 393/1000 [00:04<00:06, 97.80req/s] 
+write output values:  40%|████      | 403/1000 [00:04<00:06, 87.60req/s]
+write output values:  42%|████▏     | 415/1000 [00:04<00:06, 94.32req/s]
+write output values:  43%|████▎     | 428/1000 [00:04<00:05, 102.03req/s]
+write output values:  44%|████▍     | 439/1000 [00:04<00:05, 97.27req/s] 
+write output values:  45%|████▌     | 450/1000 [00:04<00:05, 98.40req/s]
+write output values:  46%|████▌     | 460/1000 [00:04<00:06, 88.36req/s]
+write output values:  47%|████▋     | 472/1000 [00:05<00:05, 94.07req/s]
+write output values:  48%|████▊     | 482/1000 [00:05<00:05, 94.11req/s]
+write output values:  49%|████▉     | 493/1000 [00:05<00:05, 95.13req/s]
+write output values:  51%|█████     | 506/1000 [00:05<00:04, 101.86req/s]
+write output values:  52%|█████▏    | 517/1000 [00:05<00:04, 101.67req/s]
+write output values:  53%|█████▎    | 528/1000 [00:05<00:04, 94.91req/s] 
+write output values:  54%|█████▍    | 538/1000 [00:05<00:05, 89.25req/s]
+write output values:  55%|█████▍    | 549/1000 [00:05<00:04, 94.04req/s]
+write output values:  56%|█████▌    | 559/1000 [00:06<00:04, 91.68req/s]
+write output values:  57%|█████▋    | 570/1000 [00:06<00:04, 94.19req/s]
+write output values:  58%|█████▊    | 581/1000 [00:06<00:04, 98.20req/s]
+write output values:  59%|█████▉    | 593/1000 [00:06<00:03, 101.89req/s]
+write output values:  60%|██████    | 604/1000 [00:06<00:03, 100.15req/s]
+write output values:  62%|██████▏   | 615/1000 [00:06<00:03, 102.05req/s]
+write output values:  63%|██████▎   | 626/1000 [00:06<00:03, 98.40req/s] 
+write output values:  64%|██████▎   | 636/1000 [00:06<00:03, 96.95req/s]
+write output values:  65%|██████▍   | 647/1000 [00:06<00:03, 97.38req/s]
+write output values:  66%|██████▌   | 658/1000 [00:06<00:03, 100.42req/s]
+write output values:  67%|██████▋   | 669/1000 [00:07<00:03, 92.56req/s] 
+write output values:  68%|██████▊   | 679/1000 [00:07<00:03, 93.11req/s]
+write output values:  69%|██████▉   | 690/1000 [00:07<00:03, 95.47req/s]
+write output values:  70%|███████   | 700/1000 [00:07<00:03, 93.90req/s]
+write output values:  71%|███████   | 710/1000 [00:07<00:03, 90.54req/s]
+write output values:  72%|███████▏  | 720/1000 [00:07<00:03, 88.88req/s]
+write output values:  73%|███████▎  | 730/1000 [00:07<00:03, 89.70req/s]
+write output values:  74%|███████▍  | 740/1000 [00:07<00:03, 86.13req/s]
+write output values:  75%|███████▌  | 750/1000 [00:08<00:02, 87.53req/s]
+write output values:  76%|███████▌  | 759/1000 [00:08<00:02, 86.77req/s]
+write output values:  77%|███████▋  | 768/1000 [00:08<00:02, 85.48req/s]
+write output values:  78%|███████▊  | 778/1000 [00:08<00:02, 88.71req/s]
+write output values:  79%|███████▊  | 787/1000 [00:08<00:02, 85.40req/s]
+write output values:  80%|███████▉  | 797/1000 [00:08<00:02, 88.75req/s]
+write output values:  81%|████████  | 808/1000 [00:08<00:02, 91.79req/s]
+write output values:  82%|████████▏ | 818/1000 [00:08<00:01, 93.77req/s]
+write output values:  83%|████████▎ | 828/1000 [00:08<00:01, 90.91req/s]
+write output values:  84%|████████▍ | 839/1000 [00:09<00:01, 95.56req/s]
+write output values:  85%|████████▍ | 849/1000 [00:09<00:01, 94.19req/s]
+write output values:  86%|████████▌ | 859/1000 [00:09<00:01, 90.87req/s]
+write output values:  87%|████████▋ | 869/1000 [00:09<00:01, 91.48req/s]
+write output values:  88%|████████▊ | 879/1000 [00:09<00:01, 87.39req/s]
+write output values:  89%|████████▉ | 890/1000 [00:09<00:01, 90.62req/s]
+write output values:  90%|█████████ | 900/1000 [00:09<00:01, 82.44req/s]
+write output values:  91%|█████████ | 910/1000 [00:09<00:01, 84.91req/s]
+write output values:  92%|█████████▏| 919/1000 [00:09<00:00, 81.60req/s]
+write output values:  93%|█████████▎| 928/1000 [00:10<00:00, 81.34req/s]
+write output values:  94%|█████████▎| 937/1000 [00:10<00:00, 83.37req/s]
+write output values:  95%|█████████▍| 946/1000 [00:10<00:00, 80.77req/s]
+write output values:  96%|█████████▌| 956/1000 [00:10<00:00, 84.31req/s]
+write output values:  97%|█████████▋| 968/1000 [00:10<00:00, 93.41req/s]
+write output values:  98%|█████████▊| 978/1000 [00:10<00:00, 94.81req/s]
+write output values:  99%|█████████▉| 988/1000 [00:10<00:00, 86.16req/s]
+write output values: 100%|█████████▉| 997/1000 [00:10<00:00, 85.84req/s]
+write output values: 100%|██████████| 1000/1000 [00:10<00:00, 91.81req/s]
+  Saving output metadata to /tmp/fastkernels_embedding_outputs/042_bench_embedding_BAAI_bge-m3/bge-m3-mldr-docs/vllm_outputs_meta.json
+  vLLM latency single-request: 3 warmup, 5 timed iterations
+
+vLLM warmup single-request:   0%|          | 0/3 [00:00<?, ?iter/s]  vLLM encode: 1 requests
+
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 33.43it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 33.28it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+  vLLM encode: 1 requests
+
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 80.70it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 80.11it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+  vLLM encode: 1 requests
+
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 80.85it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 80.27it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+
+vLLM warmup single-request: 100%|██████████| 3/3 [00:00<00:00, 53.72iter/s]
+
+vLLM latency single-request:   0%|          | 0/5 [00:00<?, ?iter/s]  vLLM encode: 1 requests
+
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 82.01it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 81.48it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+  vLLM encode: 1 requests
+
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 80.59it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 79.91it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+  vLLM encode: 1 requests
+
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 81.20it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 80.51it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+  vLLM encode: 1 requests
+
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 79.98it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 79.45it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+  vLLM encode: 1 requests
+
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 80.15it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00, 79.55it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+
+vLLM latency single-request: 100%|██████████| 5/5 [00:00<00:00, 76.81iter/s]
+  vLLM latency fixed-batch-32: 3 warmup, 5 timed iterations
+
+vLLM warmup fixed-batch-32:   0%|          | 0/3 [00:00<?, ?iter/s]  vLLM encode: 32 requests
+
+
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  31%|███▏      | 10/32 [00:00<00:00, 86.69it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  59%|█████▉    | 19/32 [00:00<00:00, 62.01it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  84%|████████▍ | 27/32 [00:00<00:00, 67.98it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 67.98it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 75.84it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+
+vLLM warmup fixed-batch-32:  33%|███▎      | 1/3 [00:00<00:00,  2.37iter/s]  vLLM encode: 32 requests
+
+
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  38%|███▊      | 12/32 [00:00<00:00, 105.38it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  84%|████████▍ | 27/32 [00:00<00:00, 124.96it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 124.96it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 131.60it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+
+vLLM warmup fixed-batch-32:  67%|██████▋   | 2/3 [00:00<00:00,  3.15iter/s]  vLLM encode: 32 requests
+
+
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  38%|███▊      | 12/32 [00:00<00:00, 104.83it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  84%|████████▍ | 27/32 [00:00<00:00, 124.23it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 124.23it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 130.87it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+
+vLLM warmup fixed-batch-32: 100%|██████████| 3/3 [00:00<00:00,  3.52iter/s]
+vLLM warmup fixed-batch-32: 100%|██████████| 3/3 [00:00<00:00,  3.29iter/s]
+
+vLLM latency fixed-batch-32:   0%|          | 0/5 [00:00<?, ?iter/s]  vLLM encode: 32 requests
+
+
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  38%|███▊      | 12/32 [00:00<00:00, 105.27it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  84%|████████▍ | 27/32 [00:00<00:00, 127.03it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 127.03it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 133.30it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+
+vLLM latency fixed-batch-32:  20%|██        | 1/5 [00:00<00:00,  4.16iter/s]  vLLM encode: 32 requests
+
+
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  38%|███▊      | 12/32 [00:00<00:00, 104.53it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  84%|████████▍ | 27/32 [00:00<00:00, 126.36it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 126.36it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 132.64it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+
+vLLM latency fixed-batch-32:  40%|████      | 2/5 [00:00<00:00,  4.14iter/s]  vLLM encode: 32 requests
+
+
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  38%|███▊      | 12/32 [00:00<00:00, 104.58it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  84%|████████▍ | 27/32 [00:00<00:00, 127.06it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 127.06it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 133.23it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+
+vLLM latency fixed-batch-32:  60%|██████    | 3/5 [00:00<00:00,  4.15iter/s]  vLLM encode: 32 requests
+
+
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  38%|███▊      | 12/32 [00:00<00:00, 104.19it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  84%|████████▍ | 27/32 [00:00<00:00, 127.13it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 127.13it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 133.36it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+
+vLLM latency fixed-batch-32:  80%|████████  | 4/5 [00:00<00:00,  4.15iter/s]  vLLM encode: 32 requests
+
+
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  31%|███▏      | 10/32 [00:00<00:00, 99.21it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:  84%|████████▍ | 27/32 [00:00<00:00, 123.94it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 123.94it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 32/32 [00:00<00:00, 130.09it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+
+vLLM latency fixed-batch-32: 100%|██████████| 5/5 [00:01<00:00,  4.12iter/s]
+vLLM latency fixed-batch-32: 100%|██████████| 5/5 [00:01<00:00,  4.13iter/s]
+[rank0]:[W821 11:32:08.987762315 ProcessGroupNCCL.cpp:1575] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+  Launching fastkernels worker for bge-m3-mldr-docs
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels [BAAI/bge-m3] token_embed
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+  Loading fastkernels model BAAI/bge-m3 on cuda:0
+
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]
+Fetching 15 files: 100%|██████████| 15/15 [00:00<00:00, 1450.65it/s]
+  fastkernels warmup: 4 requests
+  fastkernels encode: 4 requests
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/1 [00:00<?, ?batch/s]/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_None_0125_T'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 1/1 [00:04<00:00,  4.08s/batch]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 1/1 [00:04<00:00,  4.08s/batch]
+  fastkernels timed throughput encode starting: 1000 requests
+  fastkernels encode: 1000 requests
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/333 [00:00<?, ?batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   1%|          | 2/333 [00:00<00:26, 12.32batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   2%|▏         | 8/333 [00:00<00:10, 32.26batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   4%|▎         | 12/333 [00:00<00:10, 31.20batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   5%|▌         | 17/333 [00:00<00:08, 35.56batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   7%|▋         | 22/333 [00:00<00:08, 38.13batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   8%|▊         | 27/333 [00:00<00:07, 40.27batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  10%|▉         | 32/333 [00:00<00:07, 42.52batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  11%|█▏        | 38/333 [00:00<00:06, 44.97batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  13%|█▎        | 44/333 [00:01<00:06, 46.80batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  15%|█▍        | 49/333 [00:01<00:06, 46.91batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  16%|█▌        | 54/333 [00:01<00:06, 44.52batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  18%|█▊        | 59/333 [00:01<00:05, 45.91batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  19%|█▉        | 64/333 [00:01<00:05, 45.32batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  21%|██        | 70/333 [00:01<00:05, 47.16batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  23%|██▎       | 75/333 [00:01<00:05, 46.72batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  24%|██▍       | 80/333 [00:01<00:05, 46.42batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  26%|██▌       | 85/333 [00:01<00:05, 45.87batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  27%|██▋       | 90/333 [00:02<00:05, 44.38batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  29%|██▊       | 95/333 [00:02<00:05, 45.09batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  30%|███       | 100/333 [00:02<00:05, 45.46batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  32%|███▏      | 105/333 [00:02<00:05, 45.36batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  33%|███▎      | 111/333 [00:02<00:04, 47.51batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  35%|███▍      | 116/333 [00:02<00:04, 46.75batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  36%|███▋      | 121/333 [00:02<00:04, 47.40batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  38%|███▊      | 126/333 [00:02<00:04, 48.03batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  39%|███▉      | 131/333 [00:02<00:04, 46.20batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  41%|████      | 136/333 [00:03<00:04, 45.10batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  42%|████▏     | 141/333 [00:03<00:04, 45.29batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  44%|████▍     | 146/333 [00:03<00:04, 44.04batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  45%|████▌     | 151/333 [00:03<00:04, 45.45batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  47%|████▋     | 156/333 [00:03<00:03, 45.05batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  48%|████▊     | 161/333 [00:03<00:03, 44.44batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  50%|████▉     | 166/333 [00:03<00:03, 45.73batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  51%|█████▏    | 171/333 [00:03<00:03, 46.73batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  53%|█████▎    | 176/333 [00:03<00:03, 45.53batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  54%|█████▍    | 181/333 [00:04<00:03, 45.85batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  56%|█████▌    | 186/333 [00:04<00:03, 45.40batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  57%|█████▋    | 191/333 [00:04<00:03, 40.16batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  59%|█████▉    | 196/333 [00:04<00:03, 41.63batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  61%|██████    | 202/333 [00:04<00:02, 43.76batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  62%|██████▏   | 208/333 [00:04<00:02, 45.70batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  64%|██████▍   | 214/333 [00:04<00:02, 46.88batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  66%|██████▌   | 219/333 [00:04<00:02, 46.29batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  67%|██████▋   | 224/333 [00:05<00:02, 46.21batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  69%|██████▉   | 229/333 [00:05<00:02, 46.88batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  70%|███████   | 234/333 [00:05<00:02, 45.42batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  72%|███████▏  | 239/333 [00:05<00:02, 46.66batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  73%|███████▎  | 244/333 [00:05<00:01, 45.63batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  75%|███████▍  | 249/333 [00:05<00:01, 45.14batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  76%|███████▋  | 254/333 [00:05<00:01, 46.26batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  78%|███████▊  | 259/333 [00:05<00:01, 45.83batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  80%|███████▉  | 265/333 [00:05<00:01, 47.43batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  81%|████████  | 270/333 [00:06<00:01, 46.85batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  83%|████████▎ | 275/333 [00:06<00:01, 47.00batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  84%|████████▍ | 280/333 [00:06<00:01, 47.24batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  86%|████████▌ | 285/333 [00:06<00:01, 46.87batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  87%|████████▋ | 290/333 [00:06<00:00, 46.61batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  89%|████████▊ | 295/333 [00:06<00:00, 46.80batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  90%|█████████ | 300/333 [00:06<00:00, 46.64batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  92%|█████████▏| 305/333 [00:06<00:00, 44.52batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  93%|█████████▎| 310/333 [00:06<00:00, 44.20batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  95%|█████████▍| 315/333 [00:07<00:00, 43.40batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  96%|█████████▌| 320/333 [00:07<00:00, 43.94batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  98%|█████████▊| 325/333 [00:07<00:00, 45.00batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  99%|█████████▉| 330/333 [00:07<00:00, 44.86batch/s]
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 333/333 [00:07<00:00, 44.72batch/s]
+  Materializing 1000 outputs on CPU
+
+materialize outputs:   0%|          | 0/1000 [00:00<?, ?req/s]
+materialize outputs: 100%|██████████| 1000/1000 [00:00<00:00, 3557509.75req/s]
+  Saving output tensor values to /tmp/fastkernels_embedding_outputs/042_bench_embedding_BAAI_bge-m3/bge-m3-mldr-docs/fastkernels_outputs_values.npy (4,568,071 x 1024, 8.71 GiB, uncompressed)
+
+write output values:   0%|          | 0/1000 [00:00<?, ?req/s]
+write output values:   1%|          | 6/1000 [00:00<00:19, 50.34req/s]
+write output values:   1%|          | 12/1000 [00:00<00:18, 52.85req/s]
+write output values:   2%|▏         | 19/1000 [00:00<00:17, 57.70req/s]
+write output values:   2%|▎         | 25/1000 [00:00<00:16, 58.35req/s]
+write output values:   3%|▎         | 31/1000 [00:00<00:16, 57.90req/s]
+write output values:   4%|▍         | 39/1000 [00:00<00:14, 64.92req/s]
+write output values:   5%|▍         | 46/1000 [00:00<00:14, 65.11req/s]
+write output values:   5%|▌         | 53/1000 [00:00<00:15, 60.91req/s]
+write output values:   6%|▌         | 60/1000 [00:00<00:14, 62.96req/s]
+write output values:   7%|▋         | 67/1000 [00:01<00:15, 59.61req/s]
+write output values:   8%|▊         | 75/1000 [00:01<00:14, 63.16req/s]
+write output values:   8%|▊         | 82/1000 [00:01<00:15, 61.06req/s]
+write output values:   9%|▉         | 89/1000 [00:01<00:14, 63.03req/s]
+write output values:  10%|▉         | 96/1000 [00:01<00:15, 58.66req/s]
+write output values:  10%|█         | 103/1000 [00:01<00:14, 61.05req/s]
+write output values:  11%|█         | 111/1000 [00:01<00:13, 64.48req/s]
+write output values:  12%|█▏        | 118/1000 [00:01<00:15, 57.81req/s]
+write output values:  12%|█▎        | 125/1000 [00:02<00:14, 60.52req/s]
+write output values:  13%|█▎        | 132/1000 [00:02<00:14, 60.89req/s]
+write output values:  14%|█▍        | 139/1000 [00:02<00:14, 58.97req/s]
+write output values:  15%|█▍        | 147/1000 [00:02<00:13, 64.37req/s]
+write output values:  15%|█▌        | 154/1000 [00:02<00:13, 63.93req/s]
+write output values:  16%|█▌        | 161/1000 [00:02<00:13, 60.95req/s]
+write output values:  17%|█▋        | 168/1000 [00:02<00:14, 58.77req/s]
+write output values:  18%|█▊        | 176/1000 [00:02<00:13, 62.12req/s]
+write output values:  18%|█▊        | 183/1000 [00:02<00:12, 64.13req/s]
+write output values:  19%|█▉        | 190/1000 [00:03<00:12, 62.94req/s]
+write output values:  20%|█▉        | 198/1000 [00:03<00:12, 64.40req/s]
+write output values:  20%|██        | 205/1000 [00:03<00:12, 61.74req/s]
+write output values:  21%|██▏       | 213/1000 [00:03<00:12, 63.11req/s]
+write output values:  22%|██▏       | 221/1000 [00:03<00:12, 63.77req/s]
+write output values:  23%|██▎       | 228/1000 [00:03<00:13, 56.95req/s]
+write output values:  23%|██▎       | 234/1000 [00:03<00:14, 53.82req/s]
+write output values:  24%|██▍       | 242/1000 [00:03<00:13, 57.94req/s]
+write output values:  25%|██▍       | 249/1000 [00:04<00:12, 57.86req/s]
+write output values:  26%|██▌       | 255/1000 [00:04<00:13, 57.09req/s]
+write output values:  26%|██▋       | 263/1000 [00:04<00:11, 62.60req/s]
+write output values:  27%|██▋       | 271/1000 [00:04<00:10, 66.71req/s]
+write output values:  28%|██▊       | 280/1000 [00:04<00:10, 68.53req/s]
+write output values:  29%|██▉       | 289/1000 [00:04<00:10, 70.56req/s]
+write output values:  30%|███       | 301/1000 [00:04<00:08, 81.75req/s]
+write output values:  31%|███       | 310/1000 [00:04<00:08, 80.44req/s]
+write output values:  32%|███▏      | 320/1000 [00:05<00:08, 84.65req/s]
+write output values:  33%|███▎      | 331/1000 [00:05<00:07, 90.96req/s]
+write output values:  34%|███▍      | 342/1000 [00:05<00:07, 92.11req/s]
+write output values:  35%|███▌      | 354/1000 [00:05<00:06, 96.10req/s]
+write output values:  36%|███▋      | 365/1000 [00:05<00:06, 99.57req/s]
+write output values:  38%|███▊      | 376/1000 [00:05<00:06, 93.98req/s]
+write output values:  39%|███▊      | 387/1000 [00:05<00:06, 96.17req/s]
+write output values:  40%|███▉      | 397/1000 [00:05<00:06, 89.03req/s]
+write output values:  41%|████      | 407/1000 [00:05<00:06, 88.16req/s]
+write output values:  42%|████▏     | 417/1000 [00:06<00:06, 90.63req/s]
+write output values:  43%|████▎     | 429/1000 [00:06<00:05, 95.56req/s]
+write output values:  44%|████▍     | 439/1000 [00:06<00:06, 87.06req/s]
+write output values:  45%|████▍     | 448/1000 [00:06<00:06, 86.89req/s]
+write output values:  46%|████▌     | 457/1000 [00:06<00:07, 74.85req/s]
+write output values:  46%|████▋     | 465/1000 [00:06<00:07, 74.60req/s]
+write output values:  48%|████▊     | 476/1000 [00:06<00:06, 81.46req/s]
+write output values:  48%|████▊     | 485/1000 [00:06<00:06, 79.20req/s]
+write output values:  50%|████▉     | 498/1000 [00:06<00:05, 90.97req/s]
+write output values:  51%|█████     | 508/1000 [00:07<00:05, 93.19req/s]
+write output values:  52%|█████▏    | 518/1000 [00:07<00:05, 89.27req/s]
+write output values:  53%|█████▎    | 528/1000 [00:07<00:05, 87.14req/s]
+write output values:  54%|█████▎    | 537/1000 [00:07<00:05, 82.01req/s]
+write output values:  55%|█████▍    | 547/1000 [00:07<00:05, 86.35req/s]
+write output values:  56%|█████▌    | 556/1000 [00:07<00:05, 85.04req/s]
+write output values:  56%|█████▋    | 565/1000 [00:07<00:05, 83.55req/s]
+write output values:  57%|█████▊    | 575/1000 [00:07<00:04, 87.95req/s]
+write output values:  59%|█████▊    | 586/1000 [00:08<00:04, 91.52req/s]
+write output values:  60%|█████▉    | 596/1000 [00:08<00:04, 91.77req/s]
+write output values:  61%|██████    | 606/1000 [00:08<00:04, 89.51req/s]
+write output values:  62%|██████▏   | 615/1000 [00:08<00:04, 88.80req/s]
+write output values:  62%|██████▏   | 624/1000 [00:08<00:04, 84.17req/s]
+write output values:  63%|██████▎   | 634/1000 [00:08<00:04, 87.42req/s]
+write output values:  64%|██████▍   | 643/1000 [00:08<00:04, 87.78req/s]
+write output values:  66%|██████▌   | 655/1000 [00:08<00:03, 96.59req/s]
+write output values:  66%|██████▋   | 665/1000 [00:08<00:03, 85.97req/s]
+write output values:  67%|██████▋   | 674/1000 [00:09<00:04, 81.16req/s]
+write output values:  68%|██████▊   | 685/1000 [00:09<00:03, 87.58req/s]
+write output values:  70%|██████▉   | 696/1000 [00:09<00:03, 90.95req/s]
+write output values:  71%|███████   | 706/1000 [00:09<00:03, 87.24req/s]
+write output values:  72%|███████▏  | 715/1000 [00:09<00:03, 83.46req/s]
+write output values:  72%|███████▏  | 724/1000 [00:09<00:03, 83.93req/s]
+write output values:  73%|███████▎  | 733/1000 [00:09<00:03, 82.32req/s]
+write output values:  74%|███████▍  | 742/1000 [00:09<00:03, 84.21req/s]
+write output values:  75%|███████▌  | 751/1000 [00:09<00:02, 83.53req/s]
+write output values:  76%|███████▌  | 760/1000 [00:10<00:02, 83.94req/s]
+write output values:  77%|███████▋  | 769/1000 [00:10<00:02, 82.98req/s]
+write output values:  78%|███████▊  | 779/1000 [00:10<00:02, 84.90req/s]
+write output values:  79%|███████▉  | 788/1000 [00:10<00:02, 84.34req/s]
+write output values:  80%|███████▉  | 798/1000 [00:10<00:02, 88.68req/s]
+write output values:  81%|████████  | 807/1000 [00:10<00:02, 87.75req/s]
+write output values:  82%|████████▏ | 817/1000 [00:10<00:02, 90.72req/s]
+write output values:  83%|████████▎ | 827/1000 [00:10<00:02, 85.22req/s]
+write output values:  84%|████████▎ | 836/1000 [00:10<00:01, 85.46req/s]
+write output values:  84%|████████▍ | 845/1000 [00:11<00:01, 80.31req/s]
+write output values:  85%|████████▌ | 854/1000 [00:11<00:01, 80.51req/s]
+write output values:  86%|████████▋ | 863/1000 [00:11<00:01, 77.62req/s]
+write output values:  87%|████████▋ | 873/1000 [00:11<00:01, 81.15req/s]
+write output values:  88%|████████▊ | 882/1000 [00:11<00:01, 83.31req/s]
+write output values:  89%|████████▉ | 891/1000 [00:11<00:01, 81.18req/s]
+write output values:  90%|█████████ | 900/1000 [00:11<00:01, 74.37req/s]
+write output values:  91%|█████████ | 909/1000 [00:11<00:01, 76.42req/s]
+write output values:  92%|█████████▏| 917/1000 [00:11<00:01, 73.19req/s]
+write output values:  92%|█████████▎| 925/1000 [00:12<00:01, 74.96req/s]
+write output values:  93%|█████████▎| 933/1000 [00:12<00:00, 73.19req/s]
+write output values:  94%|█████████▍| 943/1000 [00:12<00:00, 76.49req/s]
+write output values:  95%|█████████▌| 951/1000 [00:12<00:00, 76.21req/s]
+write output values:  96%|█████████▌| 960/1000 [00:12<00:00, 78.49req/s]
+write output values:  97%|█████████▋| 973/1000 [00:12<00:00, 88.75req/s]
+write output values:  98%|█████████▊| 982/1000 [00:12<00:00, 82.51req/s]
+write output values:  99%|█████████▉| 991/1000 [00:12<00:00, 80.87req/s]
+write output values: 100%|██████████| 1000/1000 [00:13<00:00, 78.95req/s]
+write output values: 100%|██████████| 1000/1000 [00:13<00:00, 76.82req/s]
+  Saving output metadata to /tmp/fastkernels_embedding_outputs/042_bench_embedding_BAAI_bge-m3/bge-m3-mldr-docs/fastkernels_outputs_meta.json
+  fastkernels latency single-request: 3 warmup, 5 timed iterations
+
+kb warmup single-request:   0%|          | 0/3 [00:00<?, ?iter/s]  fastkernels encode: 1 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/1 [00:00<?, ?batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 1/1 [00:00<00:00, 90.81batch/s]
+  fastkernels encode: 1 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/1 [00:00<?, ?batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 1/1 [00:00<00:00, 127.41batch/s]
+  fastkernels encode: 1 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/1 [00:00<?, ?batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 1/1 [00:00<00:00, 129.60batch/s]
+
+kb warmup single-request: 100%|██████████| 3/3 [00:00<00:00, 70.99iter/s]
+
+kb latency single-request:   0%|          | 0/5 [00:00<?, ?iter/s]  fastkernels encode: 1 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/1 [00:00<?, ?batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 1/1 [00:00<00:00, 128.36batch/s]
+  fastkernels encode: 1 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/1 [00:00<?, ?batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 1/1 [00:00<00:00, 132.80batch/s]
+  fastkernels encode: 1 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/1 [00:00<?, ?batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 1/1 [00:00<00:00, 130.58batch/s]
+  fastkernels encode: 1 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/1 [00:00<?, ?batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 1/1 [00:00<00:00, 132.50batch/s]
+  fastkernels encode: 1 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/1 [00:00<?, ?batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 1/1 [00:00<00:00, 133.12batch/s]
+
+kb latency single-request: 100%|██████████| 5/5 [00:00<00:00, 76.45iter/s]
+  fastkernels latency fixed-batch-32: 3 warmup, 5 timed iterations
+
+kb warmup fixed-batch-32:   0%|          | 0/3 [00:00<?, ?iter/s]  fastkernels encode: 32 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/11 [00:00<?, ?batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  45%|████▌     | 5/11 [00:00<00:00, 48.85batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 48.88batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 48.85batch/s]
+
+kb warmup fixed-batch-32:  33%|███▎      | 1/3 [00:00<00:00,  3.98iter/s]  fastkernels encode: 32 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/11 [00:00<?, ?batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  45%|████▌     | 5/11 [00:00<00:00, 48.82batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 49.41batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 49.30batch/s]
+
+kb warmup fixed-batch-32:  67%|██████▋   | 2/3 [00:00<00:00,  4.03iter/s]  fastkernels encode: 32 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/11 [00:00<?, ?batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  45%|████▌     | 5/11 [00:00<00:00, 49.22batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 49.05batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 49.05batch/s]
+
+kb warmup fixed-batch-32: 100%|██████████| 3/3 [00:00<00:00,  4.08iter/s]
+kb warmup fixed-batch-32: 100%|██████████| 3/3 [00:00<00:00,  4.06iter/s]
+
+kb latency fixed-batch-32:   0%|          | 0/5 [00:00<?, ?iter/s]  fastkernels encode: 32 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/11 [00:00<?, ?batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  45%|████▌     | 5/11 [00:00<00:00, 48.65batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  91%|█████████ | 10/11 [00:00<00:00, 49.39batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 48.13batch/s]
+
+kb latency fixed-batch-32:  20%|██        | 1/5 [00:00<00:00,  4.03iter/s]  fastkernels encode: 32 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/11 [00:00<?, ?batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  45%|████▌     | 5/11 [00:00<00:00, 48.98batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 49.01batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 48.98batch/s]
+
+kb latency fixed-batch-32:  40%|████      | 2/5 [00:00<00:00,  4.06iter/s]  fastkernels encode: 32 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/11 [00:00<?, ?batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  45%|████▌     | 5/11 [00:00<00:00, 49.16batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 48.33batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 48.41batch/s]
+
+kb latency fixed-batch-32:  60%|██████    | 3/5 [00:00<00:00,  4.10iter/s]  fastkernels encode: 32 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/11 [00:00<?, ?batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  45%|████▌     | 5/11 [00:00<00:00, 47.97batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 48.21batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 48.14batch/s]
+
+kb latency fixed-batch-32:  80%|████████  | 4/5 [00:00<00:00,  4.07iter/s]  fastkernels encode: 32 requests
+
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):   0%|          | 0/11 [00:00<?, ?batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq):  45%|████▌     | 5/11 [00:00<00:00, 49.13batch/s][A
+
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 48.40batch/s][A
+fastkernels scheduled batches (<= 16384 tok, <= 1024 seq): 100%|██████████| 11/11 [00:00<00:00, 48.48batch/s]
+
+kb latency fixed-batch-32: 100%|██████████| 5/5 [00:01<00:00,  4.06iter/s]
+kb latency fixed-batch-32: 100%|██████████| 5/5 [00:01<00:00,  4.06iter/s]
+  Aggregating throughput results for bge-m3-mldr-docs
+  Correctness: comparing 1000 request outputs
+
+
+compare outputs:   0%|          | 0/1000 [00:00<?, ?req/s][A
+
+compare outputs:   0%|          | 1/1000 [00:00<01:47,  9.31req/s][A
+
+compare outputs:   0%|          | 4/1000 [00:00<00:47, 20.82req/s][A
+
+compare outputs:   1%|          | 7/1000 [00:00<00:44, 22.25req/s][A
+
+compare outputs:   1%|          | 11/1000 [00:00<00:36, 27.42req/s][A
+
+compare outputs:   1%|▏         | 14/1000 [00:00<00:38, 25.93req/s][A
+
+compare outputs:   2%|▏         | 18/1000 [00:00<00:33, 29.30req/s][A
+
+compare outputs:   2%|▏         | 22/1000 [00:00<00:30, 32.43req/s][A
+
+compare outputs:   3%|▎         | 28/1000 [00:00<00:25, 38.18req/s][A
+
+compare outputs:   3%|▎         | 32/1000 [00:01<00:26, 36.38req/s][A
+
+compare outputs:   4%|▍         | 38/1000 [00:01<00:23, 40.89req/s][A
+
+compare outputs:   4%|▍         | 43/1000 [00:01<00:22, 42.16req/s][A
+
+compare outputs:   5%|▍         | 48/1000 [00:01<00:24, 38.73req/s][A
+
+compare outputs:   5%|▌         | 53/1000 [00:01<00:23, 40.71req/s][A
+
+compare outputs:   6%|▌         | 59/1000 [00:01<00:21, 43.22req/s][A
+
+compare outputs:   6%|▋         | 64/1000 [00:01<00:22, 41.12req/s][A
+
+compare outputs:   7%|▋         | 69/1000 [00:01<00:21, 43.22req/s][A
+
+compare outputs:   7%|▋         | 74/1000 [00:02<00:22, 41.84req/s][A
+
+compare outputs:   8%|▊         | 79/1000 [00:02<00:21, 43.17req/s][A
+
+compare outputs:   8%|▊         | 84/1000 [00:02<00:23, 38.48req/s][A
+
+compare outputs:   9%|▉         | 90/1000 [00:02<00:20, 43.60req/s][A
+
+compare outputs:  10%|▉         | 95/1000 [00:02<00:21, 41.90req/s][A
+
+compare outputs:  10%|█         | 101/1000 [00:02<00:20, 43.93req/s][A
+
+compare outputs:  11%|█         | 106/1000 [00:02<00:20, 44.25req/s][A
+
+compare outputs:  11%|█▏        | 113/1000 [00:02<00:18, 48.98req/s][A
+
+compare outputs:  12%|█▏        | 118/1000 [00:03<00:21, 40.85req/s][A
+
+compare outputs:  12%|█▏        | 123/1000 [00:03<00:21, 40.74req/s][A
+
+compare outputs:  13%|█▎        | 128/1000 [00:03<00:20, 42.98req/s][A
+
+compare outputs:  13%|█▎        | 133/1000 [00:03<00:20, 41.46req/s][A
+
+compare outputs:  14%|█▍        | 138/1000 [00:03<00:21, 40.59req/s][A
+
+compare outputs:  14%|█▍        | 143/1000 [00:03<00:20, 41.03req/s][A
+
+compare outputs:  15%|█▍        | 149/1000 [00:03<00:19, 43.62req/s][A
+
+compare outputs:  15%|█▌        | 154/1000 [00:03<00:20, 42.16req/s][A
+
+compare outputs:  16%|█▌        | 159/1000 [00:04<00:20, 40.83req/s][A
+
+compare outputs:  16%|█▋        | 164/1000 [00:04<00:23, 36.14req/s][A
+
+compare outputs:  17%|█▋        | 169/1000 [00:04<00:22, 37.33req/s][A
+
+compare outputs:  18%|█▊        | 175/1000 [00:04<00:19, 42.55req/s][A
+
+compare outputs:  18%|█▊        | 180/1000 [00:04<00:18, 43.82req/s][A
+
+compare outputs:  19%|█▊        | 186/1000 [00:04<00:18, 44.54req/s][A
+
+compare outputs:  19%|█▉        | 191/1000 [00:04<00:18, 43.07req/s][A
+
+compare outputs:  20%|█▉        | 197/1000 [00:04<00:17, 46.14req/s][A
+
+compare outputs:  20%|██        | 202/1000 [00:05<00:18, 42.95req/s][A
+
+compare outputs:  21%|██        | 207/1000 [00:05<00:17, 44.58req/s][A
+
+compare outputs:  21%|██        | 212/1000 [00:05<00:17, 45.39req/s][A
+
+compare outputs:  22%|██▏       | 217/1000 [00:05<00:17, 44.49req/s][A
+
+compare outputs:  22%|██▏       | 222/1000 [00:05<00:18, 42.30req/s][A
+
+compare outputs:  23%|██▎       | 227/1000 [00:05<00:19, 38.93req/s][A
+
+compare outputs:  23%|██▎       | 231/1000 [00:05<00:20, 38.36req/s][A
+
+compare outputs:  24%|██▎       | 235/1000 [00:05<00:20, 36.61req/s][A
+
+compare outputs:  24%|██▍       | 240/1000 [00:05<00:19, 39.72req/s][A
+
+compare outputs:  24%|██▍       | 245/1000 [00:06<00:19, 38.12req/s][A
+
+compare outputs:  25%|██▍       | 249/1000 [00:06<00:19, 38.14req/s][A
+
+compare outputs:  25%|██▌       | 253/1000 [00:06<00:20, 37.27req/s][A
+
+compare outputs:  26%|██▌       | 258/1000 [00:06<00:18, 39.75req/s][A
+
+compare outputs:  26%|██▋       | 263/1000 [00:06<00:18, 39.91req/s][A
+
+compare outputs:  27%|██▋       | 268/1000 [00:06<00:19, 37.16req/s][A
+
+compare outputs:  27%|██▋       | 274/1000 [00:06<00:18, 40.12req/s][A
+
+compare outputs:  28%|██▊       | 280/1000 [00:06<00:17, 40.74req/s][A
+
+compare outputs:  28%|██▊       | 285/1000 [00:07<00:17, 40.79req/s][A
+
+compare outputs:  29%|██▉       | 290/1000 [00:07<00:18, 38.84req/s][A
+
+compare outputs:  30%|██▉       | 296/1000 [00:07<00:16, 43.20req/s][A
+
+compare outputs:  30%|███       | 301/1000 [00:07<00:15, 44.90req/s][A
+
+compare outputs:  31%|███       | 306/1000 [00:07<00:15, 44.88req/s][A
+
+compare outputs:  31%|███       | 311/1000 [00:07<00:16, 42.89req/s][A
+
+compare outputs:  32%|███▏      | 316/1000 [00:07<00:16, 42.26req/s][A
+
+compare outputs:  32%|███▏      | 323/1000 [00:07<00:14, 48.17req/s][A
+
+compare outputs:  33%|███▎      | 329/1000 [00:08<00:13, 49.28req/s][A
+
+compare outputs:  33%|███▎      | 334/1000 [00:08<00:13, 49.38req/s][A
+
+compare outputs:  34%|███▍      | 340/1000 [00:08<00:13, 50.35req/s][A
+
+compare outputs:  35%|███▍      | 346/1000 [00:08<00:12, 52.93req/s][A
+
+compare outputs:  35%|███▌      | 352/1000 [00:08<00:12, 52.43req/s][A
+
+compare outputs:  36%|███▌      | 358/1000 [00:08<00:12, 53.29req/s][A
+
+compare outputs:  36%|███▋      | 364/1000 [00:08<00:11, 54.41req/s][A
+
+compare outputs:  37%|███▋      | 370/1000 [00:08<00:11, 52.96req/s][A
+
+compare outputs:  38%|███▊      | 376/1000 [00:08<00:12, 48.06req/s][A
+
+compare outputs:  38%|███▊      | 381/1000 [00:09<00:12, 48.48req/s][A
+
+compare outputs:  39%|███▊      | 386/1000 [00:09<00:12, 47.34req/s][A
+
+compare outputs:  39%|███▉      | 391/1000 [00:09<00:13, 46.15req/s][A
+
+compare outputs:  40%|███▉      | 396/1000 [00:09<00:13, 43.68req/s][A
+
+compare outputs:  40%|████      | 401/1000 [00:09<00:15, 39.60req/s][A
+
+compare outputs:  41%|████      | 406/1000 [00:09<00:14, 40.76req/s][A
+
+compare outputs:  41%|████      | 412/1000 [00:09<00:13, 44.90req/s][A
+
+compare outputs:  42%|████▏     | 417/1000 [00:09<00:12, 45.55req/s][A
+
+compare outputs:  42%|████▏     | 423/1000 [00:10<00:12, 47.63req/s][A
+
+compare outputs:  43%|████▎     | 430/1000 [00:10<00:11, 49.27req/s][A
+
+compare outputs:  44%|████▎     | 435/1000 [00:10<00:11, 47.86req/s][A
+
+compare outputs:  44%|████▍     | 440/1000 [00:10<00:11, 46.99req/s][A
+
+compare outputs:  45%|████▍     | 446/1000 [00:10<00:11, 48.81req/s][A
+
+compare outputs:  45%|████▌     | 452/1000 [00:10<00:11, 48.09req/s][A
+
+compare outputs:  46%|████▌     | 457/1000 [00:10<00:12, 43.31req/s][A
+
+compare outputs:  46%|████▌     | 462/1000 [00:10<00:12, 41.40req/s][A
+
+compare outputs:  47%|████▋     | 469/1000 [00:11<00:11, 47.99req/s][A
+
+compare outputs:  47%|████▋     | 474/1000 [00:11<00:11, 46.02req/s][A
+
+compare outputs:  48%|████▊     | 479/1000 [00:11<00:12, 42.86req/s][A
+
+compare outputs:  48%|████▊     | 484/1000 [00:11<00:12, 41.69req/s][A
+
+compare outputs:  49%|████▉     | 489/1000 [00:11<00:11, 42.88req/s][A
+
+compare outputs:  50%|████▉     | 496/1000 [00:11<00:10, 49.75req/s][A
+
+compare outputs:  50%|█████     | 504/1000 [00:11<00:08, 56.39req/s][A
+
+compare outputs:  51%|█████     | 510/1000 [00:11<00:09, 50.72req/s][A
+
+compare outputs:  52%|█████▏    | 516/1000 [00:12<00:10, 48.32req/s][A
+
+compare outputs:  52%|█████▏    | 521/1000 [00:12<00:11, 42.25req/s][A
+
+compare outputs:  53%|█████▎    | 527/1000 [00:12<00:11, 42.98req/s][A
+
+compare outputs:  53%|█████▎    | 532/1000 [00:12<00:11, 42.24req/s][A
+
+compare outputs:  54%|█████▎    | 537/1000 [00:12<00:11, 39.39req/s][A
+
+compare outputs:  54%|█████▍    | 542/1000 [00:12<00:11, 40.31req/s][A
+
+compare outputs:  55%|█████▍    | 547/1000 [00:12<00:11, 39.66req/s][A
+
+compare outputs:  55%|█████▌    | 552/1000 [00:12<00:11, 38.14req/s][A
+
+compare outputs:  56%|█████▌    | 557/1000 [00:13<00:11, 39.31req/s][A
+
+compare outputs:  56%|█████▌    | 562/1000 [00:13<00:10, 41.19req/s][A
+
+compare outputs:  57%|█████▋    | 567/1000 [00:13<00:10, 42.53req/s][A
+
+compare outputs:  57%|█████▋    | 572/1000 [00:13<00:09, 42.98req/s][A
+
+compare outputs:  58%|█████▊    | 577/1000 [00:13<00:09, 44.60req/s][A
+
+compare outputs:  58%|█████▊    | 584/1000 [00:13<00:08, 50.49req/s][A
+
+compare outputs:  59%|█████▉    | 590/1000 [00:13<00:08, 50.39req/s][A
+
+compare outputs:  60%|█████▉    | 596/1000 [00:13<00:09, 44.70req/s][A
+
+compare outputs:  60%|██████    | 601/1000 [00:14<00:08, 45.40req/s][A
+
+compare outputs:  61%|██████    | 606/1000 [00:14<00:08, 45.85req/s][A
+
+compare outputs:  61%|██████    | 612/1000 [00:14<00:07, 48.83req/s][A
+
+compare outputs:  62%|██████▏   | 618/1000 [00:14<00:07, 48.10req/s][A
+
+compare outputs:  62%|██████▏   | 623/1000 [00:14<00:08, 45.35req/s][A
+
+compare outputs:  63%|██████▎   | 628/1000 [00:14<00:08, 45.50req/s][A
+
+compare outputs:  63%|██████▎   | 634/1000 [00:14<00:07, 46.20req/s][A
+
+compare outputs:  64%|██████▍   | 639/1000 [00:14<00:08, 44.07req/s][A
+
+compare outputs:  64%|██████▍   | 644/1000 [00:14<00:08, 44.23req/s][A
+
+compare outputs:  65%|██████▌   | 650/1000 [00:15<00:07, 46.68req/s][A
+
+compare outputs:  66%|██████▌   | 656/1000 [00:15<00:06, 50.09req/s][A
+
+compare outputs:  66%|██████▌   | 662/1000 [00:15<00:07, 43.24req/s][A
+
+compare outputs:  67%|██████▋   | 667/1000 [00:15<00:08, 41.53req/s][A
+
+compare outputs:  67%|██████▋   | 672/1000 [00:15<00:08, 38.04req/s][A
+
+compare outputs:  68%|██████▊   | 676/1000 [00:15<00:08, 38.01req/s][A
+
+compare outputs:  68%|██████▊   | 681/1000 [00:15<00:08, 38.02req/s][A
+
+compare outputs:  69%|██████▊   | 686/1000 [00:16<00:08, 38.95req/s][A
+
+compare outputs:  69%|██████▉   | 692/1000 [00:16<00:07, 43.61req/s][A
+
+compare outputs:  70%|██████▉   | 697/1000 [00:16<00:07, 42.61req/s][A
+
+compare outputs:  70%|███████   | 702/1000 [00:16<00:06, 44.07req/s][A
+
+compare outputs:  71%|███████   | 707/1000 [00:16<00:07, 39.93req/s][A
+
+compare outputs:  71%|███████   | 712/1000 [00:16<00:07, 36.80req/s][A
+
+compare outputs:  72%|███████▏  | 717/1000 [00:16<00:07, 39.66req/s][A
+
+compare outputs:  72%|███████▏  | 722/1000 [00:16<00:07, 39.62req/s][A
+
+compare outputs:  73%|███████▎  | 727/1000 [00:17<00:06, 39.58req/s][A
+
+compare outputs:  73%|███████▎  | 733/1000 [00:17<00:06, 40.55req/s][A
+
+compare outputs:  74%|███████▍  | 738/1000 [00:17<00:06, 38.97req/s][A
+
+compare outputs:  74%|███████▍  | 745/1000 [00:17<00:05, 44.39req/s][A
+
+compare outputs:  75%|███████▌  | 750/1000 [00:17<00:06, 41.14req/s][A
+
+compare outputs:  76%|███████▌  | 755/1000 [00:17<00:05, 41.92req/s][A
+
+compare outputs:  76%|███████▌  | 760/1000 [00:17<00:05, 40.24req/s][A
+
+compare outputs:  76%|███████▋  | 765/1000 [00:17<00:05, 39.36req/s][A
+
+compare outputs:  77%|███████▋  | 769/1000 [00:18<00:06, 38.37req/s][A
+
+compare outputs:  78%|███████▊  | 775/1000 [00:18<00:05, 42.77req/s][A
+
+compare outputs:  78%|███████▊  | 780/1000 [00:18<00:05, 41.33req/s][A
+
+compare outputs:  78%|███████▊  | 785/1000 [00:18<00:05, 40.66req/s][A
+
+compare outputs:  79%|███████▉  | 790/1000 [00:18<00:05, 39.19req/s][A
+
+compare outputs:  79%|███████▉  | 794/1000 [00:18<00:05, 38.96req/s][A
+
+compare outputs:  80%|████████  | 800/1000 [00:18<00:04, 43.41req/s][A
+
+compare outputs:  80%|████████  | 805/1000 [00:18<00:04, 40.85req/s][A
+
+compare outputs:  81%|████████  | 810/1000 [00:19<00:04, 43.06req/s][A
+
+compare outputs:  82%|████████▏ | 816/1000 [00:19<00:03, 46.45req/s][A
+
+compare outputs:  82%|████████▏ | 821/1000 [00:19<00:04, 41.39req/s][A
+
+compare outputs:  83%|████████▎ | 826/1000 [00:19<00:04, 41.08req/s][A
+
+compare outputs:  83%|████████▎ | 831/1000 [00:19<00:04, 39.66req/s][A
+
+compare outputs:  84%|████████▎ | 836/1000 [00:19<00:03, 42.16req/s][A
+
+compare outputs:  84%|████████▍ | 841/1000 [00:19<00:03, 39.89req/s][A
+
+compare outputs:  85%|████████▍ | 846/1000 [00:19<00:03, 40.60req/s][A
+
+compare outputs:  85%|████████▌ | 851/1000 [00:20<00:03, 40.75req/s][A
+
+compare outputs:  86%|████████▌ | 856/1000 [00:20<00:03, 40.39req/s][A
+
+compare outputs:  86%|████████▌ | 861/1000 [00:20<00:03, 37.07req/s][A
+
+compare outputs:  86%|████████▋ | 865/1000 [00:20<00:03, 36.37req/s][A
+
+compare outputs:  87%|████████▋ | 871/1000 [00:20<00:03, 39.09req/s][A
+
+compare outputs:  88%|████████▊ | 876/1000 [00:20<00:03, 38.83req/s][A
+
+compare outputs:  88%|████████▊ | 881/1000 [00:20<00:02, 41.56req/s][A
+
+compare outputs:  89%|████████▊ | 886/1000 [00:20<00:02, 42.22req/s][A
+
+compare outputs:  89%|████████▉ | 891/1000 [00:21<00:02, 41.51req/s][A
+
+compare outputs:  90%|████████▉ | 896/1000 [00:21<00:02, 39.11req/s][A
+
+compare outputs:  90%|█████████ | 900/1000 [00:21<00:02, 35.65req/s][A
+
+compare outputs:  90%|█████████ | 905/1000 [00:21<00:02, 37.58req/s][A
+
+compare outputs:  91%|█████████ | 910/1000 [00:21<00:02, 38.64req/s][A
+
+compare outputs:  91%|█████████▏| 914/1000 [00:21<00:02, 37.73req/s][A
+
+compare outputs:  92%|█████████▏| 918/1000 [00:21<00:02, 37.38req/s][A
+
+compare outputs:  92%|█████████▏| 922/1000 [00:21<00:02, 37.05req/s][A
+
+compare outputs:  93%|█████████▎| 926/1000 [00:21<00:01, 37.51req/s][A
+
+compare outputs:  93%|█████████▎| 931/1000 [00:22<00:01, 37.38req/s][A
+
+compare outputs:  94%|█████████▎| 935/1000 [00:22<00:01, 37.08req/s][A
+
+compare outputs:  94%|█████████▍| 941/1000 [00:22<00:01, 40.98req/s][A
+
+compare outputs:  95%|█████████▍| 946/1000 [00:22<00:01, 36.01req/s][A
+
+compare outputs:  95%|█████████▌| 951/1000 [00:22<00:01, 37.40req/s][A
+
+compare outputs:  96%|█████████▌| 956/1000 [00:22<00:01, 38.17req/s][A
+
+compare outputs:  96%|█████████▌| 960/1000 [00:22<00:01, 37.01req/s][A
+
+compare outputs:  97%|█████████▋| 966/1000 [00:23<00:00, 41.62req/s][A
+
+compare outputs:  97%|█████████▋| 973/1000 [00:23<00:00, 45.68req/s][A
+
+compare outputs:  98%|█████████▊| 978/1000 [00:23<00:00, 44.74req/s][A
+
+compare outputs:  98%|█████████▊| 983/1000 [00:23<00:00, 37.61req/s][A
+
+compare outputs:  99%|█████████▊| 987/1000 [00:23<00:00, 36.68req/s][A
+
+compare outputs:  99%|█████████▉| 992/1000 [00:23<00:00, 39.83req/s][A
+
+compare outputs: 100%|█████████▉| 997/1000 [00:23<00:00, 37.13req/s][A
+compare outputs: 100%|██████████| 1000/1000 [00:23<00:00, 41.85req/s]
+
+embedding workloads: 100%|██████████| 1/1 [03:32<00:00, 212.75s/workload]
+embedding workloads: 100%|██████████| 1/1 [03:32<00:00, 212.75s/workload]
+
+
+========================================================================================================
+  EMBEDDING THROUGHPUT SUMMARY
+========================================================================================================
+  SCENARIO                      REQS     TOKENS FASTKERNELS tok/s   vLLM tok/s  SPEEDUP  CORRECT   MIN COS
+  ------------------------------------------------------------------------------------------------
+  bge-m3-mldr-docs              1000  4,569,071         601,808      255,878    2.35x     PASS  0.998640
+========================================================================================================
+
+================================================================================================================
+  EMBEDDING LATENCY SUMMARY
+================================================================================================================
+  MODEL            SCENARIO             BS   TOKENS  ITERS FASTKERNELS med     vLLM med   KB ms/tok  vLLM ms/tok  SPEEDUP
+  --------------------------------------------------------------------------------------------------------
+  bge-m3           single-request        1    6,638      5 0.0130s         0.0128s        0.00         0.00    0.98x
+  bge-m3           fixed-batch-32       32  152,801      5 0.2478s         0.2407s        0.00         0.00    0.97x
+================================================================================================================
+
+  Results saved to: /code/users/goliaro/validate-b200-check/042_bench_embedding_BAAI_bge-m3/results.json

@@ -1,0 +1,390 @@
+job_index: 29
+name: timm/mobilenetv4_conv_medium.e500_r256_in1k
+harness: bench_timm
+tp: 1
+workloads: default-res, high-res, single-image, batch-8
+CUDA_VISIBLE_DEVICES: 7
+physical_gpus: 7
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_timm --model timm/mobilenetv4_conv_medium.e500_r256_in1k --output-dir /code/users/goliaro/validate-b200-check/029_bench_timm_timm_mobilenetv4_conv_medium.e500_r256_in1k
+
+
+Benchmark: Vision Encoder on B200
+Model: timm/mobilenetv4_conv_medium.e500_r256_in1k
+  timm name: mobilenetv4_conv_medium.e500_r256_in1k
+  kb module: mobilenetv4.MobileNetV4Model
+  default resolution: 256
+  dtype: bfloat16
+Dataset: ILSVRC/imagenet-1k (validation)
+  image_mean: [0.485, 0.456, 0.406]
+  image_std: [0.229, 0.224, 0.225]
+Seed: 42
+Output dir: /code/users/goliaro/validate-b200-check/029_bench_timm_timm_mobilenetv4_conv_medium.e500_r256_in1k
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels vision encoder benchmark
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+Loading fastkernels model: MobileNetV4Model from timm=mobilenetv4_conv_medium.e500_r256_in1k
+  image cache MISS imgs_80ec27b986048512.npy (1000, 3, 256, 256) -- building
+Loading 1000 unique images from ILSVRC/imagenet-1k (validation)...
+  Loaded 1000 unique images
+
+  resize+crop:   0%|          | 0/1000 [00:00<?, ?img/s]
+  resize+crop:   5%|▍         | 48/1000 [00:00<00:01, 476.48img/s]
+  resize+crop:  10%|▉         | 96/1000 [00:00<00:02, 416.76img/s]
+  resize+crop:  14%|█▍        | 141/1000 [00:00<00:01, 430.52img/s]
+  resize+crop:  19%|█▉        | 193/1000 [00:00<00:01, 461.29img/s]
+  resize+crop:  24%|██▍       | 241/1000 [00:00<00:01, 465.43img/s]
+  resize+crop:  29%|██▉       | 288/1000 [00:00<00:01, 444.61img/s]
+  resize+crop:  34%|███▎      | 336/1000 [00:00<00:01, 452.69img/s]
+  resize+crop:  38%|███▊      | 382/1000 [00:00<00:01, 448.13img/s]
+  resize+crop:  43%|████▎     | 427/1000 [00:00<00:01, 441.13img/s]
+  resize+crop:  47%|████▋     | 474/1000 [00:01<00:01, 447.58img/s]
+  resize+crop:  52%|█████▏    | 523/1000 [00:01<00:01, 457.96img/s]
+  resize+crop:  57%|█████▋    | 569/1000 [00:01<00:01, 384.69img/s]
+  resize+crop:  62%|██████▏   | 617/1000 [00:01<00:00, 409.25img/s]
+  resize+crop:  67%|██████▋   | 666/1000 [00:01<00:00, 429.70img/s]
+  resize+crop:  72%|███████▏  | 717/1000 [00:01<00:00, 451.17img/s]
+  resize+crop:  77%|███████▋  | 768/1000 [00:01<00:00, 447.66img/s]
+  resize+crop:  82%|████████▏ | 819/1000 [00:01<00:00, 463.79img/s]
+  resize+crop:  87%|████████▋ | 870/1000 [00:01<00:00, 476.96img/s]
+  resize+crop:  92%|█████████▏| 920/1000 [00:02<00:00, 482.69img/s]
+  resize+crop:  97%|█████████▋| 971/1000 [00:02<00:00, 489.66img/s]
+  resize+crop: 100%|██████████| 1000/1000 [00:02<00:00, 453.82img/s]
+  image cache HIT imgs_7b5df118fa82168f.npy (1000, 3, 512, 512)
+Warmup at 256x256 bs=32 for >=10s
+/tmp/tmpctp4_g08.py:164: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  t = torch.from_numpy(chunk).to(device=self.device, non_blocking=True)
+  warmup iters=2539
+Warmup at 512x512 bs=16 for >=10s
+  warmup iters=2231
+Warmup at 256x256 bs=1 for >=10s
+  warmup iters=2650
+Warmup at 256x256 bs=8 for >=10s
+  warmup iters=2642
+
+fastkernels default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s]
+fastkernels default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=32, ips=6452.42]
+fastkernels default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=64, ips=6915.45]
+fastkernels default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=96, ips=7141.73]
+fastkernels default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=128, ips=7341.62]
+fastkernels default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=160, ips=7475.59]
+fastkernels default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=192, ips=7554.76]
+fastkernels default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=224, ips=7517.71]
+fastkernels default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=256, ips=7572.01]
+fastkernels default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=288, ips=7497.12]
+fastkernels default-res (256x256 bs=32):  28%|██▊       | 9/32 [00:00<00:00, 89.18batch/s, imgs=288, ips=7497.12]
+fastkernels default-res (256x256 bs=32):  28%|██▊       | 9/32 [00:00<00:00, 89.18batch/s, imgs=320, ips=7467.22]
+fastkernels default-res (256x256 bs=32):  28%|██▊       | 9/32 [00:00<00:00, 89.18batch/s, imgs=352, ips=7438.46]
+fastkernels default-res (256x256 bs=32):  28%|██▊       | 9/32 [00:00<00:00, 89.18batch/s, imgs=384, ips=7394.21]
+fastkernels default-res (256x256 bs=32):  28%|██▊       | 9/32 [00:00<00:00, 89.18batch/s, imgs=416, ips=7365.18]
+fastkernels default-res (256x256 bs=32):  28%|██▊       | 9/32 [00:00<00:00, 89.18batch/s, imgs=448, ips=7381.56]
+fastkernels default-res (256x256 bs=32):  28%|██▊       | 9/32 [00:00<00:00, 89.18batch/s, imgs=480, ips=7403.72]
+fastkernels default-res (256x256 bs=32):  28%|██▊       | 9/32 [00:00<00:00, 89.18batch/s, imgs=512, ips=7440.12]
+fastkernels default-res (256x256 bs=32):  28%|██▊       | 9/32 [00:00<00:00, 89.18batch/s, imgs=544, ips=7471.62]
+fastkernels default-res (256x256 bs=32):  28%|██▊       | 9/32 [00:00<00:00, 89.18batch/s, imgs=576, ips=7504.76]
+fastkernels default-res (256x256 bs=32):  28%|██▊       | 9/32 [00:00<00:00, 89.18batch/s, imgs=608, ips=7514.94]
+fastkernels default-res (256x256 bs=32):  28%|██▊       | 9/32 [00:00<00:00, 89.18batch/s, imgs=640, ips=7521.41]
+fastkernels default-res (256x256 bs=32):  28%|██▊       | 9/32 [00:00<00:00, 89.18batch/s, imgs=672, ips=7548.56]
+fastkernels default-res (256x256 bs=32):  66%|██████▌   | 21/32 [00:00<00:00, 106.92batch/s, imgs=672, ips=7548.56]
+fastkernels default-res (256x256 bs=32):  66%|██████▌   | 21/32 [00:00<00:00, 106.92batch/s, imgs=704, ips=7555.86]
+fastkernels default-res (256x256 bs=32):  66%|██████▌   | 21/32 [00:00<00:00, 106.92batch/s, imgs=736, ips=7588.23]
+fastkernels default-res (256x256 bs=32):  66%|██████▌   | 21/32 [00:00<00:00, 106.92batch/s, imgs=768, ips=7597.60]
+fastkernels default-res (256x256 bs=32):  66%|██████▌   | 21/32 [00:00<00:00, 106.92batch/s, imgs=800, ips=7630.65]
+fastkernels default-res (256x256 bs=32):  66%|██████▌   | 21/32 [00:00<00:00, 106.92batch/s, imgs=832, ips=7639.62]
+fastkernels default-res (256x256 bs=32):  66%|██████▌   | 21/32 [00:00<00:00, 106.92batch/s, imgs=864, ips=7657.88]
+fastkernels default-res (256x256 bs=32):  66%|██████▌   | 21/32 [00:00<00:00, 106.92batch/s, imgs=896, ips=7657.07]
+fastkernels default-res (256x256 bs=32):  66%|██████▌   | 21/32 [00:00<00:00, 106.92batch/s, imgs=928, ips=7660.34]
+fastkernels default-res (256x256 bs=32):  66%|██████▌   | 21/32 [00:00<00:00, 106.92batch/s, imgs=960, ips=7649.46]
+fastkernels default-res (256x256 bs=32):  66%|██████▌   | 21/32 [00:00<00:00, 106.92batch/s, imgs=992, ips=7656.46]
+fastkernels default-res (256x256 bs=32):  66%|██████▌   | 21/32 [00:00<00:00, 106.92batch/s, imgs=1000, ips=7481.53]
+fastkernels default-res (256x256 bs=32): 100%|██████████| 32/32 [00:00<00:00, 124.51batch/s, imgs=1000, ips=7481.53]
+
+fastkernels high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s]
+fastkernels high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=16, ips=3543.70]
+fastkernels high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=32, ips=3548.92]
+fastkernels high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=48, ips=3544.99]
+fastkernels high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=64, ips=3544.33]
+fastkernels high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=80, ips=3542.71]
+fastkernels high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=96, ips=3542.26]
+fastkernels high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=112, ips=3542.40]
+fastkernels high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=128, ips=3543.06]
+fastkernels high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=144, ips=3543.92]
+fastkernels high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.72batch/s, imgs=144, ips=3543.92]
+fastkernels high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.72batch/s, imgs=160, ips=3543.31]
+fastkernels high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.72batch/s, imgs=176, ips=3543.33]
+fastkernels high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.72batch/s, imgs=192, ips=3543.29]
+fastkernels high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.72batch/s, imgs=208, ips=3542.99]
+fastkernels high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.72batch/s, imgs=224, ips=3542.32]
+fastkernels high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.72batch/s, imgs=240, ips=3542.23]
+fastkernels high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.72batch/s, imgs=256, ips=3541.93]
+fastkernels high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.72batch/s, imgs=272, ips=3541.85]
+fastkernels high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.72batch/s, imgs=288, ips=3542.20]
+fastkernels high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 84.97batch/s, imgs=288, ips=3542.20]
+fastkernels high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 84.97batch/s, imgs=304, ips=3541.72]
+fastkernels high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 84.97batch/s, imgs=320, ips=3541.47]
+fastkernels high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 84.97batch/s, imgs=336, ips=3541.16]
+fastkernels high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 84.97batch/s, imgs=352, ips=3541.25]
+fastkernels high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 84.97batch/s, imgs=368, ips=3541.27]
+fastkernels high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 84.97batch/s, imgs=384, ips=3541.29]
+fastkernels high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 84.97batch/s, imgs=400, ips=3541.47]
+fastkernels high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 84.97batch/s, imgs=416, ips=3541.98]
+fastkernels high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 84.97batch/s, imgs=432, ips=3541.98]
+fastkernels high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 85.14batch/s, imgs=432, ips=3541.98]
+fastkernels high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 85.14batch/s, imgs=448, ips=3541.50]
+fastkernels high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 85.14batch/s, imgs=464, ips=3539.47]
+fastkernels high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 85.14batch/s, imgs=480, ips=3539.01]
+fastkernels high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 85.14batch/s, imgs=496, ips=3535.05]
+fastkernels high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 85.14batch/s, imgs=512, ips=3528.35]
+fastkernels high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 85.14batch/s, imgs=528, ips=3528.55]
+fastkernels high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 85.14batch/s, imgs=544, ips=3528.91]
+fastkernels high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 85.14batch/s, imgs=560, ips=3529.58]
+fastkernels high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 85.14batch/s, imgs=576, ips=3530.21]
+fastkernels high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 85.14batch/s, imgs=592, ips=3530.80]
+fastkernels high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 85.14batch/s, imgs=608, ips=3531.08]
+fastkernels high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 85.14batch/s, imgs=624, ips=3531.13]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=624, ips=3531.13]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=640, ips=3531.72]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=656, ips=3531.97]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=672, ips=3532.75]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=688, ips=3533.22]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=704, ips=3533.77]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=720, ips=3534.07]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=736, ips=3534.29]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=752, ips=3534.58]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=768, ips=3534.85]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=784, ips=3535.05]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=800, ips=3535.43]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=816, ips=3535.62]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=832, ips=3535.69]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=848, ips=3535.88]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=864, ips=3536.19]
+fastkernels high-res (512x512 bs=16):  62%|██████▏   | 39/63 [00:00<00:00, 97.29batch/s, imgs=880, ips=3536.42]
+fastkernels high-res (512x512 bs=16):  87%|████████▋ | 55/63 [00:00<00:00, 118.69batch/s, imgs=880, ips=3536.42]
+fastkernels high-res (512x512 bs=16):  87%|████████▋ | 55/63 [00:00<00:00, 118.69batch/s, imgs=896, ips=3536.62]
+fastkernels high-res (512x512 bs=16):  87%|████████▋ | 55/63 [00:00<00:00, 118.69batch/s, imgs=912, ips=3536.78]
+fastkernels high-res (512x512 bs=16):  87%|████████▋ | 55/63 [00:00<00:00, 118.69batch/s, imgs=928, ips=3536.97]
+fastkernels high-res (512x512 bs=16):  87%|████████▋ | 55/63 [00:00<00:00, 118.69batch/s, imgs=944, ips=3537.21]
+fastkernels high-res (512x512 bs=16):  87%|████████▋ | 55/63 [00:00<00:00, 118.69batch/s, imgs=960, ips=3537.42]
+fastkernels high-res (512x512 bs=16):  87%|████████▋ | 55/63 [00:00<00:00, 118.69batch/s, imgs=976, ips=3537.79]
+fastkernels high-res (512x512 bs=16):  87%|████████▋ | 55/63 [00:00<00:00, 118.69batch/s, imgs=992, ips=3537.93]
+fastkernels high-res (512x512 bs=16):  87%|████████▋ | 55/63 [00:00<00:00, 118.69batch/s, imgs=1000, ips=3211.70]
+fastkernels high-res (512x512 bs=16): 100%|██████████| 63/63 [00:00<00:00, 105.25batch/s, imgs=1000, ips=3211.70]
+fastkernels warmup single-image: 2626 iters
+
+fastkernels latency single-image:   0%|          | 0/300 [00:00<?, ?it/s]
+fastkernels latency single-image:   9%|▉         | 27/300 [00:00<00:01, 263.41it/s]
+fastkernels latency single-image:  18%|█▊        | 54/300 [00:00<00:00, 263.79it/s]
+fastkernels latency single-image:  27%|██▋       | 81/300 [00:00<00:00, 264.22it/s]
+fastkernels latency single-image:  36%|███▌      | 108/300 [00:00<00:00, 264.57it/s]
+fastkernels latency single-image:  45%|████▌     | 135/300 [00:00<00:00, 264.02it/s]
+fastkernels latency single-image:  54%|█████▍    | 162/300 [00:00<00:00, 264.12it/s]
+fastkernels latency single-image:  63%|██████▎   | 189/300 [00:00<00:00, 264.54it/s]
+fastkernels latency single-image:  72%|███████▏  | 216/300 [00:00<00:00, 264.53it/s]
+fastkernels latency single-image:  81%|████████  | 243/300 [00:00<00:00, 264.95it/s]
+fastkernels latency single-image:  90%|█████████ | 270/300 [00:01<00:00, 264.26it/s]
+fastkernels latency single-image:  99%|█████████▉| 297/300 [00:01<00:00, 263.76it/s]
+fastkernels latency single-image: 100%|██████████| 300/300 [00:01<00:00, 264.09it/s]
+fastkernels warmup batch-8: 2619 iters
+
+fastkernels latency batch-8:   0%|          | 0/300 [00:00<?, ?it/s]
+fastkernels latency batch-8:   9%|▉         | 27/300 [00:00<00:01, 260.35it/s]
+fastkernels latency batch-8:  18%|█▊        | 54/300 [00:00<00:00, 260.82it/s]
+fastkernels latency batch-8:  27%|██▋       | 81/300 [00:00<00:00, 260.19it/s]
+fastkernels latency batch-8:  36%|███▌      | 108/300 [00:00<00:00, 259.82it/s]
+fastkernels latency batch-8:  45%|████▍     | 134/300 [00:00<00:00, 259.77it/s]
+fastkernels latency batch-8:  54%|█████▎    | 161/300 [00:00<00:00, 260.19it/s]
+fastkernels latency batch-8:  63%|██████▎   | 188/300 [00:00<00:00, 259.46it/s]
+fastkernels latency batch-8:  71%|███████▏  | 214/300 [00:00<00:00, 259.36it/s]
+fastkernels latency batch-8:  80%|████████  | 240/300 [00:00<00:00, 259.54it/s]
+fastkernels latency batch-8:  89%|████████▊ | 266/300 [00:01<00:00, 259.07it/s]
+fastkernels latency batch-8:  98%|█████████▊| 293/300 [00:01<00:00, 259.51it/s]
+fastkernels latency batch-8: 100%|██████████| 300/300 [00:01<00:00, 259.56it/s]
+
+──────────────────────────────────────────────────────────────────────
+  timm vision encoder benchmark
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+Loading timm model: mobilenetv4_conv_medium.e500_r256_in1k
+  image cache HIT imgs_80ec27b986048512.npy (1000, 3, 256, 256)
+  image cache HIT imgs_7b5df118fa82168f.npy (1000, 3, 512, 512)
+Warmup at 256x256 bs=32 for >=10s
+/tmp/tmp2dtgqgwm.py:164: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  t = torch.from_numpy(chunk).to(device=self.device, non_blocking=True)
+  warmup iters=2394
+Warmup at 512x512 bs=16 for >=10s
+  warmup iters=2246
+Warmup at 256x256 bs=1 for >=10s
+  warmup iters=2483
+Warmup at 256x256 bs=8 for >=10s
+  warmup iters=2541
+
+timm default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s]
+timm default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=32, ips=4748.33]
+timm default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=64, ips=4975.05]
+timm default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=96, ips=5078.50]
+timm default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=128, ips=5168.77]
+timm default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=160, ips=5509.23]
+timm default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=192, ips=5757.38]
+timm default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=224, ips=5951.30]
+timm default-res (256x256 bs=32):   0%|          | 0/32 [00:00<?, ?batch/s, imgs=256, ips=6113.28]
+timm default-res (256x256 bs=32):  25%|██▌       | 8/32 [00:00<00:00, 79.76batch/s, imgs=256, ips=6113.28]
+timm default-res (256x256 bs=32):  25%|██▌       | 8/32 [00:00<00:00, 79.76batch/s, imgs=288, ips=6259.71]
+timm default-res (256x256 bs=32):  25%|██▌       | 8/32 [00:00<00:00, 79.76batch/s, imgs=320, ips=6370.38]
+timm default-res (256x256 bs=32):  25%|██▌       | 8/32 [00:00<00:00, 79.76batch/s, imgs=352, ips=6475.08]
+timm default-res (256x256 bs=32):  25%|██▌       | 8/32 [00:00<00:00, 79.76batch/s, imgs=384, ips=6562.39]
+timm default-res (256x256 bs=32):  25%|██▌       | 8/32 [00:00<00:00, 79.76batch/s, imgs=416, ips=6649.79]
+timm default-res (256x256 bs=32):  25%|██▌       | 8/32 [00:00<00:00, 79.76batch/s, imgs=448, ips=6699.30]
+timm default-res (256x256 bs=32):  25%|██▌       | 8/32 [00:00<00:00, 79.76batch/s, imgs=480, ips=6745.31]
+timm default-res (256x256 bs=32):  25%|██▌       | 8/32 [00:00<00:00, 79.76batch/s, imgs=512, ips=6781.17]
+timm default-res (256x256 bs=32):  25%|██▌       | 8/32 [00:00<00:00, 79.76batch/s, imgs=544, ips=6805.95]
+timm default-res (256x256 bs=32):  25%|██▌       | 8/32 [00:00<00:00, 79.76batch/s, imgs=576, ips=6837.44]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=576, ips=6837.44]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=608, ips=6883.90]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=640, ips=6917.14]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=672, ips=6952.50]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=704, ips=6974.30]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=736, ips=6997.14]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=768, ips=6999.09]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=800, ips=7026.26]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=832, ips=7047.74]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=864, ips=7072.59]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=896, ips=7091.26]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=928, ips=7111.91]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=960, ips=7126.68]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=992, ips=7146.29]
+timm default-res (256x256 bs=32):  56%|█████▋    | 18/32 [00:00<00:00, 90.86batch/s, imgs=1000, ips=6991.23]
+timm default-res (256x256 bs=32): 100%|██████████| 32/32 [00:00<00:00, 116.63batch/s, imgs=1000, ips=6991.23]
+
+timm high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s]
+timm high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=16, ips=3550.21]
+timm high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=32, ips=3549.12]
+timm high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=48, ips=3546.25]
+timm high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=64, ips=3544.16]
+timm high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=80, ips=3540.02]
+timm high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=96, ips=3535.52]
+timm high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=112, ips=3536.05]
+timm high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=128, ips=3534.12]
+timm high-res (512x512 bs=16):   0%|          | 0/63 [00:00<?, ?batch/s, imgs=144, ips=3534.86]
+timm high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.21batch/s, imgs=144, ips=3534.86]
+timm high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.21batch/s, imgs=160, ips=3535.78]
+timm high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.21batch/s, imgs=176, ips=3536.45]
+timm high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.21batch/s, imgs=192, ips=3530.85]
+timm high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.21batch/s, imgs=208, ips=3530.47]
+timm high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.21batch/s, imgs=224, ips=3531.11]
+timm high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.21batch/s, imgs=240, ips=3531.20]
+timm high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.21batch/s, imgs=256, ips=3531.85]
+timm high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.21batch/s, imgs=272, ips=3532.37]
+timm high-res (512x512 bs=16):  14%|█▍        | 9/63 [00:00<00:00, 83.21batch/s, imgs=288, ips=3533.17]
+timm high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 82.45batch/s, imgs=288, ips=3533.17]
+timm high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 82.45batch/s, imgs=304, ips=3533.92]
+timm high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 82.45batch/s, imgs=320, ips=3534.39]
+timm high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 82.45batch/s, imgs=336, ips=3534.24]
+timm high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 82.45batch/s, imgs=352, ips=3534.17]
+timm high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 82.45batch/s, imgs=368, ips=3533.84]
+timm high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 82.45batch/s, imgs=384, ips=3534.36]
+timm high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 82.45batch/s, imgs=400, ips=3534.90]
+timm high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 82.45batch/s, imgs=416, ips=3535.31]
+timm high-res (512x512 bs=16):  29%|██▊       | 18/63 [00:00<00:00, 82.45batch/s, imgs=432, ips=3535.50]
+timm high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 82.99batch/s, imgs=432, ips=3535.50]
+timm high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 82.99batch/s, imgs=448, ips=3535.52]
+timm high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 82.99batch/s, imgs=464, ips=3535.58]
+timm high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 82.99batch/s, imgs=480, ips=3534.59]
+timm high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 82.99batch/s, imgs=496, ips=3534.66]
+timm high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 82.99batch/s, imgs=512, ips=3535.12]
+timm high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 82.99batch/s, imgs=528, ips=3535.38]
+timm high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 82.99batch/s, imgs=544, ips=3535.74]
+timm high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 82.99batch/s, imgs=560, ips=3536.24]
+timm high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 82.99batch/s, imgs=576, ips=3536.53]
+timm high-res (512x512 bs=16):  43%|████▎     | 27/63 [00:00<00:00, 82.99batch/s, imgs=592, ips=3536.61]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=592, ips=3536.61]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=608, ips=3536.88]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=624, ips=3536.66]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=640, ips=3537.27]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=656, ips=3537.79]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=672, ips=3538.19]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=688, ips=3538.48]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=704, ips=3538.68]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=720, ips=3538.55]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=736, ips=3538.77]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=752, ips=3538.89]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=768, ips=3539.14]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=784, ips=3539.11]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=800, ips=3539.47]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=816, ips=3539.83]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=832, ips=3539.90]
+timm high-res (512x512 bs=16):  59%|█████▊    | 37/63 [00:00<00:00, 89.06batch/s, imgs=848, ips=3539.73]
+timm high-res (512x512 bs=16):  84%|████████▍ | 53/63 [00:00<00:00, 113.72batch/s, imgs=848, ips=3539.73]
+timm high-res (512x512 bs=16):  84%|████████▍ | 53/63 [00:00<00:00, 113.72batch/s, imgs=864, ips=3539.83]
+timm high-res (512x512 bs=16):  84%|████████▍ | 53/63 [00:00<00:00, 113.72batch/s, imgs=880, ips=3539.87]
+timm high-res (512x512 bs=16):  84%|████████▍ | 53/63 [00:00<00:00, 113.72batch/s, imgs=896, ips=3540.16]
+timm high-res (512x512 bs=16):  84%|████████▍ | 53/63 [00:00<00:00, 113.72batch/s, imgs=912, ips=3540.36]
+timm high-res (512x512 bs=16):  84%|████████▍ | 53/63 [00:00<00:00, 113.72batch/s, imgs=928, ips=3540.61]
+timm high-res (512x512 bs=16):  84%|████████▍ | 53/63 [00:00<00:00, 113.72batch/s, imgs=944, ips=3540.84]
+timm high-res (512x512 bs=16):  84%|████████▍ | 53/63 [00:00<00:00, 113.72batch/s, imgs=960, ips=3541.00]
+timm high-res (512x512 bs=16):  84%|████████▍ | 53/63 [00:00<00:00, 113.72batch/s, imgs=976, ips=3540.67]
+timm high-res (512x512 bs=16):  84%|████████▍ | 53/63 [00:00<00:00, 113.72batch/s, imgs=992, ips=3540.76]
+timm high-res (512x512 bs=16):  84%|████████▍ | 53/63 [00:00<00:00, 113.72batch/s, imgs=1000, ips=3255.61]
+timm high-res (512x512 bs=16): 100%|██████████| 63/63 [00:00<00:00, 103.12batch/s, imgs=1000, ips=3255.61]
+timm warmup single-image: 2489 iters
+
+timm latency single-image:   0%|          | 0/300 [00:00<?, ?it/s]
+timm latency single-image:   9%|▊         | 26/300 [00:00<00:01, 253.34it/s]
+timm latency single-image:  17%|█▋        | 52/300 [00:00<00:00, 251.59it/s]
+timm latency single-image:  26%|██▌       | 78/300 [00:00<00:00, 252.10it/s]
+timm latency single-image:  35%|███▍      | 104/300 [00:00<00:00, 252.16it/s]
+timm latency single-image:  43%|████▎     | 130/300 [00:00<00:00, 248.76it/s]
+timm latency single-image:  52%|█████▏    | 156/300 [00:00<00:00, 249.18it/s]
+timm latency single-image:  61%|██████    | 182/300 [00:00<00:00, 250.39it/s]
+timm latency single-image:  69%|██████▉   | 208/300 [00:00<00:00, 249.96it/s]
+timm latency single-image:  78%|███████▊  | 234/300 [00:00<00:00, 250.57it/s]
+timm latency single-image:  87%|████████▋ | 260/300 [00:01<00:00, 250.37it/s]
+timm latency single-image:  95%|█████████▌| 286/300 [00:01<00:00, 250.07it/s]
+timm latency single-image: 100%|██████████| 300/300 [00:01<00:00, 250.40it/s]
+timm warmup batch-8: 2503 iters
+
+timm latency batch-8:   0%|          | 0/300 [00:00<?, ?it/s]
+timm latency batch-8:   8%|▊         | 25/300 [00:00<00:01, 247.77it/s]
+timm latency batch-8:  17%|█▋        | 51/300 [00:00<00:00, 249.29it/s]
+timm latency batch-8:  26%|██▌       | 77/300 [00:00<00:00, 250.43it/s]
+timm latency batch-8:  34%|███▍      | 103/300 [00:00<00:00, 250.19it/s]
+timm latency batch-8:  43%|████▎     | 129/300 [00:00<00:00, 250.90it/s]
+timm latency batch-8:  52%|█████▏    | 155/300 [00:00<00:00, 249.96it/s]
+timm latency batch-8:  60%|██████    | 181/300 [00:00<00:00, 250.04it/s]
+timm latency batch-8:  69%|██████▉   | 207/300 [00:00<00:00, 250.27it/s]
+timm latency batch-8:  78%|███████▊  | 233/300 [00:00<00:00, 249.49it/s]
+timm latency batch-8:  86%|████████▌ | 258/300 [00:01<00:00, 249.42it/s]
+timm latency batch-8:  95%|█████████▍| 284/300 [00:01<00:00, 249.62it/s]
+timm latency batch-8: 100%|██████████| 300/300 [00:01<00:00, 249.66it/s]
+
+==========================================================================================
+  THROUGHPUT COMPARISON (images/sec)
+==========================================================================================
+  Scenario                   Images  fastkernels         timm    Speedup
+  ----------------------------------------------------------------------
+  default-res                  1000      7481.53      6991.23      1.07x
+  high-res                     1000      3211.70      3255.61      0.99x
+
+
+==========================================================================================
+  LATENCY COMPARISON (seconds)
+==========================================================================================
+  Scenario                  fastkernels p50 fastkernels p99     timm p50     timm p99    Speedup
+  --------------------------------------------------------------------------------
+  single-image                    0.0038       0.0040       0.0040       0.0046      1.05x
+  batch-8                         0.0038       0.0041       0.0040       0.0045      1.04x
+
+
+====================================================================================================
+  CORRECTNESS COMPARISON (embedding cosine similarity)
+====================================================================================================
+  Scenario                   Batches  Mean CosSim  Min CosSim     Mean MSE      Max MSE   Result
+  ----------------------------------------------------------------------------------------------
+  default-res                     16     1.000000    1.000000     0.00e+00     0.00e+00     PASS
+  high-res                        32     1.000000    1.000000     0.00e+00     0.00e+00     PASS
+
+
+  Results saved to: /code/users/goliaro/validate-b200-check/029_bench_timm_timm_mobilenetv4_conv_medium.e500_r256_in1k/results.json

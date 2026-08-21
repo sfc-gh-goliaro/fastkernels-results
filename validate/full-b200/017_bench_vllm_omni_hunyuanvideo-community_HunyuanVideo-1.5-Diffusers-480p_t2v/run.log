@@ -1,0 +1,2110 @@
+job_index: 17
+name: hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_t2v
+harness: bench_vllm_omni
+tp: 1
+workloads: 480p-short, 480p-medium, single-480p-short, single-480p-medium
+CUDA_VISIBLE_DEVICES: 4
+physical_gpus: 4
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_vllm_omni --model hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_t2v --output-dir /code/users/goliaro/validate-b200-check/017_bench_vllm_omni_hunyuanvideo-community_HunyuanVideo-1.5-Diffusers-480p_t2v
+
+
+Generating test split:   0%|          | 0/1003 [00:00<?, ? examples/s]
+Generating test split: 100%|██████████| 1003/1003 [00:00<00:00, 198681.73 examples/s]
+
+======================================================================
+  fastkernels vs vllm-omni -- HunyuanVideo-1.5 Benchmark
+======================================================================
+  Model          : hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_t2v
+  GPU            : B200
+  Seed           : 42
+  Prompts source : Movie Gen Video Bench (1003 prompts)
+  Inference steps: 30
+  Guidance scale : 6.0
+  Output dir     : /code/users/goliaro/validate-b200-check/017_bench_vllm_omni_hunyuanvideo-community_HunyuanVideo-1.5-Diffusers-480p_t2v
+  Throughput     : 480p-short(16 prompts), 480p-medium(8 prompts)
+  Latency        : single-480p-short, single-480p-medium (5 iters)
+======================================================================
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels HunyuanVideo benchmark
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+Warming up: 480x832 25f
+
+Fetching 33 files:   0%|          | 0/33 [00:00<?, ?it/s]
+Fetching 33 files:   3%|▎         | 1/33 [00:00<00:09,  3.23it/s]
+Fetching 33 files:  12%|█▏        | 4/33 [00:00<00:02, 11.08it/s]
+Fetching 33 files:  21%|██        | 7/33 [00:00<00:01, 13.85it/s]
+Fetching 33 files:  27%|██▋       | 9/33 [00:00<00:01, 14.79it/s]
+Fetching 33 files:  33%|███▎      | 11/33 [00:00<00:01, 12.99it/s]
+Fetching 33 files:  39%|███▉      | 13/33 [00:01<00:01, 13.94it/s]
+Fetching 33 files:  45%|████▌     | 15/33 [00:01<00:02,  7.75it/s]
+Fetching 33 files:  52%|█████▏    | 17/33 [00:05<00:10,  1.50it/s]
+Fetching 33 files:  55%|█████▍    | 18/33 [00:11<00:26,  1.74s/it]
+Fetching 33 files:  58%|█████▊    | 19/33 [00:16<00:32,  2.32s/it]
+Fetching 33 files:  61%|██████    | 20/33 [00:16<00:24,  1.88s/it]
+Fetching 33 files:  64%|██████▎   | 21/33 [00:22<00:32,  2.73s/it]
+Fetching 33 files:  67%|██████▋   | 22/33 [00:22<00:23,  2.18s/it]
+Fetching 33 files:  70%|██████▉   | 23/33 [00:23<00:17,  1.74s/it]
+Fetching 33 files:  73%|███████▎  | 24/33 [00:24<00:13,  1.48s/it]
+Fetching 33 files:  76%|███████▌  | 25/33 [00:25<00:11,  1.44s/it]
+Fetching 33 files:  79%|███████▉  | 26/33 [00:25<00:07,  1.06s/it]
+Fetching 33 files:  82%|████████▏ | 27/33 [00:32<00:16,  2.68s/it]
+Fetching 33 files:  85%|████████▍ | 28/33 [00:35<00:14,  2.81s/it]
+Fetching 33 files:  88%|████████▊ | 29/33 [00:35<00:08,  2.05s/it]
+Fetching 33 files:  91%|█████████ | 30/33 [00:36<00:05,  1.85s/it]
+Fetching 33 files:  94%|█████████▍| 31/33 [00:40<00:04,  2.37s/it]
+Fetching 33 files:  97%|█████████▋| 32/33 [00:42<00:02,  2.22s/it]
+Fetching 33 files: 100%|██████████| 33/33 [03:31<00:00, 52.02s/it]
+Fetching 33 files: 100%|██████████| 33/33 [03:31<00:00,  6.40s/it]
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 282.95it/s]
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_None_008838'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+Warming up: 480x832 49f
+
+fastkernels 480p-short:   0%|          | 0/16 [00:00<?, ?vid/s]
+fastkernels 480p-short:   0%|          | 0/16 [00:11<?, ?vid/s, vids=1, vps=0.091]
+fastkernels 480p-short:   6%|▋         | 1/16 [00:11<02:46, 11.08s/vid, vids=1, vps=0.091]
+fastkernels 480p-short:   6%|▋         | 1/16 [00:21<02:46, 11.08s/vid, vids=2, vps=0.092]
+fastkernels 480p-short:  12%|█▎        | 2/16 [00:21<02:32, 10.92s/vid, vids=2, vps=0.092]
+fastkernels 480p-short:  12%|█▎        | 2/16 [00:32<02:32, 10.92s/vid, vids=3, vps=0.092]
+fastkernels 480p-short:  19%|█▉        | 3/16 [00:32<02:21, 10.88s/vid, vids=3, vps=0.092]
+fastkernels 480p-short:  19%|█▉        | 3/16 [00:43<02:21, 10.88s/vid, vids=4, vps=0.092]
+fastkernels 480p-short:  25%|██▌       | 4/16 [00:43<02:10, 10.88s/vid, vids=4, vps=0.092]
+fastkernels 480p-short:  25%|██▌       | 4/16 [00:54<02:10, 10.88s/vid, vids=5, vps=0.092]
+fastkernels 480p-short:  31%|███▏      | 5/16 [00:54<01:59, 10.89s/vid, vids=5, vps=0.092]
+fastkernels 480p-short:  31%|███▏      | 5/16 [01:05<01:59, 10.89s/vid, vids=6, vps=0.092]
+fastkernels 480p-short:  38%|███▊      | 6/16 [01:05<01:48, 10.90s/vid, vids=6, vps=0.092]
+fastkernels 480p-short:  38%|███▊      | 6/16 [01:16<01:48, 10.90s/vid, vids=7, vps=0.092]
+fastkernels 480p-short:  44%|████▍     | 7/16 [01:16<01:38, 10.91s/vid, vids=7, vps=0.092]
+fastkernels 480p-short:  44%|████▍     | 7/16 [01:27<01:38, 10.91s/vid, vids=8, vps=0.092]
+fastkernels 480p-short:  50%|█████     | 8/16 [01:27<01:27, 10.92s/vid, vids=8, vps=0.092]
+fastkernels 480p-short:  50%|█████     | 8/16 [01:38<01:27, 10.92s/vid, vids=9, vps=0.092]
+fastkernels 480p-short:  56%|█████▋    | 9/16 [01:38<01:16, 10.93s/vid, vids=9, vps=0.092]
+fastkernels 480p-short:  56%|█████▋    | 9/16 [01:49<01:16, 10.93s/vid, vids=10, vps=0.092]
+fastkernels 480p-short:  62%|██████▎   | 10/16 [01:49<01:05, 10.93s/vid, vids=10, vps=0.092]
+fastkernels 480p-short:  62%|██████▎   | 10/16 [02:00<01:05, 10.93s/vid, vids=11, vps=0.092]
+fastkernels 480p-short:  69%|██████▉   | 11/16 [02:00<00:54, 10.94s/vid, vids=11, vps=0.092]
+fastkernels 480p-short:  69%|██████▉   | 11/16 [02:11<00:54, 10.94s/vid, vids=12, vps=0.092]
+fastkernels 480p-short:  75%|███████▌  | 12/16 [02:11<00:43, 10.95s/vid, vids=12, vps=0.092]
+fastkernels 480p-short:  75%|███████▌  | 12/16 [02:22<00:43, 10.95s/vid, vids=13, vps=0.092]
+fastkernels 480p-short:  81%|████████▏ | 13/16 [02:22<00:32, 10.94s/vid, vids=13, vps=0.092]
+fastkernels 480p-short:  81%|████████▏ | 13/16 [02:32<00:32, 10.94s/vid, vids=14, vps=0.092]
+fastkernels 480p-short:  88%|████████▊ | 14/16 [02:32<00:21, 10.93s/vid, vids=14, vps=0.092]
+fastkernels 480p-short:  88%|████████▊ | 14/16 [02:43<00:21, 10.93s/vid, vids=15, vps=0.092]
+fastkernels 480p-short:  94%|█████████▍| 15/16 [02:43<00:10, 10.93s/vid, vids=15, vps=0.092]
+fastkernels 480p-short:  94%|█████████▍| 15/16 [02:54<00:10, 10.93s/vid, vids=16, vps=0.092]
+fastkernels 480p-short: 100%|██████████| 16/16 [02:54<00:00, 10.91s/vid, vids=16, vps=0.092]
+fastkernels 480p-short: 100%|██████████| 16/16 [02:54<00:00, 10.92s/vid, vids=16, vps=0.092]
+
+fastkernels 480p-medium:   0%|          | 0/8 [00:00<?, ?vid/s]
+fastkernels 480p-medium:   0%|          | 0/8 [00:24<?, ?vid/s, vids=1, vps=0.041]
+fastkernels 480p-medium:  12%|█▎        | 1/8 [00:24<02:51, 24.44s/vid, vids=1, vps=0.041]
+fastkernels 480p-medium:  12%|█▎        | 1/8 [00:48<02:51, 24.44s/vid, vids=2, vps=0.041]
+fastkernels 480p-medium:  25%|██▌       | 2/8 [00:48<02:26, 24.40s/vid, vids=2, vps=0.041]
+fastkernels 480p-medium:  25%|██▌       | 2/8 [01:13<02:26, 24.40s/vid, vids=3, vps=0.041]
+fastkernels 480p-medium:  38%|███▊      | 3/8 [01:13<02:01, 24.37s/vid, vids=3, vps=0.041]
+fastkernels 480p-medium:  38%|███▊      | 3/8 [01:37<02:01, 24.37s/vid, vids=4, vps=0.041]
+fastkernels 480p-medium:  50%|█████     | 4/8 [01:37<01:37, 24.35s/vid, vids=4, vps=0.041]
+fastkernels 480p-medium:  50%|█████     | 4/8 [02:01<01:37, 24.35s/vid, vids=5, vps=0.041]
+fastkernels 480p-medium:  62%|██████▎   | 5/8 [02:01<01:13, 24.34s/vid, vids=5, vps=0.041]
+fastkernels 480p-medium:  62%|██████▎   | 5/8 [02:26<01:13, 24.34s/vid, vids=6, vps=0.041]
+fastkernels 480p-medium:  75%|███████▌  | 6/8 [02:26<00:48, 24.34s/vid, vids=6, vps=0.041]
+fastkernels 480p-medium:  75%|███████▌  | 6/8 [02:50<00:48, 24.34s/vid, vids=7, vps=0.041]
+fastkernels 480p-medium:  88%|████████▊ | 7/8 [02:50<00:24, 24.34s/vid, vids=7, vps=0.041]
+fastkernels 480p-medium:  88%|████████▊ | 7/8 [03:14<00:24, 24.34s/vid, vids=8, vps=0.041]
+fastkernels 480p-medium: 100%|██████████| 8/8 [03:14<00:00, 24.35s/vid, vids=8, vps=0.041]
+fastkernels 480p-medium: 100%|██████████| 8/8 [03:14<00:00, 24.36s/vid, vids=8, vps=0.041]
+
+fastkernels warmup single-480p-short:   0%|          | 0/2 [00:00<?, ?it/s]
+fastkernels warmup single-480p-short:  50%|█████     | 1/2 [00:09<00:09,  9.74s/it]
+fastkernels warmup single-480p-short: 100%|██████████| 2/2 [00:19<00:00,  9.75s/it]
+fastkernels warmup single-480p-short: 100%|██████████| 2/2 [00:19<00:00,  9.75s/it]
+
+fastkernels latency single-480p-short:   0%|          | 0/5 [00:00<?, ?it/s]
+fastkernels latency single-480p-short:  20%|██        | 1/5 [00:09<00:39,  9.77s/it]
+fastkernels latency single-480p-short:  40%|████      | 2/5 [00:19<00:29,  9.78s/it]
+fastkernels latency single-480p-short:  60%|██████    | 3/5 [00:29<00:19,  9.78s/it]
+fastkernels latency single-480p-short:  80%|████████  | 4/5 [00:39<00:09,  9.79s/it]
+fastkernels latency single-480p-short: 100%|██████████| 5/5 [00:48<00:00,  9.79s/it]
+fastkernels latency single-480p-short: 100%|██████████| 5/5 [00:48<00:00,  9.79s/it]
+
+fastkernels warmup single-480p-medium:   0%|          | 0/2 [00:00<?, ?it/s]
+fastkernels warmup single-480p-medium:  50%|█████     | 1/2 [00:21<00:21, 21.50s/it]
+fastkernels warmup single-480p-medium: 100%|██████████| 2/2 [00:43<00:00, 21.53s/it]
+fastkernels warmup single-480p-medium: 100%|██████████| 2/2 [00:43<00:00, 21.52s/it]
+
+fastkernels latency single-480p-medium:   0%|          | 0/5 [00:00<?, ?it/s]
+fastkernels latency single-480p-medium:  20%|██        | 1/5 [00:21<01:26, 21.53s/it]
+fastkernels latency single-480p-medium:  40%|████      | 2/5 [00:43<01:04, 21.53s/it]
+fastkernels latency single-480p-medium:  60%|██████    | 3/5 [01:04<00:42, 21.49s/it]
+fastkernels latency single-480p-medium:  80%|████████  | 4/5 [01:25<00:21, 21.48s/it]
+fastkernels latency single-480p-medium: 100%|██████████| 5/5 [01:47<00:00, 21.48s/it]
+fastkernels latency single-480p-medium: 100%|██████████| 5/5 [01:47<00:00, 21.49s/it]
+
+──────────────────────────────────────────────────────────────────────
+  vllm-omni HunyuanVideo benchmark
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+INFO 08-21 10:27:53 [patch.py:252] NVFP4 W4A4 weight_scale NaN-clamp: installed.
+INFO 08-21 10:27:55 [quack_fp8.py:76] Quack FP8 fused-bias GEMM enabled (CuteDSL).
+INFO 08-21 10:27:55 [quack_fp8.py:155] Patched FlashInfer FP8 ScaledMM to use quack fused-bias GEMM.
+INFO 08-21 10:27:55 [patch.py:481] [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+[vllm-omni] Creating Omni engine...
+INFO 08-21 10:27:57 [weight_utils.py:50] Using model weights format ['*']
+INFO 08-21 10:27:57 [omni_base.py:172] [Omni] Initializing with model hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_t2v
+INFO 08-21 10:27:57 [async_omni_engine.py:175] [AsyncOmniEngine] Initializing with model hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_t2v
+INFO 08-21 10:27:57 [config_factory.py:174] Detected pipeline 'hunyuan_video_15' from model_index.json (_class_name='HunyuanVideo15Pipeline')
+INFO 08-21 10:27:57 [async_omni_engine.py:264] [AsyncOmniEngine] Launching Orchestrator thread with 1 stages
+INFO 08-21 10:27:57 [stage_init_utils.py:511] [stage_init] Set VLLM_WORKER_MULTIPROC_METHOD=spawn
+INFO 08-21 10:27:58 [multiproc_executor.py:192] Starting server...
+INFO 08-21 10:28:08 [patch.py:252] NVFP4 W4A4 weight_scale NaN-clamp: installed.
+INFO 08-21 10:28:10 [quack_fp8.py:76] Quack FP8 fused-bias GEMM enabled (CuteDSL).
+INFO 08-21 10:28:10 [quack_fp8.py:155] Patched FlashInfer FP8 ScaledMM to use quack fused-bias GEMM.
+INFO 08-21 10:28:10 [patch.py:481] [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+INFO 08-21 10:28:12 [diffusion_worker.py:784] Worker 0 created result MessageQueue
+INFO 08-21 10:28:12 [scheduler.py:252] Chunked prefill is enabled with max_num_batched_tokens=2048.
+INFO 08-21 10:28:12 [vllm.py:1109] Asynchronous scheduling is enabled.
+INFO 08-21 10:28:12 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+INFO 08-21 10:28:12 [diffusion_worker.py:298] Final IR op priority after setting vLLM-Omni overrides: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+INFO 08-21 10:28:12 [diffusion_worker.py:310] Worker 0: Initialized device and distributed environment.
+INFO 08-21 10:28:12 [parallel_state.py:634] Building SP subgroups from explicit sp_group_ranks (sp_size=1, ulysses=1, ring=1, use_ulysses_low=True).
+INFO 08-21 10:28:12 [parallel_state.py:676] SP group details for rank 0: sp_group=[0], ulysses_group=[0], ring_group=[0]
+INFO 08-21 10:28:13 [hub_prefetch.py:295] Prefetching hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_t2v subfolders: ['tokenizer', 'text_encoder', 'tokenizer_2', 'text_encoder_2', 'vae', 'scheduler']
+INFO 08-21 10:28:13 [hub_prefetch.py:222] Acquired flock prefetch lock for hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_t2v at /home/yak/data-fast/huggingface/locks/vllm-omni-prefetch/hunyuanvideo-community__HunyuanVideo-1.5-Diffusers-480p_t2v.lock
+
+Fetching 26 files:   0%|          | 0/26 [00:00<?, ?it/s]
+Fetching 26 files: 100%|██████████| 26/26 [00:00<00:00, 1903.34it/s]
+INFO 08-21 10:28:13 [hub_prefetch.py:339] Prefetch complete for hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_t2v
+
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]
+Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 1386.24it/s]
+
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/338 [00:00<00:34,  9.80it/s]
+Loading weights:   7%|▋         | 25/338 [00:00<00:02, 142.60it/s]
+Loading weights:  15%|█▍        | 50/338 [00:00<00:01, 186.23it/s]
+Loading weights:  22%|██▏       | 73/338 [00:00<00:01, 177.41it/s]
+Loading weights:  28%|██▊       | 95/338 [00:00<00:01, 181.70it/s]
+Loading weights:  44%|████▍     | 148/338 [00:00<00:00, 283.13it/s]
+Loading weights:  53%|█████▎    | 178/338 [00:00<00:00, 278.35it/s]
+Loading weights:  61%|██████    | 207/338 [00:00<00:00, 256.10it/s]
+Loading weights:  71%|███████   | 239/338 [00:01<00:00, 254.51it/s]
+Loading weights:  80%|███████▉  | 269/338 [00:01<00:00, 240.96it/s]
+Loading weights:  89%|████████▉ | 301/338 [00:01<00:00, 256.57it/s]
+Loading weights: 100%|██████████| 338/338 [00:01<00:00, 243.31it/s]
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:205: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]
+Fetching 2 files: 100%|██████████| 2/2 [00:00<00:00, 1168.49it/s]
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 152.03it/s]
+INFO 08-21 10:28:17 [platform.py:220] Defaulting to diffusion attention backend CUDNN_ATTN (Blackwell sm_100, cuDNN 91900)
+INFO 08-21 10:28:17 [selector.py:89] Resolved diffusion attention backend 'CUDNN_ATTN' for role='self' via platform default
+INFO 08-21 10:28:18 [weight_utils.py:574] No transformer/diffusion_pytorch_model.safetensors.index.json found in remote.
+
+Multi-thread loading shards:   0% Completed | 0/7 [00:00<?, ?it/s]
+
+Multi-thread loading shards:  14% Completed | 1/7 [00:00<00:02,  2.49it/s]
+
+Multi-thread loading shards:  29% Completed | 2/7 [00:00<00:01,  2.76it/s]
+
+Multi-thread loading shards:  43% Completed | 3/7 [00:01<00:01,  2.77it/s]
+
+Multi-thread loading shards:  57% Completed | 4/7 [00:01<00:01,  2.60it/s]
+
+Multi-thread loading shards:  71% Completed | 5/7 [00:01<00:00,  2.49it/s]
+
+Multi-thread loading shards:  86% Completed | 6/7 [00:02<00:00,  2.43it/s]
+
+Multi-thread loading shards: 100% Completed | 7/7 [00:02<00:00,  2.65it/s]
+
+Multi-thread loading shards: 100% Completed | 7/7 [00:02<00:00,  2.61it/s]
+
+INFO 08-21 10:28:21 [weight_utils.py:574] No  found in remote.
+
+Multi-thread loading shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+
+Multi-thread loading shards: 100% Completed | 1/1 [00:00<00:00, 18.29it/s]
+
+INFO 08-21 10:28:21 [diffusers_loader.py:481] Loading weights took 3.07 seconds
+INFO 08-21 10:28:22 [diffusion_model_runner.py:238] Model loading took 33.8067 GiB and 9.596473 seconds
+INFO 08-21 10:28:22 [diffusion_model_runner.py:243] Model runner: Model loaded successfully.
+INFO 08-21 10:28:22 [diffusion_model_runner.py:317] Model runner: Initialization complete.
+INFO 08-21 10:28:22 [diffusion_worker.py:369] Worker 0: Process-scoped GPU memory after model loading: 34.75 GiB.
+INFO 08-21 10:28:22 [manager.py:96] Initializing DiffusionLoRAManager: device=cuda:0, dtype=torch.bfloat16, max_cached_adapters=1, static_lora_path=None
+INFO 08-21 10:28:22 [diffusion_worker.py:253] Worker 0: Initialization complete.
+INFO 08-21 10:28:22 [diffusion_worker.py:1016] Worker 0: Scheduler loop started.
+INFO 08-21 10:28:22 [diffusion_worker.py:908] Worker 0 ready to receive requests via shared memory
+INFO 08-21 10:28:22 [diffusion_engine.py:250] [RequestBatch] engine init max_num_seqs=1 max_wait_ms=0.0
+INFO 08-21 10:28:22 [diffusion_engine.py:824] dummy run to warm up the model
+
+  0%|          | 0/1 [00:00<?, ?it/s]
+100%|██████████| 1/1 [00:01<00:00,  1.41s/it]
+100%|██████████| 1/1 [00:01<00:00,  1.41s/it]
+INFO 08-21 10:28:24 [inline_stage_diffusion_client.py:72] [InlineStageDiffusionClient] stage-0 [rep-0] initialized inline (batch_size=1)
+INFO 08-21 10:28:24 [stage_runtime.py:659] [StageRuntime] Stage 0 replica 0 initialized (diffusion, batch_size=1)
+INFO 08-21 10:28:24 [orchestrator.py:488] [Orchestrator] Starting event loop
+INFO 08-21 10:28:24 [async_omni_engine.py:296] [AsyncOmniEngine] Orchestrator ready with 1 stages
+INFO 08-21 10:28:24 [omni_base.py:190] [Omni] AsyncOmniEngine initialized in 26.95 seconds
+INFO 08-21 10:28:24 [omni_base.py:210] [Omni] Initialized with 1 stages for model hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_t2v
+[vllm-omni] Engine ready
+
+vllm-omni 480p-short:   0%|          | 0/16 [00:00<?, ?vid/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:14,  2.03it/s]
+  7%|▋         | 2/30 [00:00<00:09,  2.84it/s]
+ 10%|█         | 3/30 [00:01<00:08,  3.01it/s]
+ 13%|█▎        | 4/30 [00:01<00:08,  3.09it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.14it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.18it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.19it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.21it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.22it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.22it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.23it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.23it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.22it/s]
+ 47%|████▋     | 14/30 [00:04<00:04,  3.23it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.23it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.23it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.23it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.23it/s]
+ 63%|██████▎   | 19/30 [00:06<00:03,  3.23it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.23it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.23it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.23it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.22it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.22it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.22it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.23it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.22it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.22it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.22it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.22it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.93s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.93s/it]
+
+vllm-omni 480p-short:   0%|          | 0/16 [00:11<?, ?vid/s, vids=1, vps=0.091]
+vllm-omni 480p-short:   6%|▋         | 1/16 [00:11<02:49, 11.27s/vid, vids=1, vps=0.091]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:10,  2.81it/s]
+  7%|▋         | 2/30 [00:00<00:08,  3.34it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.28it/s]
+ 13%|█▎        | 4/30 [00:01<00:07,  3.25it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.24it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.23it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.22it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.21it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.21it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.20it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.20it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.20it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.20it/s]
+ 47%|████▋     | 14/30 [00:04<00:04,  3.20it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.20it/s]
+ 53%|█████▎    | 16/30 [00:04<00:04,  3.20it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.20it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.20it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.20it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.20it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.20it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.20it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.20it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.20it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.20it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.20it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.20it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.20it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.20it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.21it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.21it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.71s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.71s/it]
+
+vllm-omni 480p-short:   6%|▋         | 1/16 [00:22<02:49, 11.27s/vid, vids=2, vps=0.092]
+vllm-omni 480p-short:  12%|█▎        | 2/16 [00:22<02:33, 10.97s/vid, vids=2, vps=0.092]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:10,  2.81it/s]
+  7%|▋         | 2/30 [00:00<00:08,  3.33it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.27it/s]
+ 13%|█▎        | 4/30 [00:01<00:08,  3.24it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.23it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.22it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.21it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.21it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.20it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.21it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.21it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.21it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.20it/s]
+ 47%|████▋     | 14/30 [00:04<00:04,  3.20it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.20it/s]
+ 53%|█████▎    | 16/30 [00:04<00:04,  3.20it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.19it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.20it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.19it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.20it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.20it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.20it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.20it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.20it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.20it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.19it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.20it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.19it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.20it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.20it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.20it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.72s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.72s/it]
+
+vllm-omni 480p-short:  12%|█▎        | 2/16 [00:32<02:33, 10.97s/vid, vids=3, vps=0.093]
+vllm-omni 480p-short:  19%|█▉        | 3/16 [00:32<02:21, 10.88s/vid, vids=3, vps=0.093]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:15,  1.91it/s]
+  7%|▋         | 2/30 [00:00<00:10,  2.72it/s]
+ 10%|█         | 3/30 [00:01<00:09,  2.92it/s]
+ 13%|█▎        | 4/30 [00:01<00:08,  3.01it/s]
+ 17%|█▋        | 5/30 [00:01<00:08,  3.07it/s]
+ 20%|██        | 6/30 [00:02<00:07,  3.11it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.14it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.16it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.17it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.17it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.18it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.18it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.19it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.19it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.18it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.18it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.19it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:06<00:03,  3.19it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.19it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.19it/s]
+ 73%|███████▎  | 22/30 [00:07<00:02,  3.19it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.19it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.20it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.20it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.20it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.19it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.19it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.20it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.20it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.14it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.91s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.91s/it]
+
+vllm-omni 480p-short:  19%|█▉        | 3/16 [00:43<02:21, 10.88s/vid, vids=4, vps=0.092]
+vllm-omni 480p-short:  25%|██▌       | 4/16 [00:43<02:10, 10.91s/vid, vids=4, vps=0.092]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:10,  2.86it/s]
+  7%|▋         | 2/30 [00:00<00:08,  3.35it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.28it/s]
+ 13%|█▎        | 4/30 [00:01<00:07,  3.25it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.23it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.21it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.20it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.20it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.19it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.18it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.18it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.18it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.18it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.18it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.18it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.18it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.18it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.18it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.18it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.18it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.18it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.18it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.18it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.19it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.18it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.18it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.75s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.75s/it]
+
+vllm-omni 480p-short:  25%|██▌       | 4/16 [00:54<02:10, 10.91s/vid, vids=5, vps=0.093]
+vllm-omni 480p-short:  31%|███▏      | 5/16 [00:54<01:59, 10.86s/vid, vids=5, vps=0.093]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:10,  2.87it/s]
+  7%|▋         | 2/30 [00:00<00:08,  3.37it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.29it/s]
+ 13%|█▎        | 4/30 [00:01<00:07,  3.25it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.22it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.21it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.19it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.19it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.19it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.18it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.18it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.18it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.18it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.18it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.18it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.18it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.18it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.18it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.19it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.19it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.18it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.19it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.19it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.18it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.19it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.19it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.19it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.36s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.37s/it]
+
+vllm-omni 480p-short:  31%|███▏      | 5/16 [01:07<01:59, 10.86s/vid, vids=6, vps=0.089]
+vllm-omni 480p-short:  38%|███▊      | 6/16 [01:07<01:57, 11.73s/vid, vids=6, vps=0.089]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:10,  2.85it/s]
+  7%|▋         | 2/30 [00:00<00:08,  3.35it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.28it/s]
+ 13%|█▎        | 4/30 [00:01<00:08,  3.24it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.23it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.21it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.20it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.20it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.20it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.19it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.19it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.19it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.19it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.19it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.18it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.18it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.18it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.18it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.18it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.18it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.18it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.19it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.18it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.18it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.18it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.19it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.76s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.76s/it]
+
+vllm-omni 480p-short:  38%|███▊      | 6/16 [01:18<01:57, 11.73s/vid, vids=7, vps=0.090]
+vllm-omni 480p-short:  44%|████▍     | 7/16 [01:18<01:42, 11.43s/vid, vids=7, vps=0.090]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:10,  2.88it/s]
+  7%|▋         | 2/30 [00:00<00:08,  3.38it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.28it/s]
+ 13%|█▎        | 4/30 [00:01<00:08,  3.24it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.22it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.21it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.20it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.19it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.19it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.19it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.18it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.18it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.18it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.18it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.18it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.18it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.18it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.18it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.18it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.18it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.18it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.18it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.18it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.18it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.18it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.18it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.78s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.78s/it]
+
+vllm-omni 480p-short:  44%|████▍     | 7/16 [01:29<01:42, 11.43s/vid, vids=8, vps=0.090]
+vllm-omni 480p-short:  50%|█████     | 8/16 [01:29<01:29, 11.24s/vid, vids=8, vps=0.090]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:10,  2.85it/s]
+  7%|▋         | 2/30 [00:00<00:08,  3.36it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.28it/s]
+ 13%|█▎        | 4/30 [00:01<00:08,  3.24it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.23it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.21it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.20it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.19it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.18it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.18it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.17it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.18it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.17it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.18it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.17it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.18it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.18it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.18it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.18it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.18it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.18it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.18it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.18it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.18it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.18it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.19it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.03s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.03s/it]
+
+vllm-omni 480p-short:  50%|█████     | 8/16 [01:40<01:29, 11.24s/vid, vids=9, vps=0.090]
+vllm-omni 480p-short:  56%|█████▋    | 9/16 [01:40<01:18, 11.19s/vid, vids=9, vps=0.090]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:10,  2.87it/s]
+  7%|▋         | 2/30 [00:00<00:08,  3.36it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.29it/s]
+ 13%|█▎        | 4/30 [00:01<00:08,  3.24it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.22it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.20it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.20it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.19it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.18it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.18it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.18it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.17it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.18it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.18it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.18it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.17it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.18it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.18it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.18it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.18it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.17it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.17it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.18it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.18it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.18it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.18it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.09s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.09s/it]
+
+vllm-omni 480p-short:  56%|█████▋    | 9/16 [01:51<01:18, 11.19s/vid, vids=10, vps=0.090]
+vllm-omni 480p-short:  62%|██████▎   | 10/16 [01:51<01:07, 11.17s/vid, vids=10, vps=0.090]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:10,  2.80it/s]
+  7%|▋         | 2/30 [00:00<00:08,  3.32it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.26it/s]
+ 13%|█▎        | 4/30 [00:01<00:08,  3.23it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.21it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.20it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.19it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.19it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.18it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.17it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.18it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.18it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.18it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.17it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.18it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.18it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.18it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.17it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.18it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.18it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.18it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.18it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.18it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.18it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.18it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.18it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.19it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.04s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:13<00:00, 13.04s/it]
+
+vllm-omni 480p-short:  62%|██████▎   | 10/16 [02:04<01:07, 11.17s/vid, vids=11, vps=0.089]
+vllm-omni 480p-short:  69%|██████▉   | 11/16 [02:04<00:58, 11.76s/vid, vids=11, vps=0.089]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:15,  1.85it/s]
+  7%|▋         | 2/30 [00:00<00:10,  2.68it/s]
+ 10%|█         | 3/30 [00:01<00:09,  2.88it/s]
+ 13%|█▎        | 4/30 [00:01<00:08,  2.99it/s]
+ 17%|█▋        | 5/30 [00:01<00:08,  3.06it/s]
+ 20%|██        | 6/30 [00:02<00:07,  3.10it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.13it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.15it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.16it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.17it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.17it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.18it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.18it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.18it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.18it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.18it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.18it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:06<00:03,  3.18it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.18it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.18it/s]
+ 73%|███████▎  | 22/30 [00:07<00:02,  3.18it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.18it/s]
+ 83%|████████▎ | 25/30 [00:08<00:01,  3.18it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.18it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.19it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.19it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.19it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.13it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.96s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.96s/it]
+
+vllm-omni 480p-short:  69%|██████▉   | 11/16 [02:15<00:58, 11.76s/vid, vids=12, vps=0.089]
+vllm-omni 480p-short:  75%|███████▌  | 12/16 [02:15<00:46, 11.53s/vid, vids=12, vps=0.089]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:10,  2.87it/s]
+  7%|▋         | 2/30 [00:00<00:08,  3.36it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.28it/s]
+ 13%|█▎        | 4/30 [00:01<00:08,  3.24it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.22it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.21it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.20it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.19it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.19it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.18it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.18it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.17it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.18it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.17it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.17it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.17it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.17it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.17it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.18it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.18it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.17it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.17it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.18it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.18it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.18it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.18it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.18it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.78s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.78s/it]
+
+vllm-omni 480p-short:  75%|███████▌  | 12/16 [02:26<00:46, 11.53s/vid, vids=13, vps=0.089]
+vllm-omni 480p-short:  81%|████████▏ | 13/16 [02:26<00:33, 11.31s/vid, vids=13, vps=0.089]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:10,  2.87it/s]
+  7%|▋         | 2/30 [00:00<00:08,  3.36it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.27it/s]
+ 13%|█▎        | 4/30 [00:01<00:08,  3.24it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.21it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.20it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.19it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.19it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.18it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.18it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.18it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.18it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.18it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.18it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.18it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.18it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.17it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.18it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.18it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.18it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.17it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.18it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.17it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.17it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.18it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.18it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.79s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.79s/it]
+
+vllm-omni 480p-short:  81%|████████▏ | 13/16 [02:37<00:33, 11.31s/vid, vids=14, vps=0.089]
+vllm-omni 480p-short:  88%|████████▊ | 14/16 [02:37<00:22, 11.17s/vid, vids=14, vps=0.089]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:10,  2.65it/s]
+  7%|▋         | 2/30 [00:00<00:08,  3.24it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.23it/s]
+ 13%|█▎        | 4/30 [00:01<00:08,  3.21it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.20it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.19it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.19it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.18it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.19it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.18it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.18it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.17it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.18it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.18it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.18it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.18it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.18it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.18it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.18it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.18it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.18it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.17it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.18it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.18it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.18it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.18it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.18it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.19it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.10s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.10s/it]
+
+vllm-omni 480p-short:  88%|████████▊ | 14/16 [02:48<00:22, 11.17s/vid, vids=15, vps=0.089]
+vllm-omni 480p-short:  94%|█████████▍| 15/16 [02:48<00:11, 11.16s/vid, vids=15, vps=0.089]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:10,  2.80it/s]
+  7%|▋         | 2/30 [00:00<00:08,  3.34it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.26it/s]
+ 13%|█▎        | 4/30 [00:01<00:08,  3.23it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.21it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.19it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.19it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.18it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.18it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.17it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.17it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.17it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.17it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.17it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.17it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.17it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.17it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.17it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.17it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.17it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.18it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.18it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.18it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.17it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.18it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.17it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.17it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.81s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.81s/it]
+
+vllm-omni 480p-short:  94%|█████████▍| 15/16 [02:59<00:11, 11.16s/vid, vids=16, vps=0.090]
+vllm-omni 480p-short: 100%|██████████| 16/16 [02:59<00:00, 11.07s/vid, vids=16, vps=0.090]
+vllm-omni 480p-short: 100%|██████████| 16/16 [02:59<00:00, 11.22s/vid, vids=16, vps=0.090]
+
+vllm-omni 480p-medium:   0%|          | 0/8 [00:00<?, ?vid/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:21,  1.32it/s]
+  7%|▋         | 2/30 [00:01<00:18,  1.54it/s]
+ 10%|█         | 3/30 [00:02<00:18,  1.49it/s]
+ 13%|█▎        | 4/30 [00:02<00:17,  1.47it/s]
+ 17%|█▋        | 5/30 [00:03<00:17,  1.46it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.46it/s]
+ 23%|██▎       | 7/30 [00:04<00:15,  1.45it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.45it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.45it/s]
+ 33%|███▎      | 10/30 [00:06<00:13,  1.44it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.44it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:08<00:11,  1.44it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.44it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.44it/s]
+ 53%|█████▎    | 16/30 [00:11<00:09,  1.44it/s]
+ 57%|█████▋    | 17/30 [00:11<00:09,  1.44it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.44it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.44it/s]
+ 67%|██████▋   | 20/30 [00:13<00:06,  1.44it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.44it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:15<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:17<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.45it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.99s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.99s/it]
+
+vllm-omni 480p-medium:   0%|          | 0/8 [00:24<?, ?vid/s, vids=1, vps=0.042]
+vllm-omni 480p-medium:  12%|█▎        | 1/8 [00:24<02:48, 24.09s/vid, vids=1, vps=0.042]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:20,  1.38it/s]
+  7%|▋         | 2/30 [00:01<00:17,  1.58it/s]
+ 10%|█         | 3/30 [00:01<00:17,  1.51it/s]
+ 13%|█▎        | 4/30 [00:02<00:17,  1.48it/s]
+ 17%|█▋        | 5/30 [00:03<00:17,  1.47it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.46it/s]
+ 23%|██▎       | 7/30 [00:04<00:15,  1.45it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.45it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.44it/s]
+ 33%|███▎      | 10/30 [00:06<00:13,  1.44it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.44it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:08<00:11,  1.44it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.44it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.44it/s]
+ 53%|█████▎    | 16/30 [00:11<00:09,  1.44it/s]
+ 57%|█████▋    | 17/30 [00:11<00:09,  1.44it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.44it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.44it/s]
+ 67%|██████▋   | 20/30 [00:13<00:06,  1.44it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.44it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:15<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:17<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.45it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.95s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.95s/it]
+
+vllm-omni 480p-medium:  12%|█▎        | 1/8 [00:48<02:48, 24.09s/vid, vids=2, vps=0.042]
+vllm-omni 480p-medium:  25%|██▌       | 2/8 [00:48<02:24, 24.08s/vid, vids=2, vps=0.042]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:21,  1.38it/s]
+  7%|▋         | 2/30 [00:01<00:17,  1.57it/s]
+ 10%|█         | 3/30 [00:01<00:17,  1.51it/s]
+ 13%|█▎        | 4/30 [00:02<00:17,  1.49it/s]
+ 17%|█▋        | 5/30 [00:03<00:16,  1.47it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.46it/s]
+ 23%|██▎       | 7/30 [00:04<00:15,  1.45it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.45it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.45it/s]
+ 33%|███▎      | 10/30 [00:06<00:13,  1.44it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.44it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:08<00:11,  1.44it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.44it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.44it/s]
+ 53%|█████▎    | 16/30 [00:11<00:09,  1.44it/s]
+ 57%|█████▋    | 17/30 [00:11<00:09,  1.44it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.44it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.44it/s]
+ 67%|██████▋   | 20/30 [00:13<00:06,  1.44it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.44it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:15<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:17<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.45it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.05s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.05s/it]
+
+vllm-omni 480p-medium:  25%|██▌       | 2/8 [01:12<02:24, 24.08s/vid, vids=3, vps=0.042]
+vllm-omni 480p-medium:  38%|███▊      | 3/8 [01:12<02:00, 24.11s/vid, vids=3, vps=0.042]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:20,  1.38it/s]
+  7%|▋         | 2/30 [00:01<00:17,  1.57it/s]
+ 10%|█         | 3/30 [00:01<00:17,  1.51it/s]
+ 13%|█▎        | 4/30 [00:02<00:17,  1.48it/s]
+ 17%|█▋        | 5/30 [00:03<00:17,  1.47it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.46it/s]
+ 23%|██▎       | 7/30 [00:04<00:15,  1.45it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.45it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.44it/s]
+ 33%|███▎      | 10/30 [00:06<00:13,  1.44it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.44it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:08<00:11,  1.44it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.44it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.44it/s]
+ 53%|█████▎    | 16/30 [00:11<00:09,  1.44it/s]
+ 57%|█████▋    | 17/30 [00:11<00:09,  1.44it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.44it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.44it/s]
+ 67%|██████▋   | 20/30 [00:13<00:06,  1.44it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.44it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:15<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:17<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.34s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.34s/it]
+
+vllm-omni 480p-medium:  38%|███▊      | 3/8 [01:36<02:00, 24.11s/vid, vids=4, vps=0.042]
+vllm-omni 480p-medium:  50%|█████     | 4/8 [01:36<01:36, 24.24s/vid, vids=4, vps=0.042]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:24,  1.21it/s]
+  7%|▋         | 2/30 [00:01<00:19,  1.47it/s]
+ 10%|█         | 3/30 [00:02<00:18,  1.46it/s]
+ 13%|█▎        | 4/30 [00:02<00:17,  1.45it/s]
+ 17%|█▋        | 5/30 [00:03<00:17,  1.45it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.45it/s]
+ 23%|██▎       | 7/30 [00:04<00:15,  1.44it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.44it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.44it/s]
+ 33%|███▎      | 10/30 [00:06<00:13,  1.44it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.44it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:09<00:11,  1.44it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.44it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.44it/s]
+ 53%|█████▎    | 16/30 [00:11<00:09,  1.44it/s]
+ 57%|█████▋    | 17/30 [00:11<00:09,  1.44it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.44it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.44it/s]
+ 67%|██████▋   | 20/30 [00:13<00:06,  1.44it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.44it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:15<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:18<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.07s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.07s/it]
+
+vllm-omni 480p-medium:  50%|█████     | 4/8 [02:00<01:36, 24.24s/vid, vids=5, vps=0.042]
+vllm-omni 480p-medium:  62%|██████▎   | 5/8 [02:00<01:12, 24.22s/vid, vids=5, vps=0.042]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:21,  1.37it/s]
+  7%|▋         | 2/30 [00:01<00:17,  1.57it/s]
+ 10%|█         | 3/30 [00:01<00:17,  1.51it/s]
+ 13%|█▎        | 4/30 [00:02<00:17,  1.48it/s]
+ 17%|█▋        | 5/30 [00:03<00:17,  1.47it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.46it/s]
+ 23%|██▎       | 7/30 [00:04<00:15,  1.45it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.45it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.44it/s]
+ 33%|███▎      | 10/30 [00:06<00:13,  1.44it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.44it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:08<00:11,  1.44it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.43it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.44it/s]
+ 53%|█████▎    | 16/30 [00:11<00:09,  1.44it/s]
+ 57%|█████▋    | 17/30 [00:11<00:09,  1.44it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.44it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.44it/s]
+ 67%|██████▋   | 20/30 [00:13<00:06,  1.44it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.44it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:15<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:17<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.07s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.07s/it]
+
+vllm-omni 480p-medium:  62%|██████▎   | 5/8 [02:25<01:12, 24.22s/vid, vids=6, vps=0.042]
+vllm-omni 480p-medium:  75%|███████▌  | 6/8 [02:25<00:48, 24.21s/vid, vids=6, vps=0.042]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:21,  1.33it/s]
+  7%|▋         | 2/30 [00:01<00:18,  1.54it/s]
+ 10%|█         | 3/30 [00:02<00:18,  1.50it/s]
+ 13%|█▎        | 4/30 [00:02<00:17,  1.48it/s]
+ 17%|█▋        | 5/30 [00:03<00:17,  1.46it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.46it/s]
+ 23%|██▎       | 7/30 [00:04<00:15,  1.45it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.45it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.45it/s]
+ 33%|███▎      | 10/30 [00:06<00:13,  1.45it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.44it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:08<00:11,  1.44it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.44it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.44it/s]
+ 53%|█████▎    | 16/30 [00:11<00:09,  1.44it/s]
+ 57%|█████▋    | 17/30 [00:11<00:09,  1.44it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.44it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.44it/s]
+ 67%|██████▋   | 20/30 [00:13<00:06,  1.44it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.44it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:15<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:17<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.99s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.99s/it]
+
+vllm-omni 480p-medium:  75%|███████▌  | 6/8 [02:49<00:48, 24.21s/vid, vids=7, vps=0.042]
+vllm-omni 480p-medium:  88%|████████▊ | 7/8 [02:49<00:24, 24.17s/vid, vids=7, vps=0.042]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:20,  1.38it/s]
+  7%|▋         | 2/30 [00:01<00:17,  1.57it/s]
+ 10%|█         | 3/30 [00:01<00:17,  1.51it/s]
+ 13%|█▎        | 4/30 [00:02<00:17,  1.48it/s]
+ 17%|█▋        | 5/30 [00:03<00:17,  1.47it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.46it/s]
+ 23%|██▎       | 7/30 [00:04<00:15,  1.45it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.45it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.45it/s]
+ 33%|███▎      | 10/30 [00:06<00:13,  1.44it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.44it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:08<00:11,  1.44it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.44it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.44it/s]
+ 53%|█████▎    | 16/30 [00:11<00:09,  1.44it/s]
+ 57%|█████▋    | 17/30 [00:11<00:09,  1.44it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.44it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.44it/s]
+ 67%|██████▋   | 20/30 [00:13<00:06,  1.44it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.44it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:15<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:17<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.45it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.61s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.61s/it]
+
+vllm-omni 480p-medium:  88%|████████▊ | 7/8 [03:13<00:24, 24.17s/vid, vids=8, vps=0.041]
+vllm-omni 480p-medium: 100%|██████████| 8/8 [03:13<00:00, 24.35s/vid, vids=8, vps=0.041]
+vllm-omni 480p-medium: 100%|██████████| 8/8 [03:13<00:00, 24.24s/vid, vids=8, vps=0.041]
+
+vllm-omni warmup single-480p-short:   0%|          | 0/2 [00:00<?, ?it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:09,  3.22it/s]
+  7%|▋         | 2/30 [00:00<00:07,  3.54it/s]
+ 10%|█         | 3/30 [00:00<00:07,  3.38it/s]
+ 13%|█▎        | 4/30 [00:01<00:07,  3.30it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.26it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.24it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.22it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.20it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.19it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.20it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.19it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.18it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.18it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.18it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.18it/s]
+ 53%|█████▎    | 16/30 [00:04<00:04,  3.18it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.18it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.18it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.18it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.18it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.18it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.18it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.18it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.19it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.19it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.19it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.19it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.20it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.20it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.76s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.76s/it]
+
+vllm-omni warmup single-480p-short:  50%|█████     | 1/2 [00:10<00:10, 10.76s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:08,  3.23it/s]
+  7%|▋         | 2/30 [00:00<00:07,  3.56it/s]
+ 10%|█         | 3/30 [00:00<00:07,  3.38it/s]
+ 13%|█▎        | 4/30 [00:01<00:07,  3.29it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.25it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.23it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.21it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.20it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.19it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.19it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.18it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.18it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.18it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.18it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.18it/s]
+ 53%|█████▎    | 16/30 [00:04<00:04,  3.17it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.17it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.18it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.18it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.18it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.18it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.18it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.17it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.18it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.18it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.18it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.20it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.85s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.85s/it]
+
+vllm-omni warmup single-480p-short: 100%|██████████| 2/2 [00:21<00:00, 10.82s/it]
+vllm-omni warmup single-480p-short: 100%|██████████| 2/2 [00:21<00:00, 10.81s/it]
+
+vllm-omni latency single-480p-short:   0%|          | 0/5 [00:00<?, ?it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:12,  2.33it/s]
+  7%|▋         | 2/30 [00:00<00:09,  3.04it/s]
+ 10%|█         | 3/30 [00:01<00:08,  3.09it/s]
+ 13%|█▎        | 4/30 [00:01<00:08,  3.12it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.15it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.16it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.17it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.17it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.17it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.18it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.17it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.17it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.18it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.18it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.17it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.18it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.18it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:06<00:03,  3.17it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.17it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.17it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.17it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.17it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.17it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.17it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.17it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.17it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.17it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.17it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.16it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.89s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.89s/it]
+
+vllm-omni latency single-480p-short:  20%|██        | 1/5 [00:10<00:43, 10.89s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:08,  3.24it/s]
+  7%|▋         | 2/30 [00:00<00:07,  3.57it/s]
+ 10%|█         | 3/30 [00:00<00:07,  3.38it/s]
+ 13%|█▎        | 4/30 [00:01<00:07,  3.29it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.25it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.23it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.21it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.20it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.19it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.18it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.17it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.18it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.17it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.17it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.17it/s]
+ 53%|█████▎    | 16/30 [00:04<00:04,  3.17it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.17it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.17it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.17it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.17it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.17it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.17it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.18it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.18it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.18it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.18it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.18it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.20it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.76s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.76s/it]
+
+vllm-omni latency single-480p-short:  40%|████      | 2/5 [00:21<00:32, 10.81s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:08,  3.23it/s]
+  7%|▋         | 2/30 [00:00<00:07,  3.55it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.37it/s]
+ 13%|█▎        | 4/30 [00:01<00:07,  3.29it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.25it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.23it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.21it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.20it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.19it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.19it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.19it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.18it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.18it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.18it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.18it/s]
+ 53%|█████▎    | 16/30 [00:04<00:04,  3.18it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.18it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.18it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.18it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.18it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.18it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.18it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.17it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.17it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.17it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.18it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.18it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.19it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.20it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.65s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:11<00:00, 11.65s/it]
+
+vllm-omni latency single-480p-short:  60%|██████    | 3/5 [00:33<00:22, 11.19s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:09,  3.00it/s]
+  7%|▋         | 2/30 [00:00<00:08,  3.45it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.32it/s]
+ 13%|█▎        | 4/30 [00:01<00:07,  3.27it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.24it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.21it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.20it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.19it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.19it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.18it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.19it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.18it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.18it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.18it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.17it/s]
+ 53%|█████▎    | 16/30 [00:05<00:04,  3.17it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.17it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.17it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.17it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.18it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.18it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.18it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.18it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.18it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.18it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.18it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.18it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.18it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.76s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.76s/it]
+
+vllm-omni latency single-480p-short:  80%|████████  | 4/5 [00:44<00:11, 11.02s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:09,  3.22it/s]
+  7%|▋         | 2/30 [00:00<00:07,  3.55it/s]
+ 10%|█         | 3/30 [00:00<00:08,  3.36it/s]
+ 13%|█▎        | 4/30 [00:01<00:07,  3.29it/s]
+ 17%|█▋        | 5/30 [00:01<00:07,  3.25it/s]
+ 20%|██        | 6/30 [00:01<00:07,  3.22it/s]
+ 23%|██▎       | 7/30 [00:02<00:07,  3.20it/s]
+ 27%|██▋       | 8/30 [00:02<00:06,  3.19it/s]
+ 30%|███       | 9/30 [00:02<00:06,  3.18it/s]
+ 33%|███▎      | 10/30 [00:03<00:06,  3.17it/s]
+ 37%|███▋      | 11/30 [00:03<00:05,  3.17it/s]
+ 40%|████      | 12/30 [00:03<00:05,  3.17it/s]
+ 43%|████▎     | 13/30 [00:04<00:05,  3.17it/s]
+ 47%|████▋     | 14/30 [00:04<00:05,  3.17it/s]
+ 50%|█████     | 15/30 [00:04<00:04,  3.17it/s]
+ 53%|█████▎    | 16/30 [00:04<00:04,  3.16it/s]
+ 57%|█████▋    | 17/30 [00:05<00:04,  3.17it/s]
+ 60%|██████    | 18/30 [00:05<00:03,  3.17it/s]
+ 63%|██████▎   | 19/30 [00:05<00:03,  3.17it/s]
+ 67%|██████▋   | 20/30 [00:06<00:03,  3.17it/s]
+ 70%|███████   | 21/30 [00:06<00:02,  3.17it/s]
+ 73%|███████▎  | 22/30 [00:06<00:02,  3.17it/s]
+ 77%|███████▋  | 23/30 [00:07<00:02,  3.17it/s]
+ 80%|████████  | 24/30 [00:07<00:01,  3.17it/s]
+ 83%|████████▎ | 25/30 [00:07<00:01,  3.17it/s]
+ 87%|████████▋ | 26/30 [00:08<00:01,  3.17it/s]
+ 90%|█████████ | 27/30 [00:08<00:00,  3.17it/s]
+ 93%|█████████▎| 28/30 [00:08<00:00,  3.18it/s]
+ 97%|█████████▋| 29/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.18it/s]
+100%|██████████| 30/30 [00:09<00:00,  3.19it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.76s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:10<00:00, 10.76s/it]
+
+vllm-omni latency single-480p-short: 100%|██████████| 5/5 [00:54<00:00, 10.93s/it]
+vllm-omni latency single-480p-short: 100%|██████████| 5/5 [00:54<00:00, 10.96s/it]
+
+vllm-omni warmup single-480p-medium:   0%|          | 0/2 [00:00<?, ?it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:19,  1.45it/s]
+  7%|▋         | 2/30 [00:01<00:17,  1.60it/s]
+ 10%|█         | 3/30 [00:01<00:17,  1.53it/s]
+ 13%|█▎        | 4/30 [00:02<00:17,  1.49it/s]
+ 17%|█▋        | 5/30 [00:03<00:16,  1.47it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.46it/s]
+ 23%|██▎       | 7/30 [00:04<00:15,  1.45it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.45it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.44it/s]
+ 33%|███▎      | 10/30 [00:06<00:13,  1.44it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.44it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:08<00:11,  1.43it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.44it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.44it/s]
+ 53%|█████▎    | 16/30 [00:11<00:09,  1.44it/s]
+ 57%|█████▋    | 17/30 [00:11<00:09,  1.44it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.44it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.44it/s]
+ 67%|██████▋   | 20/30 [00:13<00:06,  1.44it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.44it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:15<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:17<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.45it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.94s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.94s/it]
+
+vllm-omni warmup single-480p-medium:  50%|█████     | 1/2 [00:23<00:23, 23.94s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:20,  1.45it/s]
+  7%|▋         | 2/30 [00:01<00:17,  1.60it/s]
+ 10%|█         | 3/30 [00:01<00:17,  1.52it/s]
+ 13%|█▎        | 4/30 [00:02<00:17,  1.48it/s]
+ 17%|█▋        | 5/30 [00:03<00:17,  1.46it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.45it/s]
+ 23%|██▎       | 7/30 [00:04<00:15,  1.45it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.44it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.44it/s]
+ 33%|███▎      | 10/30 [00:06<00:13,  1.44it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.44it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:08<00:11,  1.44it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.44it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.43it/s]
+ 53%|█████▎    | 16/30 [00:11<00:09,  1.43it/s]
+ 57%|█████▋    | 17/30 [00:11<00:09,  1.43it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.43it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.44it/s]
+ 67%|██████▋   | 20/30 [00:13<00:06,  1.44it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.44it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:15<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:17<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 24.00s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 24.00s/it]
+
+vllm-omni warmup single-480p-medium: 100%|██████████| 2/2 [00:47<00:00, 23.97s/it]
+vllm-omni warmup single-480p-medium: 100%|██████████| 2/2 [00:47<00:00, 23.97s/it]
+
+vllm-omni latency single-480p-medium:   0%|          | 0/5 [00:00<?, ?it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:20,  1.45it/s]
+  7%|▋         | 2/30 [00:01<00:17,  1.60it/s]
+ 10%|█         | 3/30 [00:01<00:17,  1.52it/s]
+ 13%|█▎        | 4/30 [00:02<00:17,  1.49it/s]
+ 17%|█▋        | 5/30 [00:03<00:17,  1.47it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.46it/s]
+ 23%|██▎       | 7/30 [00:04<00:15,  1.45it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.44it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.44it/s]
+ 33%|███▎      | 10/30 [00:06<00:13,  1.44it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.44it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:08<00:11,  1.44it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.44it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.44it/s]
+ 53%|█████▎    | 16/30 [00:11<00:09,  1.44it/s]
+ 57%|█████▋    | 17/30 [00:11<00:09,  1.44it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.44it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.43it/s]
+ 67%|██████▋   | 20/30 [00:13<00:06,  1.43it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.43it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:15<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:17<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.45it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.59s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.59s/it]
+
+vllm-omni latency single-480p-medium:  20%|██        | 1/5 [00:24<01:38, 24.59s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:19,  1.46it/s]
+  7%|▋         | 2/30 [00:01<00:17,  1.61it/s]
+ 10%|█         | 3/30 [00:01<00:17,  1.53it/s]
+ 13%|█▎        | 4/30 [00:02<00:17,  1.49it/s]
+ 17%|█▋        | 5/30 [00:03<00:16,  1.47it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.46it/s]
+ 23%|██▎       | 7/30 [00:04<00:15,  1.45it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.45it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.45it/s]
+ 33%|███▎      | 10/30 [00:06<00:13,  1.45it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.44it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:08<00:11,  1.44it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.44it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.44it/s]
+ 53%|█████▎    | 16/30 [00:10<00:09,  1.44it/s]
+ 57%|█████▋    | 17/30 [00:11<00:09,  1.44it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.44it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.44it/s]
+ 67%|██████▋   | 20/30 [00:13<00:06,  1.44it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.44it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:15<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:17<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.45it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.45it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.41s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.41s/it]
+
+vllm-omni latency single-480p-medium:  40%|████      | 2/5 [00:49<01:13, 24.49s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:28,  1.02it/s]
+  7%|▋         | 2/30 [00:01<00:20,  1.35it/s]
+ 10%|█         | 3/30 [00:02<00:19,  1.39it/s]
+ 13%|█▎        | 4/30 [00:02<00:18,  1.41it/s]
+ 17%|█▋        | 5/30 [00:03<00:17,  1.42it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.43it/s]
+ 23%|██▎       | 7/30 [00:05<00:16,  1.43it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.43it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.44it/s]
+ 33%|███▎      | 10/30 [00:07<00:13,  1.44it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.44it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:09<00:11,  1.44it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.44it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.44it/s]
+ 53%|█████▎    | 16/30 [00:11<00:09,  1.44it/s]
+ 57%|█████▋    | 17/30 [00:11<00:09,  1.44it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.44it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.44it/s]
+ 67%|██████▋   | 20/30 [00:14<00:06,  1.44it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.44it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:16<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:18<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.43it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.25s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:24<00:00, 24.25s/it]
+
+vllm-omni latency single-480p-medium:  60%|██████    | 3/5 [01:13<00:48, 24.38s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:19,  1.46it/s]
+  7%|▋         | 2/30 [00:01<00:17,  1.61it/s]
+ 10%|█         | 3/30 [00:01<00:17,  1.53it/s]
+ 13%|█▎        | 4/30 [00:02<00:17,  1.49it/s]
+ 17%|█▋        | 5/30 [00:03<00:16,  1.48it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.47it/s]
+ 23%|██▎       | 7/30 [00:04<00:15,  1.46it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.45it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.45it/s]
+ 33%|███▎      | 10/30 [00:06<00:13,  1.45it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.45it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:08<00:11,  1.44it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.44it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.44it/s]
+ 53%|█████▎    | 16/30 [00:10<00:09,  1.44it/s]
+ 57%|█████▋    | 17/30 [00:11<00:09,  1.44it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.44it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.44it/s]
+ 67%|██████▋   | 20/30 [00:13<00:06,  1.44it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.44it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:15<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:17<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:19<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.45it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.89s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.89s/it]
+
+vllm-omni latency single-480p-medium:  80%|████████  | 4/5 [01:37<00:24, 24.19s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s][A
+  0%|          | 0/30 [00:00<?, ?it/s]
+  3%|▎         | 1/30 [00:00<00:19,  1.46it/s]
+  7%|▋         | 2/30 [00:01<00:17,  1.62it/s]
+ 10%|█         | 3/30 [00:01<00:17,  1.53it/s]
+ 13%|█▎        | 4/30 [00:02<00:17,  1.49it/s]
+ 17%|█▋        | 5/30 [00:03<00:16,  1.48it/s]
+ 20%|██        | 6/30 [00:04<00:16,  1.46it/s]
+ 23%|██▎       | 7/30 [00:04<00:15,  1.46it/s]
+ 27%|██▋       | 8/30 [00:05<00:15,  1.45it/s]
+ 30%|███       | 9/30 [00:06<00:14,  1.45it/s]
+ 33%|███▎      | 10/30 [00:06<00:13,  1.44it/s]
+ 37%|███▋      | 11/30 [00:07<00:13,  1.44it/s]
+ 40%|████      | 12/30 [00:08<00:12,  1.44it/s]
+ 43%|████▎     | 13/30 [00:08<00:11,  1.44it/s]
+ 47%|████▋     | 14/30 [00:09<00:11,  1.45it/s]
+ 50%|█████     | 15/30 [00:10<00:10,  1.45it/s]
+ 53%|█████▎    | 16/30 [00:10<00:09,  1.45it/s]
+ 57%|█████▋    | 17/30 [00:11<00:08,  1.44it/s]
+ 60%|██████    | 18/30 [00:12<00:08,  1.44it/s]
+ 63%|██████▎   | 19/30 [00:13<00:07,  1.44it/s]
+ 67%|██████▋   | 20/30 [00:13<00:06,  1.45it/s]
+ 70%|███████   | 21/30 [00:14<00:06,  1.45it/s]
+ 73%|███████▎  | 22/30 [00:15<00:05,  1.44it/s]
+ 77%|███████▋  | 23/30 [00:15<00:04,  1.44it/s]
+ 80%|████████  | 24/30 [00:16<00:04,  1.44it/s]
+ 83%|████████▎ | 25/30 [00:17<00:03,  1.44it/s]
+ 87%|████████▋ | 26/30 [00:17<00:02,  1.44it/s]
+ 90%|█████████ | 27/30 [00:18<00:02,  1.44it/s]
+ 93%|█████████▎| 28/30 [00:19<00:01,  1.44it/s]
+ 97%|█████████▋| 29/30 [00:19<00:00,  1.44it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.45it/s]
+100%|██████████| 30/30 [00:20<00:00,  1.45it/s]
+
+
+Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.88s/it][A
+Processed prompts: 100%|██████████| 1/1 [00:23<00:00, 23.88s/it]
+
+vllm-omni latency single-480p-medium: 100%|██████████| 5/5 [02:01<00:00, 24.08s/it]
+vllm-omni latency single-480p-medium: 100%|██████████| 5/5 [02:01<00:00, 24.21s/it]
+INFO 08-21 10:38:43 [async_omni_engine.py:1802] [AsyncOmniEngine] Shutting down Orchestrator
+INFO 08-21 10:38:43 [orchestrator.py:593] [Orchestrator] Received shutdown signal
+INFO 08-21 10:38:43 [orchestrator.py:2168] [Orchestrator] Shutting down all 1 client(s)
+INFO 08-21 10:38:43 [diffusion_worker.py:948] Worker 0: Received shutdown message
+INFO 08-21 10:38:43 [diffusion_worker.py:969] event loop terminated.
+INFO 08-21 10:38:43 [diffusion_worker.py:1039] Worker 0: Shutdown complete.
+INFO 08-21 10:38:45 [stage_pool.py:1235] [StagePool] Stage 0 replica 0 shut down
+
+==========================================================================================
+  THROUGHPUT COMPARISON (videos/sec)
+==========================================================================================
+  Scenario                   Videos  fastkernels    vllm-omni    Speedup
+  ----------------------------------------------------------------------
+  480p-short                     16       0.0919       0.0896      1.03x
+  480p-medium                     8       0.0412       0.0414      1.00x
+
+
+==========================================================================================
+  LATENCY COMPARISON (seconds per video)
+==========================================================================================
+  Scenario                         Res  Frames fastkernels p50  vllm-omni p50    Speedup
+  --------------------------------------------------------------------------------
+  single-480p-short            480x832      25        9.787         10.765      1.10x
+  single-480p-medium           480x832      49       21.478         24.250      1.13x
+
+
+==============================================================================================================
+  CORRECTNESS COMPARISON (decoded video frames, per-prompt)
+==============================================================================================================
+  Scenario                   Prompts  Mean CosSim  Min CosSim  Mean PSNR  Min PSNR     Mean MSE   Result
+  ------------------------------------------------------------------------------------------------------
+  480p-medium                      8     0.984409    0.973947      21.27     16.02     6.24e+02     PASS
+  480p-short                      16     0.982338    0.958837      20.44     16.27     7.11e+02     PASS
+
+  All scenarios PASS (mean cosine similarity > 0.95)
+
+
+  Results saved to: /code/users/goliaro/validate-b200-check/017_bench_vllm_omni_hunyuanvideo-community_HunyuanVideo-1.5-Diffusers-480p_t2v/results.json

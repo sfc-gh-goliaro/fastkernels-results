@@ -1,0 +1,2090 @@
+{
+  "run": {
+    "status": "PASS",
+    "root": "/code/users/goliaro/validate-b200-check",
+    "models_total": 47,
+    "models_passed": 47,
+    "models_incomplete": 0
+  },
+  "models": [
+    {
+      "index": 0,
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/000_bench_vllm_meta-llama_Llama-3.1-8B-Instruct/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/000_bench_vllm_meta-llama_Llama-3.1-8B-Instruct/results.json"
+      }
+    },
+    {
+      "index": 1,
+      "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 2,
+      "dtype": "bfloat16",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/001_bench_vllm_mistralai_Mixtral-8x7B-Instruct-v0.1/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/001_bench_vllm_mistralai_Mixtral-8x7B-Instruct-v0.1/results.json"
+      }
+    },
+    {
+      "index": 2,
+      "model": "nvidia/GLM-5.2-NVFP4",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 8,
+      "dtype": "nvfp4",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/002_bench_vllm_nvidia_GLM-5.2-NVFP4/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/002_bench_vllm_nvidia_GLM-5.2-NVFP4/results.json"
+      }
+    },
+    {
+      "index": 3,
+      "model": "microsoft/bitnet-b1.58-2B-4T",
+      "harness": "bench_microsoft_bitnet",
+      "reference": "microsoft-bitnet-gpu",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/003_bench_microsoft_bitnet_microsoft_bitnet-b1.58-2B-4T/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/003_bench_microsoft_bitnet_microsoft_bitnet-b1.58-2B-4T/results.json"
+      }
+    },
+    {
+      "index": 4,
+      "model": "openai/gpt-oss-120b",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 2,
+      "dtype": "mxfp4",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/004_bench_vllm_openai_gpt-oss-120b/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/004_bench_vllm_openai_gpt-oss-120b/results.json"
+      }
+    },
+    {
+      "index": 5,
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "draft_model": "jamesliu1/sglang-EAGLE3-Llama-3.1-Instruct-8B",
+      "harness": "bench_sglang",
+      "reference": "SGLang",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/005_bench_sglang_meta-llama_Llama-3.1-8B-Instruct/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/005_bench_sglang_meta-llama_Llama-3.1-8B-Instruct/results.json"
+      }
+    },
+    {
+      "index": 6,
+      "model": "google/gemma-4-26B-A4B-it",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/006_bench_vllm_google_gemma-4-26B-A4B-it/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/006_bench_vllm_google_gemma-4-26B-A4B-it/results.json"
+      }
+    },
+    {
+      "index": 7,
+      "model": "state-spaces/mamba-2.8b-hf",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/007_bench_vllm_state-spaces_mamba-2.8b-hf/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/007_bench_vllm_state-spaces_mamba-2.8b-hf/results.json"
+      }
+    },
+    {
+      "index": 8,
+      "model": "mistralai/Mamba-Codestral-7B-v0.1",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/008_bench_vllm_mistralai_Mamba-Codestral-7B-v0.1/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/008_bench_vllm_mistralai_Mamba-Codestral-7B-v0.1/results.json"
+      }
+    },
+    {
+      "index": 9,
+      "model": "fla-hub/rwkv7-2.9B-g1",
+      "harness": "bench_fla",
+      "reference": "FLA",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/009_bench_fla_fla-hub_rwkv7-2.9B-g1/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/009_bench_fla_fla-hub_rwkv7-2.9B-g1/results.json"
+      }
+    },
+    {
+      "index": 10,
+      "model": "fla-hub/gla-2.7B-100B",
+      "harness": "bench_fla",
+      "reference": "FLA",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/010_bench_fla_fla-hub_gla-2.7B-100B/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/010_bench_fla_fla-hub_gla-2.7B-100B/results.json"
+      }
+    },
+    {
+      "index": 11,
+      "model": "fla-hub/retnet-2.7B-100B",
+      "harness": "bench_fla",
+      "reference": "FLA",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/011_bench_fla_fla-hub_retnet-2.7B-100B/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/011_bench_fla_fla-hub_retnet-2.7B-100B/results.json"
+      }
+    },
+    {
+      "index": 12,
+      "model": "Qwen/Qwen3-Next-80B-A3B-Instruct",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 2,
+      "dtype": "bfloat16",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/012_bench_vllm_Qwen_Qwen3-Next-80B-A3B-Instruct/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/012_bench_vllm_Qwen_Qwen3-Next-80B-A3B-Instruct/results.json"
+      }
+    },
+    {
+      "index": 13,
+      "model": "moonshotai/Kimi-Linear-48B-A3B-Instruct",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 2,
+      "dtype": "bfloat16",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/013_bench_vllm_moonshotai_Kimi-Linear-48B-A3B-Instruct/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/013_bench_vllm_moonshotai_Kimi-Linear-48B-A3B-Instruct/results.json"
+      }
+    },
+    {
+      "index": 14,
+      "model": "ttt_e2e",
+      "harness": "bench_ttt_e2e",
+      "reference": "jax",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/014_bench_ttt_e2e_ttt_e2e/results.json"
+      }
+    },
+    {
+      "index": 15,
+      "model": "ai21labs/AI21-Jamba-Mini-1.7",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "mixed",
+        "long-context",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/015_bench_vllm_ai21labs_AI21-Jamba-Mini-1.7/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/015_bench_vllm_ai21labs_AI21-Jamba-Mini-1.7/results.json"
+      }
+    },
+    {
+      "index": 16,
+      "model": "black-forest-labs/FLUX.1-dev",
+      "harness": "bench_vllm_omni",
+      "reference": "vllm-omni",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "1024x1024",
+        "512x512",
+        "single-1024x1024",
+        "single-512x512"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/016_bench_vllm_omni_black-forest-labs_FLUX.1-dev/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/016_bench_vllm_omni_black-forest-labs_FLUX.1-dev/results.json"
+      }
+    },
+    {
+      "index": 17,
+      "model": "hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_t2v",
+      "harness": "bench_vllm_omni",
+      "reference": "vllm-omni",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "480p-short",
+        "480p-medium",
+        "single-480p-short",
+        "single-480p-medium"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/017_bench_vllm_omni_hunyuanvideo-community_HunyuanVideo-1.5-Diffusers-480p_t2v/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/017_bench_vllm_omni_hunyuanvideo-community_HunyuanVideo-1.5-Diffusers-480p_t2v/results.json"
+      }
+    },
+    {
+      "index": 18,
+      "model": "stabilityai/stable-diffusion-xl-base-1.0",
+      "harness": "bench_diffusers",
+      "reference": "diffusers",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "1024x1024",
+        "512x512",
+        "single-1024x1024",
+        "single-512x512"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/018_bench_diffusers_stabilityai_stable-diffusion-xl-base-1.0/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/018_bench_diffusers_stabilityai_stable-diffusion-xl-base-1.0/results.json"
+      }
+    },
+    {
+      "index": 19,
+      "model": "facebook/sam3.1",
+      "harness": "bench_sam",
+      "reference": "sam3",
+      "tp": 1,
+      "dtype": "float32",
+      "workloads": [
+        "full-pipeline",
+        "smartglasses-val-video",
+        "single-image-1008",
+        "batch-4-image-1008",
+        "single-video-frame-1008"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/019_bench_sam_facebook_sam3.1/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/019_bench_sam_facebook_sam3.1/results.json"
+      }
+    },
+    {
+      "index": 20,
+      "model": "openai/whisper-large-v3",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 1,
+      "dtype": "float16",
+      "workloads": [
+        "librispeech",
+        "single-utterance",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/020_bench_vllm_openai_whisper-large-v3/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/020_bench_vllm_openai_whisper-large-v3/results.json"
+      }
+    },
+    {
+      "index": 21,
+      "model": "FunAudioLLM/Fun-CosyVoice3-0.5B-2512",
+      "harness": "bench_vllm_omni",
+      "reference": "vllm-omni",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "tts-short",
+        "tts-medium",
+        "tts-long",
+        "single-utterance"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/021_bench_vllm_omni_FunAudioLLM_Fun-CosyVoice3-0.5B-2512/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/021_bench_vllm_omni_FunAudioLLM_Fun-CosyVoice3-0.5B-2512/results.json"
+      }
+    },
+    {
+      "index": 22,
+      "model": "Qwen/Qwen2-VL-7B-Instruct",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "text-only",
+        "image",
+        "video",
+        "single-image",
+        "single-video"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/022_bench_vllm_Qwen_Qwen2-VL-7B-Instruct/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/022_bench_vllm_Qwen_Qwen2-VL-7B-Instruct/results.json"
+      }
+    },
+    {
+      "index": 23,
+      "model": "Qwen/Qwen3-VL-8B-Instruct",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "text-only",
+        "image",
+        "video",
+        "single-image",
+        "single-video"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/023_bench_vllm_Qwen_Qwen3-VL-8B-Instruct/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/023_bench_vllm_Qwen_Qwen3-VL-8B-Instruct/results.json"
+      }
+    },
+    {
+      "index": 24,
+      "model": "Qwen/Qwen3-VL-235B-A22B-Instruct-FP8",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 4,
+      "dtype": "fp8",
+      "workloads": [
+        "text-only",
+        "image",
+        "video",
+        "single-image",
+        "single-video"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/024_bench_vllm_Qwen_Qwen3-VL-235B-A22B-Instruct-FP8/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/024_bench_vllm_Qwen_Qwen3-VL-235B-A22B-Instruct-FP8/results.json"
+      }
+    },
+    {
+      "index": 25,
+      "model": "Qwen/Qwen2.5-Omni-7B",
+      "harness": "bench_vllm",
+      "reference": "vLLM",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "text",
+        "image",
+        "video",
+        "audio",
+        "single-text",
+        "single-image",
+        "single-video",
+        "single-audio"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/025_bench_vllm_Qwen_Qwen2.5-Omni-7B/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/025_bench_vllm_Qwen_Qwen2.5-Omni-7B/results.json"
+      }
+    },
+    {
+      "index": 26,
+      "model": "google/siglip2-so400m-patch16-naflex",
+      "harness": "bench_timm",
+      "reference": "timm",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "default-res",
+        "high-res",
+        "single-image",
+        "batch-8"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/026_bench_timm_google_siglip2-so400m-patch16-naflex/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/026_bench_timm_google_siglip2-so400m-patch16-naflex/results.json"
+      }
+    },
+    {
+      "index": 27,
+      "model": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
+      "harness": "bench_timm",
+      "reference": "timm",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "default-res",
+        "high-res",
+        "single-image",
+        "batch-8"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/027_bench_timm_facebook_dinov3-vit7b16-pretrain-lvd1689m/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/027_bench_timm_facebook_dinov3-vit7b16-pretrain-lvd1689m/results.json"
+      }
+    },
+    {
+      "index": 28,
+      "model": "timm/swinv2_large_window12_192.ms_in22k",
+      "harness": "bench_timm",
+      "reference": "timm",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "default-res",
+        "high-res",
+        "single-image",
+        "batch-8"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/028_bench_timm_timm_swinv2_large_window12_192.ms_in22k/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/028_bench_timm_timm_swinv2_large_window12_192.ms_in22k/results.json"
+      }
+    },
+    {
+      "index": 29,
+      "model": "timm/mobilenetv4_conv_medium.e500_r256_in1k",
+      "harness": "bench_timm",
+      "reference": "timm",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "default-res",
+        "high-res",
+        "single-image",
+        "batch-8"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/029_bench_timm_timm_mobilenetv4_conv_medium.e500_r256_in1k/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/029_bench_timm_timm_mobilenetv4_conv_medium.e500_r256_in1k/results.json"
+      }
+    },
+    {
+      "index": 30,
+      "model": "facebook/convnextv2-base-22k-384",
+      "harness": "bench_image_cls",
+      "reference": "timm",
+      "tp": 1,
+      "dtype": "float32",
+      "workloads": [
+        "default-res",
+        "high-res",
+        "single-image",
+        "batch-8"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/030_bench_image_cls_facebook_convnextv2-base-22k-384/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/030_bench_image_cls_facebook_convnextv2-base-22k-384/results.json"
+      }
+    },
+    {
+      "index": 31,
+      "model": "timm/efficientnetv2_rw_m.agc_in1k",
+      "harness": "bench_image_cls",
+      "reference": "timm",
+      "tp": 1,
+      "dtype": "float32",
+      "workloads": [
+        "default-res",
+        "high-res",
+        "single-image",
+        "batch-8"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/031_bench_image_cls_timm_efficientnetv2_rw_m.agc_in1k/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/031_bench_image_cls_timm_efficientnetv2_rw_m.agc_in1k/results.json"
+      }
+    },
+    {
+      "index": 32,
+      "model": "jameslahm/yolov10n",
+      "harness": "bench_detection",
+      "reference": "reference",
+      "tp": 1,
+      "dtype": "float16",
+      "workloads": [
+        "coco-val",
+        "single-image",
+        "batch-4"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/032_bench_detection_jameslahm_yolov10n/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/032_bench_detection_jameslahm_yolov10n/results.json"
+      }
+    },
+    {
+      "index": 33,
+      "model": "PekingU/rtdetr_v2_r101vd",
+      "harness": "bench_detection",
+      "reference": "reference",
+      "tp": 1,
+      "dtype": "float16",
+      "workloads": [
+        "coco-val",
+        "single-image",
+        "batch-4"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/033_bench_detection_PekingU_rtdetr_v2_r101vd/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/033_bench_detection_PekingU_rtdetr_v2_r101vd/results.json"
+      }
+    },
+    {
+      "index": 34,
+      "model": "Voxel51/gaussian_splatting",
+      "harness": "bench_3dgs",
+      "reference": "gsplat",
+      "tp": 1,
+      "dtype": "float32",
+      "workloads": [
+        "render",
+        "single-render"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/034_bench_3dgs_Voxel51_gaussian_splatting/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/034_bench_3dgs_Voxel51_gaussian_splatting/results.json"
+      }
+    },
+    {
+      "index": 35,
+      "model": "NVlabs/instant-ngp",
+      "harness": "bench_instantngp",
+      "reference": "pyngp",
+      "tp": 1,
+      "dtype": "float32",
+      "workloads": [
+        "render",
+        "single-render"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/035_bench_instantngp_NVlabs_instant-ngp/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/035_bench_instantngp_NVlabs_instant-ngp/results.json"
+      }
+    },
+    {
+      "index": 36,
+      "model": "Pointcept/PointTransformerV3",
+      "harness": "bench_pointcloud",
+      "reference": "official-detached",
+      "tp": 1,
+      "dtype": "float32",
+      "workloads": [
+        "scanobjectnn",
+        "single-cloud",
+        "batch-8"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/036_bench_pointcloud_Pointcept_PointTransformerV3/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/036_bench_pointcloud_Pointcept_PointTransformerV3/results.json"
+      }
+    },
+    {
+      "index": 37,
+      "model": "OpenFold/OpenFold3",
+      "harness": "bench_openfold3",
+      "reference": "reference",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "short",
+        "medium",
+        "long",
+        "extra-long",
+        "single-short",
+        "single-medium",
+        "single-long",
+        "single-extra-long"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/037_bench_openfold3_OpenFold_OpenFold3/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/037_bench_openfold3_OpenFold_OpenFold3/results.json"
+      }
+    },
+    {
+      "index": 38,
+      "model": "/home/yak/.fastkernels/third_party/openpi-assets/pi0_aloha_pen_uncap_pytorch",
+      "harness": "bench_openpi",
+      "reference": "openpi",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "aloha-3cam",
+        "aloha-1cam",
+        "aloha-single-3cam",
+        "aloha-single-1cam"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/038_bench_openpi_pi0_aloha_pen_uncap/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/038_bench_openpi_pi0_aloha_pen_uncap/results.json"
+      }
+    },
+    {
+      "index": 39,
+      "model": "dp3",
+      "harness": "bench_dp3",
+      "reference": "3D-Diffusion-Policy",
+      "tp": 1,
+      "dtype": "float32",
+      "workloads": [
+        "dp3-1env",
+        "dp3-batch",
+        "single-step",
+        "batch-8"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/039_bench_dp3_dp3/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/039_bench_dp3_dp3/results.json"
+      }
+    },
+    {
+      "index": 40,
+      "model": "dlrmv2",
+      "harness": "bench_recsys",
+      "reference": "torchrec/PyG",
+      "tp": 1,
+      "dtype": "float32",
+      "workloads": [
+        "ctr-batch",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/040_bench_recsys_dlrmv2/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/040_bench_recsys_dlrmv2/results.json"
+      }
+    },
+    {
+      "index": 41,
+      "model": "lightgcn",
+      "harness": "bench_recsys",
+      "reference": "torchrec/PyG",
+      "tp": 1,
+      "dtype": "float32",
+      "workloads": [
+        "recommend-batch",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/041_bench_recsys_lightgcn/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/041_bench_recsys_lightgcn/results.json"
+      }
+    },
+    {
+      "index": 42,
+      "model": "BAAI/bge-m3",
+      "harness": "bench_embedding",
+      "reference": "vLLM",
+      "tp": 1,
+      "dtype": "float16",
+      "workloads": [
+        "bge-m3-mldr-docs",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/042_bench_embedding_BAAI_bge-m3/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/042_bench_embedding_BAAI_bge-m3/results.json"
+      }
+    },
+    {
+      "index": 43,
+      "model": "colbert-ir/colbertv2.0",
+      "harness": "bench_embedding",
+      "reference": "vLLM",
+      "tp": 1,
+      "dtype": "float16",
+      "workloads": [
+        "colbertv2-msmarco-passages",
+        "single-request",
+        "fixed-batch-32"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/043_bench_embedding_colbert-ir_colbertv2.0/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/043_bench_embedding_colbert-ir_colbertv2.0/results.json"
+      }
+    },
+    {
+      "index": 44,
+      "model": "GSAI-ML/LLaDA-8B-Instruct",
+      "harness": "bench_dllm",
+      "reference": "fast-dllm",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "humaneval"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/044_bench_dllm_GSAI-ML_LLaDA-8B-Instruct/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/044_bench_dllm_GSAI-ML_LLaDA-8B-Instruct/results.json"
+      }
+    },
+    {
+      "index": 45,
+      "model": "Etched/oasis-500m",
+      "harness": "bench_oasis",
+      "reference": "open-oasis",
+      "tp": 1,
+      "dtype": "float16",
+      "workloads": [
+        "short-bs4-16f-4ddim",
+        "medium-bs8-24f-4ddim",
+        "long-bs8-32f-4ddim",
+        "denoise-bs4-16f-8ddim",
+        "latency-bs1-8f-4ddim"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/045_bench_oasis_Etched_oasis-500m/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/045_bench_oasis_Etched_oasis-500m/results.json"
+      }
+    },
+    {
+      "index": 46,
+      "model": "facebook/vjepa2-vitl-fpc64-256",
+      "harness": "bench_vjepa2",
+      "reference": "transformers",
+      "tp": 1,
+      "dtype": "bfloat16",
+      "workloads": [
+        "predictor",
+        "encoder",
+        "single-video"
+      ],
+      "status": "PASS(cached)",
+      "paths": {
+        "run_log": "/code/users/goliaro/validate-b200-check/046_bench_vjepa2_facebook_vjepa2-vitl-fpc64-256/run.log",
+        "results_json": "/code/users/goliaro/validate-b200-check/046_bench_vjepa2_facebook_vjepa2-vitl-fpc64-256/results.json"
+      }
+    }
+  ],
+  "throughput": [
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "workload": "mixed",
+      "reference": "vLLM",
+      "speedup": 0.9533717414573737,
+      "correctness": "avg prefix match len: 144.2; exact match: 291/1000 (29.1%)"
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "workload": "long-context",
+      "reference": "vLLM",
+      "speedup": 0.9637682099102312,
+      "correctness": "avg prefix match len: 128.4; exact match: 18/64 (28.1%)"
+    },
+    {
+      "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+      "workload": "mixed",
+      "reference": "vLLM",
+      "speedup": 1.1613371846364908,
+      "correctness": "avg prefix match len: 89.3; exact match: 150/1000 (15.0%)"
+    },
+    {
+      "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+      "workload": "long-context",
+      "reference": "vLLM",
+      "speedup": 0.9712980828548877,
+      "correctness": "avg prefix match len: 83.4; exact match: 6/64 (9.4%)"
+    },
+    {
+      "model": "nvidia/GLM-5.2-NVFP4",
+      "workload": "mixed",
+      "reference": "vLLM",
+      "speedup": 2.016875791227367,
+      "correctness": "avg prefix match len: 25.8; exact match: 53/1000 (5.3%)"
+    },
+    {
+      "model": "nvidia/GLM-5.2-NVFP4",
+      "workload": "long-context",
+      "reference": "vLLM",
+      "speedup": 0.9768876623391841,
+      "correctness": "avg prefix match len: 41.2; exact match: 8/64 (12.5%)"
+    },
+    {
+      "model": "microsoft/bitnet-b1.58-2B-4T",
+      "workload": "mixed",
+      "reference": "microsoft-bitnet-gpu",
+      "speedup": 1.1978164932374602,
+      "correctness": "avg prefix match len: 202.8; exact match: 6/32 (18.8%)"
+    },
+    {
+      "model": "microsoft/bitnet-b1.58-2B-4T",
+      "workload": "long-context",
+      "reference": "microsoft-bitnet-gpu",
+      "speedup": 1.0056393134083843,
+      "correctness": "avg prefix match len: 41.4; exact match: 1/32 (3.1%)"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "workload": "mixed",
+      "reference": "vLLM",
+      "speedup": 0.9728998482071098,
+      "correctness": "avg prefix match len: 57.3; exact match: 133/1000 (13.3%)"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "workload": "long-context",
+      "reference": "vLLM",
+      "speedup": 0.934079460698412,
+      "correctness": "avg prefix match len: 50.3; exact match: 2/64 (3.1%)"
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "workload": "eagle3-16seqs-out256",
+      "reference": "SGLang",
+      "speedup": 0.9328965422138782,
+      "correctness": "avg prefix match len: 160.6; exact match: 6/16 (37.5%)"
+    },
+    {
+      "model": "google/gemma-4-26B-A4B-it",
+      "workload": "mixed",
+      "reference": "vLLM",
+      "speedup": 0.9994498794262227,
+      "correctness": "avg prefix match len: 67.9; exact match: 144/1000 (14.4%)"
+    },
+    {
+      "model": "google/gemma-4-26B-A4B-it",
+      "workload": "long-context",
+      "reference": "vLLM",
+      "speedup": 0.997979337282841,
+      "correctness": "avg prefix match len: 72.0; exact match: 3/64 (4.7%)"
+    },
+    {
+      "model": "state-spaces/mamba-2.8b-hf",
+      "workload": "mixed",
+      "reference": "vLLM",
+      "speedup": 3.557728636732205,
+      "correctness": "avg prefix match len: 166.0; exact match: 372/1000 (37.2%)"
+    },
+    {
+      "model": "state-spaces/mamba-2.8b-hf",
+      "workload": "long-context",
+      "reference": "vLLM",
+      "speedup": 1.2402814814742635,
+      "correctness": "avg prefix match len: 93.0; exact match: 17/64 (26.6%)"
+    },
+    {
+      "model": "mistralai/Mamba-Codestral-7B-v0.1",
+      "workload": "mixed",
+      "reference": "vLLM",
+      "speedup": 0.9597823345816828,
+      "correctness": "avg prefix match len: 206.1; exact match: 437/1000 (43.7%)"
+    },
+    {
+      "model": "mistralai/Mamba-Codestral-7B-v0.1",
+      "workload": "long-context",
+      "reference": "vLLM",
+      "speedup": 0.9652986827644952,
+      "correctness": "avg prefix match len: 200.1; exact match: 42/64 (65.6%)"
+    },
+    {
+      "model": "fla-hub/rwkv7-2.9B-g1",
+      "workload": "mixed",
+      "reference": "FLA",
+      "speedup": 1.2715683880625697,
+      "correctness": "avg prefix match len: 96.5; exact match: 172/1000 (17.2%)"
+    },
+    {
+      "model": "fla-hub/rwkv7-2.9B-g1",
+      "workload": "long-context",
+      "reference": "FLA",
+      "speedup": 1.1799546225340953,
+      "correctness": "avg prefix match len: 104.9; exact match: 8/64 (12.5%)"
+    },
+    {
+      "model": "fla-hub/gla-2.7B-100B",
+      "workload": "mixed",
+      "reference": "FLA",
+      "speedup": 1.2457440219164528,
+      "correctness": "avg prefix match len: 332.3; exact match: 730/1000 (73.0%)"
+    },
+    {
+      "model": "fla-hub/gla-2.7B-100B",
+      "workload": "long-context",
+      "reference": "FLA",
+      "speedup": 1.6535964950064477,
+      "correctness": "avg prefix match len: 192.0; exact match: 44/64 (68.8%)"
+    },
+    {
+      "model": "fla-hub/retnet-2.7B-100B",
+      "workload": "mixed",
+      "reference": "FLA",
+      "speedup": 6.834427846144844,
+      "correctness": "avg prefix match len: 21.2; exact match: 50/1000 (5.0%)"
+    },
+    {
+      "model": "fla-hub/retnet-2.7B-100B",
+      "workload": "long-context",
+      "reference": "FLA",
+      "speedup": 1.6871838317430676,
+      "correctness": "avg prefix match len: 167.6; exact match: 35/64 (54.7%)"
+    },
+    {
+      "model": "Qwen/Qwen3-Next-80B-A3B-Instruct",
+      "workload": "mixed",
+      "reference": "vLLM",
+      "speedup": 1.458403726374466,
+      "correctness": "avg prefix match len: 9.8; exact match: 28/1000 (2.8%)"
+    },
+    {
+      "model": "Qwen/Qwen3-Next-80B-A3B-Instruct",
+      "workload": "long-context",
+      "reference": "vLLM",
+      "speedup": 1.0067909043476169,
+      "correctness": "avg prefix match len: 13.6; exact match: 0/64 (0.0%)"
+    },
+    {
+      "model": "moonshotai/Kimi-Linear-48B-A3B-Instruct",
+      "workload": "mixed",
+      "reference": "vLLM",
+      "speedup": 1.5129505912700958,
+      "correctness": "avg prefix match len: 41.8; exact match: 107/1000 (10.7%)"
+    },
+    {
+      "model": "moonshotai/Kimi-Linear-48B-A3B-Instruct",
+      "workload": "long-context",
+      "reference": "vLLM",
+      "speedup": 0.9662904882101644,
+      "correctness": "avg prefix match len: 85.7; exact match: 5/64 (7.8%)"
+    },
+    {
+      "model": "ttt_e2e",
+      "workload": "ttt-e2e-pretrain",
+      "reference": "jax",
+      "speedup": 3.6375903108617944,
+      "correctness": "pass=True; token_nll_mean_abs_diff=0.022682"
+    },
+    {
+      "model": "ttt_e2e",
+      "workload": "ttt-e2e-meta",
+      "reference": "jax",
+      "speedup": 1.051520278223313,
+      "correctness": "pass=True; token_nll_mean_abs_diff=0.021899"
+    },
+    {
+      "model": "ai21labs/AI21-Jamba-Mini-1.7",
+      "workload": "mixed",
+      "reference": "vLLM",
+      "speedup": 0.9479747552768799,
+      "correctness": "avg prefix match len: 82.5; exact match: 155/1000 (15.5%)"
+    },
+    {
+      "model": "ai21labs/AI21-Jamba-Mini-1.7",
+      "workload": "long-context",
+      "reference": "vLLM",
+      "speedup": 0.7402824593981113,
+      "correctness": "avg prefix match len: 100.3; exact match: 10/64 (15.6%)"
+    },
+    {
+      "model": "black-forest-labs/FLUX.1-dev",
+      "workload": "1024x1024",
+      "reference": "vllm-omni",
+      "speedup": 1.0367980716688836,
+      "correctness": "min_cos=0.9493"
+    },
+    {
+      "model": "black-forest-labs/FLUX.1-dev",
+      "workload": "512x512",
+      "reference": "vllm-omni",
+      "speedup": 1.6553657631204224,
+      "correctness": "min_cos=0.9849"
+    },
+    {
+      "model": "hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_t2v",
+      "workload": "480p-short",
+      "reference": "vllm-omni",
+      "speedup": 1.0257819728834563,
+      "correctness": "min_cos=0.9588"
+    },
+    {
+      "model": "hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_t2v",
+      "workload": "480p-medium",
+      "reference": "vllm-omni",
+      "speedup": 0.9954510472788953,
+      "correctness": "min_cos=0.9739"
+    },
+    {
+      "model": "stabilityai/stable-diffusion-xl-base-1.0",
+      "workload": "1024x1024",
+      "reference": "diffusers",
+      "speedup": 1.0176226639754038,
+      "correctness": "min_cos=0.9623"
+    },
+    {
+      "model": "stabilityai/stable-diffusion-xl-base-1.0",
+      "workload": "512x512",
+      "reference": "diffusers",
+      "speedup": 1.0445079440884821,
+      "correctness": "min_cos=0.9193"
+    },
+    {
+      "model": "facebook/sam3.1",
+      "workload": "full-pipeline",
+      "reference": "sam3",
+      "speedup": 1.0261110271660223,
+      "correctness": "pass=True; min_cosine=0.871415"
+    },
+    {
+      "model": "facebook/sam3.1",
+      "workload": "smartglasses-val-video",
+      "reference": "sam3",
+      "speedup": 1.058487661223544,
+      "correctness": "min_cosine=0.928175"
+    },
+    {
+      "model": "openai/whisper-large-v3",
+      "workload": "librispeech",
+      "reference": "vLLM",
+      "speedup": 1.0693603791387791,
+      "correctness": "avg prefix match len: 385.9; exact match: 1664/2620 (63.5%)"
+    },
+    {
+      "model": "FunAudioLLM/Fun-CosyVoice3-0.5B-2512",
+      "workload": "tts-short",
+      "reference": "vllm-omni",
+      "speedup": 2.086780277528933,
+      "correctness": "-"
+    },
+    {
+      "model": "FunAudioLLM/Fun-CosyVoice3-0.5B-2512",
+      "workload": "tts-medium",
+      "reference": "vllm-omni",
+      "speedup": 2.3774526889324905,
+      "correctness": "-"
+    },
+    {
+      "model": "FunAudioLLM/Fun-CosyVoice3-0.5B-2512",
+      "workload": "tts-long",
+      "reference": "vllm-omni",
+      "speedup": 2.4403914927836614,
+      "correctness": "-"
+    },
+    {
+      "model": "Qwen/Qwen2-VL-7B-Instruct",
+      "workload": "text-only",
+      "reference": "vLLM",
+      "speedup": 1.0083510895085244,
+      "correctness": "avg prefix match len: 169.5; exact match: 364/1000 (36.4%)"
+    },
+    {
+      "model": "Qwen/Qwen2-VL-7B-Instruct",
+      "workload": "image",
+      "reference": "vLLM",
+      "speedup": 1.2490615886145426,
+      "correctness": "avg prefix match len: 255.7; exact match: 372/1000 (37.2%)"
+    },
+    {
+      "model": "Qwen/Qwen2-VL-7B-Instruct",
+      "workload": "video",
+      "reference": "vLLM",
+      "speedup": 1.496616267390856,
+      "correctness": "avg prefix match len: 312.7; exact match: 582/1000 (58.2%)"
+    },
+    {
+      "model": "Qwen/Qwen3-VL-8B-Instruct",
+      "workload": "text-only",
+      "reference": "vLLM",
+      "speedup": 0.9958062978070041,
+      "correctness": "avg prefix match len: 97.4; exact match: 197/1000 (19.7%)"
+    },
+    {
+      "model": "Qwen/Qwen3-VL-8B-Instruct",
+      "workload": "image",
+      "reference": "vLLM",
+      "speedup": 1.2207836902548859,
+      "correctness": "avg prefix match len: 115.5; exact match: 76/1000 (7.6%)"
+    },
+    {
+      "model": "Qwen/Qwen3-VL-8B-Instruct",
+      "workload": "video",
+      "reference": "vLLM",
+      "speedup": 1.6513026596930986,
+      "correctness": "avg prefix match len: 210.4; exact match: 332/1000 (33.2%)"
+    },
+    {
+      "model": "Qwen/Qwen3-VL-235B-A22B-Instruct-FP8",
+      "workload": "text-only",
+      "reference": "vLLM",
+      "speedup": 1.3166814764571775,
+      "correctness": "avg prefix match len: 36.7; exact match: 78/1000 (7.8%)"
+    },
+    {
+      "model": "Qwen/Qwen3-VL-235B-A22B-Instruct-FP8",
+      "workload": "image",
+      "reference": "vLLM",
+      "speedup": 2.0424560471763678,
+      "correctness": "avg prefix match len: 49.5; exact match: 8/1000 (0.8%)"
+    },
+    {
+      "model": "Qwen/Qwen3-VL-235B-A22B-Instruct-FP8",
+      "workload": "video",
+      "reference": "vLLM",
+      "speedup": 1.4864792342984507,
+      "correctness": "avg prefix match len: 34.0; exact match: 2/1000 (0.2%)"
+    },
+    {
+      "model": "Qwen/Qwen2.5-Omni-7B",
+      "workload": "text",
+      "reference": "vLLM",
+      "speedup": 0.9891712436784685,
+      "correctness": "avg prefix match len: 161.1; exact match: 332/1000 (33.2%)"
+    },
+    {
+      "model": "Qwen/Qwen2.5-Omni-7B",
+      "workload": "image",
+      "reference": "vLLM",
+      "speedup": 1.292201006288816,
+      "correctness": "avg prefix match len: 144.3; exact match: 133/1000 (13.3%)"
+    },
+    {
+      "model": "Qwen/Qwen2.5-Omni-7B",
+      "workload": "video",
+      "reference": "vLLM",
+      "speedup": 1.5880753314622058,
+      "correctness": "avg prefix match len: 190.3; exact match: 233/1000 (23.3%)"
+    },
+    {
+      "model": "Qwen/Qwen2.5-Omni-7B",
+      "workload": "audio",
+      "reference": "vLLM",
+      "speedup": 1.7960260622308166,
+      "correctness": "avg prefix match len: 150.1; exact match: 376/1000 (37.6%)"
+    },
+    {
+      "model": "google/siglip2-so400m-patch16-naflex",
+      "workload": "default-res",
+      "reference": "timm",
+      "speedup": 1.0111800908090405,
+      "correctness": "min_cos=0.9997"
+    },
+    {
+      "model": "google/siglip2-so400m-patch16-naflex",
+      "workload": "high-res",
+      "reference": "timm",
+      "speedup": 1.0085706841632684,
+      "correctness": "min_cos=1.0000"
+    },
+    {
+      "model": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
+      "workload": "default-res",
+      "reference": "timm",
+      "speedup": 0.9401658149522822,
+      "correctness": "min_cos=1.0000"
+    },
+    {
+      "model": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
+      "workload": "high-res",
+      "reference": "timm",
+      "speedup": 0.9440978916547165,
+      "correctness": "min_cos=1.0000"
+    },
+    {
+      "model": "timm/swinv2_large_window12_192.ms_in22k",
+      "workload": "default-res",
+      "reference": "timm",
+      "speedup": 0.9393444929243897,
+      "correctness": "min_cos=1.0000"
+    },
+    {
+      "model": "timm/swinv2_large_window12_192.ms_in22k",
+      "workload": "high-res",
+      "reference": "timm",
+      "speedup": 0.9464948749293042,
+      "correctness": "min_cos=1.0000"
+    },
+    {
+      "model": "timm/mobilenetv4_conv_medium.e500_r256_in1k",
+      "workload": "default-res",
+      "reference": "timm",
+      "speedup": 1.0701316863882346,
+      "correctness": "min_cos=1.0000"
+    },
+    {
+      "model": "timm/mobilenetv4_conv_medium.e500_r256_in1k",
+      "workload": "high-res",
+      "reference": "timm",
+      "speedup": 0.9865120218635152,
+      "correctness": "min_cos=1.0000"
+    },
+    {
+      "model": "facebook/convnextv2-base-22k-384",
+      "workload": "imagecls-ethz/food101",
+      "reference": "transformers",
+      "speedup": 1.0004101735758775,
+      "correctness": "pass=True; top1_match_rate=1.000000"
+    },
+    {
+      "model": "timm/efficientnetv2_rw_m.agc_in1k",
+      "workload": "imagecls-ethz/food101",
+      "reference": "timm",
+      "speedup": 1.043601215573394,
+      "correctness": "pass=True; top1_match_rate=1.000000"
+    },
+    {
+      "model": "jameslahm/yolov10n",
+      "workload": "coco-val",
+      "reference": "reference",
+      "speedup": 1.139767424015571,
+      "correctness": "boxes=0.9973; scores=0.9999; labels=100.0%"
+    },
+    {
+      "model": "PekingU/rtdetr_v2_r101vd",
+      "workload": "coco-val",
+      "reference": "reference",
+      "speedup": 0.9692227759815362,
+      "correctness": "boxes=0.9277; scores=1.0000; labels=73.4%"
+    },
+    {
+      "model": "Voxel51/gaussian_splatting",
+      "workload": "render",
+      "reference": "gsplat",
+      "speedup": 0.9954824525196625,
+      "correctness": "pass=True; rgb_cosine=1.000000"
+    },
+    {
+      "model": "NVlabs/instant-ngp",
+      "workload": "render",
+      "reference": "pyngp",
+      "speedup": 0.983032240872966,
+      "correctness": "pass=True; rgba_cosine=1.000000"
+    },
+    {
+      "model": "Pointcept/PointTransformerV3",
+      "workload": "scanobjectnn",
+      "reference": "official-detached",
+      "speedup": 0.9667462275289861,
+      "correctness": "pass=False; feat_cosine=0.986230"
+    },
+    {
+      "model": "Pointcept/PointTransformerV3",
+      "workload": "batch-8",
+      "reference": "official-detached",
+      "speedup": 0.9967512470840104,
+      "correctness": "pass=False; feat_cosine=0.986230"
+    },
+    {
+      "model": "OpenFold/OpenFold3",
+      "workload": "short",
+      "reference": "reference",
+      "speedup": 1.0031139074956157,
+      "correctness": "align=100.0%"
+    },
+    {
+      "model": "OpenFold/OpenFold3",
+      "workload": "medium",
+      "reference": "reference",
+      "speedup": 1.0214513306079587,
+      "correctness": "align=100.0%"
+    },
+    {
+      "model": "OpenFold/OpenFold3",
+      "workload": "long",
+      "reference": "reference",
+      "speedup": 0.999431848794329,
+      "correctness": "align=100.0%"
+    },
+    {
+      "model": "OpenFold/OpenFold3",
+      "workload": "extra-long",
+      "reference": "reference",
+      "speedup": 1.0148683058337948,
+      "correctness": "align=100.0%"
+    },
+    {
+      "model": "/home/yak/.fastkernels/third_party/openpi-assets/pi0_aloha_pen_uncap_pytorch",
+      "workload": "aloha-3cam",
+      "reference": "openpi",
+      "speedup": 3.928847877191412,
+      "correctness": "pass=True; mean_cosine_sim=0.999998"
+    },
+    {
+      "model": "/home/yak/.fastkernels/third_party/openpi-assets/pi0_aloha_pen_uncap_pytorch",
+      "workload": "aloha-1cam",
+      "reference": "openpi",
+      "speedup": 2.4289448948751744,
+      "correctness": "pass=True; mean_cosine_sim=0.999994"
+    },
+    {
+      "model": "dp3",
+      "workload": "dp3-1env",
+      "reference": "3D-Diffusion-Policy",
+      "speedup": 1.1287823045034133,
+      "correctness": "min_cos=1.0000"
+    },
+    {
+      "model": "dp3",
+      "workload": "dp3-batch",
+      "reference": "3D-Diffusion-Policy",
+      "speedup": 1.1418917520804128,
+      "correctness": "min_cos=1.0000"
+    },
+    {
+      "model": "dlrmv2",
+      "workload": "ctr-batch",
+      "reference": "torchrec.models.dlrm.DLRM",
+      "speedup": 1.0969353399721795,
+      "correctness": "pass=False; min_cosine=nan"
+    },
+    {
+      "model": "lightgcn",
+      "workload": "recommend-batch",
+      "reference": "torch_geometric.nn.models.LightGCN",
+      "speedup": 1.0211748803961551,
+      "correctness": "pass=True; min_cosine=1.000000"
+    },
+    {
+      "model": "BAAI/bge-m3",
+      "workload": "bge-m3-mldr-docs",
+      "reference": "vLLM",
+      "speedup": 2.3519374179959986,
+      "correctness": "pass=True; min_cos=0.998640"
+    },
+    {
+      "model": "colbert-ir/colbertv2.0",
+      "workload": "colbertv2-msmarco-passages",
+      "reference": "vLLM",
+      "speedup": 3.1297456669602663,
+      "correctness": "pass=True; min_cos=0.999946"
+    },
+    {
+      "model": "GSAI-ML/LLaDA-8B-Instruct",
+      "workload": "humaneval-fastdllm-dual",
+      "reference": "fastdllm-dual",
+      "speedup": 0.9560333260167071,
+      "correctness": "avg prefix match len: 168.6; exact match: 92/164 (56.1%)"
+    },
+    {
+      "model": "Etched/oasis-500m",
+      "workload": "latency-bs1-8f-4ddim",
+      "reference": "open-oasis",
+      "speedup": 1.1623236294114894,
+      "correctness": "-"
+    },
+    {
+      "model": "Etched/oasis-500m",
+      "workload": "short-bs4-16f-4ddim",
+      "reference": "open-oasis",
+      "speedup": 1.1427636471129348,
+      "correctness": "pass=True; min_cos=0.9985"
+    },
+    {
+      "model": "Etched/oasis-500m",
+      "workload": "medium-bs8-24f-4ddim",
+      "reference": "open-oasis",
+      "speedup": 1.1856207766720699,
+      "correctness": "pass=True; min_cos=0.9990"
+    },
+    {
+      "model": "Etched/oasis-500m",
+      "workload": "long-bs8-32f-4ddim",
+      "reference": "open-oasis",
+      "speedup": 1.1853843137996287,
+      "correctness": "pass=True; min_cos=0.9979"
+    },
+    {
+      "model": "Etched/oasis-500m",
+      "workload": "denoise-bs4-16f-8ddim",
+      "reference": "open-oasis",
+      "speedup": 1.1774378593837784,
+      "correctness": "pass=True; min_cos=0.9974"
+    },
+    {
+      "model": "facebook/vjepa2-vitl-fpc64-256",
+      "workload": "predictor",
+      "reference": "transformers",
+      "speedup": 0.9654920558736189,
+      "correctness": "pass=True; min_cosine=1.000000"
+    },
+    {
+      "model": "facebook/vjepa2-vitl-fpc64-256",
+      "workload": "encoder",
+      "reference": "transformers",
+      "speedup": 0.9784092368091238,
+      "correctness": "pass=True; min_cosine=1.000000"
+    }
+  ],
+  "latency": [
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "workload": "single-request",
+      "reference": "vLLM",
+      "speedup": 1.02983630847792
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "workload": "fixed-batch-32",
+      "reference": "vLLM",
+      "speedup": 1.0196478957559398
+    },
+    {
+      "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+      "workload": "single-request",
+      "reference": "vLLM",
+      "speedup": 0.9995455191359106
+    },
+    {
+      "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+      "workload": "fixed-batch-32",
+      "reference": "vLLM",
+      "speedup": 0.9988005413721707
+    },
+    {
+      "model": "nvidia/GLM-5.2-NVFP4",
+      "workload": "single-request",
+      "reference": "vLLM",
+      "speedup": 0.9543823141626407
+    },
+    {
+      "model": "nvidia/GLM-5.2-NVFP4",
+      "workload": "fixed-batch-32",
+      "reference": "vLLM",
+      "speedup": 0.9312881103056954
+    },
+    {
+      "model": "microsoft/bitnet-b1.58-2B-4T",
+      "workload": "single-request",
+      "reference": "microsoft-bitnet-gpu",
+      "speedup": 1.2040473369403826
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "workload": "single-request",
+      "reference": "vLLM",
+      "speedup": 0.9133865906835217
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "workload": "fixed-batch-32",
+      "reference": "vLLM",
+      "speedup": 0.9922109180168259
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "workload": "latency-bs1-out256",
+      "reference": "SGLang",
+      "speedup": 1.0375308617908339
+    },
+    {
+      "model": "google/gemma-4-26B-A4B-it",
+      "workload": "single-request",
+      "reference": "vLLM",
+      "speedup": 1.0555599000998164
+    },
+    {
+      "model": "google/gemma-4-26B-A4B-it",
+      "workload": "fixed-batch-32",
+      "reference": "vLLM",
+      "speedup": 1.1223223121297534
+    },
+    {
+      "model": "state-spaces/mamba-2.8b-hf",
+      "workload": "single-request",
+      "reference": "vLLM",
+      "speedup": 2.768649922540474
+    },
+    {
+      "model": "state-spaces/mamba-2.8b-hf",
+      "workload": "fixed-batch-32",
+      "reference": "vLLM",
+      "speedup": 1.4747912294634675
+    },
+    {
+      "model": "mistralai/Mamba-Codestral-7B-v0.1",
+      "workload": "single-request",
+      "reference": "vLLM",
+      "speedup": 0.9520965889821048
+    },
+    {
+      "model": "mistralai/Mamba-Codestral-7B-v0.1",
+      "workload": "fixed-batch-32",
+      "reference": "vLLM",
+      "speedup": 0.9452511221752499
+    },
+    {
+      "model": "fla-hub/rwkv7-2.9B-g1",
+      "workload": "single-request",
+      "reference": "FLA",
+      "speedup": 1.2154780343677118
+    },
+    {
+      "model": "fla-hub/rwkv7-2.9B-g1",
+      "workload": "fixed-batch-32",
+      "reference": "FLA",
+      "speedup": 1.298635868271836
+    },
+    {
+      "model": "fla-hub/gla-2.7B-100B",
+      "workload": "single-request",
+      "reference": "FLA",
+      "speedup": 1.8168368911719772
+    },
+    {
+      "model": "fla-hub/gla-2.7B-100B",
+      "workload": "fixed-batch-32",
+      "reference": "FLA",
+      "speedup": 1.6842091885898558
+    },
+    {
+      "model": "fla-hub/retnet-2.7B-100B",
+      "workload": "single-request",
+      "reference": "FLA",
+      "speedup": 1.743519230545056
+    },
+    {
+      "model": "fla-hub/retnet-2.7B-100B",
+      "workload": "fixed-batch-32",
+      "reference": "FLA",
+      "speedup": 1.7211194632289524
+    },
+    {
+      "model": "Qwen/Qwen3-Next-80B-A3B-Instruct",
+      "workload": "single-request",
+      "reference": "vLLM",
+      "speedup": 0.9900728420447905
+    },
+    {
+      "model": "Qwen/Qwen3-Next-80B-A3B-Instruct",
+      "workload": "fixed-batch-32",
+      "reference": "vLLM",
+      "speedup": 0.9931156697209902
+    },
+    {
+      "model": "moonshotai/Kimi-Linear-48B-A3B-Instruct",
+      "workload": "single-request",
+      "reference": "vLLM",
+      "speedup": 1.0735513067208755
+    },
+    {
+      "model": "moonshotai/Kimi-Linear-48B-A3B-Instruct",
+      "workload": "fixed-batch-32",
+      "reference": "vLLM",
+      "speedup": 1.01898661772332
+    },
+    {
+      "model": "ttt_e2e",
+      "workload": "ttt-e2e-pretrain-forward",
+      "reference": "jax",
+      "speedup": 3.6375903108617944
+    },
+    {
+      "model": "ttt_e2e",
+      "workload": "ttt-e2e-meta-forward",
+      "reference": "jax",
+      "speedup": 1.051520278223313
+    },
+    {
+      "model": "ai21labs/AI21-Jamba-Mini-1.7",
+      "workload": "single-request",
+      "reference": "vLLM",
+      "speedup": 1.1785065615372354
+    },
+    {
+      "model": "ai21labs/AI21-Jamba-Mini-1.7",
+      "workload": "fixed-batch-32",
+      "reference": "vLLM",
+      "speedup": 1.0263184099616438
+    },
+    {
+      "model": "black-forest-labs/FLUX.1-dev",
+      "workload": "single-1024x1024",
+      "reference": "vllm-omni",
+      "speedup": 1.0023800302626305
+    },
+    {
+      "model": "black-forest-labs/FLUX.1-dev",
+      "workload": "single-512x512",
+      "reference": "vllm-omni",
+      "speedup": 1.2112270212902154
+    },
+    {
+      "model": "hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_t2v",
+      "workload": "single-480p-short",
+      "reference": "vllm-omni",
+      "speedup": 1.0998893061279214
+    },
+    {
+      "model": "hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_t2v",
+      "workload": "single-480p-medium",
+      "reference": "vllm-omni",
+      "speedup": 1.1290375337236516
+    },
+    {
+      "model": "stabilityai/stable-diffusion-xl-base-1.0",
+      "workload": "single-1024x1024",
+      "reference": "diffusers",
+      "speedup": 1.0285830107374976
+    },
+    {
+      "model": "stabilityai/stable-diffusion-xl-base-1.0",
+      "workload": "single-512x512",
+      "reference": "diffusers",
+      "speedup": 1.0208793929950466
+    },
+    {
+      "model": "facebook/sam3.1",
+      "workload": "single-image-1008",
+      "reference": "sam3",
+      "speedup": 1.0627744137299884
+    },
+    {
+      "model": "facebook/sam3.1",
+      "workload": "batch-4-image-1008",
+      "reference": "sam3",
+      "speedup": 1.0554582504210945
+    },
+    {
+      "model": "facebook/sam3.1",
+      "workload": "single-video-frame-1008",
+      "reference": "sam3",
+      "speedup": 1.0701631856054585
+    },
+    {
+      "model": "openai/whisper-large-v3",
+      "workload": "single-utterance",
+      "reference": "vLLM",
+      "speedup": 1.0280464792208446
+    },
+    {
+      "model": "openai/whisper-large-v3",
+      "workload": "fixed-batch-32",
+      "reference": "vLLM",
+      "speedup": 1.039289688699374
+    },
+    {
+      "model": "FunAudioLLM/Fun-CosyVoice3-0.5B-2512",
+      "workload": "single-utterance",
+      "reference": "vllm-omni",
+      "speedup": 2.3394586877636216
+    },
+    {
+      "model": "Qwen/Qwen2-VL-7B-Instruct",
+      "workload": "single-image",
+      "reference": "vLLM",
+      "speedup": 1.0326526190860594
+    },
+    {
+      "model": "Qwen/Qwen2-VL-7B-Instruct",
+      "workload": "single-video",
+      "reference": "vLLM",
+      "speedup": 0.9871540838061285
+    },
+    {
+      "model": "Qwen/Qwen3-VL-8B-Instruct",
+      "workload": "single-image",
+      "reference": "vLLM",
+      "speedup": 1.0588011223590754
+    },
+    {
+      "model": "Qwen/Qwen3-VL-8B-Instruct",
+      "workload": "single-video",
+      "reference": "vLLM",
+      "speedup": 1.0522050236653697
+    },
+    {
+      "model": "Qwen/Qwen3-VL-235B-A22B-Instruct-FP8",
+      "workload": "single-image",
+      "reference": "vLLM",
+      "speedup": 0.932271576651453
+    },
+    {
+      "model": "Qwen/Qwen3-VL-235B-A22B-Instruct-FP8",
+      "workload": "single-video",
+      "reference": "vLLM",
+      "speedup": 0.9787297320228778
+    },
+    {
+      "model": "Qwen/Qwen2.5-Omni-7B",
+      "workload": "single-text",
+      "reference": "vLLM",
+      "speedup": 1.0331444949393096
+    },
+    {
+      "model": "Qwen/Qwen2.5-Omni-7B",
+      "workload": "single-image",
+      "reference": "vLLM",
+      "speedup": 1.0651817089746067
+    },
+    {
+      "model": "Qwen/Qwen2.5-Omni-7B",
+      "workload": "single-video",
+      "reference": "vLLM",
+      "speedup": 1.1256890445388987
+    },
+    {
+      "model": "Qwen/Qwen2.5-Omni-7B",
+      "workload": "single-audio",
+      "reference": "vLLM",
+      "speedup": 1.0732935826108856
+    },
+    {
+      "model": "google/siglip2-so400m-patch16-naflex",
+      "workload": "single-image",
+      "reference": "timm",
+      "speedup": 1.112200801717557
+    },
+    {
+      "model": "google/siglip2-so400m-patch16-naflex",
+      "workload": "batch-8",
+      "reference": "timm",
+      "speedup": 1.0149314698393426
+    },
+    {
+      "model": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
+      "workload": "single-image",
+      "reference": "timm",
+      "speedup": 0.9423318661921789
+    },
+    {
+      "model": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
+      "workload": "batch-8",
+      "reference": "timm",
+      "speedup": 0.942564194209434
+    },
+    {
+      "model": "timm/swinv2_large_window12_192.ms_in22k",
+      "workload": "single-image",
+      "reference": "timm",
+      "speedup": 0.917013092385464
+    },
+    {
+      "model": "timm/swinv2_large_window12_192.ms_in22k",
+      "workload": "batch-8",
+      "reference": "timm",
+      "speedup": 0.9019966727447506
+    },
+    {
+      "model": "timm/mobilenetv4_conv_medium.e500_r256_in1k",
+      "workload": "single-image",
+      "reference": "timm",
+      "speedup": 1.0506055029543213
+    },
+    {
+      "model": "timm/mobilenetv4_conv_medium.e500_r256_in1k",
+      "workload": "batch-8",
+      "reference": "timm",
+      "speedup": 1.0383938397521344
+    },
+    {
+      "model": "facebook/convnextv2-base-22k-384",
+      "workload": "batch-1",
+      "reference": "transformers",
+      "speedup": 1.0754818839006808
+    },
+    {
+      "model": "facebook/convnextv2-base-22k-384",
+      "workload": "batch-8",
+      "reference": "transformers",
+      "speedup": 0.9985192060360663
+    },
+    {
+      "model": "timm/efficientnetv2_rw_m.agc_in1k",
+      "workload": "batch-1",
+      "reference": "timm",
+      "speedup": 1.0905255766616255
+    },
+    {
+      "model": "timm/efficientnetv2_rw_m.agc_in1k",
+      "workload": "batch-8",
+      "reference": "timm",
+      "speedup": 1.0871813142446893
+    },
+    {
+      "model": "jameslahm/yolov10n",
+      "workload": "single-image",
+      "reference": "reference",
+      "speedup": 0.9443467482715938
+    },
+    {
+      "model": "jameslahm/yolov10n",
+      "workload": "batch-4",
+      "reference": "reference",
+      "speedup": 0.9524551840254588
+    },
+    {
+      "model": "PekingU/rtdetr_v2_r101vd",
+      "workload": "single-image",
+      "reference": "reference",
+      "speedup": 0.9068442827530415
+    },
+    {
+      "model": "PekingU/rtdetr_v2_r101vd",
+      "workload": "batch-4",
+      "reference": "reference",
+      "speedup": 0.892848622542174
+    },
+    {
+      "model": "Voxel51/gaussian_splatting",
+      "workload": "single-render",
+      "reference": "gsplat",
+      "speedup": 0.9936507695292331
+    },
+    {
+      "model": "NVlabs/instant-ngp",
+      "workload": "single-render",
+      "reference": "pyngp",
+      "speedup": 0.9768788553056219
+    },
+    {
+      "model": "Pointcept/PointTransformerV3",
+      "workload": "single-cloud",
+      "reference": "official-detached",
+      "speedup": 0.9905127179678072
+    },
+    {
+      "model": "OpenFold/OpenFold3",
+      "workload": "single-short",
+      "reference": "reference",
+      "speedup": 1.05219371909376
+    },
+    {
+      "model": "OpenFold/OpenFold3",
+      "workload": "single-medium",
+      "reference": "reference",
+      "speedup": 0.995933857909137
+    },
+    {
+      "model": "OpenFold/OpenFold3",
+      "workload": "single-long",
+      "reference": "reference",
+      "speedup": 1.02909461201582
+    },
+    {
+      "model": "OpenFold/OpenFold3",
+      "workload": "single-extra-long",
+      "reference": "reference",
+      "speedup": 1.0242574873107673
+    },
+    {
+      "model": "/home/yak/.fastkernels/third_party/openpi-assets/pi0_aloha_pen_uncap_pytorch",
+      "workload": "aloha-single-3cam",
+      "reference": "openpi",
+      "speedup": 3.899321399534695
+    },
+    {
+      "model": "/home/yak/.fastkernels/third_party/openpi-assets/pi0_aloha_pen_uncap_pytorch",
+      "workload": "aloha-single-1cam",
+      "reference": "openpi",
+      "speedup": 4.459315173487832
+    },
+    {
+      "model": "dp3",
+      "workload": "single-step",
+      "reference": "3D-Diffusion-Policy",
+      "speedup": 1.135600633173015
+    },
+    {
+      "model": "dp3",
+      "workload": "batch-8",
+      "reference": "3D-Diffusion-Policy",
+      "speedup": 1.1189266994155072
+    },
+    {
+      "model": "dlrmv2",
+      "workload": "single-request",
+      "reference": "torchrec.models.dlrm.DLRM",
+      "speedup": 1.409160709446614
+    },
+    {
+      "model": "dlrmv2",
+      "workload": "fixed-batch-32",
+      "reference": "torchrec.models.dlrm.DLRM",
+      "speedup": 1.3294416012564825
+    },
+    {
+      "model": "lightgcn",
+      "workload": "single-request",
+      "reference": "torch_geometric.nn.models.LightGCN",
+      "speedup": 1.0402032691222212
+    },
+    {
+      "model": "lightgcn",
+      "workload": "fixed-batch-32",
+      "reference": "torch_geometric.nn.models.LightGCN",
+      "speedup": 1.0413593282424412
+    },
+    {
+      "model": "BAAI/bge-m3",
+      "workload": "single-request",
+      "reference": "vLLM",
+      "speedup": 0.9847763472492911
+    },
+    {
+      "model": "BAAI/bge-m3",
+      "workload": "fixed-batch-32",
+      "reference": "vLLM",
+      "speedup": 0.97156125828337
+    },
+    {
+      "model": "colbert-ir/colbertv2.0",
+      "workload": "single-request",
+      "reference": "vLLM",
+      "speedup": 0.7771842282002439
+    },
+    {
+      "model": "colbert-ir/colbertv2.0",
+      "workload": "fixed-batch-32",
+      "reference": "vLLM",
+      "speedup": 2.2639320974795414
+    },
+    {
+      "model": "GSAI-ML/LLaDA-8B-Instruct",
+      "workload": "humaneval-fastdllm-dual-batch32",
+      "reference": "fastdllm-dual",
+      "speedup": 0.9562631748713537
+    },
+    {
+      "model": "Etched/oasis-500m",
+      "workload": "latency-bs1-8f-4ddim",
+      "reference": "open-oasis",
+      "speedup": 1.1574296420854047
+    },
+    {
+      "model": "facebook/vjepa2-vitl-fpc64-256",
+      "workload": "single-video",
+      "reference": "transformers",
+      "speedup": 0.9782443941253283
+    }
+  ],
+  "coverage_gaps": []
+}

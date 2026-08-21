@@ -1,0 +1,1873 @@
+job_index: 21
+name: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+harness: bench_vllm_omni
+tp: 1
+workloads: tts-short, tts-medium, tts-long, single-utterance
+CUDA_VISIBLE_DEVICES: 1
+physical_gpus: 1
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_vllm_omni --model FunAudioLLM/Fun-CosyVoice3-0.5B-2512 --output-dir /code/users/goliaro/validate-b200-check/021_bench_vllm_omni_FunAudioLLM_Fun-CosyVoice3-0.5B-2512
+
+
+Benchmark: CosyVoice3 TTS on B200
+Model: FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+Seed: 42
+Output dir: /code/users/goliaro/validate-b200-check/021_bench_vllm_omni_FunAudioLLM_Fun-CosyVoice3-0.5B-2512
+Loaded 110 TTS samples from SEED-TTS-Eval
+Reference voice: real SEED-TTS-Eval clip (4.7s @ 24000 Hz)
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels TTS benchmark
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Fetching 20 files:   0%|          | 0/20 [00:00<?, ?it/s]
+Fetching 20 files:   5%|▌         | 1/20 [00:00<00:04,  4.72it/s]
+Fetching 20 files:  40%|████      | 8/20 [00:00<00:00, 24.83it/s]
+Fetching 20 files:  55%|█████▌    | 11/20 [00:00<00:00, 13.39it/s]
+Fetching 20 files:  65%|██████▌   | 13/20 [00:02<00:01,  3.64it/s]
+Fetching 20 files:  75%|███████▌  | 15/20 [00:05<00:03,  1.56it/s]
+Fetching 20 files:  80%|████████  | 16/20 [00:06<00:02,  1.46it/s]
+Fetching 20 files:  85%|████████▌ | 17/20 [00:08<00:02,  1.14it/s]
+Fetching 20 files:  95%|█████████▌| 19/20 [00:11<00:01,  1.08s/it]
+Fetching 20 files: 100%|██████████| 20/20 [00:14<00:00,  1.48s/it]
+Fetching 20 files: 100%|██████████| 20/20 [00:14<00:00,  1.38it/s]
+  Loaded flow weights from /data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18/flow.pt
+  Loaded hift weights from /data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18/hift.pt
+  Loaded CosyVoice3 e2e model (talker=f32, code2wav=f32): FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+INFO 08-21 11:14:03 [patch.py:252] NVFP4 W4A4 weight_scale NaN-clamp: installed.
+INFO 08-21 11:14:03 [quack_fp8.py:76] Quack FP8 fused-bias GEMM enabled (CuteDSL).
+INFO 08-21 11:14:03 [quack_fp8.py:155] Patched FlashInfer FP8 ScaledMM to use quack fused-bias GEMM.
+INFO 08-21 11:14:03 [patch.py:481] [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+
+fastkernels TTS tts-short:   0%|          | 0/27 [00:00<?, ?utt/s]
+
+Downloading onnx checkpoint:   0%|                  | 0.00/925M [00:00<?, ?iB/s][A
+
+Downloading onnx checkpoint:   0%|         | 4.00M/925M [00:00<00:29, 33.3MiB/s][A
+
+Downloading onnx checkpoint:   1%|         | 8.34M/925M [00:00<00:24, 39.8MiB/s][A
+
+Downloading onnx checkpoint:   1%|         | 12.2M/925M [00:00<00:23, 40.0MiB/s][A
+
+Downloading onnx checkpoint:   2%|▏        | 16.1M/925M [00:00<00:24, 39.3MiB/s][A
+
+Downloading onnx checkpoint:   2%|▏        | 20.0M/925M [00:00<00:23, 39.7MiB/s][A
+
+Downloading onnx checkpoint:   3%|▏        | 24.0M/925M [00:00<00:23, 39.7MiB/s][A
+
+Downloading onnx checkpoint:   3%|▎        | 28.0M/925M [00:00<00:23, 39.9MiB/s][A
+
+Downloading onnx checkpoint:   3%|▎        | 32.0M/925M [00:00<00:23, 39.9MiB/s][A
+
+Downloading onnx checkpoint:   4%|▎        | 36.0M/925M [00:00<00:23, 39.7MiB/s][A
+
+Downloading onnx checkpoint:   4%|▍        | 40.0M/925M [00:01<00:23, 39.5MiB/s][A
+
+Downloading onnx checkpoint:   5%|▍        | 44.0M/925M [00:01<00:22, 40.2MiB/s][A
+
+Downloading onnx checkpoint:   5%|▍        | 48.9M/925M [00:01<00:21, 43.3MiB/s][A
+
+Downloading onnx checkpoint:   6%|▌        | 53.0M/925M [00:01<00:22, 41.3MiB/s][A
+
+Downloading onnx checkpoint:   6%|▌        | 57.6M/925M [00:01<00:20, 43.3MiB/s][A
+
+Downloading onnx checkpoint:   7%|▌        | 61.8M/925M [00:01<00:21, 43.0MiB/s][A
+
+Downloading onnx checkpoint:   7%|▋        | 65.9M/925M [00:01<00:21, 42.0MiB/s][A
+
+Downloading onnx checkpoint:   8%|▋        | 69.9M/925M [00:01<00:21, 41.6MiB/s][A
+
+Downloading onnx checkpoint:   8%|▋        | 73.9M/925M [00:01<00:21, 41.6MiB/s][A
+
+Downloading onnx checkpoint:   8%|▊        | 77.9M/925M [00:02<00:21, 40.8MiB/s][A
+
+Downloading onnx checkpoint:   9%|▊        | 81.8M/925M [00:02<00:21, 40.7MiB/s][A
+
+Downloading onnx checkpoint:   9%|▊        | 85.7M/925M [00:02<00:21, 40.2MiB/s][A
+
+Downloading onnx checkpoint:  10%|▊        | 89.6M/925M [00:02<00:21, 40.3MiB/s][A
+
+Downloading onnx checkpoint:  10%|▉        | 93.6M/925M [00:02<00:21, 40.9MiB/s][A
+
+Downloading onnx checkpoint:  11%|▉        | 97.5M/925M [00:02<00:21, 40.6MiB/s][A
+
+Downloading onnx checkpoint:  11%|█         | 101M/925M [00:02<00:21, 39.8MiB/s][A
+
+Downloading onnx checkpoint:  11%|█▏        | 105M/925M [00:02<00:21, 39.4MiB/s][A
+
+Downloading onnx checkpoint:  12%|█▏        | 109M/925M [00:02<00:22, 38.6MiB/s][A
+
+Downloading onnx checkpoint:  12%|█▏        | 113M/925M [00:02<00:21, 40.1MiB/s][A
+
+Downloading onnx checkpoint:  13%|█▎        | 117M/925M [00:03<00:21, 39.9MiB/s][A
+
+Downloading onnx checkpoint:  13%|█▎        | 121M/925M [00:03<00:20, 41.7MiB/s][A
+
+Downloading onnx checkpoint:  14%|█▎        | 126M/925M [00:03<00:19, 42.8MiB/s][A
+
+Downloading onnx checkpoint:  14%|█▍        | 130M/925M [00:03<00:18, 43.9MiB/s][A
+
+Downloading onnx checkpoint:  15%|█▍        | 135M/925M [00:03<00:19, 43.6MiB/s][A
+
+Downloading onnx checkpoint:  15%|█▌        | 139M/925M [00:03<00:19, 42.9MiB/s][A
+
+Downloading onnx checkpoint:  15%|█▌        | 143M/925M [00:03<00:19, 42.5MiB/s][A
+
+Downloading onnx checkpoint:  16%|█▌        | 147M/925M [00:03<00:19, 42.4MiB/s][A
+
+Downloading onnx checkpoint:  16%|█▋        | 151M/925M [00:03<00:19, 41.8MiB/s][A
+
+Downloading onnx checkpoint:  17%|█▋        | 155M/925M [00:03<00:19, 41.9MiB/s][A
+
+Downloading onnx checkpoint:  17%|█▋        | 159M/925M [00:04<00:19, 42.1MiB/s][A
+
+Downloading onnx checkpoint:  18%|█▊        | 163M/925M [00:04<00:19, 41.9MiB/s][A
+
+Downloading onnx checkpoint:  18%|█▊        | 168M/925M [00:04<00:18, 42.3MiB/s][A
+
+Downloading onnx checkpoint:  19%|█▊        | 172M/925M [00:04<00:18, 42.1MiB/s][A
+
+Downloading onnx checkpoint:  19%|█▉        | 176M/925M [00:04<00:19, 41.3MiB/s][A
+
+Downloading onnx checkpoint:  19%|█▉        | 180M/925M [00:04<00:20, 38.5MiB/s][A
+
+Downloading onnx checkpoint:  20%|█▉        | 183M/925M [00:04<00:20, 38.8MiB/s][A
+
+Downloading onnx checkpoint:  20%|██        | 187M/925M [00:04<00:19, 39.3MiB/s][A
+
+Downloading onnx checkpoint:  21%|██        | 191M/925M [00:04<00:19, 39.2MiB/s][A
+
+Downloading onnx checkpoint:  21%|██        | 196M/925M [00:05<00:18, 42.0MiB/s][A
+
+Downloading onnx checkpoint:  22%|██▏       | 200M/925M [00:05<00:17, 42.2MiB/s][A
+
+Downloading onnx checkpoint:  22%|██▏       | 204M/925M [00:05<00:19, 38.4MiB/s][A
+
+Downloading onnx checkpoint:  22%|██▏       | 208M/925M [00:05<00:19, 39.1MiB/s][A
+
+Downloading onnx checkpoint:  23%|██▎       | 212M/925M [00:05<00:18, 39.7MiB/s][A
+
+Downloading onnx checkpoint:  23%|██▎       | 216M/925M [00:05<00:18, 40.3MiB/s][A
+
+Downloading onnx checkpoint:  24%|██▍       | 220M/925M [00:05<00:18, 40.5MiB/s][A
+
+Downloading onnx checkpoint:  24%|██▍       | 224M/925M [00:05<00:18, 40.7MiB/s][A
+
+Downloading onnx checkpoint:  25%|██▍       | 228M/925M [00:05<00:18, 39.8MiB/s][A
+
+Downloading onnx checkpoint:  25%|██▌       | 232M/925M [00:05<00:18, 40.0MiB/s][A
+
+Downloading onnx checkpoint:  26%|██▌       | 236M/925M [00:06<00:18, 40.0MiB/s][A
+
+Downloading onnx checkpoint:  26%|██▌       | 240M/925M [00:06<00:17, 41.1MiB/s][A
+
+Downloading onnx checkpoint:  26%|██▋       | 244M/925M [00:06<00:17, 41.9MiB/s][A
+
+Downloading onnx checkpoint:  27%|██▋       | 248M/925M [00:06<00:17, 41.3MiB/s][A
+
+Downloading onnx checkpoint:  27%|██▋       | 252M/925M [00:06<00:17, 40.8MiB/s][A
+
+Downloading onnx checkpoint:  28%|██▊       | 256M/925M [00:06<00:17, 40.4MiB/s][A
+
+Downloading onnx checkpoint:  28%|██▊       | 260M/925M [00:06<00:17, 39.6MiB/s][A
+
+Downloading onnx checkpoint:  29%|██▊       | 264M/925M [00:06<00:16, 41.0MiB/s][A
+
+Downloading onnx checkpoint:  29%|██▉       | 269M/925M [00:06<00:16, 41.1MiB/s][A
+
+Downloading onnx checkpoint:  29%|██▉       | 272M/925M [00:07<00:17, 40.0MiB/s][A
+
+Downloading onnx checkpoint:  30%|██▉       | 276M/925M [00:07<00:17, 39.8MiB/s][A
+
+Downloading onnx checkpoint:  30%|███       | 280M/925M [00:07<00:17, 39.4MiB/s][A
+
+Downloading onnx checkpoint:  31%|███       | 284M/925M [00:07<00:17, 39.1MiB/s][A
+
+Downloading onnx checkpoint:  31%|███       | 288M/925M [00:07<00:17, 38.8MiB/s][A
+
+Downloading onnx checkpoint:  32%|███▏      | 292M/925M [00:07<00:16, 39.2MiB/s][A
+
+Downloading onnx checkpoint:  32%|███▏      | 296M/925M [00:07<00:16, 40.9MiB/s][A
+
+Downloading onnx checkpoint:  32%|███▏      | 300M/925M [00:07<00:16, 40.2MiB/s][A
+
+Downloading onnx checkpoint:  33%|███▎      | 304M/925M [00:07<00:16, 39.9MiB/s][A
+
+Downloading onnx checkpoint:  33%|███▎      | 308M/925M [00:07<00:15, 40.9MiB/s][A
+
+Downloading onnx checkpoint:  34%|███▍      | 312M/925M [00:08<00:17, 37.6MiB/s][A
+
+Downloading onnx checkpoint:  34%|███▍      | 316M/925M [00:08<00:16, 39.2MiB/s][A
+
+Downloading onnx checkpoint:  35%|███▍      | 321M/925M [00:08<00:15, 41.0MiB/s][A
+
+Downloading onnx checkpoint:  35%|███▌      | 325M/925M [00:08<00:15, 40.3MiB/s][A
+
+Downloading onnx checkpoint:  36%|███▌      | 329M/925M [00:08<00:15, 40.1MiB/s][A
+
+Downloading onnx checkpoint:  36%|███▌      | 332M/925M [00:08<00:15, 39.4MiB/s][A
+
+Downloading onnx checkpoint:  36%|███▋      | 337M/925M [00:08<00:14, 41.5MiB/s][A
+
+Downloading onnx checkpoint:  37%|███▋      | 341M/925M [00:08<00:14, 42.7MiB/s][A
+
+Downloading onnx checkpoint:  37%|███▋      | 345M/925M [00:08<00:14, 42.2MiB/s][A
+
+Downloading onnx checkpoint:  38%|███▊      | 349M/925M [00:09<00:14, 41.6MiB/s][A
+
+Downloading onnx checkpoint:  38%|███▊      | 353M/925M [00:09<00:14, 41.8MiB/s][A
+
+Downloading onnx checkpoint:  39%|███▊      | 357M/925M [00:09<00:14, 41.5MiB/s][A
+
+Downloading onnx checkpoint:  39%|███▉      | 361M/925M [00:09<00:14, 40.7MiB/s][A
+
+Downloading onnx checkpoint:  40%|███▉      | 365M/925M [00:09<00:14, 39.7MiB/s][A
+
+Downloading onnx checkpoint:  40%|███▉      | 369M/925M [00:09<00:14, 39.4MiB/s][A
+
+Downloading onnx checkpoint:  40%|████      | 373M/925M [00:09<00:14, 40.5MiB/s][A
+
+Downloading onnx checkpoint:  41%|████      | 377M/925M [00:09<00:14, 40.2MiB/s][A
+
+Downloading onnx checkpoint:  41%|████▏     | 382M/925M [00:09<00:13, 42.8MiB/s][A
+
+Downloading onnx checkpoint:  42%|████▏     | 386M/925M [00:09<00:13, 41.8MiB/s][A
+
+Downloading onnx checkpoint:  42%|████▏     | 390M/925M [00:10<00:13, 41.3MiB/s][A
+
+Downloading onnx checkpoint:  43%|████▎     | 394M/925M [00:10<00:13, 40.9MiB/s][A
+
+Downloading onnx checkpoint:  43%|████▎     | 398M/925M [00:10<00:13, 39.8MiB/s][A
+
+Downloading onnx checkpoint:  43%|████▎     | 402M/925M [00:10<00:13, 39.7MiB/s][A
+
+Downloading onnx checkpoint:  44%|████▍     | 406M/925M [00:10<00:13, 39.4MiB/s][A
+
+Downloading onnx checkpoint:  44%|████▍     | 409M/925M [00:10<00:13, 39.0MiB/s][A
+
+Downloading onnx checkpoint:  45%|████▍     | 413M/925M [00:10<00:13, 38.3MiB/s][A
+
+Downloading onnx checkpoint:  45%|████▌     | 417M/925M [00:10<00:13, 38.2MiB/s][A
+
+Downloading onnx checkpoint:  46%|████▌     | 421M/925M [00:10<00:13, 40.2MiB/s][A
+
+Downloading onnx checkpoint:  46%|████▌     | 425M/925M [00:10<00:12, 40.6MiB/s][A
+
+Downloading onnx checkpoint:  46%|████▋     | 429M/925M [00:11<00:12, 40.8MiB/s][A
+
+Downloading onnx checkpoint:  47%|████▋     | 433M/925M [00:11<00:12, 40.2MiB/s][A
+
+Downloading onnx checkpoint:  47%|████▋     | 437M/925M [00:11<00:12, 39.7MiB/s][A
+
+Downloading onnx checkpoint:  48%|████▊     | 440M/925M [00:11<00:13, 38.2MiB/s][A
+
+Downloading onnx checkpoint:  48%|████▊     | 445M/925M [00:11<00:12, 40.5MiB/s][A
+
+Downloading onnx checkpoint:  49%|████▊     | 449M/925M [00:11<00:12, 39.9MiB/s][A
+
+Downloading onnx checkpoint:  49%|████▉     | 453M/925M [00:11<00:12, 40.3MiB/s][A
+
+Downloading onnx checkpoint:  49%|████▉     | 457M/925M [00:11<00:11, 41.0MiB/s][A
+
+Downloading onnx checkpoint:  50%|████▉     | 461M/925M [00:11<00:12, 39.4MiB/s][A
+
+Downloading onnx checkpoint:  50%|█████     | 465M/925M [00:12<00:12, 39.7MiB/s][A
+
+Downloading onnx checkpoint:  51%|█████     | 469M/925M [00:12<00:12, 39.7MiB/s][A
+
+Downloading onnx checkpoint:  51%|█████     | 472M/925M [00:12<00:12, 37.6MiB/s][A
+
+Downloading onnx checkpoint:  51%|█████▏    | 476M/925M [00:12<00:12, 37.2MiB/s][A
+
+Downloading onnx checkpoint:  52%|█████▏    | 480M/925M [00:12<00:12, 36.6MiB/s][A
+
+Downloading onnx checkpoint:  52%|█████▏    | 484M/925M [00:12<00:14, 32.1MiB/s][A
+
+Downloading onnx checkpoint:  53%|█████▎    | 488M/925M [00:12<00:13, 34.7MiB/s][A
+
+Downloading onnx checkpoint:  53%|█████▎    | 492M/925M [00:12<00:12, 36.4MiB/s][A
+
+Downloading onnx checkpoint:  54%|█████▎    | 496M/925M [00:12<00:11, 37.7MiB/s][A
+
+Downloading onnx checkpoint:  54%|█████▍    | 500M/925M [00:13<00:11, 38.3MiB/s][A
+
+Downloading onnx checkpoint:  55%|█████▍    | 504M/925M [00:13<00:11, 38.6MiB/s][A
+
+Downloading onnx checkpoint:  55%|█████▍    | 508M/925M [00:13<00:11, 38.6MiB/s][A
+
+Downloading onnx checkpoint:  55%|█████▌    | 512M/925M [00:13<00:11, 39.1MiB/s][A
+
+Downloading onnx checkpoint:  56%|█████▌    | 515M/925M [00:13<00:11, 38.7MiB/s][A
+
+Downloading onnx checkpoint:  56%|█████▌    | 519M/925M [00:13<00:10, 38.8MiB/s][A
+
+Downloading onnx checkpoint:  57%|█████▋    | 523M/925M [00:13<00:10, 39.4MiB/s][A
+
+Downloading onnx checkpoint:  57%|█████▋    | 527M/925M [00:13<00:10, 39.9MiB/s][A
+
+Downloading onnx checkpoint:  57%|█████▋    | 531M/925M [00:13<00:09, 41.3MiB/s][A
+
+Downloading onnx checkpoint:  58%|█████▊    | 536M/925M [00:13<00:09, 41.7MiB/s][A
+
+Downloading onnx checkpoint:  58%|█████▊    | 540M/925M [00:14<00:09, 41.8MiB/s][A
+
+Downloading onnx checkpoint:  59%|█████▉    | 544M/925M [00:14<00:09, 42.4MiB/s][A
+
+Downloading onnx checkpoint:  59%|█████▉    | 548M/925M [00:14<00:10, 38.3MiB/s][A
+
+Downloading onnx checkpoint:  60%|█████▉    | 552M/925M [00:14<00:09, 39.1MiB/s][A
+
+Downloading onnx checkpoint:  60%|██████    | 557M/925M [00:14<00:09, 40.9MiB/s][A
+
+Downloading onnx checkpoint:  61%|██████    | 561M/925M [00:14<00:09, 41.8MiB/s][A
+
+Downloading onnx checkpoint:  61%|██████    | 565M/925M [00:14<00:08, 43.4MiB/s][A
+
+Downloading onnx checkpoint:  62%|██████▏   | 569M/925M [00:14<00:08, 42.1MiB/s][A
+
+Downloading onnx checkpoint:  62%|██████▏   | 573M/925M [00:14<00:09, 40.6MiB/s][A
+
+Downloading onnx checkpoint:  62%|██████▏   | 577M/925M [00:15<00:08, 40.7MiB/s][A
+
+Downloading onnx checkpoint:  63%|██████▎   | 581M/925M [00:15<00:08, 41.0MiB/s][A
+
+Downloading onnx checkpoint:  63%|██████▎   | 586M/925M [00:15<00:08, 41.3MiB/s][A
+
+Downloading onnx checkpoint:  64%|██████▍   | 590M/925M [00:15<00:08, 41.7MiB/s][A
+
+Downloading onnx checkpoint:  64%|██████▍   | 594M/925M [00:15<00:08, 41.6MiB/s][A
+
+Downloading onnx checkpoint:  65%|██████▍   | 598M/925M [00:15<00:08, 41.2MiB/s][A
+
+Downloading onnx checkpoint:  65%|██████▌   | 602M/925M [00:15<00:08, 40.7MiB/s][A
+
+Downloading onnx checkpoint:  65%|██████▌   | 605M/925M [00:15<00:08, 39.8MiB/s][A
+
+Downloading onnx checkpoint:  66%|██████▌   | 609M/925M [00:15<00:08, 40.5MiB/s][A
+
+Downloading onnx checkpoint:  66%|██████▋   | 613M/925M [00:15<00:08, 40.5MiB/s][A
+
+Downloading onnx checkpoint:  67%|██████▋   | 617M/925M [00:16<00:07, 40.4MiB/s][A
+
+Downloading onnx checkpoint:  67%|██████▋   | 622M/925M [00:16<00:07, 41.5MiB/s][A
+
+Downloading onnx checkpoint:  68%|██████▊   | 625M/925M [00:16<00:07, 41.3MiB/s][A
+
+Downloading onnx checkpoint:  68%|██████▊   | 630M/925M [00:16<00:07, 41.6MiB/s][A
+
+Downloading onnx checkpoint:  69%|██████▊   | 634M/925M [00:16<00:07, 41.3MiB/s][A
+
+Downloading onnx checkpoint:  69%|██████▉   | 637M/925M [00:16<00:07, 41.1MiB/s][A
+
+Downloading onnx checkpoint:  69%|██████▉   | 641M/925M [00:16<00:07, 40.6MiB/s][A
+
+Downloading onnx checkpoint:  70%|██████▉   | 646M/925M [00:16<00:06, 42.9MiB/s][A
+
+Downloading onnx checkpoint:  70%|███████   | 650M/925M [00:16<00:06, 41.9MiB/s][A
+
+Downloading onnx checkpoint:  71%|███████   | 654M/925M [00:16<00:06, 42.1MiB/s][A
+
+Downloading onnx checkpoint:  71%|███████   | 658M/925M [00:17<00:06, 42.1MiB/s][A
+
+Downloading onnx checkpoint:  72%|███████▏  | 662M/925M [00:17<00:06, 42.1MiB/s][A
+
+Downloading onnx checkpoint:  72%|███████▏  | 667M/925M [00:17<00:07, 36.8MiB/s][A
+
+Downloading onnx checkpoint:  73%|███████▎  | 672M/925M [00:17<00:06, 41.7MiB/s][A
+
+Downloading onnx checkpoint:  73%|███████▎  | 676M/925M [00:17<00:06, 38.8MiB/s][A
+
+Downloading onnx checkpoint:  74%|███████▎  | 680M/925M [00:17<00:07, 33.0MiB/s][A
+
+Downloading onnx checkpoint:  74%|███████▍  | 684M/925M [00:17<00:07, 34.4MiB/s][A
+
+Downloading onnx checkpoint:  74%|███████▍  | 688M/925M [00:17<00:06, 36.1MiB/s][A
+
+Downloading onnx checkpoint:  75%|███████▍  | 692M/925M [00:18<00:06, 37.4MiB/s][A
+
+Downloading onnx checkpoint:  75%|███████▌  | 696M/925M [00:18<00:06, 37.3MiB/s][A
+
+Downloading onnx checkpoint:  76%|███████▌  | 700M/925M [00:18<00:06, 36.0MiB/s][A
+
+Downloading onnx checkpoint:  76%|███████▌  | 703M/925M [00:18<00:07, 32.9MiB/s][A
+
+Downloading onnx checkpoint:  77%|███████▋  | 707M/925M [00:18<00:06, 34.9MiB/s][A
+
+Downloading onnx checkpoint:  77%|███████▋  | 711M/925M [00:18<00:06, 34.8MiB/s][A
+
+Downloading onnx checkpoint:  77%|███████▋  | 714M/925M [00:18<00:06, 35.5MiB/s][A
+
+Downloading onnx checkpoint:  78%|███████▊  | 718M/925M [00:19<00:08, 24.4MiB/s][A
+
+Downloading onnx checkpoint:  78%|███████▊  | 722M/925M [00:19<00:07, 27.2MiB/s][A
+
+Downloading onnx checkpoint:  78%|███████▊  | 725M/925M [00:19<00:07, 28.0MiB/s][A
+
+Downloading onnx checkpoint:  79%|███████▊  | 728M/925M [00:19<00:06, 29.6MiB/s][A
+
+Downloading onnx checkpoint:  79%|███████▉  | 732M/925M [00:19<00:06, 29.9MiB/s][A
+
+Downloading onnx checkpoint:  80%|███████▉  | 736M/925M [00:19<00:06, 32.6MiB/s][A
+
+Downloading onnx checkpoint:  80%|███████▉  | 739M/925M [00:19<00:06, 27.8MiB/s][A
+
+Downloading onnx checkpoint:  80%|████████  | 742M/925M [00:19<00:06, 28.5MiB/s][A
+
+Downloading onnx checkpoint:  81%|████████  | 746M/925M [00:19<00:06, 31.1MiB/s][A
+
+Downloading onnx checkpoint:  81%|████████  | 749M/925M [00:20<00:06, 30.3MiB/s][A
+
+Downloading onnx checkpoint:  81%|████████▏ | 752M/925M [00:20<00:06, 29.3MiB/s][A
+
+Downloading onnx checkpoint:  82%|████████▏ | 756M/925M [00:20<00:05, 31.8MiB/s][A
+
+Downloading onnx checkpoint:  82%|████████▏ | 759M/925M [00:20<00:05, 33.3MiB/s][A
+
+Downloading onnx checkpoint:  83%|████████▎ | 763M/925M [00:20<00:04, 35.0MiB/s][A
+
+Downloading onnx checkpoint:  83%|████████▎ | 767M/925M [00:20<00:04, 34.9MiB/s][A
+
+Downloading onnx checkpoint:  83%|████████▎ | 770M/925M [00:20<00:04, 36.5MiB/s][A
+
+Downloading onnx checkpoint:  84%|████████▎ | 774M/925M [00:20<00:05, 31.2MiB/s][A
+
+Downloading onnx checkpoint:  84%|████████▍ | 777M/925M [00:20<00:05, 29.5MiB/s][A
+
+Downloading onnx checkpoint:  84%|████████▍ | 780M/925M [00:21<00:06, 24.9MiB/s][A
+
+Downloading onnx checkpoint:  85%|████████▍ | 784M/925M [00:21<00:05, 28.8MiB/s][A
+
+Downloading onnx checkpoint:  85%|████████▌ | 788M/925M [00:21<00:04, 33.1MiB/s][A
+
+Downloading onnx checkpoint:  86%|████████▌ | 792M/925M [00:21<00:04, 33.8MiB/s][A
+
+Downloading onnx checkpoint:  86%|████████▌ | 796M/925M [00:21<00:03, 37.1MiB/s][A
+
+Downloading onnx checkpoint:  87%|████████▋ | 800M/925M [00:21<00:03, 38.4MiB/s][A
+
+Downloading onnx checkpoint:  87%|████████▋ | 804M/925M [00:21<00:03, 39.0MiB/s][A
+
+Downloading onnx checkpoint:  87%|████████▋ | 808M/925M [00:21<00:03, 38.4MiB/s][A
+
+Downloading onnx checkpoint:  88%|████████▊ | 812M/925M [00:21<00:03, 38.7MiB/s][A
+
+Downloading onnx checkpoint:  88%|████████▊ | 816M/925M [00:22<00:02, 40.6MiB/s][A
+
+Downloading onnx checkpoint:  89%|████████▉ | 821M/925M [00:22<00:02, 41.2MiB/s][A
+
+Downloading onnx checkpoint:  89%|████████▉ | 825M/925M [00:22<00:02, 42.1MiB/s][A
+
+Downloading onnx checkpoint:  90%|████████▉ | 829M/925M [00:22<00:02, 42.4MiB/s][A
+
+Downloading onnx checkpoint:  90%|█████████ | 834M/925M [00:22<00:02, 43.5MiB/s][A
+
+Downloading onnx checkpoint:  91%|█████████ | 839M/925M [00:22<00:01, 45.7MiB/s][A
+
+Downloading onnx checkpoint:  91%|█████████ | 843M/925M [00:22<00:01, 45.1MiB/s][A
+
+Downloading onnx checkpoint:  92%|█████████▏| 848M/925M [00:22<00:01, 41.1MiB/s][A
+
+Downloading onnx checkpoint:  92%|█████████▏| 852M/925M [00:22<00:01, 40.1MiB/s][A
+
+Downloading onnx checkpoint:  93%|█████████▎| 856M/925M [00:23<00:01, 41.7MiB/s][A
+
+Downloading onnx checkpoint:  93%|█████████▎| 860M/925M [00:23<00:01, 41.7MiB/s][A
+
+Downloading onnx checkpoint:  94%|█████████▎| 865M/925M [00:23<00:01, 43.2MiB/s][A
+
+Downloading onnx checkpoint:  94%|█████████▍| 869M/925M [00:23<00:01, 43.5MiB/s][A
+
+Downloading onnx checkpoint:  94%|█████████▍| 874M/925M [00:23<00:01, 43.3MiB/s][A
+
+Downloading onnx checkpoint:  95%|█████████▍| 878M/925M [00:23<00:01, 42.2MiB/s][A
+
+Downloading onnx checkpoint:  95%|█████████▌| 882M/925M [00:23<00:01, 41.9MiB/s][A
+
+Downloading onnx checkpoint:  96%|█████████▌| 886M/925M [00:23<00:00, 42.9MiB/s][A
+
+Downloading onnx checkpoint:  96%|█████████▋| 890M/925M [00:23<00:00, 42.0MiB/s][A
+
+Downloading onnx checkpoint:  97%|█████████▋| 895M/925M [00:23<00:00, 43.5MiB/s][A
+
+Downloading onnx checkpoint:  97%|█████████▋| 899M/925M [00:24<00:00, 44.3MiB/s][A
+
+Downloading onnx checkpoint:  98%|█████████▊| 904M/925M [00:24<00:00, 44.7MiB/s][A
+
+Downloading onnx checkpoint:  98%|█████████▊| 908M/925M [00:24<00:00, 40.0MiB/s][A
+
+Downloading onnx checkpoint:  99%|█████████▊| 912M/925M [00:24<00:00, 40.4MiB/s][A
+
+Downloading onnx checkpoint:  99%|█████████▉| 916M/925M [00:24<00:00, 41.9MiB/s][A
+
+Downloading onnx checkpoint: 100%|█████████▉| 921M/925M [00:24<00:00, 42.8MiB/s][A
+Downloading onnx checkpoint: 100%|██████████| 925M/925M [00:24<00:00, 39.3MiB/s]
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Memory efficient kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:986.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Memory Efficient attention has been runtime disabled. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:552.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Flash attention kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:988.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Flash attention has been runtime disabled. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:540.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: cuDNN attention kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:990.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Expected query, key and value to all be of dtype: {Half, BFloat16}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:91.)
+  out = F.scaled_dot_product_attention(
+
+fastkernels TTS tts-short:   0%|          | 0/27 [00:32<?, ?utt/s, ups=0.90, utts=1]
+fastkernels TTS tts-short:   4%|▎         | 1/27 [00:32<14:03, 32.43s/utt, ups=0.90, utts=1]
+fastkernels TTS tts-short:   4%|▎         | 1/27 [00:33<14:03, 32.43s/utt, ups=1.07, utts=2]
+fastkernels TTS tts-short:   7%|▋         | 2/27 [00:33<05:45, 13.84s/utt, ups=1.07, utts=2]
+fastkernels TTS tts-short:   7%|▋         | 2/27 [00:34<05:45, 13.84s/utt, ups=1.15, utts=3]
+fastkernels TTS tts-short:  11%|█         | 3/27 [00:34<03:09,  7.89s/utt, ups=1.15, utts=3]
+fastkernels TTS tts-short:  11%|█         | 3/27 [00:34<03:09,  7.89s/utt, ups=1.17, utts=4]
+fastkernels TTS tts-short:  15%|█▍        | 4/27 [00:34<01:57,  5.11s/utt, ups=1.17, utts=4]
+fastkernels TTS tts-short:  15%|█▍        | 4/27 [00:35<01:57,  5.11s/utt, ups=1.21, utts=5]
+fastkernels TTS tts-short:  19%|█▊        | 5/27 [00:35<01:18,  3.55s/utt, ups=1.21, utts=5]
+fastkernels TTS tts-short:  19%|█▊        | 5/27 [00:36<01:18,  3.55s/utt, ups=1.22, utts=6]
+fastkernels TTS tts-short:  22%|██▏       | 6/27 [00:36<00:55,  2.63s/utt, ups=1.22, utts=6]
+fastkernels TTS tts-short:  22%|██▏       | 6/27 [00:37<00:55,  2.63s/utt, ups=1.25, utts=7]
+fastkernels TTS tts-short:  26%|██▌       | 7/27 [00:37<00:40,  2.01s/utt, ups=1.25, utts=7]
+fastkernels TTS tts-short:  26%|██▌       | 7/27 [00:37<00:40,  2.01s/utt, ups=1.28, utts=8]
+fastkernels TTS tts-short:  30%|██▉       | 8/27 [00:37<00:30,  1.60s/utt, ups=1.28, utts=8]
+fastkernels TTS tts-short:  30%|██▉       | 8/27 [00:38<00:30,  1.60s/utt, ups=1.28, utts=9]
+fastkernels TTS tts-short:  33%|███▎      | 9/27 [00:38<00:24,  1.37s/utt, ups=1.28, utts=9]
+fastkernels TTS tts-short:  33%|███▎      | 9/27 [00:39<00:24,  1.37s/utt, ups=1.37, utts=10]
+fastkernels TTS tts-short:  37%|███▋      | 10/27 [00:39<00:17,  1.05s/utt, ups=1.37, utts=10]
+fastkernels TTS tts-short:  37%|███▋      | 10/27 [00:40<00:17,  1.05s/utt, ups=1.36, utts=11]
+fastkernels TTS tts-short:  41%|████      | 11/27 [00:40<00:15,  1.02utt/s, ups=1.36, utts=11]
+fastkernels TTS tts-short:  41%|████      | 11/27 [00:40<00:15,  1.02utt/s, ups=1.36, utts=12]
+fastkernels TTS tts-short:  44%|████▍     | 12/27 [00:40<00:14,  1.06utt/s, ups=1.36, utts=12]
+fastkernels TTS tts-short:  44%|████▍     | 12/27 [00:41<00:14,  1.06utt/s, ups=1.34, utts=13]
+fastkernels TTS tts-short:  48%|████▊     | 13/27 [00:41<00:13,  1.06utt/s, ups=1.34, utts=13]
+fastkernels TTS tts-short:  48%|████▊     | 13/27 [00:42<00:13,  1.06utt/s, ups=1.36, utts=14]
+fastkernels TTS tts-short:  52%|█████▏    | 14/27 [00:42<00:11,  1.16utt/s, ups=1.36, utts=14]
+fastkernels TTS tts-short:  52%|█████▏    | 14/27 [00:43<00:11,  1.16utt/s, ups=1.35, utts=15]
+fastkernels TTS tts-short:  56%|█████▌    | 15/27 [00:43<00:10,  1.16utt/s, ups=1.35, utts=15]
+fastkernels TTS tts-short:  56%|█████▌    | 15/27 [00:44<00:10,  1.16utt/s, ups=1.35, utts=16]
+fastkernels TTS tts-short:  59%|█████▉    | 16/27 [00:44<00:09,  1.19utt/s, ups=1.35, utts=16]
+fastkernels TTS tts-short:  59%|█████▉    | 16/27 [00:44<00:09,  1.19utt/s, ups=1.35, utts=17]
+fastkernels TTS tts-short:  63%|██████▎   | 17/27 [00:44<00:08,  1.22utt/s, ups=1.35, utts=17]
+fastkernels TTS tts-short:  63%|██████▎   | 17/27 [00:45<00:08,  1.22utt/s, ups=1.41, utts=18]
+fastkernels TTS tts-short:  67%|██████▋   | 18/27 [00:45<00:05,  1.53utt/s, ups=1.41, utts=18]
+fastkernels TTS tts-short:  67%|██████▋   | 18/27 [00:45<00:05,  1.53utt/s, ups=1.42, utts=19]
+fastkernels TTS tts-short:  70%|███████   | 19/27 [00:45<00:05,  1.48utt/s, ups=1.42, utts=19]
+fastkernels TTS tts-short:  70%|███████   | 19/27 [00:46<00:05,  1.48utt/s, ups=1.43, utts=20]
+fastkernels TTS tts-short:  74%|███████▍  | 20/27 [00:46<00:04,  1.51utt/s, ups=1.43, utts=20]
+fastkernels TTS tts-short:  74%|███████▍  | 20/27 [00:47<00:04,  1.51utt/s, ups=1.43, utts=21]
+fastkernels TTS tts-short:  78%|███████▊  | 21/27 [00:47<00:04,  1.45utt/s, ups=1.43, utts=21]
+fastkernels TTS tts-short:  78%|███████▊  | 21/27 [00:47<00:04,  1.45utt/s, ups=1.44, utts=22]
+fastkernels TTS tts-short:  81%|████████▏ | 22/27 [00:47<00:03,  1.48utt/s, ups=1.44, utts=22]
+fastkernels TTS tts-short:  81%|████████▏ | 22/27 [00:48<00:03,  1.48utt/s, ups=1.44, utts=23]
+fastkernels TTS tts-short:  85%|████████▌ | 23/27 [00:48<00:02,  1.44utt/s, ups=1.44, utts=23]
+fastkernels TTS tts-short:  85%|████████▌ | 23/27 [00:49<00:02,  1.44utt/s, ups=1.46, utts=24]
+fastkernels TTS tts-short:  89%|████████▉ | 24/27 [00:49<00:02,  1.48utt/s, ups=1.46, utts=24]
+fastkernels TTS tts-short:  89%|████████▉ | 24/27 [00:49<00:02,  1.48utt/s, ups=1.50, utts=25]
+fastkernels TTS tts-short:  93%|█████████▎| 25/27 [00:49<00:01,  1.82utt/s, ups=1.50, utts=25]
+fastkernels TTS tts-short:  93%|█████████▎| 25/27 [00:50<00:01,  1.82utt/s, ups=1.50, utts=26]
+fastkernels TTS tts-short:  96%|█████████▋| 26/27 [00:50<00:00,  1.68utt/s, ups=1.50, utts=26]
+fastkernels TTS tts-short:  96%|█████████▋| 26/27 [00:51<00:00,  1.68utt/s, ups=1.49, utts=27]
+fastkernels TTS tts-short: 100%|██████████| 27/27 [00:51<00:00,  1.53utt/s, ups=1.49, utts=27]
+fastkernels TTS tts-short: 100%|██████████| 27/27 [00:51<00:00,  1.89s/utt, ups=1.49, utts=27]
+
+fastkernels TTS tts-medium:   0%|          | 0/100 [00:00<?, ?utt/s]
+fastkernels TTS tts-medium:   0%|          | 0/100 [00:01<?, ?utt/s, ups=0.98, utts=1]
+fastkernels TTS tts-medium:   1%|          | 1/100 [00:01<01:46,  1.08s/utt, ups=0.98, utts=1]
+fastkernels TTS tts-medium:   1%|          | 1/100 [00:02<01:46,  1.08s/utt, ups=1.02, utts=2]
+fastkernels TTS tts-medium:   2%|▏         | 2/100 [00:02<01:42,  1.04s/utt, ups=1.02, utts=2]
+fastkernels TTS tts-medium:   2%|▏         | 2/100 [00:02<01:42,  1.04s/utt, ups=1.16, utts=3]
+fastkernels TTS tts-medium:   3%|▎         | 3/100 [00:02<01:24,  1.15utt/s, ups=1.16, utts=3]
+fastkernels TTS tts-medium:   3%|▎         | 3/100 [00:03<01:24,  1.15utt/s, ups=1.08, utts=4]
+fastkernels TTS tts-medium:   4%|▍         | 4/100 [00:03<01:35,  1.01utt/s, ups=1.08, utts=4]
+fastkernels TTS tts-medium:   4%|▍         | 4/100 [00:05<01:35,  1.01utt/s, ups=0.92, utts=5]
+fastkernels TTS tts-medium:   5%|▌         | 5/100 [00:05<02:02,  1.28s/utt, ups=0.92, utts=5]
+fastkernels TTS tts-medium:   5%|▌         | 5/100 [00:06<02:02,  1.28s/utt, ups=0.98, utts=6]
+fastkernels TTS tts-medium:   6%|▌         | 6/100 [00:06<01:43,  1.10s/utt, ups=0.98, utts=6]
+fastkernels TTS tts-medium:   6%|▌         | 6/100 [00:07<01:43,  1.10s/utt, ups=0.99, utts=7]
+fastkernels TTS tts-medium:   7%|▋         | 7/100 [00:07<01:39,  1.07s/utt, ups=0.99, utts=7]
+fastkernels TTS tts-medium:   7%|▋         | 7/100 [00:08<01:39,  1.07s/utt, ups=1.03, utts=8]
+fastkernels TTS tts-medium:   8%|▊         | 8/100 [00:08<01:28,  1.04utt/s, ups=1.03, utts=8]
+fastkernels TTS tts-medium:   8%|▊         | 8/100 [00:08<01:28,  1.04utt/s, ups=1.07, utts=9]
+fastkernels TTS tts-medium:   9%|▉         | 9/100 [00:08<01:21,  1.12utt/s, ups=1.07, utts=9]
+fastkernels TTS tts-medium:   9%|▉         | 9/100 [00:09<01:21,  1.12utt/s, ups=1.09, utts=10]
+fastkernels TTS tts-medium:  10%|█         | 10/100 [00:09<01:16,  1.17utt/s, ups=1.09, utts=10]
+fastkernels TTS tts-medium:  10%|█         | 10/100 [00:10<01:16,  1.17utt/s, ups=1.07, utts=11]
+fastkernels TTS tts-medium:  11%|█         | 11/100 [00:10<01:25,  1.04utt/s, ups=1.07, utts=11]
+fastkernels TTS tts-medium:  11%|█         | 11/100 [00:11<01:25,  1.04utt/s, ups=1.08, utts=12]
+fastkernels TTS tts-medium:  12%|█▏        | 12/100 [00:11<01:22,  1.07utt/s, ups=1.08, utts=12]
+fastkernels TTS tts-medium:  12%|█▏        | 12/100 [00:12<01:22,  1.07utt/s, ups=1.12, utts=13]
+fastkernels TTS tts-medium:  13%|█▎        | 13/100 [00:12<01:12,  1.20utt/s, ups=1.12, utts=13]
+fastkernels TTS tts-medium:  13%|█▎        | 13/100 [00:13<01:12,  1.20utt/s, ups=1.12, utts=14]
+fastkernels TTS tts-medium:  14%|█▍        | 14/100 [00:13<01:12,  1.19utt/s, ups=1.12, utts=14]
+fastkernels TTS tts-medium:  14%|█▍        | 14/100 [00:13<01:12,  1.19utt/s, ups=1.14, utts=15]
+fastkernels TTS tts-medium:  15%|█▌        | 15/100 [00:13<01:08,  1.24utt/s, ups=1.14, utts=15]
+fastkernels TTS tts-medium:  15%|█▌        | 15/100 [00:14<01:08,  1.24utt/s, ups=1.20, utts=16]
+fastkernels TTS tts-medium:  16%|█▌        | 16/100 [00:14<00:53,  1.57utt/s, ups=1.20, utts=16]
+fastkernels TTS tts-medium:  16%|█▌        | 16/100 [00:15<00:53,  1.57utt/s, ups=1.17, utts=17]
+fastkernels TTS tts-medium:  17%|█▋        | 17/100 [00:15<01:08,  1.21utt/s, ups=1.17, utts=17]
+fastkernels TTS tts-medium:  17%|█▋        | 17/100 [00:16<01:08,  1.21utt/s, ups=1.19, utts=18]
+fastkernels TTS tts-medium:  18%|█▊        | 18/100 [00:16<01:02,  1.31utt/s, ups=1.19, utts=18]
+fastkernels TTS tts-medium:  18%|█▊        | 18/100 [00:17<01:02,  1.31utt/s, ups=1.19, utts=19]
+fastkernels TTS tts-medium:  19%|█▉        | 19/100 [00:17<01:06,  1.21utt/s, ups=1.19, utts=19]
+fastkernels TTS tts-medium:  19%|█▉        | 19/100 [00:17<01:06,  1.21utt/s, ups=1.19, utts=20]
+fastkernels TTS tts-medium:  20%|██        | 20/100 [00:17<01:07,  1.19utt/s, ups=1.19, utts=20]
+fastkernels TTS tts-medium:  20%|██        | 20/100 [00:18<01:07,  1.19utt/s, ups=1.22, utts=21]
+fastkernels TTS tts-medium:  21%|██        | 21/100 [00:18<00:56,  1.40utt/s, ups=1.22, utts=21]
+fastkernels TTS tts-medium:  21%|██        | 21/100 [00:19<00:56,  1.40utt/s, ups=1.20, utts=22]
+fastkernels TTS tts-medium:  22%|██▏       | 22/100 [00:19<01:07,  1.16utt/s, ups=1.20, utts=22]
+fastkernels TTS tts-medium:  22%|██▏       | 22/100 [00:20<01:07,  1.16utt/s, ups=1.20, utts=23]
+fastkernels TTS tts-medium:  23%|██▎       | 23/100 [00:20<01:08,  1.12utt/s, ups=1.20, utts=23]
+fastkernels TTS tts-medium:  23%|██▎       | 23/100 [00:21<01:08,  1.12utt/s, ups=1.20, utts=24]
+fastkernels TTS tts-medium:  24%|██▍       | 24/100 [00:21<01:06,  1.14utt/s, ups=1.20, utts=24]
+fastkernels TTS tts-medium:  24%|██▍       | 24/100 [00:22<01:06,  1.14utt/s, ups=1.19, utts=25]
+fastkernels TTS tts-medium:  25%|██▌       | 25/100 [00:22<01:08,  1.09utt/s, ups=1.19, utts=25]
+fastkernels TTS tts-medium:  25%|██▌       | 25/100 [00:23<01:08,  1.09utt/s, ups=1.19, utts=26]
+fastkernels TTS tts-medium:  26%|██▌       | 26/100 [00:23<01:07,  1.10utt/s, ups=1.19, utts=26]
+fastkernels TTS tts-medium:  26%|██▌       | 26/100 [00:23<01:07,  1.10utt/s, ups=1.20, utts=27]
+fastkernels TTS tts-medium:  27%|██▋       | 27/100 [00:23<01:01,  1.19utt/s, ups=1.20, utts=27]
+fastkernels TTS tts-medium:  27%|██▋       | 27/100 [00:24<01:01,  1.19utt/s, ups=1.22, utts=28]
+fastkernels TTS tts-medium:  28%|██▊       | 28/100 [00:24<00:55,  1.31utt/s, ups=1.22, utts=28]
+fastkernels TTS tts-medium:  28%|██▊       | 28/100 [00:25<00:55,  1.31utt/s, ups=1.22, utts=29]
+fastkernels TTS tts-medium:  29%|██▉       | 29/100 [00:25<00:55,  1.28utt/s, ups=1.22, utts=29]
+fastkernels TTS tts-medium:  29%|██▉       | 29/100 [00:25<00:55,  1.28utt/s, ups=1.24, utts=30]
+fastkernels TTS tts-medium:  30%|███       | 30/100 [00:25<00:50,  1.37utt/s, ups=1.24, utts=30]
+fastkernels TTS tts-medium:  30%|███       | 30/100 [00:27<00:50,  1.37utt/s, ups=1.23, utts=31]
+fastkernels TTS tts-medium:  31%|███       | 31/100 [00:27<00:56,  1.22utt/s, ups=1.23, utts=31]
+fastkernels TTS tts-medium:  31%|███       | 31/100 [00:27<00:56,  1.22utt/s, ups=1.23, utts=32]
+fastkernels TTS tts-medium:  32%|███▏      | 32/100 [00:27<00:54,  1.26utt/s, ups=1.23, utts=32]
+fastkernels TTS tts-medium:  32%|███▏      | 32/100 [00:28<00:54,  1.26utt/s, ups=1.22, utts=33]
+fastkernels TTS tts-medium:  33%|███▎      | 33/100 [00:28<00:59,  1.12utt/s, ups=1.22, utts=33]
+fastkernels TTS tts-medium:  33%|███▎      | 33/100 [00:29<00:59,  1.12utt/s, ups=1.22, utts=34]
+fastkernels TTS tts-medium:  34%|███▍      | 34/100 [00:29<01:01,  1.08utt/s, ups=1.22, utts=34]
+fastkernels TTS tts-medium:  34%|███▍      | 34/100 [00:30<01:01,  1.08utt/s, ups=1.21, utts=35]
+fastkernels TTS tts-medium:  35%|███▌      | 35/100 [00:30<01:03,  1.02utt/s, ups=1.21, utts=35]
+fastkernels TTS tts-medium:  35%|███▌      | 35/100 [00:31<01:03,  1.02utt/s, ups=1.21, utts=36]
+fastkernels TTS tts-medium:  36%|███▌      | 36/100 [00:31<01:00,  1.07utt/s, ups=1.21, utts=36]
+fastkernels TTS tts-medium:  36%|███▌      | 36/100 [00:32<01:00,  1.07utt/s, ups=1.23, utts=37]
+fastkernels TTS tts-medium:  37%|███▋      | 37/100 [00:32<00:45,  1.37utt/s, ups=1.23, utts=37]
+fastkernels TTS tts-medium:  37%|███▋      | 37/100 [00:33<00:45,  1.37utt/s, ups=1.23, utts=38]
+fastkernels TTS tts-medium:  38%|███▊      | 38/100 [00:33<00:50,  1.23utt/s, ups=1.23, utts=38]
+fastkernels TTS tts-medium:  38%|███▊      | 38/100 [00:34<00:50,  1.23utt/s, ups=1.22, utts=39]
+fastkernels TTS tts-medium:  39%|███▉      | 39/100 [00:34<00:53,  1.15utt/s, ups=1.22, utts=39]
+fastkernels TTS tts-medium:  39%|███▉      | 39/100 [00:34<00:53,  1.15utt/s, ups=1.23, utts=40]
+fastkernels TTS tts-medium:  40%|████      | 40/100 [00:34<00:49,  1.21utt/s, ups=1.23, utts=40]
+fastkernels TTS tts-medium:  40%|████      | 40/100 [00:35<00:49,  1.21utt/s, ups=1.22, utts=41]
+fastkernels TTS tts-medium:  41%|████      | 41/100 [00:35<00:54,  1.08utt/s, ups=1.22, utts=41]
+fastkernels TTS tts-medium:  41%|████      | 41/100 [00:48<00:54,  1.08utt/s, ups=0.92, utts=42]
+fastkernels TTS tts-medium:  42%|████▏     | 42/100 [00:48<04:10,  4.32s/utt, ups=0.92, utts=42]
+fastkernels TTS tts-medium:  42%|████▏     | 42/100 [00:48<04:10,  4.32s/utt, ups=0.93, utts=43]
+fastkernels TTS tts-medium:  43%|████▎     | 43/100 [00:48<03:03,  3.22s/utt, ups=0.93, utts=43]
+fastkernels TTS tts-medium:  43%|████▎     | 43/100 [00:49<03:03,  3.22s/utt, ups=0.93, utts=44]
+fastkernels TTS tts-medium:  44%|████▍     | 44/100 [00:49<02:25,  2.59s/utt, ups=0.93, utts=44]
+fastkernels TTS tts-medium:  44%|████▍     | 44/100 [00:51<02:25,  2.59s/utt, ups=0.93, utts=45]
+fastkernels TTS tts-medium:  45%|████▌     | 45/100 [00:51<01:59,  2.17s/utt, ups=0.93, utts=45]
+fastkernels TTS tts-medium:  45%|████▌     | 45/100 [00:51<01:59,  2.17s/utt, ups=0.93, utts=46]
+fastkernels TTS tts-medium:  46%|████▌     | 46/100 [00:51<01:32,  1.72s/utt, ups=0.93, utts=46]
+fastkernels TTS tts-medium:  46%|████▌     | 46/100 [00:52<01:32,  1.72s/utt, ups=0.94, utts=47]
+fastkernels TTS tts-medium:  47%|████▋     | 47/100 [00:52<01:15,  1.42s/utt, ups=0.94, utts=47]
+fastkernels TTS tts-medium:  47%|████▋     | 47/100 [00:53<01:15,  1.42s/utt, ups=0.94, utts=48]
+fastkernels TTS tts-medium:  48%|████▊     | 48/100 [00:53<01:07,  1.30s/utt, ups=0.94, utts=48]
+fastkernels TTS tts-medium:  48%|████▊     | 48/100 [00:54<01:07,  1.30s/utt, ups=0.95, utts=49]
+fastkernels TTS tts-medium:  49%|████▉     | 49/100 [00:54<00:59,  1.17s/utt, ups=0.95, utts=49]
+fastkernels TTS tts-medium:  49%|████▉     | 49/100 [00:55<00:59,  1.17s/utt, ups=0.96, utts=50]
+fastkernels TTS tts-medium:  50%|█████     | 50/100 [00:55<00:49,  1.00utt/s, ups=0.96, utts=50]
+fastkernels TTS tts-medium:  50%|█████     | 50/100 [00:55<00:49,  1.00utt/s, ups=0.96, utts=51]
+fastkernels TTS tts-medium:  51%|█████     | 51/100 [00:55<00:45,  1.07utt/s, ups=0.96, utts=51]
+fastkernels TTS tts-medium:  51%|█████     | 51/100 [00:56<00:45,  1.07utt/s, ups=0.97, utts=52]
+fastkernels TTS tts-medium:  52%|█████▏    | 52/100 [00:56<00:43,  1.10utt/s, ups=0.97, utts=52]
+fastkernels TTS tts-medium:  52%|█████▏    | 52/100 [00:57<00:43,  1.10utt/s, ups=0.98, utts=53]
+fastkernels TTS tts-medium:  53%|█████▎    | 53/100 [00:57<00:37,  1.24utt/s, ups=0.98, utts=53]
+fastkernels TTS tts-medium:  53%|█████▎    | 53/100 [00:57<00:37,  1.24utt/s, ups=0.99, utts=54]
+fastkernels TTS tts-medium:  54%|█████▍    | 54/100 [00:57<00:29,  1.57utt/s, ups=0.99, utts=54]
+fastkernels TTS tts-medium:  54%|█████▍    | 54/100 [00:58<00:29,  1.57utt/s, ups=1.00, utts=55]
+fastkernels TTS tts-medium:  55%|█████▌    | 55/100 [00:58<00:28,  1.57utt/s, ups=1.00, utts=55]
+fastkernels TTS tts-medium:  55%|█████▌    | 55/100 [00:58<00:28,  1.57utt/s, ups=1.00, utts=56]
+fastkernels TTS tts-medium:  56%|█████▌    | 56/100 [00:58<00:30,  1.45utt/s, ups=1.00, utts=56]
+fastkernels TTS tts-medium:  56%|█████▌    | 56/100 [00:59<00:30,  1.45utt/s, ups=1.01, utts=57]
+fastkernels TTS tts-medium:  57%|█████▋    | 57/100 [00:59<00:30,  1.42utt/s, ups=1.01, utts=57]
+fastkernels TTS tts-medium:  57%|█████▋    | 57/100 [01:00<00:30,  1.42utt/s, ups=1.01, utts=58]
+fastkernels TTS tts-medium:  58%|█████▊    | 58/100 [01:00<00:33,  1.27utt/s, ups=1.01, utts=58]
+fastkernels TTS tts-medium:  58%|█████▊    | 58/100 [01:01<00:33,  1.27utt/s, ups=1.01, utts=59]
+fastkernels TTS tts-medium:  59%|█████▉    | 59/100 [01:01<00:34,  1.20utt/s, ups=1.01, utts=59]
+fastkernels TTS tts-medium:  59%|█████▉    | 59/100 [01:02<00:34,  1.20utt/s, ups=1.02, utts=60]
+fastkernels TTS tts-medium:  60%|██████    | 60/100 [01:02<00:32,  1.25utt/s, ups=1.02, utts=60]
+fastkernels TTS tts-medium:  60%|██████    | 60/100 [01:03<00:32,  1.25utt/s, ups=1.02, utts=61]
+fastkernels TTS tts-medium:  61%|██████    | 61/100 [01:03<00:30,  1.30utt/s, ups=1.02, utts=61]
+fastkernels TTS tts-medium:  61%|██████    | 61/100 [01:03<00:30,  1.30utt/s, ups=1.03, utts=62]
+fastkernels TTS tts-medium:  62%|██████▏   | 62/100 [01:03<00:29,  1.27utt/s, ups=1.03, utts=62]
+fastkernels TTS tts-medium:  62%|██████▏   | 62/100 [01:04<00:29,  1.27utt/s, ups=1.03, utts=63]
+fastkernels TTS tts-medium:  63%|██████▎   | 63/100 [01:04<00:29,  1.26utt/s, ups=1.03, utts=63]
+fastkernels TTS tts-medium:  63%|██████▎   | 63/100 [01:04<00:29,  1.26utt/s, ups=1.04, utts=64]
+fastkernels TTS tts-medium:  64%|██████▍   | 64/100 [01:04<00:22,  1.59utt/s, ups=1.04, utts=64]
+fastkernels TTS tts-medium:  64%|██████▍   | 64/100 [01:06<00:22,  1.59utt/s, ups=1.04, utts=65]
+fastkernels TTS tts-medium:  65%|██████▌   | 65/100 [01:06<00:27,  1.26utt/s, ups=1.04, utts=65]
+fastkernels TTS tts-medium:  65%|██████▌   | 65/100 [01:06<00:27,  1.26utt/s, ups=1.05, utts=66]
+fastkernels TTS tts-medium:  66%|██████▌   | 66/100 [01:06<00:25,  1.34utt/s, ups=1.05, utts=66]
+fastkernels TTS tts-medium:  66%|██████▌   | 66/100 [01:07<00:25,  1.34utt/s, ups=1.05, utts=67]
+fastkernels TTS tts-medium:  67%|██████▋   | 67/100 [01:07<00:28,  1.14utt/s, ups=1.05, utts=67]
+fastkernels TTS tts-medium:  67%|██████▋   | 67/100 [01:08<00:28,  1.14utt/s, ups=1.05, utts=68]
+fastkernels TTS tts-medium:  68%|██████▊   | 68/100 [01:08<00:27,  1.16utt/s, ups=1.05, utts=68]
+fastkernels TTS tts-medium:  68%|██████▊   | 68/100 [01:09<00:27,  1.16utt/s, ups=1.05, utts=69]
+fastkernels TTS tts-medium:  69%|██████▉   | 69/100 [01:09<00:26,  1.19utt/s, ups=1.05, utts=69]
+fastkernels TTS tts-medium:  69%|██████▉   | 69/100 [01:10<00:26,  1.19utt/s, ups=1.06, utts=70]
+fastkernels TTS tts-medium:  70%|███████   | 70/100 [01:10<00:24,  1.21utt/s, ups=1.06, utts=70]
+fastkernels TTS tts-medium:  70%|███████   | 70/100 [01:11<00:24,  1.21utt/s, ups=1.06, utts=71]
+fastkernels TTS tts-medium:  71%|███████   | 71/100 [01:11<00:24,  1.18utt/s, ups=1.06, utts=71]
+fastkernels TTS tts-medium:  71%|███████   | 71/100 [01:11<00:24,  1.18utt/s, ups=1.06, utts=72]
+fastkernels TTS tts-medium:  72%|███████▏  | 72/100 [01:11<00:21,  1.29utt/s, ups=1.06, utts=72]
+fastkernels TTS tts-medium:  72%|███████▏  | 72/100 [01:12<00:21,  1.29utt/s, ups=1.06, utts=73]
+fastkernels TTS tts-medium:  73%|███████▎  | 73/100 [01:12<00:22,  1.23utt/s, ups=1.06, utts=73]
+fastkernels TTS tts-medium:  73%|███████▎  | 73/100 [01:13<00:22,  1.23utt/s, ups=1.07, utts=74]
+fastkernels TTS tts-medium:  74%|███████▍  | 74/100 [01:13<00:20,  1.24utt/s, ups=1.07, utts=74]
+fastkernels TTS tts-medium:  74%|███████▍  | 74/100 [01:14<00:20,  1.24utt/s, ups=1.07, utts=75]
+fastkernels TTS tts-medium:  75%|███████▌  | 75/100 [01:14<00:21,  1.19utt/s, ups=1.07, utts=75]
+fastkernels TTS tts-medium:  75%|███████▌  | 75/100 [01:15<00:21,  1.19utt/s, ups=1.07, utts=76]
+fastkernels TTS tts-medium:  76%|███████▌  | 76/100 [01:15<00:18,  1.27utt/s, ups=1.07, utts=76]
+fastkernels TTS tts-medium:  76%|███████▌  | 76/100 [01:16<00:18,  1.27utt/s, ups=1.07, utts=77]
+fastkernels TTS tts-medium:  77%|███████▋  | 77/100 [01:16<00:19,  1.18utt/s, ups=1.07, utts=77]
+fastkernels TTS tts-medium:  77%|███████▋  | 77/100 [01:16<00:19,  1.18utt/s, ups=1.08, utts=78]
+fastkernels TTS tts-medium:  78%|███████▊  | 78/100 [01:16<00:17,  1.23utt/s, ups=1.08, utts=78]
+fastkernels TTS tts-medium:  78%|███████▊  | 78/100 [01:17<00:17,  1.23utt/s, ups=1.09, utts=79]
+fastkernels TTS tts-medium:  79%|███████▉  | 79/100 [01:17<00:13,  1.55utt/s, ups=1.09, utts=79]
+fastkernels TTS tts-medium:  79%|███████▉  | 79/100 [01:18<00:13,  1.55utt/s, ups=1.09, utts=80]
+fastkernels TTS tts-medium:  80%|████████  | 80/100 [01:18<00:14,  1.36utt/s, ups=1.09, utts=80]
+fastkernels TTS tts-medium:  80%|████████  | 80/100 [01:19<00:14,  1.36utt/s, ups=1.09, utts=81]
+fastkernels TTS tts-medium:  81%|████████  | 81/100 [01:19<00:15,  1.23utt/s, ups=1.09, utts=81]
+fastkernels TTS tts-medium:  81%|████████  | 81/100 [01:19<00:15,  1.23utt/s, ups=1.09, utts=82]
+fastkernels TTS tts-medium:  82%|████████▏ | 82/100 [01:19<00:15,  1.19utt/s, ups=1.09, utts=82]
+fastkernels TTS tts-medium:  82%|████████▏ | 82/100 [01:20<00:15,  1.19utt/s, ups=1.09, utts=83]
+fastkernels TTS tts-medium:  83%|████████▎ | 83/100 [01:20<00:14,  1.16utt/s, ups=1.09, utts=83]
+fastkernels TTS tts-medium:  83%|████████▎ | 83/100 [01:21<00:14,  1.16utt/s, ups=1.09, utts=84]
+fastkernels TTS tts-medium:  84%|████████▍ | 84/100 [01:21<00:14,  1.09utt/s, ups=1.09, utts=84]
+fastkernels TTS tts-medium:  84%|████████▍ | 84/100 [01:23<00:14,  1.09utt/s, ups=1.08, utts=85]
+fastkernels TTS tts-medium:  85%|████████▌ | 85/100 [01:23<00:18,  1.25s/utt, ups=1.08, utts=85]
+fastkernels TTS tts-medium:  85%|████████▌ | 85/100 [01:24<00:18,  1.25s/utt, ups=1.08, utts=86]
+fastkernels TTS tts-medium:  86%|████████▌ | 86/100 [01:24<00:16,  1.17s/utt, ups=1.08, utts=86]
+fastkernels TTS tts-medium:  86%|████████▌ | 86/100 [01:25<00:16,  1.17s/utt, ups=1.08, utts=87]
+fastkernels TTS tts-medium:  87%|████████▋ | 87/100 [01:25<00:12,  1.01utt/s, ups=1.08, utts=87]
+fastkernels TTS tts-medium:  87%|████████▋ | 87/100 [01:26<00:12,  1.01utt/s, ups=1.08, utts=88]
+fastkernels TTS tts-medium:  88%|████████▊ | 88/100 [01:26<00:11,  1.01utt/s, ups=1.08, utts=88]
+fastkernels TTS tts-medium:  88%|████████▊ | 88/100 [01:27<00:11,  1.01utt/s, ups=1.08, utts=89]
+fastkernels TTS tts-medium:  89%|████████▉ | 89/100 [01:27<00:10,  1.09utt/s, ups=1.08, utts=89]
+fastkernels TTS tts-medium:  89%|████████▉ | 89/100 [01:27<00:10,  1.09utt/s, ups=1.09, utts=90]
+fastkernels TTS tts-medium:  90%|█████████ | 90/100 [01:27<00:08,  1.13utt/s, ups=1.09, utts=90]
+fastkernels TTS tts-medium:  90%|█████████ | 90/100 [01:29<00:08,  1.13utt/s, ups=1.08, utts=91]
+fastkernels TTS tts-medium:  91%|█████████ | 91/100 [01:29<00:09,  1.02s/utt, ups=1.08, utts=91]
+fastkernels TTS tts-medium:  91%|█████████ | 91/100 [01:30<00:09,  1.02s/utt, ups=1.09, utts=92]
+fastkernels TTS tts-medium:  92%|█████████▏| 92/100 [01:30<00:07,  1.09utt/s, ups=1.09, utts=92]
+fastkernels TTS tts-medium:  92%|█████████▏| 92/100 [01:31<00:07,  1.09utt/s, ups=1.09, utts=93]
+fastkernels TTS tts-medium:  93%|█████████▎| 93/100 [01:31<00:06,  1.06utt/s, ups=1.09, utts=93]
+fastkernels TTS tts-medium:  93%|█████████▎| 93/100 [01:31<00:06,  1.06utt/s, ups=1.09, utts=94]
+fastkernels TTS tts-medium:  94%|█████████▍| 94/100 [01:31<00:05,  1.12utt/s, ups=1.09, utts=94]
+fastkernels TTS tts-medium:  94%|█████████▍| 94/100 [01:32<00:05,  1.12utt/s, ups=1.09, utts=95]
+fastkernels TTS tts-medium:  95%|█████████▌| 95/100 [01:32<00:04,  1.08utt/s, ups=1.09, utts=95]
+fastkernels TTS tts-medium:  95%|█████████▌| 95/100 [01:33<00:04,  1.08utt/s, ups=1.09, utts=96]
+fastkernels TTS tts-medium:  96%|█████████▌| 96/100 [01:33<00:03,  1.06utt/s, ups=1.09, utts=96]
+fastkernels TTS tts-medium:  96%|█████████▌| 96/100 [01:34<00:03,  1.06utt/s, ups=1.09, utts=97]
+fastkernels TTS tts-medium:  97%|█████████▋| 97/100 [01:34<00:02,  1.11utt/s, ups=1.09, utts=97]
+fastkernels TTS tts-medium:  97%|█████████▋| 97/100 [01:35<00:02,  1.11utt/s, ups=1.09, utts=98]
+fastkernels TTS tts-medium:  98%|█████████▊| 98/100 [01:35<00:01,  1.17utt/s, ups=1.09, utts=98]
+fastkernels TTS tts-medium:  98%|█████████▊| 98/100 [01:36<00:01,  1.17utt/s, ups=1.09, utts=99]
+fastkernels TTS tts-medium:  99%|█████████▉| 99/100 [01:36<00:00,  1.09utt/s, ups=1.09, utts=99]
+fastkernels TTS tts-medium:  99%|█████████▉| 99/100 [01:36<00:00,  1.09utt/s, ups=1.10, utts=100]
+fastkernels TTS tts-medium: 100%|██████████| 100/100 [01:36<00:00,  1.24utt/s, ups=1.10, utts=100]
+fastkernels TTS tts-medium: 100%|██████████| 100/100 [01:36<00:00,  1.03utt/s, ups=1.10, utts=100]
+
+fastkernels TTS tts-long:   0%|          | 0/50 [00:00<?, ?utt/s]
+fastkernels TTS tts-long:   0%|          | 0/50 [00:00<?, ?utt/s, ups=1.08, utts=1]
+fastkernels TTS tts-long:   2%|▏         | 1/50 [00:00<00:48,  1.02utt/s, ups=1.08, utts=1]
+fastkernels TTS tts-long:   2%|▏         | 1/50 [00:01<00:48,  1.02utt/s, ups=1.17, utts=2]
+fastkernels TTS tts-long:   4%|▍         | 2/50 [00:01<00:43,  1.12utt/s, ups=1.17, utts=2]
+fastkernels TTS tts-long:   4%|▍         | 2/50 [00:02<00:43,  1.12utt/s, ups=1.30, utts=3]
+fastkernels TTS tts-long:   6%|▌         | 3/50 [00:02<00:37,  1.27utt/s, ups=1.30, utts=3]
+fastkernels TTS tts-long:   6%|▌         | 3/50 [00:03<00:37,  1.27utt/s, ups=1.18, utts=4]
+fastkernels TTS tts-long:   8%|▊         | 4/50 [00:03<00:42,  1.08utt/s, ups=1.18, utts=4]
+fastkernels TTS tts-long:   8%|▊         | 4/50 [00:05<00:42,  1.08utt/s, ups=0.96, utts=5]
+fastkernels TTS tts-long:  10%|█         | 5/50 [00:05<00:56,  1.26s/utt, ups=0.96, utts=5]
+fastkernels TTS tts-long:  10%|█         | 5/50 [00:06<00:56,  1.26s/utt, ups=1.04, utts=6]
+fastkernels TTS tts-long:  12%|█▏        | 6/50 [00:06<00:46,  1.05s/utt, ups=1.04, utts=6]
+fastkernels TTS tts-long:  12%|█▏        | 6/50 [00:07<00:46,  1.05s/utt, ups=1.05, utts=7]
+fastkernels TTS tts-long:  14%|█▍        | 7/50 [00:07<00:43,  1.02s/utt, ups=1.05, utts=7]
+fastkernels TTS tts-long:  14%|█▍        | 7/50 [00:07<00:43,  1.02s/utt, ups=1.09, utts=8]
+fastkernels TTS tts-long:  16%|█▌        | 8/50 [00:07<00:38,  1.08utt/s, ups=1.09, utts=8]
+fastkernels TTS tts-long:  16%|█▌        | 8/50 [00:08<00:38,  1.08utt/s, ups=1.12, utts=9]
+fastkernels TTS tts-long:  18%|█▊        | 9/50 [00:08<00:35,  1.14utt/s, ups=1.12, utts=9]
+fastkernels TTS tts-long:  18%|█▊        | 9/50 [00:09<00:35,  1.14utt/s, ups=1.15, utts=10]
+fastkernels TTS tts-long:  20%|██        | 10/50 [00:09<00:33,  1.20utt/s, ups=1.15, utts=10]
+fastkernels TTS tts-long:  20%|██        | 10/50 [00:10<00:33,  1.20utt/s, ups=1.12, utts=11]
+fastkernels TTS tts-long:  22%|██▏       | 11/50 [00:10<00:36,  1.07utt/s, ups=1.12, utts=11]
+fastkernels TTS tts-long:  22%|██▏       | 11/50 [00:11<00:36,  1.07utt/s, ups=1.13, utts=12]
+fastkernels TTS tts-long:  24%|██▍       | 12/50 [00:11<00:34,  1.11utt/s, ups=1.13, utts=12]
+fastkernels TTS tts-long:  24%|██▍       | 12/50 [00:11<00:34,  1.11utt/s, ups=1.17, utts=13]
+fastkernels TTS tts-long:  26%|██▌       | 13/50 [00:11<00:30,  1.23utt/s, ups=1.17, utts=13]
+fastkernels TTS tts-long:  26%|██▌       | 13/50 [00:12<00:30,  1.23utt/s, ups=1.18, utts=14]
+fastkernels TTS tts-long:  28%|██▊       | 14/50 [00:12<00:29,  1.24utt/s, ups=1.18, utts=14]
+fastkernels TTS tts-long:  28%|██▊       | 14/50 [00:13<00:29,  1.24utt/s, ups=1.19, utts=15]
+fastkernels TTS tts-long:  30%|███       | 15/50 [00:13<00:27,  1.27utt/s, ups=1.19, utts=15]
+fastkernels TTS tts-long:  30%|███       | 15/50 [00:13<00:27,  1.27utt/s, ups=1.25, utts=16]
+fastkernels TTS tts-long:  32%|███▏      | 16/50 [00:13<00:21,  1.60utt/s, ups=1.25, utts=16]
+fastkernels TTS tts-long:  32%|███▏      | 16/50 [00:14<00:21,  1.60utt/s, ups=1.22, utts=17]
+fastkernels TTS tts-long:  34%|███▍      | 17/50 [00:14<00:26,  1.24utt/s, ups=1.22, utts=17]
+fastkernels TTS tts-long:  34%|███▍      | 17/50 [00:15<00:26,  1.24utt/s, ups=1.24, utts=18]
+fastkernels TTS tts-long:  36%|███▌      | 18/50 [00:15<00:24,  1.33utt/s, ups=1.24, utts=18]
+fastkernels TTS tts-long:  36%|███▌      | 18/50 [00:16<00:24,  1.33utt/s, ups=1.24, utts=19]
+fastkernels TTS tts-long:  38%|███▊      | 19/50 [00:16<00:25,  1.24utt/s, ups=1.24, utts=19]
+fastkernels TTS tts-long:  38%|███▊      | 19/50 [00:17<00:25,  1.24utt/s, ups=1.23, utts=20]
+fastkernels TTS tts-long:  40%|████      | 20/50 [00:17<00:24,  1.21utt/s, ups=1.23, utts=20]
+fastkernels TTS tts-long:  40%|████      | 20/50 [00:17<00:24,  1.21utt/s, ups=1.27, utts=21]
+fastkernels TTS tts-long:  42%|████▏     | 21/50 [00:17<00:20,  1.44utt/s, ups=1.27, utts=21]
+fastkernels TTS tts-long:  42%|████▏     | 21/50 [00:18<00:20,  1.44utt/s, ups=1.25, utts=22]
+fastkernels TTS tts-long:  44%|████▍     | 22/50 [00:18<00:23,  1.18utt/s, ups=1.25, utts=22]
+fastkernels TTS tts-long:  44%|████▍     | 22/50 [00:19<00:23,  1.18utt/s, ups=1.24, utts=23]
+fastkernels TTS tts-long:  46%|████▌     | 23/50 [00:19<00:23,  1.15utt/s, ups=1.24, utts=23]
+fastkernels TTS tts-long:  46%|████▌     | 23/50 [00:20<00:23,  1.15utt/s, ups=1.24, utts=24]
+fastkernels TTS tts-long:  48%|████▊     | 24/50 [00:20<00:22,  1.17utt/s, ups=1.24, utts=24]
+fastkernels TTS tts-long:  48%|████▊     | 24/50 [00:21<00:22,  1.17utt/s, ups=1.24, utts=25]
+fastkernels TTS tts-long:  50%|█████     | 25/50 [00:21<00:22,  1.12utt/s, ups=1.24, utts=25]
+fastkernels TTS tts-long:  50%|█████     | 25/50 [00:22<00:22,  1.12utt/s, ups=1.24, utts=26]
+fastkernels TTS tts-long:  52%|█████▏    | 26/50 [00:22<00:21,  1.14utt/s, ups=1.24, utts=26]
+fastkernels TTS tts-long:  52%|█████▏    | 26/50 [00:23<00:21,  1.14utt/s, ups=1.25, utts=27]
+fastkernels TTS tts-long:  54%|█████▍    | 27/50 [00:23<00:19,  1.20utt/s, ups=1.25, utts=27]
+fastkernels TTS tts-long:  54%|█████▍    | 27/50 [00:23<00:19,  1.20utt/s, ups=1.26, utts=28]
+fastkernels TTS tts-long:  56%|█████▌    | 28/50 [00:23<00:16,  1.32utt/s, ups=1.26, utts=28]
+fastkernels TTS tts-long:  56%|█████▌    | 28/50 [00:24<00:16,  1.32utt/s, ups=1.26, utts=29]
+fastkernels TTS tts-long:  58%|█████▊    | 29/50 [00:24<00:16,  1.28utt/s, ups=1.26, utts=29]
+fastkernels TTS tts-long:  58%|█████▊    | 29/50 [00:25<00:16,  1.28utt/s, ups=1.27, utts=30]
+fastkernels TTS tts-long:  60%|██████    | 30/50 [00:25<00:14,  1.37utt/s, ups=1.27, utts=30]
+fastkernels TTS tts-long:  60%|██████    | 30/50 [00:26<00:14,  1.37utt/s, ups=1.27, utts=31]
+fastkernels TTS tts-long:  62%|██████▏   | 31/50 [00:26<00:15,  1.23utt/s, ups=1.27, utts=31]
+fastkernels TTS tts-long:  62%|██████▏   | 31/50 [00:27<00:15,  1.23utt/s, ups=1.27, utts=32]
+fastkernels TTS tts-long:  64%|██████▍   | 32/50 [00:27<00:14,  1.26utt/s, ups=1.27, utts=32]
+fastkernels TTS tts-long:  64%|██████▍   | 32/50 [00:28<00:14,  1.26utt/s, ups=1.26, utts=33]
+fastkernels TTS tts-long:  66%|██████▌   | 33/50 [00:28<00:14,  1.14utt/s, ups=1.26, utts=33]
+fastkernels TTS tts-long:  66%|██████▌   | 33/50 [00:29<00:14,  1.14utt/s, ups=1.25, utts=34]
+fastkernels TTS tts-long:  68%|██████▊   | 34/50 [00:29<00:14,  1.10utt/s, ups=1.25, utts=34]
+fastkernels TTS tts-long:  68%|██████▊   | 34/50 [00:29<00:14,  1.10utt/s, ups=1.26, utts=35]
+fastkernels TTS tts-long:  70%|███████   | 35/50 [00:29<00:13,  1.14utt/s, ups=1.26, utts=35]
+fastkernels TTS tts-long:  70%|███████   | 35/50 [00:30<00:13,  1.14utt/s, ups=1.26, utts=36]
+fastkernels TTS tts-long:  72%|███████▏  | 36/50 [00:30<00:12,  1.16utt/s, ups=1.26, utts=36]
+fastkernels TTS tts-long:  72%|███████▏  | 36/50 [00:30<00:12,  1.16utt/s, ups=1.28, utts=37]
+fastkernels TTS tts-long:  74%|███████▍  | 37/50 [00:30<00:08,  1.48utt/s, ups=1.28, utts=37]
+fastkernels TTS tts-long:  74%|███████▍  | 37/50 [00:31<00:08,  1.48utt/s, ups=1.28, utts=38]
+fastkernels TTS tts-long:  76%|███████▌  | 38/50 [00:31<00:09,  1.30utt/s, ups=1.28, utts=38]
+fastkernels TTS tts-long:  76%|███████▌  | 38/50 [00:32<00:09,  1.30utt/s, ups=1.28, utts=39]
+fastkernels TTS tts-long:  78%|███████▊  | 39/50 [00:32<00:08,  1.25utt/s, ups=1.28, utts=39]
+fastkernels TTS tts-long:  78%|███████▊  | 39/50 [00:33<00:08,  1.25utt/s, ups=1.28, utts=40]
+fastkernels TTS tts-long:  80%|████████  | 40/50 [00:33<00:07,  1.29utt/s, ups=1.28, utts=40]
+fastkernels TTS tts-long:  80%|████████  | 40/50 [00:34<00:07,  1.29utt/s, ups=1.27, utts=41]
+fastkernels TTS tts-long:  82%|████████▏ | 41/50 [00:34<00:07,  1.18utt/s, ups=1.27, utts=41]
+fastkernels TTS tts-long:  82%|████████▏ | 41/50 [00:46<00:07,  1.18utt/s, ups=0.95, utts=42]
+fastkernels TTS tts-long:  84%|████████▍ | 42/50 [00:46<00:33,  4.21s/utt, ups=0.95, utts=42]
+fastkernels TTS tts-long:  84%|████████▍ | 42/50 [00:47<00:33,  4.21s/utt, ups=0.96, utts=43]
+fastkernels TTS tts-long:  86%|████████▌ | 43/50 [00:47<00:21,  3.14s/utt, ups=0.96, utts=43]
+fastkernels TTS tts-long:  86%|████████▌ | 43/50 [00:48<00:21,  3.14s/utt, ups=0.96, utts=44]
+fastkernels TTS tts-long:  88%|████████▊ | 44/50 [00:48<00:15,  2.51s/utt, ups=0.96, utts=44]
+fastkernels TTS tts-long:  88%|████████▊ | 44/50 [00:49<00:15,  2.51s/utt, ups=0.96, utts=45]
+fastkernels TTS tts-long:  90%|█████████ | 45/50 [00:49<00:10,  2.11s/utt, ups=0.96, utts=45]
+fastkernels TTS tts-long:  90%|█████████ | 45/50 [00:50<00:10,  2.11s/utt, ups=0.97, utts=46]
+fastkernels TTS tts-long:  92%|█████████▏| 46/50 [00:50<00:06,  1.68s/utt, ups=0.97, utts=46]
+fastkernels TTS tts-long:  92%|█████████▏| 46/50 [00:50<00:06,  1.68s/utt, ups=0.98, utts=47]
+fastkernels TTS tts-long:  94%|█████████▍| 47/50 [00:50<00:04,  1.39s/utt, ups=0.98, utts=47]
+fastkernels TTS tts-long:  94%|█████████▍| 47/50 [00:51<00:04,  1.39s/utt, ups=0.98, utts=48]
+fastkernels TTS tts-long:  96%|█████████▌| 48/50 [00:51<00:02,  1.27s/utt, ups=0.98, utts=48]
+fastkernels TTS tts-long:  96%|█████████▌| 48/50 [00:52<00:02,  1.27s/utt, ups=0.98, utts=49]
+fastkernels TTS tts-long:  98%|█████████▊| 49/50 [00:52<00:01,  1.13s/utt, ups=0.98, utts=49]
+fastkernels TTS tts-long:  98%|█████████▊| 49/50 [00:53<00:01,  1.13s/utt, ups=0.99, utts=50]
+fastkernels TTS tts-long: 100%|██████████| 50/50 [00:53<00:00,  1.03utt/s, ups=0.99, utts=50]
+fastkernels TTS tts-long: 100%|██████████| 50/50 [00:53<00:00,  1.06s/utt, ups=0.99, utts=50]
+
+fastkernels latency warmup single-utterance:   0%|          | 0/2 [00:00<?, ?it/s]
+fastkernels latency warmup single-utterance:  50%|█████     | 1/2 [00:00<00:00,  1.02it/s]
+fastkernels latency warmup single-utterance: 100%|██████████| 2/2 [00:02<00:00,  1.32s/it]
+fastkernels latency warmup single-utterance: 100%|██████████| 2/2 [00:02<00:00,  1.27s/it]
+
+fastkernels latency single-utterance:   0%|          | 0/5 [00:00<?, ?it/s]
+fastkernels latency single-utterance:  20%|██        | 1/5 [00:01<00:06,  1.70s/it]
+fastkernels latency single-utterance:  40%|████      | 2/5 [00:02<00:03,  1.22s/it]
+fastkernels latency single-utterance:  60%|██████    | 3/5 [00:03<00:02,  1.06s/it]
+fastkernels latency single-utterance:  80%|████████  | 4/5 [00:04<00:00,  1.01it/s]
+fastkernels latency single-utterance: 100%|██████████| 5/5 [00:05<00:00,  1.17s/it]
+fastkernels latency single-utterance: 100%|██████████| 5/5 [00:05<00:00,  1.16s/it]
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Memory efficient kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:986.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Memory Efficient attention has been runtime disabled. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:552.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Flash attention kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:988.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Flash attention has been runtime disabled. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:540.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: cuDNN attention kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:990.)
+  out = F.scaled_dot_product_attention(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L1/dense_attention.py:217: UserWarning: Expected query, key and value to all be of dtype: {Half, BFloat16}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:91.)
+  out = F.scaled_dot_product_attention(
+  Loaded flow weights from /data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18/flow.pt
+  Loaded hift weights from /data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18/hift.pt
+INFO 08-21 11:17:39 [platform.py:220] Defaulting to diffusion attention backend CUDNN_ATTN (Blackwell sm_100, cuDNN 91900)
+INFO 08-21 11:17:39 [selector.py:89] Resolved diffusion attention backend 'CUDNN_ATTN' for role='self' via platform default
+INFO 08-21 11:17:40 [cfm.py:274] input frame rate=25
+INFO 08-21 11:17:41 [cosyvoice3_code2wav.py:310] Loaded flow weights from /data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18/flow.pt
+INFO 08-21 11:17:41 [cosyvoice3_code2wav.py:319] Loaded hift weights from /data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18/hift.pt
+  Code2Wav equivalence: mel cos=0.999088, mse=7.28e-02, PASS
+
+──────────────────────────────────────────────────────────────────────
+  vllm-omni TTS benchmark
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Fetching 20 files:   0%|          | 0/20 [00:00<?, ?it/s]
+Fetching 20 files: 100%|██████████| 20/20 [00:00<00:00, 1092.69it/s]
+  Patched /data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18/config.json: added model_type='cosyvoice3'
+INFO 08-21 11:17:53 [patch.py:252] NVFP4 W4A4 weight_scale NaN-clamp: installed.
+INFO 08-21 11:17:56 [quack_fp8.py:76] Quack FP8 fused-bias GEMM enabled (CuteDSL).
+INFO 08-21 11:17:56 [quack_fp8.py:155] Patched FlashInfer FP8 ScaledMM to use quack fused-bias GEMM.
+INFO 08-21 11:17:56 [patch.py:481] [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+  Downloading mel_filters.npz from https://raw.githubusercontent.com/openai/whisper/main/whisper/assets/mel_filters.npz
+  Saved to /home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/vllm_omni/model_executor/models/cosyvoice3/assets/mel_filters.npz
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+INFO 08-21 11:17:58 [omni_base.py:172] [Omni] Initializing with model /data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18
+INFO 08-21 11:17:58 [async_omni_engine.py:175] [AsyncOmniEngine] Initializing with model /data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18
+WARNING 08-21 11:17:58 [config.py:747] Model config does not have a top-level 'architectures' field: expecting `hf_overrides={'architectures': ['...']}` to be passed in engine args.
+WARNING 08-21 11:17:58 [config.py:747] Model config does not have a top-level 'architectures' field: expecting `hf_overrides={'architectures': ['...']}` to be passed in engine args.
+INFO 08-21 11:17:58 [async_omni_engine.py:264] [AsyncOmniEngine] Launching Orchestrator thread with 2 stages
+INFO 08-21 11:17:58 [stage_init_utils.py:511] [stage_init] Set VLLM_WORKER_MULTIPROC_METHOD=spawn
+INFO 08-21 11:17:58 [initialization.py:356] Loaded OmniTransferConfig with 1 connector configurations
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT_7777_TCP_ADDR
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT_7777_TCP_PROTO
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_SERVICE_HOST
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT_7777_TCP
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT_8888_TCP_PROTO
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_SERVICE_HOST
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT_8888_TCP_ADDR
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_SERVICE_PORT_OPENAI
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_SERVICE_PORT_OPENAI
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT_8888_TCP_PORT
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_SERVICE_PORT
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_SERVICE_PORT
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT_8888_TCP
+WARNING 08-21 11:17:58 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT_7777_TCP_PORT
+WARNING 08-21 11:17:58 [arg_utils.py:1631] The global random seed is set to 0. Since VLLM_ENABLE_V1_MULTIPROCESSING is set to False, this may affect the random state of the Python process that launched vLLM.
+WARNING 08-21 11:17:58 [config.py:747] Model config does not have a top-level 'architectures' field: expecting `hf_overrides={'architectures': ['...']}` to be passed in engine args.
+INFO 08-21 11:18:12 [model.py:623] Resolved architecture: CosyVoice3Model
+WARNING 08-21 11:18:12 [model.py:2197] The model's config.json does not contain any of the keys to determine the original maximum length of the model. Assuming the model's maximum length is 2048.
+INFO 08-21 11:18:12 [model.py:1788] Using max model len 2048
+INFO 08-21 11:18:12 [scheduler.py:252] Chunked prefill is enabled with max_num_batched_tokens=32768.
+WARNING 08-21 11:18:12 [scheduler.py:294] max_num_batched_tokens (32768) exceeds max_num_seqs * max_model_len (16384). This may lead to unexpected behavior.
+INFO 08-21 11:18:12 [vllm.py:1109] Asynchronous scheduling is enabled.
+WARNING 08-21 11:18:12 [vllm.py:1163] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+WARNING 08-21 11:18:12 [vllm.py:1213] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+INFO 08-21 11:18:12 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+INFO 08-21 11:18:12 [vllm.py:1392] Cudagraph is disabled under eager mode
+INFO 08-21 11:18:12 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT_7777_TCP_ADDR
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT_7777_TCP_PROTO
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_SERVICE_HOST
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT_7777_TCP
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT_8888_TCP_PROTO
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_SERVICE_HOST
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT_8888_TCP_ADDR
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_SERVICE_PORT_OPENAI
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_SERVICE_PORT_OPENAI
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT_8888_TCP_PORT
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_SERVICE_PORT
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_SERVICE_PORT
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_GPT_OSS_120B_PORT_8888_TCP
+WARNING 08-21 11:18:12 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_QWEN3_8_27B_PORT_7777_TCP_PORT
+WARNING 08-21 11:18:12 [arg_utils.py:1631] The global random seed is set to 0. Since VLLM_ENABLE_V1_MULTIPROCESSING is set to False, this may affect the random state of the Python process that launched vLLM.
+WARNING 08-21 11:18:12 [config.py:747] Model config does not have a top-level 'architectures' field: expecting `hf_overrides={'architectures': ['...']}` to be passed in engine args.
+INFO 08-21 11:18:12 [model.py:623] Resolved architecture: CosyVoice3Model
+INFO 08-21 11:18:12 [model.py:1788] Using max model len 32768
+WARNING 08-21 11:18:12 [vllm.py:1163] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+WARNING 08-21 11:18:12 [vllm.py:1213] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+INFO 08-21 11:18:12 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+INFO 08-21 11:18:12 [vllm.py:1392] Cudagraph is disabled under eager mode
+INFO 08-21 11:18:12 [stage_utils.py:167] Stage 0 logical-to-physical device mapping: 0->1
+INFO 08-21 11:18:12 [stage_runtime.py:553] [stage_init] Stage-0 set runtime devices: 1
+INFO 08-21 11:18:21 [patch.py:252] NVFP4 W4A4 weight_scale NaN-clamp: installed.
+INFO 08-21 11:18:23 [quack_fp8.py:76] Quack FP8 fused-bias GEMM enabled (CuteDSL).
+INFO 08-21 11:18:23 [quack_fp8.py:155] Patched FlashInfer FP8 ScaledMM to use quack fused-bias GEMM.
+INFO 08-21 11:18:23 [patch.py:481] [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:25 [core.py:116] Initializing a V1 LLM engine (v0.26.0) with config: model='/data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18', speculative_config=None, tokenizer='/data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18/CosyVoice-BlankEN', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.float32, max_seq_len=2048, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=/data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [32768], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_bf16x3_router_gemm=False, moe_backend='auto', linear_backend='auto')
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:25 [parallel_state.py:1615] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.4.178.1:44823 backend=nccl
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:25 [parallel_state.py:1946] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(StageEngineCoreProc_stage0_replica0 pid=584125) WARNING 08-21 11:18:28 [gpu_ar_worker.py:116] OMNI GPUARWorker forces v1 model runner for omni hooks.
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:28 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+(StageEngineCoreProc_stage0_replica0 pid=584125) WARNING 08-21 11:18:29 [cosyvoice3.py:149] CosyVoice3: TensorRT campplus build failed (No module named 'tensorrt'); falling back to ONNX-Runtime speaker embedding
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:29 [speaker_cache.py:242] Speaker cache ready (max_bytes=536870912)
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:34 [factory.py:46] Created connector: SharedMemoryConnector
+(StageEngineCoreProc_stage0_replica0 pid=584125) WARNING 08-21 11:18:34 [base.py:188] [LLM Worker 0] Sleep Mode DISABLED.
+(StageEngineCoreProc_stage0_replica0 pid=584125) WARNING 08-21 11:18:34 [base.py:188] [LLM Worker 0] Sleep Mode DISABLED.
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:34 [gpu_model_runner.py:5250] Starting to load model /data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18...
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:35 [vllm.py:1109] Asynchronous scheduling is enabled.
+(StageEngineCoreProc_stage0_replica0 pid=584125) WARNING 08-21 11:18:35 [vllm.py:1163] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(StageEngineCoreProc_stage0_replica0 pid=584125) WARNING 08-21 11:18:35 [vllm.py:1213] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:35 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:35 [vllm.py:1392] Cudagraph is disabled under eager mode
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:35 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:35 [cuda.py:482] Using TRITON_ATTN attention backend out of potential backends: ['TRITON_ATTN', 'FLEX_ATTENTION'].
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:36 [default_loader.py:430] Loading weights took 2543853.35 seconds
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:37 [gpu_model_runner.py:5347] Model loading took 1.92 GiB memory and 1.402814 seconds
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:37 [gpu_model_runner.py:6369] Skipping memory profiling for multimodal encoder and encoder cache.
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:47 [base.py:142] Available KV cache memory: 67.04 GiB (process-scoped)
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:47 [kv_cache_utils.py:2177] GPU KV cache size: 2,928,832 tokens
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:47 [kv_cache_utils.py:2178] Maximum concurrency for 2,048 tokens per request: 1430.09x
+(StageEngineCoreProc_stage0_replica0 pid=584125) WARNING 08-21 11:18:47 [base.py:188] [LLM Worker 0] Sleep Mode DISABLED.
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:47 [kernel_warmup.py:227] Using FlashInfer autotune cache file: /home/yak/.fastkernels/cache/validate-b200-check/vllm/flashinfer_autotune_cache/0.6.14/100a/1898ce7ff4d3a00eadc332518c569b7b3422275a132f6c8bdc56293df1504cfa/autotune_configs.json
+(StageEngineCoreProc_stage0_replica0 pid=584125) 2026-08-21 11:18:47,258 - INFO - autotuner.py:651 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(StageEngineCoreProc_stage0_replica0 pid=584125) 2026-08-21 11:18:47,604 - INFO - autotuner.py:674 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(StageEngineCoreProc_stage0_replica0 pid=584125) WARNING 08-21 11:18:47 [kernel_warmup.py:258] No FlashInfer autotune cache entries found.Falling back to default tactics.
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:47 [kernel_warmup.py:65] Warming up ll_bf16 router GEMM kernels.
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:55 [cutedsl_warmup.py:101] Skipping CuTeDSL warmup because no compile units were requested.
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:55 [gpu_worker.py:857] Free memory on device (177.74/178.35 GiB) on startup. Desired GPU memory utilization is (0.4, 71.34 GiB). Actual usage is 1.92 GiB for weight, 2.11 GiB for peak activation, 0.66 GiB for non-torch memory, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=71404645274` (66.5 GiB) to fit into requested memory, or `--kv-cache-memory=185650369024` (172.9 GiB) to fully utilize gpu memory. Current kv cache memory in use is 67.04 GiB.
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:55 [jit_monitor.py:79] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:56 [core.py:347] init engine (profile, create kv cache, warmup model) took 18.65 s
+(StageEngineCoreProc_stage0_replica0 pid=584125) WARNING 08-21 11:18:56 [scheduler.py:192] Using custom scheduler class vllm_omni.core.sched.omni_ar_scheduler.OmniARAsyncScheduler. This scheduler interface is not public and compatibility may not be maintained. If you have subclassed Scheduler instead of AsyncScheduler, you will see degraded performance due to async scheduling being disabled.
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:56 [factory.py:46] Created connector: SharedMemoryConnector
+(StageEngineCoreProc_stage0_replica0 pid=584125) WARNING 08-21 11:18:56 [vllm.py:1163] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(StageEngineCoreProc_stage0_replica0 pid=584125) WARNING 08-21 11:18:56 [vllm.py:1213] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:56 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+(StageEngineCoreProc_stage0_replica0 pid=584125) INFO 08-21 11:18:56 [vllm.py:1392] Cudagraph is disabled under eager mode
+INFO 08-21 11:18:56 [stage_runtime.py:589] [StageRuntime] Stage 0 engine startup completed
+INFO 08-21 11:18:56 [stage_engine_core_client.py:157] [StageEngineCoreClient] stage-0 [rep-0] initializing EngineCore
+INFO 08-21 11:18:56 [stage_engine_core_client.py:213] [StageEngineCoreClient] stage-0 [rep-0] EngineCore running
+INFO 08-21 11:18:56 [stage_runtime.py:603] [StageRuntime] Stage 0 initialized
+INFO 08-21 11:18:56 [stage_utils.py:167] Stage 1 logical-to-physical device mapping: 0->1
+INFO 08-21 11:18:56 [stage_runtime.py:553] [stage_init] Stage-1 set runtime devices: 1
+INFO 08-21 11:19:08 [patch.py:252] NVFP4 W4A4 weight_scale NaN-clamp: installed.
+INFO 08-21 11:19:10 [quack_fp8.py:76] Quack FP8 fused-bias GEMM enabled (CuteDSL).
+INFO 08-21 11:19:10 [quack_fp8.py:155] Patched FlashInfer FP8 ScaledMM to use quack fused-bias GEMM.
+INFO 08-21 11:19:10 [patch.py:481] [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+WARNING:root:
+            [33m
+            _fbgemm_torch_compat_table has no entry for 1.6.0+cu130 of FBGEMM;
+            cannot determine compatibility with PyTorch 2.11.0+cu130
+            [0m
+            
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:12 [core.py:116] Initializing a V1 LLM engine (v0.26.0) with config: model='/data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18', speculative_config=None, tokenizer='/data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18/CosyVoice-BlankEN', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.float32, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=/data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [32768], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_bf16x3_router_gemm=False, moe_backend='auto', linear_backend='auto')
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:12 [parallel_state.py:1615] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.4.178.1:54383 backend=nccl
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:12 [parallel_state.py:1946] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(StageEngineCoreProc_stage1_replica0 pid=690922) WARNING 08-21 11:19:13 [gpu_generation_worker.py:99] OMNI GPUGenerationWorker forces v1 model runner for omni hooks.
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:13 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+(StageEngineCoreProc_stage1_replica0 pid=690922) WARNING 08-21 11:19:13 [cosyvoice3.py:149] CosyVoice3: TensorRT campplus build failed (No module named 'tensorrt'); falling back to ONNX-Runtime speaker embedding
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:14 [speaker_cache.py:242] Speaker cache ready (max_bytes=536870912)
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:19 [factory.py:46] Created connector: SharedMemoryConnector
+(StageEngineCoreProc_stage1_replica0 pid=690922) WARNING 08-21 11:19:19 [base.py:188] [LLM Worker 0] Sleep Mode DISABLED.
+(StageEngineCoreProc_stage1_replica0 pid=690922) WARNING 08-21 11:19:19 [base.py:188] [LLM Worker 0] Sleep Mode DISABLED.
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:19 [gpu_model_runner.py:5250] Starting to load model /data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18...
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:19 [platform.py:220] Defaulting to diffusion attention backend CUDNN_ATTN (Blackwell sm_100, cuDNN 91900)
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:19 [selector.py:89] Resolved diffusion attention backend 'CUDNN_ATTN' for role='self' via platform default
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:19 [cfm.py:274] input frame rate=25
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:20 [cosyvoice3_code2wav.py:310] Loaded flow weights from /data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18/flow.pt
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:20 [cosyvoice3_code2wav.py:319] Loaded hift weights from /data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18/hift.pt
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:20 [default_loader.py:430] Loading weights took 2543897.06 seconds
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:20 [gpu_model_runner.py:5347] Model loading took 1.59 GiB memory and 0.732578 seconds
+(StageEngineCoreProc_stage1_replica0 pid=690922) WARNING 08-21 11:19:20 [base.py:188] [LLM Worker 0] Sleep Mode DISABLED.
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:21 [kernel_warmup.py:227] Using FlashInfer autotune cache file: /home/yak/.fastkernels/cache/validate-b200-check/vllm/flashinfer_autotune_cache/0.6.14/100a/a6a3052b044c0b6954b6897db48153ffd0faa7d374acffaa14fb7bd76cabb439/autotune_configs.json
+(StageEngineCoreProc_stage1_replica0 pid=690922) 2026-08-21 11:19:21,287 - INFO - autotuner.py:651 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(StageEngineCoreProc_stage1_replica0 pid=690922) 
+Fetching 1 files:   0%|          | 0/1 [00:00<?, ?it/s]
+Fetching 1 files: 100%|██████████| 1/1 [00:05<00:00,  5.45s/it]
+Fetching 1 files: 100%|██████████| 1/1 [00:05<00:00,  5.45s/it]
+(StageEngineCoreProc_stage1_replica0 pid=690922) WARNING 08-21 11:19:27 [cosyvoice3.py:945] CosyVoice3 code2wav: TensorRT estimator build failed (No module named 'tensorrt'); keeping torch estimator
+(StageEngineCoreProc_stage1_replica0 pid=690922) 2026-08-21 11:19:27,005 - INFO - autotuner.py:674 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(StageEngineCoreProc_stage1_replica0 pid=690922) WARNING 08-21 11:19:27 [kernel_warmup.py:258] No FlashInfer autotune cache entries found.Falling back to default tactics.
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:27 [kernel_warmup.py:65] Warming up ll_bf16 router GEMM kernels.
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:34 [cutedsl_warmup.py:101] Skipping CuTeDSL warmup because no compile units were requested.
+(StageEngineCoreProc_stage1_replica0 pid=690922) WARNING 08-21 11:19:34 [gpu_generation_model_runner.py:560] Dummy sampler run is not implemented for generation model
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:35 [jit_monitor.py:79] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:35 [core.py:347] init engine (profile, create kv cache, warmup model) took 14.60 s
+(StageEngineCoreProc_stage1_replica0 pid=690922) WARNING 08-21 11:19:35 [scheduler.py:192] Using custom scheduler class vllm_omni.core.sched.omni_generation_scheduler.OmniGenerationScheduler. This scheduler interface is not public and compatibility may not be maintained. If you have subclassed Scheduler instead of AsyncScheduler, you will see degraded performance due to async scheduling being disabled.
+(StageEngineCoreProc_stage1_replica0 pid=690922) WARNING 08-21 11:19:35 [core.py:146] Disabling chunked prefill for model without KVCache
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:35 [factory.py:46] Created connector: SharedMemoryConnector
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:35 [vllm.py:1109] Asynchronous scheduling is enabled.
+(StageEngineCoreProc_stage1_replica0 pid=690922) WARNING 08-21 11:19:35 [vllm.py:1163] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(StageEngineCoreProc_stage1_replica0 pid=690922) WARNING 08-21 11:19:35 [vllm.py:1213] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:35 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:35 [vllm.py:1392] Cudagraph is disabled under eager mode
+INFO 08-21 11:19:35 [stage_runtime.py:589] [StageRuntime] Stage 1 engine startup completed
+INFO 08-21 11:19:35 [stage_engine_core_client.py:157] [StageEngineCoreClient] stage-1 [rep-0] initializing EngineCore
+(StageEngineCoreProc_stage1_replica0 pid=690922) INFO 08-21 11:19:35 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+INFO 08-21 11:19:36 [stage_engine_core_client.py:213] [StageEngineCoreClient] stage-1 [rep-0] EngineCore running
+INFO 08-21 11:19:36 [stage_runtime.py:603] [StageRuntime] Stage 1 initialized
+WARNING 08-21 11:19:36 [config.py:747] Model config does not have a top-level 'architectures' field: expecting `hf_overrides={'architectures': ['...']}` to be passed in engine args.
+WARNING 08-21 11:19:36 [config.py:747] Model config does not have a top-level 'architectures' field: expecting `hf_overrides={'architectures': ['...']}` to be passed in engine args.
+WARNING 08-21 11:19:37 [cosyvoice3.py:149] CosyVoice3: TensorRT campplus build failed (No module named 'tensorrt'); falling back to ONNX-Runtime speaker embedding
+INFO 08-21 11:19:37 [speaker_cache.py:242] Speaker cache ready (max_bytes=536870912)
+INFO 08-21 11:19:46 [orchestrator.py:488] [Orchestrator] Starting event loop
+INFO 08-21 11:19:46 [async_omni_engine.py:296] [AsyncOmniEngine] Orchestrator ready with 2 stages
+INFO 08-21 11:19:46 [omni_base.py:190] [Omni] AsyncOmniEngine initialized in 107.28 seconds
+INFO 08-21 11:19:46 [omni_base.py:210] [Omni] Initialized with 2 stages for model /data-fast/huggingface/hub/models--FunAudioLLM--Fun-CosyVoice3-0.5B-2512/snapshots/29e01c4e8d000f4bcd70751be16fa94bf3d85a18
+WARNING 08-21 11:19:46 [input_processor.py:282] Passing raw prompts to InputProcessor is deprecated and will be removed in v0.18. You should instead pass the outputs of Renderer.render_cmpl() or Renderer.render_chat().
+(StageEngineCoreProc_stage0_replica0 pid=584125) WARNING 08-21 11:19:46 [jit_monitor.py:135] Triton kernel JIT compilation during inference: kernel_unified_attention. This causes a latency spike; consider extending warmup to cover this shape/config.
+(StageEngineCoreProc_stage0_replica0 pid=584125) WARNING 08-21 11:19:46 [jit_monitor.py:135] Triton kernel JIT compilation during inference: reduce_segments. This causes a latency spike; consider extending warmup to cover this shape/config.
+(StageEngineCoreProc_stage1_replica0 pid=690922) WARNING 08-21 11:19:47 [layer.py:296] Only SDPA supports float32. Overriding user config <class 'vllm_omni.diffusion.attention.backends.cudnn_attn.CuDNNAttentionImpl'> attention_backend='None' to 'sdpa' for dtype=torch.float32.
+(StageEngineCoreProc_stage1_replica0 pid=690922) WARNING 08-21 11:19:47 [jit_monitor.py:135] Triton kernel JIT compilation during inference: SnakeBeta._init_triton.<locals>._kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+  vllm-omni warmup done
+
+vllm-omni TTS tts-short:   0%|          | 0/27 [00:00<?, ?utt/s]
+vllm-omni TTS tts-short:   0%|          | 0/27 [00:01<?, ?utt/s, ups=0.61, utts=1]
+vllm-omni TTS tts-short:   4%|▎         | 1/27 [00:01<00:44,  1.70s/utt, ups=0.61, utts=1]
+vllm-omni TTS tts-short:   4%|▎         | 1/27 [00:03<00:44,  1.70s/utt, ups=0.63, utts=2]
+vllm-omni TTS tts-short:   7%|▋         | 2/27 [00:03<00:41,  1.66s/utt, ups=0.63, utts=2]
+vllm-omni TTS tts-short:   7%|▋         | 2/27 [00:05<00:41,  1.66s/utt, ups=0.61, utts=3]
+vllm-omni TTS tts-short:  11%|█         | 3/27 [00:05<00:40,  1.69s/utt, ups=0.61, utts=3]
+vllm-omni TTS tts-short:  11%|█         | 3/27 [00:06<00:40,  1.69s/utt, ups=0.65, utts=4]
+vllm-omni TTS tts-short:  15%|█▍        | 4/27 [00:06<00:35,  1.53s/utt, ups=0.65, utts=4]
+vllm-omni TTS tts-short:  15%|█▍        | 4/27 [00:07<00:35,  1.53s/utt, ups=0.67, utts=5]
+vllm-omni TTS tts-short:  19%|█▊        | 5/27 [00:07<00:32,  1.47s/utt, ups=0.67, utts=5]
+vllm-omni TTS tts-short:  19%|█▊        | 5/27 [00:09<00:32,  1.47s/utt, ups=0.67, utts=6]
+vllm-omni TTS tts-short:  22%|██▏       | 6/27 [00:09<00:31,  1.48s/utt, ups=0.67, utts=6]
+vllm-omni TTS tts-short:  22%|██▏       | 6/27 [00:10<00:31,  1.48s/utt, ups=0.68, utts=7]
+vllm-omni TTS tts-short:  26%|██▌       | 7/27 [00:10<00:28,  1.44s/utt, ups=0.68, utts=7]
+vllm-omni TTS tts-short:  26%|██▌       | 7/27 [00:11<00:28,  1.44s/utt, ups=0.69, utts=8]
+vllm-omni TTS tts-short:  30%|██▉       | 8/27 [00:11<00:26,  1.38s/utt, ups=0.69, utts=8]
+vllm-omni TTS tts-short:  30%|██▉       | 8/27 [00:13<00:26,  1.38s/utt, ups=0.68, utts=9]
+vllm-omni TTS tts-short:  33%|███▎      | 9/27 [00:13<00:26,  1.46s/utt, ups=0.68, utts=9]
+vllm-omni TTS tts-short:  33%|███▎      | 9/27 [00:14<00:26,  1.46s/utt, ups=0.70, utts=10]
+vllm-omni TTS tts-short:  37%|███▋      | 10/27 [00:14<00:23,  1.35s/utt, ups=0.70, utts=10]
+vllm-omni TTS tts-short:  37%|███▋      | 10/27 [00:15<00:23,  1.35s/utt, ups=0.71, utts=11]
+vllm-omni TTS tts-short:  41%|████      | 11/27 [00:15<00:21,  1.36s/utt, ups=0.71, utts=11]
+vllm-omni TTS tts-short:  41%|████      | 11/27 [00:17<00:21,  1.36s/utt, ups=0.70, utts=12]
+vllm-omni TTS tts-short:  44%|████▍     | 12/27 [00:17<00:21,  1.44s/utt, ups=0.70, utts=12]
+vllm-omni TTS tts-short:  44%|████▍     | 12/27 [00:19<00:21,  1.44s/utt, ups=0.70, utts=13]
+vllm-omni TTS tts-short:  48%|████▊     | 13/27 [00:19<00:20,  1.47s/utt, ups=0.70, utts=13]
+vllm-omni TTS tts-short:  48%|████▊     | 13/27 [00:20<00:20,  1.47s/utt, ups=0.70, utts=14]
+vllm-omni TTS tts-short:  52%|█████▏    | 14/27 [00:20<00:18,  1.42s/utt, ups=0.70, utts=14]
+vllm-omni TTS tts-short:  52%|█████▏    | 14/27 [00:22<00:18,  1.42s/utt, ups=0.70, utts=15]
+vllm-omni TTS tts-short:  56%|█████▌    | 15/27 [00:22<00:17,  1.48s/utt, ups=0.70, utts=15]
+vllm-omni TTS tts-short:  56%|█████▌    | 15/27 [00:23<00:17,  1.48s/utt, ups=0.70, utts=16]
+vllm-omni TTS tts-short:  59%|█████▉    | 16/27 [00:23<00:16,  1.49s/utt, ups=0.70, utts=16]
+vllm-omni TTS tts-short:  59%|█████▉    | 16/27 [00:24<00:16,  1.49s/utt, ups=0.70, utts=17]
+vllm-omni TTS tts-short:  63%|██████▎   | 17/27 [00:24<00:14,  1.48s/utt, ups=0.70, utts=17]
+vllm-omni TTS tts-short:  63%|██████▎   | 17/27 [00:26<00:14,  1.48s/utt, ups=0.70, utts=18]
+vllm-omni TTS tts-short:  67%|██████▋   | 18/27 [00:26<00:12,  1.39s/utt, ups=0.70, utts=18]
+vllm-omni TTS tts-short:  67%|██████▋   | 18/27 [00:27<00:12,  1.39s/utt, ups=0.70, utts=19]
+vllm-omni TTS tts-short:  70%|███████   | 19/27 [00:27<00:11,  1.40s/utt, ups=0.70, utts=19]
+vllm-omni TTS tts-short:  70%|███████   | 19/27 [00:29<00:11,  1.40s/utt, ups=0.71, utts=20]
+vllm-omni TTS tts-short:  74%|███████▍  | 20/27 [00:29<00:09,  1.41s/utt, ups=0.71, utts=20]
+vllm-omni TTS tts-short:  74%|███████▍  | 20/27 [00:30<00:09,  1.41s/utt, ups=0.71, utts=21]
+vllm-omni TTS tts-short:  78%|███████▊  | 21/27 [00:30<00:08,  1.42s/utt, ups=0.71, utts=21]
+vllm-omni TTS tts-short:  78%|███████▊  | 21/27 [00:31<00:08,  1.42s/utt, ups=0.71, utts=22]
+vllm-omni TTS tts-short:  81%|████████▏ | 22/27 [00:31<00:06,  1.36s/utt, ups=0.71, utts=22]
+vllm-omni TTS tts-short:  81%|████████▏ | 22/27 [00:33<00:06,  1.36s/utt, ups=0.71, utts=23]
+vllm-omni TTS tts-short:  85%|████████▌ | 23/27 [00:33<00:05,  1.37s/utt, ups=0.71, utts=23]
+vllm-omni TTS tts-short:  85%|████████▌ | 23/27 [00:34<00:05,  1.37s/utt, ups=0.72, utts=24]
+vllm-omni TTS tts-short:  89%|████████▉ | 24/27 [00:34<00:03,  1.32s/utt, ups=0.72, utts=24]
+vllm-omni TTS tts-short:  89%|████████▉ | 24/27 [00:35<00:03,  1.32s/utt, ups=0.72, utts=25]
+vllm-omni TTS tts-short:  93%|█████████▎| 25/27 [00:35<00:02,  1.31s/utt, ups=0.72, utts=25]
+vllm-omni TTS tts-short:  93%|█████████▎| 25/27 [00:36<00:02,  1.31s/utt, ups=0.72, utts=26]
+vllm-omni TTS tts-short:  96%|█████████▋| 26/27 [00:36<00:01,  1.33s/utt, ups=0.72, utts=26]
+vllm-omni TTS tts-short:  96%|█████████▋| 26/27 [00:38<00:01,  1.33s/utt, ups=0.72, utts=27]
+vllm-omni TTS tts-short: 100%|██████████| 27/27 [00:38<00:00,  1.41s/utt, ups=0.72, utts=27]
+vllm-omni TTS tts-short: 100%|██████████| 27/27 [00:38<00:00,  1.43s/utt, ups=0.72, utts=27]
+
+vllm-omni TTS tts-medium:   0%|          | 0/100 [00:00<?, ?utt/s]
+vllm-omni TTS tts-medium:   0%|          | 0/100 [00:02<?, ?utt/s, ups=0.42, utts=1]
+vllm-omni TTS tts-medium:   1%|          | 1/100 [00:02<03:56,  2.39s/utt, ups=0.42, utts=1]
+vllm-omni TTS tts-medium:   1%|          | 1/100 [00:04<03:56,  2.39s/utt, ups=0.46, utts=2]
+vllm-omni TTS tts-medium:   2%|▏         | 2/100 [00:04<03:31,  2.16s/utt, ups=0.46, utts=2]
+vllm-omni TTS tts-medium:   2%|▏         | 2/100 [00:05<03:31,  2.16s/utt, ups=0.51, utts=3]
+vllm-omni TTS tts-medium:   3%|▎         | 3/100 [00:05<03:00,  1.87s/utt, ups=0.51, utts=3]
+vllm-omni TTS tts-medium:   3%|▎         | 3/100 [00:08<03:00,  1.87s/utt, ups=0.47, utts=4]
+vllm-omni TTS tts-medium:   4%|▍         | 4/100 [00:08<03:28,  2.18s/utt, ups=0.47, utts=4]
+vllm-omni TTS tts-medium:   4%|▍         | 4/100 [00:12<03:28,  2.18s/utt, ups=0.39, utts=5]
+vllm-omni TTS tts-medium:   5%|▌         | 5/100 [00:12<04:39,  2.94s/utt, ups=0.39, utts=5]
+vllm-omni TTS tts-medium:   5%|▌         | 5/100 [00:14<04:39,  2.94s/utt, ups=0.42, utts=6]
+vllm-omni TTS tts-medium:   6%|▌         | 6/100 [00:14<03:46,  2.41s/utt, ups=0.42, utts=6]
+vllm-omni TTS tts-medium:   6%|▌         | 6/100 [00:16<03:46,  2.41s/utt, ups=0.43, utts=7]
+vllm-omni TTS tts-medium:   7%|▋         | 7/100 [00:16<03:38,  2.35s/utt, ups=0.43, utts=7]
+vllm-omni TTS tts-medium:   7%|▋         | 7/100 [00:17<03:38,  2.35s/utt, ups=0.45, utts=8]
+vllm-omni TTS tts-medium:   8%|▊         | 8/100 [00:17<03:10,  2.07s/utt, ups=0.45, utts=8]
+vllm-omni TTS tts-medium:   8%|▊         | 8/100 [00:19<03:10,  2.07s/utt, ups=0.46, utts=9]
+vllm-omni TTS tts-medium:   9%|▉         | 9/100 [00:19<02:57,  1.95s/utt, ups=0.46, utts=9]
+vllm-omni TTS tts-medium:   9%|▉         | 9/100 [00:21<02:57,  1.95s/utt, ups=0.47, utts=10]
+vllm-omni TTS tts-medium:  10%|█         | 10/100 [00:21<02:44,  1.83s/utt, ups=0.47, utts=10]
+vllm-omni TTS tts-medium:  10%|█         | 10/100 [00:23<02:44,  1.83s/utt, ups=0.46, utts=11]
+vllm-omni TTS tts-medium:  11%|█         | 11/100 [00:23<03:07,  2.11s/utt, ups=0.46, utts=11]
+vllm-omni TTS tts-medium:  11%|█         | 11/100 [00:25<03:07,  2.11s/utt, ups=0.47, utts=12]
+vllm-omni TTS tts-medium:  12%|█▏        | 12/100 [00:25<02:58,  2.03s/utt, ups=0.47, utts=12]
+vllm-omni TTS tts-medium:  12%|█▏        | 12/100 [00:26<02:58,  2.03s/utt, ups=0.48, utts=13]
+vllm-omni TTS tts-medium:  13%|█▎        | 13/100 [00:26<02:34,  1.77s/utt, ups=0.48, utts=13]
+vllm-omni TTS tts-medium:  13%|█▎        | 13/100 [00:28<02:34,  1.77s/utt, ups=0.49, utts=14]
+vllm-omni TTS tts-medium:  14%|█▍        | 14/100 [00:28<02:36,  1.82s/utt, ups=0.49, utts=14]
+vllm-omni TTS tts-medium:  14%|█▍        | 14/100 [00:30<02:36,  1.82s/utt, ups=0.50, utts=15]
+vllm-omni TTS tts-medium:  15%|█▌        | 15/100 [00:30<02:27,  1.73s/utt, ups=0.50, utts=15]
+vllm-omni TTS tts-medium:  15%|█▌        | 15/100 [00:32<02:27,  1.73s/utt, ups=0.49, utts=16]
+vllm-omni TTS tts-medium:  16%|█▌        | 16/100 [00:32<02:41,  1.92s/utt, ups=0.49, utts=16]
+vllm-omni TTS tts-medium:  16%|█▌        | 16/100 [00:35<02:41,  1.92s/utt, ups=0.48, utts=17]
+vllm-omni TTS tts-medium:  17%|█▋        | 17/100 [00:35<03:00,  2.17s/utt, ups=0.48, utts=17]
+vllm-omni TTS tts-medium:  17%|█▋        | 17/100 [00:36<03:00,  2.17s/utt, ups=0.49, utts=18]
+vllm-omni TTS tts-medium:  18%|█▊        | 18/100 [00:36<02:33,  1.87s/utt, ups=0.49, utts=18]
+vllm-omni TTS tts-medium:  18%|█▊        | 18/100 [00:38<02:33,  1.87s/utt, ups=0.49, utts=19]
+vllm-omni TTS tts-medium:  19%|█▉        | 19/100 [00:38<02:34,  1.91s/utt, ups=0.49, utts=19]
+vllm-omni TTS tts-medium:  19%|█▉        | 19/100 [00:40<02:34,  1.91s/utt, ups=0.50, utts=20]
+vllm-omni TTS tts-medium:  20%|██        | 20/100 [00:40<02:29,  1.87s/utt, ups=0.50, utts=20]
+vllm-omni TTS tts-medium:  20%|██        | 20/100 [00:41<02:29,  1.87s/utt, ups=0.51, utts=21]
+vllm-omni TTS tts-medium:  21%|██        | 21/100 [00:41<02:09,  1.64s/utt, ups=0.51, utts=21]
+vllm-omni TTS tts-medium:  21%|██        | 21/100 [00:44<02:09,  1.64s/utt, ups=0.50, utts=22]
+vllm-omni TTS tts-medium:  22%|██▏       | 22/100 [00:44<02:32,  1.95s/utt, ups=0.50, utts=22]
+vllm-omni TTS tts-medium:  22%|██▏       | 22/100 [00:46<02:32,  1.95s/utt, ups=0.50, utts=23]
+vllm-omni TTS tts-medium:  23%|██▎       | 23/100 [00:46<02:29,  1.94s/utt, ups=0.50, utts=23]
+vllm-omni TTS tts-medium:  23%|██▎       | 23/100 [00:47<02:29,  1.94s/utt, ups=0.50, utts=24]
+vllm-omni TTS tts-medium:  24%|██▍       | 24/100 [00:47<02:23,  1.89s/utt, ups=0.50, utts=24]
+vllm-omni TTS tts-medium:  24%|██▍       | 24/100 [00:50<02:23,  1.89s/utt, ups=0.50, utts=25]
+vllm-omni TTS tts-medium:  25%|██▌       | 25/100 [00:50<02:26,  1.95s/utt, ups=0.50, utts=25]
+vllm-omni TTS tts-medium:  25%|██▌       | 25/100 [00:51<02:26,  1.95s/utt, ups=0.50, utts=26]
+vllm-omni TTS tts-medium:  26%|██▌       | 26/100 [00:51<02:20,  1.90s/utt, ups=0.50, utts=26]
+vllm-omni TTS tts-medium:  26%|██▌       | 26/100 [00:53<02:20,  1.90s/utt, ups=0.51, utts=27]
+vllm-omni TTS tts-medium:  27%|██▋       | 27/100 [00:53<02:06,  1.73s/utt, ups=0.51, utts=27]
+vllm-omni TTS tts-medium:  27%|██▋       | 27/100 [00:54<02:06,  1.73s/utt, ups=0.52, utts=28]
+vllm-omni TTS tts-medium:  28%|██▊       | 28/100 [00:54<01:50,  1.54s/utt, ups=0.52, utts=28]
+vllm-omni TTS tts-medium:  28%|██▊       | 28/100 [00:55<01:50,  1.54s/utt, ups=0.52, utts=29]
+vllm-omni TTS tts-medium:  29%|██▉       | 29/100 [00:55<01:53,  1.60s/utt, ups=0.52, utts=29]
+vllm-omni TTS tts-medium:  29%|██▉       | 29/100 [00:57<01:53,  1.60s/utt, ups=0.53, utts=30]
+vllm-omni TTS tts-medium:  30%|███       | 30/100 [00:57<01:42,  1.46s/utt, ups=0.53, utts=30]
+vllm-omni TTS tts-medium:  30%|███       | 30/100 [00:59<01:42,  1.46s/utt, ups=0.53, utts=31]
+vllm-omni TTS tts-medium:  31%|███       | 31/100 [00:59<01:54,  1.67s/utt, ups=0.53, utts=31]
+vllm-omni TTS tts-medium:  31%|███       | 31/100 [01:00<01:54,  1.67s/utt, ups=0.53, utts=32]
+vllm-omni TTS tts-medium:  32%|███▏      | 32/100 [01:00<01:48,  1.59s/utt, ups=0.53, utts=32]
+vllm-omni TTS tts-medium:  32%|███▏      | 32/100 [01:03<01:48,  1.59s/utt, ups=0.52, utts=33]
+vllm-omni TTS tts-medium:  33%|███▎      | 33/100 [01:03<02:06,  1.88s/utt, ups=0.52, utts=33]
+vllm-omni TTS tts-medium:  33%|███▎      | 33/100 [01:05<02:06,  1.88s/utt, ups=0.52, utts=34]
+vllm-omni TTS tts-medium:  34%|███▍      | 34/100 [01:05<02:09,  1.97s/utt, ups=0.52, utts=34]
+vllm-omni TTS tts-medium:  34%|███▍      | 34/100 [01:07<02:09,  1.97s/utt, ups=0.52, utts=35]
+vllm-omni TTS tts-medium:  35%|███▌      | 35/100 [01:07<02:03,  1.91s/utt, ups=0.52, utts=35]
+vllm-omni TTS tts-medium:  35%|███▌      | 35/100 [01:08<02:03,  1.91s/utt, ups=0.52, utts=36]
+vllm-omni TTS tts-medium:  36%|███▌      | 36/100 [01:08<01:59,  1.86s/utt, ups=0.52, utts=36]
+vllm-omni TTS tts-medium:  36%|███▌      | 36/100 [01:09<01:59,  1.86s/utt, ups=0.53, utts=37]
+vllm-omni TTS tts-medium:  37%|███▋      | 37/100 [01:09<01:38,  1.56s/utt, ups=0.53, utts=37]
+vllm-omni TTS tts-medium:  37%|███▋      | 37/100 [01:11<01:38,  1.56s/utt, ups=0.53, utts=38]
+vllm-omni TTS tts-medium:  38%|███▊      | 38/100 [01:11<01:46,  1.71s/utt, ups=0.53, utts=38]
+vllm-omni TTS tts-medium:  38%|███▊      | 38/100 [01:13<01:46,  1.71s/utt, ups=0.53, utts=39]
+vllm-omni TTS tts-medium:  39%|███▉      | 39/100 [01:13<01:46,  1.74s/utt, ups=0.53, utts=39]
+vllm-omni TTS tts-medium:  39%|███▉      | 39/100 [01:15<01:46,  1.74s/utt, ups=0.54, utts=40]
+vllm-omni TTS tts-medium:  40%|████      | 40/100 [01:15<01:38,  1.64s/utt, ups=0.54, utts=40]
+vllm-omni TTS tts-medium:  40%|████      | 40/100 [01:17<01:38,  1.64s/utt, ups=0.53, utts=41]
+vllm-omni TTS tts-medium:  41%|████      | 41/100 [01:17<01:44,  1.78s/utt, ups=0.53, utts=41]
+vllm-omni TTS tts-medium:  41%|████      | 41/100 [01:53<01:44,  1.78s/utt, ups=0.37, utts=42]
+vllm-omni TTS tts-medium:  42%|████▏     | 42/100 [01:53<11:39, 12.06s/utt, ups=0.37, utts=42]
+vllm-omni TTS tts-medium:  42%|████▏     | 42/100 [01:54<11:39, 12.06s/utt, ups=0.38, utts=43]
+vllm-omni TTS tts-medium:  43%|████▎     | 43/100 [01:54<08:23,  8.83s/utt, ups=0.38, utts=43]
+vllm-omni TTS tts-medium:  43%|████▎     | 43/100 [01:56<08:23,  8.83s/utt, ups=0.38, utts=44]
+vllm-omni TTS tts-medium:  44%|████▍     | 44/100 [01:56<06:23,  6.85s/utt, ups=0.38, utts=44]
+vllm-omni TTS tts-medium:  44%|████▍     | 44/100 [01:59<06:23,  6.85s/utt, ups=0.38, utts=45]
+vllm-omni TTS tts-medium:  45%|████▌     | 45/100 [01:59<05:08,  5.61s/utt, ups=0.38, utts=45]
+vllm-omni TTS tts-medium:  45%|████▌     | 45/100 [02:00<05:08,  5.61s/utt, ups=0.38, utts=46]
+vllm-omni TTS tts-medium:  46%|████▌     | 46/100 [02:00<03:53,  4.32s/utt, ups=0.38, utts=46]
+vllm-omni TTS tts-medium:  46%|████▌     | 46/100 [02:02<03:53,  4.32s/utt, ups=0.39, utts=47]
+vllm-omni TTS tts-medium:  47%|████▋     | 47/100 [02:02<03:02,  3.45s/utt, ups=0.39, utts=47]
+vllm-omni TTS tts-medium:  47%|████▋     | 47/100 [02:04<03:02,  3.45s/utt, ups=0.39, utts=48]
+vllm-omni TTS tts-medium:  48%|████▊     | 48/100 [02:04<02:35,  2.99s/utt, ups=0.39, utts=48]
+vllm-omni TTS tts-medium:  48%|████▊     | 48/100 [02:05<02:35,  2.99s/utt, ups=0.39, utts=49]
+vllm-omni TTS tts-medium:  49%|████▉     | 49/100 [02:05<02:15,  2.65s/utt, ups=0.39, utts=49]
+vllm-omni TTS tts-medium:  49%|████▉     | 49/100 [02:07<02:15,  2.65s/utt, ups=0.39, utts=50]
+vllm-omni TTS tts-medium:  50%|█████     | 50/100 [02:07<01:50,  2.20s/utt, ups=0.39, utts=50]
+vllm-omni TTS tts-medium:  50%|█████     | 50/100 [02:08<01:50,  2.20s/utt, ups=0.40, utts=51]
+vllm-omni TTS tts-medium:  51%|█████     | 51/100 [02:08<01:37,  2.00s/utt, ups=0.40, utts=51]
+vllm-omni TTS tts-medium:  51%|█████     | 51/100 [02:10<01:37,  2.00s/utt, ups=0.40, utts=52]
+vllm-omni TTS tts-medium:  52%|█████▏    | 52/100 [02:10<01:32,  1.93s/utt, ups=0.40, utts=52]
+vllm-omni TTS tts-medium:  52%|█████▏    | 52/100 [02:11<01:32,  1.93s/utt, ups=0.40, utts=53]
+vllm-omni TTS tts-medium:  53%|█████▎    | 53/100 [02:11<01:18,  1.68s/utt, ups=0.40, utts=53]
+vllm-omni TTS tts-medium:  53%|█████▎    | 53/100 [02:13<01:18,  1.68s/utt, ups=0.41, utts=54]
+vllm-omni TTS tts-medium:  54%|█████▍    | 54/100 [02:13<01:21,  1.77s/utt, ups=0.41, utts=54]
+vllm-omni TTS tts-medium:  54%|█████▍    | 54/100 [02:14<01:21,  1.77s/utt, ups=0.41, utts=55]
+vllm-omni TTS tts-medium:  55%|█████▌    | 55/100 [02:14<01:11,  1.58s/utt, ups=0.41, utts=55]
+vllm-omni TTS tts-medium:  55%|█████▌    | 55/100 [02:16<01:11,  1.58s/utt, ups=0.41, utts=56]
+vllm-omni TTS tts-medium:  56%|█████▌    | 56/100 [02:16<01:09,  1.58s/utt, ups=0.41, utts=56]
+vllm-omni TTS tts-medium:  56%|█████▌    | 56/100 [02:17<01:09,  1.58s/utt, ups=0.42, utts=57]
+vllm-omni TTS tts-medium:  57%|█████▋    | 57/100 [02:17<01:06,  1.55s/utt, ups=0.42, utts=57]
+vllm-omni TTS tts-medium:  57%|█████▋    | 57/100 [02:19<01:06,  1.55s/utt, ups=0.42, utts=58]
+vllm-omni TTS tts-medium:  58%|█████▊    | 58/100 [02:19<01:11,  1.70s/utt, ups=0.42, utts=58]
+vllm-omni TTS tts-medium:  58%|█████▊    | 58/100 [02:21<01:11,  1.70s/utt, ups=0.42, utts=59]
+vllm-omni TTS tts-medium:  59%|█████▉    | 59/100 [02:21<01:07,  1.64s/utt, ups=0.42, utts=59]
+vllm-omni TTS tts-medium:  59%|█████▉    | 59/100 [02:22<01:07,  1.64s/utt, ups=0.42, utts=60]
+vllm-omni TTS tts-medium:  60%|██████    | 60/100 [02:22<01:03,  1.58s/utt, ups=0.42, utts=60]
+vllm-omni TTS tts-medium:  60%|██████    | 60/100 [02:24<01:03,  1.58s/utt, ups=0.43, utts=61]
+vllm-omni TTS tts-medium:  61%|██████    | 61/100 [02:24<00:59,  1.51s/utt, ups=0.43, utts=61]
+vllm-omni TTS tts-medium:  61%|██████    | 61/100 [02:25<00:59,  1.51s/utt, ups=0.43, utts=62]
+vllm-omni TTS tts-medium:  62%|██████▏   | 62/100 [02:25<01:00,  1.58s/utt, ups=0.43, utts=62]
+vllm-omni TTS tts-medium:  62%|██████▏   | 62/100 [02:27<01:00,  1.58s/utt, ups=0.43, utts=63]
+vllm-omni TTS tts-medium:  63%|██████▎   | 63/100 [02:27<01:00,  1.63s/utt, ups=0.43, utts=63]
+vllm-omni TTS tts-medium:  63%|██████▎   | 63/100 [02:28<01:00,  1.63s/utt, ups=0.43, utts=64]
+vllm-omni TTS tts-medium:  64%|██████▍   | 64/100 [02:28<00:52,  1.46s/utt, ups=0.43, utts=64]
+vllm-omni TTS tts-medium:  64%|██████▍   | 64/100 [02:31<00:52,  1.46s/utt, ups=0.43, utts=65]
+vllm-omni TTS tts-medium:  65%|██████▌   | 65/100 [02:31<01:03,  1.81s/utt, ups=0.43, utts=65]
+vllm-omni TTS tts-medium:  65%|██████▌   | 65/100 [02:32<01:03,  1.81s/utt, ups=0.43, utts=66]
+vllm-omni TTS tts-medium:  66%|██████▌   | 66/100 [02:32<00:55,  1.63s/utt, ups=0.43, utts=66]
+vllm-omni TTS tts-medium:  66%|██████▌   | 66/100 [02:34<00:55,  1.63s/utt, ups=0.43, utts=67]
+vllm-omni TTS tts-medium:  67%|██████▋   | 67/100 [02:34<01:00,  1.83s/utt, ups=0.43, utts=67]
+vllm-omni TTS tts-medium:  67%|██████▋   | 67/100 [02:36<01:00,  1.83s/utt, ups=0.44, utts=68]
+vllm-omni TTS tts-medium:  68%|██████▊   | 68/100 [02:36<00:58,  1.81s/utt, ups=0.44, utts=68]
+vllm-omni TTS tts-medium:  68%|██████▊   | 68/100 [02:38<00:58,  1.81s/utt, ups=0.44, utts=69]
+vllm-omni TTS tts-medium:  69%|██████▉   | 69/100 [02:38<00:55,  1.79s/utt, ups=0.44, utts=69]
+vllm-omni TTS tts-medium:  69%|██████▉   | 69/100 [02:39<00:55,  1.79s/utt, ups=0.44, utts=70]
+vllm-omni TTS tts-medium:  70%|███████   | 70/100 [02:39<00:51,  1.71s/utt, ups=0.44, utts=70]
+vllm-omni TTS tts-medium:  70%|███████   | 70/100 [02:41<00:51,  1.71s/utt, ups=0.44, utts=71]
+vllm-omni TTS tts-medium:  71%|███████   | 71/100 [02:41<00:47,  1.64s/utt, ups=0.44, utts=71]
+vllm-omni TTS tts-medium:  71%|███████   | 71/100 [02:42<00:47,  1.64s/utt, ups=0.45, utts=72]
+vllm-omni TTS tts-medium:  72%|███████▏  | 72/100 [02:42<00:41,  1.49s/utt, ups=0.45, utts=72]
+vllm-omni TTS tts-medium:  72%|███████▏  | 72/100 [02:44<00:41,  1.49s/utt, ups=0.45, utts=73]
+vllm-omni TTS tts-medium:  73%|███████▎  | 73/100 [02:44<00:42,  1.59s/utt, ups=0.45, utts=73]
+vllm-omni TTS tts-medium:  73%|███████▎  | 73/100 [02:45<00:42,  1.59s/utt, ups=0.45, utts=74]
+vllm-omni TTS tts-medium:  74%|███████▍  | 74/100 [02:45<00:40,  1.57s/utt, ups=0.45, utts=74]
+vllm-omni TTS tts-medium:  74%|███████▍  | 74/100 [02:47<00:40,  1.57s/utt, ups=0.45, utts=75]
+vllm-omni TTS tts-medium:  75%|███████▌  | 75/100 [02:47<00:41,  1.66s/utt, ups=0.45, utts=75]
+vllm-omni TTS tts-medium:  75%|███████▌  | 75/100 [02:48<00:41,  1.66s/utt, ups=0.45, utts=76]
+vllm-omni TTS tts-medium:  76%|███████▌  | 76/100 [02:48<00:37,  1.54s/utt, ups=0.45, utts=76]
+vllm-omni TTS tts-medium:  76%|███████▌  | 76/100 [02:50<00:37,  1.54s/utt, ups=0.45, utts=77]
+vllm-omni TTS tts-medium:  77%|███████▋  | 77/100 [02:50<00:38,  1.68s/utt, ups=0.45, utts=77]
+vllm-omni TTS tts-medium:  77%|███████▋  | 77/100 [02:52<00:38,  1.68s/utt, ups=0.45, utts=78]
+vllm-omni TTS tts-medium:  78%|███████▊  | 78/100 [02:52<00:35,  1.61s/utt, ups=0.45, utts=78]
+vllm-omni TTS tts-medium:  78%|███████▊  | 78/100 [02:58<00:35,  1.61s/utt, ups=0.45, utts=79]
+vllm-omni TTS tts-medium:  79%|███████▉  | 79/100 [02:58<00:59,  2.85s/utt, ups=0.45, utts=79]
+vllm-omni TTS tts-medium:  79%|███████▉  | 79/100 [02:59<00:59,  2.85s/utt, ups=0.45, utts=80]
+vllm-omni TTS tts-medium:  80%|████████  | 80/100 [02:59<00:50,  2.54s/utt, ups=0.45, utts=80]
+vllm-omni TTS tts-medium:  80%|████████  | 80/100 [03:01<00:50,  2.54s/utt, ups=0.45, utts=81]
+vllm-omni TTS tts-medium:  81%|████████  | 81/100 [03:01<00:44,  2.33s/utt, ups=0.45, utts=81]
+vllm-omni TTS tts-medium:  81%|████████  | 81/100 [03:03<00:44,  2.33s/utt, ups=0.45, utts=82]
+vllm-omni TTS tts-medium:  82%|████████▏ | 82/100 [03:03<00:39,  2.17s/utt, ups=0.45, utts=82]
+vllm-omni TTS tts-medium:  82%|████████▏ | 82/100 [03:05<00:39,  2.17s/utt, ups=0.45, utts=83]
+vllm-omni TTS tts-medium:  83%|████████▎ | 83/100 [03:05<00:35,  2.11s/utt, ups=0.45, utts=83]
+vllm-omni TTS tts-medium:  83%|████████▎ | 83/100 [03:07<00:35,  2.11s/utt, ups=0.45, utts=84]
+vllm-omni TTS tts-medium:  84%|████████▍ | 84/100 [03:07<00:33,  2.08s/utt, ups=0.45, utts=84]
+vllm-omni TTS tts-medium:  84%|████████▍ | 84/100 [03:11<00:33,  2.08s/utt, ups=0.44, utts=85]
+vllm-omni TTS tts-medium:  85%|████████▌ | 85/100 [03:11<00:41,  2.75s/utt, ups=0.44, utts=85]
+vllm-omni TTS tts-medium:  85%|████████▌ | 85/100 [03:13<00:41,  2.75s/utt, ups=0.45, utts=86]
+vllm-omni TTS tts-medium:  86%|████████▌ | 86/100 [03:13<00:34,  2.47s/utt, ups=0.45, utts=86]
+vllm-omni TTS tts-medium:  86%|████████▌ | 86/100 [03:14<00:34,  2.47s/utt, ups=0.45, utts=87]
+vllm-omni TTS tts-medium:  87%|████████▋ | 87/100 [03:14<00:26,  2.05s/utt, ups=0.45, utts=87]
+vllm-omni TTS tts-medium:  87%|████████▋ | 87/100 [03:16<00:26,  2.05s/utt, ups=0.45, utts=88]
+vllm-omni TTS tts-medium:  88%|████████▊ | 88/100 [03:16<00:24,  2.05s/utt, ups=0.45, utts=88]
+vllm-omni TTS tts-medium:  88%|████████▊ | 88/100 [03:18<00:24,  2.05s/utt, ups=0.45, utts=89]
+vllm-omni TTS tts-medium:  89%|████████▉ | 89/100 [03:18<00:20,  1.87s/utt, ups=0.45, utts=89]
+vllm-omni TTS tts-medium:  89%|████████▉ | 89/100 [03:19<00:20,  1.87s/utt, ups=0.45, utts=90]
+vllm-omni TTS tts-medium:  90%|█████████ | 90/100 [03:19<00:18,  1.82s/utt, ups=0.45, utts=90]
+vllm-omni TTS tts-medium:  90%|█████████ | 90/100 [03:22<00:18,  1.82s/utt, ups=0.45, utts=91]
+vllm-omni TTS tts-medium:  91%|█████████ | 91/100 [03:22<00:19,  2.12s/utt, ups=0.45, utts=91]
+vllm-omni TTS tts-medium:  91%|█████████ | 91/100 [03:24<00:19,  2.12s/utt, ups=0.45, utts=92]
+vllm-omni TTS tts-medium:  92%|█████████▏| 92/100 [03:24<00:15,  1.91s/utt, ups=0.45, utts=92]
+vllm-omni TTS tts-medium:  92%|█████████▏| 92/100 [03:26<00:15,  1.91s/utt, ups=0.45, utts=93]
+vllm-omni TTS tts-medium:  93%|█████████▎| 93/100 [03:26<00:14,  2.00s/utt, ups=0.45, utts=93]
+vllm-omni TTS tts-medium:  93%|█████████▎| 93/100 [03:27<00:14,  2.00s/utt, ups=0.45, utts=94]
+vllm-omni TTS tts-medium:  94%|█████████▍| 94/100 [03:27<00:10,  1.79s/utt, ups=0.45, utts=94]
+vllm-omni TTS tts-medium:  94%|█████████▍| 94/100 [03:29<00:10,  1.79s/utt, ups=0.46, utts=95]
+vllm-omni TTS tts-medium:  95%|█████████▌| 95/100 [03:29<00:09,  1.82s/utt, ups=0.46, utts=95]
+vllm-omni TTS tts-medium:  95%|█████████▌| 95/100 [03:31<00:09,  1.82s/utt, ups=0.46, utts=96]
+vllm-omni TTS tts-medium:  96%|█████████▌| 96/100 [03:31<00:07,  1.88s/utt, ups=0.46, utts=96]
+vllm-omni TTS tts-medium:  96%|█████████▌| 96/100 [03:32<00:07,  1.88s/utt, ups=0.46, utts=97]
+vllm-omni TTS tts-medium:  97%|█████████▋| 97/100 [03:32<00:05,  1.74s/utt, ups=0.46, utts=97]
+vllm-omni TTS tts-medium:  97%|█████████▋| 97/100 [03:34<00:05,  1.74s/utt, ups=0.46, utts=98]
+vllm-omni TTS tts-medium:  98%|█████████▊| 98/100 [03:34<00:03,  1.65s/utt, ups=0.46, utts=98]
+vllm-omni TTS tts-medium:  98%|█████████▊| 98/100 [03:36<00:03,  1.65s/utt, ups=0.46, utts=99]
+vllm-omni TTS tts-medium:  99%|█████████▉| 99/100 [03:36<00:01,  1.73s/utt, ups=0.46, utts=99]
+vllm-omni TTS tts-medium:  99%|█████████▉| 99/100 [03:37<00:01,  1.73s/utt, ups=0.46, utts=100]
+vllm-omni TTS tts-medium: 100%|██████████| 100/100 [03:37<00:00,  1.53s/utt, ups=0.46, utts=100]
+vllm-omni TTS tts-medium: 100%|██████████| 100/100 [03:37<00:00,  2.17s/utt, ups=0.46, utts=100]
+
+vllm-omni TTS tts-long:   0%|          | 0/50 [00:00<?, ?utt/s]
+vllm-omni TTS tts-long:   0%|          | 0/50 [00:02<?, ?utt/s, ups=0.49, utts=1]
+vllm-omni TTS tts-long:   2%|▏         | 1/50 [00:02<01:41,  2.07s/utt, ups=0.49, utts=1]
+vllm-omni TTS tts-long:   2%|▏         | 1/50 [00:03<01:41,  2.07s/utt, ups=0.52, utts=2]
+vllm-omni TTS tts-long:   4%|▍         | 2/50 [00:03<01:30,  1.89s/utt, ups=0.52, utts=2]
+vllm-omni TTS tts-long:   4%|▍         | 2/50 [00:05<01:30,  1.89s/utt, ups=0.58, utts=3]
+vllm-omni TTS tts-long:   6%|▌         | 3/50 [00:05<01:16,  1.63s/utt, ups=0.58, utts=3]
+vllm-omni TTS tts-long:   6%|▌         | 3/50 [00:07<01:16,  1.63s/utt, ups=0.52, utts=4]
+vllm-omni TTS tts-long:   8%|▊         | 4/50 [00:07<01:32,  2.01s/utt, ups=0.52, utts=4]
+vllm-omni TTS tts-long:   8%|▊         | 4/50 [00:11<01:32,  2.01s/utt, ups=0.43, utts=5]
+vllm-omni TTS tts-long:  10%|█         | 5/50 [00:11<02:03,  2.74s/utt, ups=0.43, utts=5]
+vllm-omni TTS tts-long:  10%|█         | 5/50 [00:13<02:03,  2.74s/utt, ups=0.46, utts=6]
+vllm-omni TTS tts-long:  12%|█▏        | 6/50 [00:13<01:38,  2.24s/utt, ups=0.46, utts=6]
+vllm-omni TTS tts-long:  12%|█▏        | 6/50 [00:15<01:38,  2.24s/utt, ups=0.47, utts=7]
+vllm-omni TTS tts-long:  14%|█▍        | 7/50 [00:15<01:32,  2.16s/utt, ups=0.47, utts=7]
+vllm-omni TTS tts-long:  14%|█▍        | 7/50 [00:16<01:32,  2.16s/utt, ups=0.48, utts=8]
+vllm-omni TTS tts-long:  16%|█▌        | 8/50 [00:16<01:22,  1.96s/utt, ups=0.48, utts=8]
+vllm-omni TTS tts-long:  16%|█▌        | 8/50 [00:18<01:22,  1.96s/utt, ups=0.50, utts=9]
+vllm-omni TTS tts-long:  18%|█▊        | 9/50 [00:18<01:14,  1.82s/utt, ups=0.50, utts=9]
+vllm-omni TTS tts-long:  18%|█▊        | 9/50 [00:19<01:14,  1.82s/utt, ups=0.51, utts=10]
+vllm-omni TTS tts-long:  20%|██        | 10/50 [00:19<01:08,  1.71s/utt, ups=0.51, utts=10]
+vllm-omni TTS tts-long:  20%|██        | 10/50 [00:22<01:08,  1.71s/utt, ups=0.50, utts=11]
+vllm-omni TTS tts-long:  22%|██▏       | 11/50 [00:22<01:17,  1.98s/utt, ups=0.50, utts=11]
+vllm-omni TTS tts-long:  22%|██▏       | 11/50 [00:23<01:17,  1.98s/utt, ups=0.50, utts=12]
+vllm-omni TTS tts-long:  24%|██▍       | 12/50 [00:23<01:13,  1.94s/utt, ups=0.50, utts=12]
+vllm-omni TTS tts-long:  24%|██▍       | 12/50 [00:25<01:13,  1.94s/utt, ups=0.52, utts=13]
+vllm-omni TTS tts-long:  26%|██▌       | 13/50 [00:25<01:04,  1.74s/utt, ups=0.52, utts=13]
+vllm-omni TTS tts-long:  26%|██▌       | 13/50 [00:27<01:04,  1.74s/utt, ups=0.52, utts=14]
+vllm-omni TTS tts-long:  28%|██▊       | 14/50 [00:27<01:02,  1.74s/utt, ups=0.52, utts=14]
+vllm-omni TTS tts-long:  28%|██▊       | 14/50 [00:28<01:02,  1.74s/utt, ups=0.53, utts=15]
+vllm-omni TTS tts-long:  30%|███       | 15/50 [00:28<00:57,  1.65s/utt, ups=0.53, utts=15]
+vllm-omni TTS tts-long:  30%|███       | 15/50 [00:30<00:57,  1.65s/utt, ups=0.53, utts=16]
+vllm-omni TTS tts-long:  32%|███▏      | 16/50 [00:30<00:58,  1.73s/utt, ups=0.53, utts=16]
+vllm-omni TTS tts-long:  32%|███▏      | 16/50 [00:33<00:58,  1.73s/utt, ups=0.52, utts=17]
+vllm-omni TTS tts-long:  34%|███▍      | 17/50 [00:33<01:06,  2.03s/utt, ups=0.52, utts=17]
+vllm-omni TTS tts-long:  34%|███▍      | 17/50 [00:34<01:06,  2.03s/utt, ups=0.53, utts=18]
+vllm-omni TTS tts-long:  36%|███▌      | 18/50 [00:34<00:56,  1.77s/utt, ups=0.53, utts=18]
+vllm-omni TTS tts-long:  36%|███▌      | 18/50 [00:36<00:56,  1.77s/utt, ups=0.53, utts=19]
+vllm-omni TTS tts-long:  38%|███▊      | 19/50 [00:36<00:56,  1.82s/utt, ups=0.53, utts=19]
+vllm-omni TTS tts-long:  38%|███▊      | 19/50 [00:37<00:56,  1.82s/utt, ups=0.53, utts=20]
+vllm-omni TTS tts-long:  40%|████      | 20/50 [00:37<00:53,  1.80s/utt, ups=0.53, utts=20]
+vllm-omni TTS tts-long:  40%|████      | 20/50 [00:39<00:53,  1.80s/utt, ups=0.54, utts=21]
+vllm-omni TTS tts-long:  42%|████▏     | 21/50 [00:39<00:45,  1.58s/utt, ups=0.54, utts=21]
+vllm-omni TTS tts-long:  42%|████▏     | 21/50 [00:41<00:45,  1.58s/utt, ups=0.53, utts=22]
+vllm-omni TTS tts-long:  44%|████▍     | 22/50 [00:41<00:52,  1.89s/utt, ups=0.53, utts=22]
+vllm-omni TTS tts-long:  44%|████▍     | 22/50 [00:43<00:52,  1.89s/utt, ups=0.53, utts=23]
+vllm-omni TTS tts-long:  46%|████▌     | 23/50 [00:43<00:50,  1.88s/utt, ups=0.53, utts=23]
+vllm-omni TTS tts-long:  46%|████▌     | 23/50 [00:45<00:50,  1.88s/utt, ups=0.53, utts=24]
+vllm-omni TTS tts-long:  48%|████▊     | 24/50 [00:45<00:47,  1.83s/utt, ups=0.53, utts=24]
+vllm-omni TTS tts-long:  48%|████▊     | 24/50 [00:47<00:47,  1.83s/utt, ups=0.53, utts=25]
+vllm-omni TTS tts-long:  50%|█████     | 25/50 [00:47<00:47,  1.89s/utt, ups=0.53, utts=25]
+vllm-omni TTS tts-long:  50%|█████     | 25/50 [00:49<00:47,  1.89s/utt, ups=0.53, utts=26]
+vllm-omni TTS tts-long:  52%|█████▏    | 26/50 [00:49<00:44,  1.86s/utt, ups=0.53, utts=26]
+vllm-omni TTS tts-long:  52%|█████▏    | 26/50 [00:50<00:44,  1.86s/utt, ups=0.54, utts=27]
+vllm-omni TTS tts-long:  54%|█████▍    | 27/50 [00:50<00:39,  1.72s/utt, ups=0.54, utts=27]
+vllm-omni TTS tts-long:  54%|█████▍    | 27/50 [00:51<00:39,  1.72s/utt, ups=0.55, utts=28]
+vllm-omni TTS tts-long:  56%|█████▌    | 28/50 [00:51<00:33,  1.54s/utt, ups=0.55, utts=28]
+vllm-omni TTS tts-long:  56%|█████▌    | 28/50 [00:53<00:33,  1.54s/utt, ups=0.55, utts=29]
+vllm-omni TTS tts-long:  58%|█████▊    | 29/50 [00:53<00:33,  1.61s/utt, ups=0.55, utts=29]
+vllm-omni TTS tts-long:  58%|█████▊    | 29/50 [00:54<00:33,  1.61s/utt, ups=0.55, utts=30]
+vllm-omni TTS tts-long:  60%|██████    | 30/50 [00:54<00:29,  1.48s/utt, ups=0.55, utts=30]
+vllm-omni TTS tts-long:  60%|██████    | 30/50 [00:56<00:29,  1.48s/utt, ups=0.55, utts=31]
+vllm-omni TTS tts-long:  62%|██████▏   | 31/50 [00:56<00:31,  1.66s/utt, ups=0.55, utts=31]
+vllm-omni TTS tts-long:  62%|██████▏   | 31/50 [00:58<00:31,  1.66s/utt, ups=0.55, utts=32]
+vllm-omni TTS tts-long:  64%|██████▍   | 32/50 [00:58<00:28,  1.59s/utt, ups=0.55, utts=32]
+vllm-omni TTS tts-long:  64%|██████▍   | 32/50 [01:00<00:28,  1.59s/utt, ups=0.55, utts=33]
+vllm-omni TTS tts-long:  66%|██████▌   | 33/50 [01:00<00:31,  1.86s/utt, ups=0.55, utts=33]
+vllm-omni TTS tts-long:  66%|██████▌   | 33/50 [01:02<00:31,  1.86s/utt, ups=0.55, utts=34]
+vllm-omni TTS tts-long:  68%|██████▊   | 34/50 [01:02<00:31,  1.94s/utt, ups=0.55, utts=34]
+vllm-omni TTS tts-long:  68%|██████▊   | 34/50 [01:04<00:31,  1.94s/utt, ups=0.55, utts=35]
+vllm-omni TTS tts-long:  70%|███████   | 35/50 [01:04<00:28,  1.90s/utt, ups=0.55, utts=35]
+vllm-omni TTS tts-long:  70%|███████   | 35/50 [01:06<00:28,  1.90s/utt, ups=0.55, utts=36]
+vllm-omni TTS tts-long:  72%|███████▏  | 36/50 [01:06<00:26,  1.87s/utt, ups=0.55, utts=36]
+vllm-omni TTS tts-long:  72%|███████▏  | 36/50 [01:07<00:26,  1.87s/utt, ups=0.55, utts=37]
+vllm-omni TTS tts-long:  74%|███████▍  | 37/50 [01:07<00:20,  1.57s/utt, ups=0.55, utts=37]
+vllm-omni TTS tts-long:  74%|███████▍  | 37/50 [01:09<00:20,  1.57s/utt, ups=0.55, utts=38]
+vllm-omni TTS tts-long:  76%|███████▌  | 38/50 [01:09<00:20,  1.75s/utt, ups=0.55, utts=38]
+vllm-omni TTS tts-long:  76%|███████▌  | 38/50 [01:11<00:20,  1.75s/utt, ups=0.55, utts=39]
+vllm-omni TTS tts-long:  78%|███████▊  | 39/50 [01:11<00:19,  1.77s/utt, ups=0.55, utts=39]
+vllm-omni TTS tts-long:  78%|███████▊  | 39/50 [01:12<00:19,  1.77s/utt, ups=0.55, utts=40]
+vllm-omni TTS tts-long:  80%|████████  | 40/50 [01:12<00:16,  1.68s/utt, ups=0.55, utts=40]
+vllm-omni TTS tts-long:  80%|████████  | 40/50 [01:14<00:16,  1.68s/utt, ups=0.55, utts=41]
+vllm-omni TTS tts-long:  82%|████████▏ | 41/50 [01:14<00:16,  1.82s/utt, ups=0.55, utts=41]
+vllm-omni TTS tts-long:  82%|████████▏ | 41/50 [01:49<00:16,  1.82s/utt, ups=0.38, utts=42]
+vllm-omni TTS tts-long:  84%|████████▍ | 42/50 [01:49<01:33, 11.70s/utt, ups=0.38, utts=42]
+vllm-omni TTS tts-long:  84%|████████▍ | 42/50 [01:50<01:33, 11.70s/utt, ups=0.39, utts=43]
+vllm-omni TTS tts-long:  86%|████████▌ | 43/50 [01:50<00:59,  8.57s/utt, ups=0.39, utts=43]
+vllm-omni TTS tts-long:  86%|████████▌ | 43/50 [01:52<00:59,  8.57s/utt, ups=0.39, utts=44]
+vllm-omni TTS tts-long:  88%|████████▊ | 44/50 [01:52<00:40,  6.68s/utt, ups=0.39, utts=44]
+vllm-omni TTS tts-long:  88%|████████▊ | 44/50 [01:55<00:40,  6.68s/utt, ups=0.39, utts=45]
+vllm-omni TTS tts-long:  90%|█████████ | 45/50 [01:55<00:27,  5.46s/utt, ups=0.39, utts=45]
+vllm-omni TTS tts-long:  90%|█████████ | 45/50 [01:56<00:27,  5.46s/utt, ups=0.39, utts=46]
+vllm-omni TTS tts-long:  92%|█████████▏| 46/50 [01:56<00:16,  4.22s/utt, ups=0.39, utts=46]
+vllm-omni TTS tts-long:  92%|█████████▏| 46/50 [01:58<00:16,  4.22s/utt, ups=0.40, utts=47]
+vllm-omni TTS tts-long:  94%|█████████▍| 47/50 [01:58<00:10,  3.40s/utt, ups=0.40, utts=47]
+vllm-omni TTS tts-long:  94%|█████████▍| 47/50 [02:00<00:10,  3.40s/utt, ups=0.40, utts=48]
+vllm-omni TTS tts-long:  96%|█████████▌| 48/50 [02:00<00:05,  2.95s/utt, ups=0.40, utts=48]
+vllm-omni TTS tts-long:  96%|█████████▌| 48/50 [02:02<00:05,  2.95s/utt, ups=0.40, utts=49]
+vllm-omni TTS tts-long:  98%|█████████▊| 49/50 [02:02<00:02,  2.61s/utt, ups=0.40, utts=49]
+vllm-omni TTS tts-long:  98%|█████████▊| 49/50 [02:03<00:02,  2.61s/utt, ups=0.41, utts=50]
+vllm-omni TTS tts-long: 100%|██████████| 50/50 [02:03<00:00,  2.18s/utt, ups=0.41, utts=50]
+vllm-omni TTS tts-long: 100%|██████████| 50/50 [02:03<00:00,  2.47s/utt, ups=0.41, utts=50]
+
+vllm-omni latency warmup single-utterance:   0%|          | 0/2 [00:00<?, ?it/s]
+vllm-omni latency warmup single-utterance:  50%|█████     | 1/2 [00:02<00:02,  2.05s/it]
+vllm-omni latency warmup single-utterance: 100%|██████████| 2/2 [00:04<00:00,  2.07s/it]
+vllm-omni latency warmup single-utterance: 100%|██████████| 2/2 [00:04<00:00,  2.07s/it]
+
+vllm-omni latency single-utterance:   0%|          | 0/5 [00:00<?, ?it/s]
+vllm-omni latency single-utterance:  20%|██        | 1/5 [00:02<00:08,  2.07s/it]
+vllm-omni latency single-utterance:  40%|████      | 2/5 [00:04<00:06,  2.07s/it]
+vllm-omni latency single-utterance:  60%|██████    | 3/5 [00:06<00:04,  2.05s/it]
+vllm-omni latency single-utterance:  80%|████████  | 4/5 [00:08<00:02,  2.05s/it]
+vllm-omni latency single-utterance: 100%|██████████| 5/5 [00:10<00:00,  2.05s/it]
+vllm-omni latency single-utterance: 100%|██████████| 5/5 [00:10<00:00,  2.05s/it]
+INFO 08-21 11:26:22 [omni_base.py:629] [Omni] Shutting down
+INFO 08-21 11:26:22 [async_omni_engine.py:1802] [AsyncOmniEngine] Shutting down Orchestrator
+INFO 08-21 11:26:22 [orchestrator.py:593] [Orchestrator] Received shutdown signal
+INFO 08-21 11:26:22 [orchestrator.py:2168] [Orchestrator] Shutting down all 2 client(s)
+INFO 08-21 11:26:22 [core_client.py:655] [shutdown] MPClient: start timeout=default
+INFO 08-21 11:26:22 [core_client.py:657] [shutdown] MPClient: stopping engine manager
+INFO 08-21 11:26:26 [core_client.py:659] [shutdown] MPClient: engine manager stopped
+INFO 08-21 11:26:26 [core_client.py:660] [shutdown] MPClient: cleaning up background resources
+INFO 08-21 11:26:26 [core_client.py:662] [shutdown] MPClient: complete
+INFO 08-21 11:26:26 [stage_pool.py:1235] [StagePool] Stage 0 replica 0 shut down
+INFO 08-21 11:26:26 [core_client.py:655] [shutdown] MPClient: start timeout=default
+WARNING 08-21 11:26:31 [utils.py:626] [shutdown] Process manager: force killing remaining processes count=1
+INFO 08-21 11:26:31 [stage_pool.py:1235] [StagePool] Stage 1 replica 0 shut down
+
+==========================================================================================
+  TTS THROUGHPUT COMPARISON
+==========================================================================================
+  Scenario               Utts fastkernels utt/s fastkernels RTF  vllm-omni utt/s  vllm-omni RTF  Speedup
+  --------------------------------------------------------------------------------
+  tts-short                27           1.49        0.212             0.72          0.406    2.09x
+  tts-medium              100           1.10        0.164             0.46          0.372    2.38x
+  tts-long                 50           0.99        0.155             0.41          0.376    2.44x
+
+
+================================================================================
+  TTS LATENCY COMPARISON (seconds)
+================================================================================
+  Scenario             fastkernels p50  vllm-omni p50  Speedup
+  ------------------------------------------------------------
+  single-utterance            0.883          2.065    2.34x
+
+
+======================================================================
+  CODE2WAV EQUIVALENCE (same tokens, same seed)
+======================================================================
+  Mel cosine similarity: 0.999088
+  Mel MSE:               7.28e-02
+  Tokens tested:         89
+  Result:                PASS
+
+
+====================================================================================================
+  E2E CORRECTNESS: mel spectrogram cosine similarity (median for PASS/FAIL)
+====================================================================================================
+  Scenario          Utts   Median     Mean      P10      Min   LenMatch
+  --------------------------------------------------------------------------------
+  tts-long            50    0.991    0.978    0.982    0.771      42/50
+  tts-medium         100    0.991    0.981    0.985    0.768     85/100
+  tts-short           27    0.991    0.992    0.990    0.981      24/27
+
+  Overall median mel cosine similarity: 0.991
+  Overall mean mel cosine similarity:   0.982
+
+  E2E RESULT: PASS (overall median 0.991 >= 0.88)
+
+
+  Results saved to: /code/users/goliaro/validate-b200-check/021_bench_vllm_omni_FunAudioLLM_Fun-CosyVoice3-0.5B-2512/results.json

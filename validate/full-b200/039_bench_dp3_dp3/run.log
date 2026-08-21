@@ -1,0 +1,96 @@
+job_index: 39
+name: dp3
+harness: bench_dp3
+tp: 1
+workloads: dp3-1env, dp3-batch, single-step, batch-8
+CUDA_VISIBLE_DEVICES: 0
+physical_gpus: 0
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_dp3 --variant simple_dp3 --output-dir /code/users/goliaro/validate-b200-check/039_bench_dp3_dp3
+
+
+Benchmark: DP3 (simple_dp3) on B200
+Dataset:    rishabhrj11/gym-xarm-pointcloud
+Seed: 42  |  Steps: 10  |  Requests: 100
+Output dir: /code/users/goliaro/validate-b200-check/039_bench_dp3_dp3
+  Loading 100 frames from rishabhrj11/gym-xarm-pointcloud ...
+  Loaded xarm: PC(100, 512, 3)  state(100, 7)  action(100, 4)  episodes=1
+  Dataset materialised: PC(100, 2, 512, 3)  state(100, 2, 7)  noise(100, 16, 4)  action(100, 4)
+  Using DP3Config: action_dim=4  state_dim=7  num_points=512
+[DP3Encoder] point cloud shape: [512, 3]
+[DP3Encoder] state shape: [7]
+[DP3Encoder] imagination point shape: None
+[PointNetEncoderXYZ] use_layernorm: True
+[PointNetEncoderXYZ] use_final_norm: layernorm
+[DP3Encoder] output dim: 128
+[DiffusionUnetHybridPointcloudPolicy] use_pc_color: False
+[DiffusionUnetHybridPointcloudPolicy] pointnet_type: pointnet
+----------------------------------
+Class name: DP3
+  Number of parameters: 13.2184M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.0637M (0.48%)
+   model: 13.1547M (99.52%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+  Loading 1000 frames from rishabhrj11/gym-xarm-pointcloud ...
+  Loaded xarm: PC(1000, 512, 3)  state(1000, 7)  action(1000, 4)  episodes=3
+  Shared checkpoint saved: /code/users/goliaro/validate-b200-check/039_bench_dp3_dp3/shared_ckpt/latest.ckpt  (188 state-dict entries from reference DP3)
+
+--- fastkernels DP3 ---
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels DP3
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+  [fastkernels] dp3-1env: 100 reqs in 4.331s = 23.09 req/s
+  [fastkernels] dp3-batch: 100 reqs in 0.600s = 166.66 req/s
+  [fastkernels] single-step bsz=1: P50=34.80ms P99=35.19ms
+  [fastkernels] batch-8 bsz=8: P50=36.27ms P99=36.80ms
+
+--- Reference DP3 ---
+
+──────────────────────────────────────────────────────────────────────
+  reference DP3
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+[DP3Encoder] point cloud shape: [512, 3]
+[DP3Encoder] state shape: [7]
+[DP3Encoder] imagination point shape: None
+[PointNetEncoderXYZ] use_layernorm: True
+[PointNetEncoderXYZ] use_final_norm: layernorm
+[DP3Encoder] output dim: 128
+[DiffusionUnetHybridPointcloudPolicy] use_pc_color: False
+[DiffusionUnetHybridPointcloudPolicy] pointnet_type: pointnet
+----------------------------------
+Class name: DP3
+  Number of parameters: 13.2184M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.0637M (0.48%)
+   model: 13.1547M (99.52%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+  [reference] dp3-1env: 100 reqs in 4.889s = 20.46 req/s
+  [reference] dp3-batch: 100 reqs in 0.685s = 145.95 req/s
+  [reference] single-step bsz=1: P50=39.52ms P99=40.01ms
+  [reference] batch-8 bsz=8: P50=40.59ms P99=40.94ms
+
+Scenario              fastkernels req/s     reference req/s     speedup
+──────────────────────────────────────────────────────────────────────
+dp3-1env                         23.09               20.46       1.13x
+dp3-batch                       166.66              145.95       1.14x
+
+Scenario                       kb P50/P99 ms        ref P50/P99 ms    speedup(P50)
+──────────────────────────────────────────────────────────────────────────────────
+single-step                      34.80/35.19           39.52/40.01           1.14x
+batch-8                          36.27/36.80           40.59/40.94           1.12x
+
+Scenario                 samples      mean MSE    mean cos     max abs   verdict
+────────────────────────────────────────────────────────────────────────────────
+dp3-1env                     100  0.000000e+00    1.0000000.000000e+00      PASS
+dp3-batch                     13  0.000000e+00    1.0000000.000000e+00      PASS
+
+
+Results: /code/users/goliaro/validate-b200-check/039_bench_dp3_dp3/results.json

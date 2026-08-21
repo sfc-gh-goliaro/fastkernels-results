@@ -1,0 +1,56 @@
+job_index: 24
+name: Qwen/Qwen3-VL-235B-A22B-Instruct-FP8
+harness: bench_vllm
+tp: 4
+workloads: text-only, image, video, single-image, single-video
+CUDA_VISIBLE_DEVICES: 3,4,5,6
+physical_gpus: 3,4,5,6
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_vllm --model Qwen/Qwen3-VL-235B-A22B-Instruct-FP8 --tp 4 --output-dir /code/users/goliaro/validate-b200-check/024_bench_vllm_Qwen_Qwen3-VL-235B-A22B-Instruct-FP8 --resume
+
+======================================================================
+  fastkernels Baseline vs vLLM -- Multi-Scenario Benchmark
+======================================================================
+  Model          : Qwen/Qwen3-VL-235B-A22B-Instruct-FP8
+  Model type     : VLM
+  TP             : 4
+  Seqs/scenario  : 1000
+  Temperature    : 0.0
+  Enforce eager  : False
+  Seed           : 42
+  Trust RC       : False
+  Max seq len    : 16896
+  Engine env     : FASTKERNELS_MAX_CUDAGRAPH_BS=1024, FASTKERNELS_MAX_ENCODER_TOKENS=4096
+  fastkernels port   : 43846
+  vLLM port      : 59039
+  vLLM FI ns     : bench-vllm-34849-59039
+  Output dir     : /code/users/goliaro/validate-b200-check/024_bench_vllm_Qwen_Qwen3-VL-235B-A22B-Instruct-FP8
+  Scenarios      : text-only, image, video
+  Latency        : single-image, single-video (5 iters)
+======================================================================
+  Resumed vLLM reference from cache: /code/users/goliaro/validate-b200-check/024_bench_vllm_Qwen_Qwen3-VL-235B-A22B-Instruct-FP8/vllm_raw.json
+  Resumed fastkernels outputs from cache: /code/users/goliaro/validate-b200-check/024_bench_vllm_Qwen_Qwen3-VL-235B-A22B-Instruct-FP8/fastkernels_raw.json
+
+
+==========================================================================================
+  THROUGHPUT SUMMARY
+==========================================================================================
+  SCENARIO          SEQS   OUT FASTKERNELS tok/s   vLLM tok/s  SPEEDUP AVG PREFIX TOKS
+  ------------------------------------------------------------------------------------------
+  text-only         1000   512           5,209        3,956    1.32x        36.7/417
+  image             1000   512           9,409        4,607    2.04x        49.5/512
+  video             1000   512           2,045        1,376    1.49x        34.0/512
+==========================================================================================
+
+==============================================================================================================
+  LATENCY SUMMARY
+==============================================================================================================
+  SCENARIO             BS   OUT  ITERS  FASTKERNELS med     vLLM med  FASTKERNELS ms/tok  vLLM ms/tok  SPEEDUP
+  ----------------------------------------------------------------------------------------------------
+  single-image          1   128      5  1.1958s         1.1148s           9.34         8.71    0.93x
+  single-video          1   128      5  1.3200s         1.2919s          10.31        10.09    0.98x
+==============================================================================================================
+
+  Results saved to: /code/users/goliaro/validate-b200-check/024_bench_vllm_Qwen_Qwen3-VL-235B-A22B-Instruct-FP8/results.json

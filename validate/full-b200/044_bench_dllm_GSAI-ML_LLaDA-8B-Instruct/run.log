@@ -1,0 +1,105 @@
+job_index: 44
+name: GSAI-ML/LLaDA-8B-Instruct
+harness: bench_dllm
+tp: 1
+workloads: humaneval
+CUDA_VISIBLE_DEVICES: 6
+physical_gpus: 6
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_dllm --model GSAI-ML/LLaDA-8B-Instruct --output-dir /code/users/goliaro/validate-b200-check/044_bench_dllm_GSAI-ML_LLaDA-8B-Instruct
+
+/home/yak/fastkernels/fastkernels/validate/bench_dllm.py:143: DeprecationWarning: get_task_dict is deprecated. Use TaskManager.load() instead.
+  task_obj = get_task_dict([task], task_manager=manager)[task]
+
+Downloading builder script: 0.00B [00:00, ?B/s]
+Downloading builder script: 9.18kB [00:00, 28.2MB/s]
+
+Downloading extra modules: 0.00B [00:00, ?B/s]
+Downloading extra modules: 6.10kB [00:00, 24.8MB/s]
+
+Generating test split:   0%|          | 0/164 [00:00<?, ? examples/s]
+Generating test split: 100%|██████████| 164/164 [00:00<00:00, 35360.40 examples/s]
+
+  0%|          | 0/164 [00:00<?, ?it/s]
+ 95%|█████████▍| 155/164 [00:00<00:00, 1544.62it/s]
+100%|██████████| 164/164 [00:00<00:00, 1525.47it/s]
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels LLaDA
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+[transformers] A new version of the following files was downloaded from https://huggingface.co/GSAI-ML/LLaDA-8B-Instruct:
+- configuration_llada.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]
+Fetching 12 files:  17%|█▋        | 2/12 [00:00<00:00, 17.11it/s]
+Fetching 12 files:  33%|███▎      | 4/12 [00:00<00:00, 17.17it/s]
+Fetching 12 files:  50%|█████     | 6/12 [00:00<00:00, 16.98it/s]
+Fetching 12 files:  67%|██████▋   | 8/12 [00:07<00:05,  1.41s/it]
+Fetching 12 files:  83%|████████▎ | 10/12 [00:10<00:02,  1.40s/it]
+Fetching 12 files:  92%|█████████▏| 11/12 [00:11<00:01,  1.35s/it]
+Fetching 12 files: 100%|██████████| 12/12 [00:12<00:00,  1.23s/it]
+Fetching 12 files: 100%|██████████| 12/12 [00:12<00:00,  1.00s/it]
+  Loading LLaDA weights from 6 safetensors file(s)...
+  Loaded 291 tensors
+
+──────────────────────────────────────────────────────────────────────
+  official Fast-dLLM (dual cache)
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]
+Loading weights:  26%|██▋       | 77/291 [00:00<00:00, 761.02it/s]
+Loading weights:  62%|██████▏   | 181/291 [00:00<00:00, 917.89it/s]
+Loading weights:  94%|█████████▍| 273/291 [00:00<00:00, 911.73it/s]
+Loading weights: 100%|██████████| 291/291 [00:00<00:00, 954.99it/s]
+[transformers] `use_return_dict` is deprecated! Use `return_dict` instead!
+{
+  "model": "GSAI-ML/LLaDA-8B-Instruct",
+  "input": {
+    "mode": "task",
+    "task": "humaneval",
+    "task_label": "HumanEval (0-shot)",
+    "dataset": "openai_humaneval",
+    "split": "test",
+    "source": "lm_eval",
+    "num_fewshot": 0,
+    "fewshot_seed": 1234,
+    "num_samples": 164,
+    "examples": [
+      "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n",
+      "from typing import List\n\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n"
+    ],
+    "batch_size": 32,
+    "protocol": "fastdllm-official-like"
+  },
+  "config": {
+    "protocol": "fastdllm-official-like",
+    "gen_length": 256,
+    "steps": 8,
+    "block_length": 32,
+    "temperature": 0.0,
+    "remasking": "low_confidence",
+    "threshold": 0.9,
+    "batch_size": 32,
+    "max_samples": 164,
+    "ours_backend": "dual",
+    "reference_backends": "fastdllm-dual"
+  },
+  "ours_tokens_per_second": 2456.270185511476,
+  "comparisons": {
+    "fastdllm-dual": {
+      "throughput_ratio": 0.9560333260167071,
+      "logits_cosine": 0.9995204693871126,
+      "logits_mae": 0.10302803462950468,
+      "token_match_rate": 0.9477353827425564,
+      "sequence_exact_match_rate": 0.5609756097560976
+    }
+  },
+  "output_file": "/code/users/goliaro/validate-b200-check/044_bench_dllm_GSAI-ML_LLaDA-8B-Instruct/humaneval_ns164_bs32_ours-dual_ref-fastdllm-dual_gen256_steps8_block32_thr0p9.json"
+}
+
+Saved results to /code/users/goliaro/validate-b200-check/044_bench_dllm_GSAI-ML_LLaDA-8B-Instruct/humaneval_ns164_bs32_ours-dual_ref-fastdllm-dual_gen256_steps8_block32_thr0p9.json

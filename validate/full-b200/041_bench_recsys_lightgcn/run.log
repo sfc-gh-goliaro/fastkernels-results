@@ -1,0 +1,30 @@
+job_index: 41
+name: lightgcn
+harness: bench_recsys
+tp: 1
+workloads: recommend-batch, single-request, fixed-batch-32
+CUDA_VISIBLE_DEVICES: 6
+physical_gpus: 6
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_recsys --model lightgcn --output-dir /code/users/goliaro/validate-b200-check/041_bench_recsys_lightgcn
+
+/home/yak/fastkernels/fastkernels/tasks/baseline/L2/lightgcn_propagation.py:30: UserWarning: Sparse invariant checks are implicitly disabled. Memory errors (e.g. SEGFAULT) will occur when operating on a sparse tensor which violates the invariants, but checks incur performance overhead. To silence this warning, explicitly opt in or out. See `torch.sparse.check_sparse_tensor_invariants.__doc__` for guidance.  (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:760.)
+  adjacency = torch.sparse_coo_tensor(
+/home/yak/fastkernels/fastkernels/tasks/baseline/L2/lightgcn_propagation.py:46: UserWarning: Sparse CSR tensor support is in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://github.com/pytorch/pytorch/issues. (Triggered internally at /pytorch/aten/src/ATen/SparseCsrTensorImpl.cpp:49.)
+  return normalized.to_sparse_csr()
+
+== lightgcn ==
+  data: dataset=movielens-1m, edges=575281, pairs=131072
+  checkpoint: tests/data/recsys/checkpoints/lightgcn_movielens-1m_min4p0_d64_l3_seed42.pt (bpr, steps=64)
+reference: torch_geometric.nn.models.LightGCN
+  user_embeddings: cosine=1.000000, mae=2.535894e-09, max=1.788139e-07
+  item_embeddings: cosine=1.000000, mae=3.785349e-09, max=2.980232e-07
+  scores: cosine=1.000000, mae=1.215028e-07, max=1.907349e-06
+  throughput: ours=287948497.72, reference=281977654.61, ratio=1.02x
+  latency (lightgcn):
+    single-request   bs=1     ours=0.2780ms  reference=0.2892ms  speedup=1.04x
+    fixed-batch-32   bs=32    ours=0.2792ms  reference=0.2907ms  speedup=1.04x
+
+Wrote results to /code/users/goliaro/validate-b200-check/041_bench_recsys_lightgcn/results.json

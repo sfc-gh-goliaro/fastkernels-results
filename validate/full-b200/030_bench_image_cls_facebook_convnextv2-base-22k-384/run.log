@@ -1,0 +1,86 @@
+job_index: 30
+name: facebook/convnextv2-base-22k-384
+harness: bench_image_cls
+tp: 1
+workloads: default-res, high-res, single-image, batch-8
+CUDA_VISIBLE_DEVICES: 6
+physical_gpus: 6
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_image_cls --model facebook/convnextv2-base-22k-384 --output-dir /code/users/goliaro/validate-b200-check/030_bench_image_cls_facebook_convnextv2-base-22k-384
+
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels image classification
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Loading weights:   0%|          | 0/380 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 380/380 [00:00<00:00, 9296.48it/s]
+
+──────────────────────────────────────────────────────────────────────
+  official image classification baseline
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+Loading weights:   0%|          | 0/380 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 380/380 [00:00<00:00, 11415.77it/s]
+{
+  "model": "facebook/convnextv2-base-22k-384",
+  "dataset_name": "ethz/food101",
+  "dataset_split": "validation",
+  "image_size": 384,
+  "ours": {
+    "baseline_name": "fastkernels",
+    "images_per_second": 696.9885389883163,
+    "latency": {
+      "1": {
+        "median": 0.006060490850359201,
+        "mean": 0.006120436266064644
+      },
+      "8": {
+        "median": 0.011477113235741854,
+        "mean": 0.011476226523518563
+      }
+    },
+    "logits_shape": [
+      1,
+      1000
+    ]
+  },
+  "references": {
+    "reference": {
+      "baseline_name": "transformers",
+      "images_per_second": 696.7027699218538,
+      "latency": {
+        "1": {
+          "median": 0.006517948117107153,
+          "mean": 0.006654293090105057
+        },
+        "8": {
+          "median": 0.011460117995738983,
+          "mean": 0.011469075735658408
+        }
+      },
+      "logits_shape": [
+        1,
+        1000
+      ]
+    }
+  },
+  "comparisons": {
+    "reference": {
+      "throughput_ratio": 1.0004101735758775,
+      "logits_cosine": 0.9999999999999998,
+      "logits_mae": 0.0,
+      "top1_match_rate": 1.0,
+      "latency_ratio": {
+        "1": 1.0754818839006808,
+        "8": 0.9985192060360663
+      }
+    }
+  }
+}
+
+Saved results to /code/users/goliaro/validate-b200-check/030_bench_image_cls_facebook_convnextv2-base-22k-384/results.json

@@ -1,0 +1,83 @@
+job_index: 33
+name: PekingU/rtdetr_v2_r101vd
+harness: bench_detection
+tp: 1
+workloads: coco-val, single-image, batch-4
+CUDA_VISIBLE_DEVICES: 5
+physical_gpus: 5
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_detection --model PekingU/rtdetr_v2_r101vd --output-dir /code/users/goliaro/validate-b200-check/033_bench_detection_PekingU_rtdetr_v2_r101vd
+
+======================================================================
+  Preparing COCO val2017 images
+======================================================================
+  Loading COCO val2017 images from HuggingFace ...
+  Preprocessed 4952 images -> torch.Size([4952, 3, 640, 640])
+  Saved to /home/yak/fastkernels/data/coco_cache/coco_val_30000_640_fp16.pt
+
+======================================================================
+  Detection Benchmark: fastkernels vs Reference
+======================================================================
+  Model          : PekingU/rtdetr_v2_r101vd
+  GPU            : B200
+  Image size     : 640
+  Dataset        : COCO val2017 (30000 images)
+  Seed           : 42
+  Throughput     : coco-val
+  Latency        : single-image, batch-4
+======================================================================
+
+──────────────────────────────────────────────────────────────────────
+  Reference [rtdetr_v2_r101vd]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+  Loading preprocessed images from /home/yak/fastkernels/data/coco_cache/coco_val_30000_640_fp16.pt ...
+  Loaded 4952 images (torch.Size([4952, 3, 640, 640]))
+
+Loading weights:   0%|          | 0/1025 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 1025/1025 [00:00<00:00, 11156.25it/s]
+  [reference] coco-val: 420.4 img/s (median 71.353s over 3 runs)
+  [reference] latency single-image: median 19.85ms
+  [reference] latency batch-4: median 20.07ms
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels [rtdetr_v2_r101vd]
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+  Loading preprocessed images from /home/yak/fastkernels/data/coco_cache/coco_val_30000_640_fp16.pt ...
+  Loaded 4952 images (torch.Size([4952, 3, 640, 640]))
+
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]
+Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 24.86it/s]
+Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 24.75it/s]
+  [ours] coco-val: 407.5 img/s (median 73.619s over 3 runs)
+  [ours] latency single-image: median 21.88ms
+  [ours] latency batch-4: median 22.48ms
+
+==========================================================================================
+  THROUGHPUT COMPARISON (images/sec)
+==========================================================================================
+  Scenario              Images   BS  fastkernels    reference      Ratio
+  ----------------------------------------------------------------------
+  coco-val               30000   32        407.5        420.4      0.97x
+
+==========================================================================================
+  LATENCY COMPARISON (milliseconds)
+==========================================================================================
+  Scenario               BS  Iters fastkernels p50  reference p50      Ratio
+  ---------------------------------------------------------------------------
+  single-image            1     20         21.88ms         19.85ms      0.91x
+  batch-4                 4     20         22.48ms         20.07ms      0.89x
+
+==========================================================================================
+  CORRECTNESS COMPARISON (fastkernels vs reference, all throughput images)
+==========================================================================================
+  Images compared  : 30000
+  Boxes cosine     : 0.927722  (MAE: 70.026206)
+  Scores cosine    : 0.999957  (MAE: 0.000500)
+  Labels match     : 0.7343
+  Overall          : FAIL
+
+  Results saved to: /code/users/goliaro/validate-b200-check/033_bench_detection_PekingU_rtdetr_v2_r101vd/results.json

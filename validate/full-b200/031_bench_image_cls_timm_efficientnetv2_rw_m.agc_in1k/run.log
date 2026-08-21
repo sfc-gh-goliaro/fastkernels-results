@@ -1,0 +1,80 @@
+job_index: 31
+name: timm/efficientnetv2_rw_m.agc_in1k
+harness: bench_image_cls
+tp: 1
+workloads: default-res, high-res, single-image, batch-8
+CUDA_VISIBLE_DEVICES: 6
+physical_gpus: 6
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_image_cls --model timm/efficientnetv2_rw_m.agc_in1k --output-dir /code/users/goliaro/validate-b200-check/031_bench_image_cls_timm_efficientnetv2_rw_m.agc_in1k
+
+
+──────────────────────────────────────────────────────────────────────
+  fastkernels image classification
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+
+──────────────────────────────────────────────────────────────────────
+  official image classification baseline
+  python: /home/yak/miniconda3/envs/dev/bin/python3
+──────────────────────────────────────────────────────────────────────
+{
+  "model": "timm/efficientnetv2_rw_m.agc_in1k",
+  "dataset_name": "ethz/food101",
+  "dataset_split": "validation",
+  "image_size": 320,
+  "ours": {
+    "baseline_name": "fastkernels",
+    "images_per_second": 715.520360462855,
+    "latency": {
+      "1": {
+        "median": 0.010177055839449167,
+        "mean": 0.010539895575493573
+      },
+      "8": {
+        "median": 0.010641738306730986,
+        "mean": 0.011067101825028658
+      }
+    },
+    "logits_shape": [
+      1,
+      1000
+    ]
+  },
+  "references": {
+    "reference": {
+      "baseline_name": "timm",
+      "images_per_second": 685.6262236813523,
+      "latency": {
+        "1": {
+          "median": 0.011098339688032866,
+          "mean": 0.01118346219882369
+        },
+        "8": {
+          "median": 0.011569499038159847,
+          "mean": 0.01135173747316003
+        }
+      },
+      "logits_shape": [
+        1,
+        1000
+      ]
+    }
+  },
+  "comparisons": {
+    "reference": {
+      "throughput_ratio": 1.043601215573394,
+      "logits_cosine": 1.0,
+      "logits_mae": 0.0,
+      "top1_match_rate": 1.0,
+      "latency_ratio": {
+        "1": 1.0905255766616255,
+        "8": 1.0871813142446893
+      }
+    }
+  }
+}
+
+Saved results to /code/users/goliaro/validate-b200-check/031_bench_image_cls_timm_efficientnetv2_rw_m.agc_in1k/results.json

@@ -1,0 +1,64 @@
+job_index: 25
+name: Qwen/Qwen2.5-Omni-7B
+harness: bench_vllm
+tp: 1
+workloads: text, image, video, audio, single-text, single-image, single-video, single-audio
+CUDA_VISIBLE_DEVICES: 1
+physical_gpus: 1
+numactl_prefix: 
+cache_root: /home/yak/.fastkernels/cache/validate-b200-check
+threads: OMP_NUM_THREADS=14 TORCHINDUCTOR_COMPILE_THREADS=14
+command: /home/yak/miniconda3/envs/dev/bin/python3 -u -m fastkernels.validate.bench_vllm --model Qwen/Qwen2.5-Omni-7B --tp 1 --output-dir /code/users/goliaro/validate-b200-check/025_bench_vllm_Qwen_Qwen2.5-Omni-7B --resume
+
+[transformers] Model config: tts_text_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151860. This may result in unexpected behavior.
+[transformers] Model config: tts_text_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151861. This may result in unexpected behavior.
+[transformers] Model config: tts_text_pad_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151859. This may result in unexpected behavior.
+[transformers] Model config: vision_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151652. This may result in unexpected behavior.
+[transformers] Model config: vision_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151653. This may result in unexpected behavior.
+[transformers] Model config: audio_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151647. This may result in unexpected behavior.
+[transformers] Model config: audio_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151648. This may result in unexpected behavior.
+======================================================================
+  fastkernels Baseline vs vLLM -- Multi-Scenario Benchmark
+======================================================================
+  Model          : Qwen/Qwen2.5-Omni-7B
+  Model type     : Qwen-Omni
+  TP             : 1
+  Seqs/scenario  : 1000
+  Temperature    : 0.0
+  Enforce eager  : False
+  Seed           : 42
+  Trust RC       : False
+  Max seq len    : 16896
+  fastkernels port   : 35763
+  vLLM port      : 39695
+  Output dir     : /code/users/goliaro/validate-b200-check/025_bench_vllm_Qwen_Qwen2.5-Omni-7B
+  Scenarios      : text, image, video, audio
+  Latency        : single-text, single-image, single-video, single-audio (5 iters)
+======================================================================
+  Resumed vLLM reference from cache: /code/users/goliaro/validate-b200-check/025_bench_vllm_Qwen_Qwen2.5-Omni-7B/vllm_raw.json
+  Resumed fastkernels outputs from cache: /code/users/goliaro/validate-b200-check/025_bench_vllm_Qwen_Qwen2.5-Omni-7B/fastkernels_raw.json
+
+
+==========================================================================================
+  THROUGHPUT SUMMARY
+==========================================================================================
+  SCENARIO          SEQS   OUT FASTKERNELS tok/s   vLLM tok/s  SPEEDUP AVG PREFIX TOKS
+  ------------------------------------------------------------------------------------------
+  text              1000   512          17,352       17,542    0.99x       161.1/417
+  image             1000   512          17,443       13,499    1.29x       144.3/512
+  video             1000   512           3,281        2,066    1.59x       190.3/512
+  audio             1000   256          11,955        6,656    1.80x       150.1/256
+==========================================================================================
+
+==============================================================================================================
+  LATENCY SUMMARY
+==============================================================================================================
+  SCENARIO             BS   OUT  ITERS  FASTKERNELS med     vLLM med  FASTKERNELS ms/tok  vLLM ms/tok  SPEEDUP
+  ----------------------------------------------------------------------------------------------------
+  single-text           1   128      5  0.4384s         0.4529s           3.43         3.54    1.03x
+  single-image          1   128      5  0.4693s         0.4999s           3.67         3.91    1.07x
+  single-video          1   128      5  0.6097s         0.6863s           4.76         5.36    1.13x
+  single-audio          1   128      5  0.4705s         0.5049s           3.68         3.94    1.07x
+==============================================================================================================
+
+  Results saved to: /code/users/goliaro/validate-b200-check/025_bench_vllm_Qwen_Qwen2.5-Omni-7B/results.json
