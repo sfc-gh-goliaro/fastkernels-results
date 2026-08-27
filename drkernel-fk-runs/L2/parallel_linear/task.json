@@ -1,0 +1,13 @@
+{
+  "level": 2,
+  "stem": "parallel_linear",
+  "classes": [
+    "ColumnParallelLinear",
+    "MergedColumnParallelLinear",
+    "QKVParallelLinear",
+    "ReplicatedLinear",
+    "RowParallelLinear"
+  ],
+  "primary": "ColumnParallelLinear",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

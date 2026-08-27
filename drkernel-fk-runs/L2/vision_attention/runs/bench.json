@@ -1,0 +1,79 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 5,
+  "skipped": 0,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L2.vision_attention:VisionAttention",
+      "level": 2,
+      "shape": "[1760, 1, 1152],[3],[1760, 36],[1760, 36]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: ValueError('too many values to unpack (expected 3)')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.vision_attention:VisionAttention",
+      "level": 2,
+      "shape": "[64680, 1, 1152],[33],[64680, 36],[64680, 36]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: ValueError('too many values to unpack (expected 3)')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.vision_attention:VisionAttention",
+      "level": 2,
+      "shape": "[24992, 1, 1152],[31],[24992, 36],[24992, 36]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: ValueError('too many values to unpack (expected 3)')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.vision_attention:VisionAttention",
+      "level": 2,
+      "shape": "[20680, 1, 1152],[25],[20680, 36],[20680, 36]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: ValueError('too many values to unpack (expected 3)')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.vision_attention:VisionAttention",
+      "level": 2,
+      "shape": "[23760, 1, 1152],[29],[23760, 36],[23760, 36]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: ValueError('too many values to unpack (expected 3)')"
+    }
+  ]
+}

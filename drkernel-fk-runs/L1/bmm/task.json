@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "bmm",
+  "classes": [
+    "BatchMatMul"
+  ],
+  "primary": "BatchMatMul",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

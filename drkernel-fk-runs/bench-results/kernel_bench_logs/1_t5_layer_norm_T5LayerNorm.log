@@ -1,0 +1,2 @@
+[worker] fastkernels.tasks.baseline.L1.t5_layer_norm:T5LayerNorm: 1 case(s)
+[worker] case 1/1  shape=[1, 512, 4096]

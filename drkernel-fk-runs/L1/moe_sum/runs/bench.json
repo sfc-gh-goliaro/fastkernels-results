@@ -1,0 +1,79 @@
+{
+  "mode": "candidate",
+  "passed": 5,
+  "failed": 0,
+  "skipped": 0,
+  "all_passed": true,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L1.moe_sum:MoeSum",
+      "level": 1,
+      "shape": "[8, 4096]",
+      "dtype": "bfloat16",
+      "status": "PASSED",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.01128000020980835,
+      "baseline_ms": 0.011296000331640244,
+      "speedup": 1.0014184504906287,
+      "detail": ""
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.moe_sum:MoeSum",
+      "level": 1,
+      "shape": "[131072, 4096]",
+      "dtype": "bfloat16",
+      "status": "PASSED",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.7828320264816284,
+      "baseline_ms": 0.5929920077323914,
+      "speedup": 0.7574958454338452,
+      "detail": ""
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.moe_sum:MoeSum",
+      "level": 1,
+      "shape": "[5144, 4096]",
+      "dtype": "bfloat16",
+      "status": "PASSED",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.035840000957250595,
+      "baseline_ms": 0.03175999969244003,
+      "speedup": 0.8861606820357755,
+      "detail": ""
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.moe_sum:MoeSum",
+      "level": 1,
+      "shape": "[8000, 4096]",
+      "dtype": "bfloat16",
+      "status": "PASSED",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.056384000927209854,
+      "baseline_ms": 0.04816000163555145,
+      "speedup": 0.8541430342576194,
+      "detail": ""
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.moe_sum:MoeSum",
+      "level": 1,
+      "shape": "[2512, 4096]",
+      "dtype": "bfloat16",
+      "status": "PASSED",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.023520000278949738,
+      "baseline_ms": 0.02147199958562851,
+      "speedup": 0.912925141622801,
+      "detail": ""
+    }
+  ]
+}

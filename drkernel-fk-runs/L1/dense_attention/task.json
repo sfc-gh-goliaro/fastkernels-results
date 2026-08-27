@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "dense_attention",
+  "classes": [
+    "DenseAttention"
+  ],
+  "primary": "DenseAttention",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

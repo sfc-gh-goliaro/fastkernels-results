@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L3.oasis_block:SpatioTemporalDiTBlock: 5 case(s)
+[worker] case 1/5  shape=[1, 2, 9, 16, 1024],[1, 2, 1024]
+[worker] case 2/5  shape=[1, 3, 9, 16, 1024],[1, 3, 1024]
+[worker] case 3/5  shape=[1, 4, 9, 16, 1024],[1, 4, 1024]
+[worker] case 4/5  shape=[1, 5, 9, 16, 1024],[1, 5, 1024]
+[worker] case 5/5  shape=[1, 6, 9, 16, 1024],[1, 6, 1024]

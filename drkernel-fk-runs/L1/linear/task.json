@@ -1,0 +1,11 @@
+{
+  "level": 1,
+  "stem": "linear",
+  "classes": [
+    "BMM",
+    "Linear",
+    "Matmul"
+  ],
+  "primary": "Linear",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

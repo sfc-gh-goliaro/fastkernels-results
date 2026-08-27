@@ -1,0 +1,9 @@
+{
+  "level": 2,
+  "stem": "llama_mlp",
+  "classes": [
+    "LlamaMLP"
+  ],
+  "primary": "LlamaMLP",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

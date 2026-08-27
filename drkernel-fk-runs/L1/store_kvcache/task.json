@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "store_kvcache",
+  "classes": [
+    "StoreKVCacheHND"
+  ],
+  "primary": "StoreKVCache",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

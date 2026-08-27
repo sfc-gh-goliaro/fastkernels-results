@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "moe_grouped_gemm",
+  "classes": [
+    "MoeGroupedGemm"
+  ],
+  "primary": "MoeGroupedGemm",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

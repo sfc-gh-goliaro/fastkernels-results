@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "chunk_gla",
+  "classes": [
+    "ChunkGLA"
+  ],
+  "primary": "ChunkGLA",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "sigmoid",
+  "classes": [
+    "Sigmoid"
+  ],
+  "primary": "Sigmoid",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

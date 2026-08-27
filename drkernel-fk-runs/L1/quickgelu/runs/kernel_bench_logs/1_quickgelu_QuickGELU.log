@@ -1,0 +1,2 @@
+[worker] fastkernels.tasks.baseline.L1.quickgelu:QuickGELU: 1 case(s)
+[worker] case 1/1  shape=[1, 77, 3072]

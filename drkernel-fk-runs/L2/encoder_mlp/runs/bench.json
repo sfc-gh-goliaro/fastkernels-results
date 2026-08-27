@@ -1,0 +1,93 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 6,
+  "skipped": 0,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L2.encoder_mlp:EncoderIntermediate",
+      "level": 2,
+      "shape": "[512, 1024]",
+      "dtype": "float16",
+      "status": "INCORRECT_SHAPE",
+      "max_abs_error": 1e+30,
+      "max_rel_error": 1e+30,
+      "matched_ratio": 0.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "output tensor count 0 != 1"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.encoder_mlp:EncoderIntermediate",
+      "level": 2,
+      "shape": "[2048, 1024]",
+      "dtype": "float16",
+      "status": "INCORRECT_SHAPE",
+      "max_abs_error": 1e+30,
+      "max_rel_error": 1e+30,
+      "matched_ratio": 0.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "output tensor count 0 != 1"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.encoder_mlp:EncoderIntermediate",
+      "level": 2,
+      "shape": "[64, 1024]",
+      "dtype": "float16",
+      "status": "INCORRECT_SHAPE",
+      "max_abs_error": 1e+30,
+      "max_rel_error": 1e+30,
+      "matched_ratio": 0.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "output tensor count 0 != 1"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.encoder_mlp:EncoderOutput",
+      "level": 2,
+      "shape": "[512, 4096],[512, 1024]",
+      "dtype": "float16",
+      "status": "INCORRECT_SHAPE",
+      "max_abs_error": 1e+30,
+      "max_rel_error": 1e+30,
+      "matched_ratio": 0.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "output tensor count 0 != 1"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.encoder_mlp:EncoderOutput",
+      "level": 2,
+      "shape": "[2048, 4096],[2048, 1024]",
+      "dtype": "float16",
+      "status": "INCORRECT_SHAPE",
+      "max_abs_error": 1e+30,
+      "max_rel_error": 1e+30,
+      "matched_ratio": 0.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "output tensor count 0 != 1"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.encoder_mlp:EncoderOutput",
+      "level": 2,
+      "shape": "[64, 4096],[64, 1024]",
+      "dtype": "float16",
+      "status": "INCORRECT_SHAPE",
+      "max_abs_error": 1e+30,
+      "max_rel_error": 1e+30,
+      "matched_ratio": 0.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "output tensor count 0 != 1"
+    }
+  ]
+}

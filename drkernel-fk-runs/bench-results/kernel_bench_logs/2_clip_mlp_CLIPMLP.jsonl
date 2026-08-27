@@ -1,0 +1,1 @@
+{"op": "fastkernels.tasks.baseline.L2.clip_mlp:CLIPMLP", "level": 2, "shape": "-", "dtype": "-", "status": "SKIPPED", "detail": "no candidate class found"}

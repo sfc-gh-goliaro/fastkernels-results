@@ -1,0 +1,79 @@
+{
+  "mode": "candidate",
+  "passed": 5,
+  "failed": 0,
+  "skipped": 0,
+  "all_passed": true,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L1.sigmoid:Sigmoid",
+      "level": 1,
+      "shape": "[1, 8, 16, 64]",
+      "dtype": "bfloat16",
+      "status": "PASSED",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.011247999966144562,
+      "baseline_ms": 0.011327999643981457,
+      "speedup": 1.0071123469130234,
+      "detail": ""
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.sigmoid:Sigmoid",
+      "level": 1,
+      "shape": "[4, 80, 8400]",
+      "dtype": "float16",
+      "status": "PASSED",
+      "max_abs_error": 0.00048828125,
+      "max_rel_error": 0.0009727626456879079,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.01735999993979931,
+      "baseline_ms": 0.015296000055968761,
+      "speedup": 0.8811059970629004,
+      "detail": ""
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.sigmoid:Sigmoid",
+      "level": 1,
+      "shape": "[1, 12, 32, 128]",
+      "dtype": "bfloat16",
+      "status": "PASSED",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.011264000087976456,
+      "baseline_ms": 0.011327999643981457,
+      "speedup": 1.0056817787202714,
+      "detail": ""
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.sigmoid:Sigmoid",
+      "level": 1,
+      "shape": "[1, 16, 768]",
+      "dtype": "bfloat16",
+      "status": "PASSED",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.011264000087976456,
+      "baseline_ms": 0.011296000331640244,
+      "speedup": 1.0028409307008037,
+      "detail": ""
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.sigmoid:Sigmoid",
+      "level": 1,
+      "shape": "[1, 368, 128]",
+      "dtype": "bfloat16",
+      "status": "PASSED",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.011264000087976456,
+      "baseline_ms": 0.011327999643981457,
+      "speedup": 1.0056817787202714,
+      "detail": ""
+    }
+  ]
+}

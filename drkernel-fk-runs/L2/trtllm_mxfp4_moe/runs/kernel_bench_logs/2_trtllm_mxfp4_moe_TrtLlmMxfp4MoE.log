@@ -1,0 +1,7 @@
+[worker] fastkernels.tasks.baseline.L2.trtllm_mxfp4_moe:TrtLlmMxfp4MoE: 5 case(s)
+[worker] case 1/5  shape=[1, 3072],[1, 128],[128, 3072, 1536],[128, 3072, 96]
+[worker] case 2/5  shape=[16384, 3072],[16384, 128],[128, 3072, 1536],[128, 3072, 96]
+[2026-08-25 08:05:18.955] [info] TRT-LLM fused MoE cooperative launch SM allocation: 140 SMs used for MoE, 8 SMs reserved for overlapping kernels (total SMs: 148)
+[worker] case 3/5  shape=[398, 3072],[398, 128],[128, 3072, 1536],[128, 3072, 96]
+[worker] case 4/5  shape=[60, 3072],[60, 128],[128, 3072, 1536],[128, 3072, 96]
+[worker] case 5/5  shape=[26, 3072],[26, 128],[128, 3072, 1536],[128, 3072, 96]

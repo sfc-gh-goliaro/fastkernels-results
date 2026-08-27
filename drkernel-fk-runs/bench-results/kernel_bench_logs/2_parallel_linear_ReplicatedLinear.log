@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L2.parallel_linear:ReplicatedLinear: 5 case(s)
+[worker] case 1/5  shape=[1, 2048]
+[worker] case 2/5  shape=[1, 4608, 15360]
+[worker] case 3/5  shape=[673, 2048]
+[worker] case 4/5  shape=[1000, 4096]
+[worker] case 5/5  shape=[60, 2048]

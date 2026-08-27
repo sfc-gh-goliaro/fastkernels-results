@@ -1,0 +1,9 @@
+{
+  "level": 2,
+  "stem": "qwen3_next_attention",
+  "classes": [
+    "Qwen3NextAttention"
+  ],
+  "primary": "Qwen3NextAttention",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

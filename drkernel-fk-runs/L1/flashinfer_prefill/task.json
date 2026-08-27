@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "flashinfer_prefill",
+  "classes": [
+    "TRTLLMPrefill"
+  ],
+  "primary": "TRTLLMPrefill",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

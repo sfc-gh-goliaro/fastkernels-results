@@ -1,0 +1,79 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 5,
+  "skipped": 0,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L2.oasis_patch_embed:OasisPatchEmbed",
+      "level": 2,
+      "shape": "[2, 16, 18, 32]",
+      "dtype": "float32",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "module construction failed: NameError(\"name 'Conv2d' is not defined\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.oasis_patch_embed:OasisPatchEmbed",
+      "level": 2,
+      "shape": "[1, 3, 360, 640]",
+      "dtype": "float32",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "module construction failed: NameError(\"name 'Conv2d' is not defined\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.oasis_patch_embed:OasisPatchEmbed",
+      "level": 2,
+      "shape": "[5, 16, 18, 32]",
+      "dtype": "float32",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "module construction failed: NameError(\"name 'Conv2d' is not defined\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.oasis_patch_embed:OasisPatchEmbed",
+      "level": 2,
+      "shape": "[3, 16, 18, 32]",
+      "dtype": "float32",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "module construction failed: NameError(\"name 'Conv2d' is not defined\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.oasis_patch_embed:OasisPatchEmbed",
+      "level": 2,
+      "shape": "[4, 16, 18, 32]",
+      "dtype": "float32",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "module construction failed: NameError(\"name 'Conv2d' is not defined\")"
+    }
+  ]
+}

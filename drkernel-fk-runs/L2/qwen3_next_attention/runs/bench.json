@@ -1,0 +1,79 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 5,
+  "skipped": 0,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L2.qwen3_next_attention:Qwen3NextAttention",
+      "level": 2,
+      "shape": "[1, 2048],[1]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "module construction failed: TypeError(\"ModelNew.__init__() got an unexpected keyword argument 'reduce_output'\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.qwen3_next_attention:Qwen3NextAttention",
+      "level": 2,
+      "shape": "[16384, 2048],[16384]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "module construction failed: TypeError(\"ModelNew.__init__() got an unexpected keyword argument 'reduce_output'\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.qwen3_next_attention:Qwen3NextAttention",
+      "level": 2,
+      "shape": "[445, 2048],[445]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "module construction failed: TypeError(\"ModelNew.__init__() got an unexpected keyword argument 'reduce_output'\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.qwen3_next_attention:Qwen3NextAttention",
+      "level": 2,
+      "shape": "[60, 2048],[60]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "module construction failed: TypeError(\"ModelNew.__init__() got an unexpected keyword argument 'reduce_output'\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.qwen3_next_attention:Qwen3NextAttention",
+      "level": 2,
+      "shape": "[26, 2048],[26]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "module construction failed: TypeError(\"ModelNew.__init__() got an unexpected keyword argument 'reduce_output'\")"
+    }
+  ]
+}

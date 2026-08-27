@@ -1,0 +1,1 @@
+{"op": "fastkernels.tasks.baseline.L1.quickgelu:QuickGELU", "level": 1, "shape": "[1, 77, 3072]", "dtype": "float32", "status": "PASSED", "max_abs_error": 4.76837158203125e-07, "max_rel_error": 4.884574309471645e-07, "matched_ratio": 1.0, "candidate_ms": 0.011231999844312668, "baseline_ms": 0.019408000633120537, "speedup": 1.7279203082385897, "detail": ""}

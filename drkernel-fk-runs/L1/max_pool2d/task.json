@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "max_pool2d",
+  "classes": [
+    "MaxPool2d"
+  ],
+  "primary": "MaxPool2d",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

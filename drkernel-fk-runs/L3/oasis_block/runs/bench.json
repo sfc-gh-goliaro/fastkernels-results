@@ -1,0 +1,79 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 5,
+  "skipped": 0,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L3.oasis_block:SpatioTemporalDiTBlock",
+      "level": 3,
+      "shape": "[1, 2, 9, 16, 1024],[1, 2, 1024]",
+      "dtype": "float16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: RuntimeError(\"shape '[32]' is invalid for input of size 9216\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L3.oasis_block:SpatioTemporalDiTBlock",
+      "level": 3,
+      "shape": "[1, 3, 9, 16, 1024],[1, 3, 1024]",
+      "dtype": "float16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: RuntimeError(\"shape '[32]' is invalid for input of size 9216\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L3.oasis_block:SpatioTemporalDiTBlock",
+      "level": 3,
+      "shape": "[1, 4, 9, 16, 1024],[1, 4, 1024]",
+      "dtype": "float16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: RuntimeError(\"shape '[32]' is invalid for input of size 9216\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L3.oasis_block:SpatioTemporalDiTBlock",
+      "level": 3,
+      "shape": "[1, 5, 9, 16, 1024],[1, 5, 1024]",
+      "dtype": "float16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: RuntimeError(\"shape '[32]' is invalid for input of size 9216\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L3.oasis_block:SpatioTemporalDiTBlock",
+      "level": 3,
+      "shape": "[1, 6, 9, 16, 1024],[1, 6, 1024]",
+      "dtype": "float16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: RuntimeError(\"shape '[32]' is invalid for input of size 9216\")"
+    }
+  ]
+}

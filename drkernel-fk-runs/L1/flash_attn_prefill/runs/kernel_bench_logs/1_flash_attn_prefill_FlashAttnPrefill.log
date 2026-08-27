@@ -1,0 +1,8 @@
+[worker] fastkernels.tasks.baseline.L1.flash_attn_prefill:FlashAttnPrefill: 5 case(s)
+[worker] case 1/5  shape=[1760, 4, 72],[1760, 4, 72],[1760, 4, 72],[3]
+/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/base_dsl/dsl.py:2214: UserWarning: Argument aux_data (position 19) cannot be converted to a JitArgument for function 'cutlass___call___vllmvllm_flash_attncuteflash_fwd_sm100FlashAttentionForwardSm100_object_at__Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_Tensorgmemoi64i641_None_011785'. Its type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>` is not supported. If the value is known at compile time, annotate it: `aux_data: Constexpr`. Otherwise, implement the `JitArgument` or `DynamicExpression` protocol for type `<class 'vllm.vllm_flash_attn.cute.utils.AuxData'>`, or register a custom argument adapter.
+  exe_args, func_types, adapted_args = self.generate_mlir_function_types(
+[worker] case 2/5  shape=[64680, 4, 72],[64680, 4, 72],[64680, 4, 72],[33]
+[worker] case 3/5  shape=[24992, 4, 72],[24992, 4, 72],[24992, 4, 72],[31]
+[worker] case 4/5  shape=[20680, 4, 72],[20680, 4, 72],[20680, 4, 72],[25]
+[worker] case 5/5  shape=[23760, 4, 72],[23760, 4, 72],[23760, 4, 72],[29]

@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L2.gpt_oss_moe:GptOssMoE: 5 case(s)
+[worker] case 1/5  shape=[1, 2880]
+[worker] case 2/5  shape=[16384, 2880]
+[worker] case 3/5  shape=[398, 2880]
+[worker] case 4/5  shape=[60, 2880]
+[worker] case 5/5  shape=[26, 2880]

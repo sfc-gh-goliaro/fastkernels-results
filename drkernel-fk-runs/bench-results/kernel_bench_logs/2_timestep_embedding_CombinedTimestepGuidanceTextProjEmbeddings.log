@@ -1,0 +1,2 @@
+[worker] fastkernels.tasks.baseline.L2.timestep_embedding:CombinedTimestepGuidanceTextProjEmbeddings: 1 case(s)
+[worker] case 1/1  shape=[1],[1],[1, 768]

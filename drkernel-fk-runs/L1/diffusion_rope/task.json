@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "diffusion_rope",
+  "classes": [
+    "DiffusionRoPE"
+  ],
+  "primary": "DiffusionRoPE",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

@@ -1,0 +1,65 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 3,
+  "skipped": 1,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L2.yolov10_scdown:YOLOSCDown",
+      "level": 2,
+      "shape": "[4, 128, 40, 40]",
+      "dtype": "float16",
+      "status": "SKIPPED",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 0.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "skip: reference output is all-zeros"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.yolov10_scdown:YOLOSCDown",
+      "level": 2,
+      "shape": "[1, 128, 40, 40]",
+      "dtype": "float16",
+      "status": "INCORRECT_SHAPE",
+      "max_abs_error": 1e+30,
+      "max_rel_error": 1e+30,
+      "matched_ratio": 0.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "shape (1, 256, 19, 19) != (1, 256, 20, 20)"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.yolov10_scdown:YOLOSCDown",
+      "level": 2,
+      "shape": "[4, 64, 80, 80]",
+      "dtype": "float16",
+      "status": "INCORRECT_SHAPE",
+      "max_abs_error": 1e+30,
+      "max_rel_error": 1e+30,
+      "matched_ratio": 0.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "shape (4, 128, 39, 39) != (4, 128, 40, 40)"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.yolov10_scdown:YOLOSCDown",
+      "level": 2,
+      "shape": "[1, 64, 80, 80]",
+      "dtype": "float16",
+      "status": "INCORRECT_SHAPE",
+      "max_abs_error": 1e+30,
+      "max_rel_error": 1e+30,
+      "matched_ratio": 0.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "shape (1, 128, 39, 39) != (1, 128, 40, 40)"
+    }
+  ]
+}

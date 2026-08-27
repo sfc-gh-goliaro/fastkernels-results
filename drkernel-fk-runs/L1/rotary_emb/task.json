@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "rotary_emb",
+  "classes": [
+    "RotaryEmbedding"
+  ],
+  "primary": "RotaryEmbedding",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

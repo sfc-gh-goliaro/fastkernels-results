@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L2.llama_mlp:LlamaMLP: 5 case(s)
+[worker] case 1/5  shape=[1, 2304]
+[worker] case 2/5  shape=[16384, 4096]
+[worker] case 3/5  shape=[313, 4096]
+[worker] case 4/5  shape=[64, 2304]
+[worker] case 5/5  shape=[60, 4096]

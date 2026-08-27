@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "allreduce",
+  "classes": [
+    "AllReduce"
+  ],
+  "primary": "AllReduce",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

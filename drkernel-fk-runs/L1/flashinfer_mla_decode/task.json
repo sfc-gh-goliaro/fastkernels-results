@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "flashinfer_mla_decode",
+  "classes": [
+    "FlashInferMLADecode"
+  ],
+  "primary": "FlashInferMLADecode",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

@@ -1,0 +1,79 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 5,
+  "skipped": 0,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L2.vision_patch_embed:VisionPatchEmbed",
+      "level": 2,
+      "shape": "[1760, 1536]",
+      "dtype": "bfloat16",
+      "status": "INCORRECT_NUMERICAL",
+      "max_abs_error": 4.078125,
+      "max_rel_error": 235.4156494140625,
+      "matched_ratio": 0.013031190814393967,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "only 0.0130 within atol=0.01,rtol=0.01"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.vision_patch_embed:VisionPatchEmbed",
+      "level": 2,
+      "shape": "[64680, 1536]",
+      "dtype": "bfloat16",
+      "status": "INCORRECT_NUMERICAL",
+      "max_abs_error": 4.59375,
+      "max_rel_error": 313.177490234375,
+      "matched_ratio": 0.012923277739125938,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "only 0.0129 within atol=0.01,rtol=0.01"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.vision_patch_embed:VisionPatchEmbed",
+      "level": 2,
+      "shape": "[25168, 1536]",
+      "dtype": "bfloat16",
+      "status": "INCORRECT_NUMERICAL",
+      "max_abs_error": 4.59375,
+      "max_rel_error": 275.543212890625,
+      "matched_ratio": 0.012927364223529025,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "only 0.0129 within atol=0.01,rtol=0.01"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.vision_patch_embed:VisionPatchEmbed",
+      "level": 2,
+      "shape": "[20680, 1536]",
+      "dtype": "bfloat16",
+      "status": "INCORRECT_NUMERICAL",
+      "max_abs_error": 4.59375,
+      "max_rel_error": 275.543212890625,
+      "matched_ratio": 0.012918790632387656,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "only 0.0129 within atol=0.01,rtol=0.01"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.vision_patch_embed:VisionPatchEmbed",
+      "level": 2,
+      "shape": "[23760, 1536]",
+      "dtype": "bfloat16",
+      "status": "INCORRECT_NUMERICAL",
+      "max_abs_error": 4.59375,
+      "max_rel_error": 275.543212890625,
+      "matched_ratio": 0.01292544221146652,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "only 0.0129 within atol=0.01,rtol=0.01"
+    }
+  ]
+}

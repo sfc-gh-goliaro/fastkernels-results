@@ -1,0 +1,11 @@
+{
+  "level": 2,
+  "stem": "timestep_embedding",
+  "classes": [
+    "CombinedTimestepGuidanceTextProjEmbeddings",
+    "TimestepEmbedding",
+    "Timesteps"
+  ],
+  "primary": "TimestepEmbedding",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "merge_attn_states",
+  "classes": [
+    "MergeAttnStates"
+  ],
+  "primary": "MergeAttnStates",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

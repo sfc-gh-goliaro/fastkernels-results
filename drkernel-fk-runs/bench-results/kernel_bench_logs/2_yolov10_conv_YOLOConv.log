@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L2.yolov10_conv:YOLOConv: 5 case(s)
+[worker] case 1/5  shape=[1, 64, 20, 20]
+[worker] case 2/5  shape=[4, 16, 320, 320]
+[worker] case 3/5  shape=[1, 96, 80, 80]
+[worker] case 4/5  shape=[1, 256, 20, 20]
+[worker] case 5/5  shape=[4, 256, 20, 20]

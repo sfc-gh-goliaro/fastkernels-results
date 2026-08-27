@@ -1,0 +1,79 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 5,
+  "skipped": 0,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L1.flash_attn_varlen:FlashAttnVarlen",
+      "level": 1,
+      "shape": "[64, 16, 64],[64, 16, 64],[64, 16, 64],[2]",
+      "dtype": "float16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: RuntimeError(\"shape '[1024, 64]' is invalid for input of size 16384\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.flash_attn_varlen:FlashAttnVarlen",
+      "level": 1,
+      "shape": "[16384, 16, 192],[65536, 16, 192],[65536, 16, 128],[3]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: RuntimeError('The size of tensor a (16384) must match the size of tensor b (65536) at non-singleton dimension 0')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.flash_attn_varlen:FlashAttnVarlen",
+      "level": 1,
+      "shape": "[16384, 16, 192],[16384, 16, 192],[16384, 16, 128],[3]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: RuntimeError(\"shape '[262144, 16384]' is invalid for input of size 4194304\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.flash_attn_varlen:FlashAttnVarlen",
+      "level": 1,
+      "shape": "[16384, 16, 192],[16384, 16, 192],[16384, 16, 128],[2]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: RuntimeError(\"shape '[262144, 16384]' is invalid for input of size 4194304\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.flash_attn_varlen:FlashAttnVarlen",
+      "level": 1,
+      "shape": "[16384, 16, 192],[65536, 16, 192],[65536, 16, 128],[2]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: RuntimeError('The size of tensor a (16384) must match the size of tensor b (65536) at non-singleton dimension 0')"
+    }
+  ]
+}

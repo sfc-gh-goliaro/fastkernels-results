@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "flash_attn_varlen",
+  "classes": [
+    "FlashAttnVarlen"
+  ],
+  "primary": "FlashAttnVarlen",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "gate_linear",
+  "classes": [
+    "GateLinear"
+  ],
+  "primary": "GateLinear",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

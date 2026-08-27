@@ -1,0 +1,9 @@
+{
+  "level": 3,
+  "stem": "alphafold3_diffusion_transformer",
+  "classes": [
+    "DiffusionTransformer"
+  ],
+  "primary": "DiffusionTransformerBlock",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

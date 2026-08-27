@@ -1,0 +1,1 @@
+{"op": "fastkernels.tasks.baseline.L1.fp8_linear:Fp8Linear", "level": 1, "shape": "-", "dtype": "-", "status": "SKIPPED", "detail": "no candidate class found"}

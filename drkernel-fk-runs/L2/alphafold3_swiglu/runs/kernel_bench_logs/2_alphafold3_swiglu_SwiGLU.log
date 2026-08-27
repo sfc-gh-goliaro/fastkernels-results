@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L2.alphafold3_swiglu:SwiGLU: 5 case(s)
+[worker] case 1/5  shape=[1, 16, 384]
+[worker] case 2/5  shape=[1, 1, 368, 128]
+[worker] case 3/5  shape=[1, 16, 16, 128]
+[worker] case 4/5  shape=[1, 1, 16, 768]
+[worker] case 5/5  shape=[1, 8, 16, 64]

@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "conv2d",
+  "classes": [
+    "Conv2d"
+  ],
+  "primary": "Conv2d",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

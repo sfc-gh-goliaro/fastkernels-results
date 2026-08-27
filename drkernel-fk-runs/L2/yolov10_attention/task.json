@@ -1,0 +1,9 @@
+{
+  "level": 2,
+  "stem": "yolov10_attention",
+  "classes": [
+    "YOLOAttention"
+  ],
+  "primary": "YOLOAttention",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "moe_align",
+  "classes": [
+    "MoeAlign"
+  ],
+  "primary": "MoeAlign",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

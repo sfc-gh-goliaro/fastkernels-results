@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "mrope",
+  "classes": [
+    "MRotaryEmbedding"
+  ],
+  "primary": "MRotaryEmbedding",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

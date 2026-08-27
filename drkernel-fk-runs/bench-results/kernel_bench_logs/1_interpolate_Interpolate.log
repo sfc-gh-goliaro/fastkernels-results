@@ -1,0 +1,5 @@
+[worker] fastkernels.tasks.baseline.L1.interpolate:Interpolate: 4 case(s)
+[worker] case 1/4  shape=[4, 256, 20, 20]
+[worker] case 2/4  shape=[4, 128, 40, 40]
+[worker] case 3/4  shape=[1, 256, 20, 20]
+[worker] case 4/4  shape=[1, 128, 40, 40]

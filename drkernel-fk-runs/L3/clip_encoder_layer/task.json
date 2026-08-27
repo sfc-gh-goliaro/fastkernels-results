@@ -1,0 +1,9 @@
+{
+  "level": 3,
+  "stem": "clip_encoder_layer",
+  "classes": [
+    "CLIPEncoderLayer"
+  ],
+  "primary": "CLIPEncoderLayer",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

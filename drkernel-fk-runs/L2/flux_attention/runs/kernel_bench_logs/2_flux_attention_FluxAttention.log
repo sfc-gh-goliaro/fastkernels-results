@@ -1,0 +1,5 @@
+[worker] fastkernels.tasks.baseline.L2.flux_attention:FluxAttention: 4 case(s)
+[worker] case 1/4  shape=[1, 4608, 3072],[4608, 64],[4608, 64]
+[worker] case 2/4  shape=[1, 1536, 3072],[1536, 64],[1536, 64]
+[worker] case 3/4  shape=[1, 4096, 3072],[1, 512, 3072],[4608, 64],[4608, 64]
+[worker] case 4/4  shape=[1, 1024, 3072],[1, 512, 3072],[1536, 64],[1536, 64]

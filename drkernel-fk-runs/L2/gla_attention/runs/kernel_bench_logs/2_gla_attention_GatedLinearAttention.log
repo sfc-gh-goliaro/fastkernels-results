@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L2.gla_attention:GatedLinearAttention: 5 case(s)
+[worker] case 1/5  shape=[1, 1, 2560]
+[worker] case 2/5  shape=[181, 1081, 2560]
+[worker] case 3/5  shape=[116, 1, 2560]
+[worker] case 4/5  shape=[256, 1, 2560]
+[worker] case 5/5  shape=[64, 1, 2560]

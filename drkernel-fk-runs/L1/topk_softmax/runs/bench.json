@@ -1,0 +1,79 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 5,
+  "skipped": 0,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L1.topk_softmax:TopKSoftmax",
+      "level": 1,
+      "shape": "[1, 128]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: CompilationError('def _topk_softmax_kernel(\\n    router_ptr,                # *ptr to [M, E]\\n    out_w_ptr,                 # *ptr to [M, K] float32\\n    out_i_ptr,                 # *ptr to [M, K] int32\\n    E: tl.constexpr,           # number of cols (experts)\\n    K: tl.constexpr,           # top-k\\n    stride_r: tl.constexpr,    # row stride in elements for router\\n    stride_wo: tl.constexpr,   # row stride in elements for out_w\\n    stride_io: tl.constexpr,   # row stride in elements for out_i\\n    BLOCK: tl.constexpr,       # block size (>= E, power-of-two)\\n):\\n    m = tl.program_id(0)\\n    row_r = router_ptr + m * stride_r\\n\\n    # Top-K buffers (registers / vectors)\\n    topv = tl.full((K,), -float(\"inf\"), dtype=tl.float32)\\n    topi = tl.full((K,), -1, dtype=tl.int32)\\n\\n    # Pass 1: scan columns, update topv/topi elementwise\\n    for j in range(0, BLOCK):\\n        mask_j = j < E\\n        v = tl.load(row_r + j, mask=mask_j, other=-float(\"inf\")).to(tl.float32)\\n\\n        # t = 0: allow equality to get argmax; t > 0: strict better to cap to K\\n        better0 = v >= topv[0]\\n        topv = tl.where(better0 & mask_j, v, topv)\\n        topi = tl.where(better0 & mask_j, j, topi)\\n\\n        for t in range(1, K):\\n            better = v > topv[t]\\n            topv = tl.where(better & mask_j, v, topv)\\n            topi = tl.where(better & mask_j, j, topi)\\n        # end t-loop\\n\\n    # Pass 2: softmax over top-K (numerically stable)\\n    maxv = topv[0]\\n    for t in range(1, K):\\n        maxv = tl.maximum(maxv, topv[t])\\n    numer = tl.exp(topv - maxv)\\n    sumv = tl.sum(numer, axis=0)\\n    weights = numer / sumv\\n\\n    # Store results (contiguous K slots per row)\\n    row_w = out_w_ptr + m * stride_wo\\n    row_i = out_i_ptr + m * stride_io\\n    for t in range(0, K):\\n        tl.store(row_w + t, weights[t])\\n        tl.store(row_i + t, topi[t])\\n', <ast.Subscript object at 0x7f2d51aed510>, 'unsupported tensor index: constexpr[0]')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.topk_softmax:TopKSoftmax",
+      "level": 1,
+      "shape": "[16384, 128]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: CompilationError('def _topk_softmax_kernel(\\n    router_ptr,                # *ptr to [M, E]\\n    out_w_ptr,                 # *ptr to [M, K] float32\\n    out_i_ptr,                 # *ptr to [M, K] int32\\n    E: tl.constexpr,           # number of cols (experts)\\n    K: tl.constexpr,           # top-k\\n    stride_r: tl.constexpr,    # row stride in elements for router\\n    stride_wo: tl.constexpr,   # row stride in elements for out_w\\n    stride_io: tl.constexpr,   # row stride in elements for out_i\\n    BLOCK: tl.constexpr,       # block size (>= E, power-of-two)\\n):\\n    m = tl.program_id(0)\\n    row_r = router_ptr + m * stride_r\\n\\n    # Top-K buffers (registers / vectors)\\n    topv = tl.full((K,), -float(\"inf\"), dtype=tl.float32)\\n    topi = tl.full((K,), -1, dtype=tl.int32)\\n\\n    # Pass 1: scan columns, update topv/topi elementwise\\n    for j in range(0, BLOCK):\\n        mask_j = j < E\\n        v = tl.load(row_r + j, mask=mask_j, other=-float(\"inf\")).to(tl.float32)\\n\\n        # t = 0: allow equality to get argmax; t > 0: strict better to cap to K\\n        better0 = v >= topv[0]\\n        topv = tl.where(better0 & mask_j, v, topv)\\n        topi = tl.where(better0 & mask_j, j, topi)\\n\\n        for t in range(1, K):\\n            better = v > topv[t]\\n            topv = tl.where(better & mask_j, v, topv)\\n            topi = tl.where(better & mask_j, j, topi)\\n        # end t-loop\\n\\n    # Pass 2: softmax over top-K (numerically stable)\\n    maxv = topv[0]\\n    for t in range(1, K):\\n        maxv = tl.maximum(maxv, topv[t])\\n    numer = tl.exp(topv - maxv)\\n    sumv = tl.sum(numer, axis=0)\\n    weights = numer / sumv\\n\\n    # Store results (contiguous K slots per row)\\n    row_w = out_w_ptr + m * stride_wo\\n    row_i = out_i_ptr + m * stride_io\\n    for t in range(0, K):\\n        tl.store(row_w + t, weights[t])\\n        tl.store(row_i + t, topi[t])\\n', <ast.Subscript object at 0x7f2d54cf5050>, 'unsupported tensor index: constexpr[0]')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.topk_softmax:TopKSoftmax",
+      "level": 1,
+      "shape": "[643, 128]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: CompilationError('def _topk_softmax_kernel(\\n    router_ptr,                # *ptr to [M, E]\\n    out_w_ptr,                 # *ptr to [M, K] float32\\n    out_i_ptr,                 # *ptr to [M, K] int32\\n    E: tl.constexpr,           # number of cols (experts)\\n    K: tl.constexpr,           # top-k\\n    stride_r: tl.constexpr,    # row stride in elements for router\\n    stride_wo: tl.constexpr,   # row stride in elements for out_w\\n    stride_io: tl.constexpr,   # row stride in elements for out_i\\n    BLOCK: tl.constexpr,       # block size (>= E, power-of-two)\\n):\\n    m = tl.program_id(0)\\n    row_r = router_ptr + m * stride_r\\n\\n    # Top-K buffers (registers / vectors)\\n    topv = tl.full((K,), -float(\"inf\"), dtype=tl.float32)\\n    topi = tl.full((K,), -1, dtype=tl.int32)\\n\\n    # Pass 1: scan columns, update topv/topi elementwise\\n    for j in range(0, BLOCK):\\n        mask_j = j < E\\n        v = tl.load(row_r + j, mask=mask_j, other=-float(\"inf\")).to(tl.float32)\\n\\n        # t = 0: allow equality to get argmax; t > 0: strict better to cap to K\\n        better0 = v >= topv[0]\\n        topv = tl.where(better0 & mask_j, v, topv)\\n        topi = tl.where(better0 & mask_j, j, topi)\\n\\n        for t in range(1, K):\\n            better = v > topv[t]\\n            topv = tl.where(better & mask_j, v, topv)\\n            topi = tl.where(better & mask_j, j, topi)\\n        # end t-loop\\n\\n    # Pass 2: softmax over top-K (numerically stable)\\n    maxv = topv[0]\\n    for t in range(1, K):\\n        maxv = tl.maximum(maxv, topv[t])\\n    numer = tl.exp(topv - maxv)\\n    sumv = tl.sum(numer, axis=0)\\n    weights = numer / sumv\\n\\n    # Store results (contiguous K slots per row)\\n    row_w = out_w_ptr + m * stride_wo\\n    row_i = out_i_ptr + m * stride_io\\n    for t in range(0, K):\\n        tl.store(row_w + t, weights[t])\\n        tl.store(row_i + t, topi[t])\\n', <ast.Subscript object at 0x7f2d54cf3550>, 'unsupported tensor index: constexpr[0]')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.topk_softmax:TopKSoftmax",
+      "level": 1,
+      "shape": "[1000, 128]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: CompilationError('def _topk_softmax_kernel(\\n    router_ptr,                # *ptr to [M, E]\\n    out_w_ptr,                 # *ptr to [M, K] float32\\n    out_i_ptr,                 # *ptr to [M, K] int32\\n    E: tl.constexpr,           # number of cols (experts)\\n    K: tl.constexpr,           # top-k\\n    stride_r: tl.constexpr,    # row stride in elements for router\\n    stride_wo: tl.constexpr,   # row stride in elements for out_w\\n    stride_io: tl.constexpr,   # row stride in elements for out_i\\n    BLOCK: tl.constexpr,       # block size (>= E, power-of-two)\\n):\\n    m = tl.program_id(0)\\n    row_r = router_ptr + m * stride_r\\n\\n    # Top-K buffers (registers / vectors)\\n    topv = tl.full((K,), -float(\"inf\"), dtype=tl.float32)\\n    topi = tl.full((K,), -1, dtype=tl.int32)\\n\\n    # Pass 1: scan columns, update topv/topi elementwise\\n    for j in range(0, BLOCK):\\n        mask_j = j < E\\n        v = tl.load(row_r + j, mask=mask_j, other=-float(\"inf\")).to(tl.float32)\\n\\n        # t = 0: allow equality to get argmax; t > 0: strict better to cap to K\\n        better0 = v >= topv[0]\\n        topv = tl.where(better0 & mask_j, v, topv)\\n        topi = tl.where(better0 & mask_j, j, topi)\\n\\n        for t in range(1, K):\\n            better = v > topv[t]\\n            topv = tl.where(better & mask_j, v, topv)\\n            topi = tl.where(better & mask_j, j, topi)\\n        # end t-loop\\n\\n    # Pass 2: softmax over top-K (numerically stable)\\n    maxv = topv[0]\\n    for t in range(1, K):\\n        maxv = tl.maximum(maxv, topv[t])\\n    numer = tl.exp(topv - maxv)\\n    sumv = tl.sum(numer, axis=0)\\n    weights = numer / sumv\\n\\n    # Store results (contiguous K slots per row)\\n    row_w = out_w_ptr + m * stride_wo\\n    row_i = out_i_ptr + m * stride_io\\n    for t in range(0, K):\\n        tl.store(row_w + t, weights[t])\\n        tl.store(row_i + t, topi[t])\\n', <ast.Subscript object at 0x7f2d54d0c250>, 'unsupported tensor index: constexpr[0]')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.topk_softmax:TopKSoftmax",
+      "level": 1,
+      "shape": "[314, 128]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: CompilationError('def _topk_softmax_kernel(\\n    router_ptr,                # *ptr to [M, E]\\n    out_w_ptr,                 # *ptr to [M, K] float32\\n    out_i_ptr,                 # *ptr to [M, K] int32\\n    E: tl.constexpr,           # number of cols (experts)\\n    K: tl.constexpr,           # top-k\\n    stride_r: tl.constexpr,    # row stride in elements for router\\n    stride_wo: tl.constexpr,   # row stride in elements for out_w\\n    stride_io: tl.constexpr,   # row stride in elements for out_i\\n    BLOCK: tl.constexpr,       # block size (>= E, power-of-two)\\n):\\n    m = tl.program_id(0)\\n    row_r = router_ptr + m * stride_r\\n\\n    # Top-K buffers (registers / vectors)\\n    topv = tl.full((K,), -float(\"inf\"), dtype=tl.float32)\\n    topi = tl.full((K,), -1, dtype=tl.int32)\\n\\n    # Pass 1: scan columns, update topv/topi elementwise\\n    for j in range(0, BLOCK):\\n        mask_j = j < E\\n        v = tl.load(row_r + j, mask=mask_j, other=-float(\"inf\")).to(tl.float32)\\n\\n        # t = 0: allow equality to get argmax; t > 0: strict better to cap to K\\n        better0 = v >= topv[0]\\n        topv = tl.where(better0 & mask_j, v, topv)\\n        topi = tl.where(better0 & mask_j, j, topi)\\n\\n        for t in range(1, K):\\n            better = v > topv[t]\\n            topv = tl.where(better & mask_j, v, topv)\\n            topi = tl.where(better & mask_j, j, topi)\\n        # end t-loop\\n\\n    # Pass 2: softmax over top-K (numerically stable)\\n    maxv = topv[0]\\n    for t in range(1, K):\\n        maxv = tl.maximum(maxv, topv[t])\\n    numer = tl.exp(topv - maxv)\\n    sumv = tl.sum(numer, axis=0)\\n    weights = numer / sumv\\n\\n    # Store results (contiguous K slots per row)\\n    row_w = out_w_ptr + m * stride_wo\\n    row_i = out_i_ptr + m * stride_io\\n    for t in range(0, K):\\n        tl.store(row_w + t, weights[t])\\n        tl.store(row_i + t, topi[t])\\n', <ast.Subscript object at 0x7f2d51aee250>, 'unsupported tensor index: constexpr[0]')"
+    }
+  ]
+}

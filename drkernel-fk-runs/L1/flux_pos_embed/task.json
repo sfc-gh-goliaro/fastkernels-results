@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "flux_pos_embed",
+  "classes": [
+    "FluxPosEmbed"
+  ],
+  "primary": "FluxPosEmbed",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

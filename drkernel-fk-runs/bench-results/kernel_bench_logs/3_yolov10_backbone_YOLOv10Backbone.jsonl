@@ -1,0 +1,1 @@
+{"op": "fastkernels.tasks.baseline.L3.yolov10_backbone:YOLOv10Backbone", "level": 3, "shape": "-", "dtype": "-", "status": "SKIPPED", "detail": "no candidate class found"}

@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "layer_norm",
+  "classes": [
+    "LayerNorm"
+  ],
+  "primary": "LayerNorm",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

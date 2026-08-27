@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L1.rotary_emb:RotaryEmbedding: 5 case(s)
+[worker] case 1/5  shape=[1],[1, 4096],[1, 1024]
+[worker] case 2/5  shape=[16384],[16384, 4096],[16384, 1024]
+[worker] case 3/5  shape=[414],[414, 4096],[414, 1024]
+[worker] case 4/5  shape=[60],[60, 4096],[60, 1024]
+[worker] case 5/5  shape=[26],[26, 4096],[26, 1024]

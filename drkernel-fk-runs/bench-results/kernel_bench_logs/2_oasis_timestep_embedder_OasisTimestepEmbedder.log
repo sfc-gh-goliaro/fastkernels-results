@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L2.oasis_timestep_embedder:OasisTimestepEmbedder: 5 case(s)
+[worker] case 1/5  shape=[2]
+[worker] case 2/5  shape=[3]
+[worker] case 3/5  shape=[4]
+[worker] case 4/5  shape=[5]
+[worker] case 5/5  shape=[6]

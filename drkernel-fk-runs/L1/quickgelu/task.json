@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "quickgelu",
+  "classes": [
+    "QuickGELU"
+  ],
+  "primary": "QuickGELU",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

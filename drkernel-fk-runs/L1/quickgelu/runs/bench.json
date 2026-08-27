@@ -1,0 +1,23 @@
+{
+  "mode": "candidate",
+  "passed": 1,
+  "failed": 0,
+  "skipped": 0,
+  "all_passed": true,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L1.quickgelu:QuickGELU",
+      "level": 1,
+      "shape": "[1, 77, 3072]",
+      "dtype": "float32",
+      "status": "PASSED",
+      "max_abs_error": 4.76837158203125e-07,
+      "max_rel_error": 4.884574309471645e-07,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.011264000087976456,
+      "baseline_ms": 0.01942400075495243,
+      "speedup": 1.7244318717367744,
+      "detail": ""
+    }
+  ]
+}

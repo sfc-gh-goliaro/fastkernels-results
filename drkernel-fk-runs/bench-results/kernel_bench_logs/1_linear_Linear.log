@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L1.linear:Linear: 5 case(s)
+[worker] case 1/5  shape=[1, 1, 16]
+[worker] case 2/5  shape=[181, 1081, 6912]
+[worker] case 3/5  shape=[122, 2880]
+[worker] case 4/5  shape=[256, 1, 2560]
+[worker] case 5/5  shape=[256, 1, 16]

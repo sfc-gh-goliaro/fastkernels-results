@@ -1,0 +1,1 @@
+{"op": "fastkernels.tasks.baseline.L2.gla_attention:GatedLinearAttention", "level": 2, "shape": "-", "dtype": "-", "status": "SKIPPED", "detail": "no candidate class found"}

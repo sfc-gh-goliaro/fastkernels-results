@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "embedding",
+  "classes": [
+    "Embedding"
+  ],
+  "primary": "Embedding",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

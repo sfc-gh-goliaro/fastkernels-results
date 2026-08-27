@@ -1,0 +1,5 @@
+[worker] fastkernels.tasks.baseline.L1.linear:BMM: 4 case(s)
+[worker] case 1/4  shape=[1, 64, 512, 64],[1, 64, 64, 512]
+[worker] case 2/4  shape=[1, 64, 512, 512],[1, 64, 512, 64]
+[worker] case 3/4  shape=[1, 12, 77, 64],[1, 12, 64, 77]
+[worker] case 4/4  shape=[1, 12, 77, 77],[1, 12, 77, 64]

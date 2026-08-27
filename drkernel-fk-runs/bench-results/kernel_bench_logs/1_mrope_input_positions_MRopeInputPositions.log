@@ -1,0 +1,21 @@
+[worker] fastkernels.tasks.baseline.L1.mrope_input_positions:MRopeInputPositions: 5 case(s)
+[worker] case 1/5  shape=scalar
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/yak/fastkernels/fastkernels/bench.py", line 2875, in <module>
+    raise SystemExit(main(sys.argv[1:]))
+                     ^^^^^^^^^^^^^^^^^^
+  File "/home/yak/fastkernels/fastkernels/bench.py", line 2815, in main
+    return _worker_main(args)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/yak/fastkernels/fastkernels/bench.py", line 2347, in _worker_main
+    torch.cuda.empty_cache()
+  File "/home/yak/miniconda3/envs/dev/lib/python3.12/site-packages/torch/cuda/memory.py", line 224, in empty_cache
+    torch._C._cuda_emptyCache()
+torch.AcceleratorError: CUDA error: an illegal memory access was encountered
+Search for `cudaErrorIllegalAddress' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+

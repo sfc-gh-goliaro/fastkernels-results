@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "oasis_rotary",
+  "classes": [
+    "OasisRotaryEmbedding"
+  ],
+  "primary": "OasisRotaryEmbedding",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

@@ -1,0 +1,79 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 5,
+  "skipped": 0,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L1.rms_norm:RMSNorm",
+      "level": 1,
+      "shape": "[1, 1, 128]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: CompilationError('def _rmsnorm_kernel_no_res(\\n    x_ptr,         # *dtype, [M,H] contiguous\\n    w_ptr,         # *dtype, [H]\\n    y_ptr,         # *dtype, [M,H] contiguous\\n    M, H,\\n    stride_xm, stride_xh,\\n    stride_ym, stride_yh,\\n    eps,\\n    BLOCK_SIZE: tl.constexpr,\\n):\\n    row = tl.program_id(0)\\n    if row >= M:\\n        return\\n\\n    # Pass 1: sum of squares in f32\\n    sumsq = tl.zeros((), dtype=tl.float32)\\n    col = 0\\n    while col < H:\\n        offs = col + tl.arange(0, BLOCK_SIZE)\\n        mask = offs < H\\n        x = tl.load(x_ptr + row * stride_xm + offs * stride_xh, mask=mask, other=0.0)\\n        xf = x.to(tl.float32)\\n        sumsq += tl.sum(xf * xf, axis=0)\\n        col += BLOCK_SIZE\\n\\n    invH = 1.0 / float(H)\\n    scale = tl.rsqrt(sumsq * invH + eps)  # f32\\n\\n    # Pass 2: y = x * scale * w\\n    col = 0\\n    while col < H:\\n        offs = col + tl.arange(0, BLOCK_SIZE)\\n        mask = offs < H\\n        x = tl.load(x_ptr + row * stride_xm + offs * stride_xh, mask=mask, other=0.0)\\n        w = tl.load(w_ptr + offs, mask=mask, other=1.0)\\n        xf = x.to(tl.float32)\\n        wf = w.to(tl.float32)\\n        out = (xf * scale) * wf\\n        out = out.to(x.dtype)\\n        tl.store(y_ptr + row * stride_ym + offs * stride_yh, out, mask=mask)\\n        col += BLOCK_SIZE\\n', <ast.Call object at 0x7fc544a16450>, 'TypeError(\"float() argument must be a string or a real number, not \\'tensor\\'\")')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.rms_norm:RMSNorm",
+      "level": 1,
+      "shape": "[978305, 512]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: CompilationError('def _rmsnorm_kernel_no_res(\\n    x_ptr,         # *dtype, [M,H] contiguous\\n    w_ptr,         # *dtype, [H]\\n    y_ptr,         # *dtype, [M,H] contiguous\\n    M, H,\\n    stride_xm, stride_xh,\\n    stride_ym, stride_yh,\\n    eps,\\n    BLOCK_SIZE: tl.constexpr,\\n):\\n    row = tl.program_id(0)\\n    if row >= M:\\n        return\\n\\n    # Pass 1: sum of squares in f32\\n    sumsq = tl.zeros((), dtype=tl.float32)\\n    col = 0\\n    while col < H:\\n        offs = col + tl.arange(0, BLOCK_SIZE)\\n        mask = offs < H\\n        x = tl.load(x_ptr + row * stride_xm + offs * stride_xh, mask=mask, other=0.0)\\n        xf = x.to(tl.float32)\\n        sumsq += tl.sum(xf * xf, axis=0)\\n        col += BLOCK_SIZE\\n\\n    invH = 1.0 / float(H)\\n    scale = tl.rsqrt(sumsq * invH + eps)  # f32\\n\\n    # Pass 2: y = x * scale * w\\n    col = 0\\n    while col < H:\\n        offs = col + tl.arange(0, BLOCK_SIZE)\\n        mask = offs < H\\n        x = tl.load(x_ptr + row * stride_xm + offs * stride_xh, mask=mask, other=0.0)\\n        w = tl.load(w_ptr + offs, mask=mask, other=1.0)\\n        xf = x.to(tl.float32)\\n        wf = w.to(tl.float32)\\n        out = (xf * scale) * wf\\n        out = out.to(x.dtype)\\n        tl.store(y_ptr + row * stride_ym + offs * stride_yh, out, mask=mask)\\n        col += BLOCK_SIZE\\n', <ast.Call object at 0x7fc57a4e32d0>, 'TypeError(\"float() argument must be a string or a real number, not \\'tensor\\'\")')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.rms_norm:RMSNorm",
+      "level": 1,
+      "shape": "[651, 16, 128]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: CompilationError('def _rmsnorm_kernel_no_res(\\n    x_ptr,         # *dtype, [M,H] contiguous\\n    w_ptr,         # *dtype, [H]\\n    y_ptr,         # *dtype, [M,H] contiguous\\n    M, H,\\n    stride_xm, stride_xh,\\n    stride_ym, stride_yh,\\n    eps,\\n    BLOCK_SIZE: tl.constexpr,\\n):\\n    row = tl.program_id(0)\\n    if row >= M:\\n        return\\n\\n    # Pass 1: sum of squares in f32\\n    sumsq = tl.zeros((), dtype=tl.float32)\\n    col = 0\\n    while col < H:\\n        offs = col + tl.arange(0, BLOCK_SIZE)\\n        mask = offs < H\\n        x = tl.load(x_ptr + row * stride_xm + offs * stride_xh, mask=mask, other=0.0)\\n        xf = x.to(tl.float32)\\n        sumsq += tl.sum(xf * xf, axis=0)\\n        col += BLOCK_SIZE\\n\\n    invH = 1.0 / float(H)\\n    scale = tl.rsqrt(sumsq * invH + eps)  # f32\\n\\n    # Pass 2: y = x * scale * w\\n    col = 0\\n    while col < H:\\n        offs = col + tl.arange(0, BLOCK_SIZE)\\n        mask = offs < H\\n        x = tl.load(x_ptr + row * stride_xm + offs * stride_xh, mask=mask, other=0.0)\\n        w = tl.load(w_ptr + offs, mask=mask, other=1.0)\\n        xf = x.to(tl.float32)\\n        wf = w.to(tl.float32)\\n        out = (xf * scale) * wf\\n        out = out.to(x.dtype)\\n        tl.store(y_ptr + row * stride_ym + offs * stride_yh, out, mask=mask)\\n        col += BLOCK_SIZE\\n', <ast.Call object at 0x7fc57a4eb690>, 'TypeError(\"float() argument must be a string or a real number, not \\'tensor\\'\")')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.rms_norm:RMSNorm",
+      "level": 1,
+      "shape": "[256, 2560]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: CompilationError('def _rmsnorm_kernel_no_res(\\n    x_ptr,         # *dtype, [M,H] contiguous\\n    w_ptr,         # *dtype, [H]\\n    y_ptr,         # *dtype, [M,H] contiguous\\n    M, H,\\n    stride_xm, stride_xh,\\n    stride_ym, stride_yh,\\n    eps,\\n    BLOCK_SIZE: tl.constexpr,\\n):\\n    row = tl.program_id(0)\\n    if row >= M:\\n        return\\n\\n    # Pass 1: sum of squares in f32\\n    sumsq = tl.zeros((), dtype=tl.float32)\\n    col = 0\\n    while col < H:\\n        offs = col + tl.arange(0, BLOCK_SIZE)\\n        mask = offs < H\\n        x = tl.load(x_ptr + row * stride_xm + offs * stride_xh, mask=mask, other=0.0)\\n        xf = x.to(tl.float32)\\n        sumsq += tl.sum(xf * xf, axis=0)\\n        col += BLOCK_SIZE\\n\\n    invH = 1.0 / float(H)\\n    scale = tl.rsqrt(sumsq * invH + eps)  # f32\\n\\n    # Pass 2: y = x * scale * w\\n    col = 0\\n    while col < H:\\n        offs = col + tl.arange(0, BLOCK_SIZE)\\n        mask = offs < H\\n        x = tl.load(x_ptr + row * stride_xm + offs * stride_xh, mask=mask, other=0.0)\\n        w = tl.load(w_ptr + offs, mask=mask, other=1.0)\\n        xf = x.to(tl.float32)\\n        wf = w.to(tl.float32)\\n        out = (xf * scale) * wf\\n        out = out.to(x.dtype)\\n        tl.store(y_ptr + row * stride_ym + offs * stride_yh, out, mask=mask)\\n        col += BLOCK_SIZE\\n', <ast.Call object at 0x7fc57a4e1c10>, 'TypeError(\"float() argument must be a string or a real number, not \\'tensor\\'\")')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.rms_norm:RMSNorm",
+      "level": 1,
+      "shape": "[1000, 4096],[1000, 4096]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: CompilationError('def _rmsnorm_kernel_with_res(\\n    x_ptr,         # *dtype, [M,H] contiguous\\n    r_ptr,         # *dtype, [M,H] contiguous\\n    w_ptr,         # *dtype, [H]\\n    y_ptr,         # *dtype, [M,H] contiguous\\n    M, H,\\n    stride_xm, stride_xh,\\n    stride_rm, stride_rh,\\n    stride_ym, stride_yh,\\n    eps,\\n    BLOCK_SIZE: tl.constexpr,\\n):\\n    row = tl.program_id(0)\\n    if row >= M:\\n        return\\n\\n    # Pass 1: sum of squares in f32 for z = x + r\\n    sumsq = tl.zeros((), dtype=tl.float32)\\n    col = 0\\n    while col < H:\\n        offs = col + tl.arange(0, BLOCK_SIZE)\\n        mask = offs < H\\n        x = tl.load(x_ptr + row * stride_xm + offs * stride_xh, mask=mask, other=0.0)\\n        res = tl.load(r_ptr + row * stride_rm + offs * stride_rh, mask=mask, other=0.0)\\n        zf = (x + res).to(tl.float32)\\n        sumsq += tl.sum(zf * zf, axis=0)\\n        col += BLOCK_SIZE\\n\\n    invH = 1.0 / float(H)\\n    scale = tl.rsqrt(sumsq * invH + eps)  # f32\\n\\n    # Pass 2: y = (x + r) * scale * w\\n    col = 0\\n    while col < H:\\n        offs = col + tl.arange(0, BLOCK_SIZE)\\n        mask = offs < H\\n        x = tl.load(x_ptr + row * stride_xm + offs * stride_xh, mask=mask, other=0.0)\\n        res = tl.load(r_ptr + row * stride_rm + offs * stride_rh, mask=mask, other=0.0)\\n        w = tl.load(w_ptr + offs, mask=mask, other=1.0)\\n        zf = (x + res).to(tl.float32)\\n        wf = w.to(tl.float32)\\n        out = (zf * scale) * wf\\n        out = out.to(x.dtype)\\n        tl.store(y_ptr + row * stride_ym + offs * stride_yh, out, mask=mask)\\n        col += BLOCK_SIZE\\n', <ast.Call object at 0x7fc544a0a050>, 'TypeError(\"float() argument must be a string or a real number, not \\'tensor\\'\")')"
+    }
+  ]
+}

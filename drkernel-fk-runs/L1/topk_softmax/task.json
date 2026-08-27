@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "topk_softmax",
+  "classes": [
+    "TopKSoftmax"
+  ],
+  "primary": "TopKSoftmax",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

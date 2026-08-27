@@ -1,0 +1,9 @@
+{
+  "level": 2,
+  "stem": "alphafold3_outer_product_mean",
+  "classes": [
+    "OuterProductMean"
+  ],
+  "primary": "OuterProductMean",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

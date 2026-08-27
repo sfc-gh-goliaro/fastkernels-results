@@ -1,0 +1,16 @@
+{"sample": 0, "iteration": 0, "turn": 1, "prompt_tokens": 12889, "completion_tokens": 8192}
+{"sample": 0, "iteration": 0, "turn": 2, "prompt_tokens": 21224, "completion_tokens": 7805}
+{"sample": 1, "iteration": 0, "turn": 1, "prompt_tokens": 12889, "completion_tokens": 8192}
+{"sample": 1, "iteration": 0, "turn": 2, "prompt_tokens": 21227, "completion_tokens": 8192}
+{"sample": 2, "iteration": 0, "turn": 1, "prompt_tokens": 12889, "completion_tokens": 8192}
+{"sample": 2, "iteration": 0, "turn": 2, "prompt_tokens": 21227, "completion_tokens": 8192}
+{"sample": 3, "iteration": 0, "turn": 1, "prompt_tokens": 12889, "completion_tokens": 8192}
+{"sample": 3, "iteration": 0, "turn": 2, "prompt_tokens": 21227, "completion_tokens": 8192}
+{"sample": 4, "iteration": 0, "turn": 1, "prompt_tokens": 12889, "completion_tokens": 7895}
+{"sample": 4, "iteration": 0, "turn": 2, "prompt_tokens": 21204, "completion_tokens": 8192}
+{"sample": 5, "iteration": 0, "turn": 1, "prompt_tokens": 12889, "completion_tokens": 7831}
+{"sample": 5, "iteration": 0, "turn": 2, "prompt_tokens": 21143, "completion_tokens": 5517}
+{"sample": 6, "iteration": 0, "turn": 1, "prompt_tokens": 12889, "completion_tokens": 8192}
+{"sample": 6, "iteration": 0, "turn": 2, "prompt_tokens": 21227, "completion_tokens": 8192}
+{"sample": 7, "iteration": 0, "turn": 1, "prompt_tokens": 12889, "completion_tokens": 8192}
+{"sample": 7, "iteration": 0, "turn": 2, "prompt_tokens": 21227, "completion_tokens": 8192}

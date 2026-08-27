@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L2.vision_mlp:VisionMLP: 5 case(s)
+[worker] case 1/5  shape=[1760, 1, 1152]
+[worker] case 2/5  shape=[64680, 1, 1152]
+[worker] case 3/5  shape=[25168, 1, 1152]
+[worker] case 4/5  shape=[20680, 1, 1152]
+[worker] case 5/5  shape=[23760, 1, 1152]

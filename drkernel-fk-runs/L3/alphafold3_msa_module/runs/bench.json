@@ -1,0 +1,23 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 1,
+  "skipped": 0,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L3.alphafold3_msa_module:MSAModuleStack",
+      "level": 3,
+      "shape": "[1, 8, 16, 64],[1, 16, 16, 128],[1, 8, 16],[1, 16, 16]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "module construction failed: RecursionError('maximum recursion depth exceeded')"
+    }
+  ]
+}

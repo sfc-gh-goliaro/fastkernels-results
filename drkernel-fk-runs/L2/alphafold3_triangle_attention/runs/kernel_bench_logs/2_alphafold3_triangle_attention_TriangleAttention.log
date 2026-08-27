@@ -1,0 +1,2 @@
+[worker] fastkernels.tasks.baseline.L2.alphafold3_triangle_attention:TriangleAttention: 1 case(s)
+[worker] case 1/1  shape=[1, 16, 16, 128],[1, 16, 16]

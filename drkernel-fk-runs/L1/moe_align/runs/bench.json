@@ -1,0 +1,79 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 5,
+  "skipped": 0,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L1.moe_align:MoeAlign",
+      "level": 1,
+      "shape": "[1, 8]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: NameError(\"name 'triton' is not defined\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.moe_align:MoeAlign",
+      "level": 1,
+      "shape": "[16384, 8]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: FileNotFoundError(2, 'No such file or directory')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.moe_align:MoeAlign",
+      "level": 1,
+      "shape": "[643, 8]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: FileNotFoundError(2, 'No such file or directory')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.moe_align:MoeAlign",
+      "level": 1,
+      "shape": "[1000, 8]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: FileNotFoundError(2, 'No such file or directory')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L1.moe_align:MoeAlign",
+      "level": 1,
+      "shape": "[314, 8]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: FileNotFoundError(2, 'No such file or directory')"
+    }
+  ]
+}

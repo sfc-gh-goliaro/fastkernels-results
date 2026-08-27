@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "tensor_ops",
+  "classes": [
+    "Pad"
+  ],
+  "primary": "Pad",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

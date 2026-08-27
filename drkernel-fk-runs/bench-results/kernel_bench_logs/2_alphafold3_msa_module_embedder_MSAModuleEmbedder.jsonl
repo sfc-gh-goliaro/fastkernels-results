@@ -1,0 +1,1 @@
+{"op": "fastkernels.tasks.baseline.L2.alphafold3_msa_module_embedder:MSAModuleEmbedder", "level": 2, "shape": "[1, 16, 384],[1, 16],[1, 16],[1, 368]", "dtype": "bfloat16", "status": "PASSED", "max_abs_error": 0.0, "max_rel_error": 0.0, "matched_ratio": 1.0, "candidate_ms": 0.21398399770259857, "baseline_ms": 0.160800002515316, "speedup": 0.7514580727611263, "detail": ""}

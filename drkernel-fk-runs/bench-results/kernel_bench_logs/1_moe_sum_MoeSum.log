@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L1.moe_sum:MoeSum: 5 case(s)
+[worker] case 1/5  shape=[8, 4096]
+[worker] case 2/5  shape=[131072, 4096]
+[worker] case 3/5  shape=[5144, 4096]
+[worker] case 4/5  shape=[8000, 4096]
+[worker] case 5/5  shape=[2512, 4096]

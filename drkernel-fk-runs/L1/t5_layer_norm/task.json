@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "t5_layer_norm",
+  "classes": [
+    "T5LayerNorm"
+  ],
+  "primary": "T5LayerNorm",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

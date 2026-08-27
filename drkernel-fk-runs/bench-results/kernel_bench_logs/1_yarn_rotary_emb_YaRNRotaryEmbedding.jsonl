@@ -1,0 +1,1 @@
+{"op": "fastkernels.tasks.baseline.L1.yarn_rotary_emb:YaRNRotaryEmbedding", "level": 1, "shape": "-", "dtype": "-", "status": "SKIPPED", "detail": "no candidate class found"}

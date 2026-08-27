@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "l2_norm",
+  "classes": [
+    "L2Norm"
+  ],
+  "primary": "L2Norm",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

@@ -1,0 +1,23 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 0,
+  "skipped": 1,
+  "all_passed": true,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L3.vision_block:VisionBlock",
+      "level": 3,
+      "shape": "-",
+      "dtype": "-",
+      "status": "SKIPPED",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "no candidate class found"
+    }
+  ]
+}

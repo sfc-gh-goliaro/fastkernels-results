@@ -1,0 +1,65 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 4,
+  "skipped": 0,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L2.flux_attention:FluxAttention",
+      "level": 2,
+      "shape": "[1, 4608, 3072],[4608, 64],[4608, 64]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: ValueError('too many values to unpack (expected 3)')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.flux_attention:FluxAttention",
+      "level": 2,
+      "shape": "[1, 1536, 3072],[1536, 64],[1536, 64]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: ValueError('too many values to unpack (expected 3)')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.flux_attention:FluxAttention",
+      "level": 2,
+      "shape": "[1, 4096, 3072],[1, 512, 3072],[4608, 64],[4608, 64]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: ValueError('too many values to unpack (expected 3)')"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.flux_attention:FluxAttention",
+      "level": 2,
+      "shape": "[1, 1024, 3072],[1, 512, 3072],[1536, 64],[1536, 64]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: ValueError('too many values to unpack (expected 3)')"
+    }
+  ]
+}

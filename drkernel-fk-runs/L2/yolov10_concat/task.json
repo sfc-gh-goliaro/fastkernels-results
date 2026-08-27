@@ -1,0 +1,9 @@
+{
+  "level": 2,
+  "stem": "yolov10_concat",
+  "classes": [
+    "YOLOConcat"
+  ],
+  "primary": "YOLOConcat",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

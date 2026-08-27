@@ -1,0 +1,9 @@
+{
+  "level": 3,
+  "stem": "t5_block",
+  "classes": [
+    "T5Block"
+  ],
+  "primary": "T5Block",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

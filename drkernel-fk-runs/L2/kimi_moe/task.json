@@ -1,0 +1,9 @@
+{
+  "level": 2,
+  "stem": "kimi_moe",
+  "classes": [
+    "KimiMoE"
+  ],
+  "primary": "KimiMoE",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

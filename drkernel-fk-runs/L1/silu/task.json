@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "silu",
+  "classes": [
+    "SiLU"
+  ],
+  "primary": "SiLU",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

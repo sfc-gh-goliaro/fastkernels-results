@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "rms_norm",
+  "classes": [
+    "RMSNorm"
+  ],
+  "primary": "RMSNorm",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

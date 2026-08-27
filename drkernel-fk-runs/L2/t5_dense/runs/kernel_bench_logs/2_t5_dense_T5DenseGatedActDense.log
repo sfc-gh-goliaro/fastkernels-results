@@ -1,0 +1,2 @@
+[worker] fastkernels.tasks.baseline.L2.t5_dense:T5DenseGatedActDense: 1 case(s)
+[worker] case 1/1  shape=[1, 512, 4096]

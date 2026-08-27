@@ -1,0 +1,79 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 5,
+  "skipped": 0,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L2.gla_attention:GatedLinearAttention",
+      "level": 2,
+      "shape": "[1, 1, 2560]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: TypeError(\"'function' object is not subscriptable\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.gla_attention:GatedLinearAttention",
+      "level": 2,
+      "shape": "[181, 1081, 2560]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: TypeError(\"'function' object is not subscriptable\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.gla_attention:GatedLinearAttention",
+      "level": 2,
+      "shape": "[116, 1, 2560]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: TypeError(\"'function' object is not subscriptable\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.gla_attention:GatedLinearAttention",
+      "level": 2,
+      "shape": "[256, 1, 2560]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: TypeError(\"'function' object is not subscriptable\")"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.gla_attention:GatedLinearAttention",
+      "level": 2,
+      "shape": "[64, 1, 2560]",
+      "dtype": "bfloat16",
+      "status": "RUNTIME_ERROR",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 1.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "candidate forward raised: TypeError(\"'function' object is not subscriptable\")"
+    }
+  ]
+}

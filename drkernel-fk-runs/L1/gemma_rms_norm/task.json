@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "gemma_rms_norm",
+  "classes": [
+    "GemmaRMSNorm"
+  ],
+  "primary": "GemmaRMSNorm",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

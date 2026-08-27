@@ -1,0 +1,9 @@
+{
+  "level": 2,
+  "stem": "alphafold3_diffusion_conditioning",
+  "classes": [
+    "DiffusionConditioning"
+  ],
+  "primary": "FourierEmbedding",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

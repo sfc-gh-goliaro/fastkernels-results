@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "relu",
+  "classes": [
+    "ReLU"
+  ],
+  "primary": "ReLU",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

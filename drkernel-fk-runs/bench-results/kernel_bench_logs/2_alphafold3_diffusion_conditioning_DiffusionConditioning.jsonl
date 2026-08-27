@@ -1,0 +1,1 @@
+{"op": "fastkernels.tasks.baseline.L2.alphafold3_diffusion_conditioning:DiffusionConditioning", "level": 2, "shape": "[1, 16, 384],[1, 16],[1, 16],[1, 368]", "dtype": "bfloat16", "status": "PASSED", "max_abs_error": 0.0, "max_rel_error": 0.0, "matched_ratio": 1.0, "candidate_ms": 1.514639973640442, "baseline_ms": 1.4263200163841248, "speedup": 0.9416891414505324, "detail": ""}

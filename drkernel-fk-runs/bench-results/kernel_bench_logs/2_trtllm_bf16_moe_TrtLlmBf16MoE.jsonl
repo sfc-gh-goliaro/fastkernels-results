@@ -1,0 +1,1 @@
+{"op": "fastkernels.tasks.baseline.L2.trtllm_bf16_moe:TrtLlmBf16MoE", "level": 2, "shape": "-", "dtype": "-", "status": "SKIPPED", "detail": "no candidate class found"}

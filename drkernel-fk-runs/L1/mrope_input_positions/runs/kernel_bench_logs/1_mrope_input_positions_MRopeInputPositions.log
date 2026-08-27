@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L1.mrope_input_positions:MRopeInputPositions: 5 case(s)
+[worker] case 1/5  shape=scalar
+[worker] case 2/5  shape=scalar
+[worker] case 3/5  shape=scalar
+[worker] case 4/5  shape=scalar
+[worker] case 5/5  shape=scalar

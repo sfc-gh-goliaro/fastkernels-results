@@ -1,0 +1,79 @@
+{
+  "mode": "candidate",
+  "passed": 0,
+  "failed": 3,
+  "skipped": 2,
+  "all_passed": false,
+  "scenarios": [
+    {
+      "op": "fastkernels.tasks.baseline.L2.oasis_mlp:OasisMLP",
+      "level": 2,
+      "shape": "[1, 2, 9, 16, 1024]",
+      "dtype": "float16",
+      "status": "SKIPPED",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 0.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "skip: reference output is all-zeros"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.oasis_mlp:OasisMLP",
+      "level": 2,
+      "shape": "[6, 576, 1024]",
+      "dtype": "float16",
+      "status": "INCORRECT_NUMERICAL",
+      "max_abs_error": 1.0397796630859375,
+      "max_rel_error": 103.54728698730469,
+      "matched_ratio": 0.04064206723813657,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "only 0.0406 within atol=0.01,rtol=0.01"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.oasis_mlp:OasisMLP",
+      "level": 2,
+      "shape": "[1, 4, 9, 16, 1024]",
+      "dtype": "float16",
+      "status": "SKIPPED",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "matched_ratio": 0.0,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "skip: reference output is all-zeros"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.oasis_mlp:OasisMLP",
+      "level": 2,
+      "shape": "[1, 3, 9, 16, 1024]",
+      "dtype": "float16",
+      "status": "INCORRECT_NUMERICAL",
+      "max_abs_error": 0.9177103042602539,
+      "max_rel_error": 91.77103424072266,
+      "matched_ratio": 0.04052282262731477,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "only 0.0405 within atol=0.01,rtol=0.01"
+    },
+    {
+      "op": "fastkernels.tasks.baseline.L2.oasis_mlp:OasisMLP",
+      "level": 2,
+      "shape": "[1, 5, 9, 16, 1024]",
+      "dtype": "float16",
+      "status": "INCORRECT_NUMERICAL",
+      "max_abs_error": 0.9397659301757812,
+      "max_rel_error": 93.97659301757812,
+      "matched_ratio": 0.04068603515625002,
+      "candidate_ms": 0.0,
+      "baseline_ms": 0.0,
+      "speedup": 0.0,
+      "detail": "only 0.0407 within atol=0.01,rtol=0.01"
+    }
+  ]
+}

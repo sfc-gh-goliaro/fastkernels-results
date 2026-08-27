@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L1.store_kvcache_fp8_mla:StoreKVCacheFP8MLA: 5 case(s)
+[worker] case 1/5  shape=[1, 512],[1, 1, 64],[182699, 64, 576],[1]
+[worker] case 2/5  shape=[16384, 512],[16384, 1, 64],[182699, 64, 576],[16384]
+[worker] case 3/5  shape=[443, 512],[443, 1, 64],[182699, 64, 576],[443]
+[worker] case 4/5  shape=[64, 512],[64, 1, 64],[182699, 64, 576],[64]
+[worker] case 5/5  shape=[26, 512],[26, 1, 64],[182699, 64, 576],[26]

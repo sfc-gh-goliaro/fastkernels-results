@@ -1,0 +1,9 @@
+{
+  "level": 2,
+  "stem": "attention_impl",
+  "classes": [
+    "Attention"
+  ],
+  "primary": "Attention",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

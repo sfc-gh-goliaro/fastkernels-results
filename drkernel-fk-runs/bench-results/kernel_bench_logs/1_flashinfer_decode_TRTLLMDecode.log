@@ -1,0 +1,6 @@
+[worker] fastkernels.tasks.baseline.L1.flashinfer_decode:TRTLLMDecode: 5 case(s)
+[worker] case 1/5  shape=[1, 16, 128],[114541, 1, 16, 128],[114541, 1, 16, 128],[1]
+[worker] case 2/5  shape=[981, 32, 128],[70892, 8, 16, 128],[70892, 8, 16, 128],[981]
+[worker] case 3/5  shape=[286, 32, 64],[216987, 4, 16, 64],[216987, 4, 16, 64],[286]
+[worker] case 4/5  shape=[2, 16, 128],[114541, 1, 16, 128],[114541, 1, 16, 128],[2]
+[worker] case 5/5  shape=[1, 16, 128],[114541, 1, 16, 128],[114541, 1, 16, 128],[1]

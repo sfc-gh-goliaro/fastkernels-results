@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "log_sigmoid",
+  "classes": [
+    "LogSigmoid"
+  ],
+  "primary": "LogSigmoid",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}

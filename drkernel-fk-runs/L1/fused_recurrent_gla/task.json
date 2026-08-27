@@ -1,0 +1,9 @@
+{
+  "level": 1,
+  "stem": "fused_recurrent_gla",
+  "classes": [
+    "FusedRecurrentGLA"
+  ],
+  "primary": "FusedRecurrentGLA",
+  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
+}
