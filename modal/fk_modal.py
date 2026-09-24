@@ -17,7 +17,9 @@ from pathlib import Path
 import modal
 
 HERE = Path(__file__).resolve().parent
-FK_LOCAL = HERE.parent.parent / "fastkernels"          # pinned checkout (9acebaa)
+# Fixed snapshot of fastkernels (9acebaa) for the image's dependency install, so editing the
+# working checkout never rebuilds the heavy layers; dev runs mount the live code on top.
+FK_LOCAL = Path(os.environ.get("FK_IMAGE_BASE", HERE.parent.parent / "fk-wt" / "image-base"))
 CANDIDATES_LOCAL = HERE.parent / "agent-candidates"
 
 DEEPGEMM = "deep-gemm @ git+https://github.com/deepseek-ai/DeepGEMM.git@a6b593d2826719dcf4892609af7b84ee23aaf32a"
