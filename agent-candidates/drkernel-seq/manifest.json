@@ -1,0 +1,322 @@
+{
+ "set": "drkernel-seq",
+ "agent": "Dr. Kernel",
+ "mode": "sequential",
+ "source": {
+  "winners": "drkernel-b200-20260919/campaign/seq/win_candidates",
+  "composed_bench": "drkernel-b200-20260919/campaign/seq/bench_results/bench.json"
+ },
+ "selection": "winners correct in the composed bench of this set",
+ "kernels": [
+  {
+   "level": 1,
+   "stem": "flashinfer_decode",
+   "classes": [
+    "TRTLLMDecode"
+   ],
+   "composed_speedup": 1.0006729415552316
+  },
+  {
+   "level": 1,
+   "stem": "flashinfer_prefill",
+   "classes": [
+    "TRTLLMPrefill"
+   ],
+   "composed_speedup": 1.0050892803008942
+  },
+  {
+   "level": 1,
+   "stem": "gelu",
+   "classes": [
+    "GELU"
+   ],
+   "composed_speedup": 1.0679694106308795
+  },
+  {
+   "level": 1,
+   "stem": "gemma_rms_norm",
+   "classes": [
+    "GemmaRMSNorm"
+   ],
+   "composed_speedup": 1.072821910601987
+  },
+  {
+   "level": 1,
+   "stem": "interpolate",
+   "classes": [
+    "Interpolate"
+   ],
+   "composed_speedup": 1.2837077589002086
+  },
+  {
+   "level": 1,
+   "stem": "l2_norm",
+   "classes": [
+    "L2Norm"
+   ],
+   "composed_speedup": 1.7771551047687424
+  },
+  {
+   "level": 1,
+   "stem": "layer_norm",
+   "classes": [
+    "LayerNorm"
+   ],
+   "composed_speedup": 1.3814791838271265
+  },
+  {
+   "level": 1,
+   "stem": "log_sigmoid",
+   "classes": [
+    "LogSigmoid"
+   ],
+   "composed_speedup": 1.0417156543343558
+  },
+  {
+   "level": 1,
+   "stem": "max_pool2d",
+   "classes": [
+    "MaxPool2d"
+   ],
+   "composed_speedup": 1.1912978530244496
+  },
+  {
+   "level": 1,
+   "stem": "moe_sum",
+   "classes": [
+    "MoeSum"
+   ],
+   "composed_speedup": 1.6440594334778644
+  },
+  {
+   "level": 1,
+   "stem": "oasis_rotary",
+   "classes": [
+    "OasisRotaryEmbedding"
+   ],
+   "composed_speedup": 1.2286318297996108
+  },
+  {
+   "level": 1,
+   "stem": "quickgelu",
+   "classes": [
+    "QuickGELU"
+   ],
+   "composed_speedup": 1.4494773225895918
+  },
+  {
+   "level": 1,
+   "stem": "rms_norm",
+   "classes": [
+    "RMSNorm"
+   ],
+   "composed_speedup": 1.069595611437232
+  },
+  {
+   "level": 1,
+   "stem": "rms_norm_gated",
+   "classes": [
+    "RMSNormGated"
+   ],
+   "composed_speedup": 1.3167073002202898
+  },
+  {
+   "level": 1,
+   "stem": "silu",
+   "classes": [
+    "SiLU"
+   ],
+   "composed_speedup": 1.0404519882238925
+  },
+  {
+   "level": 1,
+   "stem": "silu_and_mul",
+   "classes": [
+    "SiluAndMul"
+   ],
+   "composed_speedup": 1.0830769338812027
+  },
+  {
+   "level": 1,
+   "stem": "t5_layer_norm",
+   "classes": [
+    "T5LayerNorm"
+   ],
+   "composed_speedup": 4.639204446800679
+  },
+  {
+   "level": 1,
+   "stem": "tensor_ops",
+   "classes": [
+    "Pad"
+   ],
+   "composed_speedup": 1.0010461614174015
+  },
+  {
+   "level": 2,
+   "stem": "ada_layer_norm_continuous",
+   "classes": [
+    "AdaLayerNormContinuous"
+   ],
+   "composed_speedup": 1.8966539735990842
+  },
+  {
+   "level": 2,
+   "stem": "gla_mlp",
+   "classes": [
+    "GLAMLP"
+   ],
+   "composed_speedup": 1.0430781202742918
+  },
+  {
+   "level": 2,
+   "stem": "oasis_mlp",
+   "classes": [
+    "OasisMLP"
+   ],
+   "composed_speedup": 1.0063957607989484
+  },
+  {
+   "level": 2,
+   "stem": "yolov10_c2f",
+   "classes": [
+    "YOLOC2f",
+    "YOLOC2fCIB"
+   ],
+   "composed_speedup": 1.7740776697623706
+  },
+  {
+   "level": 2,
+   "stem": "yolov10_dfl",
+   "classes": [
+    "YOLODFL"
+   ],
+   "composed_speedup": 1.527792417868097
+  },
+  {
+   "level": 3,
+   "stem": "t5_block",
+   "classes": [
+    "T5Block"
+   ],
+   "composed_speedup": 1.0839561827783057
+  },
+  {
+   "level": 3,
+   "stem": "yolov10_neck",
+   "classes": [
+    "YOLOv10Neck"
+   ],
+   "composed_speedup": 1.244334942373991
+  }
+ ],
+ "dropped": [],
+ "files": {
+  "L1/flashinfer_decode.py": "6490f3b35aa9d5d4a8e4d285aab6c703947dcc161259f0e2d97fcb847b87f793",
+  "L1/flashinfer_prefill.py": "702441271d9439b679c7c440fdb1d3daed44d0ac14d69f9759e5a36739561f2b",
+  "L1/gelu.py": "6bd337b7e5512d52c7602d626ac85a0bd4e866e70e302a39a5d2f206c42692fd",
+  "L1/gemma_rms_norm.py": "df801edc0a58b515e026031309db9bec79fc4f0cc0de049f0a853a3c03ecbecf",
+  "L1/interpolate.py": "be41ec66180595397ea83393afed573bbc9d533d5d893409d9614f606e9c9b29",
+  "L1/l2_norm.py": "7e952ff5db6cbe150d9316701c135d5ef3b3c6c6a4424903129e6ff4c91149b0",
+  "L1/layer_norm.py": "d47d4b37096e157f41d24edeb52ca055489959e8e311addcb32b10fddc0540c3",
+  "L1/log_sigmoid.py": "54ac407da1fbf65efd2400127cbb01a1d0cf4ad196941208e10664131e9a3e93",
+  "L1/max_pool2d.py": "3a4ca24da2502d8daea6d3a16503a1459b1655a9042d4a61dfaff6c6721b1473",
+  "L1/moe_sum.py": "c0675098a22539f1583bd078362a4f6e409cbcea36a4e9d5dfc1e47c32be788d",
+  "L1/oasis_rotary.py": "b64cbc7ec6ad7f30478059de3f4b1085cf50ca106b21f0fdaef3ef243b073b05",
+  "L1/quickgelu.py": "8dc910b68d0a4d19b8d4ca2467b0e0998940c7a2f4967d9bb6e7c18e7d36b09b",
+  "L1/rms_norm.py": "ca5f40001abadae1f75fc0eac252bebaf7832f3cbf9d35bb29b85302bcd08f85",
+  "L1/rms_norm_gated.py": "d3486b48ff9399232a50b0fe283ebbf8480d7101c05ffeac1a18ba0858482749",
+  "L1/silu.py": "01003f734d795f48b205be3a7ce029194a8cbd0ba6cbb99c560a1b6d394550d4",
+  "L1/silu_and_mul.py": "ed28c4c65e4d7805b5eff6b434a80ff8e92188612e08dc8bdc11738b5545a44f",
+  "L1/t5_layer_norm.py": "df0b52fe1779b27403e18c759249233a799c4261467952a6cc49cc81fd936ef5",
+  "L1/tensor_ops.py": "801f1c8d191dfce668399ed893202743fbfe9393cf161940cb7d6e8b9dce507a",
+  "L2/ada_layer_norm_continuous.py": "4eeb9f838580deae443736bfaf96f5acb3e3118938d993a651ef623345577151",
+  "L2/gla_mlp.py": "d70ef29d094fec651041da05fdf03c7351685a0945c28a02db4087291133e689",
+  "L2/oasis_mlp.py": "038cc3faced42e7043cbccfd1b1472838f88e39b4c6cb68682a20b5cfb5c1029",
+  "L2/yolov10_c2f.py": "f68e31eddbb2b78f0478ea8fedfc0c5bfeea61ef44e8754f6560fe43b5e3140a",
+  "L2/yolov10_dfl.py": "2927a0286331c716e0881f61df0907bc844f7d9da16b46a7a9b1ec8cf22da02b",
+  "L3/t5_block.py": "4c4ca1b1b893ae16d67c0f0840e3aed91b97502e7efbb16b64b7e6fb379a33c1",
+  "L3/yolov10_neck.py": "ba8ad6a2df018553dee82c16fe40f2ea197c38446a23f7285beaaa0f6a01e885"
+ },
+ "unreferenced_sources": [],
+ "scenarios": {
+  "meta-llama/Llama-3.1-8B-Instruct": [
+   "L1:flashinfer_decode",
+   "L1:flashinfer_prefill",
+   "L1:rms_norm",
+   "L1:silu_and_mul"
+  ],
+  "Qwen/Qwen3-Next-80B-A3B-Instruct": [
+   "L1:flashinfer_decode",
+   "L1:flashinfer_prefill",
+   "L1:gemma_rms_norm",
+   "L1:moe_sum",
+   "L1:rms_norm_gated",
+   "L1:silu_and_mul"
+  ],
+  "moonshotai/Kimi-Linear-48B-A3B-Instruct": [
+   "L1:moe_sum",
+   "L1:rms_norm",
+   "L1:rms_norm_gated",
+   "L1:silu_and_mul"
+  ],
+  "openai/gpt-oss-120b": [
+   "L1:flashinfer_decode",
+   "L1:flashinfer_prefill",
+   "L1:rms_norm"
+  ],
+  "fla-hub/gla-2.7B-100B": [
+   "L1:log_sigmoid",
+   "L1:rms_norm",
+   "L1:silu",
+   "L2:gla_mlp"
+  ],
+  "black-forest-labs/FLUX.1-dev": [
+   "L1:gelu",
+   "L1:layer_norm",
+   "L1:quickgelu",
+   "L1:rms_norm",
+   "L1:silu",
+   "L1:t5_layer_norm",
+   "L2:ada_layer_norm_continuous",
+   "L3:t5_block"
+  ],
+  "Qwen/Qwen3-VL-235B-A22B-Instruct-FP8": [
+   "L1:flashinfer_decode",
+   "L1:flashinfer_prefill",
+   "L1:gelu",
+   "L1:layer_norm",
+   "L1:moe_sum",
+   "L1:rms_norm",
+   "L1:silu_and_mul"
+  ],
+  "jameslahm/yolov10n": [
+   "L1:interpolate",
+   "L1:max_pool2d",
+   "L1:silu",
+   "L1:tensor_ops",
+   "L2:yolov10_c2f",
+   "L2:yolov10_dfl",
+   "L3:yolov10_neck"
+  ],
+  "OpenFold/OpenFold3": [
+   "L1:layer_norm",
+   "L1:silu",
+   "L1:tensor_ops"
+  ],
+  "BAAI/bge-m3": [
+   "L1:gelu",
+   "L1:l2_norm",
+   "L1:layer_norm"
+  ],
+  "Etched/oasis-500m": [
+   "L1:gelu",
+   "L1:layer_norm",
+   "L1:oasis_rotary",
+   "L1:silu",
+   "L2:oasis_mlp"
+  ]
+ },
+ "static_check_findings": [],
+ "optional_imports": []
+}

@@ -1,9 +1,0 @@
-{
-  "level": 3,
-  "stem": "gpt_oss_decoder",
-  "classes": [
-    "GptOssDecoderLayer"
-  ],
-  "primary": "GptOssDecoderLayer",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

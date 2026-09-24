@@ -1,3 +1,0 @@
-[worker] fastkernels.tasks.baseline.L3.yolov10_neck:YOLOv10Neck: 2 case(s)
-[worker] case 1/2  shape=[4, 64, 80, 80],[4, 128, 40, 40],[4, 256, 20, 20]
-[worker] case 2/2  shape=[1, 64, 80, 80],[1, 128, 40, 40],[1, 256, 20, 20]

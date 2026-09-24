@@ -1,6 +1,0 @@
-[worker] fastkernels.tasks.baseline.L1.oasis_rotary:OasisRotaryEmbedding: 5 case(s)
-[worker] case 1/5  shape=[9],[16]
-[worker] case 2/5  shape=[6],[32]
-[worker] case 3/5  shape=[3],[32]
-[worker] case 4/5  shape=[16],[16]
-[worker] case 5/5  shape=[2],[32]

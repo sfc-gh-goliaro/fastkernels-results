@@ -1,1 +1,0 @@
-{"op": "fastkernels.tasks.baseline.L3.alphafold3_diffusion_transformer:DiffusionTransformer", "level": 3, "shape": "-", "dtype": "-", "status": "SKIPPED", "detail": "no candidate class found"}

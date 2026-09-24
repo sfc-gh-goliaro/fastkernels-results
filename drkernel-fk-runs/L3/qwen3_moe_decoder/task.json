@@ -1,9 +1,0 @@
-{
-  "level": 3,
-  "stem": "qwen3_moe_decoder",
-  "classes": [
-    "Qwen3MoEDecoderLayer"
-  ],
-  "primary": "Qwen3MoEDecoderLayer",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

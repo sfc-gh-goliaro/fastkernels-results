@@ -1,6 +1,0 @@
-[worker] fastkernels.tasks.baseline.L1.rms_norm:RMSNorm: 5 case(s)
-[worker] case 1/5  shape=[1, 1, 128]
-[worker] case 2/5  shape=[978305, 512]
-[worker] case 3/5  shape=[651, 16, 128]
-[worker] case 4/5  shape=[256, 2560]
-[worker] case 5/5  shape=[1000, 4096],[1000, 4096]

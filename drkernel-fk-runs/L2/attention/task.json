@@ -1,9 +1,0 @@
-{
-  "level": 2,
-  "stem": "attention",
-  "classes": [
-    "LlamaAttention"
-  ],
-  "primary": "LlamaAttention",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

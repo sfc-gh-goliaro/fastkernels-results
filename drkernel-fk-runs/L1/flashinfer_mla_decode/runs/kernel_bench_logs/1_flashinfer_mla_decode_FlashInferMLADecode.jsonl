@@ -1,1 +1,0 @@
-{"op": "fastkernels.tasks.baseline.L1.flashinfer_mla_decode:FlashInferMLADecode", "level": 1, "shape": "-", "dtype": "-", "status": "SKIPPED", "detail": "no candidate class found"}

@@ -1,9 +1,0 @@
-{
-  "level": 2,
-  "stem": "t5_attention",
-  "classes": [
-    "T5SelfAttention"
-  ],
-  "primary": "T5SelfAttention",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

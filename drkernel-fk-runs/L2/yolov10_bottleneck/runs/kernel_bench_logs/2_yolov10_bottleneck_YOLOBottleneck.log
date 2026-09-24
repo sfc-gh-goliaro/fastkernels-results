@@ -1,6 +1,0 @@
-[worker] fastkernels.tasks.baseline.L2.yolov10_bottleneck:YOLOBottleneck: 5 case(s)
-[worker] case 1/5  shape=[1, 128, 20, 20]
-[worker] case 2/5  shape=[4, 16, 160, 160]
-[worker] case 3/5  shape=[4, 64, 40, 40]
-[worker] case 4/5  shape=[1, 64, 40, 40]
-[worker] case 5/5  shape=[1, 32, 80, 80]

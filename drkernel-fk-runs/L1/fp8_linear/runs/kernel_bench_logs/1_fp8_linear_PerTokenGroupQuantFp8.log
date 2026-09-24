@@ -1,6 +1,0 @@
-[worker] fastkernels.tasks.baseline.L1.fp8_linear:PerTokenGroupQuantFp8: 5 case(s)
-[worker] case 1/5  shape=[8, 384],[8, 384],[8, 3]
-[worker] case 2/5  shape=[16384, 4096],[16384, 4096],[16384, 32]
-[worker] case 3/5  shape=[5896, 384],[5896, 384],[5896, 3]
-[worker] case 4/5  shape=[8000, 384],[8000, 384],[8000, 3]
-[worker] case 5/5  shape=[1000, 4096],[1000, 4096],[1000, 32]

@@ -1,6 +1,0 @@
-[worker] fastkernels.tasks.baseline.L1.fused_recurrent_gla:FusedRecurrentGLA: 5 case(s)
-[worker] case 1/5  shape=[1, 42, 5, 256],[1, 42, 5, 256],[1, 42, 5, 512],[1, 42, 5, 256]
-[worker] case 2/5  shape=[256, 1, 5, 256],[256, 1, 5, 256],[256, 1, 5, 512],[256, 1, 5, 256]
-[worker] case 3/5  shape=[56, 1, 5, 256],[56, 1, 5, 256],[56, 1, 5, 512],[56, 1, 5, 256]
-[worker] case 4/5  shape=[64, 1, 5, 256],[64, 1, 5, 256],[64, 1, 5, 512],[64, 1, 5, 256]
-[worker] case 5/5  shape=[4, 1, 5, 256],[4, 1, 5, 256],[4, 1, 5, 512],[4, 1, 5, 256]

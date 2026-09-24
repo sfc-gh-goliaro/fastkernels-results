@@ -1,6 +1,0 @@
-[worker] fastkernels.tasks.baseline.L1.silu:SiLU: 5 case(s)
-[worker] case 1/5  shape=[2, 1024]
-[worker] case 2/5  shape=[181, 1081, 6912]
-[worker] case 3/5  shape=[64, 1, 6912]
-[worker] case 4/5  shape=[256, 1, 2560]
-[worker] case 5/5  shape=[256, 1, 6912]

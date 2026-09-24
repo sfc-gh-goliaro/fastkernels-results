@@ -1,3 +1,0 @@
-[worker] fastkernels.tasks.baseline.L2.yolov10_c2f:YOLOC2fCIB: 2 case(s)
-[worker] case 1/2  shape=[4, 384, 20, 20]
-[worker] case 2/2  shape=[1, 384, 20, 20]

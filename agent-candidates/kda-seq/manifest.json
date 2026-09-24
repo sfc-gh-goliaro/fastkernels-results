@@ -1,0 +1,1357 @@
+{
+ "set": "kda-seq",
+ "agent": "KDA",
+ "mode": "sequential",
+ "source": {
+  "winners": "kda-fk-runs/seq/win_candidates",
+  "composed_bench": "kda-fk-runs/seq/bench_results/bench.json"
+ },
+ "selection": "winners correct in the composed bench of this set",
+ "kernels": [
+  {
+   "level": 1,
+   "stem": "chunk_gla",
+   "classes": [
+    "ChunkGLA"
+   ],
+   "composed_speedup": 1.6537864024299163
+  },
+  {
+   "level": 1,
+   "stem": "conv2d",
+   "classes": [
+    "Conv2d"
+   ],
+   "composed_speedup": 1.3156416745987762
+  },
+  {
+   "level": 1,
+   "stem": "dense_attention",
+   "classes": [
+    "DenseAttention"
+   ],
+   "composed_speedup": 2.430932373117675
+  },
+  {
+   "level": 1,
+   "stem": "diffusion_rope",
+   "classes": [
+    "DiffusionRoPE"
+   ],
+   "composed_speedup": 1.6939043135552856
+  },
+  {
+   "level": 1,
+   "stem": "embedding",
+   "classes": [
+    "Embedding"
+   ],
+   "composed_speedup": 1.5688298858528733
+  },
+  {
+   "level": 1,
+   "stem": "flash_attn_prefill",
+   "classes": [
+    "FlashAttnPrefill"
+   ],
+   "composed_speedup": 1.1104123112042557
+  },
+  {
+   "level": 1,
+   "stem": "flash_attn_varlen",
+   "classes": [
+    "FlashAttnVarlen"
+   ],
+   "composed_speedup": 1.0929521992560016
+  },
+  {
+   "level": 1,
+   "stem": "flashinfer_decode",
+   "classes": [
+    "TRTLLMDecode"
+   ],
+   "composed_speedup": 0.9991959696383712
+  },
+  {
+   "level": 1,
+   "stem": "flashinfer_prefill",
+   "classes": [
+    "TRTLLMPrefill"
+   ],
+   "composed_speedup": 1.0223303872285328
+  },
+  {
+   "level": 1,
+   "stem": "flux_pos_embed",
+   "classes": [
+    "FluxPosEmbed"
+   ],
+   "composed_speedup": 12.454980057114312
+  },
+  {
+   "level": 1,
+   "stem": "fp8_linear",
+   "classes": [
+    "Fp8Linear",
+    "PerTokenGroupQuantFp8"
+   ],
+   "composed_speedup": 1.2653281674236636
+  },
+  {
+   "level": 1,
+   "stem": "fused_recurrent_gla",
+   "classes": [
+    "FusedRecurrentGLA"
+   ],
+   "composed_speedup": 1.1891371333571734
+  },
+  {
+   "level": 1,
+   "stem": "gelu",
+   "classes": [
+    "GELU"
+   ],
+   "composed_speedup": 1.1549958443827386
+  },
+  {
+   "level": 1,
+   "stem": "gemma_rms_norm",
+   "classes": [
+    "GemmaRMSNorm"
+   ],
+   "composed_speedup": 1.003146725924001
+  },
+  {
+   "level": 1,
+   "stem": "interpolate",
+   "classes": [
+    "Interpolate"
+   ],
+   "composed_speedup": 1.4542785071977744
+  },
+  {
+   "level": 1,
+   "stem": "l2_norm",
+   "classes": [
+    "L2Norm"
+   ],
+   "composed_speedup": 1.9399464117352028
+  },
+  {
+   "level": 1,
+   "stem": "layer_norm",
+   "classes": [
+    "LayerNorm"
+   ],
+   "composed_speedup": 1.6872059036976539
+  },
+  {
+   "level": 1,
+   "stem": "linear",
+   "classes": [
+    "BMM",
+    "Linear",
+    "Matmul"
+   ],
+   "composed_speedup": 0.9976705525958561
+  },
+  {
+   "level": 1,
+   "stem": "log_sigmoid",
+   "classes": [
+    "LogSigmoid"
+   ],
+   "composed_speedup": 1.1849168986151497
+  },
+  {
+   "level": 1,
+   "stem": "max_pool2d",
+   "classes": [
+    "MaxPool2d"
+   ],
+   "composed_speedup": 1.352467666542203
+  },
+  {
+   "level": 1,
+   "stem": "merge_attn_states",
+   "classes": [
+    "MergeAttnStates"
+   ],
+   "composed_speedup": 1.056357888650492
+  },
+  {
+   "level": 1,
+   "stem": "moe_align",
+   "classes": [
+    "MoeAlign"
+   ],
+   "composed_speedup": 1.5453017969903358
+  },
+  {
+   "level": 1,
+   "stem": "moe_grouped_gemm",
+   "classes": [
+    "MoeGroupedGemm"
+   ],
+   "composed_speedup": 3.2062336696591536
+  },
+  {
+   "level": 1,
+   "stem": "moe_sum",
+   "classes": [
+    "MoeSum"
+   ],
+   "composed_speedup": 1.1841404717871333
+  },
+  {
+   "level": 1,
+   "stem": "mrope",
+   "classes": [
+    "MRotaryEmbedding"
+   ],
+   "composed_speedup": 7.805737640268254
+  },
+  {
+   "level": 1,
+   "stem": "mrope_input_positions",
+   "classes": [
+    "MRopeInputPositions"
+   ],
+   "composed_speedup": 0.9981916693038619
+  },
+  {
+   "level": 1,
+   "stem": "oasis_rotary",
+   "classes": [
+    "OasisRotaryEmbedding"
+   ],
+   "composed_speedup": 1.3643550839725325
+  },
+  {
+   "level": 1,
+   "stem": "quickgelu",
+   "classes": [
+    "QuickGELU"
+   ],
+   "composed_speedup": 1.562222244355506
+  },
+  {
+   "level": 1,
+   "stem": "relu",
+   "classes": [
+    "ReLU"
+   ],
+   "composed_speedup": 1.0126137029147213
+  },
+  {
+   "level": 1,
+   "stem": "rms_norm",
+   "classes": [
+    "RMSNorm"
+   ],
+   "composed_speedup": 1.3933869968622639
+  },
+  {
+   "level": 1,
+   "stem": "rms_norm_gated",
+   "classes": [
+    "RMSNormGated"
+   ],
+   "composed_speedup": 1.0327999888687498
+  },
+  {
+   "level": 1,
+   "stem": "rotary_emb",
+   "classes": [
+    "RotaryEmbedding"
+   ],
+   "composed_speedup": 2.883260510997735
+  },
+  {
+   "level": 1,
+   "stem": "sigmoid",
+   "classes": [
+    "Sigmoid"
+   ],
+   "composed_speedup": 1.0698261402577731
+  },
+  {
+   "level": 1,
+   "stem": "silu",
+   "classes": [
+    "SiLU"
+   ],
+   "composed_speedup": 1.0282722526963115
+  },
+  {
+   "level": 1,
+   "stem": "silu_and_mul",
+   "classes": [
+    "SiluAndMul"
+   ],
+   "composed_speedup": 1.1529267146971425
+  },
+  {
+   "level": 1,
+   "stem": "softmax",
+   "classes": [
+    "Softmax"
+   ],
+   "composed_speedup": 1.4826579393129682
+  },
+  {
+   "level": 1,
+   "stem": "store_kvcache",
+   "classes": [
+    "StoreKVCacheHND"
+   ],
+   "composed_speedup": 1.013191376214363
+  },
+  {
+   "level": 1,
+   "stem": "store_kvcache_fp8_mla",
+   "classes": [
+    "GatherAndDequantKVCacheMLA",
+    "StoreKVCacheFP8MLA"
+   ],
+   "composed_speedup": 1.0021114419704398
+  },
+  {
+   "level": 1,
+   "stem": "t5_layer_norm",
+   "classes": [
+    "T5LayerNorm"
+   ],
+   "composed_speedup": 5.5757143660171025
+  },
+  {
+   "level": 1,
+   "stem": "tensor_ops",
+   "classes": [
+    "Pad"
+   ],
+   "composed_speedup": 1.1175901179971182
+  },
+  {
+   "level": 1,
+   "stem": "topk_softmax",
+   "classes": [
+    "TopKSoftmax"
+   ],
+   "composed_speedup": 1.3402130344852092
+  },
+  {
+   "level": 1,
+   "stem": "vision_rotary_emb",
+   "classes": [
+    "VisionRotaryEmbedding"
+   ],
+   "composed_speedup": 13.097467891605591
+  },
+  {
+   "level": 1,
+   "stem": "yarn_rotary_emb",
+   "classes": [
+    "YaRNRotaryEmbedding"
+   ],
+   "composed_speedup": 18.365178013512057
+  },
+  {
+   "level": 2,
+   "stem": "ada_layer_norm",
+   "classes": [
+    "AdaLayerNormZero",
+    "AdaLayerNormZeroSingle"
+   ],
+   "composed_speedup": 2.242253594067781
+  },
+  {
+   "level": 2,
+   "stem": "ada_layer_norm_continuous",
+   "classes": [
+    "AdaLayerNormContinuous"
+   ],
+   "composed_speedup": 2.145070351911509
+  },
+  {
+   "level": 2,
+   "stem": "alphafold3_atom_attention",
+   "classes": [
+    "AtomAttentionDecoder",
+    "AtomAttentionEncoder"
+   ],
+   "composed_speedup": 6.128874438414742
+  },
+  {
+   "level": 2,
+   "stem": "alphafold3_attention_pair_bias",
+   "classes": [
+    "AttentionPairBias",
+    "CrossAttentionPairBias"
+   ],
+   "composed_speedup": 5.434711964282818
+  },
+  {
+   "level": 2,
+   "stem": "alphafold3_input_embedder",
+   "classes": [
+    "InputEmbedder"
+   ],
+   "composed_speedup": 2.35258512346199
+  },
+  {
+   "level": 2,
+   "stem": "alphafold3_msa_attention",
+   "classes": [
+    "MSARowAttentionWithPairBias"
+   ],
+   "composed_speedup": 2.896894986205377
+  },
+  {
+   "level": 2,
+   "stem": "alphafold3_msa_module_embedder",
+   "classes": [
+    "MSAModuleEmbedder"
+   ],
+   "composed_speedup": 1.5826284853684416
+  },
+  {
+   "level": 2,
+   "stem": "alphafold3_of3_attention",
+   "classes": [
+    "OF3Attention"
+   ],
+   "composed_speedup": 5.0120292031518385
+  },
+  {
+   "level": 2,
+   "stem": "alphafold3_outer_product_mean",
+   "classes": [
+    "OuterProductMean"
+   ],
+   "composed_speedup": 4.524067467373414
+  },
+  {
+   "level": 2,
+   "stem": "alphafold3_pair_block",
+   "classes": [
+    "PairBlock"
+   ],
+   "composed_speedup": 5.727423906784348
+  },
+  {
+   "level": 2,
+   "stem": "alphafold3_swiglu",
+   "classes": [
+    "AdaLN",
+    "SwiGLU"
+   ],
+   "composed_speedup": 1.745236611372541
+  },
+  {
+   "level": 2,
+   "stem": "alphafold3_swiglu_transition",
+   "classes": [
+    "ConditionedTransitionBlock",
+    "SwiGLUTransition"
+   ],
+   "composed_speedup": 2.4166766574069416
+  },
+  {
+   "level": 2,
+   "stem": "alphafold3_triangle_attention",
+   "classes": [
+    "TriangleAttention"
+   ],
+   "composed_speedup": 13.122024046693628
+  },
+  {
+   "level": 2,
+   "stem": "attention",
+   "classes": [
+    "LlamaAttention"
+   ],
+   "composed_speedup": 1.4615559503794004
+  },
+  {
+   "level": 2,
+   "stem": "attention_impl",
+   "classes": [
+    "Attention"
+   ],
+   "composed_speedup": 1.1667331306773665
+  },
+  {
+   "level": 2,
+   "stem": "clip_attention",
+   "classes": [
+    "CLIPAttention"
+   ],
+   "composed_speedup": 2.1711466825911523
+  },
+  {
+   "level": 2,
+   "stem": "encoder_mlp",
+   "classes": [
+    "EncoderIntermediate",
+    "EncoderOutput"
+   ],
+   "composed_speedup": 1.1271567882947482
+  },
+  {
+   "level": 2,
+   "stem": "flux_attention",
+   "classes": [
+    "FluxAttention"
+   ],
+   "composed_speedup": 1.9245617054256632
+  },
+  {
+   "level": 2,
+   "stem": "flux_feedforward",
+   "classes": [
+    "FeedForward"
+   ],
+   "composed_speedup": 1.094613432393509
+  },
+  {
+   "level": 2,
+   "stem": "gla_attention",
+   "classes": [
+    "GatedLinearAttention"
+   ],
+   "composed_speedup": 3.396953463635033
+  },
+  {
+   "level": 2,
+   "stem": "gla_mlp",
+   "classes": [
+    "GLAMLP"
+   ],
+   "composed_speedup": 1.0777520432158234
+  },
+  {
+   "level": 2,
+   "stem": "kimi_mla_attention",
+   "classes": [
+    "KimiMLAAttention"
+   ],
+   "composed_speedup": 2.0349318489353836
+  },
+  {
+   "level": 2,
+   "stem": "llama_mlp",
+   "classes": [
+    "LlamaMLP"
+   ],
+   "composed_speedup": 1.067890232174485
+  },
+  {
+   "level": 2,
+   "stem": "mla_attention_impl",
+   "classes": [
+    "MLAAttention"
+   ],
+   "composed_speedup": 1.2013852854329288
+  },
+  {
+   "level": 2,
+   "stem": "oasis_final_layer",
+   "classes": [
+    "OasisFinalLayer"
+   ],
+   "composed_speedup": 1.874949115319917
+  },
+  {
+   "level": 2,
+   "stem": "oasis_mlp",
+   "classes": [
+    "OasisMLP"
+   ],
+   "composed_speedup": 1.0340265330740894
+  },
+  {
+   "level": 2,
+   "stem": "oasis_patch_embed",
+   "classes": [
+    "OasisPatchEmbed"
+   ],
+   "composed_speedup": 2.3588695527479797
+  },
+  {
+   "level": 2,
+   "stem": "oasis_spatial_axial_attention",
+   "classes": [
+    "OasisSpatialAxialAttention"
+   ],
+   "composed_speedup": 6.609105304411795
+  },
+  {
+   "level": 2,
+   "stem": "oasis_temporal_axial_attention",
+   "classes": [
+    "OasisTemporalAxialAttention"
+   ],
+   "composed_speedup": 11.41070493868666
+  },
+  {
+   "level": 2,
+   "stem": "oasis_timestep_embedder",
+   "classes": [
+    "OasisTimestepEmbedder"
+   ],
+   "composed_speedup": 1.6201173941915636
+  },
+  {
+   "level": 2,
+   "stem": "oasis_vae_attention",
+   "classes": [
+    "OasisVAEAttention"
+   ],
+   "composed_speedup": 3.3954879215623053
+  },
+  {
+   "level": 2,
+   "stem": "parallel_embedding",
+   "classes": [
+    "ParallelLMHead",
+    "VocabParallelEmbedding"
+   ],
+   "composed_speedup": 1.0028465723829105
+  },
+  {
+   "level": 2,
+   "stem": "parallel_linear",
+   "classes": [
+    "ColumnParallelLinear",
+    "MergedColumnParallelLinear",
+    "QKVParallelLinear",
+    "ReplicatedLinear",
+    "RowParallelLinear"
+   ],
+   "composed_speedup": 1.0122287148825408
+  },
+  {
+   "level": 2,
+   "stem": "qwen3_moe",
+   "classes": [
+    "Qwen3MoE"
+   ],
+   "composed_speedup": 2.160321916869664
+  },
+  {
+   "level": 2,
+   "stem": "qwen3_next_attention",
+   "classes": [
+    "Qwen3NextAttention"
+   ],
+   "composed_speedup": 2.4240948109762233
+  },
+  {
+   "level": 2,
+   "stem": "qwen3_next_gdn_attention",
+   "classes": [
+    "Qwen3NextGDNAttention"
+   ],
+   "composed_speedup": 2.185432074509622
+  },
+  {
+   "level": 2,
+   "stem": "t5_attention",
+   "classes": [
+    "T5SelfAttention"
+   ],
+   "composed_speedup": 2.9486544483111916
+  },
+  {
+   "level": 2,
+   "stem": "t5_dense",
+   "classes": [
+    "T5DenseGatedActDense"
+   ],
+   "composed_speedup": 1.660191473114457
+  },
+  {
+   "level": 2,
+   "stem": "timestep_embedding",
+   "classes": [
+    "CombinedTimestepGuidanceTextProjEmbeddings",
+    "TimestepEmbedding",
+    "Timesteps"
+   ],
+   "composed_speedup": 2.2325413548449573
+  },
+  {
+   "level": 2,
+   "stem": "trtllm_bf16_moe",
+   "classes": [
+    "TrtLlmBf16MoE"
+   ],
+   "composed_speedup": 1.1744271951621437
+  },
+  {
+   "level": 2,
+   "stem": "trtllm_mxfp4_moe",
+   "classes": [
+    "TrtLlmMxfp4MoE"
+   ],
+   "composed_speedup": 1.143580280416673
+  },
+  {
+   "level": 2,
+   "stem": "vision_attention",
+   "classes": [
+    "VisionAttention"
+   ],
+   "composed_speedup": 1.3641087844771453
+  },
+  {
+   "level": 2,
+   "stem": "vision_mlp",
+   "classes": [
+    "VisionMLP"
+   ],
+   "composed_speedup": 1.3238770754582365
+  },
+  {
+   "level": 2,
+   "stem": "vision_patch_embed",
+   "classes": [
+    "VisionPatchEmbed"
+   ],
+   "composed_speedup": 1.1005474805346696
+  },
+  {
+   "level": 2,
+   "stem": "vision_patch_merger",
+   "classes": [
+    "VisionPatchMerger"
+   ],
+   "composed_speedup": 1.1607797772610713
+  },
+  {
+   "level": 2,
+   "stem": "vision_pos_embed_interpolate",
+   "classes": [
+    "VisionPosEmbedInterpolate"
+   ],
+   "composed_speedup": 23.99846545744874
+  },
+  {
+   "level": 2,
+   "stem": "yolov10_attention",
+   "classes": [
+    "YOLOAttention"
+   ],
+   "composed_speedup": 5.226411236189026
+  },
+  {
+   "level": 2,
+   "stem": "yolov10_bottleneck",
+   "classes": [
+    "YOLOBottleneck"
+   ],
+   "composed_speedup": 2.3614230549787525
+  },
+  {
+   "level": 2,
+   "stem": "yolov10_c2f",
+   "classes": [
+    "YOLOC2f",
+    "YOLOC2fCIB"
+   ],
+   "composed_speedup": 1.3755129422286956
+  },
+  {
+   "level": 2,
+   "stem": "yolov10_cib",
+   "classes": [
+    "YOLOCIB"
+   ],
+   "composed_speedup": 1.3746049892932093
+  },
+  {
+   "level": 2,
+   "stem": "yolov10_concat",
+   "classes": [
+    "YOLOConcat"
+   ],
+   "composed_speedup": 1.1617131528526305
+  },
+  {
+   "level": 2,
+   "stem": "yolov10_conv",
+   "classes": [
+    "YOLOConv"
+   ],
+   "composed_speedup": 2.270296827156678
+  },
+  {
+   "level": 2,
+   "stem": "yolov10_dfl",
+   "classes": [
+    "YOLODFL"
+   ],
+   "composed_speedup": 2.379582883579747
+  },
+  {
+   "level": 2,
+   "stem": "yolov10_psa",
+   "classes": [
+    "YOLOPSA"
+   ],
+   "composed_speedup": 11.354147955935504
+  },
+  {
+   "level": 2,
+   "stem": "yolov10_repvggdw",
+   "classes": [
+    "YOLORepVGGDW"
+   ],
+   "composed_speedup": 4.962687882078209
+  },
+  {
+   "level": 2,
+   "stem": "yolov10_scdown",
+   "classes": [
+    "YOLOSCDown"
+   ],
+   "composed_speedup": 1.5008075033536803
+  },
+  {
+   "level": 2,
+   "stem": "yolov10_sppf",
+   "classes": [
+    "YOLOSPPF"
+   ],
+   "composed_speedup": 1.859433735560053
+  },
+  {
+   "level": 3,
+   "stem": "alphafold3_diffusion_transformer",
+   "classes": [
+    "DiffusionTransformer"
+   ],
+   "composed_speedup": 9.53191529049036
+  },
+  {
+   "level": 3,
+   "stem": "alphafold3_heads",
+   "classes": [
+    "AuxiliaryHeads"
+   ],
+   "composed_speedup": 6.274857895588025
+  },
+  {
+   "level": 3,
+   "stem": "alphafold3_msa_module",
+   "classes": [
+    "MSAModuleStack"
+   ],
+   "composed_speedup": 6.326274019091067
+  },
+  {
+   "level": 3,
+   "stem": "alphafold3_pairformer",
+   "classes": [
+    "PairFormerStack"
+   ],
+   "composed_speedup": 6.228179454256656
+  },
+  {
+   "level": 3,
+   "stem": "clip_encoder_layer",
+   "classes": [
+    "CLIPEncoderLayer"
+   ],
+   "composed_speedup": 3.2008828855703695
+  },
+  {
+   "level": 3,
+   "stem": "flux_transformer_block",
+   "classes": [
+    "FluxSingleTransformerBlock",
+    "FluxTransformerBlock"
+   ],
+   "composed_speedup": 1.4509667051941955
+  },
+  {
+   "level": 3,
+   "stem": "gla_decoder",
+   "classes": [
+    "GLADecoderLayer"
+   ],
+   "composed_speedup": 2.5974965559539616
+  },
+  {
+   "level": 3,
+   "stem": "gpt_oss_decoder",
+   "classes": [
+    "GptOssDecoderLayer"
+   ],
+   "composed_speedup": 1.193375958346214
+  },
+  {
+   "level": 3,
+   "stem": "kimi_linear_decoder",
+   "classes": [
+    "KimiLinearDecoderLayer"
+   ],
+   "composed_speedup": 1.5953950264085868
+  },
+  {
+   "level": 3,
+   "stem": "llama_decoder",
+   "classes": [
+    "LlamaDecoderLayer"
+   ],
+   "composed_speedup": 1.1389277137658134
+  },
+  {
+   "level": 3,
+   "stem": "oasis_block",
+   "classes": [
+    "SpatioTemporalDiTBlock"
+   ],
+   "composed_speedup": 4.954658350367258
+  },
+  {
+   "level": 3,
+   "stem": "oasis_dit",
+   "classes": [
+    "OasisDiT"
+   ],
+   "composed_speedup": 4.31167354601903
+  },
+  {
+   "level": 3,
+   "stem": "oasis_vae_attention_block",
+   "classes": [
+    "OasisVAEAttentionBlock"
+   ],
+   "composed_speedup": 2.8218301855867476
+  },
+  {
+   "level": 3,
+   "stem": "qwen3_moe_decoder",
+   "classes": [
+    "Qwen3MoEDecoderLayer"
+   ],
+   "composed_speedup": 1.6537210454459428
+  },
+  {
+   "level": 3,
+   "stem": "qwen3_next_decoder",
+   "classes": [
+    "Qwen3NextDecoderLayer"
+   ],
+   "composed_speedup": 3.2117809221135425
+  },
+  {
+   "level": 3,
+   "stem": "t5_block",
+   "classes": [
+    "T5Block"
+   ],
+   "composed_speedup": 2.8539723531752847
+  },
+  {
+   "level": 3,
+   "stem": "vision_block",
+   "classes": [
+    "VisionBlock"
+   ],
+   "composed_speedup": 1.402710003440648
+  },
+  {
+   "level": 3,
+   "stem": "yolov10_backbone",
+   "classes": [
+    "YOLOv10Backbone"
+   ],
+   "composed_speedup": 2.865841364699691
+  },
+  {
+   "level": 3,
+   "stem": "yolov10_head",
+   "classes": [
+    "YOLOv10DetectHead"
+   ],
+   "composed_speedup": 2.1191401193600097
+  },
+  {
+   "level": 3,
+   "stem": "yolov10_neck",
+   "classes": [
+    "YOLOv10Neck"
+   ],
+   "composed_speedup": 2.8862623566454912
+  }
+ ],
+ "dropped": [
+  {
+   "level": 2,
+   "stem": "kimi_delta_attention",
+   "reason": "failed composed bench: INCORRECT_NUMERICAL"
+  }
+ ],
+ "files": {
+  "L1/_tiny_seq_attn.cu": "bb06fb5fb44a8f92bd0113291145f1eee988ffadd8b547a211c59ee862e82551",
+  "L1/_tiny_seq_attn.cuh": "26acbbdb0f4a845332f2546ecfe09a878f4f5b20d2b07dc00caf402c35bba8b6",
+  "L1/chunk_gla.py": "d07a9368f3738d168abe580f8b47701699d66203e8e59a5b4592d53d2b9eb102",
+  "L1/conv2d.py": "b338afc733a8963ac94e15a0bb4caedc5d4ff3305f6301259c1b1cecba1298d9",
+  "L1/dense_attention.py": "8127e7f2d534b1e3e4ccafd2556cd6f57aec4ab7f4d190839a8c0b630c75e9ac",
+  "L1/diffusion_rope.py": "5ad34c8c4d27dac74e3d7e4f89bfc99be0826fbfd2d3d1a1bbbb20a40867831a",
+  "L1/embedding.py": "484ad0437a86d27e0583d12091103b76776c405bfc61de4224e1536dd1c47978",
+  "L1/flash_attn_prefill.py": "83259ea988e672e6a265025dc84ead6ecaaf72f15431a34b7445646afaef3f13",
+  "L1/flash_attn_varlen.py": "85ae9e976ed2340bf236844930df23a0287cb4d6252d9610fd3abd92bba3e0cf",
+  "L1/flashinfer_decode.py": "56df9ceb80361276f86c066940d8ab282be2e03f98ddab2de969d6280e5f751d",
+  "L1/flashinfer_prefill.py": "75cb32d5e011fc29bf85081ee77cee4ce460760aeeaa5da543f1ffab2333493a",
+  "L1/flux_pos_embed.py": "1e914ddee39a3b4de467be1dbfb74e8e193bc26755014e6ef93032788e120645",
+  "L1/fp8_linear.py": "9f8349a82d1ae9f515ec70af607f0981aba9a0f92675cd9dba066468e1c2931f",
+  "L1/fused_recurrent_gla.py": "f15b496e25c805a6bc71e5d75ec7df1927ff1a0262520bf5cb898a0d389f5aee",
+  "L1/gelu.py": "4f4e7785a245be686ec88ec71224cb2131f0bb1ba60e04d448929d3088eb3031",
+  "L1/gemma_rms_norm.py": "7057f37125b48f79aae31eddfcdfa74a741f793deefae01034677e103c5a4b91",
+  "L1/interpolate.py": "ebdf0ede6a86b2f53ac1a777b5add6e5e31f55d671c8b47d7796501d7173f36c",
+  "L1/l2_norm.py": "c86e2dd027918e6f483319ccfb8541ed335871d2c0cd0b01e3713e24c182029a",
+  "L1/layer_norm.py": "89ff6e8cd823637b6e8514956993a8c2acf795ef244e8b8b25aa72156f66d9a6",
+  "L1/linear.py": "bbcb721ea245977060504ba0e8d860c2576dfb3b55aad4fab002155a592177ac",
+  "L1/log_sigmoid.py": "0ce3939549908c2019fddea29b8bf5b5ca851bba43a417d4d34788ac407752d8",
+  "L1/max_pool2d.py": "fa75d8808f9b3b9e7f49c9f180374b4022b74cf2a720c462ed79f24c7c3a3676",
+  "L1/merge_attn_states.py": "1ead35a72098d5550a817c94ca80293d3feaf8a4116a6d990182c895958d7de8",
+  "L1/moe_align.py": "cb7ff230128d85ed427d5e248a296a1cd83ceb51fb2b9dcfde14f639d27ed366",
+  "L1/moe_grouped_gemm.py": "a809e0c7ff0edcbcece2d55e92658a6ca7b37c24713ded4531c85a2159f658eb",
+  "L1/moe_sum.py": "3d447b8ef001e39e8c1d4cbbfe784d55b0804a1c2ca282b307407c06d53652d5",
+  "L1/mrope.py": "e06b420d9ce5fb6b82795e6ecc6a6c49b6327b844e6f5cf3136781321d6e278d",
+  "L1/mrope_input_positions.py": "f1bf0c99aa2111657242406bbe8988b47489bdae133559df389fca95105b4017",
+  "L1/oasis_rotary.py": "0dca5df522e06bb3c3e852ffcdab9b4ec8d805b4f08347dc78df304f5ababc47",
+  "L1/quickgelu.py": "74d124da3e01d43fc75853a53cbda4c98341fd446999020d76cd44c609e00be4",
+  "L1/relu.py": "3982767ee52ae5a3c8f66f58c9c6a868631739f6d163030674939d421c0cbf05",
+  "L1/rms_norm.py": "0c40712ee0511a04b1061e2e5ed30fa790709d0a3b3a9ed84491d24d52fb39a3",
+  "L1/rms_norm_gated.py": "8086a79cb1f71231435af9889cfa32cbd58977cb043bf1625dc47ac7038b6378",
+  "L1/rms_norm_kernels.cu": "f5f1810850160962eaefcc54cc7d8a1098f17c3e92ef31d6bd238269e4cd6f38",
+  "L1/rotary_emb.py": "d477be1f0e587358e609a02abd9d9d50edd4b50366445cf2ed84f0bb89940d47",
+  "L1/sigmoid.py": "f80cb15c2dde8f3a6841ae8c86ed5fc32917b8ee31588806feb91938605dcdfb",
+  "L1/silu.py": "411144402be840a4d0db8ecffbe728c48dbfd7f414fc9b6f37341b015d6bbb00",
+  "L1/silu_and_mul.py": "2eb7ebbb8500346c5f39e84744b5ad6e1eec64adf10107ca9c83766d43f1347a",
+  "L1/silu_and_mul_kernels.cu": "e5ea1a25a2323fc523c25d3896f7144e2cc4a626627b93d8751be6f64af01915",
+  "L1/softmax.py": "6eab24c6e7b5f5e40094f60a2cf78d5ea8461865e9a68ed291774c29133a505a",
+  "L1/store_kvcache.py": "730dc379a25c7cc70c3146b4fabab5d9b9edfa718151ebc828f3fd84ff33cfb7",
+  "L1/store_kvcache_fp8_mla.py": "5ed1cb5579c3fa66ae7e4caec7fa96dee4594f59cc56da023823e5cd6033dbbb",
+  "L1/t5_layer_norm.py": "da2db1133f7b19d58e245b83f937d02e17e44240523ea0e7fd4afaf43e493d63",
+  "L1/tensor_ops.py": "604e8d69c5f5a168cc6216a3dd10c1ba4f0d4984d7a48fdf0f223ffc49958908",
+  "L1/topk_softmax.py": "265a7067398a5c06b7d64736be864e6724d0d91d19187dd18c7bbeb127704041",
+  "L1/topk_softmax_fused.cu": "7b2f296e321abef1daec48b945c4e8950fbe51c66c2950d76ba70dcc9bb5eaa0",
+  "L1/vision_rotary_emb.py": "223b07a4d25ca9d44e6f38b821de51545b59f0c2da9acf5a41b4d0d1ad387661",
+  "L1/yarn_rotary_emb.py": "825aaf9d957531e2237d7b269da716b956ac832c43243d6f3fb6c9ce8990f79d",
+  "L2/_af3_atom_attn.cu": "a6d86a1882c84fbfd08bc00baef01ebb14b49c5f06c4714c3deb43170039ed6e",
+  "L2/_af3_swiglu_kernels.cuh": "2ef2b0563573f617af22a5dd72607439946684e8f494028a40a7a990008b9032",
+  "L2/_af3_swiglu_transition.cu": "7022f3d810981feb3a246d399087a35dbd0be8e5fe92c9b9971986e215f625de",
+  "L2/_temporal_axial_fused.cu": "0f632d699c79dcc5bc50e36a552e1e5476b44f8dc2df45f0569820fc74e6d76d",
+  "L2/_temporal_axial_fused.cuh": "8e2d76c9f0dabe7fb3ef2d7998b2cd5dd9dc4ac53c50ffd857e819b15cabe955",
+  "L2/ada_layer_norm.py": "046d819b0f60a98e3aee4cd77b465432f0c5cd8282b63ee8cfe9529d27060174",
+  "L2/ada_layer_norm_continuous.py": "b04112cea31665ce33091728dea06b4e72cd7aa739c0eb975a8d1e5b443b1e3f",
+  "L2/alphafold3_atom_attention.py": "ba4293af8e1428a0d772efdaa1ffdfe44ff6fd2d52f7625ea0a7f1f770a5ed6c",
+  "L2/alphafold3_attention_pair_bias.py": "1f954a2fc5c4cb71a10b403a8531690535708a04d85dfbf1ecb8f6c27ddc385e",
+  "L2/alphafold3_input_embedder.py": "a4f8ba46e253a78ec9d15f3549f638c4b311404a44740a092cde767709e42aba",
+  "L2/alphafold3_msa_attention.py": "5a4004dfa8330450d11e7137602130e45c350e9e7c120f20e4e3f0eced665038",
+  "L2/alphafold3_msa_module_embedder.py": "6cc0d55ce146d836fd4e5f3c6867573f5ea0ba31f5350e55330c61446869a638",
+  "L2/alphafold3_of3_attention.py": "b0b5e2c01058fd62d08016961fecbd613f14f3ebdcd0d48b357e022d07168e19",
+  "L2/alphafold3_outer_product_mean.py": "55c53ad3ab080c602afe124651ddc107f4cf0218590166a4bda1fd2876026cb1",
+  "L2/alphafold3_pair_block.py": "9d99d5d13e7f4b7bd6556cfd95d8f8373659c6d68041c052077bd5d213dabf0d",
+  "L2/alphafold3_pair_block_kernels.cu": "7392ec74f56732e64a7b7dfc7b7573bbfdcd70a007f0cdae1d99db289dab4c64",
+  "L2/alphafold3_swiglu.py": "d88fbe3c5f99bbf1cbd8b7e65238830896e2d9edb5b8f7df3c323a24dab1e359",
+  "L2/alphafold3_swiglu_transition.py": "8d000ee3c89f2ca8ee4435a5ea411bd4e33a34ad25d4cad17762295ec80affdb",
+  "L2/alphafold3_triangle_attention.py": "d4fb3ec2a07b2c9b0998d214a51d2e5145eda13d656e30d6045b1311cf852f55",
+  "L2/attention.py": "f93756e721343f3f5959284013ad3ab643518a2190924aa6210dee25e54991a5",
+  "L2/attention_impl.py": "3968d3e891c200a96c6f62d5f71a58cc0f4e67d122b7329481f019d6fe0f3eb1",
+  "L2/clip_attention.py": "6c995e8d379dc6d20c81f8e7b5ff119ad171151bfe21ad105f46d72097e949ae",
+  "L2/encoder_mlp.py": "e00f9b5d41ca96725b4608c352534c81840326564cc27c50256f7a59a3e41b32",
+  "L2/flux_attention.py": "0a86619000b10f83aaa3420bf5ea21a30110e2f2393cce05116a6cde9d449578",
+  "L2/flux_feedforward.py": "305987b8d1bf77e6b64016af3fb6bd8a7a26d04188e1d080cdb43056260d65f9",
+  "L2/flux_qk_norm_rope.cu": "9066d502192307b93a9d85e13830bca37cf1dd993d0944e1408a9a7f33078303",
+  "L2/gla_attention.py": "9f580334b9b45683d46cf673a353d0284704e7f86d5199023cf2290150ec8b71",
+  "L2/gla_mlp.py": "4b00516263a91ccf8a4ac5e47fb19022ed07b331c191cfa9f2aa8cba2bbab36c",
+  "L2/kimi_mla_attention.py": "378ad067f5a631195207663d2db667adf03c8410052973a995d724fb099ed88a",
+  "L2/llama_mlp.py": "7841c57809ef8ee3596eae28fb3c377332fcd70e18c849f1045d53faaf7feb85",
+  "L2/mla_attention_impl.py": "3a34b26f02f405b251948c8e096d87c34046ac27dfdca42a77bc7f4b791210f5",
+  "L2/mla_inplace_norm.cu": "948c1771024e9951abfe4ea4f444dac32d3e1641813146f81c13f73d74bb65cd",
+  "L2/msa_module_embed_kernels.cu": "037bb4ef0d844286c34d09379dba8b11bd699757f70d4d69814527e6ea9cd4b3",
+  "L2/oasis_final_layer.py": "4b898ae57d717d43c617085f4fdaf352edf86014ce3d47b64b6e55c4656f37e4",
+  "L2/oasis_mlp.py": "2438cb0d3b1aeec950072af1726bfa1d31782e2f608615a9c8c3d36df0b283d3",
+  "L2/oasis_patch_embed.py": "2fcddde242cead4720c227bc59a07b2eb395a439fd6067c2e0c304a7723e923b",
+  "L2/oasis_spatial_axial_attention.py": "aa757442f85b6872960cb3ad8e37bd00d35670a7445cfe7488ae0273a37c9dbd",
+  "L2/oasis_temporal_axial_attention.py": "288bb9e762a16298e3b604c7b20f434888f2556a0e5d17ffe966868412e78257",
+  "L2/oasis_timestep_embedder.py": "16634c1c97922e29610501664159aa99e605ca879b812ab50922bedf0342cf9a",
+  "L2/oasis_vae_attention.py": "cba29699756fb337733eb1bf751adc9d1f1aa0ca2ca600b9f37548f1f2ed9e3f",
+  "L2/parallel_embedding.py": "b11deb8b8a3214d698e85ae96974ed1ebf3ea67cf9bb4088a29ca5a52bd5a943",
+  "L2/parallel_linear.py": "6c585b1cf969f4ae6fe7e69930def6a778192ed7aec163606db6e5a23b069a50",
+  "L2/qwen3_moe.py": "560de2b731debf75d46928395f9cbe37ee4fa99d1a913ed68f818b9ef6f1f9ef",
+  "L2/qwen3_next_attention.py": "59bd47c28e827789c80373d7e4d6d168988e6df31954f8e7c729368304d005ee",
+  "L2/qwen3_next_gdn_attention.py": "3a51a85545a8a86a6ac808497c18b16ad935313f1af49952d3d5457893436ad2",
+  "L2/t5_attention.py": "c9f25b89ceef916825d2aa20935acf4c4b385def51ce9bfde9208d97cf5e55aa",
+  "L2/t5_dense.py": "13571aa5d91b6cc1ec3057d9c1007b9335d310990d3aed3bdd9cae731bb69106",
+  "L2/timestep_embedding.py": "51f0448ee1c8264d2c7f1fbd06c189b8deb27972a4dc823e175b99f3238d20b2",
+  "L2/timestep_embedding_kernels.cu": "06144fc356c7885cb8804c8cb8c8797f5bbe6ad86b4bd97e8d38a3ee1c188f66",
+  "L2/trtllm_bf16_moe.py": "bdc58e68895aaa308ae14bdd9c2265b0b4f1420cadda1e0e6a133773929281d7",
+  "L2/trtllm_mxfp4_moe.py": "b2b3fc1462c82ce9380b91d4e4d8e10649608c64d01f8870977978ef1c121e25",
+  "L2/vision_attention.py": "6b13111588e7b8c5ad2cdcb69284a32e1bac0bdaabbae03afe17331df0317cc2",
+  "L2/vision_mlp.py": "049e930de038fd927507465025435f08c0b88de1637ef858bade9981399b1b8e",
+  "L2/vision_patch_embed.py": "17eae5ed2a7175dcad77b055d1afd8b360bd73a26d0fd137a71b493b93c8ed7f",
+  "L2/vision_patch_merger.py": "7042e44d91ec9952acb4a8253c4e23a7d335e7afe21c7df3bdd608e7f6144823",
+  "L2/vision_pos_embed_interpolate.py": "5d5d18c2a9d453a6f5f57fc68c7634988fe41db507f211371cda3eb1b4b82b35",
+  "L2/yolov10_attention.py": "ce635d7ce6cd117bad810301bc3849e5c3ae53aab97cca128bca786d1b6841b3",
+  "L2/yolov10_bottleneck.py": "b38b09fa2ade1e1e83d94b671e6d294938f98cc4181a11f523e84689839cf8fd",
+  "L2/yolov10_c2f.py": "ea3fc5bb3a0995f7be4882e3a1a44d7e31435c74c9d80d2cc64b49fd0b03dacb",
+  "L2/yolov10_cib.py": "0d280d882d59d3742cf3a34d75a38ba04e5be88470257e087b9332a13cfc42d5",
+  "L2/yolov10_concat.py": "f183d10cf0168cc38376f62cfe7d1131981e9947764db3f26819c76bdb5978d1",
+  "L2/yolov10_conv.py": "21306f4a6b57cabe59449616342bce6da50a4fe1645aba7284268502b37ba3b4",
+  "L2/yolov10_dfl.py": "0e538507ad995405bb7ecc1f99c9ee36dd20e5d244ff90cb9b4058692f6cc254",
+  "L2/yolov10_psa.py": "6e7273cc31e7038cf9d9b4ac4bca24c250ad0cd46f9997776df75a09640abf92",
+  "L2/yolov10_repvggdw.py": "a3cc4599cc03209e37cef8989b3f5366cf51e934107b6bc60c3b17b56401d7a7",
+  "L2/yolov10_scdown.py": "7b55c045fa9bbc9ad9da2290eed8ef0f64cc6a7c0570a8ffec5a92b4bb2f6d13",
+  "L2/yolov10_sppf.py": "f1b6a7b0b93587d8143e9072b97f5c1dbd731285fc7414bf9cd5f77ba0362ba0",
+  "L3/alphafold3_diffusion_transformer.py": "8238fb24ba20ddb252dcd0acb0b5b9538be3e4fe6a958aa7d0fa7d287c246a57",
+  "L3/alphafold3_heads.py": "14af6c742653f4e15e651ec3ee41921c679c84ec2dcc5ff411ca57fdef0eb4a0",
+  "L3/alphafold3_msa_module.py": "527987eb42f3febc16be2b0293ce725981dfd11cd0351ba838510c43b1f547a1",
+  "L3/alphafold3_pairformer.py": "8e5481b6df35bdb60fcae4098d3c2d2fc711df8f8ada8b1aef28aba21c744f66",
+  "L3/clip_encoder_layer.py": "11d92f8985c7488fe9688717c64ee390ae684a6bf953e98ae5b3fee3d5813230",
+  "L3/flux_l3_kernels.cu": "bdc4ff728a1b311bd11b807a2d5992209e697606e2eda855c7a6f5e363399ac8",
+  "L3/flux_transformer_block.py": "be627b2e535e6f8ae3540fb88eaa2a4c406b72d99ff35fa4d70cbcb4b25dfa92",
+  "L3/gla_decoder.py": "eab4bea062550efbaf3d7c936e4f9ab239f09515ff36cb6e03df075f55064b26",
+  "L3/gpt_oss_decoder.py": "c081385f250d7e62ab11c509ee584fa429243c1c8c9a27e685eeed77c84ddd2b",
+  "L3/kimi_linear_decoder.py": "1218c1193ef808a7cfe16b86d715c5a62907fec7cfaddfc0901a18a331b88cd2",
+  "L3/llama_decoder.py": "90e3e145674680765bf73b2483e3843da9007ab4257569c35d5ed87626041e70",
+  "L3/msa_module_kernels.cu": "77d31317536b6355f8a242eaf2f76ff5646ed6df03e791853a0c6a54f5705e43",
+  "L3/oasis_block.py": "17a0912d834b972279f046025120f698bcaaf66cb8416c26b6a03bfc0b006508",
+  "L3/oasis_dit.py": "a5af28e50c04fe7100e6d6601b3a3aa7acb87fc1b4ecbba6d0d67e9f0dd8a94e",
+  "L3/oasis_vae_attention_block.py": "289e92aeef16384f33a7bc7b8174d0be47b676d854d46af3ac6a0c110fe2acb1",
+  "L3/qwen3_moe_decoder.py": "accc70209be9446e095bd005bb8f08cdbcf504c88d826be53336de3838b81435",
+  "L3/qwen3_next_decoder.py": "fa00ae41bb1a31b9a6a71f30e3104999ac5f223605c4a4fe23d91df5eb26d441",
+  "L3/t5_block.py": "f84700145695071e21998cba2a203b5bd84db7b7ff214e511ce4b455a3013453",
+  "L3/vision_block.py": "da53b721908ad4f0bab5a8f19a2a6b34030aabe54450d110ec2bb0888fbe3e8a",
+  "L3/yolov10_backbone.py": "19c2b68a66bce8a7b5abcd4ee6b55b029bcf95ae6fa554f51dc36c7d1d4a5254",
+  "L3/yolov10_head.py": "af58c9600ae74815cd76e5edf3bbe616e2d0af4244f47f0ac4b9962ddd9f3cc4",
+  "L3/yolov10_neck.py": "3bd3c9b25b2baa0df45caf38094f0d5c13aefd4f3c05c2458b92d50e0833d031"
+ },
+ "unreferenced_sources": [],
+ "scenarios": {
+  "meta-llama/Llama-3.1-8B-Instruct": [
+   "L1:embedding",
+   "L1:flashinfer_decode",
+   "L1:flashinfer_prefill",
+   "L1:linear",
+   "L1:rms_norm",
+   "L1:rotary_emb",
+   "L1:silu_and_mul",
+   "L1:store_kvcache",
+   "L2:attention",
+   "L2:attention_impl",
+   "L2:llama_mlp",
+   "L2:parallel_embedding",
+   "L2:parallel_linear",
+   "L3:llama_decoder"
+  ],
+  "Qwen/Qwen3-Next-80B-A3B-Instruct": [
+   "L1:embedding",
+   "L1:flashinfer_decode",
+   "L1:flashinfer_prefill",
+   "L1:gemma_rms_norm",
+   "L1:linear",
+   "L1:moe_align",
+   "L1:moe_sum",
+   "L1:rms_norm_gated",
+   "L1:rotary_emb",
+   "L1:silu_and_mul",
+   "L1:store_kvcache",
+   "L2:parallel_embedding",
+   "L2:parallel_linear",
+   "L2:qwen3_next_attention",
+   "L2:qwen3_next_gdn_attention",
+   "L2:trtllm_bf16_moe",
+   "L3:qwen3_next_decoder"
+  ],
+  "moonshotai/Kimi-Linear-48B-A3B-Instruct": [
+   "L1:embedding",
+   "L1:flash_attn_varlen",
+   "L1:linear",
+   "L1:merge_attn_states",
+   "L1:moe_align",
+   "L1:moe_sum",
+   "L1:rms_norm",
+   "L1:rms_norm_gated",
+   "L1:silu_and_mul",
+   "L1:store_kvcache_fp8_mla",
+   "L2:kimi_mla_attention",
+   "L2:llama_mlp",
+   "L2:mla_attention_impl",
+   "L2:parallel_embedding",
+   "L2:parallel_linear",
+   "L2:trtllm_bf16_moe",
+   "L3:kimi_linear_decoder"
+  ],
+  "openai/gpt-oss-120b": [
+   "L1:embedding",
+   "L1:flashinfer_decode",
+   "L1:flashinfer_prefill",
+   "L1:linear",
+   "L1:rms_norm",
+   "L1:store_kvcache",
+   "L1:yarn_rotary_emb",
+   "L2:attention",
+   "L2:attention_impl",
+   "L2:parallel_embedding",
+   "L2:parallel_linear",
+   "L2:trtllm_mxfp4_moe",
+   "L3:gpt_oss_decoder"
+  ],
+  "fla-hub/gla-2.7B-100B": [
+   "L1:chunk_gla",
+   "L1:embedding",
+   "L1:fused_recurrent_gla",
+   "L1:linear",
+   "L1:log_sigmoid",
+   "L1:rms_norm",
+   "L1:silu",
+   "L2:gla_attention",
+   "L2:gla_mlp",
+   "L3:gla_decoder"
+  ],
+  "black-forest-labs/FLUX.1-dev": [
+   "L1:dense_attention",
+   "L1:diffusion_rope",
+   "L1:embedding",
+   "L1:flux_pos_embed",
+   "L1:gelu",
+   "L1:layer_norm",
+   "L1:linear",
+   "L1:quickgelu",
+   "L1:rms_norm",
+   "L1:silu",
+   "L1:softmax",
+   "L1:t5_layer_norm",
+   "L2:ada_layer_norm",
+   "L2:ada_layer_norm_continuous",
+   "L2:clip_attention",
+   "L2:flux_attention",
+   "L2:flux_feedforward",
+   "L2:parallel_linear",
+   "L2:t5_attention",
+   "L2:t5_dense",
+   "L2:timestep_embedding",
+   "L3:clip_encoder_layer",
+   "L3:flux_transformer_block",
+   "L3:t5_block"
+  ],
+  "Qwen/Qwen3-VL-235B-A22B-Instruct-FP8": [
+   "L1:embedding",
+   "L1:flash_attn_prefill",
+   "L1:flashinfer_decode",
+   "L1:flashinfer_prefill",
+   "L1:fp8_linear",
+   "L1:gelu",
+   "L1:layer_norm",
+   "L1:linear",
+   "L1:moe_align",
+   "L1:moe_grouped_gemm",
+   "L1:moe_sum",
+   "L1:mrope",
+   "L1:mrope_input_positions",
+   "L1:rms_norm",
+   "L1:silu_and_mul",
+   "L1:store_kvcache",
+   "L1:topk_softmax",
+   "L1:vision_rotary_emb",
+   "L2:attention",
+   "L2:attention_impl",
+   "L2:parallel_embedding",
+   "L2:parallel_linear",
+   "L2:qwen3_moe",
+   "L2:vision_attention",
+   "L2:vision_mlp",
+   "L2:vision_patch_embed",
+   "L2:vision_patch_merger",
+   "L2:vision_pos_embed_interpolate",
+   "L3:qwen3_moe_decoder",
+   "L3:vision_block"
+  ],
+  "jameslahm/yolov10n": [
+   "L1:conv2d",
+   "L1:interpolate",
+   "L1:max_pool2d",
+   "L1:sigmoid",
+   "L1:silu",
+   "L1:softmax",
+   "L1:tensor_ops",
+   "L2:yolov10_attention",
+   "L2:yolov10_bottleneck",
+   "L2:yolov10_c2f",
+   "L2:yolov10_cib",
+   "L2:yolov10_concat",
+   "L2:yolov10_conv",
+   "L2:yolov10_dfl",
+   "L2:yolov10_psa",
+   "L2:yolov10_repvggdw",
+   "L2:yolov10_scdown",
+   "L2:yolov10_sppf",
+   "L3:yolov10_backbone",
+   "L3:yolov10_head",
+   "L3:yolov10_neck"
+  ],
+  "OpenFold/OpenFold3": [
+   "L1:layer_norm",
+   "L1:linear",
+   "L1:relu",
+   "L1:sigmoid",
+   "L1:silu",
+   "L1:softmax",
+   "L1:tensor_ops",
+   "L2:alphafold3_atom_attention",
+   "L2:alphafold3_attention_pair_bias",
+   "L2:alphafold3_input_embedder",
+   "L2:alphafold3_msa_attention",
+   "L2:alphafold3_msa_module_embedder",
+   "L2:alphafold3_of3_attention",
+   "L2:alphafold3_outer_product_mean",
+   "L2:alphafold3_pair_block",
+   "L2:alphafold3_swiglu",
+   "L2:alphafold3_swiglu_transition",
+   "L2:alphafold3_triangle_attention",
+   "L3:alphafold3_diffusion_transformer",
+   "L3:alphafold3_heads",
+   "L3:alphafold3_msa_module",
+   "L3:alphafold3_pairformer"
+  ],
+  "BAAI/bge-m3": [
+   "L1:dense_attention",
+   "L1:embedding",
+   "L1:flash_attn_varlen",
+   "L1:gelu",
+   "L1:l2_norm",
+   "L1:layer_norm",
+   "L1:linear",
+   "L2:encoder_mlp"
+  ],
+  "Etched/oasis-500m": [
+   "L1:conv2d",
+   "L1:dense_attention",
+   "L1:gelu",
+   "L1:layer_norm",
+   "L1:linear",
+   "L1:oasis_rotary",
+   "L1:silu",
+   "L2:oasis_final_layer",
+   "L2:oasis_mlp",
+   "L2:oasis_patch_embed",
+   "L2:oasis_spatial_axial_attention",
+   "L2:oasis_temporal_axial_attention",
+   "L2:oasis_timestep_embedder",
+   "L2:oasis_vae_attention",
+   "L3:oasis_block",
+   "L3:oasis_dit",
+   "L3:oasis_vae_attention_block"
+  ]
+ },
+ "static_check_findings": [],
+ "optional_imports": []
+}

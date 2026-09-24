@@ -1,1 +1,0 @@
-{"op": "fastkernels.tasks.baseline.L2.clip_attention:CLIPAttention", "level": 2, "shape": "-", "dtype": "-", "status": "SKIPPED", "detail": "no candidate class found"}

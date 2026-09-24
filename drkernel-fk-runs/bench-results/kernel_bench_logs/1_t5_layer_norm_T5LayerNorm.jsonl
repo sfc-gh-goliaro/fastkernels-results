@@ -1,1 +1,0 @@
-{"op": "fastkernels.tasks.baseline.L1.t5_layer_norm:T5LayerNorm", "level": 1, "shape": "[1, 512, 4096]", "dtype": "bfloat16", "status": "PASSED", "max_abs_error": 0.0, "max_rel_error": 0.0, "matched_ratio": 1.0, "candidate_ms": 0.015424000099301338, "baseline_ms": 0.06451199948787689, "speedup": 4.182572553977038, "detail": ""}

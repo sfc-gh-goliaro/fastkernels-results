@@ -1,9 +1,0 @@
-{
-  "level": 3,
-  "stem": "oasis_block",
-  "classes": [
-    "SpatioTemporalDiTBlock"
-  ],
-  "primary": "SpatioTemporalDiTBlock",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

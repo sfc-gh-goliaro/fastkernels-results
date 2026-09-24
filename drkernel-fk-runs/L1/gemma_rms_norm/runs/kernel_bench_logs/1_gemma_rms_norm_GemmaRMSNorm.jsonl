@@ -1,1 +1,0 @@
-{"op": "fastkernels.tasks.baseline.L1.gemma_rms_norm:GemmaRMSNorm", "level": 1, "shape": "-", "dtype": "-", "status": "SKIPPED", "detail": "no candidate class found"}

@@ -1,6 +1,0 @@
-[worker] fastkernels.tasks.baseline.L1.store_kvcache_fp8_mla:GatherAndDequantKVCacheMLA: 5 case(s)
-[worker] case 1/5  shape=[182699, 64, 576],[65536, 576],[2, 132],[3]
-[worker] case 2/5  shape=[182699, 64, 576],[65536, 576],[2, 2044],[3]
-[worker] case 3/5  shape=[182699, 64, 576],[65536, 576],[1, 484],[2]
-[worker] case 4/5  shape=[182699, 64, 576],[65536, 576],[2, 2026],[3]
-[worker] case 5/5  shape=[182699, 64, 576],[65536, 576],[1, 260],[2]
