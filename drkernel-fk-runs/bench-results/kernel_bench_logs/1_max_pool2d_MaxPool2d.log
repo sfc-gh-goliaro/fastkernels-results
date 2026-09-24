@@ -1,3 +1,0 @@
-[worker] fastkernels.tasks.baseline.L1.max_pool2d:MaxPool2d: 2 case(s)
-[worker] case 1/2  shape=[4, 128, 20, 20]
-[worker] case 2/2  shape=[1, 128, 20, 20]

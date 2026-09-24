@@ -1,9 +1,0 @@
-{
-  "level": 2,
-  "stem": "alphafold3_msa_module_embedder",
-  "classes": [
-    "MSAModuleEmbedder"
-  ],
-  "primary": "MSAModuleEmbedder",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

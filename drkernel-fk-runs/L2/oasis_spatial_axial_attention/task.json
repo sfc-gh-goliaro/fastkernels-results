@@ -1,9 +1,0 @@
-{
-  "level": 2,
-  "stem": "oasis_spatial_axial_attention",
-  "classes": [
-    "OasisSpatialAxialAttention"
-  ],
-  "primary": "OasisSpatialAxialAttention",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

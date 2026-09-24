@@ -1,9 +1,0 @@
-{
-  "level": 2,
-  "stem": "flux_attention",
-  "classes": [
-    "FluxAttention"
-  ],
-  "primary": "FluxAttention",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

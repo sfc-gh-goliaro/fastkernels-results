@@ -1,2 +1,0 @@
-[worker] fastkernels.tasks.baseline.L2.alphafold3_atom_attention:AtomAttentionDecoder: 1 case(s)
-[worker] case 1/1  shape=[1, 16, 384],[1, 16],[1, 16],[1, 368]

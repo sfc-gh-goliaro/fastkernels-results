@@ -1,9 +1,0 @@
-{
-  "level": 2,
-  "stem": "clip_attention",
-  "classes": [
-    "CLIPAttention"
-  ],
-  "primary": "CLIPAttention",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

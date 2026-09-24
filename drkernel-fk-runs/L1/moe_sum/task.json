@@ -1,9 +1,0 @@
-{
-  "level": 1,
-  "stem": "moe_sum",
-  "classes": [
-    "MoeSum"
-  ],
-  "primary": "MoeSum",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

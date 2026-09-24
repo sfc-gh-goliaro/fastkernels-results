@@ -1,6 +1,0 @@
-[worker] fastkernels.tasks.baseline.L1.mrope:MRotaryEmbedding: 5 case(s)
-[worker] case 1/5  shape=[3, 1],[1, 2048],[1, 128]
-[worker] case 2/5  shape=[3, 16384],[16384, 2048],[16384, 128]
-[worker] case 3/5  shape=[3, 643],[643, 2048],[643, 128]
-[worker] case 4/5  shape=[3, 1000],[1000, 2048],[1000, 128]
-[worker] case 5/5  shape=[3, 314],[314, 2048],[314, 128]

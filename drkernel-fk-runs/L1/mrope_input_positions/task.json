@@ -1,9 +1,0 @@
-{
-  "level": 1,
-  "stem": "mrope_input_positions",
-  "classes": [
-    "MRopeInputPositions"
-  ],
-  "primary": "MRopeInputPositions",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

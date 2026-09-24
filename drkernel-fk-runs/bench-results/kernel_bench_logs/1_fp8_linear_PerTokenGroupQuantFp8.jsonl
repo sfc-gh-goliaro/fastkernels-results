@@ -1,1 +1,0 @@
-{"op": "fastkernels.tasks.baseline.L1.fp8_linear:PerTokenGroupQuantFp8", "level": 1, "shape": "-", "dtype": "-", "status": "SKIPPED", "detail": "no candidate class found"}

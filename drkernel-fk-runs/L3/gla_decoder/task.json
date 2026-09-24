@@ -1,9 +1,0 @@
-{
-  "level": 3,
-  "stem": "gla_decoder",
-  "classes": [
-    "GLADecoderLayer"
-  ],
-  "primary": "GLADecoderLayer",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

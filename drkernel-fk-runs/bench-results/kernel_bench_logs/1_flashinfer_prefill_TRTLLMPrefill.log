@@ -1,6 +1,0 @@
-[worker] fastkernels.tasks.baseline.L1.flashinfer_prefill:TRTLLMPrefill: 5 case(s)
-[worker] case 1/5  shape=[487, 16, 128],[114541, 1, 16, 128],[114541, 1, 16, 128],[2]
-[worker] case 2/5  shape=[16384, 32, 128],[70892, 8, 16, 128],[70892, 8, 16, 128],[62]
-[worker] case 3/5  shape=[16353, 32, 64],[216987, 4, 16, 64],[216987, 4, 16, 64],[3]
-[worker] case 4/5  shape=[804, 16, 128],[114541, 1, 16, 128],[114541, 1, 16, 128],[2]
-[worker] case 5/5  shape=[891, 16, 128],[114541, 1, 16, 128],[114541, 1, 16, 128],[3]

@@ -1,6 +1,0 @@
-[worker] fastkernels.tasks.baseline.L1.relu:ReLU: 5 case(s)
-[worker] case 1/5  shape=[1, 12, 32, 128, 16]
-[worker] case 2/5  shape=[1, 12, 32, 1, 128]
-[worker] case 3/5  shape=[1, 12, 1, 128, 128]
-[worker] case 4/5  shape=[1, 1, 368, 768]
-[worker] case 5/5  shape=[1, 368, 384]

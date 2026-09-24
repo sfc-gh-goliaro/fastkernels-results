@@ -1,3 +1,0 @@
-[worker] fastkernels.tasks.baseline.L2.timestep_embedding:TimestepEmbedding: 2 case(s)
-[worker] case 1/2  shape=[1, 256]
-[worker] case 2/2  shape=[1, 768]

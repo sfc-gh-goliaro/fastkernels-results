@@ -1,9 +1,0 @@
-{
-  "level": 2,
-  "stem": "oasis_timestep_embedder",
-  "classes": [
-    "OasisTimestepEmbedder"
-  ],
-  "primary": "OasisTimestepEmbedder",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

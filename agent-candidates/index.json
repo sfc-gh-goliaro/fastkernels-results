@@ -1,0 +1,97 @@
+{
+ "fastkernels_commit": "9acebaa1349c78af8bb0ecb7e0719b5372d26fd8",
+ "captures": "captures/default/b200",
+ "filtered_by_composed_bench": true,
+ "sets": {
+  "drkernel-ind": {
+   "kernels_per_level": {
+    "L1": 18,
+    "L2": 5,
+    "L3": 1
+   },
+   "dropped": 0,
+   "static_check_findings": 0,
+   "manifest_sha256": "d01648b38c92909947095a4e110df3f7ed954ce2c6cdaf9e7edaa4b9153bbc55"
+  },
+  "drkernel-seq": {
+   "kernels_per_level": {
+    "L1": 18,
+    "L2": 5,
+    "L3": 2
+   },
+   "dropped": 0,
+   "static_check_findings": 0,
+   "manifest_sha256": "2e1fc1d80b14e200cdabaffa0a885d99bff9ec3cac2c0d94bb84141b97252f24"
+  },
+  "claude-ind": {
+   "kernels_per_level": {
+    "L1": 42,
+    "L2": 54,
+    "L3": 14
+   },
+   "dropped": 7,
+   "static_check_findings": 0,
+   "manifest_sha256": "f3fab7e2b71c9fe3265c76c2bb3c9eb597f3d03be30a0b27a84ee734d8ff8660"
+  },
+  "claude-seq": {
+   "kernels_per_level": {
+    "L1": 42,
+    "L2": 57,
+    "L3": 20
+   },
+   "dropped": 2,
+   "static_check_findings": 0,
+   "manifest_sha256": "e541e54a882fde1401828d461751a14e8936cd636027c57a066ff8108e8ac20c"
+  },
+  "kda-ind": {
+   "kernels_per_level": {
+    "L1": 43,
+    "L2": 51,
+    "L3": 11
+   },
+   "dropped": 16,
+   "static_check_findings": 0,
+   "manifest_sha256": "19bdea7f3ac5006b3b23527c991d42495a87076ae651e6fdba24a00ba8b3fd50"
+  },
+  "kda-seq": {
+   "kernels_per_level": {
+    "L1": 43,
+    "L2": 57,
+    "L3": 20
+   },
+   "dropped": 1,
+   "static_check_findings": 0,
+   "manifest_sha256": "c5b758f651172dd5f07dd718b1cdf9d11b5416cffcb3f6d6b45974825e3c9c41"
+  },
+  "ako-ind": {
+   "kernels_per_level": {
+    "L1": 45,
+    "L2": 60,
+    "L3": 14
+   },
+   "dropped": 7,
+   "static_check_findings": 0,
+   "manifest_sha256": "41355607180205c8502a9c3414b2a28b1c38d811e9dfc0c1ef140f3fbeffe2a5"
+  },
+  "ako-seq": {
+   "kernels_per_level": {
+    "L1": 45,
+    "L2": 59,
+    "L3": 20
+   },
+   "dropped": 1,
+   "static_check_findings": 0,
+   "manifest_sha256": "6a11cb90c00db75e2c7893d373f1c5e59d512baaf2cb0dbd53ba89f7d44f82bd"
+  },
+  "selftest": {
+   "kernels_per_level": {
+    "L1": 47,
+    "L2": 64,
+    "L3": 21
+   },
+   "dropped": 0,
+   "static_check_findings": 0,
+   "manifest_sha256": "cf2c0af7dd64779fbd7974a8f2e185ac950015672412f12ad482771bd3c611ca"
+  }
+ }
+}

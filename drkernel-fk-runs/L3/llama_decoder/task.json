@@ -1,9 +1,0 @@
-{
-  "level": 3,
-  "stem": "llama_decoder",
-  "classes": [
-    "LlamaDecoderLayer"
-  ],
-  "primary": "LlamaDecoderLayer",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

@@ -1,1 +1,0 @@
-{"op": "fastkernels.tasks.baseline.L3.clip_encoder_layer:CLIPEncoderLayer", "level": 3, "shape": "-", "dtype": "-", "status": "SKIPPED", "detail": "no candidate class found"}

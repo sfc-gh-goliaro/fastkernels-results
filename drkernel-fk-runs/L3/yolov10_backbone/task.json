@@ -1,9 +1,0 @@
-{
-  "level": 3,
-  "stem": "yolov10_backbone",
-  "classes": [
-    "YOLOv10Backbone"
-  ],
-  "primary": "YOLOv10Backbone",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

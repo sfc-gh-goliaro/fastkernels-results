@@ -1,5 +1,0 @@
-[worker] fastkernels.tasks.baseline.L2.yolov10_scdown:YOLOSCDown: 4 case(s)
-[worker] case 1/4  shape=[4, 128, 40, 40]
-[worker] case 2/4  shape=[1, 128, 40, 40]
-[worker] case 3/4  shape=[4, 64, 80, 80]
-[worker] case 4/4  shape=[1, 64, 80, 80]

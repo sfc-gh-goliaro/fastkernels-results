@@ -1,6 +1,0 @@
-[worker] fastkernels.tasks.baseline.L1.sigmoid:Sigmoid: 5 case(s)
-[worker] case 1/5  shape=[1, 8, 16, 64]
-[worker] case 2/5  shape=[4, 80, 8400]
-[worker] case 3/5  shape=[1, 12, 32, 128]
-[worker] case 4/5  shape=[1, 16, 768]
-[worker] case 5/5  shape=[1, 368, 128]

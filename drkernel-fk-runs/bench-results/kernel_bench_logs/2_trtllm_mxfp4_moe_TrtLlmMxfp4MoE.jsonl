@@ -1,1 +1,0 @@
-{"op": "fastkernels.tasks.baseline.L2.trtllm_mxfp4_moe:TrtLlmMxfp4MoE", "level": 2, "shape": "-", "dtype": "-", "status": "SKIPPED", "detail": "no candidate class found"}

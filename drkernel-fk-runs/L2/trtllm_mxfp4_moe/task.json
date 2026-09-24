@@ -1,9 +1,0 @@
-{
-  "level": 2,
-  "stem": "trtllm_mxfp4_moe",
-  "classes": [
-    "TrtLlmMxfp4MoE"
-  ],
-  "primary": "TrtLlmMxfp4MoE",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}

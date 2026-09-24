@@ -1,9 +1,0 @@
-{
-  "level": 2,
-  "stem": "vision_mlp",
-  "classes": [
-    "VisionMLP"
-  ],
-  "primary": "VisionMLP",
-  "captures": "/code/users/jaelee/fastkernels-results/captures/default/b200"
-}
