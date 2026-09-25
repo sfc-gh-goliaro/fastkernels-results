@@ -44,6 +44,7 @@ AGENTS = [
     ("claude", "Claude Code", "claude-fk-runs"),
     ("kda", "KDA", "kda-fk-runs"),
     ("ako", "AKO", "ako4x-fk-runs"),
+    ("codex", "Codex", "codex-fk-runs"),
 ]
 # set suffix -> (mode name, winners dir, composed bench of exactly those winners)
 MODES = {

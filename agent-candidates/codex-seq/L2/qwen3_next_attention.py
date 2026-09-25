@@ -1,0 +1,753 @@
+"""Qwen3-Next full attention with per-head QK-norm, partial RoPE, output gating, KV cache (L2).
+
+GQA attention: 16 query heads, 2 KV heads, head_dim=256.
+Q projection outputs 2x: [Q, gate] interleaved per head.
+Partial RoPE (25% of head_dim = 64 dims rotated).
+Output: attn_output * sigmoid(gate).
+
+KV cache is stored in the engine's paged state manager so Qwen3-Next can
+run batched prefill/decode instead of one Python call per sequence.
+
+Uses the existing flash-attention prefill/decode wrappers, ``GemmaRMSNorm``,
+``StoreKVCache``, and the canonical TP linears in ``parallel_linear``.
+
+Weight names match HuggingFace checkpoint:
+  self_attn.q_proj.weight   [2 * num_heads * head_dim, hidden_size]  (Q + gate)
+  self_attn.k_proj.weight   [num_kv_heads * head_dim, hidden_size]
+  self_attn.v_proj.weight   [num_kv_heads * head_dim, hidden_size]
+  self_attn.o_proj.weight   [hidden_size, num_heads * head_dim]
+  self_attn.q_norm.weight   [head_dim]
+  self_attn.k_norm.weight   [head_dim]
+"""
+
+from __future__ import annotations
+
+import torch
+import torch.nn as nn
+import triton
+import triton.language as tl
+
+from ....infra.context import get_attn_backend_config, get_context
+from ....infra.tp import _tp_size
+from ..L1.flash_attn_decode import FlashAttnDecode
+from ..L1.flash_attn_prefill import FlashAttnPrefill
+from ..L1.gemma_rms_norm import GemmaRMSNorm
+from ..L1.store_kvcache import StoreKVCache, StoreKVCacheHND
+from .fused_qk_norm_rope import (
+    fused_qk_rmsnorm_rope_gate as _vllm_fused_qk_rmsnorm_rope_gate,
+)
+from .parallel_linear import QKVParallelLinear, RowParallelLinear
+
+
+@triton.jit
+def _single_prefill_kernel(
+    q_gate_ptr,
+    k_ptr,
+    v_ptr,
+    out_ptr,
+    k_weight_ptr,
+    cos_sin_cache_ptr,
+    position_ptr,
+    k_cache_ptr,
+    v_cache_ptr,
+    slot_mapping_ptr,
+    cache_stride_p,
+    num_q_heads: tl.constexpr,
+    num_kv_heads: tl.constexpr,
+    head_dim: tl.constexpr,
+    rotary_dim: tl.constexpr,
+    half_rotary: tl.constexpr,
+    page_size: tl.constexpr,
+    eps: tl.constexpr,
+    INPUT_DTYPE: tl.constexpr,
+    HEAD_BLOCK: tl.constexpr,
+    ROT_HALF_BLOCK: tl.constexpr,
+):
+    head = tl.program_id(0)
+    offs = tl.arange(0, HEAD_BLOCK)
+    mask = offs < head_dim
+
+    if head < num_q_heads:
+        gate = tl.load(
+            q_gate_ptr + head * 2 * head_dim + head_dim + offs,
+            mask=mask,
+        ).to(tl.float32)
+        kv_head = head // (num_q_heads // num_kv_heads)
+        value = tl.load(v_ptr + kv_head * head_dim + offs, mask=mask)
+        sigmoid = 1.0 / (1.0 + tl.exp(-gate))
+        tl.store(out_ptr + head * head_dim + offs, value * sigmoid, mask=mask)
+    else:
+        local_head = head - num_q_heads
+        in_base = k_ptr + local_head * head_dim
+        x = tl.load(in_base + offs, mask=mask, other=0.0).to(tl.float32)
+        weight = tl.load(
+            k_weight_ptr + offs, mask=mask, other=0.0,
+        ).to(tl.float32)
+        inv_rms = tl.rsqrt(tl.sum(x * x, axis=0) / head_dim + eps)
+        x_norm = (x * inv_rms * weight).to(INPUT_DTYPE).to(tl.float32)
+
+        slot = tl.load(slot_mapping_ptr).to(tl.int64)
+        valid = slot >= 0
+        cache_base = (
+            (slot // page_size) * num_kv_heads * page_size * head_dim
+            + local_head * page_size * head_dim
+            + (slot % page_size) * head_dim
+        )
+        tl.store(
+            k_cache_ptr + cache_base + offs,
+            x_norm,
+            mask=mask & (offs >= rotary_dim) & valid,
+        )
+
+        rot = tl.arange(0, ROT_HALF_BLOCK)
+        rot_mask = rot < half_rotary
+        x1 = tl.load(in_base + rot, mask=rot_mask, other=0.0).to(tl.float32)
+        x2 = tl.load(
+            in_base + half_rotary + rot, mask=rot_mask, other=0.0,
+        ).to(tl.float32)
+        w1 = tl.load(
+            k_weight_ptr + rot, mask=rot_mask, other=0.0,
+        ).to(tl.float32)
+        w2 = tl.load(
+            k_weight_ptr + half_rotary + rot,
+            mask=rot_mask,
+            other=0.0,
+        ).to(tl.float32)
+        x1 = (x1 * inv_rms * w1).to(INPUT_DTYPE).to(tl.float32)
+        x2 = (x2 * inv_rms * w2).to(INPUT_DTYPE).to(tl.float32)
+        rope_base = tl.load(position_ptr).to(tl.int64) * cache_stride_p
+        cos = tl.load(
+            cos_sin_cache_ptr + rope_base + rot,
+            mask=rot_mask,
+            other=0.0,
+        ).to(tl.float32)
+        sin = tl.load(
+            cos_sin_cache_ptr + rope_base + half_rotary + rot,
+            mask=rot_mask,
+            other=0.0,
+        ).to(tl.float32)
+        tl.store(
+            k_cache_ptr + cache_base + rot,
+            x1 * cos - x2 * sin,
+            mask=rot_mask & valid,
+        )
+        tl.store(
+            k_cache_ptr + cache_base + half_rotary + rot,
+            x2 * cos + x1 * sin,
+            mask=rot_mask & valid,
+        )
+        value = tl.load(
+            v_ptr + local_head * head_dim + offs, mask=mask & valid,
+        )
+        tl.store(
+            v_cache_ptr + cache_base + offs, value, mask=mask & valid,
+        )
+
+
+def _single_prefill(
+    q_gate: torch.Tensor,
+    k: torch.Tensor,
+    v: torch.Tensor,
+    k_weight: torch.Tensor,
+    cos_sin_cache: torch.Tensor,
+    positions: torch.Tensor,
+    k_cache: torch.Tensor,
+    v_cache: torch.Tensor,
+    slot_mapping: torch.Tensor,
+    eps: float,
+    num_q_heads: int,
+    num_kv_heads: int,
+    head_dim: int,
+    rotary_dim: int,
+    page_size: int,
+) -> torch.Tensor:
+    out = torch.empty(
+        1,
+        num_q_heads,
+        head_dim,
+        dtype=q_gate.dtype,
+        device=q_gate.device,
+    )
+    half_rotary = rotary_dim // 2
+    head_block = triton.next_power_of_2(head_dim)
+    _single_prefill_kernel[(num_q_heads + num_kv_heads,)](
+        q_gate,
+        k,
+        v,
+        out,
+        k_weight,
+        cos_sin_cache,
+        positions,
+        k_cache,
+        v_cache,
+        slot_mapping,
+        cos_sin_cache.stride(0),
+        num_q_heads,
+        num_kv_heads,
+        head_dim,
+        rotary_dim,
+        half_rotary,
+        page_size,
+        eps,
+        INPUT_DTYPE=tl.bfloat16 if q_gate.dtype == torch.bfloat16 else tl.float16,
+        HEAD_BLOCK=head_block,
+        ROT_HALF_BLOCK=triton.next_power_of_2(half_rotary),
+        num_warps=max(1, head_block // 64),
+        num_stages=2,
+    )
+    return out
+
+
+@triton.jit
+def _fused_qk_rope_store_hnd_kernel(
+    q_gate_ptr,
+    k_ptr,
+    v_ptr,
+    q_out_ptr,
+    gate_out_ptr,
+    q_weight_ptr,
+    k_weight_ptr,
+    cos_sin_cache_ptr,
+    positions_ptr,
+    k_cache_ptr,
+    v_cache_ptr,
+    slot_mapping_ptr,
+    qkv_stride_t,
+    q_out_stride_t,
+    gate_out_stride_t,
+    cache_stride_p,
+    num_q_heads: tl.constexpr,
+    num_kv_heads: tl.constexpr,
+    head_dim: tl.constexpr,
+    rotary_dim: tl.constexpr,
+    half_rotary: tl.constexpr,
+    page_size: tl.constexpr,
+    eps: tl.constexpr,
+    INPUT_DTYPE: tl.constexpr,
+    HEAD_BLOCK: tl.constexpr,
+    ROT_HALF_BLOCK: tl.constexpr,
+):
+    token = tl.program_id(0)
+    head = tl.program_id(1)
+    is_k = head >= num_q_heads
+    local_head = tl.where(is_k, head - num_q_heads, head)
+    cache_base = token.to(tl.int64) * 0
+    cache_valid = head < 0
+
+    if is_k:
+        in_base = k_ptr + token * qkv_stride_t + local_head * head_dim
+        w_ptr = k_weight_ptr
+        slot = tl.load(slot_mapping_ptr + token).to(tl.int64)
+        cache_valid = slot >= 0
+        block = slot // page_size
+        page_offset = slot % page_size
+        cache_base = (
+            block * num_kv_heads * page_size * head_dim
+            + local_head * page_size * head_dim
+            + page_offset * head_dim
+        )
+        out_base = k_cache_ptr + cache_base
+    else:
+        in_base = (
+            q_gate_ptr + token * qkv_stride_t
+            + local_head * 2 * head_dim
+        )
+        w_ptr = q_weight_ptr
+        out_base = q_out_ptr + token * q_out_stride_t + local_head * head_dim
+
+    head_offs = tl.arange(0, HEAD_BLOCK)
+    head_mask = head_offs < head_dim
+    x = tl.load(in_base + head_offs, mask=head_mask, other=0.0).to(tl.float32)
+    inv_rms = tl.rsqrt(tl.sum(x * x, axis=0) / head_dim + eps)
+    weight = tl.load(
+        w_ptr + head_offs, mask=head_mask, other=0.0,
+    ).to(tl.float32)
+    x_norm = (x * inv_rms * weight).to(INPUT_DTYPE).to(tl.float32)
+    tl.store(
+        out_base + head_offs,
+        x_norm,
+        mask=head_mask
+        & (head_offs >= rotary_dim)
+        & ((~is_k) | cache_valid),
+    )
+
+    rot_offs = tl.arange(0, ROT_HALF_BLOCK)
+    rot_mask = rot_offs < half_rotary
+    x1 = tl.load(in_base + rot_offs, mask=rot_mask, other=0.0).to(tl.float32)
+    x2 = tl.load(
+        in_base + half_rotary + rot_offs, mask=rot_mask, other=0.0,
+    ).to(tl.float32)
+    w1 = tl.load(
+        w_ptr + rot_offs, mask=rot_mask, other=0.0,
+    ).to(tl.float32)
+    w2 = tl.load(
+        w_ptr + half_rotary + rot_offs, mask=rot_mask, other=0.0,
+    ).to(tl.float32)
+    x1 = (x1 * inv_rms * w1).to(INPUT_DTYPE).to(tl.float32)
+    x2 = (x2 * inv_rms * w2).to(INPUT_DTYPE).to(tl.float32)
+
+    pos = tl.load(positions_ptr + token).to(tl.int64)
+    rope_base = pos * cache_stride_p
+    cos = tl.load(
+        cos_sin_cache_ptr + rope_base + rot_offs,
+        mask=rot_mask,
+        other=0.0,
+    ).to(tl.float32)
+    sin = tl.load(
+        cos_sin_cache_ptr + rope_base + half_rotary + rot_offs,
+        mask=rot_mask,
+        other=0.0,
+    ).to(tl.float32)
+    rot_store_mask = rot_mask & ((~is_k) | cache_valid)
+    tl.store(out_base + rot_offs, x1 * cos - x2 * sin, mask=rot_store_mask)
+    tl.store(
+        out_base + half_rotary + rot_offs,
+        x2 * cos + x1 * sin,
+        mask=rot_store_mask,
+    )
+
+    if is_k:
+        value = tl.load(
+            v_ptr + token * qkv_stride_t + local_head * head_dim + head_offs,
+            mask=head_mask & cache_valid,
+        )
+        tl.store(
+            v_cache_ptr + cache_base + head_offs,
+            value,
+            mask=head_mask & cache_valid,
+        )
+    else:
+        gate_base = gate_out_ptr + (
+            token * gate_out_stride_t + local_head * head_dim
+        )
+        gate = tl.load(in_base + head_dim + head_offs, mask=head_mask)
+        tl.store(gate_base + head_offs, gate, mask=head_mask)
+
+
+def _fused_qk_rope_store_hnd(
+    q_gate: torch.Tensor,
+    k: torch.Tensor,
+    v: torch.Tensor,
+    q_weight: torch.Tensor,
+    k_weight: torch.Tensor,
+    cos_sin_cache: torch.Tensor,
+    positions: torch.Tensor,
+    k_cache: torch.Tensor,
+    v_cache: torch.Tensor,
+    slot_mapping: torch.Tensor,
+    eps: float,
+    num_q_heads: int,
+    num_kv_heads: int,
+    head_dim: int,
+    rotary_dim: int,
+    page_size: int,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    n_tokens = q_gate.shape[0]
+    q_out = torch.empty(
+        n_tokens,
+        num_q_heads * head_dim,
+        dtype=q_gate.dtype,
+        device=q_gate.device,
+    )
+    gate_out = torch.empty_like(q_out)
+    if n_tokens == 0:
+        return q_out, gate_out
+
+    head_block = triton.next_power_of_2(head_dim)
+    half_rotary = rotary_dim // 2
+    _fused_qk_rope_store_hnd_kernel[
+        (n_tokens, num_q_heads + num_kv_heads)
+    ](
+        q_gate,
+        k,
+        v,
+        q_out,
+        gate_out,
+        q_weight,
+        k_weight,
+        cos_sin_cache,
+        positions,
+        k_cache,
+        v_cache,
+        slot_mapping,
+        q_gate.stride(0),
+        q_out.stride(0),
+        gate_out.stride(0),
+        cos_sin_cache.stride(0),
+        num_q_heads,
+        num_kv_heads,
+        head_dim,
+        rotary_dim,
+        half_rotary,
+        page_size,
+        eps,
+        INPUT_DTYPE=tl.bfloat16 if q_gate.dtype == torch.bfloat16 else tl.float16,
+        HEAD_BLOCK=head_block,
+        ROT_HALF_BLOCK=triton.next_power_of_2(half_rotary),
+        num_warps=max(1, head_block // 64),
+        num_stages=2,
+    )
+    return q_out, gate_out
+
+
+@triton.jit
+def _gate_mul_inplace_kernel(
+    out_ptr,
+    gate_ptr,
+    n_elements: tl.constexpr,
+    BLOCK: tl.constexpr,
+):
+    pid = tl.program_id(0)
+    offsets = pid * BLOCK + tl.arange(0, BLOCK)
+    mask = offsets < n_elements
+    out = tl.load(out_ptr + offsets, mask=mask)
+    gate = tl.load(gate_ptr + offsets, mask=mask).to(tl.float32)
+    gate = 1.0 / (1.0 + tl.exp(-gate))
+    tl.store(out_ptr + offsets, out * gate, mask=mask)
+
+
+def _gate_mul_inplace(out: torch.Tensor, gate: torch.Tensor) -> torch.Tensor:
+    n_elements = out.numel()
+    if n_elements == 0:
+        return out
+    block = 1024
+    _gate_mul_inplace_kernel[(triton.cdiv(n_elements, block),)](
+        out,
+        gate,
+        n_elements,
+        BLOCK=block,
+        num_warps=8,
+    )
+    return out
+
+
+class Qwen3NextAttention(nn.Module):
+    """Full attention with per-head QK-norm, partial RoPE, output gating, and KV cache."""
+
+    def __init__(
+        self,
+        hidden_size: int,
+        num_attention_heads: int,
+        num_key_value_heads: int,
+        head_dim: int,
+        layer_idx: int,
+        rms_norm_eps: float = 1e-6,
+        reduce_output: bool = True,
+    ):
+        super().__init__()
+        tp = _tp_size()
+        self.layer_idx = layer_idx
+        self.num_heads = num_attention_heads // tp
+        self.num_kv_heads = num_key_value_heads // tp if num_key_value_heads % tp == 0 else num_key_value_heads
+        self.head_dim = head_dim
+        self.scaling = head_dim ** -0.5
+
+        # QKV projection: Q outputs 2x heads (Q + gate)
+        self.qkv_proj = QKVParallelLinear(
+            hidden_size, head_dim,
+            num_attention_heads * 2,  # doubled for output gate
+            num_key_value_heads,
+        )
+
+        # ``reduce_output=False`` defers the all-reduce to the decoder layer's
+        # next norm, which fuses the two.
+        self.o_proj = RowParallelLinear(
+            num_attention_heads * head_dim, hidden_size,
+            reduce_results=reduce_output,
+        )
+
+        # Per-head QK norms (GemmaRMSNorm)
+        self.q_norm = GemmaRMSNorm(head_dim, eps=rms_norm_eps)
+        self.k_norm = GemmaRMSNorm(head_dim, eps=rms_norm_eps)
+
+        # Qwen3-Next's full-attention layers use head_dim=256.  vLLM 0.26 runs
+        # them on FlashInfer with an HND cache ("Using FLASHINFER attention
+        # backend" / "Using HND KV cache layout for FLASHINFER" on B200), so
+        # follow the same per-device backend selection the generic
+        # ``Attention`` layer uses.  FlashAttention is not a substitute here:
+        # FA4's SM100 head_dim=256 forward rejects seqused_k/seqused_q, which
+        # the paged decode path requires.
+        attn_cfg = get_attn_backend_config()
+        self.kv_layout = attn_cfg.kv_layout
+        self._use_trtllm = attn_cfg.use_trtllm
+        # vLLM collapses the gated split + QK-RMSNorm + partial NeoX RoPE +
+        # gate copy into one Triton launch
+        # (``Qwen3NextAttention.use_fused_qk_norm_rope_gate``). Unfused that is
+        # nine kernels per attention layer -- two gate/q slices, two norms, two
+        # rotary slices, the rotary op and two cats -- which at batch 1 is pure
+        # launch overhead.
+        self._fused_qk_rope_gate = True
+        self._norm_gain_cache: tuple[torch.Tensor, torch.Tensor] | None = None
+        self._use_custom_op = False
+        self._layer_name = ""
+        self.rotary_emb = None
+        if self._use_trtllm:
+            from ..L1.flashinfer_decode import TRTLLMDecode
+            from ..L1.flashinfer_prefill import TRTLLMPrefill
+
+            self.store_kvcache = StoreKVCacheHND(page_size=attn_cfg.block_size)
+            self.flash_attn_prefill = TRTLLMPrefill(
+                self.num_heads, self.num_kv_heads, self.head_dim,
+            )
+            self.flash_attn_decode = TRTLLMDecode(
+                self.num_heads, self.num_kv_heads, self.head_dim,
+            )
+        else:
+            self.store_kvcache = StoreKVCache()
+            self.flash_attn_prefill = FlashAttnPrefill(
+                self.num_heads, self.num_kv_heads, self.head_dim,
+            )
+            self.flash_attn_decode = FlashAttnDecode(
+                self.num_heads, self.num_kv_heads, self.head_dim,
+            )
+
+    def set_trtllm_workspace(self, workspace: torch.Tensor) -> None:
+        """Adopt the engine's single shared trtllm-gen workspace.
+
+        Without this each layer keeps the 512 MiB buffer it allocated in
+        ``__init__``; Qwen3-Next has one MHA layer per 4 decoder layers, so
+        that would waste several GiB.
+        """
+        if self._use_trtllm:
+            self.flash_attn_decode._workspace = workspace
+            self.flash_attn_prefill._workspace = workspace
+
+    def _norm_gains(self) -> tuple[torch.Tensor, torch.Tensor]:
+        """``1 + weight`` for the QK norms, in fp32, materialized once.
+
+        vLLM recomputes ``q_norm.weight.float() + 1.0`` per call and lets
+        Inductor hoist it; in eager that would be two extra launches on every
+        one of the 12 attention layers. The values are constants after weight
+        loading, so caching them is exact.
+        """
+        if self._norm_gain_cache is None:
+            self._norm_gain_cache = (
+                self.q_norm.weight.float() + 1.0,
+                self.k_norm.weight.float() + 1.0,
+            )
+        return self._norm_gain_cache
+
+    def forward(self, hidden_states, rotary_emb=None, positions=None,
+                state_manager=None):
+        if rotary_emb is not None:
+            self.rotary_emb = rotary_emb
+        if self._use_custom_op:
+            return torch.ops.fastkernels.qwen3_next_attention(
+                hidden_states, positions, self._layer_name,
+            )
+        return self.forward_impl(hidden_states, positions, state_manager)
+
+    def forward_impl(self, hidden_states, positions=None, state_manager=None):
+        md = get_context().kda_metadata
+        if state_manager is None:
+            state_manager = get_context().kda_state
+        rotary_emb = self.rotary_emb
+        if md is None or state_manager is None:
+            raise RuntimeError(
+                "Qwen3NextAttention requires engine-managed KV state and metadata",
+            )
+
+        x = hidden_states.reshape(-1, hidden_states.shape[-1])
+        N = x.shape[0]
+
+        qkv = self.qkv_proj(x)
+        q_gate_size = self.num_heads * 2 * self.head_dim
+        kv_size = self.num_kv_heads * self.head_dim
+        q_gate, k, v = qkv.split([q_gate_size, kv_size, kv_size], dim=-1)
+
+        layer_idx = self.layer_idx
+        k_cache = state_manager.k_cache[layer_idx]
+        v_cache = state_manager.v_cache[layer_idx]
+        use_fused = (
+            self._fused_qk_rope_gate
+            and rotary_emb is not None
+            and positions is not None
+            and getattr(rotary_emb, "is_neox_style", False)
+        )
+        stored_kv = False
+        single_o = None
+        if (
+            use_fused
+            and self._use_trtllm
+            and N == 1
+            and md.num_decodes == 0
+            and md.num_prefills == 1
+            and md.max_query_len == 1
+            and md.max_seq_len == 1
+        ):
+            _, k_gain = self._norm_gains()
+            single_o = _single_prefill(
+                q_gate,
+                k,
+                v,
+                k_gain,
+                rotary_emb.cos_sin_cache,
+                positions.reshape(-1),
+                k_cache,
+                v_cache,
+                md.slot_mapping,
+                self.k_norm.variance_epsilon,
+                self.num_heads,
+                self.num_kv_heads,
+                self.head_dim,
+                rotary_emb.head_dim,
+                self.store_kvcache.page_size,
+            )
+            stored_kv = True
+        elif use_fused and self._use_trtllm and 1 < N <= 512:
+            q_gain, k_gain = self._norm_gains()
+            q, gate = _fused_qk_rope_store_hnd(
+                q_gate,
+                k,
+                v,
+                q_gain,
+                k_gain,
+                rotary_emb.cos_sin_cache,
+                positions.reshape(-1),
+                k_cache,
+                v_cache,
+                md.slot_mapping,
+                self.q_norm.variance_epsilon,
+                self.num_heads,
+                self.num_kv_heads,
+                self.head_dim,
+                rotary_emb.head_dim,
+                self.store_kvcache.page_size,
+            )
+            q = q.view(N, self.num_heads, self.head_dim)
+            gate = gate.view(N, self.num_heads, self.head_dim)
+            stored_kv = True
+        elif use_fused:
+            q_gain, k_gain = self._norm_gains()
+            q, k, gate = _vllm_fused_qk_rmsnorm_rope_gate(
+                q_gate,
+                k,
+                q_gain,
+                k_gain,
+                rotary_emb.cos_sin_cache,
+                positions.reshape(-1),
+                self.q_norm.variance_epsilon,
+                self.num_heads,
+                self.num_kv_heads,
+                self.head_dim,
+                rotary_emb.head_dim,
+            )
+            q = q.view(N, self.num_heads, self.head_dim)
+            k = k.view(N, self.num_kv_heads, self.head_dim)
+            gate = gate.view(N, self.num_heads, self.head_dim)
+        else:
+            # Split Q and gate
+            q_gate = q_gate.view(N, self.num_heads, 2 * self.head_dim)
+            q = q_gate[:, :, :self.head_dim].contiguous()
+            gate = q_gate[:, :, self.head_dim:].contiguous()
+
+            k = k.view(N, self.num_kv_heads, self.head_dim)
+
+            # Per-head QK-norm (applied before RoPE)
+            q = self.q_norm(q.reshape(-1, self.head_dim)).view(
+                N, self.num_heads, self.head_dim)
+            k = self.k_norm(k.reshape(-1, self.head_dim)).view(
+                N, self.num_kv_heads, self.head_dim)
+
+            # Partial RoPE (only rotates first rotary_dim dimensions)
+            if rotary_emb is not None and positions is not None:
+                pos_flat = (
+                    positions.reshape(-1) if positions.dim() > 1 else positions
+                )
+                rotary_dim = rotary_emb.head_dim
+                q_rot, q_pass = (
+                    q[..., :rotary_dim].contiguous(), q[..., rotary_dim:],
+                )
+                k_rot, k_pass = (
+                    k[..., :rotary_dim].contiguous(), k[..., rotary_dim:],
+                )
+                q_rot, k_rot = rotary_emb(pos_flat, q_rot, k_rot)
+                q = torch.cat([q_rot, q_pass], dim=-1)
+                k = torch.cat([k_rot, k_pass], dim=-1)
+
+        v = v.view(N, self.num_kv_heads, self.head_dim)
+
+        if not stored_kv:
+            self.store_kvcache(k, v, k_cache, v_cache, md.slot_mapping)
+
+        nd = md.num_decodes
+        ndt = md.num_decode_tokens
+        np_ = md.num_prefills
+        if single_o is not None:
+            out = single_o
+        else:
+            out = None
+            if nd > 0 and np_ > 0:
+                out = torch.empty(
+                    N,
+                    self.num_heads,
+                    self.head_dim,
+                    device=hidden_states.device,
+                    dtype=hidden_states.dtype,
+                )
+
+            if nd > 0:
+                decode_out = self.flash_attn_decode(
+                    q[:ndt],
+                    k_cache,
+                    v_cache,
+                    cache_seqlens=md.seq_lens[:nd].to(torch.int32),
+                    block_table=md.block_tables[:nd],
+                    softmax_scale=self.scaling,
+                    causal=True,
+                    max_seq_len=md.max_seq_len,
+                )
+                if np_ > 0:
+                    out[:ndt] = decode_out
+                else:
+                    out = decode_out
+
+            if np_ > 0:
+                if nd == 0:
+                    cu_pf = md.query_start_loc
+                else:
+                    cu_pf = (
+                        md.query_start_loc[nd:] - md.query_start_loc[nd]
+                    ).to(torch.int32)
+                if (
+                    nd == 0
+                    and np_ == 1
+                    and md.max_query_len == md.max_seq_len
+                ):
+                    cu_k_pf = cu_pf
+                else:
+                    seqs_k = md.seq_lens[nd:]
+                    cu_k_pf = torch.zeros(
+                        np_ + 1, dtype=torch.int32, device=q.device,
+                    )
+                    cu_k_pf[1:] = torch.cumsum(
+                        seqs_k.to(torch.int32), dim=0,
+                    )
+                prefill_out = self.flash_attn_prefill(
+                    q[ndt:],
+                    k_cache,
+                    v_cache,
+                    cu_seqlens_q=cu_pf,
+                    cu_seqlens_k=cu_k_pf,
+                    max_seqlen_q=md.max_query_len,
+                    max_seqlen_k=md.max_seq_len,
+                    softmax_scale=self.scaling,
+                    causal=True,
+                    block_table=md.block_tables[nd:],
+                )
+                if nd > 0:
+                    out[ndt:] = prefill_out
+                else:
+                    out = prefill_out
+
+        # Output gating: one pass avoids materializing the sigmoid tensor.
+        if single_o is not None:
+            o = single_o
+        elif np_ == 0 or N <= 16384:
+            o = _gate_mul_inplace(out, gate)
+        else:
+            o = out * torch.sigmoid(gate)
+
+        # Output projection
+        o = o.reshape(N, self.num_heads * self.head_dim)
+        return self.o_proj(o)

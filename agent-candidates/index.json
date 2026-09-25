@@ -1,5 +1,5 @@
 {
- "fastkernels_commit": "9acebaa1349c78af8bb0ecb7e0719b5372d26fd8",
+ "fastkernels_commit": "6c72b28b1574edae82b85d7a58370391baa37924",
  "captures": "captures/default/b200",
  "filtered_by_composed_bench": true,
  "sets": {
@@ -82,6 +82,26 @@
    "dropped": 1,
    "static_check_findings": 0,
    "manifest_sha256": "6a11cb90c00db75e2c7893d373f1c5e59d512baaf2cb0dbd53ba89f7d44f82bd"
+  },
+  "codex-ind": {
+   "kernels_per_level": {
+    "L1": 41,
+    "L2": 47,
+    "L3": 5
+   },
+   "dropped": 26,
+   "static_check_findings": 0,
+   "manifest_sha256": "9525a3e52fb912163a7791e45bdbb6916419aa96d6c81cf0f0629263e82fefeb"
+  },
+  "codex-seq": {
+   "kernels_per_level": {
+    "L1": 41,
+    "L2": 56,
+    "L3": 18
+   },
+   "dropped": 1,
+   "static_check_findings": 0,
+   "manifest_sha256": "e08403e7e54d7aed9ba64149a84753fa39326e2efbefc6d59cb2ab72021d6a53"
   },
   "selftest": {
    "kernels_per_level": {
